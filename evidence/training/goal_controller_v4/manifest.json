@@ -1,0 +1,25 @@
+{
+  "schema": "beforestep-frozen-controller/v1",
+  "run_id": "033d200f7100475ca16d0f4fead660e7",
+  "models": [
+    {
+      "path": "assets/models/goal_controller_v4/behavior_cloning.npz",
+      "sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+      "bytes": 358777
+    },
+    {
+      "path": "assets/models/goal_controller_v4/ppo_final.npz",
+      "sha256": "70d966b47b7a638dc3ab1251cf53667735d1d253b698c61a973b6644612b6431",
+      "bytes": 358685
+    }
+  ],
+  "deployed_controller": "assets/models/goal_controller_v4/behavior_cloning.npz",
+  "physical_demonstration_transitions": 115490,
+  "new_physical_demonstration_transitions": 57906,
+  "reused_physical_demonstration_transitions": 57584,
+  "counterfactual_goal_augmentation_rows": 20000,
+  "ppo_control_steps": 16384,
+  "demonstrations_sha256": "4da0dd28e625c0aa66a2430dc164051b51d16581536549443afcde8837a4754f",
+  "held_out_evaluation": "evidence/learning/held_out_v4/summary.json",
+  "note": "BC deployed after complete mission and candidate rehearsal validation; PPO final retained as separately validated controller candidate."
+}

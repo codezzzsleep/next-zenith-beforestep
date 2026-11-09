@@ -11,7 +11,7 @@ from .paths import ROOT
 
 def main():
     parser = argparse.ArgumentParser(prog='beforestep')
-    parser.add_argument('command', choices=['run', 'evaluate', 'admit', 'check', 'resources', 'generate', 'build', 'serve'])
+    parser.add_argument('command', choices=['run', 'evaluate', 'evaluate-controller', 'learning-artifacts', 'admit', 'check', 'resources', 'generate', 'build', 'serve', 'train'])
     args, remaining = parser.parse_known_args()
     if args.command == 'run':
         from . import pipeline
@@ -47,6 +47,15 @@ def main():
             result['ok'] = result['ok'] and result['render_ok']
         print(json.dumps(result, ensure_ascii=False, indent=2))
         raise SystemExit(0 if result['ok'] else 1)
+    elif args.command == 'learning-artifacts':
+        from .delivery.learning import main as learning_artifacts
+        learning_artifacts(remaining)
+    elif args.command == 'evaluate-controller':
+        from .learning.evaluate import main as evaluate_controller
+        evaluate_controller(remaining)
+    elif args.command == 'train':
+        from .learning.train import main as train
+        train(remaining)
     elif args.command == 'generate':
         from .generation.client import main as generate
         generate(remaining)

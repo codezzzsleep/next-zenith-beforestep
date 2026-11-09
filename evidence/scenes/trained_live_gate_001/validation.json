@@ -1,0 +1,549 @@
+{
+  "schema": "beforestep-trained-live-validation/v1",
+  "controller": {
+    "path": "assets/models/goal_controller_v4/behavior_cloning.npz",
+    "sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "observation_dim": 49,
+    "navigation_base": false
+  },
+  "production_trials": [
+    {
+      "label": "trained_detour_live_v4",
+      "run_id": "070b0438bce647a98b0fed3708dd42a3",
+      "summary_path": "evidence/learning/trained_detour_live_v4/summary.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 46.02,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          5.677,
+          -0.442,
+          -62.04
+        ],
+        "sim_time_s": 47.22,
+        "wall_s": 97.7,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_detour_live_v4/events.jsonl",
+      "events_sha256": "38fc9d7b009208cc21dd92882a62a73f4e2f39576acb8edb89c392e6fdf307e7",
+      "trajectory_path": "evidence/learning/trained_detour_live_v4/traj.npz",
+      "trajectory_sha256": "4ee8409ffd1a27b858521043ddcea342299eb33ca238aa15dcb70e6f714e4ead",
+      "actual_final_error_m": 0.0625533061553171,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 3,
+      "reference_panes": 3,
+      "decision_comparison": {
+        "kind": "decision_comparison",
+        "look": 1,
+        "start": [
+          2.242430485311661,
+          -0.49571452159461454
+        ],
+        "observation_state_sha256": "fe4132ed50f4900dbc2cd719770a81941fbda82e375d7dca161c7f7e405caf55",
+        "reference_policy": "optimistic",
+        "reference_path": [
+          [
+            4.399999999999999,
+            0.4000000000000019
+          ],
+          [
+            5.299999999999999,
+            0.10000000000000164
+          ],
+          [
+            5.7,
+            -0.5
+          ]
+        ],
+        "selected_path": [
+          [
+            4.199999999999999,
+            0.3000000000000018
+          ],
+          [
+            5.199999999999998,
+            0.3000000000000018
+          ],
+          [
+            5.7,
+            -0.5
+          ]
+        ],
+        "path_changed": true,
+        "reference_margin_vs_truth": {
+          "drive_margin_m": 0.082,
+          "turn_margin_m": 0.085
+        },
+        "selected_margin_vs_truth": {
+          "drive_margin_m": 0.12,
+          "turn_margin_m": 0.102
+        },
+        "note": "Same observed state, robot and planner; only generated occupancy changes."
+      }
+    },
+    {
+      "label": "trained_detour_live_v4_repeat",
+      "run_id": "a00d118789aa43eea0e29bfe9c1e346a",
+      "summary_path": "evidence/learning/trained_detour_live_v4_repeat/summary.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 46.02,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          5.677,
+          -0.442,
+          -62.04
+        ],
+        "sim_time_s": 47.22,
+        "wall_s": 90.3,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_detour_live_v4_repeat/events.jsonl",
+      "events_sha256": "fb734ea09a6bda70ff7ad339909d705f2289e4a9fc740285f01500404b42809e",
+      "trajectory_path": "evidence/learning/trained_detour_live_v4_repeat/traj.npz",
+      "trajectory_sha256": "4ee8409ffd1a27b858521043ddcea342299eb33ca238aa15dcb70e6f714e4ead",
+      "actual_final_error_m": 0.0625533061553171,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 3,
+      "reference_panes": 3,
+      "decision_comparison": {
+        "kind": "decision_comparison",
+        "look": 1,
+        "start": [
+          2.242430485311661,
+          -0.49571452159461454
+        ],
+        "observation_state_sha256": "fe4132ed50f4900dbc2cd719770a81941fbda82e375d7dca161c7f7e405caf55",
+        "reference_policy": "optimistic",
+        "reference_path": [
+          [
+            4.399999999999999,
+            0.4000000000000019
+          ],
+          [
+            5.299999999999999,
+            0.10000000000000164
+          ],
+          [
+            5.7,
+            -0.5
+          ]
+        ],
+        "selected_path": [
+          [
+            4.199999999999999,
+            0.3000000000000018
+          ],
+          [
+            5.199999999999998,
+            0.3000000000000018
+          ],
+          [
+            5.7,
+            -0.5
+          ]
+        ],
+        "path_changed": true,
+        "reference_margin_vs_truth": {
+          "drive_margin_m": 0.082,
+          "turn_margin_m": 0.085
+        },
+        "selected_margin_vs_truth": {
+          "drive_margin_m": 0.12,
+          "turn_margin_m": 0.102
+        },
+        "note": "Same observed state, robot and planner; only generated occupancy changes."
+      }
+    }
+  ],
+  "original_goal_trials": [
+    {
+      "label": "trained_gate_lux_live_v4",
+      "run_id": "f606208a018b4a7eb99e34a458e2b8b9",
+      "summary_path": "evidence/learning/trained_gate_lux_live_v4/summary.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          8.5,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 54.02,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          8.446,
+          0.006,
+          -5.36
+        ],
+        "sim_time_s": 55.22,
+        "wall_s": 84.8,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_gate_lux_live_v4/events.jsonl",
+      "events_sha256": "e81656c3bf75161dd499b7e277edc584415adb27695a0c9c32f41bef29f248eb",
+      "trajectory_path": "evidence/learning/trained_gate_lux_live_v4/traj.npz",
+      "trajectory_sha256": "63e65c1402bb96146f5a7c9356f4fbb4e8e3eb2cb8b1c10c060bec43d5e864c2",
+      "actual_final_error_m": 0.05399207829202276,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 3,
+      "reference_panes": 0,
+      "decision_comparison": {
+        "kind": "decision_comparison",
+        "look": 1,
+        "start": [
+          2.242430485311661,
+          -0.49571452159461454
+        ],
+        "observation_state_sha256": "fe4132ed50f4900dbc2cd719770a81941fbda82e375d7dca161c7f7e405caf55",
+        "reference_policy": "optimistic",
+        "reference_path": [
+          [
+            4.199999999999999,
+            0.3000000000000018
+          ],
+          [
+            8.5,
+            0.0
+          ]
+        ],
+        "selected_path": [
+          [
+            4.199999999999999,
+            0.3000000000000018
+          ],
+          [
+            8.5,
+            0.0
+          ]
+        ],
+        "path_changed": false,
+        "reference_margin_vs_truth": {
+          "drive_margin_m": 0.07,
+          "turn_margin_m": 0.102
+        },
+        "selected_margin_vs_truth": {
+          "drive_margin_m": 0.07,
+          "turn_margin_m": 0.102
+        },
+        "note": "Same observed state, robot and planner; only generated occupancy changes."
+      }
+    },
+    {
+      "label": "trained_gate_lux_live_v4_repeat",
+      "run_id": "eddbc648d2714643ab26744dbf9e1013",
+      "summary_path": "evidence/learning/trained_gate_lux_live_v4_repeat/summary.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          8.5,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 54.02,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          8.446,
+          0.006,
+          -5.36
+        ],
+        "sim_time_s": 55.22,
+        "wall_s": 76.4,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_gate_lux_live_v4_repeat/events.jsonl",
+      "events_sha256": "bbdc2af822420a9e4d80c44bb82f3232627f8b4997337a6cf9ce8fcb9e7af617",
+      "trajectory_path": "evidence/learning/trained_gate_lux_live_v4_repeat/traj.npz",
+      "trajectory_sha256": "63e65c1402bb96146f5a7c9356f4fbb4e8e3eb2cb8b1c10c060bec43d5e864c2",
+      "actual_final_error_m": 0.05399207829202276,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 3,
+      "reference_panes": 0,
+      "decision_comparison": {
+        "kind": "decision_comparison",
+        "look": 1,
+        "start": [
+          2.242430485311661,
+          -0.49571452159461454
+        ],
+        "observation_state_sha256": "fe4132ed50f4900dbc2cd719770a81941fbda82e375d7dca161c7f7e405caf55",
+        "reference_policy": "optimistic",
+        "reference_path": [
+          [
+            4.199999999999999,
+            0.3000000000000018
+          ],
+          [
+            8.5,
+            0.0
+          ]
+        ],
+        "selected_path": [
+          [
+            4.199999999999999,
+            0.3000000000000018
+          ],
+          [
+            8.5,
+            0.0
+          ]
+        ],
+        "path_changed": false,
+        "reference_margin_vs_truth": {
+          "drive_margin_m": 0.07,
+          "turn_margin_m": 0.102
+        },
+        "selected_margin_vs_truth": {
+          "drive_margin_m": 0.07,
+          "turn_margin_m": 0.102
+        },
+        "note": "Same observed state, robot and planner; only generated occupancy changes."
+      }
+    }
+  ],
+  "comparisons_and_failures": [
+    {
+      "label": "trained_detour_reference_v4",
+      "run_id": "00def7d317724ff1a7f947b024962495",
+      "summary_path": "evidence/learning/trained_detour_reference_v4/summary.json",
+      "summary": {
+        "policy": "optimistic",
+        "tag": "optimistic",
+        "see_dark": false,
+        "imagine": null,
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 46.66,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          5.682,
+          -0.441,
+          -64.35
+        ],
+        "sim_time_s": 47.86,
+        "wall_s": 37.8,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_detour_reference_v4/events.jsonl",
+      "events_sha256": "9f0c165c9f8ac916560756bf809483e1609c347e933f63af38bd3a617f8602ab",
+      "trajectory_path": "evidence/learning/trained_detour_reference_v4/traj.npz",
+      "trajectory_sha256": "5d8193e0581da11a1d4be59260ad7832bc6eefb826dbb56835188268749ca92b",
+      "actual_final_error_m": 0.061871450052496335,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 0,
+      "reference_panes": 0,
+      "decision_comparison": null
+    },
+    {
+      "label": "trained_detour_conservative_v4_failed",
+      "run_id": "e0b2ed9ed92f45aa8ecac15bc7d8557e",
+      "summary_path": "evidence/learning/trained_detour_conservative_v4_failed/summary.json",
+      "summary": {
+        "policy": "conservative",
+        "tag": "conservative",
+        "see_dark": false,
+        "imagine": null,
+        "result": "stopped_short",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 283.44,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          4.843,
+          0.527,
+          11.69
+        ],
+        "sim_time_s": 284.64,
+        "wall_s": 63.7,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_detour_conservative_v4_failed/events.jsonl",
+      "events_sha256": "ea8abbb42f6cc46a9b3eb5222fe206414e796fdf41f337f7f9eb048f20d235a5",
+      "trajectory_path": "evidence/learning/trained_detour_conservative_v4_failed/traj.npz",
+      "trajectory_sha256": "0122e1e3b50fd127572c2e9d9d9f5ea386492a366f33b9e9593cc0700a93154c",
+      "actual_final_error_m": 1.337677606186811,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 0,
+      "reference_panes": 0,
+      "decision_comparison": null
+    },
+    {
+      "label": "trained_near_goal_v4_rejected",
+      "run_id": "b302442628604194825b142c01204250",
+      "summary_path": "evidence/learning/trained_near_goal_v4_rejected/summary.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.4,
+          -0.7
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 15.42,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.242,
+          -0.496,
+          -1.39
+        ],
+        "sim_time_s": 16.62,
+        "wall_s": 467.1,
+        "collision": null
+      },
+      "events_path": "evidence/learning/trained_near_goal_v4_rejected/events.jsonl",
+      "events_sha256": "4c29f20fef630eb1185c656b2ca4faff77b1cfe4a3776c5a574217b25c65d17f",
+      "trajectory_path": "evidence/learning/trained_near_goal_v4_rejected/traj.npz",
+      "trajectory_sha256": "3a6ed817394dfedf30a47231ae768a1319dbff8b35654362bbe89960521b6cc5",
+      "actual_final_error_m": 3.164107401398572,
+      "raw_first_observation_sha256": {
+        "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+        "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+        "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259",
+        "look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+      },
+      "execution_panes": 0,
+      "reference_panes": 0,
+      "decision_comparison": null
+    }
+  ],
+  "checks": {
+    "unique_run_ids": true,
+    "same_model": true,
+    "same_primary_goal": true,
+    "same_first_rgbd_and_map": true,
+    "same_planner_capture_and_model_source": true,
+    "three_complete_execution_panes_each": true,
+    "route_changed_by_generated_occupancy": true,
+    "independent_arrival": true,
+    "no_rule_motion_fallback": true
+  },
+  "generation_provenance": "experiments/trained_live_gate_001/manifest.json",
+  "limits": "No-generation also arrives; conservative observation pose fails. Clearance is post-run scan diagnostic, not a planner input. Live asset reuse checks exact input bytes; cloud generation time excluded from travel.",
+  "cold_registration_trial": {
+    "summary_path": "evidence/learning/trained_detour_live_v4_cold_registration/summary.json",
+    "events_path": "evidence/learning/trained_detour_live_v4_cold_registration/events.jsonl",
+    "events_sha256": "7fd961559e6a27d91257616e7d5e6563e5508fd1ef8e7538085e90c0ae63f23a",
+    "trajectory_path": "evidence/learning/trained_detour_live_v4_cold_registration/traj.npz",
+    "trajectory_sha256": "4ee8409ffd1a27b858521043ddcea342299eb33ca238aa15dcb70e6f714e4ead",
+    "summary": {
+      "policy": "imagination",
+      "tag": "imagination",
+      "see_dark": false,
+      "imagine": "lux",
+      "result": "arrived",
+      "controller": "learned",
+      "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+      "scene_id": "gate_passage_001",
+      "goal": [
+        5.7,
+        -0.5
+      ],
+      "start_mode": "scene_start",
+      "execution_elapsed_s": 46.02,
+      "sensor_mode": "live",
+      "looks": 1,
+      "final_pose": [
+        5.677,
+        -0.442,
+        -62.04
+      ],
+      "sim_time_s": 47.22,
+      "wall_s": 780.3,
+      "collision": null
+    },
+    "note": "A fresh output reused only original input/GLB bytes; registration and admission recomputed before six complete rehearsals and independent arrival. Wall time includes cold computation and concurrent video render load, not prior cloud generation."
+  }
+}

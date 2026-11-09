@@ -1,0 +1,72 @@
+{
+  "schema": "beforestep-frozen-controller/v1",
+  "run_id": "cc2928cccbe34194a112b81b03830d42",
+  "models": [
+    {
+      "path": "assets/models/goal_controller_v1/behavior_cloning.npz",
+      "sha256": "b4530d431dcbf43e16807085d3915e0022d7fc9f69184d1bcad5282d11959a8f",
+      "bytes": 218234
+    },
+    {
+      "path": "assets/models/goal_controller_v1/final.npz",
+      "sha256": "079bc3755451eaddefd29c9dd990ed97bddf217141aeaa28350d43599165051a",
+      "bytes": 219788
+    }
+  ],
+  "training_complete": true,
+  "source_snapshot_verified_files": [
+    "src/beforestep/__init__.py",
+    "src/beforestep/__main__.py",
+    "src/beforestep/cli.py",
+    "src/beforestep/delivery/__init__.py",
+    "src/beforestep/delivery/artifacts.py",
+    "src/beforestep/delivery/server.py",
+    "src/beforestep/delivery/video.py",
+    "src/beforestep/evaluation.py",
+    "src/beforestep/generation/__init__.py",
+    "src/beforestep/generation/client.py",
+    "src/beforestep/generation/evaluate.py",
+    "src/beforestep/generation/records.py",
+    "src/beforestep/geometry/__init__.py",
+    "src/beforestep/geometry/admission.py",
+    "src/beforestep/geometry/camera.py",
+    "src/beforestep/geometry/imagination.py",
+    "src/beforestep/geometry/metrics.py",
+    "src/beforestep/geometry/registration.py",
+    "src/beforestep/geometry/solid.py",
+    "src/beforestep/geometry/volume.py",
+    "src/beforestep/learning/__init__.py",
+    "src/beforestep/learning/policy.py",
+    "src/beforestep/learning/ppo.py",
+    "src/beforestep/learning/train.py",
+    "src/beforestep/navigation/__init__.py",
+    "src/beforestep/navigation/controller.py",
+    "src/beforestep/navigation/map.py",
+    "src/beforestep/observation/__init__.py",
+    "src/beforestep/observation/capture.py",
+    "src/beforestep/observation/images.py",
+    "src/beforestep/paths.py",
+    "src/beforestep/resources.py",
+    "src/beforestep/scene.py",
+    "src/beforestep/simulation/__init__.py",
+    "src/beforestep/simulation/assets.py",
+    "src/beforestep/simulation/environment.py",
+    "src/beforestep/simulation/robot.py",
+    "src/beforestep/simulation/robot_model.py",
+    "src/beforestep/simulation/soil.py",
+    "src/beforestep/simulation/soil_profiles.py",
+    "src/beforestep/simulation/terrain.py",
+    "src/beforestep/visualization/__init__.py",
+    "src/beforestep/visualization/camera.py",
+    "src/beforestep/visualization/model.py",
+    "src/beforestep/visualization/scene.py",
+    "src/beforestep/visualization/textures.py"
+  ],
+  "source_snapshot_unavailable_files": [
+    "src/beforestep/pipeline.py"
+  ],
+  "deployed": false,
+  "demonstrations": "assets/training/goal_controller_v1",
+  "demonstration_conversion": null,
+  "task_result": "Representative lunar mission failure retained; original 16-goal training validation is separate."
+}

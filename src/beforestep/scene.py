@@ -110,7 +110,9 @@ def terrain_visual_obj(path, step=0.08, tile=0.9):
     xs = np.arange(-SPAN, SPAN + 1e-9, step); ys = np.arange(-SPAN, SPAN + 1e-9, step)
     X, Y = np.meshgrid(xs, ys); Z = height_at(X, Y)
     ny, nx = X.shape
-    with open(path, 'w') as f:
+    import uuid
+    temporary = path.with_name(path.name + '.' + uuid.uuid4().hex + '.tmp')
+    with open(temporary, 'w') as f:
         for x, y, z in zip(X.ravel(), Y.ravel(), Z.ravel()):
             f.write(f'v {x:.4f} {y:.4f} {z:.4f}\n')
         for x, y in zip(X.ravel(), Y.ravel()):
@@ -119,6 +121,7 @@ def terrain_visual_obj(path, step=0.08, tile=0.9):
         a, b, c, d = idx[:-1, :-1].ravel(), idx[:-1, 1:].ravel(), idx[1:, 1:].ravel(), idx[1:, :-1].ravel()
         for i in range(len(a)):
             f.write(f'f {a[i]}/{a[i]} {b[i]}/{b[i]} {c[i]}/{c[i]}\nf {a[i]}/{a[i]} {c[i]}/{c[i]} {d[i]}/{d[i]}\n')
+    temporary.replace(path)
     return path
 
 

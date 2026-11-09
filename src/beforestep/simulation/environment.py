@@ -1285,6 +1285,7 @@ class WheelLegEnv:
         ctrl = {}
         te = tr = False
         info = {}
+        monitor = getattr(self, 'physics_monitor', None)
         for _ in range(self.substeps):
             ctrl = self._command_ctrl(joint_targets_rad, joint_velocity_targets_rad_s,
                                       wheel_omega_rad_s, wheel_brake, wheel_mode,
@@ -1293,6 +1294,10 @@ class WheelLegEnv:
             mujoco.mj_step(self.model, self.data)
             self.n_physics += 1
             n_sub += 1
+            if monitor is not None and monitor(self):
+                te = True
+                info = {'reason':'collision','t':self.t+n_sub*self.dt}
+                break
             te, tr, info = self._check_termination()
             if te or tr:
                 break

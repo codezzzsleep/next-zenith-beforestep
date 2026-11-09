@@ -11,18 +11,66 @@ IMAG_MARGIN_CELLS = 1
 MAX_EXTRA_LOOKS = 2
 
 
+def recorded_scene_matches(recorded, selected, explicit_goal=False):
+    a, b = S.physical_identity(recorded), S.physical_identity(selected)
+    if explicit_goal:
+        a = {key:value for key,value in a.items() if key != 'goal'}
+        b = {key:value for key,value in b.items() if key != 'goal'}
+    return a == b
+
+
+def initialize_recorded_look(env, observations):
+    """Initialize an experiment at a saved sensor pose, before any recorded motion."""
+    import hashlib
+    import mujoco
+    source = pathlib.Path(observations) / 'looks' / 'look1'
+    targets = sorted(source.glob('T*/state.json'))
+    if not targets:
+        raise ValueError('Recorded look has no target state')
+    state = json.loads(targets[0].read_text())
+    qpos = np.asarray(state['robot_qpos_world'], dtype=float)
+    camera = json.loads((targets[0].parent/'camera_world.json').read_text())
+    qvel = np.asarray(camera['robot_qvel'], dtype=float)
+    if qpos.shape != env.data.qpos.shape or qvel.shape != env.data.qvel.shape or not np.isfinite(qpos).all() or not np.isfinite(qvel).all():
+        raise ValueError('Recorded sensor pose is incompatible with the robot')
+    if not np.allclose(camera['robot_qpos'], qpos, atol=1e-9, rtol=0):
+        raise ValueError('Recorded camera and robot poses differ')
+    for target in targets:
+        item = json.loads(target.read_text())
+        if not np.allclose(item['robot_qpos_world'], qpos, atol=1e-9, rtol=0) or abs(item['t_sim']-state['t_sim']) > 1e-9:
+            raise ValueError('Recorded targets disagree about sensor pose or time')
+        for name, expected in item['observation_sha256'].items():
+            if hashlib.sha256((target.parent/name).read_bytes()).hexdigest() != expected:
+                raise ValueError('Recorded observation bytes changed: '+name)
+    env.data.qpos[:] = qpos
+    env.data.qvel[:] = qvel
+    env.t = float(state['t_sim'])
+    env.data.time = env.t
+    mujoco.mj_forward(env.model, env.data)
+    return {'source': str(source), 'qpos': qpos.tolist(), 'qvel': qvel.tolist(),
+            'sim_time': env.t, 'note': 'Experiment starts at a preserved observation state; approach motion is not replayed or claimed as learned.'}
+
+
 class Recorder:
     def __init__(self):
         self.t, self.q, self.phase = [], [], []
         self.monitor = None
+        self.control_actions, self.control_sources = [], []
 
     def frame(self, env, kind, phase):
         self.t.append(float(env.t)); self.q.append(np.asarray(env.data.qpos, float).copy()); self.phase.append(str(phase))
+        controller=getattr(env,'_learned_controller',None)
+        source=getattr(env,'_control_source','rules')
+        self.control_actions.append(controller.previous.copy() if controller is not None and source=='learned' else np.zeros(4))
+        self.control_sources.append(source)
 
     def hold(self, env, phase, seconds):
         if self.monitor is not None and self.monitor(env):
             return False
         n = int(seconds * env.control_hz)
+        controller=getattr(env,'_learned_controller',None)
+        if controller is not None:controller.previous=np.zeros(4)
+        env._control_source='brake'
         for _ in range(n):
             env.step_command(joint_targets_rad=F.BASE_POSE, wheel_brake=np.ones(4, bool))
             self.frame(env, 'HOLD', phase)
@@ -31,7 +79,8 @@ class Recorder:
         return True
 
     def save(self, path):
-        np.savez_compressed(path, t=np.array(self.t), qpos=np.array(self.q), phase=np.array(self.phase))
+        np.savez_compressed(path, t=np.array(self.t), qpos=np.array(self.q), phase=np.array(self.phase),
+                            control_actions=np.array(self.control_actions),control_sources=np.array(self.control_sources))
 
 
 def true_footprints(env, meta):
@@ -60,20 +109,37 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--policy', required=True, choices=['conservative', 'optimistic', 'imagination'])
     ap.add_argument('--scene', default='gate_passage_001', help='Named configuration in config/scenes')
+    ap.add_argument('--controller-model', default='assets/models/goal_controller_v4/behavior_cloning.npz',
+                    help='Trained neural checkpoint; use rules explicitly for frozen historical baselines')
     ap.add_argument('--out', required=True); ap.add_argument('--imagine', choices=['lux', 'truth'], default='lux')
     ap.add_argument('--see-dark', action='store_true', help='对照实验：假设相机在黑影里也能测出深度')
     ap.add_argument('--max-looks', type=int, default=None, help='最多看几眼（想象策略最多两眼；保守策略默认五眼）')
     ap.add_argument('--reuse-lux', default=None, help='已有想象运行：只复用逐字节相同的观测与生成结果，不复用旧决策')
     ap.add_argument('--recorded-observations', help='显式使用记录的传感器观测；核对姿态和时刻，不冒充本次实时输入')
+    ap.add_argument('--start-at-recorded-look', action='store_true',
+                    help='Initialize at the first preserved observation state; requires recorded observations')
+    ap.add_argument('--goal', type=float, nargs=2, metavar=('X', 'Y'),
+                    help='Explicit task-goal variant; scene geometry and recorded observations remain checked')
     ap.add_argument('--tag', default=None, help='输出子目录名（默认等于策略名）')
     ap.add_argument('--trust', default=None, help='反事实：T1=A2,T2=B1 —— 这几块石头只用指定的那份想象，不管自检结论，也不看第二眼')
     a = ap.parse_args()
+    from .paths import ROOT
+    model_path=(ROOT/pathlib.Path(a.controller_model)).resolve() if a.controller_model not in (None,'rules') else None
+    if model_path is not None and not model_path.is_file():ap.error('Trained controller checkpoint is missing')
     scene_definition = S.configure(a.scene)
+    original_scene_definition = json.loads(json.dumps(scene_definition))
+    if a.start_at_recorded_look and not a.recorded_observations:
+        ap.error('--start-at-recorded-look requires --recorded-observations')
+    if a.goal:
+        if not np.isfinite(a.goal).all():ap.error('Goal must be finite')
+        S.GOAL = tuple(a.goal)
+        scene_definition = {**scene_definition, 'goal': list(a.goal),
+                            'task_variant': 'explicit_goal', 'observation_scene_goal': original_scene_definition['goal']}
     if a.recorded_observations:
         fixture = pathlib.Path(a.recorded_observations) / 'scene.json'
-        if not fixture.is_file() or S.physical_identity(json.loads(fixture.read_text())) != S.physical_identity(scene_definition):
+        if not fixture.is_file() or not recorded_scene_matches(json.loads(fixture.read_text()),original_scene_definition,explicit_goal=bool(a.goal)):
             ap.error('Recorded observations must match the selected physical scene')
-    if a.recorded_observations and (a.policy != 'imagination' or a.imagine != 'lux' or a.reuse_lux):
+    if a.recorded_observations and (a.reuse_lux or (not a.start_at_recorded_look and (a.policy != 'imagination' or a.imagine != 'lux'))):
         ap.error('--recorded-observations仅用于Lux3D记录观测复现，不能与--reuse-lux混用')
     a.max_looks = a.max_looks if a.max_looks is not None else (2 if a.policy == 'imagination' else 5)
     if a.max_looks < 1 or (a.policy == 'imagination' and a.max_looks > 2):
@@ -93,6 +159,9 @@ def main():
                                  for p in sorted((ROOT/'src/beforestep').rglob('*.py'))},
                 'config_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                                  for p in sorted((ROOT/'config').glob('*.json'))}}
+    identity['controller']={'type':'learned' if model_path else 'rules',
+                            'checkpoint':str(model_path) if model_path else None,
+                            'checkpoint_sha256':hashlib.sha256(model_path.read_bytes()).hexdigest() if model_path else None}
     (out/'run_identity.json').write_text(json.dumps(identity,ensure_ascii=False,indent=2))
     (out/'scene.json').write_text(json.dumps(scene_definition,ensure_ascii=False,indent=2))
     dark_thr = 0.0 if a.see_dark else 0.10
@@ -127,6 +196,28 @@ def main():
     t0 = time.time()
     spec, rb, meta = S.scene_spec(pathlib.Path(a.out) / 'scene')
     env = S.make_env(spec); S.place(env, *S.START); S.settle(env)
+    if a.start_at_recorded_look:
+        initial_state = initialize_recorded_look(env, a.recorded_observations)
+        identity['start_mode'] = 'recorded_observation_state'
+        identity['recorded_initial_state'] = initial_state
+        (out/'run_identity.json').write_text(json.dumps(identity,ensure_ascii=False,indent=2))
+        ev('recorded_initial_state', **initial_state)
+    def attach_controller(environment, previous=None):
+        if model_path is not None:
+            from .learning.policy import GoalPolicy
+            environment._learned_controller=GoalPolicy(model_path)
+            environment.nav_base=False
+            if previous is not None:environment._learned_controller.previous=np.asarray(previous).copy()
+            environment._control_source='initialization'
+    attach_controller(env)
+    execution_started_at = env.t
+    def execute_waypoints(environment, path, log, phase, on_step, final_yaw=None):
+        controller=getattr(environment,'_learned_controller',None)
+        if controller is not None:
+            environment._control_source='learned'
+            return controller.run_waypoints(environment,path,log,phase,on_step,final_yaw)
+        environment._control_source='rules'
+        return F.run_waypoints(environment,path,log=log,phase=phase,on_step=on_step,final_yaw=final_yaw)
     lux = a.policy == 'imagination' and a.imagine == 'lux'
     vm = VZ.video_model(env, rb, width=1600, height=1200, off=VZ.HI)
     vm.hi_sensor = True                # 三台车用同一条传感器链：一个 4040×3030 渲染器，缩到 1600×1200 建图
@@ -140,6 +231,7 @@ def main():
             crash.update(info); return True
         return False
     rec.monitor = on_step
+    env.physics_monitor = on_step
     truth = true_footprints(env, meta)
     truth_union = np.logical_or.reduce(list(truth.values()))
     truth_objs = []
@@ -159,21 +251,39 @@ def main():
 
     looks = []
     # ---- 0. 出发前在起点拍一张（相机一直开着；这一张让地图里有起点附近的地面）
-    ob0 = N.observe(vm, env, dark_thr=dark_thr)
+    recorded_map=(pathlib.Path(a.recorded_observations)/'looks/look1_fused_state.npy') if a.recorded_observations else None
+    if recorded_map is not None and not recorded_map.exists():recorded_map=pathlib.Path(a.recorded_observations)/'looks/look1_state.npy'
+    ob0 = ({'state': np.load(recorded_map)}
+           if a.start_at_recorded_look else N.observe(vm, env, dark_thr=dark_thr))
     base_maps = [ob0['state']]
     # ---- 1. 开到第一次停车点
-    try:
-        _, stopped = F.drive_to(env, *S.STOP1, log=rec, phase='approach', on_step=on_step)
-        if not stopped:
-            F.turn_to(env, 0.0, log=rec, phase='approach', on_step=on_step)
-    except F.MotionInterrupted:
+    approach_failed=False
+    if a.start_at_recorded_look:
         pass
-    rec.hold(env, 'look1', 1.0)
+    elif model_path is not None:
+        motion=execute_waypoints(env,[S.STOP1],rec,'approach',on_step,final_yaw=0.)
+        approach_failed=not motion.completed and not motion.collision
+        if approach_failed:ev('approach_failed',reason=motion.reason)
+    else:
+        try:
+            _, stopped = F.drive_to(env, *S.STOP1, log=rec, phase='approach', on_step=on_step)
+            if not stopped:F.turn_to(env, 0.0, log=rec, phase='approach', on_step=on_step)
+        except F.MotionInterrupted:pass
+    if not a.start_at_recorded_look:rec.hold(env, 'look1', 1.0)
 
     def look(label):
-        ob = N.observe(vm, env, dark_thr=dark_thr)
         k = len(looks) + 1
         from PIL import Image
+        if a.start_at_recorded_look and k == 1:
+            source = pathlib.Path(a.recorded_observations)/'looks'
+            camera_file = sorted((source/'look1').glob('T*/camera_world.json'))[0]
+            camera = json.loads(camera_file.read_text())
+            ob = {'state': np.load(recorded_map),
+                  'rgb': np.asarray(Image.open(source/'look1_rgb.png').convert('RGB')),
+                  'depth': np.load(source/'look1_depth.npy'), 'dark': np.load(source/'look1_dark.npy'),
+                  'cam_pos': camera['world_pos']}
+        else:
+            ob = N.observe(vm, env, dark_thr=dark_thr)
         Image.fromarray(ob['rgb']).save(out / 'looks' / f'look{k}_rgb.png')
         np.save(out / 'looks' / f'look{k}_state.npy', ob['state']); np.save(out / 'looks' / f'look{k}_depth.npy', ob['depth'].astype(np.float32))
         np.save(out / 'looks' / f'look{k}_dark.npy', ob['dark'])
@@ -207,7 +317,7 @@ def main():
                 if not np.allclose(st['robot_qpos_world'], env.data.qpos, atol=1e-6, rtol=0) or abs(st['t_sim'] - env.t) > 1e-6:
                     raise RuntimeError(f'Recorded observation pose/time mismatch: look{k}/{td.name}')
                 destination = ld / td.name
-                shutil.copytree(td, destination, dirs_exist_ok=True, ignore=shutil.ignore_patterns('decide','lux_cache'))
+                shutil.copytree(td, destination, dirs_exist_ok=True, ignore=shutil.ignore_patterns('lux_cache'))
                 tg.append({'target': td.name, 'dir': destination,
                            'cells': np.load(td / 'cells.npy'), 'state': st})
             ev('recorded_sensor', look=k, source=str(source), verified_pose=True, verified_time=True,
@@ -309,7 +419,7 @@ def main():
         ev('imagination', look=k, targets=per)
         return mask
 
-    def rehearse(path, k):
+    def rehearse(path, k, role='execution'):
         """在想象里先走一遍：把规划好的路线放进只有想象石块的场景里，每份想象一格；任何一格碰了就不执行。"""
         from .geometry import imagination as IM
         if a.imagine == 'truth':
@@ -323,11 +433,13 @@ def main():
         results = []
         q0, v0 = env.data.qpos.copy(), env.data.qvel.copy()
         for i, objs in enumerate(panes):
-            pd = out / 'rehearsal' / f'look{k}' / f'pane{i}'
+            folder = f'look{k}' if role == 'execution' else f'look{k}_{role}'
+            pd = out / 'rehearsal' / folder / f'pane{i}'
             spec_r = IM.rehearsal_spec(spec, objs, pd)
             env_r = S.make_env(spec_r)
             import mujoco
             env_r.data.qpos[:] = q0; env_r.data.qvel[:] = v0; mujoco.mj_forward(env_r.model, env_r.data)
+            attach_controller(env_r,getattr(getattr(env,'_learned_controller',None),'previous',None))
             w = N.contact_watch(env_r, [f'obstacle{j}' for j in range(len(objs) + 1)])
             hit = {}
             def stop(e):
@@ -335,15 +447,16 @@ def main():
                 if h:
                     hit.update(info); return True
                 return False
+            env_r.physics_monitor=stop
             rr = Recorder(); rr.frame(env_r, 'START', 'rehearsal')
-            motion = F.run_waypoints(env_r, path, log=rr, phase='rehearsal', on_step=stop, final_yaw=None)
+            motion = execute_waypoints(env_r,path,rr,'rehearsal',stop,final_yaw=None)
             rr.save(pd / 'traj.npz')
             record = {'objects': objs, 'collided': motion.collision, 'completed': motion.completed,
                       'reason': motion.reason, 'waypoint_errors_m': motion.errors, 'contact': hit or None}
             (pd / 'pane.json').write_text(json.dumps(record, indent=2))
             results.append({'pane': i, **record})
             del env_r
-        ev('rehearsal', look=k, panes=results)
+        ev('rehearsal', look=k, role=role, path=[[float(x),float(y)] for x,y in path], panes=results)
         return bool(results) and all(r['completed'] and not r['collided'] for r in results), results
 
     def go_to_viewpoint(state, occ):
@@ -352,32 +465,48 @@ def main():
         need = unknown & (N.GX > x + 1.0) & (N.GX < x + 4.5)
         if focus['cells'] is not None and (unknown & focus['cells']).sum() > 50:
             need = unknown & focus['cells']          # 想象的车：去看想象被拒绝的那块石头
-        path = None
+        attempts = 0
         for vx, vy, vyaw, score, n in N.choose_second_look(state, (x, y), need, occ)[:40]:
             if n < 20:
                 break
-            path = N.plan(occ, (x, y), (vx, vy))
-            if path is not None:
-                break
-        if path is None:
-            return None
-        ev('second_look_plan', viewpoint=[round(vx, 2), round(vy, 2), round(float(np.degrees(vyaw)), 1)], expected_new_cells=n,
-           path=None if path is None else [[round(p[0], 3), round(p[1], 3)] for p in path])
-        if path is None:
-            return None
-        motion = F.run_waypoints(env, path, log=rec, phase=f'to_look{len(looks) + 1}', on_step=on_step, final_yaw=vyaw)
-        return 'crash' if motion.collision else ('ok' if motion.completed else 'motion_failed')
+            # A failed pose goal can leave the robot at another safe location.
+            # Replan from its measured position; a different observation pose may
+            # be reachable without weakening the learned controller's tolerances.
+            current_x, current_y, _ = pose(env)
+            occ_current = N.occupancy(state, 'conservative', known_free=N.swept(np.array(rec.q)[:, :2]))
+            path = N.plan(occ_current, (current_x, current_y), (vx, vy))
+            if path is None:
+                continue
+            attempts += 1
+            ev('second_look_plan', attempt=attempts,
+               viewpoint=[round(vx, 2), round(vy, 2), round(float(np.degrees(vyaw)), 1)],
+               expected_new_cells=n, path=[[round(p[0], 3), round(p[1], 3)] for p in path])
+            motion = execute_waypoints(env,path,rec,f'to_look{len(looks) + 1}',on_step,final_yaw=vyaw)
+            if motion.collision:
+                return 'crash'
+            if motion.completed:
+                return 'ok'
+            ev('viewpoint_attempt_failed', attempt=attempts, reason=motion.reason,
+               measured_pose=list(pose(env)), requested_viewpoint=[vx,vy,vyaw])
+            if attempts >= 3:
+                return 'motion_failed'
+        return 'motion_failed' if attempts else None
 
-    if lux and not crash:
+    if lux and not crash and not approach_failed:
         capture_targets(1, state)
     result = None
     extra = 0
     last_im = None
     while True:
+        if approach_failed:
+            result='stopped_short';break
         if crash:
             result = 'collision'
             break
         x, y, yaw = pose(env)
+        decision_dir = out / 'decision'
+        decision_dir.mkdir(exist_ok=True)
+        np.save(decision_dir / f'look{len(looks)}_state.npy', state)
         im = imagined_mask()
         last_im = im
         if a.policy == 'imagination':
@@ -398,11 +527,31 @@ def main():
         ev('plan', policy=a.policy, look=len(looks), path=None if path is None else [[round(p[0], 3), round(p[1], 3)] for p in path],
            reason=reason, margin_vs_truth=None if path is None else N.path_clearance(path, (x, y), N.clearance(truth_union | N.prior_nogo())))
         if path is not None and a.policy == 'imagination' and not trust:
+            reference = N.plan(N.occupancy(state, 'optimistic',
+                               known_free=N.swept(np.array(rec.q)[:, :2])), (x, y), S.GOAL)
+            same_path = (reference is not None and len(reference) == len(path)
+                         and np.allclose(reference, path, atol=1e-6, rtol=0))
+            import hashlib
+            ev('decision_comparison', look=len(looks),
+               start=[x,y],
+               observation_state_sha256=hashlib.sha256(state.tobytes()).hexdigest(),
+               reference_policy='optimistic',
+               reference_path=None if reference is None else [[float(x),float(y)] for x,y in reference],
+               selected_path=[[float(x),float(y)] for x,y in path],
+               path_changed=not same_path,
+               reference_margin_vs_truth=None if reference is None else N.path_clearance(
+                   reference, (x,y), N.clearance(truth_union | N.prior_nogo())),
+               selected_margin_vs_truth=N.path_clearance(
+                   path, (x,y), N.clearance(truth_union | N.prior_nogo())),
+               note='Same observed state, robot and planner; only generated occupancy changes.')
+            if reference is not None and not same_path:
+                supported, _ = rehearse(reference, len(looks), role='reference_without_generated_occupancy')
+                ev('reference_route_check', look=len(looks), supported_by_all_candidates=supported)
             ok, _ = rehearse(path, len(looks))
             if not ok:
                 ev('plan_rejected_by_rehearsal', look=len(looks)); path = None; reason = 'rehearsal_collision'
         if path is not None:
-            motion = F.run_waypoints(env, path, log=rec, phase='execute', on_step=on_step, final_yaw=None)
+            motion = execute_waypoints(env,path,rec,'execute',on_step,final_yaw=None)
             if motion.collision:
                 ev('collision', **crash); rec.hold(env, 'crash', 2.0); result = 'collision'
             else:
@@ -431,7 +580,12 @@ def main():
     if crash:
         result = 'collision'
     summ = {'policy': a.policy, 'tag': a.tag or a.policy, 'see_dark': bool(a.see_dark), 'imagine': a.imagine if a.policy == 'imagination' else None, 'result': result,
+            'controller':'learned' if model_path else 'rules',
+            'controller_sha256':identity['controller']['checkpoint_sha256'],
             'scene_id':S.SCENE_ID,
+            'goal': list(S.GOAL),
+            'start_mode': 'recorded_observation_state' if a.start_at_recorded_look else 'scene_start',
+            'execution_elapsed_s': round(env.t-execution_started_at, 2),
             'sensor_mode': 'recorded' if a.recorded_observations else 'live',
             'looks': len(looks), 'final_pose': [round(x, 3), round(y, 3), round(float(np.degrees(yaw)), 2)],
             'sim_time_s': round(env.t, 2), 'wall_s': round(time.time() - t0, 1), 'collision': crash or None}

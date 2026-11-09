@@ -42,3 +42,11 @@ v0.1只有压力场景停下，未满足有效主展示目标。新增 `gate_pas
 三份采纳候选各自预演完成/无碰撞，真实Lux分支一眼到达76.50s，目标误差约8.7毫米。保守同场景三眼118.76s到达，直接走同场景一眼76.50s到达。没有故意破坏对照或把仿真行程时间当端到端生成速度。
 
 新资产与观测在 `assets/observations/gate_passage_001`、`assets/candidates/502*`；新任务/自检在 `experiments/gate_passage_001`；实际三组轨迹与预演在 `evidence/scenes/gate_passage_001`。v0.1原运行保存在 `evidence/milestones/beforestep_v0_1/delivery`，旧视频/图在 `site/media/history/stress_v8`，原Git标签v0.1.0保留。
+
+## v0.3：训练模型控制与可核对的生成改路
+
+机器人控制由规则运动切换为实际训练权重，规划与Lux准入仍是独立模块。v1关口碰撞、v2末段转向失败，推动v4增加57906个全角/近目标物理示教。v4使用115490真实示教、20000另计目标增强，完成BC30轮/PPO16384步；固定BC在新种子全角16任务中完成15/16，规则16/16。
+
+新实时输入的六个真实任务五成功、一失败，B1/C1/C2通过原冻结准入。主任务显式终点(5.7,-0.5)，加入生成占据改变路径；参照和选定路径各3/3预演完成/无碰撞，固定v4独立执行一眼46.02s到达并复跑。去掉生成几何46.66s也到达；不能宣称避免碰撞或云端速度优势。原终点(8.5,0)两次实时Lux链也到达。
+
+v5/v6扩大终端监督和输入合同，但主动观察姿态仍失败，未替换部署。实际模型/数据在 `assets/models`、`assets/training`；启动摘要与源码快照在 `evidence/training`；实测和失败在 `evidence/learning`；新实时任务在 `experiments/trained_live_gate_001`。完整说明见[训练记录](training.md)。v0.2旧回放和交付证据保留于 `site/data/history/gate_passage_v02.json`、`evidence/milestones/beforestep_v0_2/delivery`，与原发布保持一致。

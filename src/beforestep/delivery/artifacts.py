@@ -43,22 +43,30 @@ def mesh_image(path):
     result=Image.open(temp).convert('RGB');temp.unlink();return result
 
 
-def comparisons():
+def comparisons(scene_id='gate_passage_001', observations=None, admission_file=None):
     MEDIA.mkdir(parents=True,exist_ok=True)
     source=ROOT/'assets/observations/reference_v8/looks'
-    current=ROOT/'assets/observations/gate_passage_001/looks/look1/T1'
+    current=(ROOT/observations/'looks/look1/T1') if observations else ROOT/f'assets/observations/{scene_id}/looks/look1/T1'
     generated=json.loads((current/'lux_result.json').read_text())
+    admission=json.loads((ROOT/admission_file if admission_file else ROOT/f'experiments/{scene_id}/admission.json').read_text())
+    rows=admission['candidates']
+    accepted=[r for r in rows if r['admitted']]
+    rejected=[r for r in rows if not r['admitted']]
+    if not accepted:raise ValueError('Comparison needs an admitted real candidate')
+    representatives=[accepted[0],(rejected or accepted)[-1]]
     canvas=Image.new('RGB',(1600,680),'#0b0e13');draw=ImageDraw.Draw(canvas)
-    draw.text((35,25),'有效关口：同一真实输入，独立生成与冻结自检',font=font(30),fill='#e9edf1')
-    for row,sample in enumerate(('A1','A2')):
+    draw.text((35,25),'真实输入 → Lux3D 几何 → 冻结自检 → 路线预演',font=font(30),fill='#e9edf1')
+    for index,row in enumerate(representatives):
+        sample=row['id']
         task=next(t for t in generated['tasks'] if t['id']==sample)
-        y=105+row*275
+        y=105+index*275
         for x,image in [(35,Image.open(ROOT/task['inputs'][0]).convert('RGB')),(400,mesh_image(ROOT/task['glb']))]:
             image.thumbnail((330,235));canvas.paste(image,(x,y))
-        draw.text((780,y+30),sample+' / '+('通过并参与实际预演' if row==0 else '拒绝并保留原始资产'),font=font(26),fill='#70dbb2')
-        message='轮廓 IoU 0.8174，冻结门槛 0.7068。' if row==0 else '轮廓 IoU 0.6699，未达到相同门槛。'
+        draw.text((780,y+30),sample+' / '+('通过并参与实际预演' if row['admitted'] else '拒绝并保留原始资产'),font=font(26),fill='#70dbb2')
+        from beforestep.geometry.admission import ADM
+        message=f'轮廓 IoU {row["contour_iou"]}；冻结门槛 {ADM["contour_iou_min"]}。'
         draw.text((780,y+85),message,font=font(21),fill='#a2adbb')
-        draw.text((780,y+145),'全部六个任务与输入 SHA 保留；不改阈值制造成功。',font=font(18),fill='#83919f')
+        draw.text((780,y+145),f'全部 {len(generated["tasks"])} 个真实任务与输入 SHA 保留。',font=font(18),fill='#83919f')
     canvas.save(MEDIA/'asset-comparison.jpg',quality=93)
     version=Image.new('RGB',(1600,760),'#0b0e13');draw=ImageDraw.Draw(version)
     draw.text((35,25),'核心迭代：观测约束 → 阴影与两图 → 窄道决策 → 完整终态',font=font(29),fill='#e9edf1')
@@ -82,16 +90,18 @@ def configure_from_runs(paths):
     if any(scene.physical_identity(d)!=first for d in definitions[1:]):
         raise ValueError('All comparison runs must use the same physical scene')
     scene.configure(definitions[0]['id'])
+    scene.GOAL=tuple(definitions[0]['goal'])
     return definitions[0]
 
 
-def build_data(paths):
+def build_data(paths, observations=None, admission_file=None):
     from beforestep import scene
     from scipy.spatial import ConvexHull
     definition=configure_from_runs(paths)
-    data={'schema':'beforestep-demo/v2','scene_id':definition['id'],'title':'关口通行 · 有效主场景',
+    data={'schema':'beforestep-demo/v2','scene_id':definition['id'],'title':definition.get('label',definition['id']),
           'goal':definition['goal'],'video':'media/demo.mp4','poster':'media/demo-poster.jpg',
           'runs':{},'candidates':[],'rocks':[]}
+    if definition.get('task_variant')=='explicit_goal':data['title']='训练模型 · 关口目标变体'
     for rock in scene.ROCKS.values():
         obj,_=scene.rock_asset_uniform(rock['rock'],rock['height'])
         vertices=np.array([[float(v) for v in line.split()[1:3]] for line in Path(obj).read_text().splitlines() if line.startswith('v ')])
@@ -105,26 +115,41 @@ def build_data(paths):
         w,x,y,z=q[:,3:7].T;yaw=np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z))
         summary['trajectory']=[[round(float(t[i]),2),round(float(q[i,0]),4),round(float(q[i,1]),4),round(float(yaw[i]),5)] for i in indices]
         events=[json.loads(line) for line in (path/'events.jsonl').read_text().splitlines() if line.strip()]
-        panes=[pane for e in events if e['kind']=='rehearsal' for pane in e['panes']]
+        panes=[pane for e in events if e['kind']=='rehearsal' and e.get('role','execution')=='execution' for pane in e['panes']]
         summary['rehearsals']=len(panes);summary['rehearsals_passed']=sum(p['completed'] and not p['collided'] for p in panes)
+        plans=[e for e in events if e['kind']=='plan' and e.get('path')]
+        if plans:summary['route_margin_m']=min(e['margin_vs_truth']['drive_margin_m'] for e in plans if e.get('margin_vs_truth'))
+        comparisons=[e for e in events if e['kind']=='decision_comparison']
+        if comparisons:
+            decision=dict(comparisons[-1]);look=decision['look']
+            reference=[pane for e in events if e['kind']=='rehearsal' and e.get('role')=='reference_without_generated_occupancy' and e['look']==look for pane in e['panes']]
+            execution=[pane for e in events if e['kind']=='rehearsal' and e.get('role','execution')=='execution' and e['look']==look for pane in e['panes']]
+            decision['reference_rehearsals']=reference;decision['execution_rehearsals']=execution
+            snapshot=path/'decision'/f'look{look}_state.npy'
+            if snapshot.exists():
+                from beforestep.navigation import map as nav
+                state=np.load(snapshot)
+                decision['observed_cells']={'shape':list(state.shape),'values':state.ravel().tolist(),'resolution':nav.RES,'origin':[nav.X0,nav.Y0]}
+            data['decision']=decision
         data['runs'][policy]=summary
         evidence=ROOT/'evidence/delivery'/policy;evidence.mkdir(parents=True,exist_ok=True)
         for name in ('summary.json','events.jsonl','traj.npz','run_identity.json','scene.json','map_final.png'):
             if (path/name).exists():shutil.copy2(path/name,evidence/name)
-    directory=ROOT/f'assets/observations/{definition["id"]}/looks/look1/T1'
+    directory=(ROOT/observations/'looks/look1/T1') if observations else ROOT/f'assets/observations/{definition["id"]}/looks/look1/T1'
     result=json.loads((directory/'lux_result.json').read_text())
-    admission=json.loads((ROOT/f'experiments/{definition["id"]}/admission.json').read_text())
+    admission=json.loads((ROOT/admission_file if admission_file else ROOT/f'experiments/{definition["id"]}/admission.json').read_text())
     rows={c['id']:c for c in admission['candidates']}
     for task in result['tasks']:
         if task['status']!='ok':continue
-        sample=task['id'];filename=f'{definition["id"]}_{sample}.glb'
-        shutil.copy2(ROOT/task['glb'],MEDIA/filename)
+        sample=task['id'];prefix=Path(observations).name if observations else definition['id'];filename=f'{prefix}_{sample}.glb'
+        if not observations:shutil.copy2(ROOT/task['glb'],MEDIA/filename)
         image=Image.open(ROOT/task['inputs'][0]).convert('RGB');image.thumbnail((1200,1200))
         image_name=filename.replace('.glb','.jpg');image.save(MEDIA/image_name,quality=92)
         row=rows[sample]
         data['candidates'].append({'id':filename,'label':f'{sample} / '+('自检采纳' if row['admitted'] else '自检拒绝'),
-            'glb':f'media/{filename}','input':f'media/{image_name}','task_id':task['task_id'],
-            'verdict':f'轮廓 IoU {row["contour_iou"]} · '+('通过冻结门槛，参与实际预演' if row['admitted'] else '低于冻结门槛，保留作为拒绝对比')})
+            'admitted':row['admitted'],'glb':task['glb'] if observations else f'media/{filename}',
+            'input':f'media/{image_name}','task_id':task['task_id'],
+            'verdict':f'轮廓 IoU {row["contour_iou"]} · '+('通过冻结门槛，参与实际预演' if row['admitted'] else '未通过冻结自检，保留作为拒绝对比')})
     data['generation']={'tasks':len(result['tasks']),'succeeded':len(rows),'failed':sum(t['status']=='failed' for t in result['tasks']),
                         'admitted':len(admission['admitted_ids'])}
     footprint=Path(paths['imagination'])/'looks/look1/T1/decide/footprint_union.npy'
@@ -133,9 +158,13 @@ def build_data(paths):
         mask=np.load(footprint);data['imagined_footprint']=[[round(float(nav.GX[i,j]),3),round(float(nav.GY[i,j]),3)] for i,j in zip(*np.nonzero(mask))]
     (ROOT/'site/data').mkdir(parents=True,exist_ok=True)
     (ROOT/'site/data/demo.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')))
-    (ROOT/'site/data/scenes.json').write_text(json.dumps({'default':'gate_passage_001','scenes':[
-        {'id':'gate_passage_001','label':'关口通行 · 有效主场景','data':'data/demo.json'},
-        {'id':'stress_v8','label':'双盲区压力测试 · 历史反例','data':'data/history/stress_v8.json'}]},ensure_ascii=False))
+    scenes=[{'id':definition['id'],'label':data['title'],'data':'data/demo.json'}]
+    if (ROOT/'site/data/history/gate_passage_v02.json').exists():
+        scenes.append({'id':'gate_passage_v02','label':'规则控制 · v0.2 原关口','data':'data/history/gate_passage_v02.json'})
+    for sid,label in [('gate_passage_001','关口通行 · 前一版本'),('stress_v8','双盲区压力测试 · 历史反例')]:
+        if sid!=definition['id'] and (ROOT/f'site/data/history/{sid}.json').exists():
+            scenes.append({'id':sid,'label':label,'data':f'data/history/{sid}.json'})
+    (ROOT/'site/data/scenes.json').write_text(json.dumps({'default':definition['id'],'scenes':scenes},ensure_ascii=False))
     (ROOT/'evidence/delivery/results.json').write_text(json.dumps({k:{x:v for x,v in s.items() if x!='trajectory'} for k,s in data['runs'].items()},ensure_ascii=False,indent=2)+'\n')
     return data
 
@@ -146,7 +175,7 @@ def build_report():
     html=markdown.markdown(text,extensions=['tables','fenced_code'])
     html=html.replace('../site/media/','media/').replace('href="milestones.md"','href="docs/milestones.md"').replace('href="credits.md"','href="docs/credits.md"')
     html=html.replace('href="../README.md"','href="https://github.com/codezzzsleep/next-zenith-beforestep"')
-    for document in ('project.md', 'effective-scene.md'):
+    for document in ('project.md', 'effective-scene.md', 'training.md'):
         html=html.replace(f'href="{document}"',f'href="docs/{document}"')
     style='@page{size:A4;margin:18mm}body{max-width:860px;margin:40px auto;color:#1d2730;font:15px/1.8 sans-serif}h1{font-size:30px}h2{margin-top:35px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:8px}code{font-size:12px}pre{white-space:pre-wrap}'
     (ROOT/'site/report.html').write_text('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>先见一步 · 项目报告</title><style>'+style+'</style></head><body>'+html+'</body></html>')
@@ -159,10 +188,16 @@ def main(argv=None):
     parser.add_argument('--imagination',default='outputs/effective/imagination')
     parser.add_argument('--comparisons-only',action='store_true');parser.add_argument('--video',action='store_true')
     parser.add_argument('--report',action='store_true')
-    args=parser.parse_args(argv);comparisons()
-    if args.comparisons_only:return
+    parser.add_argument('--scene',default='gate_passage_001',help='Asset comparison scene; run identities select the Demo scene')
+    parser.add_argument('--observations',help='Explicit asset observation set for the current completed trials')
+    parser.add_argument('--admission-file',help='Admission result for that explicit observation set')
+    args=parser.parse_args(argv)
+    if args.comparisons_only:
+        comparisons(args.scene,args.observations,args.admission_file);return
     paths={p:ROOT/getattr(args,p) for p in ('conservative','optimistic','imagination')}
-    build_data(paths)
+    definition=configure_from_runs(paths)
+    comparisons(definition['id'],args.observations,args.admission_file)
+    build_data(paths,args.observations,args.admission_file)
     if args.report:build_report()
     if args.video:
         from .video import render, outcome_cards

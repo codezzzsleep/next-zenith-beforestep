@@ -59,11 +59,17 @@ def api(method, path, body=None, timeout=60):
     request = urllib.request.Request(BASE + path, method=method,
         data=json.dumps(body).encode() if body is not None else None,
         headers={'Authorization': os.environ['AHOLO_API_KEY'], 'Content-Type': 'application/json'})
-    try:
-        with urllib.request.urlopen(request, timeout=timeout) as response:
-            result = json.load(response)
-    except urllib.error.HTTPError as error:
-        raise RuntimeError(f'Lux3D HTTP {error.code}') from None
+    for attempt in range(3 if method == 'GET' else 1):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                result = json.load(response)
+            break
+        except urllib.error.HTTPError as error:
+            raise RuntimeError(f'Lux3D HTTP {error.code}') from None
+        except (urllib.error.URLError, TimeoutError):
+            if method != 'GET' or attempt >= 2:
+                raise
+            time.sleep(2**(attempt+1))
     if isinstance(result, int) and path.endswith('/task/create'):
         return result
     if isinstance(result, dict) and 'c' not in result and path == '/asset/v1/token' and result.get('ousToken'):
@@ -240,9 +246,27 @@ def main(argv=None):
     parser.add_argument('--wait', action='store_true')
     parser.add_argument('--timeout', type=float, default=3600)
     args = parser.parse_args(argv)
-    load_credentials(args.env_file)
     request_path = ROOT / args.request
     request = json.loads(request_path.read_text())
+    frozen_result = request_path.parent/'lux_result.json'
+    if frozen_result.exists():
+        from . import records as contracts
+        if contracts.read_result(request_path.parent) is not None:
+            frozen=json.loads(frozen_result.read_text())['tasks']
+            by_id={item['id']:item for item in request['items']}
+            for task in frozen:
+                identity=request_identity(request,by_id[task['id']])
+                ledger=LEDGER/'tasks'/f'{identity}.json'
+                if ledger.exists():
+                    existing=json.loads(ledger.read_text())
+                    if existing.get('status')=='uncertain' or existing.get('task_id') not in (None,task['task_id']):
+                        raise RuntimeError('Frozen task identity conflicts with the private ledger; reconcile it before continuing')
+                else:
+                    atomic_json(ledger,{**task,'identity':identity,'restored_from_frozen_result':True})
+            print(json.dumps({'tasks':len(frozen),'ok':sum(task['status']=='ok' for task in frozen),
+                              'reused_frozen_result':True,'created_tasks':0}),flush=True)
+            return
+    load_credentials(args.env_file)
     records = []
     for item in request['items']:
         identity = request_identity(request, item)

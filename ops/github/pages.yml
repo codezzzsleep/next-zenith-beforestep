@@ -20,15 +20,10 @@ jobs:
       - uses: actions/checkout@v4
         with:
           lfs: true
-      - run: |
-          test -s site/data/demo.json
-          test -s site/media/demo.mp4
-          mkdir -p site/docs site/assets
-          cp docs/*.md site/docs/
-          cp assets/manifest.json site/assets/
+      - run: python ops/export_site.py --out /tmp/beforestep-public-site
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: /tmp/beforestep-public-site
       - uses: actions/deploy-pages@v4
         id: deploy

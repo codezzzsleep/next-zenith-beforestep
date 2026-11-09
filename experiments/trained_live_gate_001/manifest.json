@@ -1,0 +1,139 @@
+{
+  "schema": "beforestep-live-observation-provenance/v1",
+  "source_scene": "gate_passage_001",
+  "source_task_goal": [
+    5.4,
+    -0.7
+  ],
+  "source_run_id": "b302442628604194825b142c01204250",
+  "observation_geometry_goal_independent": true,
+  "input_assets_unchanged": [
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1_state.npy",
+      "sha256": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1_dark.npy",
+      "sha256": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1_rgb.png",
+      "sha256": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1_depth.npy",
+      "sha256": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/rgb_gen.png",
+      "sha256": "430e6fef2f65d95b31226c2c0f5498c144f3fb00570f48b23261ed4191af4d24"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/mask.png",
+      "sha256": "570abc45bf3a0cd57b1fa72d3198d9eda7b670fbb4bc5705aad4c08573508246"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/dark.png",
+      "sha256": "5d72b73b0e46dbeaf915b85778c25fb18aed1b3000d411fe6b783001d598387b"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/rgb.png",
+      "sha256": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/visible_points.npy",
+      "sha256": "61a97408106f7fa9a0ffe3fefce3b2178c8bd6e6847ad3d95e322f22e1984eea"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/cells.npy",
+      "sha256": "09500d245dc9944c5f1ff9b84f902c09b6d5f1ed5ccb930cd1f964981efe25a9"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/depth.npy",
+      "sha256": "5e39b17e5417d587106dccb15fe7fa707835e25a11187ce626aa6329b73eb7b0"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/B1.png",
+      "sha256": "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+      "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C1_upload.jpg",
+      "sha256": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C2.png",
+      "sha256": "37672e6b2c2e855dfc7ee973246c41f69f4a5fb2d4cd6e30a62f23a3273e6ebc"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C2_upload.jpg",
+      "sha256": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/B2.png",
+      "sha256": "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C1.png",
+      "sha256": "37672e6b2c2e855dfc7ee973246c41f69f4a5fb2d4cd6e30a62f23a3273e6ebc"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1.png",
+      "sha256": "cbc323ca10afb24374f64fa03bed226b5b8ede401343b3472bb93e9c3a793a42"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A2_upload.jpg",
+      "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
+    },
+    {
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A2.png",
+      "sha256": "cbc323ca10afb24374f64fa03bed226b5b8ede401343b3472bb93e9c3a793a42"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "A1",
+      "task_id": 5125347,
+      "status": "ok",
+      "glb_sha256": "884fab2e3e911c0897361d91667938cbfeebc705d9894733240d9798f4a43cf4"
+    },
+    {
+      "id": "A2",
+      "task_id": 5125373,
+      "status": "ok",
+      "glb_sha256": "eddea877e25d4e5edb81af1c62664b0c5ec525e32fc1d86b30772c92f3402c01"
+    },
+    {
+      "id": "B1",
+      "task_id": 5125456,
+      "status": "ok",
+      "glb_sha256": "dd79a970d8163538dcba115cab8441becf995d232a9fbe0b57303f7c7554a4c7"
+    },
+    {
+      "id": "B2",
+      "task_id": 5125485,
+      "status": "failed",
+      "glb_sha256": null
+    },
+    {
+      "id": "C1",
+      "task_id": 5125592,
+      "status": "ok",
+      "glb_sha256": "48ad16bc6e557b1a84fd1d1059476e1b85497e9ec1b7e4a73d65e1fa8b3c5385"
+    },
+    {
+      "id": "C2",
+      "task_id": 5125771,
+      "status": "ok",
+      "glb_sha256": "a393705690aa3f2e435156f237f2bf529d03aa8206ea3bc961652ad841089d13"
+    }
+  ],
+  "pre_generation_fused_map": {
+    "path": "assets/observations/trained_live_gate_001/looks/look1_fused_state.npy",
+    "sha256": "1160ad4d76c6e5da2729a4262bb07e50f724d954ae7b8f8fa338329112665d61",
+    "source_stage": "Sensor fusion saved before any generated occupancy; includes the departure observation and the first stopped observation."
+  }
+}

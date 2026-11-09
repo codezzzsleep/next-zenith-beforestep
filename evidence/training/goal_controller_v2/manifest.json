@@ -1,0 +1,228 @@
+{
+  "schema": "beforestep-frozen-controller/v1",
+  "frozen_at": "2026-11-09T15:01:26.300341+00:00",
+  "run_id": "23cc4c4abd9d4632ba816616146739a7",
+  "models": [
+    {
+      "path": "assets/models/goal_controller_v2/behavior_cloning.npz",
+      "source_checkpoint": "behavior_cloning.npz",
+      "sha256": "8c66be643b3285dd14d8e536fcd94029ca9dc3ce3f75ca5a02e3d0c78820efe8",
+      "bytes": 356698
+    },
+    {
+      "path": "assets/models/goal_controller_v2/ppo_u0016.npz",
+      "source_checkpoint": "best.npz",
+      "sha256": "00ce534698731198c3e8f6cefb866957c323445200291d2603a2f61597b802d4",
+      "bytes": 358724
+    },
+    {
+      "path": "assets/models/goal_controller_v2/ppo_u0048_unvalidated.npz",
+      "source_checkpoint": "latest.npz",
+      "sha256": "d694de2f12667c4fdb25d22fc5f6614d1195f8d75c42253c661a3fca182bcf1d",
+      "bytes": 358685
+    },
+    {
+      "path": "assets/models/goal_controller_v2/untrained.npz",
+      "source_checkpoint": "untrained.npz",
+      "sha256": "22f4e870c624519fc2fe6ac18f7405ca5630588cf67ebcfdbd9ee447644b7c46",
+      "bytes": 354554
+    }
+  ],
+  "training_source": [
+    {
+      "path": "src/beforestep/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/__main__.py",
+      "sha256": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279"
+    },
+    {
+      "path": "src/beforestep/cli.py",
+      "sha256": "638781436cbc48bc741c7cb954064a42db378a31b09bb7704c2800d3d8c8d067"
+    },
+    {
+      "path": "src/beforestep/delivery/__init__.py",
+      "sha256": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523"
+    },
+    {
+      "path": "src/beforestep/delivery/artifacts.py",
+      "sha256": "147d752e3a06681f0555de2c55120b668fe5bef431d38a94b2878d0a2743b9f4"
+    },
+    {
+      "path": "src/beforestep/delivery/server.py",
+      "sha256": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab"
+    },
+    {
+      "path": "src/beforestep/delivery/video.py",
+      "sha256": "ad55b80a16261d033e9c0c6025adea2ff432b31b22998d8dbd03c88447c70787"
+    },
+    {
+      "path": "src/beforestep/evaluation.py",
+      "sha256": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135"
+    },
+    {
+      "path": "src/beforestep/generation/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/generation/client.py",
+      "sha256": "dda6628c4e797cf369a86d800d4ce6b8e91774ddb363b17edcc3b1c59c2795a3"
+    },
+    {
+      "path": "src/beforestep/generation/evaluate.py",
+      "sha256": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a"
+    },
+    {
+      "path": "src/beforestep/generation/records.py",
+      "sha256": "510af1775b0803368603faff9f7a212d9b7307b1f5f4c4431fd7b87c93a13429"
+    },
+    {
+      "path": "src/beforestep/geometry/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/geometry/admission.py",
+      "sha256": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf"
+    },
+    {
+      "path": "src/beforestep/geometry/camera.py",
+      "sha256": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910"
+    },
+    {
+      "path": "src/beforestep/geometry/imagination.py",
+      "sha256": "bb0a680aa6b67a53514066777983ef702a8cec3ffd8ffd05ec066d180ddcc771"
+    },
+    {
+      "path": "src/beforestep/geometry/metrics.py",
+      "sha256": "32ca63a31666f274a8d2b62e7cd14019d397d2960eb8a41792a04ce73239642e"
+    },
+    {
+      "path": "src/beforestep/geometry/registration.py",
+      "sha256": "03a523ab7a3ee7786d5db4bc2bb8cfb54cee410acf76cdb4d84b3cf540337ad6"
+    },
+    {
+      "path": "src/beforestep/geometry/solid.py",
+      "sha256": "663a3f7e8a3011614f7951a7e1239b58897d79ddb521508992510f436ba5830d"
+    },
+    {
+      "path": "src/beforestep/geometry/volume.py",
+      "sha256": "e26ab39219ebb5be58fac2b48db7326f5e99c09140a080b7613503985fde2239"
+    },
+    {
+      "path": "src/beforestep/learning/__init__.py",
+      "sha256": "2d4b42443926bf506ac7cbc6fc09f1d17df868e256377669dcf80624c8110a2f"
+    },
+    {
+      "path": "src/beforestep/learning/policy.py",
+      "sha256": "c5f01049c3bc3d8c2cfd6e0d54b7a74f84fd4740e8f177cde086fe35e031bfcb"
+    },
+    {
+      "path": "src/beforestep/learning/ppo.py",
+      "sha256": "6982815993f697477eae61b18e6766cb2ce60bc0d1153094e75c08407d82520d"
+    },
+    {
+      "path": "src/beforestep/learning/train.py",
+      "sha256": "c43e0af35c6e05619601608aaead1964bb90731c0916810ffbc3291818536f5e"
+    },
+    {
+      "path": "src/beforestep/navigation/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/navigation/controller.py",
+      "sha256": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083"
+    },
+    {
+      "path": "src/beforestep/navigation/map.py",
+      "sha256": "442f5a0dbd6f12b31ab5c410e0c1cdfee0ed0d6fd1d8698f204b2ea8edd0e51c"
+    },
+    {
+      "path": "src/beforestep/observation/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/observation/capture.py",
+      "sha256": "27fd8534f4f12042721e135da9139296f2e7d154eecc41e750010514c27f7371"
+    },
+    {
+      "path": "src/beforestep/observation/images.py",
+      "sha256": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2"
+    },
+    {
+      "path": "src/beforestep/paths.py",
+      "sha256": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1"
+    },
+    {
+      "path": "src/beforestep/pipeline.py",
+      "sha256": "a0a7d2206539639d521ff2a4cec2c54df6374be142a960fa3491c6163f8c5d85"
+    },
+    {
+      "path": "src/beforestep/resources.py",
+      "sha256": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c"
+    },
+    {
+      "path": "src/beforestep/scene.py",
+      "sha256": "4d40e1075bc50a75aab6a79442b226d42f54bc423e3032a9b86c6e0ce2c7fe11"
+    },
+    {
+      "path": "src/beforestep/simulation/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/simulation/assets.py",
+      "sha256": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3"
+    },
+    {
+      "path": "src/beforestep/simulation/environment.py",
+      "sha256": "7d9fe894461e14a5f6e5485c0e1bfcce4fe24a3b91d6d9e62773cf3a21a6e1b3"
+    },
+    {
+      "path": "src/beforestep/simulation/robot.py",
+      "sha256": "123635fb0b22e2a5d36f8560c2438772dd186c3045a2edf249e24e08bd501942"
+    },
+    {
+      "path": "src/beforestep/simulation/robot_model.py",
+      "sha256": "6b1187699d644e082f32ff55fbd6a00daec1b60aee5296baec7e9519c7476b0c"
+    },
+    {
+      "path": "src/beforestep/simulation/soil.py",
+      "sha256": "ffc028f8c1e2f47b86132fce9411b98cf57e52a902e2b4bc338534b9a752533d"
+    },
+    {
+      "path": "src/beforestep/simulation/soil_profiles.py",
+      "sha256": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73"
+    },
+    {
+      "path": "src/beforestep/simulation/terrain.py",
+      "sha256": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e"
+    },
+    {
+      "path": "src/beforestep/visualization/__init__.py",
+      "sha256": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7"
+    },
+    {
+      "path": "src/beforestep/visualization/camera.py",
+      "sha256": "3311f310179298dd09131d2cdee1746c8f71f59f84a6336a5f0aaf9f797acebe"
+    },
+    {
+      "path": "src/beforestep/visualization/model.py",
+      "sha256": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569"
+    },
+    {
+      "path": "src/beforestep/visualization/scene.py",
+      "sha256": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332"
+    },
+    {
+      "path": "src/beforestep/visualization/textures.py",
+      "sha256": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"
+    }
+  ],
+  "recorded_physical_demonstrations": 57584,
+  "counterfactual_goal_augmentation_rows": 20000,
+  "training_exit_code": 137,
+  "ppo_completed_control_steps": 49152,
+  "last_validated_ppo_update": 32,
+  "primary_candidate": "assets/models/goal_controller_v2/ppo_u0016.npz",
+  "note": "u16 selected on prior 16-goal validation; subsequent held-out tests use new seeds. u48 not validated. Training source snapshot matches launch SHA."
+}

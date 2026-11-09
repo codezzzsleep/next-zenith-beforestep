@@ -36,7 +36,8 @@ def render(paths, fps=12, speed=6):
     for i in range(frames):
         image=Image.new('RGB',(1920,1080),'#0b0e13');draw=ImageDraw.Draw(image)
         draw.text((65,38),'先见一步 / NEXT ZENITH',font=font(40),fill='#e9edf1')
-        draw.text((65,100),'真实 MuJoCo 运行轨迹回放 · 6×播放 · 同一窄道 · 同一机器人',font=font(25),fill='#70dbb2')
+        learned=all(summary.get('controller')=='learned' for summary in summaries.values())
+        draw.text((65,100),'真实 MuJoCo 轨迹 · 6×播放 · 同一训练模型控制' if learned else '真实 MuJoCo 运行轨迹回放 · 6×播放 · 同一窄道 · 同一机器人',font=font(25),fill='#70dbb2')
         time_sim=max(0,min(max_time,(i/fps-4)*speed))
         for col,policy in enumerate(('optimistic','conservative','imagination')):
             trace=traces[policy];idx=min(int(np.searchsorted(trace['t'],time_sim)),len(trace['t'])-1)
@@ -53,7 +54,7 @@ def render(paths, fps=12, speed=6):
             draw.text((col*640+35,665),f'观察 {summary["looks"]} 次 · 总时长 {summary["sim_time_s"]}s',font=font(20),fill='#93a2b1')
         draw.line((65,750,1855,750),fill='#303d48',width=2)
         draw.text((65,790),'Lux3D 的真实资产 → 观测配准 → 冻结自检 → 候选物理预演 → 独立真值执行',font=font(28),fill='#e9edf1')
-        draw.text((65,850),'有效关口：真实新生成的三个候选，逐一预演完成、无碰撞，独立执行到达。',font=font(26),fill='#a2adbb')
+        draw.text((65,850),'真实生成的采纳候选逐一预演完成、无碰撞，训练模型独立执行到达。' if learned else '有效关口：真实新生成的三个候选，逐一预演完成、无碰撞，独立执行到达。',font=font(26),fill='#a2adbb')
         draw.text((65,910),'三个策略同一场景；直接走也能到达。旧失败场景单独保留，真值替身只作诊断。',font=font(22),fill='#83919f')
         if i==int(12*fps):image.save(MEDIA/'demo-poster.jpg',quality=92)
         process.stdin.write(image.tobytes())
@@ -72,14 +73,15 @@ def outcome_cards(paths):
     vm.m.vis.quality.shadowsize=512;vm.m.vis.quality.offsamples=1
     for group in range(6):vm.opt.geomgroup[group]=1 if group in (0,1,2) else 0
     clips=[]
-    labels={'optimistic':'直接走 / 本场景到达','conservative':'看清再走 / 三眼后到达','imagination':'Lux3D / 三候选预演通过，一眼到达'}
+    labels={'optimistic':'直接走','conservative':'看清再走','imagination':'Lux3D + 物理预演'}
     for policy,path in paths.items():
         trace=np.load(Path(path)/'traj.npz');q=trace['qpos'][-1];summary=json.loads((Path(path)/'summary.json').read_text())
         cam=mujoco.MjvCamera();cam.lookat[:]=[q[0],q[1],.2];cam.distance=3.6;cam.azimuth=90;cam.elevation=-72
         vm.sync(q);vm.r.update_scene(vm.d,camera=cam,scene_option=vm.opt)
         image=Image.new('RGB',(1920,1080),'#0b0e13');draw=ImageDraw.Draw(image)
         picture=Image.fromarray(vm.r.render().copy()).resize((1440,810))
-        image.paste(picture,(240,150));draw.text((70,35),labels[policy],font=font(40),fill='#70dbb2')
+        outcome={'arrived':'到达 / 无碰撞','collision':'碰撞停止','stuck':'证据不足 / 停下','stopped_short':'姿态目标未完成'}.get(summary['result'],summary['result'])
+        image.paste(picture,(240,150));draw.text((70,35),labels[policy]+' / '+outcome,font=font(40),fill='#70dbb2')
         draw.text((70,980),f'真实终态 / {summary["sim_time_s"]}s / 观察{summary["looks"]}次 / 不使用真值替身作为Lux3D收益',font=font(26),fill='#ccd5de')
         shot=MEDIA/f'outcome-{policy}.jpg';image.save(shot,quality=92)
         clip=MEDIA/'video-scene'/f'{policy}.mp4'

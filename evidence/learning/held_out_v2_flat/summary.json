@@ -1,0 +1,35 @@
+{
+  "schema": "beforestep-controller-evaluation/v1",
+  "run_id": "d33fa8cddf2d4085bdb73f40cb2677b9",
+  "controllers": {
+    "ppo": {
+      "checkpoint_sha256": "00ce534698731198c3e8f6cefb866957c323445200291d2603a2f61597b802d4",
+      "episodes": 32,
+      "successes": 28,
+      "success_rate": 0.875,
+      "mean_goal_error_m": 0.057337696178805554
+    },
+    "bc": {
+      "checkpoint_sha256": "8c66be643b3285dd14d8e536fcd94029ca9dc3ce3f75ca5a02e3d0c78820efe8",
+      "episodes": 32,
+      "successes": 23,
+      "success_rate": 0.71875,
+      "mean_goal_error_m": 0.09753594243663383
+    },
+    "untrained": {
+      "checkpoint_sha256": "22f4e870c624519fc2fe6ac18f7405ca5630588cf67ebcfdbd9ee447644b7c46",
+      "episodes": 32,
+      "successes": 0,
+      "success_rate": 0.0,
+      "mean_goal_error_m": 2.039520800515887
+    },
+    "rules": {
+      "checkpoint_sha256": null,
+      "episodes": 32,
+      "successes": 32,
+      "success_rate": 1.0,
+      "mean_goal_error_m": 0.05404702115985885
+    }
+  },
+  "wall_seconds": 1258.6292990410002
+}

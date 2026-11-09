@@ -1,5 +1,8 @@
 """Behavioral regressions for collision stop, paid resume and frozen evidence."""
 import json
+import io
+import os
+import urllib.error
 from pathlib import Path
 import tempfile
 import sys
@@ -50,6 +53,33 @@ class MotionTests(unittest.TestCase):
 
 
 class GenerationTests(unittest.TestCase):
+    def test_packaged_known_tasks_never_create_when_private_ledger_is_absent(self):
+        from beforestep.generation import records
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp);(root/'input.png').write_bytes(b'input');(root/'model.glb').write_bytes(b'glTF-test')
+            request={'mode':'img','items':[{'id':'A1','path':'input.png','sha256':client.sha(root/'input.png')}]}
+            client.atomic_json(root/'lux_request.json',request)
+            result={'tasks':[{'id':'A1','task_id':12,'status':'ok','inputs':['input.png'],
+                             'glb':'model.glb','glb_sha256':client.sha(root/'model.glb')}]}
+            client.atomic_json(root/'lux_result.json',result);original=(root/'lux_result.json').read_bytes()
+            with patch.object(client,'ROOT',root),patch.object(records,'ROOT',root),patch.object(client,'LEDGER',root/'ledger'),patch.object(client,'submit') as submit,patch.object(client,'load_credentials'):
+                client.main(['--request','lux_request.json','--submit','--wait'])
+                submit.assert_not_called()
+                identity=client.request_identity(request,request['items'][0])
+                self.assertEqual(json.loads((root/'ledger/tasks'/f'{identity}.json').read_text())['task_id'],12)
+                self.assertEqual((root/'lux_result.json').read_bytes(),original)
+
+    def test_paid_post_transport_failure_is_never_automatically_retried(self):
+        with patch.dict(os.environ,{'AHOLO_API_KEY':'test-only-value'}), patch.object(client.urllib.request,'urlopen',side_effect=urllib.error.URLError('transport')) as call:
+            with self.assertRaises(urllib.error.URLError):client.api('POST','/task/create',{'img':'input'})
+            self.assertEqual(call.call_count,1)
+
+    def test_read_only_query_retries_a_transient_transport_failure(self):
+        response=io.BytesIO(b'{"c":"0","d":{"status":3}}')
+        with patch.dict(os.environ,{'AHOLO_API_KEY':'test-only-value'}), patch.object(client.urllib.request,'urlopen',side_effect=[urllib.error.URLError('transport'),response]) as call, patch.object(client.time,'sleep'):
+            self.assertEqual(client.api('GET','/task/get'),{'status':3})
+            self.assertEqual(call.call_count,2)
+
     def test_known_paid_task_is_queried_without_create(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp);(root/'input.jpg').write_bytes(b'input')

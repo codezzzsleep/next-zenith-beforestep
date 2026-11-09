@@ -1,0 +1,10 @@
+{"kind": "look", "k": 1, "label": "first", "pose": [2.239, -0.508, 3.08], "t": 14.84, "cells": {"FREE": 6041, "ROCK": 1077, "DARK": 4745, "HIDDEN": 8443, "UNSEEN": 4894, "NOGO": 0}, "cam_pos": [2.6581, -0.4854, 0.3844]}
+{"kind": "plan", "policy": "conservative", "look": 1, "path": null, "reason": "no_path", "margin_vs_truth": null}
+{"kind": "second_look_plan", "attempt": 1, "viewpoint": [4.44, 0.6, -47.4], "expected_new_cells": 543, "path": [[4.439, 0.6]]}
+{"kind": "viewpoint_attempt_failed", "attempt": 1, "reason": "time_limit", "measured_pose": [4.377430717345642, 0.530079650129941, -0.7398548786650859], "requested_viewpoint": [4.438657632484897, 0.5999999999999992, -0.8278968059277982]}
+{"kind": "second_look_plan", "attempt": 2, "viewpoint": [4.64, 0.6, -52.3], "expected_new_cells": 542, "path": [[4.639, 0.6]]}
+{"kind": "viewpoint_attempt_failed", "attempt": 2, "reason": "time_limit", "measured_pose": [4.765672060184774, 0.3603873095669536, -0.8625899882292969], "requested_viewpoint": [4.6386576324848985, 0.5999999999999992, -0.9122317426228848]}
+{"kind": "second_look_plan", "attempt": 3, "viewpoint": [4.84, 0.6, -57.8], "expected_new_cells": 521, "path": [[4.839, 0.6]]}
+{"kind": "viewpoint_attempt_failed", "attempt": 3, "reason": "time_limit", "measured_pose": [4.954318342215856, 0.363706529736948, -0.9639367174649656], "requested_viewpoint": [4.838657632484898, 0.5999999999999992, -1.0091865779543876]}
+{"kind": "viewpoint_not_reached"}
+{"kind": "result", "policy": "conservative", "tag": "conservative", "see_dark": false, "imagine": null, "result": "stopped_short", "controller": "learned", "controller_sha256": "d81f0637c8151f88dbd537cf0f336beb0b8c4eedab84ad4f78d4c6d4f5dbf80e", "scene_id": "gate_passage_001", "goal": [5.7, -0.5], "start_mode": "scene_start", "execution_elapsed_s": 283.66, "sensor_mode": "live", "looks": 1, "final_pose": [4.954, 0.364, -55.23], "sim_time_s": 284.86, "wall_s": 62.8, "collision": null}

@@ -1,0 +1,19 @@
+{
+  "schema": "beforestep-controller-training/v1",
+  "run_id": "033d200f7100475ca16d0f4fead660e7",
+  "demonstration_transitions": 115490,
+  "new_physical_demonstration_transitions": 57906,
+  "counterfactual_goal_augmentation_rows": 20000,
+  "ppo_control_steps": 16384,
+  "ppo_updates": 16,
+  "initial_actor_sha": "f8ea06473006d8170b1cda025f9a0e0e",
+  "bc_actor_sha": "7f343a85f3a7c91fcb3b91b218f07b70",
+  "final_actor_sha": "a68afd9c36c7771181c4dfe6acf37b0c",
+  "best_actor_sha": "a68afd9c36c7771181c4dfe6acf37b0c",
+  "untrained_success_rate": null,
+  "initial_success_rate": 0.75,
+  "bc_success_rate": 1.0,
+  "best_validation_success_rate": 1.0,
+  "wall_seconds": 656.5365904420032,
+  "note": "Validation goals disjoint from training; full lunar obstacle mission is a separate required acceptance."
+}

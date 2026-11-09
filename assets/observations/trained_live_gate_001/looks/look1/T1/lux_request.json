@@ -1,0 +1,90 @@
+{
+  "schema": "v8-lux-request/v1",
+  "mode": "img",
+  "version": "G1-Turbo",
+  "faceCount": 30000,
+  "items": [
+    {
+      "id": "A1",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+      "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
+    },
+    {
+      "id": "A2",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A2_upload.jpg",
+      "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
+    },
+    {
+      "id": "B1",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/B1.png",
+      "sha256": "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903"
+    },
+    {
+      "id": "B2",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/B2.png",
+      "sha256": "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903"
+    },
+    {
+      "id": "C1",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C1_upload.jpg",
+      "sha256": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60"
+    },
+    {
+      "id": "C2",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C2_upload.jpg",
+      "sha256": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60"
+    }
+  ],
+  "input_conversions": [
+    {
+      "source": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1.png",
+      "source_sha256": "cbc323ca10afb24374f64fa03bed226b5b8ede401343b3472bb93e9c3a793a42",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+      "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A2.png",
+      "source_sha256": "cbc323ca10afb24374f64fa03bed226b5b8ede401343b3472bb93e9c3a793a42",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A2_upload.jpg",
+      "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C1.png",
+      "source_sha256": "37672e6b2c2e855dfc7ee973246c41f69f4a5fb2d4cd6e30a62f23a3273e6ebc",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C1_upload.jpg",
+      "sha256": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C2.png",
+      "source_sha256": "37672e6b2c2e855dfc7ee973246c41f69f4a5fb2d4cd6e30a62f23a3273e6ebc",
+      "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C2_upload.jpg",
+      "sha256": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    }
+  ],
+  "result_file": "assets/observations/trained_live_gate_001/looks/look1/T1/lux_result.json",
+  "result_schema": {
+    "tasks": [
+      {
+        "id": "A1",
+        "task_id": "...",
+        "status": "ok|failed",
+        "submitted_at": "...",
+        "finished_at": "...",
+        "fetched_at": "...",
+        "glb": "repo-relative path of tex_mesh.glb",
+        "glb_sha256": "...",
+        "inputs": [
+          "repo-relative input image paths"
+        ]
+      }
+    ]
+  }
+}

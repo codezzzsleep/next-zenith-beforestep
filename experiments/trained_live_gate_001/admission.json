@@ -1,0 +1,354 @@
+{
+  "schema": "v8-target-decision/v1",
+  "metric_version": 2,
+  "cache_identity": "72326e3d30e291b5a906ee16976cbafb2b349aaac05afa42b5e8001298335cff",
+  "obs": "assets/observations/trained_live_gate_001/looks/look1/T1",
+  "grid": {
+    "pitch": 0.006084,
+    "dims": [
+      272,
+      402,
+      121
+    ]
+  },
+  "volume_stats": {
+    "n_voxels": 13230624,
+    "n_free": 4900172,
+    "n_band": 45545,
+    "n_unknown": 8284907,
+    "n_in_fov": 12998290,
+    "n_masked_fov": 4854768,
+    "n_shell": 45545,
+    "valid_depth_frac": 0.801538,
+    "free_eps_m": 0.009126,
+    "band_m": 0.01521,
+    "shell_offset_m": 0.003042,
+    "pitch_m": 0.006084,
+    "depth_convention": "positive_camera_minus_z"
+  },
+  "thresholds": {
+    "schema": "v5-admission/v1",
+    "calibrated_from": "truth_v2 KA set",
+    "scale_ratio": {
+      "min": 0.889,
+      "max": 1.09
+    },
+    "hidden_frac_min": 0.3578,
+    "shell_contact_min": 0.0486,
+    "free_intrusion_max": 0.2864,
+    "contour_iou_min": 0.7068,
+    "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+  },
+  "candidates": [
+    {
+      "scale_ratio": 0.8764,
+      "hidden_frac": 0.7873,
+      "shell_contact": 0.6121,
+      "free_intrusion_frac": 0.17057,
+      "intrusion_depth_p95_mm": 73.51,
+      "voxels": 826112,
+      "contour_iou": 0.6327,
+      "scale_ratio_v5": 0.9398,
+      "id": "A1",
+      "glb": "assets/candidates/5125347/tex_mesh.glb",
+      "M": [
+        [
+          0.17973103613687536,
+          0.0029852374240244093,
+          -0.19996686593694238,
+          2.2623105299634583
+        ],
+        [
+          -0.19998904908981568,
+          0.002416136239579579,
+          -0.17971490476802016,
+          -0.19713274486351384
+        ],
+        [
+          -0.00019839171372531303,
+          0.26885712768894465,
+          0.003835361460661919,
+          0.2803045730389452
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.6327,
+        "mask_iou_all_pixels": 0.6302,
+        "outside_lit_px": 12139,
+        "in_dark_px": 550,
+        "occluded_px": 0,
+        "depth_median_mm": 52.506,
+        "depth_p95_mm": 234.966,
+        "visible_median_mm": 38.515,
+        "visible_p95_mm": 243.871,
+        "n_candidate_pixels": 101246,
+        "n_mask_pixels": 127836
+      },
+      "footprint_cells": 224,
+      "footprint_x": [
+        4.175000000000001,
+        5.025
+      ],
+      "footprint_y": [
+        -1.275,
+        -0.22499999999999987
+      ]
+    },
+    {
+      "scale_ratio": 0.9663,
+      "hidden_frac": 0.7973,
+      "shell_contact": 0.5968,
+      "free_intrusion_frac": 0.16046,
+      "intrusion_depth_p95_mm": 77.68,
+      "voxels": 826121,
+      "contour_iou": 0.6398,
+      "scale_ratio_v5": 1.0361,
+      "id": "A2",
+      "glb": "assets/candidates/5125373/tex_mesh.glb",
+      "M": [
+        [
+          0.1376490747839184,
+          0.006916344159123507,
+          -0.2303931985617416,
+          2.2574473211345403
+        ],
+        [
+          -0.23047841104501907,
+          0.000723026984303004,
+          -0.13767828014269387,
+          -0.16265433619942177
+        ],
+        [
+          -0.002926397478333056,
+          0.2683799004477782,
+          0.006308310577823101,
+          0.2819664348969232
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.6398,
+        "mask_iou_all_pixels": 0.6383,
+        "outside_lit_px": 11895,
+        "in_dark_px": 321,
+        "occluded_px": 0,
+        "depth_median_mm": 40.646,
+        "depth_p95_mm": 220.665,
+        "visible_median_mm": 34.074,
+        "visible_p95_mm": 242.566,
+        "n_candidate_pixels": 101615,
+        "n_mask_pixels": 127836
+      },
+      "footprint_cells": 225,
+      "footprint_x": [
+        4.175000000000001,
+        5.025
+      ],
+      "footprint_y": [
+        -1.275,
+        -0.17499999999999982
+      ]
+    },
+    {
+      "scale_ratio": 0.9326,
+      "hidden_frac": 0.9163,
+      "shell_contact": 0.7385,
+      "free_intrusion_frac": 0.05389,
+      "intrusion_depth_p95_mm": 49.43,
+      "voxels": 1464041,
+      "contour_iou": 0.7723,
+      "scale_ratio_v5": 1.0,
+      "id": "B1",
+      "glb": "assets/candidates/5125456/tex_mesh.glb",
+      "M": [
+        [
+          0.09308743192358959,
+          0.44584090849992014,
+          -3.467848210952634,
+          2.441042512882352
+        ],
+        [
+          -3.4915211912600155,
+          -0.17116449653503837,
+          -0.11572850119902957,
+          -0.2601943912443014
+        ],
+        [
+          -0.18445894091026502,
+          3.4648721764757076,
+          0.44050686678460554,
+          0.20866532582321926
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.7723,
+        "mask_iou_all_pixels": 0.7476,
+        "outside_lit_px": 11869,
+        "in_dark_px": 2441,
+        "occluded_px": 2093,
+        "depth_median_mm": 28.648,
+        "depth_p95_mm": 153.412,
+        "visible_median_mm": 26.108,
+        "visible_p95_mm": 140.0,
+        "n_candidate_pixels": 120584,
+        "n_mask_pixels": 127836
+      },
+      "footprint_cells": 409,
+      "footprint_x": [
+        4.175000000000001,
+        5.2250000000000005
+      ],
+      "footprint_y": [
+        -1.375,
+        -0.2749999999999999
+      ]
+    },
+    {
+      "scale_ratio": 1.0337,
+      "hidden_frac": 0.8726,
+      "shell_contact": 0.8142,
+      "free_intrusion_frac": 0.08942,
+      "intrusion_depth_p95_mm": 49.05,
+      "voxels": 1256521,
+      "contour_iou": 0.7861,
+      "scale_ratio_v5": 1.1084,
+      "id": "C1",
+      "glb": "assets/candidates/5125592/tex_mesh.glb",
+      "M": [
+        [
+          -0.037932143476302756,
+          0.005928502087737575,
+          -0.4299987176687761,
+          2.3132279766279664
+        ],
+        [
+          -0.4299670749673968,
+          -0.008449506508071228,
+          0.03781285662647147,
+          -0.22833871764639013
+        ],
+        [
+          -0.007896757421702717,
+          0.43158585535819927,
+          0.006646993264403774,
+          0.2812792771317545
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.7861,
+        "mask_iou_all_pixels": 0.7621,
+        "outside_lit_px": 8792,
+        "in_dark_px": 4260,
+        "occluded_px": 49,
+        "depth_median_mm": 29.745,
+        "depth_p95_mm": 134.243,
+        "visible_median_mm": 27.542,
+        "visible_p95_mm": 123.446,
+        "n_candidate_pixels": 120416,
+        "n_mask_pixels": 127836
+      },
+      "footprint_cells": 290,
+      "footprint_x": [
+        4.175000000000001,
+        4.925000000000001
+      ],
+      "footprint_y": [
+        -1.325,
+        -0.2749999999999999
+      ]
+    },
+    {
+      "scale_ratio": 0.9888,
+      "hidden_frac": 0.8743,
+      "shell_contact": 0.8351,
+      "free_intrusion_frac": 0.08431,
+      "intrusion_depth_p95_mm": 50.54,
+      "voxels": 1201649,
+      "contour_iou": 0.8422,
+      "scale_ratio_v5": 1.0602,
+      "id": "C2",
+      "glb": "assets/candidates/5125771/tex_mesh.glb",
+      "M": [
+        [
+          0.019131034869870184,
+          0.010614585984210726,
+          -0.43135911093496443,
+          2.31152838239419
+        ],
+        [
+          -0.43146905086877146,
+          -0.003752478393864988,
+          -0.019228249158870774,
+          -0.20543551524246556
+        ],
+        [
+          -0.004220209072995966,
+          0.4317668328944429,
+          0.010437450124088424,
+          0.26062523399644383
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.8422,
+        "mask_iou_all_pixels": 0.8278,
+        "outside_lit_px": 6518,
+        "in_dark_px": 2337,
+        "occluded_px": 0,
+        "depth_median_mm": 27.557,
+        "depth_p95_mm": 112.03,
+        "visible_median_mm": 23.642,
+        "visible_p95_mm": 82.821,
+        "n_candidate_pixels": 122010,
+        "n_mask_pixels": 127836
+      },
+      "footprint_cells": 289,
+      "footprint_x": [
+        4.175000000000001,
+        4.925000000000001
+      ],
+      "footprint_y": [
+        -1.275,
+        -0.22499999999999987
+      ]
+    }
+  ],
+  "admitted_ids": [
+    "B1",
+    "C1",
+    "C2"
+  ]
+}

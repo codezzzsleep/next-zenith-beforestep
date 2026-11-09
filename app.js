@@ -23,14 +23,41 @@ function select(key){
  policy=key;progress=0;playing=false;$('play').textContent='▶ 播放';$('scrub').value=0;
  document.querySelectorAll('[data-policy]').forEach(b=>b.classList.toggle('active',b.dataset.policy===key));const run=data?.runs[key];
  $('strategy').textContent=names[key][0];$('description').textContent=names[key][1];
+ if(run?.controller==='learned'){
+  const count=data.generation?.admitted||run.rehearsals||0;
+  $('description').textContent={optimistic:'同一训练模型，仅根据实测可见几何与禁行先验规划；本次实际执行到达。',
+   conservative:run.result==='arrived'?'同一训练模型，通过安全观察点补充真实观测，然后完成通行。':'同一训练模型未完成计划观察点的姿态要求，保留未完成终态。',
+   imagination:`实际 RGB-D 约束真实 Lux3D 候选，${count} 份采纳几何参与完整物理预演；训练模型在独立环境执行。`}[key];
+ }
  if(data?.scene_id==='stress_v8')$('description').textContent={optimistic:'旧双盲区压力场景中，直接走会碰撞。',conservative:'旧压力场景中，多次观察后仍未找到路线。',imagination:'旧压力场景的第二块候选全被拒绝，因此停下。仅作为历史反例。'}[key];
  $('status').textContent=run?results[run.result]||run.result:'运行数据尚未生成';$('looks').textContent=run?.looks??'—';$('duration').textContent=run?`${run.sim_time_s}s`:'—';$('rehearsals').textContent=run?.rehearsals?`${run.rehearsals_passed}/${run.rehearsals}`:'—';draw();
+}
+function drawDecision(){
+ const d=data?.decision,panel=$('decision-effect');panel.hidden=!d;if(!d)return;
+ const ref=d.reference_rehearsals||[],exe=d.execution_rehearsals||[];
+ const passed=list=>list.filter(p=>p.completed&&!p.collided).length;
+ $('decision-status').textContent=d.path_changed?'生成几何改变了路线':'同一观测，路线一致';
+ $('reference-check').textContent=ref.length?`${passed(ref)}/${ref.length}`:'未重复预演';
+ $('execution-check').textContent=exe.length?`${passed(exe)}/${exe.length}`:'—';
+ $('decision-explanation').textContent=ref.some(p=>p.collided||!p.completed)?'参照路线未通过全部候选检验；机器人选择了另一条通过检验的路线。':d.path_changed?'候选占据改变了规划路线；分别保留两条路线的预演和实际执行结果。':'本次候选支持原路线，执行前仍完成物理预演。';
+ const margin=m=>m?.drive_margin_m==null?'—':`${Math.round(m.drive_margin_m*1000)}毫米`;
+ $('decision-margin').textContent=`独立几何估计余量：参照 ${margin(d.reference_margin_vs_truth)} → 选择 ${margin(d.selected_margin_vs_truth)}`;
+ const c=$('decision-map'),g=c.getContext('2d');g.fillStyle='#101720';g.fillRect(0,0,c.width,c.height);
+ const center=data.rocks[0]?.x||4.55,xmin=center-2,xmax=center+2.5,ymin=-1.55,ymax=1.5;
+ const q=(x,y)=>[(x-xmin)/(xmax-xmin)*c.width,(ymax-y)/(ymax-ymin)*c.height];
+ const cells=d.observed_cells,colors=['#152d28','#707a7b','#18212e','#27313c','#111923','#14202b'];
+ if(cells){const [nx,ny]=cells.shape,r=cells.resolution,[ox,oy]=cells.origin;for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){const x=ox+(i+.5)*r,y=oy+(j+.5)*r;if(x<xmin||x>xmax||y<ymin||y>ymax)continue;const [px,py]=q(x,y);g.fillStyle=colors[cells.values[i*ny+j]];g.fillRect(px-r*c.width/(xmax-xmin)/2,py-r*c.height/(ymax-ymin)/2,r*c.width/(xmax-xmin)+1,r*c.height/(ymax-ymin)+1)}}
+ for(const rock of data.rocks){g.strokeStyle='#bec6cb';g.lineWidth=1.5;g.beginPath();rock.polygon.forEach((p,i)=>{const v=q(...p);i?g.lineTo(...v):g.moveTo(...v)});g.closePath();g.stroke()}
+ g.fillStyle='#70dbb24d';for(const p of data.imagined_footprint||[]){const [x,y]=q(...p);g.fillRect(x-3,y-3,6,6)}
+ for(const [path,color,dash] of [[d.reference_path,'#ff997c',[10,6]],[d.selected_path,'#70dbb2',[]]]){if(!path)continue;g.strokeStyle=color;g.lineWidth=4;g.setLineDash(dash);g.beginPath();[d.start,...path].forEach((p,i)=>{const v=q(...p);i?g.lineTo(...v):g.moveTo(...v)});g.stroke();g.setLineDash([])}
+ g.font='18px sans-serif';g.fillStyle='#9aaaba';g.fillText('已见地面 / 盲区 / 扫描轮廓',24,32);
 }
 function choose(){const c=data?.candidates.find(c=>c.id===$('candidate-select').value);if(!c)return;$('model-error').hidden=true;$('model').src=c.glb;$('input').src=c.input;$('model-download').href=c.glb;$('candidate-info').textContent=`真实任务 ${c.task_id} · ${c.verdict}`}
 async function loadScene(path){
  const version=++loadVersion;playing=false;const response=await fetch(path);if(!response.ok)throw Error('Scene data unavailable');const next=await response.json();if(version!==loadVersion)return;data=next;
  $('scene-title').textContent=data.title||'历史压力场景';const options=$('candidate-select');options.replaceChildren();for(const c of data.candidates){const o=document.createElement('option');o.value=c.id;o.textContent=c.label;options.append(o)}
- const video=document.querySelector('video');video.src=data.video||'media/demo.mp4';video.poster=data.poster||'media/demo-poster.jpg';video.load();select(policy);choose();
+ const accepted=data.candidates.find(c=>c.admitted);if(accepted)options.value=accepted.id;
+ const video=document.querySelector('video');video.src=data.video||'media/demo.mp4';video.poster=data.poster||'media/demo-poster.jpg';video.load();select(policy);choose();drawDecision();
 }
 $('candidate-select').addEventListener('change',choose);
 document.querySelectorAll('[data-policy]').forEach(b=>b.addEventListener('click',()=>select(b.dataset.policy)));

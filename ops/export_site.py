@@ -12,13 +12,26 @@ def main():
     parser.add_argument('--out',required=True)
     args=parser.parse_args()
     output=Path(args.out).resolve()
-    if output==ROOT or output.is_relative_to(ROOT/'site'):
+    if output.is_relative_to(ROOT):
         parser.error('Choose a separate export directory')
     output.mkdir(parents=True,exist_ok=True)
     shutil.copytree(ROOT/'site',output,dirs_exist_ok=True,
                     ignore=shutil.ignore_patterns('video-scene','__pycache__'))
-    for directory in ('docs','evidence','experiments'):
+    for directory in ('docs','experiments'):
         shutil.copytree(ROOT/directory,output/directory,dirs_exist_ok=True)
+    # The viewer links JSON results. Full trajectories, physics meshes and
+    # training source snapshots remain in the repository and release ZIP.
+    def linked_evidence(path):
+        return path.suffix in ('.json','.jsonl') and 'source_snapshot' not in path.parts
+    evidence=output/'evidence'
+    if evidence.exists():
+        for path in evidence.rglob('*'):
+            if path.is_file() and not linked_evidence(path):path.unlink()
+    for path in (ROOT/'evidence').rglob('*'):
+        if not path.is_file() or not linked_evidence(path):continue
+        target=evidence/path.relative_to(ROOT/'evidence')
+        target.parent.mkdir(parents=True,exist_ok=True)
+        shutil.copy2(path,target)
     assets=output/'assets';assets.mkdir(exist_ok=True)
     shutil.copy2(ROOT/'assets/manifest.json',assets/'manifest.json')
     shutil.copytree(ROOT/'assets/models',assets/'models',dirs_exist_ok=True)

@@ -27,13 +27,19 @@ def main():
     ap = argparse.ArgumentParser(); ap.add_argument('--run', required=True)
     a = ap.parse_args()
     run = pathlib.Path(a.run)
+    scene_files = sorted(run.glob('*/scene.json'))
+    if scene_files:
+        definitions = [json.loads(p.read_text()) for p in scene_files]
+        if any(d != definitions[0] for d in definitions[1:]):
+            raise ValueError('Cannot compare different scenes as a shared-scene run')
+        S.configure(definitions[0]['id'])
     truth = truth_footprints(run)
     rep = {'schema': 'v8-eval/v1', 'run': str(run), 'robots': {}, 'imagination': []}
     for d in sorted(p for p in run.iterdir() if (p / 'summary.json').exists()):
         s = json.loads((d / 'summary.json').read_text())
         ev = [json.loads(l) for l in (d / 'events.jsonl').read_text().splitlines() if l.strip()]
         z = np.load(d / 'traj.npz'); q = z['qpos']
-        clr = N.clearance(truth['A'] | truth['B'])
+        clr = N.clearance(np.logical_or.reduce(list(truth.values())))
         i = np.clip(((q[:, 0] - N.X0) / N.RES).astype(int), 0, N.NX - 1); j = np.clip(((q[:, 1] - N.Y0) / N.RES).astype(int), 0, N.NY - 1)
         rep['robots'][d.name] = {'result': s['result'], 'looks': s['looks'], 'sim_time_s': s['sim_time_s'],
                                  'min_center_distance_to_rock_m': round(float(clr[i, j].min()), 3),

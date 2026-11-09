@@ -30,14 +30,16 @@ Release 中的完整源码 ZIP 含实体资产，解压后可直接 `./setup.sh`
 ## 复现实验
 
 ```bash
-MUJOCO_GL=egl .venv/bin/python -m beforestep run --policy conservative --out outputs/reproduction
-MUJOCO_GL=egl .venv/bin/python -m beforestep run --policy optimistic --out outputs/reproduction
-MUJOCO_GL=egl .venv/bin/python -m beforestep run --policy imagination --imagine lux \
-  --recorded-observations assets/observations/reference_v8 --out outputs/reproduction
+MUJOCO_GL=egl .venv/bin/python -m beforestep run --scene gate_passage_001 --policy conservative --out outputs/reproduction
+MUJOCO_GL=egl .venv/bin/python -m beforestep run --scene gate_passage_001 --policy optimistic --out outputs/reproduction
+MUJOCO_GL=egl .venv/bin/python -m beforestep run --scene gate_passage_001 --policy imagination --imagine lux \
+  --recorded-observations assets/observations/gate_passage_001 --out outputs/reproduction
 .venv/bin/python -m unittest discover -s tests -v
 ```
 
 重新生成展示数据与对比图可运行 `beforestep build` 并传入三个策略运行目录；加 `--video` 会用 ffmpeg 输出真实轨迹视频，加 `--report` 输出 HTML 报告（先安装 `pip install -e '.[report]'`）。
+
+主场景可复现实验默认选择 gate_passage_001；历史压力案例使用 `--scene stress_v8 --recorded-observations assets/observations/reference_v8`。
 
 记录观测模式明确使用保留的真实 RGB-D 和 Lux3D 输入，并核对每次观察的机器人姿态、仿真时刻。它会重新配准、自检、规划和执行，不复用旧的规划结论。实时模式省略 `--recorded-observations`；需要生成时退出码为 `10`，请求落盘在输出目录的 `NEED_LUX3D.json`。
 
@@ -68,6 +70,6 @@ MUJOCO_GL=egl .venv/bin/python -m beforestep run --policy imagination --imagine 
 
 ## 结果边界
 
-冻结窄道是困难案例。直接走会撞上盲区岩石，保守观察可能停滞；Lux3D 生成也可能被自检拒绝。报告保留失败与拒绝，不把真值几何替身诊断作为生成模型的收益。作品重点是可观察、可预演、可追溯的完整选择过程。
+默认主场景 gate_passage_001 已完成真实 Lux3D 通行：六个新任务、四个成功 GLB、三个候选通过冻结自检，三个实际预演均完成/无碰撞，机器人一眼到达76.50s。保守同场景三眼118.76s到达，直接走也能一眼到达。旧双盲区 stress_v8 继续保留为失败/压力案例，不能用旧结果或真值替身冒充新场景成果。
 
 [第三方资产来源与许可证](docs/credits.md)。源码按完整参赛材料交付。

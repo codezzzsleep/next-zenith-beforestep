@@ -1,0 +1,72 @@
+{
+  "schema": "beforestep-scene-experiment/v1",
+  "scene_id": "gate_passage_001",
+  "generation_request": "experiments/gate_passage_001/lux_request.json",
+  "items": [
+    {
+      "id": "A1",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+      "sha256": "99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c"
+    },
+    {
+      "id": "A2",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A2_upload.jpg",
+      "sha256": "99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c"
+    },
+    {
+      "id": "B1",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/B1.png",
+      "sha256": "bd20667e152635d5194f6f6693051b37a09118e0432d9efefceb49c31eb4c62d"
+    },
+    {
+      "id": "B2",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/B2.png",
+      "sha256": "bd20667e152635d5194f6f6693051b37a09118e0432d9efefceb49c31eb4c62d"
+    },
+    {
+      "id": "C1",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/C1_upload.jpg",
+      "sha256": "b25cef804abb71fe7a502332fafea9436a0abea24313117ccc229de549ef39cb"
+    },
+    {
+      "id": "C2",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/C2_upload.jpg",
+      "sha256": "b25cef804abb71fe7a502332fafea9436a0abea24313117ccc229de549ef39cb"
+    }
+  ],
+  "input_conversions": [
+    {
+      "source": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1.png",
+      "source_sha256": "58e62308b63b68fcdc095c6e65b3ff731a5245dc02fcd3a709c6c7cd8eb3c192",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+      "sha256": "99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A2.png",
+      "source_sha256": "58e62308b63b68fcdc095c6e65b3ff731a5245dc02fcd3a709c6c7cd8eb3c192",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A2_upload.jpg",
+      "sha256": "99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/C1.png",
+      "source_sha256": "1918b0b26018f7e8794afe0171503cd3de45ac3c80fd5054e64af25e340d8044",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/C1_upload.jpg",
+      "sha256": "b25cef804abb71fe7a502332fafea9436a0abea24313117ccc229de549ef39cb",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/C2.png",
+      "source_sha256": "1918b0b26018f7e8794afe0171503cd3de45ac3c80fd5054e64af25e340d8044",
+      "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/C2_upload.jpg",
+      "sha256": "b25cef804abb71fe7a502332fafea9436a0abea24313117ccc229de549ef39cb",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    }
+  ],
+  "admission_policy": "config/admission.json, unchanged"
+}

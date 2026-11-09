@@ -21,7 +21,32 @@ def items_second(t1state, t2state):
 
 
 def write_request(tdir, mode, items):
+    from PIL import Image
+    import copy
+    items = copy.deepcopy(items)
+    conversions = []
+    for item in items:
+        original_paths = item['paths'] if mode == 'imgs' else [item['path']]
+        paths, hashes = [], []
+        for relative in original_paths:
+            source = ROOT / relative
+            actual = source
+            if source.stat().st_size > 1_048_576:
+                actual = source.with_name(source.stem + '_upload.jpg')
+                image = Image.open(source).convert('RGB')
+                image.save(actual, quality=95, subsampling=0)
+                if actual.stat().st_size > 1_048_576:
+                    raise ValueError('Upload JPEG exceeds the block limit; keep the original and prepare a documented input')
+                conversions.append({'source':relative,'source_sha256':sha(source),'path':rel(actual),
+                                    'sha256':sha(actual),'encoding':'JPEG95, no resize, 4:4:4',
+                                    'reason':'Provider single-upload block limit; original PNG retained'})
+            paths.append(rel(actual)); hashes.append(sha(actual))
+        if mode == 'imgs':
+            item.update(paths=paths,sha256=hashes)
+        else:
+            item.update(path=paths[0],sha256=hashes[0])
     req = {'schema': 'v8-lux-request/v1', 'mode': mode, 'version': 'G1-Turbo', 'faceCount': 30000, 'items': items,
+           'input_conversions':conversions,
            'result_file': rel(pathlib.Path(tdir) / 'lux_result.json'),
            'result_schema': {'tasks': [{'id': 'A1', 'task_id': '...', 'status': 'ok|failed', 'submitted_at': '...', 'finished_at': '...',
                                         'fetched_at': '...', 'glb': 'repo-relative path of tex_mesh.glb', 'glb_sha256': '...',

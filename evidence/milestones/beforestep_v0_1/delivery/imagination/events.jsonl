@@ -1,0 +1,10 @@
+{"kind": "look", "k": 1, "label": "first", "pose": [2.292, -0.5, 0.03], "t": 16.08, "cells": {"FREE": 4876, "ROCK": 1289, "DARK": 4946, "HIDDEN": 9195, "UNSEEN": 4894, "NOGO": 0}, "cam_pos": [2.7117, -0.5, 0.3835]}
+{"kind": "recorded_sensor", "look": 1, "source": "/root/3d/next-zenith-beforestep/assets/observations/reference_v8/looks/look1", "verified_pose": true, "verified_time": true, "note": "Frozen recorded RGB-D and Lux3D inputs; current live render is a separate observation."}
+{"kind": "imagination", "look": 1, "targets": [{"target": "T1", "n_candidates": 6, "admitted": ["B2", "C2"], "rejected": ["A1", "A2", "B1", "C1"]}, {"target": "T2", "n_candidates": 4, "admitted": [], "rejected": ["A1", "A2", "C1", "C2"]}]}
+{"kind": "plan", "policy": "imagination", "look": 1, "path": null, "reason": "imagined_blocked", "margin_vs_truth": null}
+{"kind": "second_look_plan", "viewpoint": [3.89, 0.2, -5.9], "expected_new_cells": 298, "path": [[3.892, 0.2]]}
+{"kind": "look", "k": 2, "label": "extra1", "pose": [3.876, 0.2, -4.9], "t": 50.6, "cells": {"FREE": 7027, "ROCK": 2013, "DARK": 6349, "HIDDEN": 4902, "UNSEEN": 4894, "NOGO": 15}, "cam_pos": [4.295, 0.164, 0.3844]}
+{"kind": "recorded_sensor", "look": 2, "source": "/root/3d/next-zenith-beforestep/assets/observations/reference_v8/looks/look2", "verified_pose": true, "verified_time": true, "note": "Frozen recorded RGB-D and Lux3D inputs; current live render is a separate observation."}
+{"kind": "imagination", "look": 2, "targets": [{"target": "T1", "n_candidates": 6, "admitted": ["B2", "C2"], "rejected": ["A1", "A2", "B1", "C1"]}, {"target": "T2", "n_candidates": 3, "admitted": [], "rejected": ["M1", "M2", "M3"]}]}
+{"kind": "plan", "policy": "imagination", "look": 2, "path": null, "reason": "imagined_blocked", "margin_vs_truth": null}
+{"kind": "result", "policy": "imagination", "tag": "imagination", "see_dark": false, "imagine": "lux", "result": "stuck", "sensor_mode": "recorded", "looks": 2, "final_pose": [3.877, 0.2, -4.82], "sim_time_s": 52.6, "wall_s": 37.7, "collision": null}

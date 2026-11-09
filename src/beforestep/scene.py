@@ -1,5 +1,6 @@
 """The frozen polar corridor, scan assets, starting pose and goal."""
 import os, pathlib, sys
+import json
 import numpy as np
 from .paths import ROOT
 from .simulation import terrain, environment as wheelleg_env, soil_profiles as v7_soil
@@ -37,6 +38,32 @@ STOP1 = (2.30, -0.50)
 
 
 GOAL = (10.5, 0.00)
+SCENE_ID = 'stress_v8'
+
+
+def configure(scene_id='stress_v8'):
+    """Select a documented scene before creating any observation or physics model."""
+    global ROCKS, START, STOP1, GOAL, SCENE_ID
+    if pathlib.Path(scene_id).name != scene_id:
+        raise ValueError('Scene must be a config/scenes name')
+    path = ROOT / 'config/scenes' / f'{scene_id}.json'
+    definition = json.loads(path.read_text())
+    if definition['id'] != scene_id or not definition['rocks']:
+        raise ValueError('Scene identity or obstacles missing')
+    for key in ('start', 'first_stop', 'goal'):
+        if len(definition[key]) != 2 or not np.isfinite(definition[key]).all():
+            raise ValueError(f'Invalid {key}')
+    for rock in definition['rocks'].values():
+        if not all(np.isfinite(rock[k]) for k in ('height','x','y','yaw')) or rock['height'] <= 0:
+            raise ValueError('Invalid rock dimensions')
+    ROCKS = definition['rocks']
+    START, STOP1, GOAL = (tuple(definition[k]) for k in ('start','first_stop','goal'))
+    SCENE_ID = scene_id
+    return definition
+
+
+def physical_identity(definition):
+    return {k: definition[k] for k in ('id','rocks','start','first_stop','goal')}
 
 
 WALL_ROCKS = ['rock_09', 'moon_rock_04', 'rock_07', 'moon_rock_03', 'moon_rock_06', 'moon_rock_07']
@@ -123,13 +150,13 @@ def rock_asset_uniform(rock_id, height, level='h1'):
 def scene_spec(run):
     H = height_map()
     hf = pathlib.Path(run) / 'scene' / 'height.npy'; hf.parent.mkdir(parents=True, exist_ok=True); np.save(hf, H)
-    spec = terrain.make_spec(kind='flat', seed=0, goal_x=GOAL[0], span=SPAN, name='v8_polar')
+    spec = terrain.make_spec(kind='flat', seed=0, goal_x=GOAL[0], span=SPAN, name=SCENE_ID)
     spec['terrain']['field_x_max'] = SPAN
     spec['terrain']['custom_height_file'] = str(hf)
     spec['channel'] = {'center_y': 0.0, 'half_width': 1.4}
     spec['soil'] = v7_soil.resolve('nominal')
     spec['front_cam'] = dict(CAM)
-    objs, rock_bodies, meta = [], {}, {'rocks': {}, 'walls': []}
+    objs, rock_bodies, meta = [], {}, {'rocks': {}, 'walls': [], 'scene_id': SCENE_ID}
     for key, p in ROCKS.items():
         obj, _ = rock_asset_uniform(p['rock'], p['height'])
         objs.append({'mesh_file': str(obj), 'x': p['x'], 'y': p['y'], 'yaw_deg': p['yaw'], 'height_m': p['height']})

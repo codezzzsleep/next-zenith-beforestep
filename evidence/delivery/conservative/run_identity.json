@@ -2,7 +2,8 @@
   "schema": "beforestep-run-identity/v1",
   "arguments": {
     "policy": "conservative",
-    "out": "outputs/final-validation",
+    "scene": "gate_passage_001",
+    "out": "outputs/effective",
     "imagine": "lux",
     "see_dark": false,
     "max_looks": 5,
@@ -11,19 +12,44 @@
     "tag": null,
     "trust": null
   },
+  "scene": {
+    "id": "gate_passage_001",
+    "purpose": "Visible-front/hidden-back rock gate with physical clearance; candidate effective main scene pending production validation",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      8.5,
+      0.0
+    ]
+  },
   "source_sha256": {
     "src/beforestep/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
     "src/beforestep/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
     "src/beforestep/cli.py": "e03a6e081a8857f46c404b0bef85b1ed23f829ccfb378cc22f8509b37165e69c",
     "src/beforestep/delivery/__init__.py": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523",
-    "src/beforestep/delivery/artifacts.py": "2055c7ec0787d1fe4205ee91ec619da88143bcb109e1616fd23add465445efb8",
+    "src/beforestep/delivery/artifacts.py": "84d9bc802c4ee1d1bed67ad1fce374b4c629f5badf14eda5889f05114bed676b",
     "src/beforestep/delivery/server.py": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab",
-    "src/beforestep/delivery/video.py": "922ff4f9525702d3388df91787f502459e785cc79f0ee40956aa30b0e6cfe432",
-    "src/beforestep/evaluation.py": "78b95cf291c98f2c6a14b0e981fffa5426a8773b7261ef1ea2c9f51da1eaff4a",
+    "src/beforestep/delivery/video.py": "619cd898fa07879c9034abb86165bb33f63959f2d800e0fbb70062aa32e22509",
+    "src/beforestep/evaluation.py": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135",
     "src/beforestep/generation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
     "src/beforestep/generation/client.py": "dda6628c4e797cf369a86d800d4ce6b8e91774ddb363b17edcc3b1c59c2795a3",
     "src/beforestep/generation/evaluate.py": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a",
-    "src/beforestep/generation/records.py": "978f63a625df308d0fdc6efc243a8ff75b94a1b3e1bc13d97b239467a85874d8",
+    "src/beforestep/generation/records.py": "510af1775b0803368603faff9f7a212d9b7307b1f5f4c4431fd7b87c93a13429",
     "src/beforestep/geometry/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
     "src/beforestep/geometry/admission.py": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf",
     "src/beforestep/geometry/camera.py": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910",
@@ -39,9 +65,9 @@
     "src/beforestep/observation/capture.py": "27fd8534f4f12042721e135da9139296f2e7d154eecc41e750010514c27f7371",
     "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
     "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
-    "src/beforestep/pipeline.py": "7b736abf4ecae3e5fddb1e1933445ae915e22996fa527b7be053f4c792a2d959",
+    "src/beforestep/pipeline.py": "4f6f9941172dbe6bf0d287739f27a0129e30a36995dd124cbe9f165b66f773ce",
     "src/beforestep/resources.py": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c",
-    "src/beforestep/scene.py": "bfce1cadba43a5aea7cb73ae569e99814ed905ceabec03dca7c002f8eece3daa",
+    "src/beforestep/scene.py": "093cf81e189c261af6718d16783bef1a0ea73e416835f1a6068498b1aa8e418e",
     "src/beforestep/simulation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
     "src/beforestep/simulation/assets.py": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3",
     "src/beforestep/simulation/environment.py": "255ad5f01feb6769ce2629daa80a772ac2788386438db615fc9c79938281b5eb",
@@ -51,7 +77,7 @@
     "src/beforestep/simulation/soil_profiles.py": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73",
     "src/beforestep/simulation/terrain.py": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e",
     "src/beforestep/visualization/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
-    "src/beforestep/visualization/camera.py": "0ea6df64c30c799694467d9c68c4404ae1a301cad105267d77829bc76a3e44f1",
+    "src/beforestep/visualization/camera.py": "3311f310179298dd09131d2cdee1746c8f71f59f84a6336a5f0aaf9f797acebe",
     "src/beforestep/visualization/model.py": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569",
     "src/beforestep/visualization/scene.py": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332",
     "src/beforestep/visualization/textures.py": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"

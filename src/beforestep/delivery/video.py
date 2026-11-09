@@ -8,11 +8,12 @@ from PIL import Image, ImageDraw
 
 from beforestep import scene
 from beforestep.visualization import camera
-from .artifacts import MEDIA, font
+from .artifacts import MEDIA, font, configure_from_runs
 
 
 def render(paths, fps=12, speed=6):
     import mujoco
+    configure_from_runs(paths)
     traces={p:dict(np.load(Path(d)/'traj.npz')) for p,d in paths.items()}
     summaries={p:json.loads((Path(d)/'summary.json').read_text()) for p,d in paths.items()}
     spec,rocks,_=scene.scene_spec(MEDIA/'video-scene')
@@ -21,7 +22,7 @@ def render(paths, fps=12, speed=6):
     # This profile only renders saved trajectories; the RGB-D sensor stays frozen.
     vm.m.vis.quality.shadowsize=1024
     vm.m.vis.quality.offsamples=1
-    cam=mujoco.MjvCamera();cam.lookat[:]=[5.0,0.0,.0];cam.distance=13;cam.azimuth=105;cam.elevation=-57
+    cam=mujoco.MjvCamera();cam.lookat[:]=[4.4,0.0,.0];cam.distance=10;cam.azimuth=90;cam.elevation=-75
     for group in range(6):vm.opt.geomgroup[group]=1 if group in (0,1,2) else 0
     output=MEDIA/'demo.mp4'
     command=['ffmpeg','-y','-loglevel','error','-f','rawvideo','-pix_fmt','rgb24','-s','1920x1080','-r',str(fps),'-i','-',
@@ -52,8 +53,8 @@ def render(paths, fps=12, speed=6):
             draw.text((col*640+35,665),f'观察 {summary["looks"]} 次 · 总时长 {summary["sim_time_s"]}s',font=font(20),fill='#93a2b1')
         draw.line((65,750,1855,750),fill='#303d48',width=2)
         draw.text((65,790),'Lux3D 的真实资产 → 观测配准 → 冻结自检 → 候选物理预演 → 独立真值执行',font=font(28),fill='#e9edf1')
-        draw.text((65,850),'生成不等于可信：保留被拒资产；最多两眼；没有证据就停下。',font=font(26),fill='#a2adbb')
-        draw.text((65,910),'Lux3D 分支明确采用记录 RGB-D 与真实生成输入。真值替身不作为作品收益证据。',font=font(22),fill='#83919f')
+        draw.text((65,850),'有效关口：真实新生成的三个候选，逐一预演完成、无碰撞，独立执行到达。',font=font(26),fill='#a2adbb')
+        draw.text((65,910),'三个策略同一场景；直接走也能到达。旧失败场景单独保留，真值替身只作诊断。',font=font(22),fill='#83919f')
         if i==int(12*fps):image.save(MEDIA/'demo-poster.jpg',quality=92)
         process.stdin.write(image.tobytes())
     process.stdin.close()
@@ -65,12 +66,13 @@ def render(paths, fps=12, speed=6):
 def outcome_cards(paths):
     """Append closer real terminal views so the robot is visible to a judge."""
     import mujoco
+    configure_from_runs(paths)
     spec,rocks,_=scene.scene_spec(MEDIA/'video-scene')
     env=scene.make_env(spec);vm=camera.video_model(env,rocks,width=960,height=540,off=(960,540))
     vm.m.vis.quality.shadowsize=512;vm.m.vis.quality.offsamples=1
     for group in range(6):vm.opt.geomgroup[group]=1 if group in (0,1,2) else 0
     clips=[]
-    labels={'optimistic':'直接走 / 碰撞立即停止','conservative':'看清再走 / 无路可走','imagination':'Lux3D / 两眼后证据不足，停下'}
+    labels={'optimistic':'直接走 / 本场景到达','conservative':'看清再走 / 三眼后到达','imagination':'Lux3D / 三候选预演通过，一眼到达'}
     for policy,path in paths.items():
         trace=np.load(Path(path)/'traj.npz');q=trace['qpos'][-1];summary=json.loads((Path(path)/'summary.json').read_text())
         cam=mujoco.MjvCamera();cam.lookat[:]=[q[0],q[1],.2];cam.distance=3.6;cam.azimuth=90;cam.elevation=-72

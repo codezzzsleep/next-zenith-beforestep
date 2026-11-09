@@ -4,59 +4,59 @@
     "tag": "conservative",
     "see_dark": false,
     "imagine": null,
-    "result": "stuck",
+    "result": "arrived",
+    "scene_id": "gate_passage_001",
     "sensor_mode": "live",
-    "looks": 5,
+    "looks": 3,
     "final_pose": [
-      4.033,
-      0.382,
-      -7.39
+      8.492,
+      0.0,
+      -5.79
     ],
-    "sim_time_s": 142.2,
-    "wall_s": 112.7,
-    "collision": null
+    "sim_time_s": 118.76,
+    "wall_s": 45.5,
+    "collision": null,
+    "rehearsals": 0,
+    "rehearsals_passed": 0
   },
   "optimistic": {
     "policy": "optimistic",
     "tag": "optimistic",
     "see_dark": false,
     "imagine": null,
-    "result": "collision",
+    "result": "arrived",
+    "scene_id": "gate_passage_001",
     "sensor_mode": "live",
     "looks": 1,
     "final_pose": [
-      6.726,
-      -0.526,
-      7.52
+      8.492,
+      0.001,
+      -4.0
     ],
-    "sim_time_s": 80.94,
-    "wall_s": 69.3,
-    "collision": {
-      "body": "obstacle1",
-      "robot_geom": null,
-      "pos": [
-        6.962,
-        -0.278,
-        0.112
-      ],
-      "t": 80.94
-    }
+    "sim_time_s": 76.5,
+    "wall_s": 32.0,
+    "collision": null,
+    "rehearsals": 0,
+    "rehearsals_passed": 0
   },
   "imagination": {
     "policy": "imagination",
     "tag": "imagination",
     "see_dark": false,
     "imagine": "lux",
-    "result": "stuck",
-    "sensor_mode": "recorded",
-    "looks": 2,
+    "result": "arrived",
+    "scene_id": "gate_passage_001",
+    "sensor_mode": "live",
+    "looks": 1,
     "final_pose": [
-      3.877,
-      0.2,
-      -4.82
+      8.492,
+      0.001,
+      -4.0
     ],
-    "sim_time_s": 52.6,
-    "wall_s": 37.7,
-    "collision": null
+    "sim_time_s": 76.5,
+    "wall_s": 83.2,
+    "collision": null,
+    "rehearsals": 3,
+    "rehearsals_passed": 3
   }
 }

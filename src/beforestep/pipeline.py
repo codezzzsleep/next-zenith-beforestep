@@ -59,6 +59,7 @@ def pose(env):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--policy', required=True, choices=['conservative', 'optimistic', 'imagination'])
+    ap.add_argument('--scene', default='gate_passage_001', help='Named configuration in config/scenes')
     ap.add_argument('--out', required=True); ap.add_argument('--imagine', choices=['lux', 'truth'], default='lux')
     ap.add_argument('--see-dark', action='store_true', help='对照实验：假设相机在黑影里也能测出深度')
     ap.add_argument('--max-looks', type=int, default=None, help='最多看几眼（想象策略最多两眼；保守策略默认五眼）')
@@ -67,6 +68,11 @@ def main():
     ap.add_argument('--tag', default=None, help='输出子目录名（默认等于策略名）')
     ap.add_argument('--trust', default=None, help='反事实：T1=A2,T2=B1 —— 这几块石头只用指定的那份想象，不管自检结论，也不看第二眼')
     a = ap.parse_args()
+    scene_definition = S.configure(a.scene)
+    if a.recorded_observations:
+        fixture = pathlib.Path(a.recorded_observations) / 'scene.json'
+        if not fixture.is_file() or S.physical_identity(json.loads(fixture.read_text())) != S.physical_identity(scene_definition):
+            ap.error('Recorded observations must match the selected physical scene')
     if a.recorded_observations and (a.policy != 'imagination' or a.imagine != 'lux' or a.reuse_lux):
         ap.error('--recorded-observations仅用于Lux3D记录观测复现，不能与--reuse-lux混用')
     a.max_looks = a.max_looks if a.max_looks is not None else (2 if a.policy == 'imagination' else 5)
@@ -75,12 +81,13 @@ def main():
     out = pathlib.Path(a.out) / (a.tag or a.policy); out.mkdir(parents=True, exist_ok=True)
     import hashlib
     from .paths import ROOT
-    identity = {'schema':'beforestep-run-identity/v1', 'arguments':vars(a),
+    identity = {'schema':'beforestep-run-identity/v1', 'arguments':vars(a), 'scene':scene_definition,
                 'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                                  for p in sorted((ROOT/'src/beforestep').rglob('*.py'))},
                 'config_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                                  for p in sorted((ROOT/'config').glob('*.json'))}}
     (out/'run_identity.json').write_text(json.dumps(identity,ensure_ascii=False,indent=2))
+    (out/'scene.json').write_text(json.dumps(scene_definition,ensure_ascii=False,indent=2))
     dark_thr = 0.0 if a.see_dark else 0.10
     trust = dict(kv.split('=') for kv in a.trust.split(',')) if a.trust else None
     (out / 'looks').mkdir(exist_ok=True)
@@ -127,6 +134,7 @@ def main():
         return False
     rec.monitor = on_step
     truth = true_footprints(env, meta)
+    truth_union = np.logical_or.reduce(list(truth.values()))
     truth_objs = []
     if a.policy == 'imagination' and a.imagine == 'truth':
         import trimesh
@@ -222,7 +230,7 @@ def main():
         if a.policy != 'imagination':
             return None
         if a.imagine == 'truth':
-            return truth['A'] | truth['B']
+            return truth_union
         from .geometry import imagination as IM
         from .generation import records as LX
         k = len(looks)
@@ -381,7 +389,7 @@ def main():
             path = N.plan(occ, (x, y), S.GOAL)
             reason = None if path is not None else 'no_path'
         ev('plan', policy=a.policy, look=len(looks), path=None if path is None else [[round(p[0], 3), round(p[1], 3)] for p in path],
-           reason=reason, margin_vs_truth=None if path is None else N.path_clearance(path, (x, y), N.clearance(truth['A'] | truth['B'] | N.prior_nogo())))
+           reason=reason, margin_vs_truth=None if path is None else N.path_clearance(path, (x, y), N.clearance(truth_union | N.prior_nogo())))
         if path is not None and a.policy == 'imagination' and not trust:
             ok, _ = rehearse(path, len(looks))
             if not ok:
@@ -416,6 +424,7 @@ def main():
     if crash:
         result = 'collision'
     summ = {'policy': a.policy, 'tag': a.tag or a.policy, 'see_dark': bool(a.see_dark), 'imagine': a.imagine if a.policy == 'imagination' else None, 'result': result,
+            'scene_id':S.SCENE_ID,
             'sensor_mode': 'recorded' if a.recorded_observations else 'live',
             'looks': len(looks), 'final_pose': [round(x, 3), round(y, 3), round(float(np.degrees(yaw)), 2)],
             'sim_time_s': round(env.t, 2), 'wall_s': round(time.time() - t0, 1), 'collision': crash or None}

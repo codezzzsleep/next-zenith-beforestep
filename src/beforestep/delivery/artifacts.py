@@ -30,6 +30,7 @@ def mesh_image(path):
     import trimesh
     mesh=trimesh.load(path,force='mesh',process=False)
     vertices=np.asarray(mesh.vertices);faces=np.asarray(mesh.faces)
+    if Path(path).suffix.lower()=='.glb':vertices=vertices[:,[0,2,1]]
     fig=plt.figure(figsize=(4,3.3),facecolor='#131b24')
     ax=fig.add_subplot(111,projection='3d',facecolor='#131b24')
     subset=faces[::max(1,len(faces)//6000)]
@@ -45,35 +46,52 @@ def mesh_image(path):
 def comparisons():
     MEDIA.mkdir(parents=True,exist_ok=True)
     source=ROOT/'assets/observations/reference_v8/looks'
+    current=ROOT/'assets/observations/gate_passage_001/looks/look1/T1'
+    generated=json.loads((current/'lux_result.json').read_text())
     canvas=Image.new('RGB',(1600,680),'#0b0e13');draw=ImageDraw.Draw(canvas)
-    draw.text((35,25),'Lux3D 资产链：真实输入 → 原始候选 → 冻结自检',font=font(30),fill='#e9edf1')
-    items=[('look1/T1/gen/variants/B2.png','assets/candidates/reference_v8/look1/T1/B2.glb','第一块石头 · B2 · 采纳'),
-           ('look1/T2/gen/variants/A2.png','assets/candidates/reference_v8/look1/T2/A2.glb','第二块石头 · A2 · 拒绝')]
-    for row,(input_path,glb,label) in enumerate(items):
+    draw.text((35,25),'有效关口：同一真实输入，独立生成与冻结自检',font=font(30),fill='#e9edf1')
+    for row,sample in enumerate(('A1','A2')):
+        task=next(t for t in generated['tasks'] if t['id']==sample)
         y=105+row*275
-        for x,image in [(35,Image.open(source/input_path).convert('RGB')),(400,mesh_image(ROOT/glb))]:
+        for x,image in [(35,Image.open(ROOT/task['inputs'][0]).convert('RGB')),(400,mesh_image(ROOT/task['glb']))]:
             image.thumbnail((330,235));canvas.paste(image,(x,y))
-        draw.text((780,y+30),label,font=font(26),fill='#70dbb2')
-        message='满足冻结门槛，进入候选几何。' if row==0 else '轮廓 IoU 0.6972 < 0.7068，不能降低门槛。'
+        draw.text((780,y+30),sample+' / '+('通过并参与实际预演' if row==0 else '拒绝并保留原始资产'),font=font(26),fill='#70dbb2')
+        message='轮廓 IoU 0.8174，冻结门槛 0.7068。' if row==0 else '轮廓 IoU 0.6699，未达到相同门槛。'
         draw.text((780,y+85),message,font=font(21),fill='#a2adbb')
-        draw.text((780,y+145),'保留真实 GLB、输入 SHA、任务身份和准入结果。',font=font(18),fill='#83919f')
+        draw.text((780,y+145),'全部六个任务与输入 SHA 保留；不改阈值制造成功。',font=font(18),fill='#83919f')
     canvas.save(MEDIA/'asset-comparison.jpg',quality=93)
     version=Image.new('RGB',(1600,760),'#0b0e13');draw=ImageDraw.Draw(version)
     draw.text((35,25),'核心迭代：观测约束 → 阴影与两图 → 窄道决策 → 完整终态',font=font(29),fill='#e9edf1')
     for index,(path,label) in enumerate([('assets/geometry/reference_v6/generated_parent.stl','V6 / 生成原型'),('assets/geometry/reference_v6/observation_fused.stl','V6 / 观测融合')]):
         image=mesh_image(ROOT/path);image.thumbnail((380,330));version.paste(image,(35+index*400,100));draw.text((45+index*400,410),label,font=font(22),fill='#70dbb2')
     image=Image.open(source/'look2/T2/gen/variants/A1.png').convert('RGB');image.thumbnail((330,330));version.paste(image,(855,105));draw.text((855,410),'V7 → V8 / 第二次观察',font=font(22),fill='#70dbb2')
-    draw.text((1220,125),'BEFORESTEP',font=font(24),fill='#70dbb2')
-    for i,label in enumerate(['全程接触监测','预演必须完成','最多两次观察','任务安全续跑']):draw.text((1220,190+i*52),label,font=font(22),fill='#d2dae2')
-    draw.text((45,535),'保留关键版本源码与冻结结果，解释改动为什么发生。',font=font(28),fill='#e9edf1')
+    draw.text((1220,125),'有效主场景',font=font(24),fill='#70dbb2')
+    for i,label in enumerate(['新输入 / 真实生成','三候选预演通过','一眼 / 实际到达','旧压力案例保留']):draw.text((1220,190+i*52),label,font=font(22),fill='#d2dae2')
+    draw.text((45,535),'旧双盲区停下 → 有效关口通行，冻结门槛不变。',font=font(28),fill='#e9edf1')
     draw.text((45,605),'候选拒绝和真实失败也保留；真值替身只标为诊断。',font=font(23),fill='#a2adbb')
     version.save(MEDIA/'version-comparison.jpg',quality=93)
 
 
+def configure_from_runs(paths):
+    from beforestep import scene
+    definitions=[]
+    for path in paths.values():
+        file=Path(path)/'scene.json'
+        definitions.append(json.loads(file.read_text()) if file.exists() else json.loads((ROOT/'config/scenes/stress_v8.json').read_text()))
+    first=scene.physical_identity(definitions[0])
+    if any(scene.physical_identity(d)!=first for d in definitions[1:]):
+        raise ValueError('All comparison runs must use the same physical scene')
+    scene.configure(definitions[0]['id'])
+    return definitions[0]
+
+
 def build_data(paths):
-    data={'schema':'beforestep-demo/v1','runs':{},'candidates':[],'rocks':[]}
     from beforestep import scene
     from scipy.spatial import ConvexHull
+    definition=configure_from_runs(paths)
+    data={'schema':'beforestep-demo/v2','scene_id':definition['id'],'title':'关口通行 · 有效主场景',
+          'goal':definition['goal'],'video':'media/demo.mp4','poster':'media/demo-poster.jpg',
+          'runs':{},'candidates':[],'rocks':[]}
     for rock in scene.ROCKS.values():
         obj,_=scene.rock_asset_uniform(rock['rock'],rock['height'])
         vertices=np.array([[float(v) for v in line.split()[1:3]] for line in Path(obj).read_text().splitlines() if line.startswith('v ')])
@@ -86,32 +104,38 @@ def build_data(paths):
         indices=np.unique(np.r_[np.arange(0,len(t),10),len(t)-1])
         w,x,y,z=q[:,3:7].T;yaw=np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z))
         summary['trajectory']=[[round(float(t[i]),2),round(float(q[i,0]),4),round(float(q[i,1]),4),round(float(yaw[i]),5)] for i in indices]
+        events=[json.loads(line) for line in (path/'events.jsonl').read_text().splitlines() if line.strip()]
+        panes=[pane for e in events if e['kind']=='rehearsal' for pane in e['panes']]
+        summary['rehearsals']=len(panes);summary['rehearsals_passed']=sum(p['completed'] and not p['collided'] for p in panes)
         data['runs'][policy]=summary
         evidence=ROOT/'evidence/delivery'/policy;evidence.mkdir(parents=True,exist_ok=True)
-        for name in ('summary.json','events.jsonl','traj.npz','run_identity.json','map_final.png'):
+        for name in ('summary.json','events.jsonl','traj.npz','run_identity.json','scene.json','map_final.png'):
             if (path/name).exists():shutil.copy2(path/name,evidence/name)
-    for label,look,target,sample in [('采纳 / 第一块 B2','look1','T1','B2'),('拒绝 / 第二块 A2','look1','T2','A2'),('两图 / 第二块 M1','look2','T2','M1')]:
-        directory=ROOT/f'assets/observations/reference_v8/looks/{look}/{target}'
-        result=json.loads((directory/'lux_result.json').read_text());task=next(t for t in result['tasks'] if t['id']==sample)
-        glb=ROOT/task['glb'];filename=f'{look}_{target}_{sample}.glb';shutil.copy2(glb,MEDIA/filename)
-        input_path=directory/f'gen/variants/{sample if sample[0]!="M" else "A1"}.png';input_name=filename.replace('.glb','.jpg')
-        image=Image.open(input_path).convert('RGB');image.thumbnail((1200,1200));image.save(MEDIA/input_name,quality=92)
-        data['candidates'].append({'id':filename,'label':label,'glb':f'media/{filename}','input':f'media/{input_name}','task_id':task['task_id'],
-                                   'verdict':'通过冻结自检' if target=='T1' else '未通过冻结自检'})
-    retry=ROOT/'experiments/polar_retry_001/admission.json'
-    if retry.exists():
-        admission=json.loads(retry.read_text())
-        best=max(admission['candidates'],key=lambda c:c.get('contour_iou') or 0)
-        generated=json.loads((ROOT/'experiments/polar_retry_001/lux_result.json').read_text())
-        task=next(t for t in generated['tasks'] if t['id']==best['id'])
-        filename=f'retry_{best["id"]}.glb';shutil.copy2(ROOT/task['glb'],MEDIA/filename)
-        image=Image.open(ROOT/task['inputs'][1]).convert('RGB');image.thumbnail((1200,1200));image.save(MEDIA/'retry-input.jpg',quality=92)
-        data['candidates'].append({'id':filename,'label':f'新增两图 / {best["id"]}','glb':f'media/{filename}','input':'media/retry-input.jpg','task_id':task['task_id'],
-                                  'verdict':f'本批轮廓 IoU 最高 {best["contour_iou"]}，仍被拒绝；完整12份结果已保留'})
-    shutil.copy2(MEDIA/data['candidates'][0]['glb'].split('/')[-1],MEDIA/'candidate.glb')
-    shutil.copy2(MEDIA/data['candidates'][0]['input'].split('/')[-1],MEDIA/'input.jpg')
+    directory=ROOT/f'assets/observations/{definition["id"]}/looks/look1/T1'
+    result=json.loads((directory/'lux_result.json').read_text())
+    admission=json.loads((ROOT/f'experiments/{definition["id"]}/admission.json').read_text())
+    rows={c['id']:c for c in admission['candidates']}
+    for task in result['tasks']:
+        if task['status']!='ok':continue
+        sample=task['id'];filename=f'{definition["id"]}_{sample}.glb'
+        shutil.copy2(ROOT/task['glb'],MEDIA/filename)
+        image=Image.open(ROOT/task['inputs'][0]).convert('RGB');image.thumbnail((1200,1200))
+        image_name=filename.replace('.glb','.jpg');image.save(MEDIA/image_name,quality=92)
+        row=rows[sample]
+        data['candidates'].append({'id':filename,'label':f'{sample} / '+('自检采纳' if row['admitted'] else '自检拒绝'),
+            'glb':f'media/{filename}','input':f'media/{image_name}','task_id':task['task_id'],
+            'verdict':f'轮廓 IoU {row["contour_iou"]} · '+('通过冻结门槛，参与实际预演' if row['admitted'] else '低于冻结门槛，保留作为拒绝对比')})
+    data['generation']={'tasks':len(result['tasks']),'succeeded':len(rows),'failed':sum(t['status']=='failed' for t in result['tasks']),
+                        'admitted':len(admission['admitted_ids'])}
+    footprint=Path(paths['imagination'])/'looks/look1/T1/decide/footprint_union.npy'
+    if footprint.exists():
+        from beforestep.navigation import map as nav
+        mask=np.load(footprint);data['imagined_footprint']=[[round(float(nav.GX[i,j]),3),round(float(nav.GY[i,j]),3)] for i,j in zip(*np.nonzero(mask))]
     (ROOT/'site/data').mkdir(parents=True,exist_ok=True)
     (ROOT/'site/data/demo.json').write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')))
+    (ROOT/'site/data/scenes.json').write_text(json.dumps({'default':'gate_passage_001','scenes':[
+        {'id':'gate_passage_001','label':'关口通行 · 有效主场景','data':'data/demo.json'},
+        {'id':'stress_v8','label':'双盲区压力测试 · 历史反例','data':'data/history/stress_v8.json'}]},ensure_ascii=False))
     (ROOT/'evidence/delivery/results.json').write_text(json.dumps({k:{x:v for x,v in s.items() if x!='trajectory'} for k,s in data['runs'].items()},ensure_ascii=False,indent=2)+'\n')
     return data
 
@@ -128,9 +152,9 @@ def build_report():
 
 def main(argv=None):
     parser=argparse.ArgumentParser(prog='beforestep build')
-    parser.add_argument('--conservative',default='outputs/validation/conservative')
-    parser.add_argument('--optimistic',default='outputs/final-validation/optimistic')
-    parser.add_argument('--imagination',default='outputs/delivery/imagination')
+    parser.add_argument('--conservative',default='outputs/effective/conservative')
+    parser.add_argument('--optimistic',default='outputs/effective/optimistic')
+    parser.add_argument('--imagination',default='outputs/effective/imagination')
     parser.add_argument('--comparisons-only',action='store_true');parser.add_argument('--video',action='store_true')
     parser.add_argument('--report',action='store_true')
     args=parser.parse_args(argv);comparisons()

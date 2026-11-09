@@ -12,6 +12,7 @@ from beforestep.generation import client
 from beforestep.geometry import admission, registration
 from beforestep.navigation import controller
 from beforestep.pipeline import Recorder
+from beforestep import scene
 
 
 class MotionTests(unittest.TestCase):
@@ -78,6 +79,39 @@ class GenerationTests(unittest.TestCase):
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_effective_main_uses_real_lux_and_completes_rehearsals_and_arrival(self):
+        root=client.ROOT
+        proof=json.loads((root/'evidence/scenes/gate_passage_001/validation.json').read_text())
+        self.assertGreaterEqual(len(proof['production_trials']),2)
+        for run in proof['production_trials']:
+            self.assertEqual(run['scene_id'],'gate_passage_001')
+            self.assertEqual(run['imagine'],'lux')
+            self.assertEqual(run['sensor_mode'],'live')
+            self.assertEqual(run['result'],'arrived')
+            self.assertIsNone(run['collision'])
+            self.assertLess(float(np.linalg.norm(np.asarray(run['final_pose'][:2])-[8.5,0.])),.03)
+        events=[json.loads(line) for line in (root/'evidence/scenes/gate_passage_001/imagination/events.jsonl').read_text().splitlines()]
+        panes=[pane for event in events if event['kind']=='rehearsal' for pane in event['panes']]
+        self.assertEqual(len(panes),3)
+        self.assertTrue(all(p['completed'] and not p['collided'] for p in panes))
+        from beforestep.generation.records import read_result
+        self.assertEqual(len(read_result(root/'assets/observations/gate_passage_001/looks/look1/T1')),4)
+
+    def test_named_scene_preserves_real_obstacle_and_does_not_change_admission(self):
+        previous=scene.SCENE_ID
+        thresholds=json.loads(json.dumps(admission.ADM))
+        try:
+            configured=scene.configure('gate_passage_001')
+            self.assertEqual(configured['id'],scene.SCENE_ID)
+            self.assertEqual(scene.ROCKS['A']['rock'],'rock_07')
+            self.assertGreater(scene.GOAL[0],scene.ROCKS['A']['x'])
+            self.assertEqual(admission.ADM,thresholds)
+        finally:
+            scene.configure(previous)
+
+    def test_scene_selection_rejects_escaping_config_directory(self):
+        with self.assertRaises(ValueError):scene.configure('../gate_passage_001')
+
     def test_imagination_import_does_not_replace_shared_registration(self):
         loader=registration.load_observation
         from beforestep.geometry import imagination

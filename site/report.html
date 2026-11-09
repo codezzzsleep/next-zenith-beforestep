@@ -1,7 +1,8 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>先见一步 · 项目报告</title><style>@page{size:A4;margin:18mm}body{max-width:860px;margin:40px auto;color:#1d2730;font:15px/1.8 sans-serif}h1{font-size:30px}h2{margin-top:35px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:8px}code{font-size:12px}pre{white-space:pre-wrap}</style></head><body><h1>先见一步：让机器人在盲区里先想一遍</h1>
 <p>队伍：Next Zenith。核心工具：Aholo Lux3D。完整源码、真实生成资产、版本对比与 Demo 均在本仓库。</p>
-<h2>作品目标与有效场景</h2>
-<p>主体验要让机器人实际完成通行。我们设计了月球南极的关口：一侧是岩壁，另一侧是月溪，路内岩石的背面被遮挡和阴影隐藏。机器人需要绕过障碍走到终点，不能把停下或碰撞当作主体验完成。</p>
+<h2>项目目标与使用任务</h2>
+<p>BeforeStep 面向轮腿机器人导航实验，处理遮挡和阴影造成的几何不确定性：机器人看不到岩石的完整背面，却需要判断旁边的路线能否执行。系统使用受实际观测约束的 Lux3D 多候选几何，逐份进行物理预演，再决定行动或补充观察，并用独立执行结果核对判断。</p>
+<p>具体任务是在月球南极的关口完成通行：一侧是岩壁，另一侧是月溪，路内岩石的背面被遮挡和阴影隐藏。主任务需要完整到达；困难反例用于检验证据不足时的补充观察与停止行为。项目目标和开发原则见<a href="docs/project.md">项目说明</a>。</p>
 <p>新主场景 <code>gate_passage_001</code> 的起点是(0,-0.5)，终点是(8.5,0)。独立物理设计检验确认可达；真正的主成果使用新观测调用 Lux3D，经自检与候选物理预演，再在独立扫描真值场景中到达。设计诊断不计作 Lux3D 成功。</p>
 <h2>Lux3D 参与核心流程</h2>
 <ol>
@@ -49,15 +50,15 @@
 </tbody>
 </table>
 <p>Lux3D运行的终点误差约8.7毫米，两个路点误差均小于1厘米。所有候选预演完成后再执行，真实生成来源与独立物理执行完整连接。相同生产链重复运行通过。</p>
-<p>主场景中直接走也能到达，未故意破坏对照。这里展示生成几何提供可检查的预演条件，并减少相较保守方法的观察次数。表中是仿真行程时间，生成和配准的端到端计算开销不包含其中；不能据此声称实时延迟或普遍安全性优势。</p>
+<p>主场景中直接走也能到达。生成几何为路线提供了可检查的预演条件，相较保守方法减少了观察次数。表中是仿真行程时间，生成和配准的端到端计算开销不包含其中；这些结果尚不足以证明普遍安全收益、端到端速度优势或实机能力。</p>
 <h2>技术与场景迭代</h2>
 <p>V6尝试观测约束融合；V7引入阴影、两图与冻结准入；V8采用双盲区压力场景；v0.1补齐碰撞停止、两眼终态和任务恢复，但真实Lux分支仍停下，不能作为有效主展示。</p>
 <p>v0.2重新设计可通关口，用新的真实输入生成、完整候选预演和到达结果验收主场景。旧双盲区保留为历史压力案例，原13个候选、新两图重试12个候选及拒绝结果保全，不覆盖旧事实。</p>
 <p><img alt="关键版本与场景改进" src="media/version-comparison.jpg" /></p>
-<p>详见<a href="docs/milestones.md">技术迭代</a>、<a href="effective-scene.md">有效场景验收</a>。冻结源码与配置、原始任务、原始 GLB、配准、自检、轨迹和实际终态都在新仓库自足保存。</p>
+<p>详见<a href="docs/milestones.md">技术迭代</a>、<a href="docs/effective-scene.md">有效场景验收</a>。冻结源码与配置、原始任务、原始 GLB、配准、自检、轨迹和实际终态都在新仓库自足保存。</p>
 <h2>Demo 与源码</h2>
 <ul>
-<li><a href="https://codezzzsleep.github.io/next-zenith-beforestep/">在线体验</a>默认展示有效关口，可切换历史压力场景、机器人策略和真实3D候选。</li>
+<li><a href="https://codezzzsleep.github.io/next-zenith-beforestep/">实验查看入口</a>默认打开有效关口，可切换历史压力场景、机器人策略和真实3D候选；网页回放已完成实验，新的仿真实验通过源码命令行运行。</li>
 <li><a href="media/demo.mp4">真实 Demo 视频</a>包含三种策略的真实物理轨迹以及到达近景；展示画面来自实际仿真状态。</li>
 <li><a href="https://github.com/codezzzsleep/next-zenith-beforestep">完整源码与运行说明</a>包含参数化场景、自带机器人/岩石资源、冻结门槛、生成续跑和复现入口。</li>
 </ul>

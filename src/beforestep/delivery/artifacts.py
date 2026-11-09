@@ -146,6 +146,8 @@ def build_report():
     html=markdown.markdown(text,extensions=['tables','fenced_code'])
     html=html.replace('../site/media/','media/').replace('href="milestones.md"','href="docs/milestones.md"').replace('href="credits.md"','href="docs/credits.md"')
     html=html.replace('href="../README.md"','href="https://github.com/codezzzsleep/next-zenith-beforestep"')
+    for document in ('project.md', 'effective-scene.md'):
+        html=html.replace(f'href="{document}"',f'href="docs/{document}"')
     style='@page{size:A4;margin:18mm}body{max-width:860px;margin:40px auto;color:#1d2730;font:15px/1.8 sans-serif}h1{font-size:30px}h2{margin-top:35px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:8px}code{font-size:12px}pre{white-space:pre-wrap}'
     (ROOT/'site/report.html').write_text('<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><title>先见一步 · 项目报告</title><style>'+style+'</style></head><body>'+html+'</body></html>')
 

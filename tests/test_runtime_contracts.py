@@ -2,6 +2,7 @@
 import json
 from pathlib import Path
 import tempfile
+import sys
 import unittest
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -79,11 +80,39 @@ class GenerationTests(unittest.TestCase):
 
 
 class EvidenceTests(unittest.TestCase):
+    def test_completed_trial_cannot_overwrite_original_evidence(self):
+        from beforestep import pipeline
+        with tempfile.TemporaryDirectory() as temp:
+            run = Path(temp) / 'imagination'
+            run.mkdir()
+            originals = {'summary.json': b'{"result":"arrived"}',
+                         'run_identity.json': b'original identity',
+                         'events.jsonl': b'original events', 'traj.npz': b'original trajectory'}
+            for name, content in originals.items():
+                (run / name).write_bytes(content)
+            with patch.object(sys, 'argv', ['beforestep run', '--policy', 'imagination', '--out', temp]):
+                with self.assertRaises(SystemExit) as error:
+                    pipeline.main()
+            self.assertEqual(error.exception.code, 2)
+            self.assertEqual({p.name: p.read_bytes() for p in run.iterdir()}, originals)
+
     def test_effective_main_uses_real_lux_and_completes_rehearsals_and_arrival(self):
         root=client.ROOT
         proof=json.loads((root/'evidence/scenes/gate_passage_001/validation.json').read_text())
         self.assertGreaterEqual(len(proof['production_trials']),2)
-        for run in proof['production_trials']:
+        trial_ids = set()
+        for trial in proof['production_trials']:
+            self.assertNotIn(trial['trial_id'], trial_ids)
+            trial_ids.add(trial['trial_id'])
+            log = root / trial['events_path']
+            self.assertEqual(client.sha(log), trial['events_sha256'])
+            trial_events = [json.loads(line) for line in log.read_text().splitlines()]
+            run = {k: v for k, v in trial_events[-1].items() if k != 'kind'}
+            self.assertEqual(run, trial['summary'])
+            trial_panes = [pane for event in trial_events if event['kind'] == 'rehearsal'
+                           for pane in event['panes']]
+            self.assertEqual(len(trial_panes), 3)
+            self.assertTrue(all(p['completed'] and not p['collided'] for p in trial_panes))
             self.assertEqual(run['scene_id'],'gate_passage_001')
             self.assertEqual(run['imagine'],'lux')
             self.assertEqual(run['sensor_mode'],'live')

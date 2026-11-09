@@ -41,6 +41,8 @@ MUJOCO_GL=egl .venv/bin/python -m beforestep run --scene gate_passage_001 --poli
 
 主场景可复现实验默认选择 gate_passage_001；历史压力案例使用 `--scene stress_v8 --recorded-observations assets/observations/reference_v8`。
 
+已完成的运行目录保留完整证据，再次实验请使用新的 `--out` 或 `--tag`；程序拒绝覆盖已有终态。尚在等待 Lux3D 结果的未完成运行可以在原目录恢复。
+
 记录观测模式明确使用保留的真实 RGB-D 和 Lux3D 输入，并核对每次观察的机器人姿态、仿真时刻。它会重新配准、自检、规划和执行，不复用旧的规划结论。实时模式省略 `--recorded-observations`；需要生成时退出码为 `10`，请求落盘在输出目录的 `NEED_LUX3D.json`。
 
 新增生成使用环境变量 `AHOLO_API_KEY`，或 `--env-file` 指向仓库外的密钥文件（支持 `API_key` 字段）。创建任务需明确传入 `--submit`；同一请求恢复查询时不传此参数。

@@ -78,10 +78,17 @@ def main():
     a.max_looks = a.max_looks if a.max_looks is not None else (2 if a.policy == 'imagination' else 5)
     if a.max_looks < 1 or (a.policy == 'imagination' and a.max_looks > 2):
         ap.error('想象策略允许一至两眼；其他策略的观察次数必须为正数')
-    out = pathlib.Path(a.out) / (a.tag or a.policy); out.mkdir(parents=True, exist_ok=True)
+    out = pathlib.Path(a.out) / (a.tag or a.policy)
+    if (out / 'summary.json').exists():
+        ap.error(f'完整运行结果已存在：{out}；请使用新的 --out 或 --tag 保留独立试验。')
+    out.mkdir(parents=True, exist_ok=True)
     import hashlib
+    import uuid
+    from datetime import datetime, timezone
     from .paths import ROOT
-    identity = {'schema':'beforestep-run-identity/v1', 'arguments':vars(a), 'scene':scene_definition,
+    identity = {'schema':'beforestep-run-identity/v1', 'run_id':uuid.uuid4().hex,
+                'started_at':datetime.now(timezone.utc).isoformat(),
+                'arguments':vars(a), 'scene':scene_definition,
                 'source_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()
                                  for p in sorted((ROOT/'src/beforestep').rglob('*.py'))},
                 'config_sha256':{str(p.relative_to(ROOT)):hashlib.sha256(p.read_bytes()).hexdigest()

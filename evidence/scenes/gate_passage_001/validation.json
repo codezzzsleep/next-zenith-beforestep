@@ -5,40 +5,52 @@
   "same_admission_policy": "config/admission.json",
   "production_trials": [
     {
-      "policy": "imagination",
-      "tag": "imagination",
-      "see_dark": false,
-      "imagine": "lux",
-      "result": "arrived",
-      "scene_id": "gate_passage_001",
-      "sensor_mode": "live",
-      "looks": 1,
-      "final_pose": [
-        8.492,
-        0.001,
-        -4.0
-      ],
-      "sim_time_s": 76.5,
-      "wall_s": 83.2,
-      "collision": null
+      "trial_id": "production",
+      "events_path": "evidence/scenes/gate_passage_001/trials/production.jsonl",
+      "events_sha256": "1a3ee5f480d3fb7c8ba69ae9f84f4abf14235f77c88793c8607be201b1f5edf0",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "scene_id": "gate_passage_001",
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          8.492,
+          0.001,
+          -4.0
+        ],
+        "sim_time_s": 76.5,
+        "wall_s": 78.2,
+        "collision": null
+      },
+      "full_archive": null
     },
     {
-      "policy": "imagination",
-      "tag": "imagination",
-      "see_dark": false,
-      "imagine": "lux",
-      "result": "arrived",
-      "scene_id": "gate_passage_001",
-      "sensor_mode": "live",
-      "looks": 1,
-      "final_pose": [
-        8.492,
-        0.001,
-        -4.0
-      ],
-      "sim_time_s": 76.5,
-      "wall_s": 83.2,
-      "collision": null
+      "trial_id": "repeat",
+      "events_path": "evidence/scenes/gate_passage_001/trials/repeat.jsonl",
+      "events_sha256": "8d7cf46f9500d97e30136313f4318c1a82ca2b9ee1a1a1e110d9081c1086efae",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "scene_id": "gate_passage_001",
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          8.492,
+          0.001,
+          -4.0
+        ],
+        "sim_time_s": 76.5,
+        "wall_s": 83.2,
+        "collision": null
+      },
+      "full_archive": "evidence/scenes/gate_passage_001/imagination"
     }
   ],
   "generation_tasks": 6,
@@ -50,5 +62,6 @@
     "C2"
   ],
   "rehearsals_per_trial": 3,
-  "note": "Live new observations, real Lux3D assets, complete collision-free rehearsals and independent truth execution; optimistic also arrives"
+  "note": "Live new observations, real Lux3D assets, complete collision-free rehearsals and independent truth execution; optimistic also arrives",
+  "archive_note": "The complete imagination trajectory archive is from the second live trial. Separate original stdout event streams document both trials; the first full trajectory was overwritten during the same-output repeat and is not claimed to be independently archived."
 }

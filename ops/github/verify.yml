@@ -1,0 +1,17 @@
+name: Verify current implementation and evidence
+on: [push, pull_request]
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - run: pip install -e .
+      - run: python -m beforestep resources
+      - run: python -m beforestep check
+      - run: python -m unittest discover -s tests -v

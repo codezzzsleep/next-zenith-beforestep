@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "next-zenith-beforestep"
+version = "0.1.0"
+description = "BeforeStep: Lux3D imagination and physical rehearsal for a wheel-leg robot"
+requires-python = ">=3.12,<3.13"
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+report = ["Markdown==3.10"]
+
+[project.scripts]
+beforestep = "beforestep.cli:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["F821", "F823", "E9"]

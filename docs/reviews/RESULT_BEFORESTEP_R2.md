@@ -335,3 +335,9 @@ D整合脚本保留R1八段与旧报告打印样式，按实际Markdown路径换
 新生成器兼容测试实际63/63 exit0（4.554s，B2-generator-compatibility-tests.log），84既注册v3配置字节完全相同。源SHA清单仍与B1-flat-and-view完整5回归一致；不重复跑未变物理源。B6后处理驱动在复制的真实R1锚点上实测exit0：3D47.541283739641456mm、XY0、乐观原路线压入218.988625657973mm，与原复盘相同；只验证helper，不计新组实测，原R1未覆盖。public evidence/suite/regressions/postmortem-helper/validation.json，原输出outputs/qa/r2/postmortem-helper。新Lux仍0/360。
 
 完整F0分类的原始summary/run_id与尚未完成其他类别的当前进度已同步到evidence/suite/pool/r2_v3/manifest_initial_and_expansion_results.json；completed=false，不可用于冻结。原runner结束后会将同一文件更新为全336终态及最终counts，Git历史保留本次完整F0判断时的非Lux依据。v4预注册d7a1004已推main，远端同SHA。
+
+### B2 F1初始池完成与唯一扩展预期
+
+F1修复后的种子1–12全部48非Luxexit0：D1/O5/U5/未归类1，0执行错误。决定性不足2，按B2追加13–24一次，参数范围/RNG/source不变，不拿see-dark碰撞当执行错误、不放宽分类。现有336池继续跑F2/F3；新增F1扩展单独out outputs/suite/pool/r2_v3_f1_expansion，workers1普通计算，避免重复任何已有任务。当前约3GB/physics进程，可用内存9.1GB（第三进程尚在加载），一额外F1进程预计≤3.2GB；总四普通进程，不使用代理。
+
+生成预期：`generate_suite_pool.py --params config/suite/pool_v3.json --family F1 --seeds 13 24` exit0，12个候选。配置/manifest提交推送之后才运行：`run_suite_pool.py --manifest evidence/suite/pool/r2_v3/manifest_F1_13_24.json --out outputs/suite/pool/r2_v3_f1_expansion --regression evidence/suite/regressions/B1-flat-and-view/regression.json --workers 1`，预期48次exit0并按原定义分类，不预设决定性个数。全部原结果保留；新增Lux0/360。

@@ -6447,9 +6447,59 @@
           },
           "run_id": "822241916e7241d7ac04379000fc92a2",
           "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_007/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_007",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_007/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_007",
+            "goal": [
+              11.41375,
+              -0.020804
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 92.38,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              11.406,
+              -0.02,
+              -15.32
+            ],
+            "sim_time_s": 93.58,
+            "wall_s": 68.7,
+            "collision": null
+          },
+          "run_id": "be85a0068449434081290371cae29e9a",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_007/truth/run"
         }
       },
-      "classification": "incomplete"
+      "classification": "ordinary"
     },
     "suite_r2_v3_F1_008": {
       "scene": "suite_r2_v3_F1_008",
@@ -6514,9 +6564,156 @@
           },
           "run_id": "3f39d845f6924f358f36f33003251330",
           "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/conservative/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_008",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_008",
+            "goal": [
+              8.253731,
+              -0.06614
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 50.68,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              5.959,
+              -1.433,
+              16.16
+            ],
+            "sim_time_s": 51.88,
+            "wall_s": 29.2,
+            "collision": null
+          },
+          "run_id": "86e8320981a44c638786b2d45bc63187",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/optimistic/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_008",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_008",
+            "goal": [
+              8.253731,
+              -0.06614
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 83.77,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              7.064,
+              2.0,
+              3.36
+            ],
+            "sim_time_s": 84.97,
+            "wall_s": 56.9,
+            "collision": null
+          },
+          "run_id": "5e885b40002042dca865588bba1b696a",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/see_dark/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_008",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_008",
+            "goal": [
+              8.253731,
+              -0.06614
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 40.3,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.088,
+              -1.607,
+              -7.72
+            ],
+            "sim_time_s": 41.5,
+            "wall_s": 46.4,
+            "collision": null
+          },
+          "run_id": "2633a482265545f98815243938c0d31f",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_008/truth/run"
         }
       },
-      "classification": "incomplete"
+      "classification": "unsolvable"
     },
     "suite_r2_v3_F1_009": {
       "scene": "suite_r2_v3_F1_009",
@@ -6524,7 +6721,204 @@
       "seed": 9,
       "path": "config/scenes/suite_r2_v3_F1_009.json",
       "sha256": "d62711069cb02a501f0ec73e42c3501e6b158d9a634954eff44e64d29102698a",
-      "runs": {}
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_009",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_009",
+            "goal": [
+              10.448366,
+              -0.089263
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 115.15,
+            "sensor_mode": "live",
+            "looks": 3,
+            "final_pose": [
+              8.09,
+              3.024,
+              100.1
+            ],
+            "sim_time_s": 116.35,
+            "wall_s": 68.2,
+            "collision": null
+          },
+          "run_id": "f8435cefcdc744ec9744139af0a0a9c1",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/conservative/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_009",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_009",
+            "goal": [
+              10.448366,
+              -0.089263
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 92.1,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              10.44,
+              -0.087,
+              -18.73
+            ],
+            "sim_time_s": 93.3,
+            "wall_s": 45.7,
+            "collision": null
+          },
+          "run_id": "7c20e0a295cc4cd190e46548f536ee26",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/optimistic/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_009",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_009",
+            "goal": [
+              10.448366,
+              -0.089263
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 186.29,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              10.44,
+              -0.09,
+              26.92
+            ],
+            "sim_time_s": 187.49,
+            "wall_s": 94.3,
+            "collision": null
+          },
+          "run_id": "828cae02787f4c169edd25d55664ae89",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/see_dark/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_009",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_009",
+            "goal": [
+              10.448366,
+              -0.089263
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 99.5,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              10.441,
+              -0.087,
+              -22.67
+            ],
+            "sim_time_s": 100.7,
+            "wall_s": 82.2,
+            "collision": null
+          },
+          "run_id": "23ffdb89605f4df5b38de1ac7ca45b13",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_009/truth/run"
+        }
+      },
+      "classification": "ordinary"
     },
     "suite_r2_v3_F1_010": {
       "scene": "suite_r2_v3_F1_010",
@@ -6532,7 +6926,213 @@
       "seed": 10,
       "path": "config/scenes/suite_r2_v3_F1_010.json",
       "sha256": "6a6bb0034008df6f2d11d50d4505c3408253025dd4533ef31e1c05b30e4803f8",
-      "runs": {}
+      "runs": {
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_010",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_010",
+            "goal": [
+              10.716746,
+              0.028962
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 67.62,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.764,
+              -0.308,
+              -147.46
+            ],
+            "sim_time_s": 68.82,
+            "wall_s": 36.4,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.624,
+                -0.606,
+                0.069
+              ],
+              "t": 68.822
+            }
+          },
+          "run_id": "178588220cbe496c9d55474972ff5dd2",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/see_dark/run"
+        },
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_010",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_010",
+            "goal": [
+              10.716746,
+              0.028962
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 155.16,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              3.875,
+              -1.606,
+              1.58
+            ],
+            "sim_time_s": 156.36,
+            "wall_s": 84.6,
+            "collision": null
+          },
+          "run_id": "d02b71a9c9ca4c929d2de5f7772f4531",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/conservative/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_010",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_010",
+            "goal": [
+              10.716746,
+              0.028962
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 103.82,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              10.709,
+              0.027,
+              9.99
+            ],
+            "sim_time_s": 105.02,
+            "wall_s": 43.7,
+            "collision": null
+          },
+          "run_id": "1afde5a21f3d47c5838c47d6eaeb6eab",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_010",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_010",
+            "goal": [
+              10.716746,
+              0.028962
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 110.68,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              10.709,
+              0.028,
+              9.94
+            ],
+            "sim_time_s": 111.88,
+            "wall_s": 85.3,
+            "collision": null
+          },
+          "run_id": "9bc99a52e1124714b15efa5317bf9d0d",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_010/truth/run"
+        }
+      },
+      "classification": "ordinary"
     },
     "suite_r2_v3_F1_011": {
       "scene": "suite_r2_v3_F1_011",
@@ -6540,7 +7140,213 @@
       "seed": 11,
       "path": "config/scenes/suite_r2_v3_F1_011.json",
       "sha256": "545261bdc0f09c956be83a76b0865163fb2d5aaaf640c36354f7eabaece20b3b",
-      "runs": {}
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_011",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_011",
+            "goal": [
+              11.444334,
+              0.035391
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 50.53,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              4.412,
+              -1.376,
+              69.39
+            ],
+            "sim_time_s": 51.73,
+            "wall_s": 38.3,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.331,
+                -1.044,
+                0.092
+              ],
+              "t": 51.726
+            }
+          },
+          "run_id": "176c006a89c548008b07da221f57ac90",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/conservative/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_011",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_011",
+            "goal": [
+              11.444334,
+              0.035391
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 62.75,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              7.883,
+              -0.761,
+              12.04
+            ],
+            "sim_time_s": 63.95,
+            "wall_s": 30.3,
+            "collision": null
+          },
+          "run_id": "6036886cb2ba4c12a783dee370b97378",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/optimistic/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_011",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_011",
+            "goal": [
+              11.444334,
+              0.035391
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 144.25,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              8.07,
+              1.42,
+              -20.84
+            ],
+            "sim_time_s": 145.45,
+            "wall_s": 79.6,
+            "collision": null
+          },
+          "run_id": "d49ece245203449a9eea1ffbf759ce8b",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/see_dark/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_011",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_011",
+            "goal": [
+              11.444334,
+              0.035391
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 40.3,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.088,
+              -1.607,
+              -7.72
+            ],
+            "sim_time_s": 41.5,
+            "wall_s": 46.5,
+            "collision": null
+          },
+          "run_id": "a01eaf6b18964f2eb5e095b3628243f0",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_011/truth/run"
+        }
+      },
+      "classification": "unsolvable"
     },
     "suite_r2_v3_F1_012": {
       "scene": "suite_r2_v3_F1_012",
@@ -6548,7 +7354,213 @@
       "seed": 12,
       "path": "config/scenes/suite_r2_v3_F1_012.json",
       "sha256": "dad58272d4c010f94e1c28e2fe3755be33e9b7434bd6873ac08a5b4b009e2469",
-      "runs": {}
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_012",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_012",
+            "goal": [
+              8.062185,
+              0.064538
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 119.53,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              8.86,
+              2.016,
+              -8.75
+            ],
+            "sim_time_s": 120.73,
+            "wall_s": 67.8,
+            "collision": null
+          },
+          "run_id": "ffdfdffc7b70472fa2dc2a54587a58ac",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/conservative/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_012",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_012",
+            "goal": [
+              8.062185,
+              0.064538
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 81.49,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              7.02,
+              -0.611,
+              32.16
+            ],
+            "sim_time_s": 82.69,
+            "wall_s": 41.3,
+            "collision": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.272,
+                -0.411,
+                0.308
+              ],
+              "t": 82.686
+            }
+          },
+          "run_id": "421dfaafdb074ec09e224e1ba3ff79c4",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/optimistic/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_012",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_012",
+            "goal": [
+              8.062185,
+              0.064538
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 142.57,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              9.058,
+              0.807,
+              -122.1
+            ],
+            "sim_time_s": 143.77,
+            "wall_s": 80.3,
+            "collision": null
+          },
+          "run_id": "a8c7606de9db478393b87e6f3d40191c",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/see_dark/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v3_F1_012",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v3_F1_012",
+            "goal": [
+              8.062185,
+              0.064538
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 57.74,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.472,
+              1.004,
+              -48.81
+            ],
+            "sim_time_s": 58.94,
+            "wall_s": 47.4,
+            "collision": null
+          },
+          "run_id": "31081c568c744a8e840793d771af2718",
+          "run": "outputs/suite/pool/r2_v3/suite_r2_v3_F1_012/truth/run"
+        }
+      },
+      "classification": "unsolvable"
     },
     "suite_r2_v3_F2_001": {
       "scene": "suite_r2_v3_F2_001",
@@ -6556,7 +7568,8 @@
       "seed": 1,
       "path": "config/scenes/suite_r2_v3_F2_001.json",
       "sha256": "60d98da4d62c5f640659f615a8e8afba11f9bbb0bbd54c7d57b4743130704bc6",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_002": {
       "scene": "suite_r2_v3_F2_002",
@@ -6564,7 +7577,8 @@
       "seed": 2,
       "path": "config/scenes/suite_r2_v3_F2_002.json",
       "sha256": "f103a23ff645126f35f21fc9a4144cb053250b5ba597a67df53bf6a371fe7713",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_003": {
       "scene": "suite_r2_v3_F2_003",
@@ -6572,7 +7586,8 @@
       "seed": 3,
       "path": "config/scenes/suite_r2_v3_F2_003.json",
       "sha256": "2138ec6ec9a3b7f32f0dc3fd4172b9937a7c241f2452deefa63df36e10604d3c",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_004": {
       "scene": "suite_r2_v3_F2_004",
@@ -6580,7 +7595,8 @@
       "seed": 4,
       "path": "config/scenes/suite_r2_v3_F2_004.json",
       "sha256": "b75c248fa05eea358796f8a3e1adbd9c795bafba2c4a0fff969ae653b1df94c1",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_005": {
       "scene": "suite_r2_v3_F2_005",
@@ -6588,7 +7604,8 @@
       "seed": 5,
       "path": "config/scenes/suite_r2_v3_F2_005.json",
       "sha256": "a90dd79bd3125249b5086d7c6b2a2c5c33a761b6d8506f7f8f3c8f9fa8e30a5f",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_006": {
       "scene": "suite_r2_v3_F2_006",
@@ -6596,7 +7613,8 @@
       "seed": 6,
       "path": "config/scenes/suite_r2_v3_F2_006.json",
       "sha256": "d39e336eec4317a9abc3b4939f2b659b08a3de12f15d53cf341ef0928fd146cc",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_007": {
       "scene": "suite_r2_v3_F2_007",
@@ -6604,7 +7622,8 @@
       "seed": 7,
       "path": "config/scenes/suite_r2_v3_F2_007.json",
       "sha256": "c2590daba397778165273878d5b9abacf5b4e44d3f5c8c9db3a75e46981155b6",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_008": {
       "scene": "suite_r2_v3_F2_008",
@@ -6612,7 +7631,8 @@
       "seed": 8,
       "path": "config/scenes/suite_r2_v3_F2_008.json",
       "sha256": "28cef3df26ae2d3bbe6032b5ab9ee176f4b07d4df3818ae5775bd04aa17724e6",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_009": {
       "scene": "suite_r2_v3_F2_009",
@@ -6620,7 +7640,8 @@
       "seed": 9,
       "path": "config/scenes/suite_r2_v3_F2_009.json",
       "sha256": "7f378b5e0916da1ca7aebadd42706252659f589f7ee04173bf77fa61b47668ba",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_010": {
       "scene": "suite_r2_v3_F2_010",
@@ -6628,7 +7649,8 @@
       "seed": 10,
       "path": "config/scenes/suite_r2_v3_F2_010.json",
       "sha256": "5ec98f190eb8a068573e8914c29d0c6e3bf05130650fddf58fe2443ce3603c24",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_011": {
       "scene": "suite_r2_v3_F2_011",
@@ -6636,7 +7658,8 @@
       "seed": 11,
       "path": "config/scenes/suite_r2_v3_F2_011.json",
       "sha256": "211612b4bcf5a26a1ffb09acdcdff5324e9c73af91450d26a2166684a8ac47c8",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_012": {
       "scene": "suite_r2_v3_F2_012",
@@ -6644,7 +7667,8 @@
       "seed": 12,
       "path": "config/scenes/suite_r2_v3_F2_012.json",
       "sha256": "30478807d7ec2c63c81e5261f91ea5c6873e5c376d66f327576a060929029566",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_013": {
       "scene": "suite_r2_v3_F2_013",
@@ -6652,7 +7676,8 @@
       "seed": 13,
       "path": "config/scenes/suite_r2_v3_F2_013.json",
       "sha256": "8aaf3d25b9d7cb234843410614efa30728d9df5fd324fe0f7ed7a1e5f5dda8e3",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_014": {
       "scene": "suite_r2_v3_F2_014",
@@ -6660,7 +7685,8 @@
       "seed": 14,
       "path": "config/scenes/suite_r2_v3_F2_014.json",
       "sha256": "13ee214c9832d239c65fa87bd3f57675940a83e459de4267eb2db116096b1c5e",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_015": {
       "scene": "suite_r2_v3_F2_015",
@@ -6668,7 +7694,8 @@
       "seed": 15,
       "path": "config/scenes/suite_r2_v3_F2_015.json",
       "sha256": "a6b068a8368bc2010e667c070125cc4b217f472e10d530f33800d4aa2ea5823e",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_016": {
       "scene": "suite_r2_v3_F2_016",
@@ -6676,7 +7703,8 @@
       "seed": 16,
       "path": "config/scenes/suite_r2_v3_F2_016.json",
       "sha256": "8782a512c57de88d6a8e4cb1bb7c767e5de90d5bfe2075be70231a560d405a9d",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_017": {
       "scene": "suite_r2_v3_F2_017",
@@ -6684,7 +7712,8 @@
       "seed": 17,
       "path": "config/scenes/suite_r2_v3_F2_017.json",
       "sha256": "878d2ad626b0b7c4d788c5e7047f0d7b042457ac10cd0090ae30c4c0f065e931",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_018": {
       "scene": "suite_r2_v3_F2_018",
@@ -6692,7 +7721,8 @@
       "seed": 18,
       "path": "config/scenes/suite_r2_v3_F2_018.json",
       "sha256": "f6409ec49bfcddfbd473c24bbebc5263340a4fd83aa49dc36c51c91a57511a35",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_019": {
       "scene": "suite_r2_v3_F2_019",
@@ -6700,7 +7730,8 @@
       "seed": 19,
       "path": "config/scenes/suite_r2_v3_F2_019.json",
       "sha256": "327ae1a91d63d101d764839ea83dc064db4df1e68c7f00272f2e3b0aa37926ac",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_020": {
       "scene": "suite_r2_v3_F2_020",
@@ -6708,7 +7739,8 @@
       "seed": 20,
       "path": "config/scenes/suite_r2_v3_F2_020.json",
       "sha256": "5cfdf5a9f2f9ac49829afbec55f9d3ceca74dde3e0b15bdc3b0e221556fe407f",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_021": {
       "scene": "suite_r2_v3_F2_021",
@@ -6716,7 +7748,8 @@
       "seed": 21,
       "path": "config/scenes/suite_r2_v3_F2_021.json",
       "sha256": "e17a900af6a303806bff7143c0616e1bb745b83d12703536bf0f311d676ed731",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_022": {
       "scene": "suite_r2_v3_F2_022",
@@ -6724,7 +7757,8 @@
       "seed": 22,
       "path": "config/scenes/suite_r2_v3_F2_022.json",
       "sha256": "8a3e6a8e2fda729e26c02ca7cc6d4ca498d525519959e37157f76540d0db693f",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_023": {
       "scene": "suite_r2_v3_F2_023",
@@ -6732,7 +7766,8 @@
       "seed": 23,
       "path": "config/scenes/suite_r2_v3_F2_023.json",
       "sha256": "dcf25be975bd5d4b209540cdd13db6e855fd9b96e99234e4f1a3bcdcfbba0795",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F2_024": {
       "scene": "suite_r2_v3_F2_024",
@@ -6740,7 +7775,8 @@
       "seed": 24,
       "path": "config/scenes/suite_r2_v3_F2_024.json",
       "sha256": "059a2d3c22cdf532b55a9a388d5b495fa1049787b2ac4a65f86cef549f0c81d0",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_001": {
       "scene": "suite_r2_v3_F3_001",
@@ -6748,7 +7784,8 @@
       "seed": 1,
       "path": "config/scenes/suite_r2_v3_F3_001.json",
       "sha256": "46e7d27782c693034169e279e7b33d116fa56fc7e320747e34b483bd73970596",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_002": {
       "scene": "suite_r2_v3_F3_002",
@@ -6756,7 +7793,8 @@
       "seed": 2,
       "path": "config/scenes/suite_r2_v3_F3_002.json",
       "sha256": "6329f2da203df0d1e932ebdd2a313682fc35a10cb663cd375e28bb0d82b712fe",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_003": {
       "scene": "suite_r2_v3_F3_003",
@@ -6764,7 +7802,8 @@
       "seed": 3,
       "path": "config/scenes/suite_r2_v3_F3_003.json",
       "sha256": "dd6d96aa2d7aa863b356734a2432c70827dc85aa27519ba2d5fd61f031d06467",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_004": {
       "scene": "suite_r2_v3_F3_004",
@@ -6772,7 +7811,8 @@
       "seed": 4,
       "path": "config/scenes/suite_r2_v3_F3_004.json",
       "sha256": "e740360554ed58c6f636de02c356052423782ee0575fe0ad7b0eacd080939a82",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_005": {
       "scene": "suite_r2_v3_F3_005",
@@ -6780,7 +7820,8 @@
       "seed": 5,
       "path": "config/scenes/suite_r2_v3_F3_005.json",
       "sha256": "f209b127b129feffe33281b3ef9a98569b0ca1866cb62a189ea24c6d6a54d543",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_006": {
       "scene": "suite_r2_v3_F3_006",
@@ -6788,7 +7829,8 @@
       "seed": 6,
       "path": "config/scenes/suite_r2_v3_F3_006.json",
       "sha256": "f79aa245b3a8fec55415ce4c3d5a51eb9086b329cc972ce77437d54b0e2d43af",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_007": {
       "scene": "suite_r2_v3_F3_007",
@@ -6796,7 +7838,8 @@
       "seed": 7,
       "path": "config/scenes/suite_r2_v3_F3_007.json",
       "sha256": "e07b827ec2388a45e6a80ac5c5a6d2cb6bafdd5f2c21d07aa1fead3938f8052b",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_008": {
       "scene": "suite_r2_v3_F3_008",
@@ -6804,7 +7847,8 @@
       "seed": 8,
       "path": "config/scenes/suite_r2_v3_F3_008.json",
       "sha256": "fffdaa018384ade93a369574be3c2e6d2a0b73f4504d15e44d073be5c639bb04",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_009": {
       "scene": "suite_r2_v3_F3_009",
@@ -6812,7 +7856,8 @@
       "seed": 9,
       "path": "config/scenes/suite_r2_v3_F3_009.json",
       "sha256": "394bc0c49fea84f1816d93fca277c84e8247382654b8cbb5093a1068ffa2be42",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_010": {
       "scene": "suite_r2_v3_F3_010",
@@ -6820,7 +7865,8 @@
       "seed": 10,
       "path": "config/scenes/suite_r2_v3_F3_010.json",
       "sha256": "a49674d4952999a046dcbcbf742f7f8c22b050965dd1cfb8bdd30e88e5f7355b",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_011": {
       "scene": "suite_r2_v3_F3_011",
@@ -6828,7 +7874,8 @@
       "seed": 11,
       "path": "config/scenes/suite_r2_v3_F3_011.json",
       "sha256": "e9288b3016e47f9421dd882b09fa5250cf9de3990cd8226251666fe09a06cede",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_012": {
       "scene": "suite_r2_v3_F3_012",
@@ -6836,7 +7883,8 @@
       "seed": 12,
       "path": "config/scenes/suite_r2_v3_F3_012.json",
       "sha256": "07c3ef90d7d11c26291a3042c4b3e63050183059e3eb960a5ebf79d66c8022fb",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_013": {
       "scene": "suite_r2_v3_F3_013",
@@ -6844,7 +7892,8 @@
       "seed": 13,
       "path": "config/scenes/suite_r2_v3_F3_013.json",
       "sha256": "c9bd11e5812a467995d424f11e6cb588dd6e80c1ef6b2b9acc7378e31bbeb95b",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_014": {
       "scene": "suite_r2_v3_F3_014",
@@ -6852,7 +7901,8 @@
       "seed": 14,
       "path": "config/scenes/suite_r2_v3_F3_014.json",
       "sha256": "cbd6076e2b12ba902cf285834875d117c99d266c6b5e183b6173c54af1bb6536",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_015": {
       "scene": "suite_r2_v3_F3_015",
@@ -6860,7 +7910,8 @@
       "seed": 15,
       "path": "config/scenes/suite_r2_v3_F3_015.json",
       "sha256": "0745f2483d50dfeadf175e30ad4d27182fd3c84ad1309329a17a14550737ef48",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_016": {
       "scene": "suite_r2_v3_F3_016",
@@ -6868,7 +7919,8 @@
       "seed": 16,
       "path": "config/scenes/suite_r2_v3_F3_016.json",
       "sha256": "4f0a8c5d44de771b7961359925c84c29fc417950d3a9e866ccaded5ec3fe595f",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_017": {
       "scene": "suite_r2_v3_F3_017",
@@ -6876,7 +7928,8 @@
       "seed": 17,
       "path": "config/scenes/suite_r2_v3_F3_017.json",
       "sha256": "09648a7c2f27841dcc9a7c3436ad317c5aea14bb5246d126c1be298d7f16a540",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_018": {
       "scene": "suite_r2_v3_F3_018",
@@ -6884,7 +7937,8 @@
       "seed": 18,
       "path": "config/scenes/suite_r2_v3_F3_018.json",
       "sha256": "0a8c94edbd930f3d65d6c7c18aa1d8e2e66a31fc7bc74c8660bcb9f421a9b08f",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_019": {
       "scene": "suite_r2_v3_F3_019",
@@ -6892,7 +7946,8 @@
       "seed": 19,
       "path": "config/scenes/suite_r2_v3_F3_019.json",
       "sha256": "97e1b5196d66c443bd0fafa113ea384f8f8ab58a5f7d39437b069cca255b60c4",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_020": {
       "scene": "suite_r2_v3_F3_020",
@@ -6900,7 +7955,8 @@
       "seed": 20,
       "path": "config/scenes/suite_r2_v3_F3_020.json",
       "sha256": "9c1c27b52c638100427b166fd2d6546ff27f3350d5d5a71e08008581b98f2075",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_021": {
       "scene": "suite_r2_v3_F3_021",
@@ -6908,7 +7964,8 @@
       "seed": 21,
       "path": "config/scenes/suite_r2_v3_F3_021.json",
       "sha256": "d7ea9738fcde15146820e24f938e0a469030f22b0aee627bc95ebb2a2d462a7a",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_022": {
       "scene": "suite_r2_v3_F3_022",
@@ -6916,7 +7973,8 @@
       "seed": 22,
       "path": "config/scenes/suite_r2_v3_F3_022.json",
       "sha256": "95a6f5dbf4358f7a1629f828f59f7b60144e4992a40d3bf267cb3d0d2ea4d8ba",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_023": {
       "scene": "suite_r2_v3_F3_023",
@@ -6924,7 +7982,8 @@
       "seed": 23,
       "path": "config/scenes/suite_r2_v3_F3_023.json",
       "sha256": "56603a4bf622bc6b7bb67341c876bea8a255f8f117c899abda5419e9ea95a462",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     },
     "suite_r2_v3_F3_024": {
       "scene": "suite_r2_v3_F3_024",
@@ -6932,9 +7991,11 @@
       "seed": 24,
       "path": "config/scenes/suite_r2_v3_F3_024.json",
       "sha256": "ac9cfed4b011132661c6ffa6e509ac525af9b60b796cb2043bcc231c5f09ffe5",
-      "runs": {}
+      "runs": {},
+      "classification": "incomplete"
     }
   },
+  "completed": false,
   "counts": {
     "F0": {
       "decisive": 0,
@@ -6945,10 +8006,10 @@
     },
     "F1": {
       "decisive": 1,
-      "ordinary": 2,
-      "unsolvable": 2,
+      "ordinary": 5,
+      "unsolvable": 5,
       "unclassified": 1,
-      "incomplete": 6
+      "incomplete": 0
     },
     "F2": {
       "decisive": 0,
@@ -6964,6 +8025,5 @@
       "unclassified": 0,
       "incomplete": 24
     }
-  },
-  "completed": false
+  }
 }

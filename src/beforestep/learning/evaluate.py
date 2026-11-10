@@ -20,6 +20,8 @@ def main(argv=None):
     parser = argparse.ArgumentParser(prog='beforestep evaluate-controller')
     parser.add_argument('--model', action='append', required=True,
                         help='LABEL=checkpoint path, or LABEL=rules for the demonstration expert')
+    parser.add_argument('--pose-model', action='append', default=[],
+                        help='LABEL=terminal pose checkpoint for one learned controller')
     parser.add_argument('--out', required=True)
     parser.add_argument('--episodes', type=int, default=32)
     parser.add_argument('--seed-start', type=int, default=940001)
@@ -34,14 +36,27 @@ def main(argv=None):
     if out.exists() and any(out.iterdir()):
         parser.error('Evaluation output must be new to preserve independent trials')
     controllers = []
+    pose_models = {}
+    for item in args.pose_model:
+        label, path = item.split('=', 1)
+        if not label or label in pose_models:
+            parser.error('Pose controller labels must be nonempty and unique')
+        pose_models[label] = path
     for item in args.model:
         label, path = item.split('=', 1)
         if not label or any(label == c['label'] for c in controllers):
             parser.error('Controller labels must be nonempty and unique')
         checkpoint = None if path == 'rules' else ROOT / path
-        policy = None if checkpoint is None else GoalPolicy(checkpoint)
+        pose_path = ROOT/pose_models[label] if label in pose_models else None
+        if checkpoint is None and pose_path is not None:
+            parser.error('Pose checkpoints require a learned base controller')
+        policy = None if checkpoint is None else GoalPolicy(checkpoint, pose_path)
         controllers.append({'label': label, 'path': path, 'policy': policy,
-                            'sha256': None if checkpoint is None else hashlib.sha256(checkpoint.read_bytes()).hexdigest()})
+                            'sha256': None if checkpoint is None else hashlib.sha256(checkpoint.read_bytes()).hexdigest(),
+                            'pose_path': pose_models.get(label),
+                            'pose_sha256': None if pose_path is None else hashlib.sha256(pose_path.read_bytes()).hexdigest()})
+    if set(pose_models)-{c['label'] for c in controllers}:
+        parser.error('Every pose controller label must match a --model label')
     rng = np.random.default_rng(args.seed_start)
     profile = json.loads((ROOT/args.task_config).read_text()).get('task_distribution') if args.task_config else None
     tasks = [sample_task(rng, args.seed_start+i, profile) for i in range(args.episodes)]
@@ -54,7 +69,7 @@ def main(argv=None):
                 'gravity_mps2': 1.62, 'navigation_base': False,
                 'acceptance': {'position_error_m': .075, 'specified_yaw_error_degrees': 4.,
                                'linear_speed_mps': .035, 'yaw_rate_rps': .08, 'stable_control_frames': 5},
-                'controllers': [{k: c[k] for k in ('label', 'path', 'sha256')} for c in controllers],
+                'controllers': [{k: c[k] for k in ('label', 'path', 'sha256', 'pose_path', 'pose_sha256')} for c in controllers],
                 'source_sha256': {str(p.relative_to(ROOT)): hashlib.sha256(p.read_bytes()).hexdigest()
                                   for p in sorted((ROOT/'src/beforestep').rglob('*.py'))}}
     atomic_json(out/'run_identity.json', identity)
@@ -68,6 +83,8 @@ def main(argv=None):
             reset_task(env, task)
             if policy is not None:
                 policy.previous = np.zeros(4)
+                policy._pose_goal = None
+                policy._pose_rotation = False
             t0 = env.t
             stable = steps = 0
             while env.t-t0 < args.max_seconds:
@@ -84,7 +101,7 @@ def main(argv=None):
                       'sim_seconds': env.t-t0, 'control_steps': steps, 'physical_steps': env.n_physics,
                       'failure': None if stable >= 5 else env.last_termination.get('reason', 'time_limit')}
             trials.append(record)
-            result = {'checkpoint_sha256': controller['sha256'], 'episodes': len(trials),
+            result = {'checkpoint_sha256': controller['sha256'], 'pose_checkpoint_sha256': controller['pose_sha256'], 'episodes': len(trials),
                       'successes': sum(r['success'] for r in trials),
                       'success_rate': float(np.mean([r['success'] for r in trials])),
                       'mean_goal_error_m': float(np.mean([r['goal_error_m'] for r in trials])),

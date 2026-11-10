@@ -5,18 +5,103 @@ from pathlib import Path
 import tempfile
 from types import SimpleNamespace
 import unittest
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import numpy as np
 
 from beforestep.learning import checkpoints, ppo
 from beforestep.paths import ROOT
 from beforestep.learning.policy import apply_action
-from beforestep.learning.policy import GoalPolicy
+from beforestep.learning.policy import GoalPolicy, completed
+from beforestep.learning.pose import PosePolicy, SCHEMA
 from beforestep.pipeline import initialize_recorded_look, recorded_scene_matches
 
 
 class LearningContracts(unittest.TestCase):
+    def test_pose_evidence_keeps_fair_inputs_and_original_capture_tolerances(self):
+        proof = json.loads((ROOT/'evidence/learning/observation_pose_v2/validation.json').read_text())
+        model = ROOT/'assets/models/observation_pose_v2/pose.npz'
+        self.assertEqual(hashlib.sha256(model.read_bytes()).hexdigest(), proof['pose_model_sha256'])
+        a = json.loads((ROOT/'evidence/learning/pose_v2_recorded/run_identity.json').read_text())
+        b = json.loads((ROOT/'evidence/learning/pose_v2_joint/run_identity.json').read_text())
+        self.assertEqual(a['source_sha256'], b['source_sha256'])
+        self.assertEqual(a['recorded_initial_state'], b['recorded_initial_state'])
+        self.assertEqual(a['controller']['checkpoint_sha256'], b['controller']['checkpoint_sha256'])
+        self.assertEqual(proof['trials']['pose_v2_joint']['summary']['result'], 'stopped_short')
+        for label in ('pose_v2_live', 'pose_v2_recorded'):
+            trial = proof['trials'][label]
+            self.assertEqual(trial['summary']['result'], 'arrived')
+            self.assertEqual(len(trial['capture_poses']), 3)
+            for pose in trial['capture_poses']:
+                self.assertLess(pose['position_error_m'], .075)
+                self.assertLess(pose['yaw_error_degrees'], 4.)
+                self.assertLess(pose['linear_speed_mps'], .035)
+                self.assertLess(pose['yaw_rate_rps'], .08)
+            folder = ROOT/'evidence/learning'/label
+            with np.load(folder/'traj.npz', allow_pickle=False) as trace:
+                self.assertIn('learned_pose', trace['control_sources'])
+                self.assertNotIn('rules', trace['control_sources'])
+            sources = json.loads((folder/'source_manifest.json').read_text())['source_files']
+            for source in sources.values():
+                self.assertEqual(hashlib.sha256((ROOT/source['path']).read_bytes()).hexdigest(), source['sha256'])
+
+    def test_trained_pose_head_has_finite_actions_without_forward_motion(self):
+        env = SimpleNamespace(data=SimpleNamespace(qpos=np.array([0., 0., 0., 1., 0., 0., 0.]),
+                                                  qvel=np.zeros(6)))
+        for version in ('v1', 'v2'):
+            policy = PosePolicy(ROOT/f'assets/models/observation_pose_{version}/pose.npz')
+            for target in (-2.5, -.1, 0., .1, 2.5):
+                action = policy.action(env, target)
+                self.assertEqual(action.shape, (4,))
+                self.assertTrue(np.isfinite(action).all())
+                np.testing.assert_array_equal(action[:3], np.zeros(3))
+            self.assertLess(policy.action(env, -.1)[3], -.1)
+            self.assertGreater(policy.action(env, .1)[3], .1)
+
+    def test_invalid_pose_weights_are_rejected_before_motor_control(self):
+        params = ppo.init_params(np.random.default_rng(0), obs_dim=2, act_dim=4, hidden=8)
+        params['W1'][0, 0] = np.nan
+        with tempfile.TemporaryDirectory() as temporary:
+            path = Path(temporary)/'pose.npz'
+            np.savez_compressed(path, **params, schema=np.array(SCHEMA))
+            with self.assertRaisesRegex(ValueError, 'invalid dimensions or values'):
+                PosePolicy(path)
+
+    def test_terminal_rotation_uses_learned_head_and_recenters_after_drift(self):
+        policy = GoalPolicy(ROOT/'assets/models/goal_controller_v4/behavior_cloning.npz')
+        policy.pose_policy = Mock()
+        policy.pose_policy.action.return_value = np.array([0., 0., 0., .25])
+        env = SimpleNamespace(data=SimpleNamespace(qpos=np.array([.024, 0., 0., 1., 0., 0., 0.]),
+                                                  qvel=np.zeros(6)), _obs=lambda: np.zeros(35))
+        env.data.qvel[0] = .04
+        policy.action(env, (0., 0.), .5)
+        policy.pose_policy.action.assert_not_called()
+        env.data.qvel[0] = 0.
+        np.testing.assert_array_equal(policy.action(env, (0., 0.), .5), [0., 0., 0., .25])
+        self.assertEqual(env._control_source, 'learned_pose')
+        env.data.qpos[0] = .05
+        policy.action(env, (0., 0.), .5)
+        self.assertEqual(policy.pose_policy.action.call_count, 2)
+        env.data.qpos[0] = .061
+        with patch('beforestep.learning.policy.observation', return_value=np.zeros(49)) as obs, \
+             patch('beforestep.learning.policy.ppo.deterministic_action', return_value=np.array([0., 0., .2, 0.])):
+            policy.action(env, (0., 0.), .5)
+        self.assertEqual(env._control_source, 'learned')
+        self.assertIsNone(obs.call_args.args[2])
+        np.testing.assert_allclose(obs.call_args.args[1], [-.04, 0.])
+        self.assertEqual(policy.pose_policy.action.call_count, 2)
+
+    def test_rotation_never_relaxes_original_position_or_heading_acceptance(self):
+        env = SimpleNamespace(data=SimpleNamespace(qpos=np.array([.08, 0., 0., 1., 0., 0., 0.]),
+                                                  qvel=np.zeros(6)))
+        self.assertFalse(completed(env, (0., 0.), 0.))
+        env.data.qpos[0] = .04
+        self.assertFalse(completed(env, (0., 0.), np.radians(5.)))
+        env.data.qvel[5] = .09
+        self.assertFalse(completed(env, (0., 0.), 0.))
+        env.data.qvel[5] = 0.
+        self.assertTrue(completed(env, (0., 0.), 0.))
+
     def test_shipped_live_model_changes_route_and_completes_independent_trials(self):
         proof=json.loads((ROOT/'evidence/scenes/trained_live_gate_001/validation.json').read_text())
         model=ROOT/proof['controller']['path']

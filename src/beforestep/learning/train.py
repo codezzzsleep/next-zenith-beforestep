@@ -46,7 +46,9 @@ def sample_task(rng, seed, profile=None):
     spread=profile.get('relative_yaw_range',1.2)
     yaw=bearing+float(rng.uniform(-spread,spread))
     goal=[distance*np.cos(bearing),distance*np.sin(bearing)]
-    final_yaw=None if seed%3 else bearing+float(rng.uniform(-1.6,1.6))
+    with_yaw = rng.random() < profile['goal_yaw_fraction'] if 'goal_yaw_fraction' in profile else seed%3 == 0
+    yaw_range = profile.get('goal_yaw_range_rad', 1.6)
+    final_yaw=bearing+float(rng.uniform(-yaw_range,yaw_range)) if with_yaw else None
     return {'seed':int(seed),'goal':[float(x) for x in goal],'initial_yaw':yaw,'goal_yaw':final_yaw}
 
 def reset_task(env, task):

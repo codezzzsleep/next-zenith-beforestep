@@ -69,7 +69,7 @@ def completed(env, goal, goal_yaw=None):
     return position < .075 and yaw_error < np.radians(4.) and stable
 
 class GoalPolicy:
-    def __init__(self, checkpoint):
+    def __init__(self, checkpoint, pose_checkpoint=None):
         self.checkpoint = Path(checkpoint)
         with np.load(self.checkpoint, allow_pickle=False) as data:
             self.params = {k:data[k].copy() for k in (*ppo.ACTOR_KEYS,*ppo.CRITIC_KEYS)}
@@ -77,8 +77,39 @@ class GoalPolicy:
         if self.dimension not in (47,49,51) or self.params['Wm'].shape[1] != 4:
             raise ValueError('Checkpoint is not a goal-conditioned four-action controller')
         self.previous = np.zeros(4)
+        self.pose_policy = None
+        if pose_checkpoint is not None:
+            from .pose import PosePolicy
+            self.pose_policy = PosePolicy(pose_checkpoint)
+        self._pose_goal = None
+        self._pose_rotation = False
 
     def action(self, env, goal, goal_yaw=None):
+        if self.pose_policy is not None:
+            key = None if goal_yaw is None else (*map(float, goal), float(goal_yaw))
+            if key != self._pose_goal:
+                self._pose_goal = key
+                self._pose_rotation = False
+            if goal_yaw is not None:
+                distance = float(np.linalg.norm(np.asarray(goal)-env.data.qpos[:2]))
+                if distance < .025 and np.linalg.norm(env.data.qvel[:2]) < .035:
+                    self._pose_rotation = True
+                elif distance >= .06:
+                    self._pose_rotation = False
+                if self._pose_rotation:
+                    a = self.pose_policy.action(env, goal_yaw)
+                    self.previous = a.copy()
+                    env._control_source = 'learned_pose'
+                    return a
+                # Translation and terminal rotation have separate learned
+                # actions. The reach loop still checks the original full pose.
+                goal_yaw = None
+                # The base controller was taught to stop about 5 cm short.
+                # A bounded control subgoal closes the position error before
+                # turning. The planner's goal and acceptance stay unchanged.
+                if distance > 0.:
+                    goal = np.asarray(goal)+.04*(np.asarray(goal)-env.data.qpos[:2])/distance
+            env._control_source = 'learned'
         obs = observation(env,goal,goal_yaw,self.previous,self.dimension)
         a = ppo.deterministic_action(self.params,obs)
         self.previous = a.copy()
@@ -96,7 +127,11 @@ class GoalPolicy:
             if env.terminated or env.truncated:
                 reason = env.last_termination.get('reason','terminated')
                 return PathResult([],reason=='collision',False,reason)
-            stable=stable+1 if completed(env,goal,goal_yaw) else 0
+            # Leave room for passive yaw drift while the sensor brakes and
+            # captures. This is stricter than the unchanged 4-degree task gate.
+            capture_margin = (getattr(self, 'pose_policy', None) is None or goal_yaw is None
+                              or abs((goal_yaw-yaw_of(env.data.qpos)+np.pi)%(2*np.pi)-np.pi) < np.radians(3.))
+            stable=stable+1 if completed(env,goal,goal_yaw) and capture_margin else 0
             if stable>=5:
                 error=float(np.linalg.norm(np.asarray(goal)-env.data.qpos[:2]))
                 return PathResult([error],False,True,'completed')

@@ -1,0 +1,302 @@
+{
+  "schema": "beforestep-pose-validation/v1",
+  "base_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+  "pose_model_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+  "fair_comparison": {
+    "same_source": true,
+    "same_scene": true,
+    "same_initial_state": true,
+    "same_first_rgb_depth_map": {
+      "look1_rgb.png": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+      "look1_depth.npy": "0e8a09afb77d8ff676e61136d9b6acc7c20179d9f73387fb5531e7a54eb61151",
+      "look1_state.npy": "1160ad4d76c6e5da2729a4262bb07e50f724d954ae7b8f8fa338329112665d61",
+      "look1_dark.npy": "79e9ce0ce9b9aab0001166a9a1358a039faa7d5c8c4eca68dd4580f300227259"
+    },
+    "original_acceptance_function_retained": true
+  },
+  "trials": {
+    "pose_v2_live": {
+      "run_id": "d123d0bc27e84bcf884494cac68fdfcb",
+      "summary": {
+        "policy": "conservative",
+        "tag": "conservative",
+        "see_dark": false,
+        "imagine": null,
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 302.22,
+        "sensor_mode": "live",
+        "looks": 4,
+        "final_pose": [
+          5.652,
+          -0.461,
+          -46.13
+        ],
+        "sim_time_s": 303.42,
+        "wall_s": 117.8,
+        "collision": null
+      },
+      "final_position_error_m": 0.06133855633670725,
+      "trajectory_sha256": "76025c19c49539a4626abeef21f1c8baf7d47599f58cb4920f4b6c4da4d985dc",
+      "capture_poses": [
+        {
+          "look": 2,
+          "requested_pose": [
+            4.480683652923381,
+            0.5999999999999992,
+            -0.8397751956728583
+          ],
+          "measured_pose": [
+            4.451256786329239,
+            0.5661202943809047,
+            -0.7881910377380953
+          ],
+          "position_error_m": 0.04487510368106065,
+          "yaw_error_degrees": 2.9555545393982037,
+          "linear_speed_mps": 0.00010276425444150699,
+          "yaw_rate_rps": 0.0012881404504820361,
+          "sensor_source": "live"
+        },
+        {
+          "look": 3,
+          "requested_pose": [
+            4.051256786329239,
+            0.5999999999999992,
+            -0.26902280565017384
+          ],
+          "measured_pose": [
+            4.023273291419871,
+            0.5543319182250404,
+            -0.21905582308610247
+          ],
+          "position_error_m": 0.05355977670180235,
+          "yaw_error_degrees": 2.8628972159250634,
+          "linear_speed_mps": 0.00032665223361191316,
+          "yaw_rate_rps": 0.0007029709536128226,
+          "sensor_source": "live"
+        },
+        {
+          "look": 4,
+          "requested_pose": [
+            5.023273291419873,
+            0.39999999999999947,
+            -1.2496139573334886
+          ],
+          "measured_pose": [
+            5.019231638137934,
+            0.4160674012684607,
+            -1.200577497728526
+          ],
+          "position_error_m": 0.01656793121585057,
+          "yaw_error_degrees": 2.809582177628106,
+          "linear_speed_mps": 0.00033123542112630666,
+          "yaw_rate_rps": 0.0006135197806612908,
+          "sensor_source": "live"
+        }
+      ],
+      "sensor_archive": {
+        "path": "assets/observations/pose_v2_live/sensors.tar.gz",
+        "sha256": "20e259f8b7c064bdb0c826cac04b22e77c37ea748b7b3cf75c852745c3902a7c",
+        "files": 16
+      }
+    },
+    "pose_v2_recorded": {
+      "run_id": "c4cb8ab96db847c284f35927d31dad62",
+      "summary": {
+        "policy": "conservative",
+        "tag": "conservative",
+        "see_dark": false,
+        "imagine": null,
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "recorded_observation_state",
+        "execution_elapsed_s": 205.18,
+        "sensor_mode": "recorded_first_then_live",
+        "looks": 4,
+        "final_pose": [
+          5.658,
+          -0.464,
+          -43.82
+        ],
+        "sim_time_s": 219.8,
+        "wall_s": 93.7,
+        "collision": null
+      },
+      "final_position_error_m": 0.05546059180871096,
+      "trajectory_sha256": "c00a62ed03d4ce4e3cd637cf1a0451acdc3412f217dffaffbeff50a17c4ef0c1",
+      "capture_poses": [
+        {
+          "look": 2,
+          "requested_pose": [
+            4.442430485311663,
+            0.5999999999999992,
+            -0.8297735120785636
+          ],
+          "measured_pose": [
+            4.408180251576741,
+            0.5740058667221404,
+            -0.7781752652578995
+          ],
+          "position_error_m": 0.04299736591657481,
+          "yaw_error_degrees": 2.956361773098375,
+          "linear_speed_mps": 8.330089450585706e-05,
+          "yaw_rate_rps": 0.0019152819580411074,
+          "sensor_source": "live"
+        },
+        {
+          "look": 3,
+          "requested_pose": [
+            4.008180251576741,
+            0.5999999999999992,
+            -0.2866400413188869
+          ],
+          "measured_pose": [
+            3.9769361055892642,
+            0.5537584021138209,
+            -0.23909054192301105
+          ],
+          "position_error_m": 0.05580754459348463,
+          "yaw_error_degrees": 2.7243856333435423,
+          "linear_speed_mps": 0.0002409080913547457,
+          "yaw_rate_rps": 0.0005997959246641338,
+          "sensor_source": "live"
+        },
+        {
+          "look": 4,
+          "requested_pose": [
+            4.776936105589265,
+            0.5999999999999992,
+            -1.1663191084792859
+          ],
+          "measured_pose": [
+            4.740891844479595,
+            0.5647041101373612,
+            -1.1142053269469423
+          ],
+          "position_error_m": 0.05044788003610817,
+          "yaw_error_degrees": 2.9858997362700994,
+          "linear_speed_mps": 0.0013776015000140707,
+          "yaw_rate_rps": 0.0029282287916734787,
+          "sensor_source": "live"
+        }
+      ],
+      "sensor_archive": {
+        "path": "assets/observations/pose_v2_recorded/sensors.tar.gz",
+        "sha256": "29a9e699f4d61eae9676604e2f42f65dbb2603b53c02c1809a88d153138b17ae",
+        "files": 16
+      }
+    },
+    "pose_v2_joint": {
+      "run_id": "8bfca236ef07405ea824766b40a164c0",
+      "summary": {
+        "policy": "conservative",
+        "tag": "conservative",
+        "see_dark": false,
+        "imagine": null,
+        "result": "stopped_short",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_controller_sha256": null,
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "recorded_observation_state",
+        "execution_elapsed_s": 270.02,
+        "sensor_mode": "recorded",
+        "looks": 1,
+        "final_pose": [
+          4.9,
+          0.572,
+          52.64
+        ],
+        "sim_time_s": 284.64,
+        "wall_s": 102.2,
+        "collision": null
+      },
+      "final_position_error_m": 1.3371981519634122,
+      "trajectory_sha256": "cfe1202f975cfa7acca1e2155812fe0d12fce7914b4fbb1a215479664389ed1d",
+      "capture_poses": []
+    },
+    "pose_v2_lux_regression": {
+      "run_id": "b5da8c1584054969bedec17418c50231",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "learned",
+        "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+        "scene_id": "gate_passage_001",
+        "goal": [
+          5.7,
+          -0.5
+        ],
+        "start_mode": "recorded_observation_state",
+        "execution_elapsed_s": 32.6,
+        "sensor_mode": "recorded",
+        "looks": 1,
+        "final_pose": [
+          5.678,
+          -0.442,
+          -62.53
+        ],
+        "sim_time_s": 47.22,
+        "wall_s": 59.9,
+        "collision": null
+      },
+      "final_position_error_m": 0.0620700574205248,
+      "trajectory_sha256": "c34763f23c93b474f0fa66626215729f3e793ceb4f44eb31a6989805cabadb6e",
+      "capture_poses": []
+    }
+  },
+  "held_out_final": {
+    "schema": "beforestep-controller-evaluation/v1",
+    "run_id": "028e834aaa6843a38008125e14de5abe",
+    "controllers": {
+      "v4": {
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": null,
+        "episodes": 8,
+        "successes": 8,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.0413015363514081
+      },
+      "pose": {
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+        "episodes": 8,
+        "successes": 8,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.024201279042987432
+      },
+      "rules": {
+        "checkpoint_sha256": null,
+        "pose_checkpoint_sha256": null,
+        "episodes": 8,
+        "successes": 8,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.05032995491543171
+      }
+    },
+    "wall_seconds": 159.36033800699806
+  }
+}

@@ -111,6 +111,7 @@ def main():
     ap.add_argument('--scene', default='gate_passage_001', help='Named configuration in config/scenes')
     ap.add_argument('--controller-model', default='assets/models/goal_controller_v4/behavior_cloning.npz',
                     help='Trained neural checkpoint; use rules explicitly for frozen historical baselines')
+    ap.add_argument('--pose-model', help='Optional learned terminal rotation checkpoint; default keeps historical joint control')
     ap.add_argument('--out', required=True); ap.add_argument('--imagine', choices=['lux', 'truth'], default='lux')
     ap.add_argument('--see-dark', action='store_true', help='对照实验：假设相机在黑影里也能测出深度')
     ap.add_argument('--max-looks', type=int, default=None, help='最多看几眼（想象策略最多两眼；保守策略默认五眼）')
@@ -126,6 +127,9 @@ def main():
     from .paths import ROOT
     model_path=(ROOT/pathlib.Path(a.controller_model)).resolve() if a.controller_model not in (None,'rules') else None
     if model_path is not None and not model_path.is_file():ap.error('Trained controller checkpoint is missing')
+    pose_model_path = (ROOT/pathlib.Path(a.pose_model)).resolve() if a.pose_model else None
+    if pose_model_path is not None and (model_path is None or not pose_model_path.is_file()):
+        ap.error('--pose-model requires a learned controller and an existing pose checkpoint')
     scene_definition = S.configure(a.scene)
     original_scene_definition = json.loads(json.dumps(scene_definition))
     if a.start_at_recorded_look and not a.recorded_observations:
@@ -162,6 +166,8 @@ def main():
     identity['controller']={'type':'learned' if model_path else 'rules',
                             'checkpoint':str(model_path) if model_path else None,
                             'checkpoint_sha256':hashlib.sha256(model_path.read_bytes()).hexdigest() if model_path else None}
+    identity['controller']['pose_checkpoint'] = str(pose_model_path) if pose_model_path else None
+    identity['controller']['pose_checkpoint_sha256'] = hashlib.sha256(pose_model_path.read_bytes()).hexdigest() if pose_model_path else None
     (out/'run_identity.json').write_text(json.dumps(identity,ensure_ascii=False,indent=2))
     (out/'scene.json').write_text(json.dumps(scene_definition,ensure_ascii=False,indent=2))
     dark_thr = 0.0 if a.see_dark else 0.10
@@ -205,7 +211,7 @@ def main():
     def attach_controller(environment, previous=None):
         if model_path is not None:
             from .learning.policy import GoalPolicy
-            environment._learned_controller=GoalPolicy(model_path)
+            environment._learned_controller=GoalPolicy(model_path, pose_model_path)
             environment.nav_base=False
             if previous is not None:environment._learned_controller.previous=np.asarray(previous).copy()
             environment._control_source='initialization'
@@ -291,6 +297,8 @@ def main():
         st = N.fuse(base_maps + [l['state'] for l in looks])
         x, y, yaw = pose(env)
         ev('look', k=k, label=label, pose=[round(x, 3), round(y, 3), round(float(np.degrees(yaw)), 2)], t=round(env.t, 2),
+           measured_pose=[x, y, yaw], measured_velocity=env.data.qvel[:6].tolist(),
+           sensor_source='recorded' if a.start_at_recorded_look and k == 1 else 'live',
            cells={N.NAMES[i]: int((st == i).sum()) for i in range(6)}, cam_pos=[round(v, 4) for v in ob['cam_pos']])
         return st
 
@@ -480,6 +488,7 @@ def main():
             attempts += 1
             ev('second_look_plan', attempt=attempts,
                viewpoint=[round(vx, 2), round(vy, 2), round(float(np.degrees(vyaw)), 1)],
+               requested_viewpoint=[vx, vy, vyaw],
                expected_new_cells=n, path=[[round(p[0], 3), round(p[1], 3)] for p in path])
             motion = execute_waypoints(env,path,rec,f'to_look{len(looks) + 1}',on_step,final_yaw=vyaw)
             if motion.collision:
@@ -582,11 +591,13 @@ def main():
     summ = {'policy': a.policy, 'tag': a.tag or a.policy, 'see_dark': bool(a.see_dark), 'imagine': a.imagine if a.policy == 'imagination' else None, 'result': result,
             'controller':'learned' if model_path else 'rules',
             'controller_sha256':identity['controller']['checkpoint_sha256'],
+            'pose_controller_sha256':identity['controller']['pose_checkpoint_sha256'],
             'scene_id':S.SCENE_ID,
             'goal': list(S.GOAL),
             'start_mode': 'recorded_observation_state' if a.start_at_recorded_look else 'scene_start',
             'execution_elapsed_s': round(env.t-execution_started_at, 2),
-            'sensor_mode': 'recorded' if a.recorded_observations else 'live',
+            'sensor_mode': ('recorded_first_then_live' if a.start_at_recorded_look and len(looks)>1 and not lux
+                            else 'recorded' if a.recorded_observations else 'live'),
             'looks': len(looks), 'final_pose': [round(x, 3), round(y, 3), round(float(np.degrees(yaw)), 2)],
             'sim_time_s': round(env.t, 2), 'wall_s': round(time.time() - t0, 1), 'collision': crash or None}
     ev('result', **summ)

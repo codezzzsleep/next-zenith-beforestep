@@ -11,6 +11,7 @@ Lux3D 是核心流程：真实观察图 → 原始生成 GLB → 配准与冻结
 - [真实 Demo 视频](site/media/demo.mp4) · [完整资产清单](assets/manifest.json)
 - [交付结果与证据](evidence/delivery/)
 - [训练模型与实际执行](site/learning.html) · [训练方法、权重和独立评估](docs/training.md)
+- [主动观察控制的新训练与四眼通行](docs/observation-control.md) · [真实同观测对照视频](evidence/learning/observation_pose_v2/demo.mp4)
 
 ## 运行
 

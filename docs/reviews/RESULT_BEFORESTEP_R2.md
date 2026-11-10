@@ -319,3 +319,11 @@ B1平地/空需求/边界修复后完整5回归exit0：`python3 ops/run_r2_regre
 `preserve_suite_scene.py`增加GitHub可直接查看的summary/run_identity/eval，避免B7链接指向未入库outputs；`restore_suite_scene.py`实际验证完整外部tar内96原文件的SHA/size且0覆盖（已有相同原数据），日志preservation-v2[-restore].log，精简46,293,324bytes/完整46,526,777bytes，均不另公推该非最终场景大数据。docs/sandbox.md含不付费真值/完整替身、本人密钥真实调用、身份恢复和证据恢复步骤。文档17项146链接通过，R1数字审计仍exit0；src无diff。
 
 B7表/原因、整合首页报告、扩展原数字核验已写脚本，只有py_compile与R1不回退审计，完整suite验证待B。不把脚本存在记成结果。现有v3父PID2130778继续3进程，约79/336（易变），新Lux0/360；时间关口未到，无提前收缩、无代理。
+
+### C/D 保管与整合边界
+
+沙盒/归档基础ead1d9e已推main，远端同SHA。后续场景精简SHA对象与关卡配准网格均走LFS（新增patterns），完整原GLB与完整物理数据保留外部tar；每场景仍≤150MB。A阶段已实际尝试查询配额API404且无user scope，不能冒称剩余额度已知；按§2.5保守使用外部完整包，上传前检查新增对象量和实际LFS上传/可用性，失败时继续保留外部完整包并报告。旧main资产和正式发布不删。
+
+D整合脚本保留R1八段与旧报告打印样式，按实际Markdown路径换网页链接；首页关卡以同源嵌入显示，另有完整关卡入口，嵌入按实际内容高度调整，避免移动端截断。脚本只compile，整组数据不存在所以没有提前写首页/报告或冒称发布。
+
+嵌入与保管实际补验：`check_levels_browser.py --name C1-anchor-embed-fix` exit0，全五步/3回放/11候选网格/计分与390px、HTTP/页面0错误；独立390px同源iframe实际收到高度1162px且隐藏内部header、内文无横溢出（C1-embed-validation.json，public anchor-game/embed.json）。沙盒开过区域改为0.42m半径线段胶囊，重跑独立近似首眼1/1一致、精确EDT0。13关卡网格总7.5MB的原字节归一到LFS，SHA不变；仅传输方式变，不改场景/门槛/源。

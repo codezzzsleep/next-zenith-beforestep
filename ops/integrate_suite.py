@@ -36,12 +36,15 @@ def main():
                         '<a class="button" href="levels.html">开始第一关 →</a>')
     game = '<section id="levels"><div class="eyebrow">PLAY / CHOOSE YOUR ROUTE</div><h2>先做选择，再揭晓。</h2><p>看机器人实际第一眼，选择直接走、多看几眼或想一想，再回放实际轨迹、翻看背面并记分。</p><a class="button" href="levels.html">进入完整关卡 →</a><iframe title="真实月面实验关卡" src="levels.html?embedded=1" loading="lazy" style="width:100%;height:1600px;border:0;margin-top:2rem"></iframe></section>'
     warning = ('<p class="suite-warning"><strong>想象策略实际发生碰撞：'+html.escape('、'.join(summary['imagination_collision_scenes']))+'。</strong>全部失败与复盘原因在总表公开。</p>') if summary['imagination_collision_scenes'] else ''
-    table = markdown.markdown(suite, extensions=['tables', 'fenced_code'])
+    table = markdown.markdown(suite, extensions=['tables', 'fenced_code']).replace('<h1>', '<h2>').replace('</h1>', '</h2>')
     # The Markdown paths are relative to docs/, while this is the site root.
     table = re.sub(r'href="\.\./([^\"]+)"', r'href="\1"', table)
     table = table.replace('href="decisions.md"', 'href="docs/decisions.md"').replace('href="reviews/RESULT_BEFORESTEP_R2.md"', 'href="docs/reviews/RESULT_BEFORESTEP_R2.md"')
     block = game+'\n<section id="suite-summary">'+warning+'<div class="table-wrap">'+table+'</div></section>'
     page = replace_block(page, '<!-- SUITE-HOME-START -->', '<!-- SUITE-HOME-END -->', block, '<section id="shadows">')
+    resize = '<script>addEventListener("message",function(e){if(e.origin!==location.origin||!Number.isFinite(e.data?.beforestepLevelHeight))return;var f=document.querySelector("#levels iframe");if(f&&e.source===f.contentWindow)f.style.height=Math.max(700,e.data.beforestepLevelHeight)+"px";});</script>'
+    if 'beforestepLevelHeight' not in page:
+        page = page.replace('</body>', resize+'</body>')
     if args.sandbox:
         browser = json.loads((ROOT / 'evidence/suite/presentation/sandbox/browser.json').read_text())
         consistency = json.loads((ROOT / 'evidence/suite/presentation/sandbox/consistency.json').read_text())
@@ -51,10 +54,22 @@ def main():
         page = replace_block(page, '<!-- SANDBOX-HOME-START -->', '<!-- SANDBOX-HOME-END -->', sandbox, '<section id="evolution">')
     homepage_path.write_text(page)
     report_html = markdown.markdown(report, extensions=['tables', 'fenced_code'])
-    report_html = re.sub(r'(href|src)="\.\./site/', r'\1="', report_html)
-    report_html = re.sub(r'(href|src)="\.\./', r'\1="', report_html)
-    report_html = re.sub(r'href="(?!https?:|#)([^"/]+\.md)"', r'href="docs/\1"', report_html)
-    (ROOT / 'site/report.html').write_text('<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title><link rel="stylesheet" href="style.css"></head><body><main><article class="report">'+report_html+'</article></main></body></html>')
+    def document_link(match):
+        attribute, url = match.groups()
+        if url.startswith(('https:', 'http:', '#')):
+            return match.group(0)
+        path = (ROOT / 'docs' / url).resolve()
+        if path == ROOT / 'README.md':
+            return attribute+'="https://github.com/codezzzsleep/next-zenith-beforestep"'
+        if path.is_relative_to(ROOT / 'site'):
+            relative = path.relative_to(ROOT / 'site')
+        else:
+            relative = path.relative_to(ROOT)
+        return attribute+'="'+str(relative)+'"'
+    report_html = re.sub(r'(href|src)="([^\"]+)"', document_link, report_html)
+    old_html = (ROOT / 'site/report.html').read_text()
+    style = re.search(r'<style>[\s\S]*?</style>', old_html).group(0)
+    (ROOT / 'site/report.html').write_text('<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title>'+style+'</head><body>'+report_html+'</body></html>')
     print(json.dumps({'scenes': summary['completed_scene_count'], 'sandbox': args.sandbox}))
 
 

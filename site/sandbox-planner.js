@@ -36,7 +36,9 @@ export function occupancies(def,obs){const n=obs.state.length,optimistic=new Uin
   for(const r of cand.missing){const near=dilate(raster([r.poly]),30);for(let z=0;z<n;z++)if(near[z]&&[2,3,4].includes(obs.state[z]))cand.out[z]=1;}
   const imagined=dilate(cand.out,1);
   for(let i=0;i<grid.nx;i++)for(let j=0;j<grid.ny;j++){const z=i*grid.ny+j,x=grid.x0+(i+.5)*grid.res,y=grid.y0+(j+.5)*grid.res;
-    const known=y>=def.start[1]-.42&&y<=def.start[1]+.42&&x>=def.start[0]-.42&&x<=def.first_stop[0]+.42&&Math.abs(y-def.start[1])<=.42;
+    const vx=def.first_stop[0]-def.start[0],vy=def.first_stop[1]-def.start[1],length=vx*vx+vy*vy;
+    const t=length?Math.max(0,Math.min(1,((x-def.start[0])*vx+(y-def.start[1])*vy)/length)):0;
+    const known=Math.hypot(x-def.start[0]-t*vx,y-def.start[1]-t*vy)<=.42;
     optimistic[z]=obs.prior[z]||obs.state[z]===1||obs.state[z]===5?1:0;
     conservative[z]=optimistic[z]||(!known&&[2,3,4].includes(obs.state[z]))?1:0;
     imagination[z]=optimistic[z]||imagined[z]?1:0;}

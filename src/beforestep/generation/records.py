@@ -58,7 +58,8 @@ def prepare_second_batch(tdir, decision, look):
     preregistration = {'schema': 'beforestep-r1-retry/v1', 'look': 2, 'additional_tasks': 6,
         'total_tasks_limit': 12, 'first_request_sha256': sha(tdir / 'lux_request.json'),
         'first_result_sha256': sha(tdir / 'lux_result.json'),
-        'first_admitted_ids': decision['admitted_ids'], 'first_decision': decision,
+        'first_admitted_ids': decision['admitted_ids'],
+        'first_decision': {k: v for k, v in decision.items() if k not in ('footprint', 'footprints')},
         'expected': 'At least one admitted candidate: plan/rehearse/execute. Zero across twelve tasks: safe stop; enter review section 2.4.'}
     (retry / 'preregistration.json').write_text(json.dumps(preregistration, indent=2) + '\n')
     write_request(retry, 'img', items)

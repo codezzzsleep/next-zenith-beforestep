@@ -223,3 +223,56 @@ fresh替身命令（公共环境同§2.0）：
 `python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --max-looks 2 --out outputs/reviews/r1/section21_standin_fresh`
 
 启动前预期：首眼写两个六份单图请求并退出10。测试提供A真实形状替身及B历史被拒几何替身（其余测试状态为failed），通过实际配准与原自检使A准入、B拒绝，随后第二眼为B单图6份并退出10。为第二眼提供真实B替身后，完整预演和执行≤2眼无碰撞到达。所有模拟任务标为offline standin，绝不计为真实Lux结果。本轮任何新真实首眼任务将在这条完整替身链与全部单测通过之后才创建。
+
+### 第二眼替身准备的实际数字
+
+修改后的34项单测最终全部通过（r1_unit_tests_final.log，exit0）。fresh首眼準備exit10；首眼替身A1真实A轮廓IoU0.9328/尺度1.0112准入，B历史拒绝替身IoU0.4747/尺度0.6351拒绝。随后第二眼选点请求(4.0917097567,0.4)、朝向-1.791°，预计513.3881 px；实际车停(4.0749528127,0.3970295502)、朝向-0.7709°，B crop_native_px=506，native_ok=false，仍按§2.2单图6份，exit10。预期与实际差异原样记录：像素估计达标，实际差6 px；不改点、不追加第三眼、不改512门槛。
+
+下一次完整替身执行使用同一命令，第二眼6份中A1为真实B网格、其余5份为测试用失败状态。运行前预期仍为原观测SHA匹配、原自检准入、完整执行预演且≤2眼无碰撞到达。
+
+### §2.3独立替身分支的运行标签
+
+以下标签对应此前已经预注册的追加采样和全拒绝分支，不改变预期：
+
+- retry命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_validated_first_source --max-looks 2 --out outputs/reviews/r1/section23_retry_standin`。准备第二眼退出10；填第一批6个failed后，下一次同命令应只写6b并退出10；填一份真实B替身后合计12判断，应≤2眼完成预演并到达。
+- 全拒绝命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_validated_first_source --max-looks 2 --out outputs/reviews/r1/section23_zero_standin`。同样首批6个failed→只写6b→退出10；第二批仍6个failed，下一次应stuck/2眼/无碰撞且无第三批。这里是离线控制流测试，不能据此在真实场景执行§2.4替换。
+
+### 单图替身全流程的实际终态（不符合预注册到达预期）
+
+最后一次同命令退出0，但result=stuck、2眼、无碰撞。A准入，第二眼真实B替身A1也通过自检（IoU0.9300、尺度1.0256），原5 cm余量规划结果low_margin，因此没有执行路线。不能把此结果算作到达。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.68,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.075,
+    0.397,
+    -0.69
+  ],
+  "sim_time_s": 54.88,
+  "wall_s": 156.4,
+  "collision": null
+}
+```
+
+赛后替身几何诊断在standin_geometry_diagnostic.json：同一个第二眼地图/同一起点，真实A+真实B和注册A+真实B都有路线；真实A+注册B与注册A+注册B均无5 cm余量路线。注册B占地x=[6.175,7.475]、y=[-0.375,0.775]，该诊断不进入生产规划。问题不是A，也不是改变终点；目前是B通过自检但配准占据仍留不出余量。按§0.3不降低门槛，不自行扩大§2.4替换条件。
+
+追加采样及全零分支已按前述预期各产生且只产生一次6b请求，准备过程退出10，输入路径/SHA与首批逐项相同。下面的续跑仍按已预注册预期核对；不因单图替身失败而修改任何预期。

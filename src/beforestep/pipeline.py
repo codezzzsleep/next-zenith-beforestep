@@ -419,7 +419,8 @@ def main():
                 continue
             n_adm = len(res['admitted_ids'])
             if not trust:
-                retry = LX.prepare_second_batch(t['dir'], res, k)
+                target_look = int(t['state']['look'].removeprefix('look'))
+                retry = LX.prepare_second_batch(t['dir'], res, target_look)
                 if retry is not None:
                     ev('need_lux3d', look=k, requests=[LX.rel(retry)], reason='r1_zero_admitted_first_batch',
                        additional_samples=6, total_samples_limit=12)
@@ -427,7 +428,7 @@ def main():
                         'reason': 'r1_zero_admitted_first_batch', 'total_samples_limit': 12}, indent=2))
                     rec.save(out / 'partial_traj.npz')
                     raise SystemExit(10)
-                if k == 2 and n_adm == 0 and (t['dir'] / 'retry/lux_request.json').exists():
+                if target_look == 2 and n_adm == 0 and (t['dir'] / 'retry/lux_request.json').exists():
                     why['sampling_exhausted'] = True
                     ev('sampling_stop', look=k, target=t['target'], total_samples=12,
                        generated_candidates=len(res['candidates']), admitted=0,

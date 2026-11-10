@@ -86,7 +86,7 @@ class InputBatchTests(unittest.TestCase):
                 (target/'lux_result.json').write_text(json.dumps(result))
                 original=(target/'lux_request.json').read_bytes()
                 self.assertIsNone(LX.prepare_second_batch(target,{'admitted_ids':[]},1))
-                retry=LX.prepare_second_batch(target,{'admitted_ids':[]},2)
+                retry=LX.prepare_second_batch(target,{'admitted_ids':[], 'footprint':np.zeros((2,2),bool), 'footprints':{}},2)
                 self.assertIsNotNone(retry)
                 self.assertEqual((target/'lux_request.json').read_bytes(),original)
                 second=json.loads(retry.read_text())['items']

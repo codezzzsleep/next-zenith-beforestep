@@ -14,7 +14,7 @@
 | B2 | 参数预注册、生成器、候选池分类 | 完成 | v4主池与F1唯一扩展60场景/240非Lux全完成；名单a810e14 |
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 完成 | 当前源cfffaf8四类全链/复盘/allpanes通过；本提交 |
-| B5 | 场景组真实Lux3D | 未开始 | — |
+| B5 | 场景组真实Lux3D | 进行中 | B4已push c465926后启动；实时预算见ledger |
 | B6 | 全部场景复盘和全部拒绝反事实 | 未开始 | — |
 | B7 | 完整总表 | 未开始 | — |
 | B8 | 预定规则结论 | 未开始 | — |
@@ -522,3 +522,7 @@ C1浏览器验收另加入纯UI fixture：保留实际首关扫描/轨迹，仅�
 7. 下一动作：本小结与B4 gate push并核远端，启动run_suite_real.py --regression evidence/suite/regressions/B1-crater-target/regression.json --workers2，冻结11个新场景真实Lux；每sample先账本，再create，360上限、known/uncertain只query。
 
 新B4完整二进制数据外包：/root/3d/artifacts/beforestep-r2/B4-crater-target-complete.tar.gz，328443345bytes，SHA256 81269163c2a67fbc2b3530d7c2a5589b72b80f6ba021ee2c98e08e0b5317a9ac；tar exit0/每scene public set远小于150MB。Source/目标输入/原扫描GLB/配准/全部预演/执行/复盘都保全，供负责人渲染，未渲染新Demo视频。
+
+B5真实dispatcher PID2077882/tool60090已启动并实际创建任务。账本快照：新付费容量使用10/360，状态{'ok': 3, 'pending': 7, 'not_submitted': 1}；C.client/Budget记录在create前已有identity，API key仅进进程环境。not_submitted是并发限制明确拒绝的请求，不当作已付费；已知/不确定只query，不重复create。权威仍outputs/generation/r2-budget.json与outputs/generation/tasks，实时数以ledger为准，SRC固定cfffaf8。
+
+新增C1 contact-priority UI fixture在真实浏览器已exit0：原锚点五步/3回放/11候选/独立truth、无候选回退、390px与0page/HTTP错误均通过；合成arrival+contact载荷显示碰撞、玩家和imagination均0/1，实际实验文件未修改。最新anchor-game/browser.json记录contact_priority_verified_with_ui_fixture=true。仅1锚点，不充作完整12关完成；SRC仍逐文件同67测试/五R1gate版本cfffaf8。

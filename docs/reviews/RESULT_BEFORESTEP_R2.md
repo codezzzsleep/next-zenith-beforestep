@@ -462,3 +462,5 @@ B7/helper预备支持公开wallfix-baselines完整44结果，与实际Lux source
 源提交ed7c9ba，ops/预期/失败保全63ee1da已push且远端同SHA。`run_r2_regression.py --out outputs/qa/r2/B1-rehearsal-wall-regression --workers 3` 实际driver exit0；66/66单测（2.353s），6冻结配置SHA同；四基线stuck/arrived/collision/arrived、眼数/仿真时间同R1。R1原真实Lux重放1眼112.84s/无碰撞，12预演全部完整无碰撞，traj.npz全部数组与keys逐项同原，NPZ SHA 6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e相同。冷重配准墙钟1161.2s不含云排队，不是端到端延迟。公开gate evidence/suite/regressions/B1-rehearsal-wall/{regression.json,tests.log,driver.log}，完整原始输出仍outputs。
 
 B4新统一导出/全链运行预期与同源44基线manifest已提交推送。现在允许开始新out outputs/suite/standins-wallfix（四类最早新D、workers2、每类含复盘）和outputs/suite/baselines-wallfix（冻结11全部四基线、workers1）。总3普通物理进程，0付费；源码ed7c9ba固定，旧B4原失败不覆盖，frozen.json不改。B4源同一gate/所有预演完整且无碰撞/独立到达/复盘四类全pass之后才真实Lux。
+
+B1新gate提交d4dfb45aefb0e490875551458f12b43f492978ab已push0/远端同，启动前git status干净。B4新dispatcher PID2023174/tool41241、冻结同源基线PID2023248/tool29956实际运行；各自独立out/ledger及上述命令，三普通物理进程，0付费。旧B4与wall-regression父均已退出；这不是B4已通过，仍待新四完整链/复盘/所有预演检查。

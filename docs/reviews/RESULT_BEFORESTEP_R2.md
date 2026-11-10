@@ -10,8 +10,8 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 完成 | 本次global-stop源修正与完整五回归通过；65测试 |
-| B2 | 参数预注册、生成器、候选池分类 | 完成 | 96fa0b7/4f554c7/671a4e6；v3配置31ef28c，现有池运行中 |
+| B1 | 地形/太阳配置与完整回归 | 进行中（替身发现预演残留墙，先修复回归） | 本次global-stop源修正与完整五回归通过；65测试 |
+| B2 | 参数预注册、生成器、候选池分类 | 完成 | v4主池与F1唯一扩展60场景/240非Lux全完成；名单a810e14 |
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 进行中 | 冻结后运行，0付费 |
 | B5 | 场景组真实Lux3D | 未开始 | — |
@@ -438,3 +438,13 @@ F2 1–12所有48子运行exit0，D3/O8/未归类1、U0/error0；旧v3宽范围D
 B4预期：选择每类本名单中最早的新D（F0_001/F1_001/F2_003/F3_002），以真实扫描资产替身、生产注册/自检/预演/执行全链运行；不调Lux，四类都pass才付费。原失败与任何源修必须先R1完整回归，不挑Lux结果。
 
 B3冻结a810e142a15b37ee1b113b0a0a72eb4ec68c6c27已push exit0且ls-remote同。B4普通dispatcher启动，四类各最早新D/两个并行Python子进程，准确命令/子PID/日志/exit/summary由outputs/suite/standins/b4-processes.json记录，source7833286、regression B1-global-stop。每scene mode=standin/provenance not_real_lux，不付费、不计实际Lux收益。全四结束并all_passed才开始B5。
+
+### B4 替身发现预演地形配置遗漏（付费前）
+
+F0替身2眼到达130.92s、无执行碰撞；复盘命令首次少了optimistic/run目录exit1，正确路径重试exit0（B4-F0_001-review-corrected.log）。F1第一眼预演在(3.354,-1.35)撞obstacle2：真实F1 terrain.right_wall=false，但geometry/imagination.py::rehearsal_spec仍无条件添加旧窄道右墙，导致不存在的物理障碍影响预演。原F1/F3部分输出、F0/F2完整结果、B4-driver与before-wall-fix ledger全部保留于outputs/suite/standins；原dispatcher已停止，停止前F2已完成、F3刚启动的部分输出也保留，不重复此out。
+
+这是B1场景配置覆盖遗漏，按B4许可修程序错误：右墙只在terrain.right_wall=true加入，缺省旧场景不变；不改冻结规则/门槛/机器人/传感器/控制/名单。运行前预期：新增场景预演尊重无墙配置、legacy生成规格仍同；全单测与stress四基线/真实reuse全部数组相同。新独立gate outputs/qa/r2/B1-rehearsal-wall-regression，通过后才四类新out outputs/suite/standins-wallfix。新增Lux0/360。
+
+停止前F2也已经终态：1眼84.06s、实际执行碰撞obstacle1/B，接触(7.097,-0.377,0.118)；其第一眼实际仅T1/A一个观测目标，没有B请求，真实扫描配准得到侧翻/缩小的A。原F2 summary与全部轨迹保留，不能当替身pass或真实Lux失败。无墙遗漏修复不会自动证明F2走通；必须回归后重新完成四类替身并检查该失败。F3在停止前刚启动，其部分数据也保留。
+
+替身输入轴规范统一：旧单岩石直接导出扫描原始轴、多岩石已导出场景轴，不一致可能改变有限5°粗搜索的候选族。新offline exporter对所有场景/目标把真实扫描按当前观测水平轴旋转并底面居中（刚体变换、等比尺寸不变）；仍由生产注册估计全矩阵，不预置注册矩阵/不改搜索/门槛，实际Lux exporter完全不变。原所有standin输入/结果保留，新standins-wallfix四类统一使用此导出规则，不为F2单独调参；仍不保证F2到达，必须按完整结果判断。

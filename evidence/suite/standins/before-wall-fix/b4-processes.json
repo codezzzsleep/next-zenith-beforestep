@@ -1,0 +1,151 @@
+{
+  "source_commit": "7833286",
+  "paid_tasks": 0,
+  "jobs": {
+    "F0": {
+      "scene": "suite_r2_v4_F0_001",
+      "command": [
+        "/usr/bin/python3",
+        "ops/run_suite_imagination.py",
+        "--scene",
+        "suite_r2_v4_F0_001",
+        "--mode",
+        "standin",
+        "--out",
+        "outputs/suite/standins/suite_r2_v4_F0_001",
+        "--regression",
+        "evidence/suite/regressions/B1-global-stop/regression.json"
+      ],
+      "pid": 1799209,
+      "log": "outputs/qa/r2/B4-suite_r2_v4_F0_001.log",
+      "status": "complete",
+      "exit_code": 0,
+      "chain": "outputs/suite/standins/suite_r2_v4_F0_001/chain.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_001",
+        "goal": [
+          10.273944,
+          -0.043551
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 129.72,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          10.265,
+          -0.043,
+          17.5
+        ],
+        "sim_time_s": 130.92,
+        "wall_s": 150.3,
+        "collision": null
+      },
+      "passed": true
+    },
+    "F1": {
+      "scene": "suite_r2_v4_F1_001",
+      "command": [
+        "/usr/bin/python3",
+        "ops/run_suite_imagination.py",
+        "--scene",
+        "suite_r2_v4_F1_001",
+        "--mode",
+        "standin",
+        "--out",
+        "outputs/suite/standins/suite_r2_v4_F1_001",
+        "--regression",
+        "evidence/suite/regressions/B1-global-stop/regression.json"
+      ],
+      "pid": 1799210,
+      "log": "outputs/qa/r2/B4-suite_r2_v4_F1_001.log",
+      "status": "interrupted",
+      "reason": "Production rehearsal added a phantom corridor right wall despite terrain.right_wall=false; preserve partial, repair and regress before a new out"
+    },
+    "F2": {
+      "scene": "suite_r2_v4_F2_003",
+      "command": [
+        "/usr/bin/python3",
+        "ops/run_suite_imagination.py",
+        "--scene",
+        "suite_r2_v4_F2_003",
+        "--mode",
+        "standin",
+        "--out",
+        "outputs/suite/standins/suite_r2_v4_F2_003",
+        "--regression",
+        "evidence/suite/regressions/B1-global-stop/regression.json"
+      ],
+      "pid": 1844348,
+      "log": "outputs/qa/r2/B4-suite_r2_v4_F2_003.log",
+      "status": "complete",
+      "exit_code": 0,
+      "chain": "outputs/suite/standins/suite_r2_v4_F2_003/chain.json",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "collision",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_003",
+        "goal": [
+          10.730404,
+          0.01719
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 82.86,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          6.866,
+          -0.633,
+          9.03
+        ],
+        "sim_time_s": 84.06,
+        "wall_s": 162.3,
+        "collision": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            7.097,
+            -0.377,
+            0.118
+          ],
+          "t": 84.062
+        }
+      },
+      "passed": false
+    },
+    "F3": {
+      "scene": "suite_r2_v4_F3_002",
+      "command": [
+        "/usr/bin/python3",
+        "ops/run_suite_imagination.py",
+        "--scene",
+        "suite_r2_v4_F3_002",
+        "--mode",
+        "standin",
+        "--out",
+        "outputs/suite/standins/suite_r2_v4_F3_002",
+        "--regression",
+        "evidence/suite/regressions/B1-global-stop/regression.json"
+      ],
+      "pid": 1844670,
+      "log": "outputs/qa/r2/B4-suite_r2_v4_F3_002.log",
+      "status": "interrupted",
+      "reason": "Production rehearsal added a phantom corridor right wall despite terrain.right_wall=false; preserve partial, repair and regress before a new out"
+    }
+  },
+  "completed": false,
+  "interruption": "configured rehearsal wall mismatch"
+}

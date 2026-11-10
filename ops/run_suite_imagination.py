@@ -34,6 +34,7 @@ def offline_result(request_path, scene_id):
     request = json.loads(request_path.read_text())
     target = request_path.parent.parent if request_path.parent.name == 'retry' else request_path.parent
     definition = S.configure(scene_id)
+    state = json.loads((target / 'state.json').read_text())
     cells = np.load(target / 'cells.npy')
     truth = truth_footprints(target)
     overlapping = [key for key, mask in truth.items() if (mask & cells).sum() > 0]
@@ -46,16 +47,19 @@ def offline_result(request_path, scene_id):
         path, _ = S.rock_asset_uniform(value['rock'], value['height'])
         mesh = trimesh.load(path, force='mesh', process=False)
         origins.append({'rock': key, 'scan': value['rock'], 'scaled_scan_sha256': C.sha(path)})
-        if len(overlapping) > 1:
-            transform = trimesh.transformations.rotation_matrix(np.radians(value['yaw']), [0, 0, 1])
-            transform[:2, 3] = [value['x'], value['y']]
-            mesh.apply_transform(transform)
+        # Exact-shape diagnostics use the same current-view axis convention for
+        # every scene and target. Registration still estimates the full pose and
+        # scale through its unchanged production search; no matrix is supplied.
+        transform = trimesh.transformations.rotation_matrix(np.radians(value['yaw']), [0, 0, 1])
+        transform[:2, 3] = [value['x'], value['y']]
+        mesh.apply_transform(transform)
         meshes.append(mesh)
     shape = trimesh.util.concatenate(meshes)
-    if len(overlapping) > 1:
-        center = (shape.bounds[0] + shape.bounds[1]) / 2
-        center[2] = shape.bounds[0, 2]
-        shape.apply_translation(-center)
+    shape.apply_transform(trimesh.transformations.rotation_matrix(
+        -state['local_frame']['yaw0'], [0, 0, 1]))
+    center = (shape.bounds[0] + shape.bounds[1]) / 2
+    center[2] = shape.bounds[0, 2]
+    shape.apply_translation(-center)
     glb = request_path.parent / 'offline_true_shape.glb'
     shape.export(glb)
     items = request['items']
@@ -74,7 +78,8 @@ def offline_result(request_path, scene_id):
     C.atomic_json(request_path.parent / 'lux_result.json', {
         'schema': 'beforestep-lux-result/v1', 'not_real_lux': True,
         'provider': 'offline_standin', 'scope': 'One exact scan candidate; remaining slots are offline placeholders',
-        'source_shapes': origins, 'tasks': tasks})
+        'source_shapes': origins, 'asset_axes': 'current-view horizontal axes; bottom centered; exact scan shape',
+        'registration_pose_supplied': False, 'tasks': tasks})
 
 
 def require_real_gates(scene, freeze_path, regression_path, standins_path, manual=False):

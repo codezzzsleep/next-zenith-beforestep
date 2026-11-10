@@ -256,13 +256,14 @@ def rehearsal_spec(base_spec, cand_objs, out_dir):
         (pd / 'manifest.json').write_text(json.dumps({'schema': 'v8-posed/v1', 'coordinate_frame': 'world',
                                                      'parts': [str(pathlib.Path(obj).resolve())]}))
         objs.append({'posed_dir': str(pd)})
-    wall = pathlib.Path(out_dir) / 'wall.obj'
-    if not wall.exists():
-        from .. import scene as S
-        b = trimesh.creation.box(extents=[18.0, 1.2, 1.0]); b.apply_translation([5.0, S.WALL['y_inner'] - 0.6, 0.5])
-        b.export(str(wall))
-    pdw = pathlib.Path(out_dir) / 'posed_wall'; pdw.mkdir(parents=True, exist_ok=True)
-    (pdw / 'manifest.json').write_text(json.dumps({'schema': 'v8-posed/v1', 'coordinate_frame': 'world', 'parts': [str(wall.resolve())]}))
-    objs.append({'posed_dir': str(pdw)})
+    from .. import scene as S
+    if S.TERRAIN['right_wall']:
+        wall = pathlib.Path(out_dir) / 'wall.obj'
+        if not wall.exists():
+            b = trimesh.creation.box(extents=[18.0, 1.2, 1.0]); b.apply_translation([5.0, S.WALL['y_inner'] - 0.6, 0.5])
+            b.export(str(wall))
+        pdw = pathlib.Path(out_dir) / 'posed_wall'; pdw.mkdir(parents=True, exist_ok=True)
+        (pdw / 'manifest.json').write_text(json.dumps({'schema': 'v8-posed/v1', 'coordinate_frame': 'world', 'parts': [str(wall.resolve())]}))
+        objs.append({'posed_dir': str(pdw)})
     spec['objects'] = objs
     return spec

@@ -61,6 +61,24 @@ class SuiteSceneTests(unittest.TestCase):
         for policy in ('optimistic', 'conservative', 'imagination'):
             np.testing.assert_array_equal(N.occupancy(state, policy), expected)
 
+    def test_rehearsal_respects_configured_wall_even_with_stale_artifacts(self):
+        from beforestep.geometry.imagination import rehearsal_spec
+        import trimesh
+        base = {'terrain': {'known': 'unchanged'}, 'objects': [{'private_truth': True}]}
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            legacy = rehearsal_spec(base, ['candidate.obj'], out)
+            self.assertEqual(len(legacy['objects']), 2)
+            wall = trimesh.load(out / 'wall.obj', force='mesh', process=False)
+            np.testing.assert_allclose(wall.extents, [18., 1.2, 1.])
+            np.testing.assert_allclose(wall.bounds.mean(0), [5., S.WALL['y_inner'] - .6, .5])
+            self.select(terrain={'type': 'plain', 'right_wall': False})
+            plain = rehearsal_spec(base, ['candidate.obj'], out)
+            self.assertEqual(len(plain['objects']), 1)
+            self.assertEqual(plain['terrain'], base['terrain'])
+            self.assertEqual(base['objects'], [{'private_truth': True}])
+            self.assertTrue((out / 'wall.obj').exists())
+
     def test_reconfigure_restores_sun_and_terrain_defaults(self):
         self.select(terrain={'type': 'plain', 'right_wall': False},
                     sun={'elevation_deg': 6., 'azimuth_deg': -80.})

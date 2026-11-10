@@ -105,6 +105,13 @@ def pose(env):
     return float(q[0]), float(q[1]), F.yaw_of(q)
 
 
+def diagnostic_truth(arguments, env, meta):
+    """Only the explicitly marked truth stand-in may derive hidden geometry at run time."""
+    if arguments.policy == 'imagination' and arguments.imagine == 'truth':
+        return true_footprints(env, meta)
+    return None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--policy', required=True, choices=['conservative', 'optimistic', 'imagination'])
@@ -238,8 +245,8 @@ def main():
         return False
     rec.monitor = on_step
     env.physics_monitor = on_step
-    truth = true_footprints(env, meta)
-    truth_union = np.logical_or.reduce(list(truth.values()))
+    truth = diagnostic_truth(a, env, meta)
+    truth_union = np.logical_or.reduce(list(truth.values())) if truth else None
     truth_objs = []
     if a.policy == 'imagination' and a.imagine == 'truth':
         import trimesh
@@ -576,7 +583,7 @@ def main():
             path = N.plan(occ, (x, y), S.GOAL)
             reason = None if path is not None else 'no_path'
         ev('plan', policy=a.policy, look=len(looks), path=None if path is None else [[round(p[0], 3), round(p[1], 3)] for p in path],
-           reason=reason, margin_vs_truth=None if path is None else N.path_clearance(path, (x, y), N.clearance(truth_union | N.prior_nogo())))
+           reason=reason, margin_vs_truth=None if path is None or truth_union is None else N.path_clearance(path, (x, y), N.clearance(truth_union | N.prior_nogo())))
         if path is not None and a.policy == 'imagination' and not trust:
             reference = N.plan(N.occupancy(state, 'optimistic',
                                known_free=N.swept(np.array(rec.q)[:, :2])), (x, y), S.GOAL)
@@ -590,9 +597,9 @@ def main():
                reference_path=None if reference is None else [[float(x),float(y)] for x,y in reference],
                selected_path=[[float(x),float(y)] for x,y in path],
                path_changed=not same_path,
-               reference_margin_vs_truth=None if reference is None else N.path_clearance(
+               reference_margin_vs_truth=None if reference is None or truth_union is None else N.path_clearance(
                    reference, (x,y), N.clearance(truth_union | N.prior_nogo())),
-               selected_margin_vs_truth=N.path_clearance(
+               selected_margin_vs_truth=None if truth_union is None else N.path_clearance(
                    path, (x,y), N.clearance(truth_union | N.prior_nogo())),
                note='Same observed state, robot and planner; only generated occupancy changes.')
             if reference is not None and not same_path and S.SCENE_ID != 'stress_v8':

@@ -250,6 +250,9 @@ def main(argv=None):
     request = json.loads(request_path.read_text())
     frozen_result = request_path.parent/'lux_result.json'
     if frozen_result.exists():
+        frozen_metadata = json.loads(frozen_result.read_text())
+        if frozen_metadata.get('not_real_lux') or frozen_metadata.get('provider') == 'offline_standin':
+            raise RuntimeError('Offline stand-ins cannot be submitted, polled or restored as Lux3D task identities')
         from . import records as contracts
         if contracts.read_result(request_path.parent) is not None:
             frozen=json.loads(frozen_result.read_text())['tasks']

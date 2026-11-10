@@ -13,6 +13,34 @@ from beforestep.navigation import map as N
 from beforestep.generation import records as LX
 
 
+class PostRunGeometryTests(unittest.TestCase):
+    def test_hidden_geometry_is_not_derived_in_any_production_policy(self):
+        from types import SimpleNamespace
+        from beforestep import pipeline
+        with patch.object(pipeline,'true_footprints',return_value={'A':'standin'}) as read:
+            for policy in ('conservative','optimistic','imagination'):
+                args=SimpleNamespace(policy=policy,imagine='lux')
+                self.assertIsNone(pipeline.diagnostic_truth(args,None,None))
+            read.assert_not_called()
+            value=pipeline.diagnostic_truth(SimpleNamespace(policy='imagination',imagine='truth'),None,None)
+            self.assertEqual(value,{'A':'standin'})
+            read.assert_called_once()
+
+    def test_route_center_distance_measures_rock_edges_and_interior(self):
+        from evidence.reviews.beforestep_r1 import build_eval as E
+        polygon=np.array([[1.,-1.],[2.,-1.],[2.,1.],[1.,1.]])
+        distances=E.polygon_distances(np.array([[.8,0.],[1.5,0.]]),polygon)
+        np.testing.assert_allclose(distances,[.2,0.])
+        self.assertGreaterEqual(S.ROBOT['half_wid']-distances[0],.1)
+
+    def test_body_envelope_clearance_changes_with_actual_yaw(self):
+        from evidence.reviews.beforestep_r1 import build_eval as E
+        polygon=np.array([[1.,-1.],[2.,-1.],[2.,1.],[1.,1.]])
+        self.assertAlmostEqual(E.envelope_gap(np.array([0.,0.]),0.,polygon),1-S.ROBOT['half_len'])
+        expected=1-(S.ROBOT['half_len']+S.ROBOT['half_wid'])/np.sqrt(2)
+        self.assertAlmostEqual(E.envelope_gap(np.array([0.,0.]),np.pi/4,polygon),expected)
+
+
 class TargetViewTests(unittest.TestCase):
     def target(self):
         cells = np.zeros_like(N.GX, dtype=bool)
@@ -61,6 +89,18 @@ class TargetViewTests(unittest.TestCase):
 
 
 class InputBatchTests(unittest.TestCase):
+    def test_offline_standin_cannot_contaminate_the_paid_identity_ledger(self):
+        from beforestep.generation import client
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp)
+            (root/'lux_request.json').write_text(json.dumps({'mode':'img','items':[]}))
+            (root/'lux_result.json').write_text(json.dumps({'not_real_lux':True,'provider':'offline_standin','tasks':[]}))
+            with patch.object(client,'ROOT',root),patch.object(client,'LEDGER',root/'ledger'),patch.object(client,'submit') as submit:
+                with self.assertRaisesRegex(RuntimeError,'Offline stand-ins'):
+                    client.main(['--request','lux_request.json','--submit','--wait'])
+                submit.assert_not_called()
+                self.assertFalse((root/'ledger').exists())
+
     def state(self, prefix, ok):
         return {'native_ok':ok, 'crops': {k:{'path':prefix+'/'+k+'.png','sha256':k}
                 for k in ('A1','A2','B1','B2','C1','C2')}}

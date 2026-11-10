@@ -144,6 +144,14 @@ class SuiteSceneTests(unittest.TestCase):
 
 
 class PoolGeneratorTests(unittest.TestCase):
+    def test_optional_role_ranges_preserve_all_registered_v3_scene_bytes(self):
+        from ops.generate_suite_pool import generate
+        parameters = json.loads((S.ROOT / 'config/suite/pool_v3.json').read_text())
+        manifest = json.loads((S.ROOT / 'evidence/suite/pool/r2_v3/manifest_initial_and_expansion.json').read_text())
+        for entry in manifest['scenes']:
+            actual = json.dumps(generate(parameters, entry['family'], entry['seed']), ensure_ascii=False, indent=2)+'\n'
+            self.assertEqual(actual, (S.ROOT / entry['path']).read_text())
+
     def test_seeded_pool_is_reproducible_and_respects_preregistered_ranges(self):
         from ops.generate_suite_pool import generate
         parameters = json.loads((S.ROOT / 'config/suite/pool_v1.json').read_text())

@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def generate(parameters, family, seed):
+    parameters = {**parameters, **parameters.get('family_overrides', {}).get(family, {})}
     rng = np.random.default_rng(np.random.SeedSequence(
         [parameters['rng_version'], int(family[1:]), seed]))
 
@@ -23,18 +24,19 @@ def generate(parameters, family, seed):
     def choose(name):
         return str(rng.choice(parameters[name]))
 
-    def rock(asset, x, y, yaw):
-        return {'rock': asset, 'height': uniform('height_m'), 'x': x, 'y': y, 'yaw': yaw}
+    def rock(asset, x, y, yaw, role=None):
+        field = role + '_height_m' if role and role + '_height_m' in parameters else 'height_m'
+        return {'rock': asset, 'height': uniform(field), 'x': x, 'y': y, 'yaw': yaw}
 
     low, high = parameters['family_rock_counts'][family]
     count = int(rng.integers(low, high + 1))
     broad = bool(rng.random() < parameters['broad_layout_probability'])
     front_x, front_y = uniform('front_x_m'), uniform('front_y_m')
-    rocks = {'A': rock(choose('front_rocks'), front_x, front_y, uniform('front_yaw_deg'))}
+    rocks = {'A': rock(choose('front_rocks'), front_x, front_y, uniform('front_yaw_deg'), 'front')}
     if count >= 2:
         rocks['B'] = rock(choose('broad_rocks' if broad else 'compact_rocks'),
                           round(front_x + uniform('back_delta_x_m'), 6),
-                          uniform('back_y_m'), uniform('back_yaw_deg'))
+                          uniform('back_y_m'), uniform('back_yaw_deg'), 'back')
     if count >= 3:
         rocks['C'] = rock(choose('rock_library'), uniform('third_x_m'),
                           uniform('third_y_m'), round(float(rng.uniform(-90, 90)), 6))

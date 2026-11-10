@@ -327,3 +327,9 @@ B7表/原因、整合首页报告、扩展原数字核验已写脚本，只有py
 D整合脚本保留R1八段与旧报告打印样式，按实际Markdown路径换网页链接；首页关卡以同源嵌入显示，另有完整关卡入口，嵌入按实际内容高度调整，避免移动端截断。脚本只compile，整组数据不存在所以没有提前写首页/报告或冒称发布。
 
 嵌入与保管实际补验：`check_levels_browser.py --name C1-anchor-embed-fix` exit0，全五步/3回放/11候选网格/计分与390px、HTTP/页面0错误；独立390px同源iframe实际收到高度1162px且隐藏内部header、内文无横溢出（C1-embed-validation.json，public anchor-game/embed.json）。沙盒开过区域改为0.42m半径线段胶囊，重跑独立近似首眼1/1一致、精确EDT0。13关卡网格总7.5MB的原字节归一到LFS，SHA不变；仅传输方式变，不改场景/门槛/源。
+
+### B2 F0扩展完成与范围调整预注册
+
+2026-11-10 16:47 UTC，v3 F0所有24×4非Lux已完整终态：0决定性/17普通/7无解，0执行错误；锚点加进来也仅1决定性。F1/F2/F3仍运行，F1前两个完整候选为1决定性/1无解，不拿局部结果冻结。按B2记录F0参数调整，config/suite/pool_v4.json与decisions列出全部范围，旧0/24保留；不修改单个scene，不改stress，不看真实Lux。v4只预注册、未生成/未运行，须等v3全部完成与F1合规扩展判断后整四类别新池（不只跑F0）。可选role高度/类别覆盖的生成器缺省对全部84旧v3配置逐字节相同；当前完整测试预期63，物理src仍671a4e6，因此此前五回归identity不变。
+
+新生成器兼容测试实际63/63 exit0（4.554s，B2-generator-compatibility-tests.log），84既注册v3配置字节完全相同。源SHA清单仍与B1-flat-and-view完整5回归一致；不重复跑未变物理源。B6后处理驱动在复制的真实R1锚点上实测exit0：3D47.541283739641456mm、XY0、乐观原路线压入218.988625657973mm，与原复盘相同；只验证helper，不计新组实测，原R1未覆盖。public evidence/suite/regressions/postmortem-helper/validation.json，原输出outputs/qa/r2/postmortem-helper。新Lux仍0/360。

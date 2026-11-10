@@ -381,3 +381,7 @@ F3扩24仍只有1D，按B2在尚未生成的v4范围加入F3角色尺度和摆�
 C2单位扫描用exact高度缓存创建，避免单位尺寸预处理占用旧legacy毫米缓存键；恢复现场profile，再读取原场景。只改导出helper，不影响上述src回归。下一先提交源/完整结果/F0F2F3所有参数注册并push，再生成v4四类别初始1–12全48配置并push、运行192非Lux；F1若仍不足2按新池实际结果扩13–24一次。0新付费/360。
 
 新版C1补验成功：`check_levels_browser.py --name C1-truth-final-idle` exit0，全五步、3真实回放/11候选/所有独立真实扫描、first-choice计分、无候选真值回退UI fixture、390px和0page/HTTP错误均pass。两次143前日志保留，不再把其当最新验收状态；public anchor-game/browser.json更新，截图/原日志C1-truth-final-idle-*。C2 exact单位扫描build+独立近似一致性仍1/1、精确EDT0，exit0；回归src两文件没有再变，全部五gate仍有效。下一v4首先只1–12每类，按新池结果不足再扩一次13–24，不偷用未来结果。
+
+### B2 v4全部候选已注册，运行前预期
+
+源修正/65测试/五R1gate/参数完整提交7833286已推；v4全部四类别各1–12的48配置与SHA manifest提交28e7302已推（尚非B3最终组）。现在运行`run_suite_pool.py --manifest evidence/suite/pool/r2_v4/manifest_F0_F1_F2_F3_1_12.json --out outputs/suite/pool/r2_v4 --regression evidence/suite/regressions/B1-global-stop/regression.json --workers 3`。预期192个非Lux子运行exit0；分类只按原三类定义，未归类单列，不预设结果或比例。每类不足2D再按新池实际完整12结果判断扩13–24一次，仍不足则B2允许整池改范围。无真实Lux，仍0/360，B3最终freeze未创建。

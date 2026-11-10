@@ -36,9 +36,11 @@ def pending_request(tdir):
     return None
 
 
-def prepare_second_batch(tdir, decision, look):
+def prepare_second_batch(tdir, decision, look, *, sampling_exhausted=False):
     """R1 preregistered one-time retry, preserving the original request and result."""
     import shutil
+    if sampling_exhausted:
+        return None
     tdir = pathlib.Path(tdir)
     request = json.loads((tdir / 'lux_request.json').read_text())
     if look != 2 or request['mode'] != 'img' or decision['admitted_ids']:

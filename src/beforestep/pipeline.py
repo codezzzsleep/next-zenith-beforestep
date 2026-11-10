@@ -440,7 +440,8 @@ def main():
             n_adm = len(res['admitted_ids'])
             if not trust_now:
                 target_look = int(t['state']['look'].removeprefix('look'))
-                retry = LX.prepare_second_batch(t['dir'], res, target_look)
+                retry = LX.prepare_second_batch(t['dir'], res, target_look,
+                                                sampling_exhausted=why.get('sampling_exhausted', False))
                 if retry is not None:
                     ev('need_lux3d', look=k, requests=[LX.rel(retry)], reason='r1_zero_admitted_first_batch',
                        additional_samples=6, total_samples_limit=12)

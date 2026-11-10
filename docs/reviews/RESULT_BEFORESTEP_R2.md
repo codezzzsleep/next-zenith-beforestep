@@ -10,7 +10,7 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 完成 | 671a4e6；62测试与B1-flat-and-view五回归通过 |
+| B1 | 地形/太阳配置与完整回归 | 完成 | 本次global-stop源修正与完整五回归通过；65测试 |
 | B2 | 参数预注册、生成器、候选池分类 | 进行中 | 96fa0b7/4f554c7/671a4e6；v3配置31ef28c，现有池运行中 |
 | B3 | 冻结场景组并推送 | 未开始 | — |
 | B4 | 四类真实形状替身完整链 | 未开始 | — |
@@ -361,3 +361,23 @@ v3 F2全部24×4完成exit0：0决定性/16普通/8无解/0执行错误。按B2�
 F1种子13–24的48非Lux全部exit0，父2745203/session39826已完成：D1/O5/U3/未归类3；与初始1–12合计24场景为D2/O10/U8/未归类4，0执行错误。原始所有summary/run_id/命令见evidence/suite/pool/r2_v3/manifest_F1_13_24_results.json与初始results，raw outputs/suite/pool/r2_v3_f1_expansion。达到2D，但不提前冻结：原v3 F3仍运行，下一完整新池需源stop修复/全R1回归/所有候选提交后再跑。F1不调整参数范围，仍保持原广范围。
 
 关卡地图的DARK=2改棕色、HIDDEN=3改紫色，使配色与图例语义一致；JS语法通过，只改查看，不改观测数据/实验结果。
+
+F1扩展工具回执补充：`write_stdin(session39826)`返回工具会话143，不能把它记作driver的实测0。独立parent PID2745203已退出，pool.json的completed=true、全部48子运行记录exit_code=0、最终counts与公开结果均齐全；driver退出码未单独捕获，tool wrapper143保留。按持久结果确认全部48物理变体完成，不重跑或覆盖已完数据。
+
+### B2 v3及唯一F1扩展全部完成
+
+原84场景336子运行全部终态exit0，原parent2130778已退出，pool.json completed=true，最终public manifest_initial_and_expansion_results.json保全。合并F1扩展后96场景/384运行：F0 D0/O17/U7，F1 D2/O10/U8/未归类4，F2 D0/O16/U8，F3 D1/O9/U14；全部0执行错误。工具父会话可能已终止，退出码未单独捕获，记录的所有384物理子运行均0/全部summary齐；不重跑旧结果。
+
+F3扩24仍只有1D，按B2在尚未生成的v4范围加入F3角色尺度和摆放调整，旧1/24/14U不删除：前石rock07 0.53–0.57、后石80%moon04/20%moon02 0.40–0.44，A/B摆放/yaw/太阳为已登记锚点邻域；第三散石height0.35–0.45/x8.0–8.4/y-1.6至1.7，goal10.5–11.5（仍8–12m）；月坑r0.65–0.80/深0.4–0.8、上坑x6.4–7.0/y1.5–1.8、下坑x4.9–5.4/y-1.9至-1.65，一/两坑、2–4石仍不变。目的减少原宽石/近第三石造成的固定流程无解，保持坑与散石混合、不改单一scene。全部范围先写decisions/params并提交；未调任何Lux。
+
+原两父都已结束后才开始修multi-target sampling stop：只阻止已有目标12份零准入之后新写其他6b，仍自检已生成全部候选；默认原R1行为保持。运行前预期：所有单测（含新停止状态IO）、四R1基线同原与R1全数组reuse同原；新gate out outputs/qa/r2/B1-global-stop-regression。过关并push后才生成/运行完整v4新池。
+
+### B1新全局停止实现完整回归通过
+
+`run_r2_regression.py --out outputs/qa/r2/B1-global-stop-regression --workers 3` driver工具退出码0，65/65测试（2.701s），六冻结配置SHA不变；四基线结果/眼数/仿真时间同R1，完整reuse12格预演全pass、traj.npz全部数组逐项相同。所有五子运行exit0，公开regressions/B1-global-stop/{regression.json,tests.log,driver.log}，完整原运行仍outputs。
+
+多目标after IO exit0：第一目标十二份失败/准入0、全局exhausted=true，下一目标不再写6b（额外0份）；原before exit1保留，公开regressions/multi-target-stop/after.*。只修请求创建停止，既有GLB仍走原自检，未改阈值/两眼/控制/相机/传感器。legacy sampling_stop事件中的R1 §2.4文字标记不触发B替换，R2 helper只停车，套组一律不换场景。
+
+C2单位扫描用exact高度缓存创建，避免单位尺寸预处理占用旧legacy毫米缓存键；恢复现场profile，再读取原场景。只改导出helper，不影响上述src回归。下一先提交源/完整结果/F0F2F3所有参数注册并push，再生成v4四类别初始1–12全48配置并push、运行192非Lux；F1若仍不足2按新池实际结果扩13–24一次。0新付费/360。
+
+新版C1补验成功：`check_levels_browser.py --name C1-truth-final-idle` exit0，全五步、3真实回放/11候选/所有独立真实扫描、first-choice计分、无候选真值回退UI fixture、390px和0page/HTTP错误均pass。两次143前日志保留，不再把其当最新验收状态；public anchor-game/browser.json更新，截图/原日志C1-truth-final-idle-*。C2 exact单位扫描build+独立近似一致性仍1/1、精确EDT0，exit0；回归src两文件没有再变，全部五gate仍有效。下一v4首先只1–12每类，按新池结果不足再扩一次13–24，不偷用未来结果。

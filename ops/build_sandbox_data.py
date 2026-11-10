@@ -24,7 +24,12 @@ def main():
             continue
         # Use the same principal-axis alignment and ground normalization as the
         # real scene exporter, rather than the raw scan's arbitrary frame.
-        canonical, _ = S.rock_asset_uniform(asset.name, 1.0)
+        previous_precision = S.ASSET_CACHE_PRECISION
+        try:
+            S.ASSET_CACHE_PRECISION = 'exact'
+            canonical, _ = S.rock_asset_uniform(asset.name, 1.0)
+        finally:
+            S.ASSET_CACHE_PRECISION = previous_precision
         mesh = trimesh.load(canonical, force='mesh', process=False)
         from scipy.spatial import ConvexHull
         points = mesh.vertices[:, :2]

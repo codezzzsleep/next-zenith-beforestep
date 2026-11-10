@@ -39,7 +39,7 @@ def generate(parameters, family, seed):
                           uniform('back_y_m'), uniform('back_yaw_deg'), 'back')
     if count >= 3:
         rocks['C'] = rock(choose('rock_library'), uniform('third_x_m'),
-                          uniform('third_y_m'), round(float(rng.uniform(-90, 90)), 6))
+                          uniform('third_y_m'), round(float(rng.uniform(-90, 90)), 6), 'third')
     if count == 4:
         # A non-target scatter rock is behind the first camera and outside the
         # approach lane. Up to three foreground rocks remain observed targets.

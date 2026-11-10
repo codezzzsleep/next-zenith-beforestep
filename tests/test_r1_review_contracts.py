@@ -144,6 +144,26 @@ class InputBatchTests(unittest.TestCase):
                 self.assertEqual(len(items),3 if mode=='imgs' else 6)
                 if mode=='img':self.assertTrue(all(it['path'].startswith('second/') for it in items))
 
+    def test_an_exhausted_target_prevents_other_target_paid_retries(self):
+        with tempfile.TemporaryDirectory() as temp:
+            root=Path(temp); ids=('A1','A2','B1','B2','C1','C2')
+            for name in ids:(root/(name+'.jpg')).write_bytes(b'original-'+name.encode())
+            items=[{'id':name,'path':name+'.jpg','sha256':hashlib.sha256((root/(name+'.jpg')).read_bytes()).hexdigest()} for name in ids]
+            with patch.object(LX,'ROOT',root):
+                targets=[root/'first',root/'other']
+                for target in targets:
+                    target.mkdir(); LX.write_request(target,'img',items)
+                    (target/'lux_result.json').write_text(json.dumps({'tasks':[{'id':i['id'],'status':'failed','inputs':[i['path']]} for i in items]}))
+                retry=LX.prepare_second_batch(targets[0],{'admitted_ids':[]},2)
+                second=json.loads(retry.read_text())['items']
+                (retry.parent/'lux_result.json').write_text(json.dumps({'tasks':[{'id':i['id'],'status':'failed','inputs':[i['path']]} for i in second]}))
+                self.assertEqual(LX.read_result(targets[0]),[])
+                original=(targets[1]/'lux_request.json').read_bytes()
+                self.assertIsNone(LX.prepare_second_batch(targets[1],{'admitted_ids':[]},2,sampling_exhausted=True))
+                self.assertFalse((targets[1]/'retry').exists())
+                self.assertEqual((targets[1]/'lux_request.json').read_bytes(),original)
+                self.assertEqual(LX.read_result(targets[1]),[])
+
     def test_retry_preserves_exact_input_bytes_and_occurs_only_once(self):
         with tempfile.TemporaryDirectory() as temp:
             root=Path(temp); target=root/'target'; target.mkdir()

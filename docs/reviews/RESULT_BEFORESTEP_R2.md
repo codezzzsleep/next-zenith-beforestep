@@ -393,3 +393,7 @@ F0种子1–12所有48子运行exit0，D9/O2/U1，0执行错误；原v3宽范围
 ### B2 v4 F1初始完整结果与唯一扩展
 
 F1所有1–12×4已exit0，D1/O5/U5/未归类1，和同范围旧源结果一致。按B2基于本版实际完整结果不足2，追加13–24一次；参数/源码不变，预期新12×4子运行exit0，分类比例不预设。生成命令`generate_suite_pool.py --params config/suite/pool_v4.json --family F1 --seeds 13 24`，配置/manifest先push，随后新out outputs/suite/pool/r2_v4_f1_expansion、workers1，regression B1-global-stop；当前主池PID1099606保持跑F2/F3，总四普通进程，内存available7GB、新F1预期3GB。无代理，无新Lux，0/360，B3尚未freeze。
+
+### B2 v4 F2初始池完整结果
+
+F2 1–12所有48子运行exit0，D3/O8/未归类1、U0/error0；旧v3宽范围D0/O16/U8（24个）与新预注册范围D3/O8/未归类1（12个）都保留，不把新比例外推为任意月面。F0/F2均已满足2D+至少1O，F1新池扩展仍运行，F3初始仍运行；不能提前冻结最终名单或收费。全部已完成原summary/identity/commands在当前同一v4 results，completed=false。新paid0/360，源7833286不变。

@@ -19,6 +19,8 @@ def main():
     output.mkdir(parents=True, exist_ok=True)
     errors, failures, checked = [], [], []
     status = {'arrived': '到达终点', 'collision': '发生碰撞', 'stuck': '安全停车', 'stopped_short': '未完成路线'}
+    def outcome(run):
+        return 'collision' if run['collision'] is not None or run['result'] == 'collision' else run['result']
     with sync_playwright() as playwright:
         browser = playwright.chromium.launch(executable_path='/root/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',
             headless=True, args=['--no-sandbox', '--use-gl=angle', '--use-angle=swiftshader', '--enable-unsafe-swiftshader'])
@@ -40,7 +42,7 @@ def main():
             page.locator('[data-level-choice=optimistic]').click()
             assert page.locator('[aria-current=step]').inner_text() == '走'
             page.locator('#level-finish').click()
-            assert page.locator('#level-run-status').inner_text() == status[level['runs']['optimistic']['result']]
+            assert page.locator('#level-run-status').inner_text() == status[outcome(level['runs']['optimistic'])]
             page.locator('#level-reveal').click()
             assert page.locator('[aria-current=step]').inner_text() == '揭晓'
             assert page.locator('#level-results article').count() == 3
@@ -63,13 +65,13 @@ def main():
             for key in ('conservative', 'imagination'):
                 page.locator('[data-level-rewatch=' + key + ']').click()
                 page.locator('#level-finish').click()
-                assert page.locator('#level-run-status').inner_text() == status[level['runs'][key]['result']]
+                assert page.locator('#level-run-status').inner_text() == status[outcome(level['runs'][key])]
                 page.locator('#level-reveal').click()
             page.locator('#level-score').click()
             assert page.locator('[aria-current=step]').inner_text() == '记分'
-            player += level['runs']['optimistic']['result'] == 'arrived'
+            player += outcome(level['runs']['optimistic']) == 'arrived'
             for key in fixed:
-                fixed[key] += level['runs'][key]['result'] == 'arrived'
+                fixed[key] += outcome(level['runs'][key]) == 'arrived'
             values = page.locator('#level-scoreboard .metric').all_inner_texts()
             assert values == [f'{player} / {index+1}', *[f'{fixed[k]} / {index+1}' for k in fixed]]
             checked.append({'scene': level['id'], 'all_five_steps': True, 'all_three_actual_replays': True,

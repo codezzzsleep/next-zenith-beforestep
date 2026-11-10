@@ -6,7 +6,7 @@ from pathlib import Path
 import numpy as np
 
 from beforestep import scene as S
-from beforestep.evaluation import truth_footprints, which_rock
+from beforestep.evaluation import truth_footprints
 
 ROOT = Path(__file__).resolve().parents[1]
 R1 = ROOT / 'evidence/reviews/beforestep_r1'
@@ -16,30 +16,46 @@ def read(path):
     return json.loads(Path(path).read_text())
 
 
+def has_collision(summary):
+    return summary['collision'] is not None or summary['result'] == 'collision'
+
+
 def target_counts(actual, scene):
-    S.configure(scene)
+    definition = S.configure(scene)
     truth = truth_footprints(actual)
-    output = {}
+    intended = definition.get('suite', {}).get('target_rocks', list(definition['rocks']))
+    def empty():
+        return {'tasks': 0, 'succeeded': 0, 'admitted': 0, 'views': [], 'six_b': False,
+                'shared_observation_target': False}
+    # A target hidden throughout the run must remain visible as zero requests,
+    # rather than disappear from the table precisely when it caused a failure.
+    output = {rock: empty() for rock in intended}
     for state_file in sorted(actual.glob('looks/look*/T*/state.json')):
         target = state_file.parent
         if not (target / 'lux_request.json').exists():
             continue
         state = read(state_file)
-        rock = which_rock(np.load(target / 'cells.npy'), truth)
-        row = output.setdefault(rock, {'tasks': 0, 'succeeded': 0, 'admitted': 0, 'views': [], 'six_b': False})
+        cells = np.load(target / 'cells.npy')
+        associated = [rock for rock, mask in truth.items() if (mask & cells).any()]
+        if not associated:
+            associated = ['unassociated:' + state['look'] + '/' + target.name]
         tasks = []
         for result in (target / 'lux_result.json', target / 'retry/lux_result.json'):
             if result.exists():
                 tasks.extend(read(result)['tasks'])
         decision = target / 'decide/target_decision.json'
         admitted = read(decision)['admitted_ids'] if decision.exists() else []
-        row['tasks'] += len(tasks)
-        row['succeeded'] += sum(t['status'] == 'ok' for t in tasks)
-        row['admitted'] += len(admitted)
-        row['six_b'] |= (target / 'retry/lux_request.json').exists()
-        row['views'].append({'look': state['look'], 'target': target.name, 'native_px': state['crop_native_px'],
-                             'native_ok': state['native_ok'], 'mode': read(target / 'lux_request.json')['mode'],
-                             'task_ids': [t['task_id'] for t in tasks]})
+        for rock in associated:
+            row = output.setdefault(rock, empty())
+            row['tasks'] += len(tasks)
+            row['succeeded'] += sum(t['status'] == 'ok' for t in tasks)
+            row['admitted'] += len(admitted)
+            row['six_b'] |= (target / 'retry/lux_request.json').exists()
+            row['shared_observation_target'] |= len(associated) > 1
+            row['views'].append({'look': state['look'], 'target': target.name,
+                                 'associated_rocks': associated, 'native_px': state['crop_native_px'],
+                                 'native_ok': state['native_ok'], 'mode': read(target / 'lux_request.json')['mode'],
+                                 'task_ids': [t['task_id'] for t in tasks]})
     return output
 
 
@@ -99,11 +115,11 @@ def main():
             review = read(ROOT / args.review_root / scene / 'review.json')
         events = [json.loads(line) for line in (actual / 'events.jsonl').read_text().splitlines()]
         plans = [e for e in events if e['kind'] == 'plan']
-        physical_collision = runs['imagination']['summary']['collision']
+        physical_collision = has_collision(runs['imagination']['summary'])
         outcome = runs['imagination']['summary']['result']
         failure = None
         if physical_collision:
-            failure = {'category': 'physical_collision', 'detail': physical_collision}
+            failure = {'category': 'physical_collision', 'detail': runs['imagination']['summary']['collision'] or {'result': outcome}}
         elif outcome != 'arrived':
             exhausted = [e for e in events if e['kind'] == 'sampling_stop']
             failure = {'category': 'zero_admission_after_retry' if exhausted else 'approach_or_observation_control' if outcome == 'stopped_short' else 'no_accepted_route',
@@ -122,9 +138,9 @@ def main():
     ordinary = [r for r in rows if r['classification'] == 'ordinary']
     def outcome(row):
         return row['runs']['imagination']['summary']['result']
-    arrived = sum(outcome(r) == 'arrived' for r in decisive)
-    collisions = [r['scene'] for r in rows if outcome(r) == 'collision']
-    parked = sum(outcome(r) != 'arrived' and r['runs']['imagination']['summary']['collision'] is None for r in decisive)
+    arrived = sum(outcome(r) == 'arrived' and not has_collision(r['runs']['imagination']['summary']) for r in decisive)
+    collisions = [r['scene'] for r in rows if has_collision(r['runs']['imagination']['summary'])]
+    parked = sum(outcome(r) != 'arrived' and not has_collision(r['runs']['imagination']['summary']) for r in decisive)
     extra_eyes = [r['runs']['imagination']['summary']['looks'] - r['runs']['optimistic']['summary']['looks'] for r in ordinary]
     extra_time = [r['runs']['imagination']['summary']['sim_time_s'] - r['runs']['optimistic']['summary']['sim_time_s'] for r in ordinary]
     cf_collisions = sum(r['counterfactuals']['collisions'] for r in rows)
@@ -134,8 +150,8 @@ def main():
         'frozen_scene_count': len(frozen['scenes']), 'completed_scene_count': len(rows),
         'incomplete_scenes': incomplete, 'scenes': rows,
         'decisive': {'completed': len(decisive), 'arrived': arrived, 'safe_stop': parked,
-                     'collisions': sum(outcome(r) == 'collision' for r in decisive)},
-        'ordinary': {'completed': len(ordinary), 'arrived': sum(outcome(r) == 'arrived' for r in ordinary),
+                     'collisions': sum(has_collision(r['runs']['imagination']['summary']) for r in decisive)},
+        'ordinary': {'completed': len(ordinary), 'arrived': sum(outcome(r) == 'arrived' and not has_collision(r['runs']['imagination']['summary']) for r in ordinary),
                      'extra_eyes': extra_eyes, 'extra_sim_time_s': extra_time,
                      'mean_extra_eyes': float(np.mean(extra_eyes)) if extra_eyes else None,
                      'mean_extra_sim_time_s': float(np.mean(extra_time)) if extra_time else None},

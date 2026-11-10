@@ -74,7 +74,7 @@ def main():
         return key, {'command': command, 'exit_code': code, 'summary': summary,
                      'intervention_verified': intended, 'run': str(actual.relative_to(ROOT)),
                      'executed': code == 0 and summary is not None and intended,
-                     'collision': bool(summary and summary['collision']) if intended else None}
+                     'collision': bool(summary and (summary['collision'] is not None or summary['result'] == 'collision')) if intended else None}
 
     save()
     with ThreadPoolExecutor(max_workers=args.workers) as executor:

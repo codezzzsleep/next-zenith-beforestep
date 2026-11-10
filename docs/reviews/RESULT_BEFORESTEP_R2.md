@@ -464,3 +464,13 @@ B7/helper预备支持公开wallfix-baselines完整44结果，与实际Lux source
 B4新统一导出/全链运行预期与同源44基线manifest已提交推送。现在允许开始新out outputs/suite/standins-wallfix（四类最早新D、workers2、每类含复盘）和outputs/suite/baselines-wallfix（冻结11全部四基线、workers1）。总3普通物理进程，0付费；源码ed7c9ba固定，旧B4原失败不覆盖，frozen.json不改。B4源同一gate/所有预演完整且无碰撞/独立到达/复盘四类全pass之后才真实Lux。
 
 B1新gate提交d4dfb45aefb0e490875551458f12b43f492978ab已push0/远端同，启动前git status干净。B4新dispatcher PID2023174/tool41241、冻结同源基线PID2023248/tool29956实际运行；各自独立out/ledger及上述命令，三普通物理进程，0付费。旧B4与wall-regression父均已退出；这不是B4已通过，仍待新四完整链/复盘/所有预演检查。
+
+### B4同源替身阶段结果与另一已冻结D的验证预期
+
+F0_001新统一输入替身2眼139.48s到达、所有预演完整无碰撞，复盘exit0。F2_003新输入仍1眼84.06s撞B/obstacle1，接触(7.097,-0.377,0.118)；首眼只形成A的T1，B为0观测/0请求。其原/新替身全部保留，不冒称Lux失败或B4通过。F1_001第一眼预演没有虚构墙，但完整性失败waypoint_not_reached（误差0.469m）；流程正在第二眼继续。F3_002也在运行。原四类dispatcher结束后仍按所有预演与独立执行检查，不把中间失败删掉。
+
+B4要求每类有一个决定性场景走通。最早D失败时，验证同类另一份已冻结的D：F2_007与F1_020；按原seed顺序、不改输入导出规则/参数/控制/场景config/冻结名单。两个失败场景依然必须进入B5完整真实组，不能替换、删除或隐藏；替身成功只证明该类链路能被执行，不能证明每个场景或Lux有效。预期同原：所有选定路线预演完整且无碰撞、≤2眼独立到达、复盘通过；若再次失败原样保存。新out outputs/suite/standins-wallfix/alternates/<scene>，regression B1-rehearsal-wall；每次单进程，当前memavailable约8GB，一新增约3GB，最多4普通物理进程，0paid。
+
+B7报表helper已对保留R1与离线失败数据做只读QA：R1A6/6/6、B6/5/2不变；全程未形成请求的B保留0任务；共享目标保留共同task_id、不能双算独立任务。碰撞字段/接触记录优先于终态文字，不能以离散保存姿态正间隙或arrival字样抵消碰撞。三QA日志见evidence/suite/regressions/report-contracts，0新物理实验/0paid。真实B7仍未生成，helper不能冒充总表完成。
+
+B5完整11真实场景dispatcher已实现并compile；在B4 summary不存在时实际被门禁挡住、API submit mock调用0次、真实out/budget均未创建（B5-dispatcher-gate-qa）。真实模式未启动。新版C1碰撞优先显示/计分在R1锚点真实浏览器exit0：五步、3回放、11候选/独立真值、无候选fixture、390px、0page/HTTP错误；完整场景组仍待B。

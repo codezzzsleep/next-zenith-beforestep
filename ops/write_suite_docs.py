@@ -43,7 +43,8 @@ def main():
         for key in ('conservative', 'see_dark', 'optimistic', 'truth', 'imagination'):
             run = row['runs'][key]; s = run['summary']
             identity = (run['run'] + '/run_identity.json') if row.get('anchor') else ('evidence/suite/scenes/' + row['scene'] + '/runs/' + key + '/run_identity.json')
-            values.append(f"{LABELS.get(s['result'], s['result'])} · {s['looks']}眼 · {s['sim_time_s']}s · [身份](../{identity})")
+            result = 'collision' if s['collision'] is not None or s['result'] == 'collision' else s['result']
+            values.append(f"{LABELS.get(result, result)} · {s['looks']}眼 · {s['sim_time_s']}s · [身份](../{identity})")
         lines.append('| ' + ' | '.join(values) + ' |')
     if data.get('corrected_baseline_results'):
         lines.extend(['', 'B4在付费前发现并纠正预演中的旧右墙配置遗漏。上表全部新增场景的四基线随后统一重跑，与真实Lux使用相同源码；最初用于选取的四次结果仍保存在冻结名单中，没有据修正后的结果增删或替换场景。',
@@ -54,15 +55,17 @@ def main():
         '| --- | --- | --- | --- | --- | --- |'])
     for row in data['scenes']:
         for rock, target in row['targets'].items():
-            views = '; '.join(f"{v['look']}/{v['target']}: {v['native_px']}px, native_ok={v['native_ok']}, {v['mode']}" for v in target['views'])
+            views = '; '.join(f"{v['look']}/{v['target']}: {v['native_px']}px, native_ok={v['native_ok']}, {v['mode']}" +
+                              ('，共享目标 ' + '+'.join(v['associated_rocks']) if len(v.get('associated_rocks', [])) > 1 else '')
+                              for v in target['views']) or '全程没有生成观测请求'
             lines.append(f"| {row['scene']} | {rock} | {target['tasks']} / {target['succeeded']} / {target['admitted']} | {views} | {'是' if row['second_eye'] else '否'} | {'是' if target['six_b'] else '否'} |")
-    lines.extend(['', '每份成功、失败与被拒候选均保留；第二眼单图首次零准入时只追加同字节 6b 一批，仍零准入就停止。两眼都 native_ok 的两图分支按原协议三份执行。', '',
+    lines.extend(['', '从未形成观测请求的目标也以零任务保留；若一个连通观测目标对应多块真实岩石，各岩石行共享同一批任务身份，不能相加当作额外独立生成。每份成功、失败与被拒候选均保留；第二眼单图首次零准入时只追加同字节 6b 一批，仍零准入就停止。两眼都 native_ok 的两图分支按原协议三份执行。', '',
         '## 赛后真值与全部拒绝反事实', '', '| 场景 | 3D最小间隙mm | XY包络间隙mm | 乐观原路线压入mm | 反事实碰撞 / 可执行 | 不能执行的拒绝候选 |',
         '| --- | ---: | ---: | ---: | --- | ---: |'])
     for row in data['scenes']:
         review, cf = row['review'], row['counterfactuals']
         lines.append(f"| {row['scene']} | {review['minimum_3d_clearance_m']*1000:.3f} | {review['minimum_xy_envelope_clearance_m']*1000:.3f} | {review['optimistic_max_intrusion_m']*1000:.3f} | {cf['collisions']} / {cf['executed']} | {cf['unexecutable']} |")
-    lines.extend(['', '3D量来自每个保存姿态的原 MuJoCo 可碰撞几何；XY矩形与真实扫描平面包络是单独的复盘近似。二者同时报告，XY相交不等于真实3D接触。反事实枚举每一眼每份被拒候选，不挑选；第二眼候选在原第一眼与移动前缀重放之后干预，不在第一眼泄露未来观测。不能形成可执行反事实的失败另列，不能当作“不会撞”。', '', '## 预先约定的结论', ''])
+    lines.extend(['', '3D量来自每个保存姿态的原 MuJoCo 可碰撞几何；XY矩形与真实扫描平面包络是单独的复盘近似。二者同时报告，XY相交不等于真实3D接触。碰撞按原始接触记录优先判断，离散保存姿态的正间隙不能抵消接触事件。反事实枚举每一眼每份被拒候选，不挑选；第二眼候选在原第一眼与移动前缀重放之后干预，不在第一眼泄露未来观测。不能形成可执行反事实的失败另列，不能当作“不会撞”。', '', '## 预先约定的结论', ''])
     d, o, cf = data['decisive'], data['ordinary'], data['counterfactuals']
     if data['imagination_collision_scenes']:
         lines.append('**想象策略实际发生碰撞：' + '、'.join(data['imagination_collision_scenes']) + '。这是最重要的安全边界，首页与总表同时公开。**')

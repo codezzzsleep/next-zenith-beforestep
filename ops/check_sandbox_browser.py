@@ -22,6 +22,8 @@ def main():
         page = browser.new_page(viewport={'width': 1440, 'height': 1000}, accept_downloads=True)
         page.on('pageerror', lambda e: errors.append(str(e)))
         page.on('response', lambda r: failures.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
+        page.on('requestfailed', lambda r: failures.append({'url': r.url, 'error': r.failure})
+                if r.failure != 'net::ERR_ABORTED' else None)
         assert page.goto(args.url).status == 200
         page.wait_for_selector('#sandbox-map[data-revision]', timeout=60000)
         page.wait_for_function('document.querySelectorAll("#sandbox-results article").length===3')
@@ -54,6 +56,21 @@ def main():
         assert scene['sun']['azimuth_deg'] == 50
         assert scene['asset_cache_precision'] == 'exact' and scene['rehearse_reference'] is False
         page.locator('#sandbox-delete').click()
+        # Exercise the browser's actual library drag-and-drop path as well as
+        # moving a rock already on the map. A click does not cover this path.
+        box = page.locator('#sandbox-map').bounding_box()
+        revision = int(page.locator('#sandbox-map').get_attribute('data-revision'))
+        page.locator('[data-asset=rock_07]').drag_to(page.locator('#sandbox-map'),
+            target_position={'x': (10+1)/14*box['width'], 'y': (2.5+1.5)/4.5*box['height']})
+        page.wait_for_function('(n)=>Number(document.querySelector("#sandbox-map").dataset.revision)>n', arg=revision)
+        with page.expect_download() as drop_dl:
+            page.locator('#sandbox-export').click()
+        drop_destination = output / (args.name + '-drop-export.json')
+        drop_dl.value.save_as(drop_destination)
+        dropped = json.loads(drop_destination.read_text())['rocks']['R2']
+        assert dropped['rock'] == 'rock_07'
+        assert abs(dropped['x']-10) < .03 and abs(dropped['y']+1.5) < .03
+        page.locator('#sandbox-delete').click()
         page.locator('#sandbox-animate').click()
         page.locator('#sandbox-layer').select_option('imagination')
         page.wait_for_timeout(800)
@@ -65,6 +82,7 @@ def main():
         assert not errors, errors
         assert not failures, failures
         result = {'passed': True, 'url': args.url, 'rock_drag_rotate_height': True,
+            'library_drag_and_drop': True,
             'crater_add_delete': True, 'sun_changed': True, 'three_plans_displayed': True,
             'export_validated': str(destination.relative_to(ROOT)), 'width_390_no_overflow': True,
             'page_errors': errors, 'http_errors': failures}

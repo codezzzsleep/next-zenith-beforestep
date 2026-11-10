@@ -534,3 +534,5 @@ B5真实dispatcher PID2077882/tool60090已启动并实际创建任务。账本�
 B6调度决定（真实B5仍运行，未更改src）：使用单个普通Python后处理父进程，按冻结seed顺序处理已完成并复盘exit0的场景，每场枚举全部每眼拒绝候选；B5运行期间最多1个CF物理子进程，B5全部结束后最多3个。当前16GB内存、B5两子各约3GB，此调度保持总约3个物理子，减少长注册阶段的空等，不改任何实验参数/数据/名单、不新增paid。每个第二眼CF追加只读核验：原/CF第二眼时刻与实测姿态及此前traj.npz全部5数组精确相同；不把未来候选放入首眼。数据保全仍在每scene全部CF终态后一次生成SHA manifest/完整外包，未完成的场景不冒称结果。
 
 B6后处理调度与前缀核验已实现，ops三个文件compile exit0；只读QA在保存的R1真实形状第二眼CF上，原第二眼时间/实测姿态和全部5个prefix数组精确同，故意改1mm qpos的隔离副本正确被拒，public regressions/report-contracts/CF-prefix-audit.json。0新物理/0新paid，SRC与完整R1gate逐文件SHA仍相同。报告生成器同时纠正上限说明：保守/see-dark/乐观最多5眼，真实形状/真实Lux最多2眼；这只是忠实说明既有流程，不更改上限。新全组B6尚未执行，等待已完成真实scene。
+
+C2浏览器新增扫描库真实drag/drop验收exit0（C2-library-drop-anchor.log）：rock_07从库拖到(10,-1.5)并从导出JSON核对相同；既有岩石拖动/旋转/高度、坑增删、太阳、三路线、390px和0page/HTTP错误都通过。public presentation/sandbox-anchor/browser.json仍明确development_anchor_only=true，只有1个R1首关，完整12组C2尚未验收。

@@ -5,7 +5,7 @@ import trimesh
 from . import camera as camera_io
 from beforestep.paths import ROOT
 
-VERSION = 'v3-register/v1'
+VERSION = 'v3-register/v2'
 
 
 def sha256_file(p):
@@ -526,6 +526,15 @@ def evaluate_matrix(mesh, obs, M):
             'n_candidate_pixels': int(m.sum()), 'n_mask_pixels': int(mask.sum())}
 
 
+def registration_quality(diagnostics):
+    """The final visible-surface objective used to compare placement matrices."""
+    median = diagnostics['depth_median_mm']
+    iou = diagnostics['mask_iou']
+    if not np.isfinite(median) or not np.isfinite(iou):
+        return float('inf')
+    return float(median + 40.0 * (1.0 - iou))
+
+
 def register(candidate_path, obs_dir, proto, out_dir, *, coarse=None, top_k=None, observation_loader=None, coarse_searcher=None, evaluator=None, scorer=None):
     cfg = proto['registration']
     observation_loader = observation_loader or load_observation
@@ -545,9 +554,17 @@ def register(candidate_path, obs_dir, proto, out_dir, *, coarse=None, top_k=None
     results = []
     for j, pose in enumerate(picked):
         M, hist = refine_icp(mesh, obs, pose['M'], cfg, rng, evaluator=evaluator)
-        M, polish = local_polish(mesh, obs, M, cfg, scorer=scorer)
+        before = evaluator(mesh, obs, M)
+        polished, polish = local_polish(mesh, obs, M, cfg, scorer=scorer)
+        after = evaluator(mesh, obs, polished)
+        accepted = registration_quality(after) < registration_quality(before)
+        polish.update(accepted_by_final_score=accepted,
+                      before_final_quality=registration_quality(before),
+                      after_final_quality=registration_quality(after))
+        if accepted:
+            M = polished
         scan = polish
-        ev = evaluator(mesh, obs, M)
+        ev = after if accepted else before
         results.append({'rank': j, 'coarse': {k: (v.tolist() if isinstance(v, np.ndarray) else v)
                                    for k, v in pose.items() if k not in ('M', 'R0')},
                         'M': M.tolist(), 'diagnostics': ev, 'icp_history': hist[-6:],
@@ -555,8 +572,7 @@ def register(candidate_path, obs_dir, proto, out_dir, *, coarse=None, top_k=None
                         'n_icp_steps': len(hist)})
     for r in results:
         dg = r['diagnostics']
-        r['quality'] = round((dg['depth_median_mm'] if np.isfinite(dg['depth_median_mm']) else 1e6)
-                             + 40.0 * (1.0 - dg['mask_iou']), 4)
+        r['quality'] = round(registration_quality(dg), 4)
     results.sort(key=lambda r: (r['quality'], r['diagnostics']['depth_p95_mm']))
     best = results[0]
     out = pathlib.Path(out_dir)

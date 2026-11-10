@@ -570,3 +570,11 @@ summary.json原文：
 - 赛后只读诊断命令：`PYTHONPATH=/tmp/lunar-review-20261109-deps:/tmp/beforestep-browser-deps:src PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 evidence/reviews/beforestep_r1/diagnose_standin_registration.py`；退出0，[完整数字](../../evidence/reviews/beforestep_r1/standin_placement_diagnostic.json)。B原世界偏航-26°，配准后-29.2925°；三维旋转偏差3.3651°、XY平移偏差0.0202528 m、等比尺度1.0204609。该矩阵在生产过程中仅由观测求得；这里的真实矩阵只用于赛后诊断。
 - 同一个二眼观测地图/同一实际起点/真实A/原5cm规则：真实B的411格可通（右侧边界y=-0.325）；配准B网格凸包432格已无路（y=-0.375）；保存的体素占据467格亦无路。体素占据比配准网格凸包多35格；故封路已经发生在配准后的网格，不只是体素化。
 - 未修改配准、场景、自检或规划方法。仍需负责人补充§0.3未覆盖的“准入但封路”处理规则；只解除网络依赖不能跳过完整替身链到达条件。
+
+## 补充规则接受与配准修复预注册（运行前）
+
+负责人选择“按上述规则继续”：原场景和全部门槛保持，允许修正配准实现，完整替身链与单测通过后才继续真实Lux。`0a22547`已提交联网恢复和放置诊断。
+
+源码核查发现：ICP保留的最终可见面评分5.898，后续稀疏点local_polish结果被无条件接受，最终评分反而19.786。修复预期：局部优化结果必须以现有最终可见面评分和原排序复核，保留更好的矩阵，不改冻结准入。新增单测覆盖优化退化回退及真正改善时采纳；原38项仍通过。
+
+离线完整链命令（公共环境同§2.0）：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_validated_first_source --max-looks 2 --out outputs/reviews/r1/section21_standin_registration_fixed`。预期首眼A准入/B历史拒绝；第二眼仍按原目标/单图6份；补入一份同真实B离线替身后，新代码以实际观测冷配准、自检、原5cm路线、完整预演及独立执行≤2眼到达且无碰撞。替身任务仍明确OFFLINE-STANDIN，不能计Lux成功；预期不因实际失败而改写。

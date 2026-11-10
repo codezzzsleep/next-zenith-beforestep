@@ -41,6 +41,36 @@ class PostRunGeometryTests(unittest.TestCase):
         self.assertAlmostEqual(E.envelope_gap(np.array([0.,0.]),np.pi/4,polygon),expected)
 
 
+class RegistrationPolishTests(unittest.TestCase):
+    def register(self, polished_depth):
+        from beforestep.geometry import registration as R
+        before = np.eye(4)
+        after = np.eye(4); after[0,3] = 1.
+        def evaluate(mesh, observation, matrix):
+            depth = polished_depth if matrix[0,3] else 5.
+            return {'depth_median_mm':depth,'depth_p95_mm':depth+2.,'mask_iou':.9}
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            candidate = root/'candidate.glb'; candidate.write_bytes(b'mocked mesh')
+            (root/'observation.json').write_text('{}')
+            with patch.object(R,'load_mesh',return_value=object()), \
+                 patch.object(R,'refine_icp',return_value=(before,[])), \
+                 patch.object(R,'local_polish',return_value=(after,{'score':1.})):
+                return R.register(candidate,root,{'registration':{}},root/'result',
+                                  coarse=before,observation_loader=lambda _: {},evaluator=evaluate)
+
+    def test_sparse_polish_improvement_cannot_replace_a_better_final_fit(self):
+        result = self.register(polished_depth=20.)
+        self.assertEqual(result['best']['M'][0][3],0.)
+        self.assertEqual(result['diagnostics']['depth_median_mm'],5.)
+        self.assertFalse(result['best']['scale_scan']['accepted_by_final_score'])
+
+    def test_polish_is_kept_when_it_improves_final_visible_surface_fit(self):
+        result = self.register(polished_depth=2.)
+        self.assertEqual(result['best']['M'][0][3],1.)
+        self.assertTrue(result['best']['scale_scan']['accepted_by_final_score'])
+
+
 class TargetViewTests(unittest.TestCase):
     def target(self):
         cells = np.zeros_like(N.GX, dtype=bool)

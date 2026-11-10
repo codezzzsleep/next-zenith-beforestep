@@ -333,3 +333,5 @@ D整合脚本保留R1八段与旧报告打印样式，按实际Markdown路径换
 2026-11-10 16:47 UTC，v3 F0所有24×4非Lux已完整终态：0决定性/17普通/7无解，0执行错误；锚点加进来也仅1决定性。F1/F2/F3仍运行，F1前两个完整候选为1决定性/1无解，不拿局部结果冻结。按B2记录F0参数调整，config/suite/pool_v4.json与decisions列出全部范围，旧0/24保留；不修改单个scene，不改stress，不看真实Lux。v4只预注册、未生成/未运行，须等v3全部完成与F1合规扩展判断后整四类别新池（不只跑F0）。可选role高度/类别覆盖的生成器缺省对全部84旧v3配置逐字节相同；当前完整测试预期63，物理src仍671a4e6，因此此前五回归identity不变。
 
 新生成器兼容测试实际63/63 exit0（4.554s，B2-generator-compatibility-tests.log），84既注册v3配置字节完全相同。源SHA清单仍与B1-flat-and-view完整5回归一致；不重复跑未变物理源。B6后处理驱动在复制的真实R1锚点上实测exit0：3D47.541283739641456mm、XY0、乐观原路线压入218.988625657973mm，与原复盘相同；只验证helper，不计新组实测，原R1未覆盖。public evidence/suite/regressions/postmortem-helper/validation.json，原输出outputs/qa/r2/postmortem-helper。新Lux仍0/360。
+
+完整F0分类的原始summary/run_id与尚未完成其他类别的当前进度已同步到evidence/suite/pool/r2_v3/manifest_initial_and_expansion_results.json；completed=false，不可用于冻结。原runner结束后会将同一文件更新为全336终态及最终counts，Git历史保留本次完整F0判断时的非Lux依据。v4预注册d7a1004已推main，远端同SHA。

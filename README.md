@@ -10,7 +10,7 @@ Lux3D 是核心流程：真实观察图 → 原始生成 GLB → 配准与冻结
 
 - [在线体验](https://codezzzsleep.github.io/next-zenith-beforestep/)
 - [项目报告](docs/report.md) · [技术与资产迭代](docs/milestones.md)
-- [真实 Demo 视频](site/media/demo.mp4) · [完整资产清单](assets/manifest.json)
+- [历史 v0.3 Demo（R1新版由负责人制作）](site/media/demo.mp4) · [完整资产清单](assets/manifest.json)
 - [交付结果与证据](evidence/delivery/)
 - [训练模型与实际执行](site/learning.html) · [训练方法、权重和独立评估](docs/training.md)
 - [主动观察控制的新训练与四眼通行](docs/observation-control.md) · [真实同观测对照视频](evidence/learning/observation_pose_v2/demo.mp4)
@@ -33,7 +33,18 @@ git lfs pull
 
 Release 中的完整源码 ZIP 含实体资产，解压后可直接 `./setup.sh`，无需 Git LFS 下载。
 
-## 复现实验
+## R1主线与核对
+
+默认网页为stress_v8 A+B、rules：保守停车、see-dark对照到达、乐观碰撞，真实Lux一眼到达；完整重放一致，全部被拒B反事实0/3碰撞，自检偏保守。完整原始数据与失败见[evidence/reviews/beforestep_r1](evidence/reviews/beforestep_r1/README.md)。R1报告与网页数字可重复核对：
+
+```bash
+.venv/bin/python ops/verify_r1_evidence.py
+.venv/bin/python ops/verify_r1_presentation.py
+```
+
+以下运行是保留的历史训练控制附录。主线统一rules、不带pose-model，不再训练或新建Lux任务。
+
+## 历史复现实验
 
 ```bash
 # 当前训练模型 + 实时观测 + 已保留的真实Lux资产；每次重新自检/规划/预演/执行。

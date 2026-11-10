@@ -35,8 +35,17 @@ def main():
     assets=output/'assets';assets.mkdir(exist_ok=True)
     shutil.copy2(ROOT/'assets/manifest.json',assets/'manifest.json')
     shutil.copytree(ROOT/'assets/models',assets/'models',dirs_exist_ok=True)
-    data=json.loads((ROOT/'site/data/demo.json').read_text())
-    for candidate in data['candidates']:
+    index=json.loads((ROOT/'site/data/scenes.json').read_text())
+    candidates=[]
+    for scene in index['scenes']:
+        data=json.loads((ROOT/'site'/scene['data']).read_text())
+        candidates.extend(data['candidates'])
+    # Unlinked duplicate media meshes add transport cost; the complete assets
+    # stay in main. Keep every candidate referenced by the current/historical UI.
+    used_glbs = {candidate['glb'] for candidate in candidates} | {'media/candidate.glb'}
+    for path in (output/'media').rglob('*.glb'):
+        if str(path.relative_to(output)) not in used_glbs:path.unlink()
+    for candidate in candidates:
         relative=Path(candidate['glb'])
         if relative.parts[0]!='assets':continue
         source=(ROOT/relative).resolve()

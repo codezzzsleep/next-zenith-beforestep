@@ -18,6 +18,15 @@
 .venv/bin/python evidence/reviews/beforestep_r1/restore_standin_inputs.py
 ```
 
-完整命令、退出码、预期与每次summary原文在[RESULT_BEFORESTEP_R1](../../../docs/reviews/RESULT_BEFORESTEP_R1.md)。真实Lux主线、逐候选trust反事实和完整真实重放尚未完成，不能根据替身或单元测试宣称主线成立。
+完整命令、退出码、预期与每次summary原文在[RESULT_BEFORESTEP_R1](../../../docs/reviews/RESULT_BEFORESTEP_R1.md)。§2.5已完成：原B真实Lux一眼到达，12格完整预演通过；完整重放轨迹一致；全部三份被拒B反事实无碰撞，结论为本批自检偏保守。
 
 联网恢复后的只读API记录在`connectivity_restored.json`。`diagnose_standin_registration.py`只读比较保留B替身的放置矩阵及三种占据，生成`standin_placement_diagnostic.json`；真实形状和真实放置仅用于赛后诊断，不进入生产或新Lux任务。
+
+- `section25_final_base/`：最终同2147b2f源码的四项基线；主对比取本组，不混用旧墙钟。
+- `lux/original_b/`：12个真实任务、11个原GLB、8份准入、完整配准/占据/预演/独立执行。一眼到达，第二眼、6b和B替换未真实触发。`physical_clearance.json`逐保存qpos复盘原3D可碰撞几何：B为47.541 mm；XY包络间隙0、中心减半宽=-0.062778 m。同时报告两指标，规划5 cm规则未改。
+- `lux/replay/`：同资产完整重放、12格完整预演与独立执行；五轨迹数组及NPZ SHA一致，summary除墙钟外一致。
+- `counterfactuals/A1,B1,C2/`：全部可用被拒B逐一trust，不挑选，0/3碰撞，不能宣称自检挡碰撞。
+- `standins/registration_fixed/`：修正局部配准退化后的独立两眼替身到达；区别于上述早期low_margin失败，不计真实Lux收益。
+- `failed_calls/`：首次重放父目录exit2、首次eval相对Path汇总exit1的原始命令/输出，完整保留。
+
+`python ops/verify_r1_evidence.py`在checkout校验保留摘要、52源码身份及重放。执行机加`--originals`逐项比对outputs。首次入库核对见[section25_integrity_check.json](section25_integrity_check.json)，服务器保管核对见[section25_lfs_remote_check.json](section25_lfs_remote_check.json)。R1视频由负责人用这些完整原始数据制作。

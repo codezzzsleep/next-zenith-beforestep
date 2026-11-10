@@ -1018,3 +1018,9 @@ summary.json原文：
 首次eval调用相对Path在汇总relative_to时exit1，eval已写出；随后以绝对Path调用exit0，未重跑物理。[原始失败输出及命令](../../evidence/reviews/beforestep_r1/failed_calls/eval_relative_path/invocation.json)、[原日志](../../evidence/reviews/beforestep_r1/failed_calls/eval_relative_path/original_output.log)。首次重放父目录调用exit2的全部输出继续保留。
 
 证据入库提交 `0041af9ee0cab8b2a3ac9354dfa2ce9e21bda3bd`，仅R1证据、核对脚本与本RESULT，未混入网页半成品。`git lfs push origin main` exit0（38个新增对象约54 MB）；本提交涉及60个去重对象94,548,863 bytes，全部服务器下载后SHA/size一致、再次upload batch无待传。`git push origin main` exit0，`git ls-remote origin refs/heads/main` exit0，远端为同一0041af9（由aaa1bc9 fast-forward）。[服务器核验汇总](../../evidence/reviews/beforestep_r1/section25_lfs_remote_check.json)。
+
+## §3 网页与报告收尾（R2阶段A，2026-11-10）
+
+40/40单测、323/323资产SHA、16文档139本地链接、9运行11候选12预演数字来源均实际通过，结果在`evidence/reviews/beforestep_r1/presentation/`。正文status改run-status，避免三维库Shadow DOM冲突；验收数字按summary比较，不改变实验。真实本地Chromium完整通过9回放、11GLB、12画廊、历史/训练附录、390px无溢出、页面/HTTP错误0；报告PDF已生成，历史PDF/视频保留。当前主默认stress_v8/rules，§2.5逐项结论维持上表，第二眼/6b/替换未真实触发、0/3偏保守、47.541mm与二维0及1223.6s口径同时公开。
+
+发布提交、Pages及公网结果在后续回执和[RESULT_R2](RESULT_BEFORESTEP_R2.md)阶段A。

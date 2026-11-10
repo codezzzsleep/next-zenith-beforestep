@@ -448,3 +448,7 @@ F0替身2眼到达130.92s、无执行碰撞；复盘命令首次少了optimistic
 停止前F2也已经终态：1眼84.06s、实际执行碰撞obstacle1/B，接触(7.097,-0.377,0.118)；其第一眼实际仅T1/A一个观测目标，没有B请求，真实扫描配准得到侧翻/缩小的A。原F2 summary与全部轨迹保留，不能当替身pass或真实Lux失败。无墙遗漏修复不会自动证明F2走通；必须回归后重新完成四类替身并检查该失败。F3在停止前刚启动，其部分数据也保留。
 
 替身输入轴规范统一：旧单岩石直接导出扫描原始轴、多岩石已导出场景轴，不一致可能改变有限5°粗搜索的候选族。新offline exporter对所有场景/目标把真实扫描按当前观测水平轴旋转并底面居中（刚体变换、等比尺寸不变）；仍由生产注册估计全矩阵，不预置注册矩阵/不改搜索/门槛，实际Lux exporter完全不变。原所有standin输入/结果保留，新standins-wallfix四类统一使用此导出规则，不为F2单独调参；仍不保证F2到达，必须按完整结果判断。
+
+原B4完整输入/扫描GLB/配准/预演/完整或部分轨迹外部包：/root/3d/artifacts/beforestep-r2/B4-before-wall-fix-complete.tar.gz，292061883 bytes，SHA256 32c580a2971ba066914e5f95d38a23d755d35589f6a6da2d2ead54e1e4af3783；公开失败身份evidence/suite/standins/before-wall-fix，全部offline/0paid。wall源码ed7c9ba已push，完整gate仍待replay终态，未启动新物理实验。
+
+wallfix之后的非Lux同源校验预期：完整R1gate通过后，冻结11新场景全部四基线重跑（44次、workers1，与2个standin并行），旧60池/240运行和frozen.json选择依据完全保留；不改名单、不重分类选择。保守/see-dark/乐观预期与原相同；truth应到达，眼数/时间受虚构墙纠正的变化逐项保留。新manifest evidence/suite/regressions/wallfix-baselines/manifest.json，raw outputs/suite/baselines-wallfix；只验证同源对比、不新增场景/付费。

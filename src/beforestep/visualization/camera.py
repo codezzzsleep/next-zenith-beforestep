@@ -16,7 +16,7 @@ def video_model(env, rock_bodies, holos=(), width=1920, height=1080, ambient=0.0
         boxes = ''.join(f'<geom name="v8_far{i}" type="box" size="{sx} {sy} 0.01" pos="{px} {py} -0.03" material="v7_reg" contype="0" conaffinity="0"/>'
                         for i, (sx, sy, px, py) in enumerate([((F - L) / 2, F, (F + L) / 2, 0), ((F - L) / 2, F, -(F + L) / 2, 0),
                                                               (L, (F - L) / 2, 0, (F + L) / 2), (L, (F - L) / 2, 0, -(F + L) / 2)]))
-        terr = S.terrain_visual_obj(S.LW.CACHE / f'{S.SCENE_ID}_terrain_vis.obj')
+        terr = S.terrain_visual_obj(S.LW.CACHE / S.terrain_cache_name())
         xml = xml.replace(far, boxes + '<geom name="v8_ground" type="mesh" mesh="v8_ground" material="v8_reg" contype="0" conaffinity="0"/>')
         xml = xml.replace('<asset>', f'<asset><mesh name="v8_ground" file="{terr}"/>'
                           '<material name="v8_reg" texture="v7_reg" specular="0" shininess="0"/>', 1)

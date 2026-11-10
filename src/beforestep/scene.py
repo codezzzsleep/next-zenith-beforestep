@@ -1,6 +1,7 @@
-"""The frozen polar corridor, scan assets, starting pose and goal."""
+"""Configured lunar terrain and scans, with the original corridor as default."""
 import os, pathlib, sys
 import json
+import hashlib
 import numpy as np
 from .paths import ROOT
 from .simulation import terrain, environment as wheelleg_env, soil_profiles as v7_soil
@@ -39,11 +40,37 @@ STOP1 = (2.30, -0.50)
 
 GOAL = (10.5, 0.00)
 SCENE_ID = 'stress_v8'
+DEFAULT_TERRAIN = {'type': 'corridor', 'craters': [], 'right_wall': True}
+DEFAULT_SUN = {'elevation_deg': 10.0, 'azimuth_deg': 35.0}
+TERRAIN = dict(DEFAULT_TERRAIN)
+REHEARSE_REFERENCE = False
+
+
+def terrain_settings(definition):
+    value = {**DEFAULT_TERRAIN, **definition.get('terrain', {})}
+    if value['type'] not in ('corridor', 'plain') or type(value['right_wall']) is not bool:
+        raise ValueError('Invalid terrain type or right_wall flag')
+    if not isinstance(value['craters'], list):
+        raise ValueError('Craters must be a list')
+    for crater in value['craters']:
+        center = crater['center']
+        if (len(center) != 2 or not np.isfinite(center).all()
+                or not all(np.isfinite(crater[k]) and crater[k] > 0 for k in ('radius', 'depth'))):
+            raise ValueError('Invalid crater center, radius or depth')
+    return value
+
+
+def sun_settings(definition):
+    value = {**DEFAULT_SUN, **definition.get('sun', {})}
+    if (not np.isfinite(list(value.values())).all()
+            or not 0 < value['elevation_deg'] < 90):
+        raise ValueError('Invalid sun elevation or azimuth')
+    return value
 
 
 def configure(scene_id='stress_v8'):
     """Select a documented scene before creating any observation or physics model."""
-    global ROCKS, START, STOP1, GOAL, SCENE_ID
+    global ROCKS, START, STOP1, GOAL, SCENE_ID, TERRAIN, SUN_EL_DEG, SUN_AZ_DEG, REHEARSE_REFERENCE
     if pathlib.Path(scene_id).name != scene_id:
         raise ValueError('Scene must be a config/scenes name')
     path = ROOT / 'config/scenes' / f'{scene_id}.json'
@@ -56,14 +83,28 @@ def configure(scene_id='stress_v8'):
     for rock in definition['rocks'].values():
         if not all(np.isfinite(rock[k]) for k in ('height','x','y','yaw')) or rock['height'] <= 0:
             raise ValueError('Invalid rock dimensions')
+    selected_terrain, selected_sun = terrain_settings(definition), sun_settings(definition)
+    # Preserve the original diagnostic-only reference rehearsals for the four
+    # old files without editing them. New suites explicitly set this option.
+    reference = definition.get('rehearse_reference', scene_id != 'stress_v8')
+    if type(reference) is not bool:
+        raise ValueError('rehearse_reference must be boolean')
     ROCKS = definition['rocks']
     START, STOP1, GOAL = (tuple(definition[k]) for k in ('start','first_stop','goal'))
     SCENE_ID = scene_id
+    TERRAIN = selected_terrain
+    SUN_EL_DEG, SUN_AZ_DEG = selected_sun['elevation_deg'], selected_sun['azimuth_deg']
+    REHEARSE_REFERENCE = reference
     return definition
 
 
 def physical_identity(definition):
-    return {k: definition[k] for k in ('id','rocks','start','first_stop','goal')}
+    identity = {k: definition[k] for k in ('id','rocks','start','first_stop','goal')}
+    for name, value, default in (('terrain', terrain_settings(definition), DEFAULT_TERRAIN),
+                                 ('sun', sun_settings(definition), DEFAULT_SUN)):
+        if value != default:
+            identity[name] = value
+    return identity
 
 
 WALL_ROCKS = ['rock_09', 'moon_rock_04', 'rock_07', 'moon_rock_03', 'moon_rock_06', 'moon_rock_07']
@@ -81,7 +122,7 @@ def rille_edge(x):
     return RILLE['edge_y'] + 0.12 * np.sin(0.8 * x + 0.4) - 0.20 * np.exp(-((x - 7.4) / 1.3) ** 2)
 
 
-def height_at(X, Y):
+def _corridor_height(X, Y):
     r = RILLE
     e = rille_edge(X)
     d = Y - e                                   # 进入月溪的横向深度（>0 在溪内）
@@ -94,6 +135,22 @@ def height_at(X, Y):
     H[inside] = -r['depth'] * np.minimum(s1, s2)[inside]
     H += 0.025 * np.exp(-(d / 0.35) ** 2) * (d < 0)            # 溪沿外侧轻微隆起
     return H
+
+
+def height_at(X, Y):
+    H = _corridor_height(X, Y) if TERRAIN['type'] == 'corridor' else np.zeros_like(X, dtype=float)
+    for crater in TERRAIN['craters']:
+        distance2 = (X - crater['center'][0]) ** 2 + (Y - crater['center'][1]) ** 2
+        bowl = np.clip(1.0 - distance2 / crater['radius'] ** 2, 0.0, 1.0)
+        H -= crater['depth'] * bowl ** 2
+    return H
+
+
+def terrain_cache_name():
+    """Retain the old cached mesh bytes; isolate configurable terrain revisions."""
+    suffix = '' if TERRAIN == DEFAULT_TERRAIN else '_' + hashlib.sha256(
+        json.dumps(TERRAIN, sort_keys=True).encode()).hexdigest()[:12]
+    return f'{SCENE_ID}{suffix}_terrain_vis.obj'
 
 
 def height_map():
@@ -166,7 +223,7 @@ def scene_spec(run):
         b = f'obstacle{len(objs) - 1}'; rock_bodies[b] = p['rock']; meta['rocks'][key] = dict(p, body=b, obj=str(obj))
     rng = np.random.default_rng(18)
     x = WALL['x0']
-    while x < WALL['x1']:                         # 右侧大石堆：两排，彼此重叠
+    while TERRAIN['right_wall'] and x < WALL['x1']: # 右侧大石堆：两排，彼此重叠
         for row in (0, 1):
             Hh = float(rng.uniform(0.6, 1.05)) * (1.0 + 0.25 * row)
             rid = WALL_ROCKS[rng.integers(len(WALL_ROCKS))]

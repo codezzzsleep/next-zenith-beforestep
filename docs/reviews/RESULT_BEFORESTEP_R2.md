@@ -10,8 +10,8 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 进行中 | — |
-| B2 | 参数预注册、生成器、候选池分类 | 未开始 | — |
+| B1 | 地形/太阳配置与完整回归 | 完成 | 本次源提交及evidence/suite/regressions/B1 |
+| B2 | 参数预注册、生成器、候选池分类 | 进行中 | 参数/生成器本次先提交；尚未运行池 |
 | B3 | 冻结场景组并推送 | 未开始 | — |
 | B4 | 四类真实形状替身完整链 | 未开始 | — |
 | B5 | 场景组真实Lux3D | 未开始 | — |
@@ -74,3 +74,200 @@ A1–A4与R1正文提交`800ef64`，`git push origin main` exit0，远端main同
 可选格式：terrain.type=`corridor|plain`，terrain.craters为`{center:[x,y],radius,depth}`列表，terrain.right_wall布尔；sun.elevation_deg/azimuth_deg。缺省为旧窄道、无坑、有右石堆、10°/35°，四份旧配置原字节保留。月坑为轨道已知禁行区，物理高度场下凹，prior_nogo包含坑沿5cm，车不下坑。旧stress_v8按名字关闭参照预演的历史分支需保留旧效果，改为配置性选项并记录缺省兼容理由，不改变执行预演。地形可视缓存按地形参数SHA隔离，旧默认仍原缓存名保证渲染字节一致。
 
 新实验前预期：stress_v8保守stuck、see_dark arrived、乐观collision、truth arrived；R1 reuse全部t/qpos/phase/actions/sources数组完全相同；全部单测通过。不符合先修，不带不一致进入B2。
+
+B1首次单测47项46通过/1错误，exit1（`outputs/qa/r2/B1-regression/tests.log`）：旧保全清单没有scene高度场文件，测试误用公开不存在的路径，未进入任何物理回归/新实验。从R1原运行完整输出复制257×257原高度场为压缩测试fixture，带原run_id/源提交/数组SHA和NPZ SHA；测试改用此独立冻结数据。旧失败保留，新回归独立目录B1-regression-corrected。
+
+按名字分支审计：pipeline的stress_v8条件已移成REHEARSE_REFERENCE配置；configure只保留缺省历史兼容映射（stress关闭额外参照预演，其余三旧场景开启），因为旧文件不准改且需要原结果/轨迹不变。新池显式设置rehearse_reference=false统一R1流程；这只控制附加参照路线诊断，不控制选路或执行预演。
+
+B1纠正后47/47单测exit0/2.258s；5项物理回归普通计算作业已经开始，父session96685、`outputs/qa/r2/B1-regression-corrected/regression.json`记录源SHA/6冻结文件SHA/每项完成回执，日志同目录。未通过完整回归前不运行新场景、不调用Lux。
+
+### B1 验证完成与B2启动前预注册
+
+`python3 ops/run_r2_regression.py --out outputs/qa/r2/B1-regression-corrected --workers 3` exit0：六份冻结文件SHA不变，全部五回归通过。四非Lux结果/眼数/仿真时间与R1一致；reuse到达、12/12预演完成无碰撞，全部t/qpos/phase/actions/sources数组逐项相同，traj.npz SHA同原。首次47测试fixture路径错误已修正，新全部52/52 exit0/2.436s（含生成器/分类契约）。公开证据`evidence/suite/regressions/B1/`，原始全部回归运行保留在outputs/qa/r2/B1-regression-corrected。
+
+其余源码命名审计：scene/pipeline场景默认值为兼容入口，场景组显式传入新配置；delivery/artifacts.py的旧两场景列表和回退属于旧交付/视频生成器，本轮不调用且用于历史保留，故保留，场景组用新的ops生成数据，不用旧build覆盖主展示。不修改传感器链/冻门槛/机器人。
+
+五项summary.json原文：
+
+#### B1/conservative
+
+命令与exit0见公开regression.json。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 141.0,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.033,
+    0.382,
+    -7.39
+  ],
+  "sim_time_s": 142.2,
+  "wall_s": 121.0,
+  "collision": null
+}
+```
+
+#### B1/see_dark
+
+命令与exit0见公开regression.json。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "see_dark",
+  "see_dark": true,
+  "imagine": null,
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 146.06,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    10.491,
+    -0.001,
+    18.08
+  ],
+  "sim_time_s": 147.26,
+  "wall_s": 114.7,
+  "collision": null
+}
+```
+
+#### B1/optimistic
+
+命令与exit0见公开regression.json。
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 79.67,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.713,
+    -0.526,
+    7.58
+  ],
+  "sim_time_s": 80.87,
+  "wall_s": 74.0,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.954,
+      -0.276,
+      0.111
+    ],
+    "t": 80.866
+  }
+}
+```
+
+#### B1/truth
+
+命令与exit0见公开regression.json。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "truth",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 114.68,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    -0.001,
+    19.09
+  ],
+  "sim_time_s": 115.88,
+  "wall_s": 82.5,
+  "collision": null
+}
+```
+
+#### B1/replay
+
+命令与exit0见公开regression.json。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "replay",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 111.64,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    -0.001,
+    10.57
+  ],
+  "sim_time_s": 112.84,
+  "wall_s": 434.7,
+  "collision": null
+}
+```
+
+B2首次池运行预期：每类12个种子，共48场景/192次非Lux运行；不预设分类比例，不调Lux。只按四结果用原规则分类，全部输出保留；目标每类2决定性/1普通，不足时按原规则扩一次13–24。参数、随机数规则、岩石/布局/太阳/月坑范围已在docs/decisions.md写明，并在本次提交推送后才生成/运行。禁止单场景修改。
+
+运行命令预注册：`python3 ops/generate_suite_pool.py --params config/suite/pool_v1.json`；随后`python3 ops/run_suite_pool.py --manifest evidence/suite/pool/r2_v1/manifest_F0_F1_F2_F3_1_12.json --out outputs/suite/pool/r2_v1 --regression evidence/suite/regressions/B1/regression.json --workers 3`。退出预期0，分类/到达/碰撞原样报告，不把执行错误当无解。R2新付费仍0/360。

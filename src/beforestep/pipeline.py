@@ -602,7 +602,7 @@ def main():
                selected_margin_vs_truth=None if truth_union is None else N.path_clearance(
                    path, (x,y), N.clearance(truth_union | N.prior_nogo())),
                note='Same observed state, robot and planner; only generated occupancy changes.')
-            if reference is not None and not same_path and S.SCENE_ID != 'stress_v8':
+            if reference is not None and not same_path and S.REHEARSE_REFERENCE:
                 supported, _ = rehearse(reference, len(looks), role='reference_without_generated_occupancy')
                 ev('reference_route_check', look=len(looks), supported_by_all_candidates=supported)
             ok, _ = rehearse(path, len(looks))

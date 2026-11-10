@@ -42,9 +42,16 @@ def cell_of(x, y):
 
 
 def prior_nogo():
-    """轨道图：月溪（右沿往左 5 cm 起）与右侧大石堆（y < 墙内沿）。"""
-    edge = S.rille_edge(GX)
-    return (GY > edge - 0.05) | (GY < S.WALL['y_inner'])
+    """Orbital-map no-go terrain: corridor, wall and crater rims with 5 cm buffer."""
+    blocked = np.zeros_like(GX, dtype=bool)
+    if S.TERRAIN['type'] == 'corridor':
+        blocked |= GY > S.rille_edge(GX) - 0.05
+    if S.TERRAIN['right_wall']:
+        blocked |= GY < S.WALL['y_inner']
+    for crater in S.TERRAIN['craters']:
+        blocked |= ((GX - crater['center'][0]) ** 2 + (GY - crater['center'][1]) ** 2
+                    <= (crater['radius'] + 0.05) ** 2)
+    return blocked
 
 
 def unproject(depth, cam_pos, cam_mat, fovy_deg):

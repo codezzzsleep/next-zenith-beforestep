@@ -1,0 +1,163 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": true,
+  "run_id": "ececf27a31bf4a0f83456ea6dbdae7ab",
+  "summary_sha256": "204e9569e9e8727e0c94051b270b9641b9854ac1e387b1fc50f6a958795115e7",
+  "scene": {
+    "id": "suite_r2_v4_F0_001",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.543011,
+        "x": 4.511268,
+        "y": -0.713327,
+        "yaw": 88.138032
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.433781,
+        "x": 6.832106,
+        "y": 0.253891,
+        "yaw": -28.084666
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.273944,
+      -0.043551
+    ],
+    "terrain": {
+      "type": "corridor",
+      "right_wall": true,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 10.423179,
+      "azimuth_deg": 34.236677
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F0",
+      "seed": 1,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5619928549391487,
+      "min_center_minus_half_width_m": 0.23199285493914873,
+      "min_xy_rectangle_envelope_gap_m": 0.19668111940747587
+    },
+    "B": {
+      "min_center_distance_m": 0.46641281749413804,
+      "min_center_minus_half_width_m": 0.13641281749413803,
+      "min_xy_rectangle_envelope_gap_m": 0.13639139692160793
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 2,
+    "path": [
+      [
+        4.8,
+        0.5
+      ],
+      [
+        6.4,
+        -0.8
+      ],
+      [
+        7.9,
+        -0.8
+      ],
+      [
+        10.274,
+        -0.044
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5643775588986363,
+      "center_minus_half_width_m": 0.23437755889863626,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.46464406786834855,
+      "center_minus_half_width_m": 0.13464406786834854,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 2,
+      "role": "execution",
+      "path": [
+        [
+          4.799999999999999,
+          0.500000000000002
+        ],
+        [
+          6.399999999999999,
+          -0.7999999999999992
+        ],
+        [
+          7.899999999999999,
+          -0.7999999999999992
+        ],
+        [
+          10.273944,
+          -0.043551
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/standins-wallfix/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/standins-wallfix/suite_r2_v4_F0_001/imagination/looks/look2/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.010783747770722853,
+            0.010021755632050404,
+            0.007402059095618658,
+            0.008410550235101115
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

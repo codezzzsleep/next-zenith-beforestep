@@ -1,0 +1,94 @@
+{
+  "schema": "beforestep-suite-post-run-review/v1",
+  "scene": "suite_r2_v4_F2_003",
+  "scope": "Post-run truth only; no hidden geometry was supplied to production planning",
+  "actual_run_id": "6f445896602e441f9738db2d668aee31",
+  "optimistic_run_id": "ba3f5514abe343519ccd2230314eb9df",
+  "minimum_3d_clearance_m": 0.0008718763999253496,
+  "actual_3d_by_rock": {
+    "A": {
+      "minimum_signed_collision_geometry_distance_m": 0.30148040356135186,
+      "witness": {
+        "trajectory_index": 2963,
+        "time_s": 60.46000000000385,
+        "robot_geom": 51,
+        "obstacle_geom": 53,
+        "nearest_points_xyz_m": [
+          [
+            4.989684804079405,
+            0.15910741151872046,
+            0.16513877721891468
+          ],
+          [
+            4.817745305262708,
+            -0.07177264733258262,
+            0.2547023909412154
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "B": {
+      "minimum_signed_collision_geometry_distance_m": 0.0008718763999253496,
+      "witness": {
+        "trajectory_index": 4144,
+        "time_s": 84.06200000000041,
+        "robot_geom": 18,
+        "obstacle_geom": 54,
+        "nearest_points_xyz_m": [
+          [
+            7.097769998235851,
+            -0.37743441955318835,
+            0.1180373735815462
+          ],
+          [
+            7.097935100474507,
+            -0.3765883249681381,
+            0.11816788664865496
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    }
+  },
+  "actual_xy_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.49506257956717253,
+      "min_center_minus_half_width_m": 0.16506257956717252,
+      "min_xy_rectangle_envelope_gap_m": 0.16402016786084822
+    },
+    "B": {
+      "min_center_distance_m": 0.3002654093988826,
+      "min_center_minus_half_width_m": -0.02973459060111744,
+      "min_xy_rectangle_envelope_gap_m": 0.0
+    }
+  },
+  "minimum_xy_envelope_clearance_m": 0.0,
+  "optimistic_plan_intrusion_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.43498005989687,
+      "center_minus_half_width_m": 0.10498005989686998,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.18674729820358998,
+      "center_minus_half_width_m": -0.14325270179641003,
+      "planned_envelope_intrusion_proxy_m": 0.14325270179641003
+    }
+  },
+  "optimistic_max_intrusion_m": 0.14325270179641003,
+  "diagnostic_results": [
+    {
+      "run": "outputs/suite/standins-wallfix/suite_r2_v4_F2_003/imagination",
+      "result": "collision",
+      "planned_B_intrusion_m": 0.15710224582669907,
+      "actual_min_xy_envelope_gap_m": 0.0
+    },
+    {
+      "run": "outputs/suite/pool/r2_v4/suite_r2_v4_F2_003/optimistic/run",
+      "result": "collision",
+      "planned_B_intrusion_m": 0.14325270179641003,
+      "actual_min_xy_envelope_gap_m": 0.0
+    }
+  ]
+}

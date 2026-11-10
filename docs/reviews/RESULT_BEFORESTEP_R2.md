@@ -474,3 +474,9 @@ B4要求每类有一个决定性场景走通。最早D失败时，验证同类�
 B7报表helper已对保留R1与离线失败数据做只读QA：R1A6/6/6、B6/5/2不变；全程未形成请求的B保留0任务；共享目标保留共同task_id、不能双算独立任务。碰撞字段/接触记录优先于终态文字，不能以离散保存姿态正间隙或arrival字样抵消碰撞。三QA日志见evidence/suite/regressions/report-contracts，0新物理实验/0paid。真实B7仍未生成，helper不能冒充总表完成。
 
 B5完整11真实场景dispatcher已实现并compile；在B4 summary不存在时实际被门禁挡住、API submit mock调用0次、真实out/budget均未创建（B5-dispatcher-gate-qa）。真实模式未启动。新版C1碰撞优先显示/计分在R1锚点真实浏览器exit0：五步、3回放、11候选/独立真值、无候选fixture、390px、0page/HTTP错误；完整场景组仍待B。
+
+### B4初始四类同源运行完整终态（0paid）
+
+新dispatcher已exit1，四个子完整链与复盘均exit0；当前初始gate all_passed=false：F0_001 2眼139.48s到达/完整预演；F1_001 2眼55.88s安全停车（第一眼预演waypoint未完成，第二眼无准入路线）；F2_003 1眼84.06s执行撞B；F3_002 2眼136.56s到达/完整预演。初始false gate保存为evidence/suite/standins/summary-initial-wallfix.json，全部新失败身份/事件/复盘在initial-wallfix，原完整二进制out不覆盖。
+
+B4另两已冻结D正在真实形状全链：F2_007 PID2073848/tool63353、F1_020 PID2074134/tool51948，所有参数/控制/配准/两眼/5cm不改；sourceed7c9ba。原dispatcher已完全退出，不会再覆盖gate；两替身完成后才合并选择并做全四门禁。冻结11同源基线当前30/44（易变，以pool.json为准）。当前无真实Lux任务/0预算记录。docs/sandbox.md当前门禁命令已更新为B1-rehearsal-wall，避免克隆新源码后使用旧source SHA门禁。

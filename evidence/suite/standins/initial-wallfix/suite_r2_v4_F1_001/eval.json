@@ -1,0 +1,171 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": true,
+  "run_id": "32a478b5cfe345a0acf1db3a3495052e",
+  "summary_sha256": "0a9d5faae349ff5911bc5d226e295f9685f4477008de8d8791d00250c551460b",
+  "scene": {
+    "id": "suite_r2_v4_F1_001",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "boulder_01",
+        "height": 0.523537,
+        "x": 4.596287,
+        "y": -0.640923,
+        "yaw": 90.190416
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.507419,
+        "x": 6.614712,
+        "y": 0.214455,
+        "yaw": -15.288487
+      },
+      "C": {
+        "rock": "moon_rock_04",
+        "height": 0.359793,
+        "x": 7.65124,
+        "y": 0.16231,
+        "yaw": -1.326983
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      8.777473,
+      0.01785
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 10.776456,
+      "azimuth_deg": 31.783974
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F1",
+      "seed": 1,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B",
+        "C"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "stuck",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.6337191312097535,
+      "min_center_minus_half_width_m": 0.3037191312097535,
+      "min_xy_rectangle_envelope_gap_m": 0.13754140644881063
+    },
+    "B": {
+      "min_center_distance_m": 1.4783405037435846,
+      "min_center_minus_half_width_m": 1.1483405037435845,
+      "min_xy_rectangle_envelope_gap_m": 0.9959156799864923
+    },
+    "C": {
+      "min_center_distance_m": 2.7713882057428636,
+      "min_center_minus_half_width_m": 2.4413882057428635,
+      "min_xy_rectangle_envelope_gap_m": 2.2811619929127613
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 1,
+    "path": [
+      [
+        4.4,
+        -1.7
+      ],
+      [
+        6.5,
+        -1.2
+      ],
+      [
+        8.777,
+        0.018
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4834284092135073,
+      "center_minus_half_width_m": 0.1534284092135073,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.3879452698813932,
+      "center_minus_half_width_m": 0.0579452698813932,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "C": {
+      "min_center_distance_m": 0.16190815190611915,
+      "center_minus_half_width_m": -0.16809184809388086,
+      "planned_envelope_intrusion_proxy_m": 0.16809184809388086
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 1,
+      "role": "execution",
+      "path": [
+        [
+          4.399999999999999,
+          -1.7
+        ],
+        [
+          6.499999999999998,
+          -1.1999999999999995
+        ],
+        [
+          8.777473,
+          0.01785
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/standins-wallfix/suite_r2_v4_F1_001/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/standins-wallfix/suite_r2_v4_F1_001/imagination/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.00810019172912911,
+            0.46905652335406645
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

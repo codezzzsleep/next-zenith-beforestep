@@ -526,3 +526,7 @@ C1浏览器验收另加入纯UI fixture：保留实际首关扫描/轨迹，仅�
 B5真实dispatcher PID2077882/tool60090已启动并实际创建任务。账本快照：新付费容量使用10/360，状态{'ok': 3, 'pending': 7, 'not_submitted': 1}；C.client/Budget记录在create前已有identity，API key仅进进程环境。not_submitted是并发限制明确拒绝的请求，不当作已付费；已知/不确定只query，不重复create。权威仍outputs/generation/r2-budget.json与outputs/generation/tasks，实时数以ledger为准，SRC固定cfffaf8。
 
 新增C1 contact-priority UI fixture在真实浏览器已exit0：原锚点五步/3回放/11候选/独立truth、无候选回退、390px与0page/HTTP错误均通过；合成arrival+contact载荷显示碰撞、玩家和imagination均0/1，实际实验文件未修改。最新anchor-game/browser.json记录contact_priority_verified_with_ui_fixture=true。仅1锚点，不充作完整12关完成；SRC仍逐文件同67测试/五R1gate版本cfffaf8。
+
+新11场景44同源非Lux基线全部exit0/completed=true；与修目标mask前的44运行逐项比较，所有traj.npz键和全部数组完全相同。说明此修复保留了全部场景的控制、机器人、传感器和导航禁行行为。新原结果public evidence/suite/pool/crater-target-baselines/manifest_results.json；比较44/44通过，regressions/crater-target-baselines/comparison.json，原旧44保留。新源cfffaf8与真实Lux正在使用的source一致，未重新筛选冻结场景。baseline parent2076311已退出；只剩真实dispatcher2077882/live，SRC不改。
+
+恢复核验（2026-11-10 22:56 UTC）：main本地/远端6c8c8f8同；只一个本项目写会话。实际重新逐项加载新/旧44份traj.npz，全部keys/arrays精确相同，current SRC SHA == B1-crater-target完整R1gate == B4 allpass == 新44基线，exit0（同既有PYTHONPATH）。首调用漏临时依赖路径exit1，补回路径后验证通过，无源码/实验改动。B5父2077882仍存活，两个F0场景处于注册/自检/物理链；此时budget24/360且24全部ok，不新建重复任务。新增candidate GLB仍由运行生成、暂未提交；整scene完成后按§2.5外部完整包+≤150MB精简集保全。三个时间关口未到，继续全12组。

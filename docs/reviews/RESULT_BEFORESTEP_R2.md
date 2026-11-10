@@ -504,3 +504,7 @@ F1_020替身1眼86.07s到达；F2_007替身2眼53.1s安全停车，第二眼实�
 源码cfffaf8与运行预期e22dc2c均已push/远端e22dc2cdc681e916dac1fa19ae1eedfcd61ba8ea。`run_r2_regression.py --out outputs/qa/r2/B1-crater-target-regression --workers 3` 实际exit0；67/67单测2.129s、6冻结配置SHA同，四基线结果/眼数/时间同R1。真实Lux原数据reuse一眼112.84s、12预演完整无碰撞，traj.npz全部5数组与键集合逐项同原，NPZ SHA6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e相同。此次冷重放1139.3s不含云队列，不是端到端延迟。公开gate evidence/suite/regressions/B1-crater-target/{regression.json,tests.log,driver.log}。
 
 服务进程重启发生在gate结束后、保存回执之前。实际核查：main与远端e22dc2c同、工作区干净；旧gate/44基线/全部替身/alternate均终态，无存活物理或云作业。没有重跑已完成gate或创建任何Lux任务。此回执push后继续新四类完整standin和新44同源基线，源cfffaf8保持固定；新B4全四通过/复盘0后才B5真实Lux。docs/sandbox当前全链例子已更新为此有效gate。新增Lux0/360。
+
+新完整gate提交6fb2423de031f38fb1ea93de9a8aee3b9aa0d2d4已push0/远端同，启动前git status干净。新B4 parent2076238/tool88791、44基线parent2076311/tool99784已实际运行，sourcecfffaf8保持不变，ledger/log上述独立out，3普通physics；0paid。服务重启前结束的gate没有重启；B4全新完整验证尚待结果。
+
+旧B4-wallfix四个完整初始运行+两个完整alternate的原GLB/观测/配准/预演/轨迹已外部保全：/root/3d/artifacts/beforestep-r2/B4-wallfix-and-alternates-complete.tar.gz，483680028bytes，SHA256 230e3ea03a5cd495a71d2ed0678553e47bdd539b80dc87310d322c31a451072d，tar exit0。公开initial-wallfix/archive.json与alternates-wallfix两份完整身份/事件/复盘；全部not_real_lux/0paid。新当前源B4与44仍在计算，旧数据包不包含新运行，也不覆盖旧错误记录。

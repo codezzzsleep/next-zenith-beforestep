@@ -397,3 +397,7 @@ F1所有1–12×4已exit0，D1/O5/U5/未归类1，和同范围旧源结果一致
 ### B2 v4 F2初始池完整结果
 
 F2 1–12所有48子运行exit0，D3/O8/未归类1、U0/error0；旧v3宽范围D0/O16/U8（24个）与新预注册范围D3/O8/未归类1（12个）都保留，不把新比例外推为任意月面。F0/F2均已满足2D+至少1O，F1新池扩展仍运行，F3初始仍运行；不能提前冻结最终名单或收费。全部已完成原summary/identity/commands在当前同一v4 results，completed=false。新paid0/360，源7833286不变。
+
+### B2 v4主池全部终态
+
+主pool parent1099606/tool58317实际exit0，48场景192物理子运行全exit0/0error，completed=true：F0 D9/O2/U1；F1初始D1/O5/U5/未归类1；F2 D3/O8/未归类1；F3 D5/O3/U2/未归类2。全部原summary/commands/run_id在最终v4 results及raw outputs。F0/F2/F3已有足够2D/1O，F1扩展仍未全完；B3保持未创建，不能提前收费。

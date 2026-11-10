@@ -45,6 +45,10 @@ def main():
             identity = (run['run'] + '/run_identity.json') if row.get('anchor') else ('evidence/suite/scenes/' + row['scene'] + '/runs/' + key + '/run_identity.json')
             values.append(f"{LABELS.get(s['result'], s['result'])} · {s['looks']}眼 · {s['sim_time_s']}s · [身份](../{identity})")
         lines.append('| ' + ' | '.join(values) + ' |')
+    if data.get('corrected_baseline_results'):
+        lines.extend(['', 'B4在付费前发现并纠正预演中的旧右墙配置遗漏。上表全部新增场景的四基线随后统一重跑，与真实Lux使用相同源码；最初用于选取的四次结果仍保存在冻结名单中，没有据修正后的结果增删或替换场景。',
+                      '[同源基线回归](../' + data['corrected_baseline_results'] + ')。修正后分类发生变化的场景：' +
+                      ('、'.join(r['scene'] for r in data['scenes'] if r['classification_after_program_fix'] != r['classification']) or '无') + '。'])
     lines.extend(['', '每项时间为原始 summary 的仿真总时长，包含该运行的接近与观察，不包含云端排队。自检计算与预演计算墙钟另在原运行中保留，不作为端到端速度优势。所有运行使用 rules，传感器、机器人、5cm规则、准入门槛与两眼上限相同。真实形状是独立检验，未提供给生产规划器。', '',
         '## 候选与补看', '', '| 场景 | 真实岩石 | 任务 / 成功 / 准入 | 原视角高度与方式 | 第二眼 | 6b |',
         '| --- | --- | --- | --- | --- | --- |'])

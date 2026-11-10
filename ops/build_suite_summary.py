@@ -58,10 +58,17 @@ def main():
     parser.add_argument('--real-root', default='outputs/suite/real')
     parser.add_argument('--counterfactual-root', default='outputs/suite/counterfactuals')
     parser.add_argument('--review-root', default='outputs/suite/reviews')
+    parser.add_argument('--baseline-results', default='evidence/suite/pool/wallfix-baselines/manifest_results.json',
+                        help='Corrected-source baselines; original freeze remains the selection authority')
     parser.add_argument('--out', default='evidence/suite/summary.json')
     parser.add_argument('--allow-incomplete', action='store_true')
     args = parser.parse_args()
     frozen = read(ROOT / args.freeze)
+    baseline_path = ROOT / args.baseline_results
+    baselines = read(baseline_path) if baseline_path.exists() else None
+    if baselines:
+        assert baselines['completed'], 'Corrected-source baseline suite is incomplete'
+        assert set(baselines['scenes']) == {r['scene'] for r in frozen['scenes'] if not r.get('anchor')}
     rows, incomplete = [], []
     for entry in frozen['scenes']:
         scene = entry['scene']
@@ -69,9 +76,13 @@ def main():
         if not (actual / 'summary.json').exists():
             incomplete.append(scene)
             continue
+        baseline_runs = baselines['scenes'][scene]['runs'] if baselines and not entry.get('anchor') else entry['runs']
         runs = {key: {'run': r['run'], 'summary': read(ROOT / r['run'] / 'summary.json'),
                       'run_id': read(ROOT / r['run'] / 'run_identity.json')['run_id']}
-                for key, r in entry['runs'].items()}
+                for key, r in baseline_runs.items()}
+        if baselines and not entry.get('anchor'):
+            assert all(r['exit_code'] == 0 for r in baseline_runs.values())
+            assert read(actual / 'run_identity.json')['source_sha256'] == baselines['source_sha256']
         runs['imagination'] = {'run': str(actual.relative_to(ROOT)), 'summary': read(actual / 'summary.json'),
                                'run_id': read(actual / 'run_identity.json')['run_id']}
         assert all(v['summary']['controller'] == 'rules' for v in runs.values())
@@ -97,7 +108,10 @@ def main():
             exhausted = [e for e in events if e['kind'] == 'sampling_stop']
             failure = {'category': 'zero_admission_after_retry' if exhausted else 'approach_or_observation_control' if outcome == 'stopped_short' else 'no_accepted_route',
                        'detail': exhausted[-1] if exhausted else plans[-1] if plans else {'result': outcome}}
-        rows.append({**entry, 'runs': runs, 'targets': targets, 'review': review, 'failure_reason': failure,
+        rows.append({**entry, 'classification_basis_runs': entry['runs'],
+                     'classification_after_program_fix': baselines['scenes'][scene]['classification']
+                        if baselines and not entry.get('anchor') else entry['classification'],
+                     'runs': runs, 'targets': targets, 'review': review, 'failure_reason': failure,
                      'second_eye': runs['imagination']['summary']['looks'] > 1,
                      'six_b': any(t['six_b'] for t in targets.values()), 'counterfactuals': cf,
                      'evidence': 'evidence/suite/scenes/' + scene + '/manifest.json' if not entry.get('anchor')
@@ -116,6 +130,7 @@ def main():
     cf_collisions = sum(r['counterfactuals']['collisions'] for r in rows)
     cf_executed = sum(r['counterfactuals']['executed'] for r in rows)
     summary = {'schema': 'beforestep-preregistered-suite-summary/v1', 'freeze': args.freeze,
+        'corrected_baseline_results': args.baseline_results if baselines else None,
         'frozen_scene_count': len(frozen['scenes']), 'completed_scene_count': len(rows),
         'incomplete_scenes': incomplete, 'scenes': rows,
         'decisive': {'completed': len(decisive), 'arrived': arrived, 'safe_stop': parked,

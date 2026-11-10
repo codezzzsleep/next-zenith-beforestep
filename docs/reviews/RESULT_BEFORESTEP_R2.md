@@ -452,3 +452,7 @@ F0替身2眼到达130.92s、无执行碰撞；复盘命令首次少了optimistic
 原B4完整输入/扫描GLB/配准/预演/完整或部分轨迹外部包：/root/3d/artifacts/beforestep-r2/B4-before-wall-fix-complete.tar.gz，292061883 bytes，SHA256 32c580a2971ba066914e5f95d38a23d755d35589f6a6da2d2ead54e1e4af3783；公开失败身份evidence/suite/standins/before-wall-fix，全部offline/0paid。wall源码ed7c9ba已push，完整gate仍待replay终态，未启动新物理实验。
 
 wallfix之后的非Lux同源校验预期：完整R1gate通过后，冻结11新场景全部四基线重跑（44次、workers1，与2个standin并行），旧60池/240运行和frozen.json选择依据完全保留；不改名单、不重分类选择。保守/see-dark/乐观预期与原相同；truth应到达，眼数/时间受虚构墙纠正的变化逐项保留。新manifest evidence/suite/regressions/wallfix-baselines/manifest.json，raw outputs/suite/baselines-wallfix；只验证同源对比、不新增场景/付费。
+
+原F2碰撞复盘evaluate_suite_scene exit0，3D最小间隙0.0008718763999253496m、XY包络0.0m，公开before-wall-fix/F2_003的review/eval/physical文件，原archive仍精确保留打包时数据（补复盘JSON单独保留）。新替身导出QA exit0，三已观测真实扫描1000对顶点距离误差最大4.89e-8m/高度同/底面0/未供应配准矩阵；B4-wallfix-helpers-tests全66/66 exit0（2.597s）。
+
+B7/helper预备支持公开wallfix-baselines完整44结果，与实际Lux source SHA相同；冻结分类/选择依据另保留，禁止更新frozen.json。当前仅compile，待完整B结果后真实数字审计，不冒称B7完成。

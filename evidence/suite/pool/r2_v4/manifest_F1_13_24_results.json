@@ -1,0 +1,2611 @@
+{
+  "schema": "beforestep-suite-pool-results/v1",
+  "manifest_sha256": "55cd30d10726e9ae81417d2bfd5d9453b3edd9f8d53390dce8cf43d70d6ae951",
+  "source_sha256": {
+    "src/beforestep/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "src/beforestep/cli.py": "ed7791e155b2ef01f5c1d6b5da22ff6b6318252a0099af085b07f25474e5f547",
+    "src/beforestep/delivery/__init__.py": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523",
+    "src/beforestep/delivery/artifacts.py": "25725e113aa775aa9f81bdc334d8c2ecc3a325de163e7c37c84271313fd07d94",
+    "src/beforestep/delivery/learning.py": "0a597af61c757c19261e7f4826584a239402f33d4d6340c0f060d943e9d56240",
+    "src/beforestep/delivery/server.py": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab",
+    "src/beforestep/delivery/video.py": "6bd3693ba83413eec422bda993a1594c947442cf07d3bd67f4e3c32951f70513",
+    "src/beforestep/evaluation.py": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135",
+    "src/beforestep/generation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/generation/client.py": "0774684a7e12bcc8eaffa29a4593a13aab5775758a0b135684f290961671f36e",
+    "src/beforestep/generation/evaluate.py": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a",
+    "src/beforestep/generation/records.py": "8f73f34348d63d9650336e86d9bc179f42088d3eec7306816af04a32f922e9f6",
+    "src/beforestep/geometry/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/geometry/admission.py": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf",
+    "src/beforestep/geometry/camera.py": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910",
+    "src/beforestep/geometry/imagination.py": "bb0a680aa6b67a53514066777983ef702a8cec3ffd8ffd05ec066d180ddcc771",
+    "src/beforestep/geometry/metrics.py": "32ca63a31666f274a8d2b62e7cd14019d397d2960eb8a41792a04ce73239642e",
+    "src/beforestep/geometry/registration.py": "6f00b28d5aabfc62769615055ea4036df3bbf91287eeb4b7072ca0b57982986d",
+    "src/beforestep/geometry/solid.py": "663a3f7e8a3011614f7951a7e1239b58897d79ddb521508992510f436ba5830d",
+    "src/beforestep/geometry/volume.py": "e26ab39219ebb5be58fac2b48db7326f5e99c09140a080b7613503985fde2239",
+    "src/beforestep/learning/__init__.py": "2d4b42443926bf506ac7cbc6fc09f1d17df868e256377669dcf80624c8110a2f",
+    "src/beforestep/learning/checkpoints.py": "0be9fefd265a58b078c67705dd6c82b7b3bcbb3dbdb81ec4c233fdf3d3b01df2",
+    "src/beforestep/learning/evaluate.py": "13ebf5529282182ac16cce5825bb50fefc784f77f30bb2be0ce52dbf2fe7ed8c",
+    "src/beforestep/learning/policy.py": "b101549135a21ee8a2d44a8514e7738ae31582521171d65fecc8464c1f00f44f",
+    "src/beforestep/learning/pose.py": "6035e2b6247fd830300405d488feef00ec961a17c3c37cc85c076a144df0a03b",
+    "src/beforestep/learning/pose_train.py": "49a63337d31ebf7c35c7950e58536f5d21456e19497725f0ae761124f349ef0f",
+    "src/beforestep/learning/ppo.py": "6982815993f697477eae61b18e6766cb2ce60bc0d1153094e75c08407d82520d",
+    "src/beforestep/learning/train.py": "3df3464cbc8056f36e4ae1e6e8a59186992405629c9c1707fa17aaa127db9a23",
+    "src/beforestep/navigation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/navigation/controller.py": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083",
+    "src/beforestep/navigation/map.py": "fe1190d206bceccea83f5d89db2d146153cdd5fcbaf8c8835a71083553e1dee4",
+    "src/beforestep/observation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/observation/capture.py": "27fd8534f4f12042721e135da9139296f2e7d154eecc41e750010514c27f7371",
+    "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
+    "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
+    "src/beforestep/pipeline.py": "76eb2520c5a070a1764e62e90611fcc5a7e3bb201c0a00c6df0dd35124f296fb",
+    "src/beforestep/resources.py": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c",
+    "src/beforestep/scene.py": "7203849439a30fe32651e7cbbf2b32e1883df65fe10baf93e80ffc77d1853704",
+    "src/beforestep/simulation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/simulation/assets.py": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3",
+    "src/beforestep/simulation/environment.py": "7d9fe894461e14a5f6e5485c0e1bfcce4fe24a3b91d6d9e62773cf3a21a6e1b3",
+    "src/beforestep/simulation/robot.py": "123635fb0b22e2a5d36f8560c2438772dd186c3045a2edf249e24e08bd501942",
+    "src/beforestep/simulation/robot_model.py": "6b1187699d644e082f32ff55fbd6a00daec1b60aee5296baec7e9519c7476b0c",
+    "src/beforestep/simulation/soil.py": "ffc028f8c1e2f47b86132fce9411b98cf57e52a902e2b4bc338534b9a752533d",
+    "src/beforestep/simulation/soil_profiles.py": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73",
+    "src/beforestep/simulation/terrain.py": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e",
+    "src/beforestep/visualization/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/visualization/camera.py": "a816ff4e9b173b99d1ac5e54722659bfe4b2dbb132990f9781fab3bd0980fb81",
+    "src/beforestep/visualization/model.py": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569",
+    "src/beforestep/visualization/scene.py": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332",
+    "src/beforestep/visualization/textures.py": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"
+  },
+  "scenes": {
+    "suite_r2_v4_F1_013": {
+      "scene": "suite_r2_v4_F1_013",
+      "family": "F1",
+      "seed": 13,
+      "path": "config/scenes/suite_r2_v4_F1_013.json",
+      "sha256": "0930fe6dcdf2151b96179f3560026080f1fb3e256c88f2471fee51eb1b49bb4e",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_013",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_013",
+            "goal": [
+              11.785934,
+              -0.048161
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 98.16,
+            "sensor_mode": "live",
+            "looks": 3,
+            "final_pose": [
+              8.976,
+              1.758,
+              -10.86
+            ],
+            "sim_time_s": 99.36,
+            "wall_s": 63.4,
+            "collision": null
+          },
+          "run_id": "494ecddfde3243a7be4c20e987c8e007",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_013",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_013",
+            "goal": [
+              11.785934,
+              -0.048161
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 140.49,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              11.778,
+              -0.046,
+              -21.26
+            ],
+            "sim_time_s": 141.69,
+            "wall_s": 85.1,
+            "collision": null
+          },
+          "run_id": "4bf162b9180d411087fd89a4f594c985",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_013",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_013",
+            "goal": [
+              11.785934,
+              -0.048161
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 91.7,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              11.778,
+              -0.05,
+              12.89
+            ],
+            "sim_time_s": 92.9,
+            "wall_s": 47.1,
+            "collision": null
+          },
+          "run_id": "23a21a4c304e4efeb56a14b6debd692e",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_013",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_013",
+            "goal": [
+              11.785934,
+              -0.048161
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 121.58,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              11.777,
+              -0.046,
+              -13.87
+            ],
+            "sim_time_s": 122.78,
+            "wall_s": 106.7,
+            "collision": null
+          },
+          "run_id": "72f2c43bb48340139b80175a0419b9c0",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_013/truth/run"
+        }
+      },
+      "classification": "ordinary"
+    },
+    "suite_r2_v4_F1_014": {
+      "scene": "suite_r2_v4_F1_014",
+      "family": "F1",
+      "seed": 14,
+      "path": "config/scenes/suite_r2_v4_F1_014.json",
+      "sha256": "dbb31da82c209df6116fb21cb8d625338b2d13cfe098962763f6219d0ef8c249",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_014",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_014",
+            "goal": [
+              8.844761,
+              -0.092449
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 94.62,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              7.485,
+              1.999,
+              1.8
+            ],
+            "sim_time_s": 95.82,
+            "wall_s": 68.9,
+            "collision": null
+          },
+          "run_id": "782ea20b6d5146aabfce522f5f1aff32",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_014",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_014",
+            "goal": [
+              8.844761,
+              -0.092449
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 134.7,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              4.068,
+              -1.606,
+              -30.38
+            ],
+            "sim_time_s": 135.9,
+            "wall_s": 80.3,
+            "collision": null
+          },
+          "run_id": "0a94e7634a06489484267f10c6d25423",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_014",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_014",
+            "goal": [
+              8.844761,
+              -0.092449
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 91.24,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.835,
+              -0.092,
+              -28.95
+            ],
+            "sim_time_s": 92.44,
+            "wall_s": 46.1,
+            "collision": null
+          },
+          "run_id": "401cf14ea4794ef4952d88582b384c26",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_014",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_014",
+            "goal": [
+              8.844761,
+              -0.092449
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 79.94,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.836,
+              -0.091,
+              -29.84
+            ],
+            "sim_time_s": 81.14,
+            "wall_s": 67.1,
+            "collision": null
+          },
+          "run_id": "bae7681339a84e7e931b0175d571a76e",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_014/truth/run"
+        }
+      },
+      "classification": "ordinary"
+    },
+    "suite_r2_v4_F1_015": {
+      "scene": "suite_r2_v4_F1_015",
+      "family": "F1",
+      "seed": 15,
+      "path": "config/scenes/suite_r2_v4_F1_015.json",
+      "sha256": "39a4c2aa341ba0f3f5df9ccb3d7da83074cd343798d6c13251e1474dcbc06326",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_015",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_015",
+            "goal": [
+              8.258783,
+              0.006713
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 80.02,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              4.256,
+              2.006,
+              -30.87
+            ],
+            "sim_time_s": 81.22,
+            "wall_s": 64.4,
+            "collision": null
+          },
+          "run_id": "fd66a4fd3adb4271be79e9d6065ef47d",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_015",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_015",
+            "goal": [
+              8.258783,
+              0.006713
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 86.19,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              5.783,
+              2.004,
+              -0.33
+            ],
+            "sim_time_s": 87.39,
+            "wall_s": 63.1,
+            "collision": null
+          },
+          "run_id": "59242d12625c4d40b56e9ccfd40f6905",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_015",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_015",
+            "goal": [
+              8.258783,
+              0.006713
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 83.28,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.251,
+              0.009,
+              -30.02
+            ],
+            "sim_time_s": 84.48,
+            "wall_s": 42.0,
+            "collision": null
+          },
+          "run_id": "f9e18dddec2b434c94502f693ab6995c",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_015",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_015",
+            "goal": [
+              8.258783,
+              0.006713
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 89.04,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.251,
+              0.011,
+              -31.53
+            ],
+            "sim_time_s": 90.24,
+            "wall_s": 75.8,
+            "collision": null
+          },
+          "run_id": "7b48c3f9fcef4d51b954b8f01f505960",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_015/truth/run"
+        }
+      },
+      "classification": "ordinary"
+    },
+    "suite_r2_v4_F1_016": {
+      "scene": "suite_r2_v4_F1_016",
+      "family": "F1",
+      "seed": 16,
+      "path": "config/scenes/suite_r2_v4_F1_016.json",
+      "sha256": "235ae389a9e965c1b470dc1e3016f6dab90106ab30323908b15aea18cc097a47",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_016",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_016",
+            "goal": [
+              10.146158,
+              -0.043267
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 130.06,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              4.092,
+              -1.604,
+              -50.61
+            ],
+            "sim_time_s": 131.26,
+            "wall_s": 82.9,
+            "collision": null
+          },
+          "run_id": "f0d27badc9b24227853816c661b31afc",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_016",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_016",
+            "goal": [
+              10.146158,
+              -0.043267
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 64.55,
+            "sensor_mode": "live",
+            "looks": 3,
+            "final_pose": [
+              4.59,
+              -0.024,
+              -111.94
+            ],
+            "sim_time_s": 65.75,
+            "wall_s": 47.6,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.671,
+                -0.359,
+                0.061
+              ],
+              "t": 65.746
+            }
+          },
+          "run_id": "eeeb61e3eefe4a52aa55eb803f5a9154",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_016",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_016",
+            "goal": [
+              10.146158,
+              -0.043267
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 48.93,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              5.698,
+              -1.558,
+              6.18
+            ],
+            "sim_time_s": 50.13,
+            "wall_s": 33.8,
+            "collision": null
+          },
+          "run_id": "3cf49a717cd74dd88a5934c159c58c3d",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_016",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_016",
+            "goal": [
+              10.146158,
+              -0.043267
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 94.96,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              10.138,
+              -0.041,
+              -28.54
+            ],
+            "sim_time_s": 96.16,
+            "wall_s": 97.4,
+            "collision": null
+          },
+          "run_id": "312e187345b147d48e234e5d27e6bf9f",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_016/truth/run"
+        }
+      },
+      "classification": "unclassified"
+    },
+    "suite_r2_v4_F1_017": {
+      "scene": "suite_r2_v4_F1_017",
+      "family": "F1",
+      "seed": 17,
+      "path": "config/scenes/suite_r2_v4_F1_017.json",
+      "sha256": "0096c6670d9b165baf439843ab38c51b81a6eb3a8fe1cfafe61991fc6e1f59c5",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_017",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_017",
+            "goal": [
+              8.980162,
+              -0.01832
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 103.34,
+            "sensor_mode": "live",
+            "looks": 3,
+            "final_pose": [
+              8.115,
+              3.014,
+              98.58
+            ],
+            "sim_time_s": 104.54,
+            "wall_s": 75.6,
+            "collision": null
+          },
+          "run_id": "705c997a87db469d83b817a6cb798fa8",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_017",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_017",
+            "goal": [
+              8.980162,
+              -0.01832
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 119.19,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              8.974,
+              -0.013,
+              -55.24
+            ],
+            "sim_time_s": 120.39,
+            "wall_s": 77.2,
+            "collision": null
+          },
+          "run_id": "b61c425c81f84a80b38fb676364dfacf",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_017",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_017",
+            "goal": [
+              8.980162,
+              -0.01832
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 79.96,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              6.778,
+              -0.552,
+              13.25
+            ],
+            "sim_time_s": 81.16,
+            "wall_s": 44.5,
+            "collision": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                6.994,
+                -0.279,
+                0.106
+              ],
+              "t": 81.162
+            }
+          },
+          "run_id": "cac237089b5447c1b486af31d2b4921a",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_017",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_017",
+            "goal": [
+              8.980162,
+              -0.01832
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 101.25,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              8.989,
+              0.0,
+              -57.59
+            ],
+            "sim_time_s": 102.45,
+            "wall_s": 81.8,
+            "collision": null
+          },
+          "run_id": "589773466f4a4953acfcc1424255da48",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_017/truth/run"
+        }
+      },
+      "classification": "unclassified"
+    },
+    "suite_r2_v4_F1_018": {
+      "scene": "suite_r2_v4_F1_018",
+      "family": "F1",
+      "seed": 18,
+      "path": "config/scenes/suite_r2_v4_F1_018.json",
+      "sha256": "5ff6330cc0085a347664434d9c0eb048d65d497443d18ce26c58c83eec99e209",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_018",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_018",
+            "goal": [
+              10.490661,
+              0.024769
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 46.85,
+            "sensor_mode": "live",
+            "looks": 3,
+            "final_pose": [
+              4.272,
+              -1.442,
+              48.85
+            ],
+            "sim_time_s": 48.05,
+            "wall_s": 40.5,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.289,
+                -1.095,
+                0.071
+              ],
+              "t": 48.046
+            }
+          },
+          "run_id": "7dc099954b4d4809a835b4bc0ebdc11c",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_018",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_018",
+            "goal": [
+              10.490661,
+              0.024769
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 46.91,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.869,
+              -1.053,
+              53.56
+            ],
+            "sim_time_s": 48.11,
+            "wall_s": 34.7,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.623,
+                -1.017,
+                0.063
+              ],
+              "t": 48.106
+            }
+          },
+          "run_id": "d46a239802904201a59d098f03cb061f",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_018",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_018",
+            "goal": [
+              10.490661,
+              0.024769
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 46.77,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              5.282,
+              -1.405,
+              9.14
+            ],
+            "sim_time_s": 47.97,
+            "wall_s": 32.5,
+            "collision": null
+          },
+          "run_id": "ab7998cb0a1143c087ebd52722ea1980",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_018",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_018",
+            "goal": [
+              10.490661,
+              0.024769
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 39.74,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              3.889,
+              -1.607,
+              -10.77
+            ],
+            "sim_time_s": 40.94,
+            "wall_s": 49.8,
+            "collision": null
+          },
+          "run_id": "48f81d86bd19411f800262ff46f2e169",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_018/truth/run"
+        }
+      },
+      "classification": "unsolvable"
+    },
+    "suite_r2_v4_F1_019": {
+      "scene": "suite_r2_v4_F1_019",
+      "family": "F1",
+      "seed": 19,
+      "path": "config/scenes/suite_r2_v4_F1_019.json",
+      "sha256": "8903be687bc48960c613bc82e84d8f0a6a3cfd13865890948afc95e6be81cc1a",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_019",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_019",
+            "goal": [
+              9.965466,
+              -0.048117
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 69.49,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              3.777,
+              3.34,
+              129.17
+            ],
+            "sim_time_s": 70.69,
+            "wall_s": 52.2,
+            "collision": null
+          },
+          "run_id": "a4a0139da11b4525a5239a3677551e7c",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_019",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_019",
+            "goal": [
+              9.965466,
+              -0.048117
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 65.85,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              5.015,
+              -0.112,
+              -135.38
+            ],
+            "sim_time_s": 67.05,
+            "wall_s": 42.5,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.953,
+                -0.452,
+                0.068
+              ],
+              "t": 67.05
+            }
+          },
+          "run_id": "75660be1cc714126bd4c0f2a4cd3637c",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_019",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_019",
+            "goal": [
+              9.965466,
+              -0.048117
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 76.12,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              9.958,
+              -0.049,
+              17.77
+            ],
+            "sim_time_s": 77.32,
+            "wall_s": 45.1,
+            "collision": null
+          },
+          "run_id": "0e095d34e9f649dda711a6a12c42b998",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_019",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_019",
+            "goal": [
+              9.965466,
+              -0.048117
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 60.4,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.085,
+              2.004,
+              50.93
+            ],
+            "sim_time_s": 61.6,
+            "wall_s": 63.8,
+            "collision": null
+          },
+          "run_id": "1472b6cb4b1a439c926bc5f9ebb2b067",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_019/truth/run"
+        }
+      },
+      "classification": "unsolvable"
+    },
+    "suite_r2_v4_F1_020": {
+      "scene": "suite_r2_v4_F1_020",
+      "family": "F1",
+      "seed": 20,
+      "path": "config/scenes/suite_r2_v4_F1_020.json",
+      "sha256": "9320ef9393a9d37569e7013181ed85a84d5ed7d9d67692d0d9a0309657befdd4",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_020",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_020",
+            "goal": [
+              10.000132,
+              -0.030448
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 127.92,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              1.668,
+              -0.789,
+              4.69
+            ],
+            "sim_time_s": 129.12,
+            "wall_s": 96.8,
+            "collision": null
+          },
+          "run_id": "7976990c0d2447b28424ae54cfd70941",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_020",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_020",
+            "goal": [
+              10.000132,
+              -0.030448
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 119.89,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              9.315,
+              0.343,
+              -28.2
+            ],
+            "sim_time_s": 121.09,
+            "wall_s": 70.2,
+            "collision": null
+          },
+          "run_id": "287190b49ba246628326b96cb389b8d3",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_020",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_020",
+            "goal": [
+              10.000132,
+              -0.030448
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 78.04,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              6.287,
+              -0.37,
+              2.97
+            ],
+            "sim_time_s": 79.24,
+            "wall_s": 42.0,
+            "collision": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                6.546,
+                -0.14,
+                0.114
+              ],
+              "t": 79.24
+            }
+          },
+          "run_id": "ef6c4162eef0419d9976192feb98fd64",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_020",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_020",
+            "goal": [
+              10.000132,
+              -0.030448
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 76.96,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              9.994,
+              -0.025,
+              -20.83
+            ],
+            "sim_time_s": 78.16,
+            "wall_s": 66.2,
+            "collision": null
+          },
+          "run_id": "d3644def77fb4a848a3f7ce49e73acef",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/truth/run"
+        }
+      },
+      "classification": "decisive"
+    },
+    "suite_r2_v4_F1_021": {
+      "scene": "suite_r2_v4_F1_021",
+      "family": "F1",
+      "seed": 21,
+      "path": "config/scenes/suite_r2_v4_F1_021.json",
+      "sha256": "7e884dd6618c777366b6acc8f3df9d42ae29acf9fb045e82db1092ccdbd110ab",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_021",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_021",
+            "goal": [
+              8.943507,
+              -0.010531
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 81.23,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              4.261,
+              1.992,
+              27.0
+            ],
+            "sim_time_s": 82.43,
+            "wall_s": 57.7,
+            "collision": null
+          },
+          "run_id": "df165bb2019948f995615215f78917a2",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_021",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_021",
+            "goal": [
+              8.943507,
+              -0.010531
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 105.45,
+            "sensor_mode": "live",
+            "looks": 4,
+            "final_pose": [
+              8.935,
+              -0.009,
+              -39.62
+            ],
+            "sim_time_s": 106.65,
+            "wall_s": 40.0,
+            "collision": null
+          },
+          "run_id": "634b5b1fb49b458b88f9079ec3c4ad6a",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_021",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stopped_short",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_021",
+            "goal": [
+              8.943507,
+              -0.010531
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 49.49,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              5.779,
+              -1.546,
+              11.34
+            ],
+            "sim_time_s": 50.69,
+            "wall_s": 17.5,
+            "collision": null
+          },
+          "run_id": "b5368414ede54196ab0ee7a6d642db7f",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_021",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_021",
+            "goal": [
+              8.943507,
+              -0.010531
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 72.67,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.932,
+              -0.013,
+              -47.2
+            ],
+            "sim_time_s": 73.87,
+            "wall_s": 33.7,
+            "collision": null
+          },
+          "run_id": "c5388e7da89a448fb6318d769eab9acf",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_021/truth/run"
+        }
+      },
+      "classification": "unclassified"
+    },
+    "suite_r2_v4_F1_022": {
+      "scene": "suite_r2_v4_F1_022",
+      "family": "F1",
+      "seed": 22,
+      "path": "config/scenes/suite_r2_v4_F1_022.json",
+      "sha256": "0ab103a4ca2278ea3df0c037862e9b038a8e80c7d945bcce28c0afef09f2b4c2",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_022",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_022",
+            "goal": [
+              8.016208,
+              0.058207
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 67.16,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              5.295,
+              -0.835,
+              -138.17
+            ],
+            "sim_time_s": 68.36,
+            "wall_s": 24.5,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.949,
+                -0.862,
+                0.092
+              ],
+              "t": 68.36
+            }
+          },
+          "run_id": "79045f8ba02a43709978ac539cd2f764",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_022",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_022",
+            "goal": [
+              8.016208,
+              0.058207
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 161.36,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              6.481,
+              -1.601,
+              22.08
+            ],
+            "sim_time_s": 162.56,
+            "wall_s": 54.8,
+            "collision": null
+          },
+          "run_id": "329290d4c4df44c2b5346f4cb6262898",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_022",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_022",
+            "goal": [
+              8.016208,
+              0.058207
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 67.16,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              5.295,
+              -0.835,
+              -138.17
+            ],
+            "sim_time_s": 68.36,
+            "wall_s": 26.7,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.949,
+                -0.862,
+                0.092
+              ],
+              "t": 68.36
+            }
+          },
+          "run_id": "fd23e756aa794d099999fbfe4024ff36",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_022",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_022",
+            "goal": [
+              8.016208,
+              0.058207
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 45.61,
+            "sensor_mode": "live",
+            "looks": 2,
+            "final_pose": [
+              4.288,
+              1.806,
+              25.22
+            ],
+            "sim_time_s": 46.81,
+            "wall_s": 25.5,
+            "collision": null
+          },
+          "run_id": "a4bcff00419d49f0b3b765615e1653cd",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_022/truth/run"
+        }
+      },
+      "classification": "unsolvable"
+    },
+    "suite_r2_v4_F1_023": {
+      "scene": "suite_r2_v4_F1_023",
+      "family": "F1",
+      "seed": 23,
+      "path": "config/scenes/suite_r2_v4_F1_023.json",
+      "sha256": "0c4d5d91d18f5da44f3ca08227fd015b138c9f51046c8eb080887ea8911e9f8a",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_023",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_023",
+            "goal": [
+              8.970441,
+              0.020572
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 120.02,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              7.48,
+              1.996,
+              0.65
+            ],
+            "sim_time_s": 121.22,
+            "wall_s": 44.3,
+            "collision": null
+          },
+          "run_id": "2c01c6df728d4001ab0417e7ac35dd5e",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_023",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_023",
+            "goal": [
+              8.970441,
+              0.020572
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 220.49,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              8.962,
+              0.022,
+              -28.81
+            ],
+            "sim_time_s": 221.69,
+            "wall_s": 64.4,
+            "collision": null
+          },
+          "run_id": "fef48f386e394876a6e2c976e4dccc77",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_023",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_023",
+            "goal": [
+              8.970441,
+              0.020572
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 80.22,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.961,
+              0.021,
+              -25.0
+            ],
+            "sim_time_s": 81.42,
+            "wall_s": 23.0,
+            "collision": null
+          },
+          "run_id": "f17fae55aa954a15b0539a55db3441f5",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_023",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_023",
+            "goal": [
+              8.970441,
+              0.020572
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 80.16,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              8.962,
+              0.022,
+              -29.65
+            ],
+            "sim_time_s": 81.36,
+            "wall_s": 37.2,
+            "collision": null
+          },
+          "run_id": "4b634394d7f8487ba397e487544686f4",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_023/truth/run"
+        }
+      },
+      "classification": "ordinary"
+    },
+    "suite_r2_v4_F1_024": {
+      "scene": "suite_r2_v4_F1_024",
+      "family": "F1",
+      "seed": 24,
+      "path": "config/scenes/suite_r2_v4_F1_024.json",
+      "sha256": "3ed022d4b3908ebb1cdd190e79ececaa241df78a48603a2884a3719298a8c995",
+      "runs": {
+        "conservative": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_024",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/conservative",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_024",
+            "goal": [
+              9.209984,
+              0.072116
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 102.65,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              4.234,
+              -1.313,
+              65.24
+            ],
+            "sim_time_s": 103.85,
+            "wall_s": 40.6,
+            "collision": {
+              "body": "obstacle0",
+              "robot_geom": null,
+              "pos": [
+                4.393,
+                -1.018,
+                0.314
+              ],
+              "t": 103.85
+            }
+          },
+          "run_id": "5ed9a065a0d6449c9a9d5a630bc42552",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/conservative/run"
+        },
+        "see_dark": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_024",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/see_dark",
+            "--tag",
+            "run",
+            "--policy",
+            "conservative",
+            "--see-dark"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "conservative",
+            "tag": "run",
+            "see_dark": true,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_024",
+            "goal": [
+              9.209984,
+              0.072116
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 79.78,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              4.062,
+              1.995,
+              48.97
+            ],
+            "sim_time_s": 80.98,
+            "wall_s": 35.0,
+            "collision": null
+          },
+          "run_id": "8aff59faf8e64608855b4df1d4173976",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/see_dark/run"
+        },
+        "optimistic": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_024",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/optimistic",
+            "--tag",
+            "run",
+            "--policy",
+            "optimistic"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "optimistic",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": null,
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_024",
+            "goal": [
+              9.209984,
+              0.072116
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 93.84,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              9.202,
+              0.071,
+              15.01
+            ],
+            "sim_time_s": 95.04,
+            "wall_s": 25.8,
+            "collision": null
+          },
+          "run_id": "84e5d7af2aa44f2085a57043ec54676b",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/optimistic/run"
+        },
+        "truth": {
+          "command": [
+            "/usr/bin/python3",
+            "-m",
+            "beforestep",
+            "run",
+            "--scene",
+            "suite_r2_v4_F1_024",
+            "--controller-model",
+            "rules",
+            "--out",
+            "/root/3d/next-zenith-beforestep/outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/truth",
+            "--tag",
+            "run",
+            "--policy",
+            "imagination",
+            "--imagine",
+            "truth"
+          ],
+          "exit_code": 0,
+          "summary": {
+            "policy": "imagination",
+            "tag": "run",
+            "see_dark": false,
+            "imagine": "truth",
+            "result": "arrived",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F1_024",
+            "goal": [
+              9.209984,
+              0.072116
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 94.16,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              9.202,
+              0.072,
+              13.05
+            ],
+            "sim_time_s": 95.36,
+            "wall_s": 43.6,
+            "collision": null
+          },
+          "run_id": "a69dfd27aeaa400fa91043373be4f1d3",
+          "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_024/truth/run"
+        }
+      },
+      "classification": "ordinary"
+    }
+  },
+  "counts": {
+    "F1": {
+      "decisive": 1,
+      "ordinary": 5,
+      "unsolvable": 3,
+      "unclassified": 3,
+      "incomplete": 0
+    }
+  },
+  "completed": true
+}

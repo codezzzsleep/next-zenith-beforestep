@@ -112,3 +112,28 @@ v3 F2所有24×4非Lux已完成：D0/O16/U8，0执行错误。原一/两坑与�
 F3完整24×4为D1/O9/U14、0error，仍不足2。下一未生成v4加入F3覆盖：原2–4石/1–2坑不变；Arock07 .53–.57、B80%moon04/20%moon02 .40–.44，A/Bxy/yaw/太阳采用F0已写的锚点邻域，第三散石 .35–.45m/x8.0–8.4/y-1.6至1.7；goalx10.5–11.5/y±.05，坑r.65–.8/深.4–.8、upperx6.4–7.0/y1.5–1.8、lowerx4.9–5.4/y-1.9至-1.65。目的是保留坑加散石但减少原宽石/近第三石造成的固定检验无解，所有旧1/24与14U保留，不能说新集中分布是任意月面的发生频率。F1完整原分布已达到2D，不调其范围。新v4整四类别，不手工调单个scene。
 
 原两个pool全终态后，源修复仅添加全局sampling_exhausted门卫：某目标第二眼12份仍0后，其余已生成候选仍注册自检，但禁止新增未必要的6b请求；不改准入/两眼/控制/传感器。离线before状态已证明额外6份可写，after新IO测试应禁止。全部单测与完整R1四基线/全数组reuse通过后才新实验/付费。
+
+## R2 B3 最终场景组冻结
+
+在本轮真实Lux结果之前，仅依据全部四非Lux结果，按每类seed最小取2D与1O；stress_v8作为F0第一个D直接计入。最终12个场景，冻结后不增删替换，不放宽任何门槛。
+
+| 场景 | 类别 | 分类 | 种子 | 保守/see-dark/乐观/真值检验（结果·眼数·仿真s） |
+| --- | --- | --- | --- | --- |
+| stress_v8 | F0 | decisive | None | stuck·5·142.2 / arrived·3·147.26 / collision·1·80.87 / arrived·1·115.88 |
+| suite_r2_v4_F0_001 | F0 | decisive | 1 | stuck·5·142.92 / arrived·3·145.24 / collision·1·80.83 / arrived·1·114.84 |
+| suite_r2_v4_F0_005 | F0 | ordinary | 5 | stuck·5·143.98 / arrived·3·151.76 / arrived·1·102.42 / arrived·1·114.6 |
+| suite_r2_v4_F1_001 | F1 | decisive | 1 | stuck·5·111.74 / collision·4·91.03 / collision·1·72.47 / arrived·2·124.38 |
+| suite_r2_v4_F1_020 | F1 | decisive | 20 | stuck·5·129.12 / stopped_short·4·121.09 / collision·1·79.24 / arrived·1·78.16 |
+| suite_r2_v4_F1_003 | F1 | ordinary | 3 | collision·4·134.49 / arrived·5·129.45 / arrived·1·105.18 / arrived·1·99.64 |
+| suite_r2_v4_F2_003 | F2 | decisive | 3 | stuck·5·83.06 / arrived·4·165.2 / collision·1·82.79 / arrived·1·124.92 |
+| suite_r2_v4_F2_007 | F2 | decisive | 7 | stuck·5·83.33 / arrived·4·157.28 / collision·1·80.41 / arrived·1·112.56 |
+| suite_r2_v4_F2_001 | F2 | ordinary | 1 | stuck·5·83.43 / arrived·3·133.18 / arrived·1·102.5 / arrived·1·102.5 |
+| suite_r2_v4_F3_002 | F3 | decisive | 2 | stuck·5·218.48 / arrived·5·119.05 / collision·1·80.4 / arrived·1·117.54 |
+| suite_r2_v4_F3_004 | F3 | decisive | 4 | stuck·1·18.1 / stopped_short·4·129.63 / collision·1·79.59 / arrived·1·106.44 |
+| suite_r2_v4_F3_001 | F3 | ordinary | 1 | stopped_short·2·111.83 / arrived·3·125.97 / arrived·1·111.88 / arrived·1·107.64 |
+
+完整四次summary/命令/退出码/run_id与config SHA见config/suite/frozen.json（SHA256 2c140698a8816b73f0bf1846e921dfb8029268125d08b2e71d26bb48f2f55b75）和两份最终pool results。场景组里stress_v8沿用R1实际真实Lux112.84s/1眼/无碰撞，不再付费或新跑。
+
+每个新场景Lux运行前预期：规则控制器、≤2眼、所有选定路线候选组合的物理预演完整无碰撞、独立执行无碰撞到达；普通场景也预期到达，额外眼数/仿真时间如实测量。若失败、候选全拒或停车，原样报告，不改本名单/门槛/机器人/控制器/太阳。第二眼条件与同输入6b一次严格按原协议，任一目标12仍零准入即安全停车，B替换不用于套组。
+
+B4预期：选择每类本名单中最早的新D（F0_001/F1_001/F2_003/F3_002），以真实扫描资产替身、生产注册/自检/预演/执行全链运行；不调Lux，四类都pass才付费。原失败与任何源修必须先R1完整回归，不挑Lux结果。

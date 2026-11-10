@@ -11,8 +11,8 @@
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
 | B1 | 地形/太阳配置与完整回归 | 完成 | 本次global-stop源修正与完整五回归通过；65测试 |
-| B2 | 参数预注册、生成器、候选池分类 | 进行中 | 96fa0b7/4f554c7/671a4e6；v3配置31ef28c，现有池运行中 |
-| B3 | 冻结场景组并推送 | 未开始 | — |
+| B2 | 参数预注册、生成器、候选池分类 | 完成 | 96fa0b7/4f554c7/671a4e6；v3配置31ef28c，现有池运行中 |
+| B3 | 冻结场景组并推送 | 完成（本次冻结提交待push回执） | 本次提交 |
 | B4 | 四类真实形状替身完整链 | 未开始 | — |
 | B5 | 场景组真实Lux3D | 未开始 | — |
 | B6 | 全部场景复盘和全部拒绝反事实 | 未开始 | — |
@@ -401,3 +401,38 @@ F2 1–12所有48子运行exit0，D3/O8/未归类1、U0/error0；旧v3宽范围D
 ### B2 v4主池全部终态
 
 主pool parent1099606/tool58317实际exit0，48场景192物理子运行全exit0/0error，completed=true：F0 D9/O2/U1；F1初始D1/O5/U5/未归类1；F2 D3/O8/未归类1；F3 D5/O3/U2/未归类2。全部原summary/commands/run_id在最终v4 results及raw outputs。F0/F2/F3已有足够2D/1O，F1扩展仍未全完；B3保持未创建，不能提前收费。
+
+### 阶段B2小结（§8）
+
+1. 完成并验证：v4 48主池/192子运行与F1唯一12扩展/48子运行全部exit0；共60候选/240非Lux，最终F0 D9/O2/U1，F1 D2/O10/U8/未归类4，F2 D3/O8/未归类1，F3 D5/O3/U2/未归类2。65tests/5R1回归在7833286通过，原6config SHA与5轨迹数组同。main prior3bc88da/de6ffc0均已推，原命令/raw logs/summary在各pool目录及公开results。
+2. 未验证：实际新组Lux尚未运行；C1/C2只有R1锚点基础，不能当完整组完成。
+3. 原失败：v1cache中断、v2flat/emptyROI错误、globalstop IO before失败都保留；已在不降低冻结门槛的条件下修复并回归。
+4. 自决：按完整非Lux池不足D调整整池范围，F1按新12实际结果仅一次扩13–24；未改单场景、未看Lux筛选。关口日期尚未到，未提前收缩。
+5. 新付费0，累计0/360。
+6. 两v4父均已完成，当前无物理/云/训练/视频jobs；提交前仅本冻结/结果改动。
+7. 下一具体动作：B3最终名单/预期push，再B4四类最早新D完整standin全链。
+
+## R2 B3 最终场景组冻结
+
+在本轮真实Lux结果之前，仅依据全部四非Lux结果，按每类seed最小取2D与1O；stress_v8作为F0第一个D直接计入。最终12个场景，冻结后不增删替换，不放宽任何门槛。
+
+| 场景 | 类别 | 分类 | 种子 | 保守/see-dark/乐观/真值检验（结果·眼数·仿真s） |
+| --- | --- | --- | --- | --- |
+| stress_v8 | F0 | decisive | None | stuck·5·142.2 / arrived·3·147.26 / collision·1·80.87 / arrived·1·115.88 |
+| suite_r2_v4_F0_001 | F0 | decisive | 1 | stuck·5·142.92 / arrived·3·145.24 / collision·1·80.83 / arrived·1·114.84 |
+| suite_r2_v4_F0_005 | F0 | ordinary | 5 | stuck·5·143.98 / arrived·3·151.76 / arrived·1·102.42 / arrived·1·114.6 |
+| suite_r2_v4_F1_001 | F1 | decisive | 1 | stuck·5·111.74 / collision·4·91.03 / collision·1·72.47 / arrived·2·124.38 |
+| suite_r2_v4_F1_020 | F1 | decisive | 20 | stuck·5·129.12 / stopped_short·4·121.09 / collision·1·79.24 / arrived·1·78.16 |
+| suite_r2_v4_F1_003 | F1 | ordinary | 3 | collision·4·134.49 / arrived·5·129.45 / arrived·1·105.18 / arrived·1·99.64 |
+| suite_r2_v4_F2_003 | F2 | decisive | 3 | stuck·5·83.06 / arrived·4·165.2 / collision·1·82.79 / arrived·1·124.92 |
+| suite_r2_v4_F2_007 | F2 | decisive | 7 | stuck·5·83.33 / arrived·4·157.28 / collision·1·80.41 / arrived·1·112.56 |
+| suite_r2_v4_F2_001 | F2 | ordinary | 1 | stuck·5·83.43 / arrived·3·133.18 / arrived·1·102.5 / arrived·1·102.5 |
+| suite_r2_v4_F3_002 | F3 | decisive | 2 | stuck·5·218.48 / arrived·5·119.05 / collision·1·80.4 / arrived·1·117.54 |
+| suite_r2_v4_F3_004 | F3 | decisive | 4 | stuck·1·18.1 / stopped_short·4·129.63 / collision·1·79.59 / arrived·1·106.44 |
+| suite_r2_v4_F3_001 | F3 | ordinary | 1 | stopped_short·2·111.83 / arrived·3·125.97 / arrived·1·111.88 / arrived·1·107.64 |
+
+完整四次summary/命令/退出码/run_id与config SHA见config/suite/frozen.json（SHA256 2c140698a8816b73f0bf1846e921dfb8029268125d08b2e71d26bb48f2f55b75）和两份最终pool results。场景组里stress_v8沿用R1实际真实Lux112.84s/1眼/无碰撞，不再付费或新跑。
+
+每个新场景Lux运行前预期：规则控制器、≤2眼、所有选定路线候选组合的物理预演完整无碰撞、独立执行无碰撞到达；普通场景也预期到达，额外眼数/仿真时间如实测量。若失败、候选全拒或停车，原样报告，不改本名单/门槛/机器人/控制器/太阳。第二眼条件与同输入6b一次严格按原协议，任一目标12仍零准入即安全停车，B替换不用于套组。
+
+B4预期：选择每类本名单中最早的新D（F0_001/F1_001/F2_003/F3_002），以真实扫描资产替身、生产注册/自检/预演/执行全链运行；不调Lux，四类都pass才付费。原失败与任何源修必须先R1完整回归，不挑Lux结果。

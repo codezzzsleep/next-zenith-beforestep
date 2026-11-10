@@ -10,7 +10,7 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 完成 | 原96fa0b7；最终修复回归见B1-final与本次提交 |
+| B1 | 地形/太阳配置与完整回归 | 进行中（平地编译/空ROI修复） | 原4f554c7已回归；新修复待回归 |
 | B2 | 参数预注册、生成器、候选池分类 | 进行中 | 参数/生成器本次先提交；尚未运行池 |
 | B3 | 冻结场景组并推送 | 未开始 | — |
 | B4 | 四类真实形状替身完整链 | 未开始 | — |
@@ -287,3 +287,9 @@ B2第二池命令预注册：`python3 ops/generate_suite_pool.py --params config
 第二眼CF完整离线机制验证exit0：`python3 ops/check_second_look_counterfactual.py --regression evidence/suite/regressions/B1-final/regression.json --out outputs/qa/r2/look2-counterfactual`。137.2s/2眼到达，无碰撞；唯一干预在look2/T2/A1，second-look前t/qpos/phase/control_actions/control_sources全部逐项同原，实际第二眼pose/time相同。素材是R1真实形状离线替身，0付费，不证明真实Lux第二眼或自检防撞。小证据evidence/suite/regressions/look2-counterfactual/validation.json，完整输出outputs/qa/r2/look2-counterfactual。
 
 最终源码4f554c7与第二池48配置b956530均已推main；v2pool已启动192非Lux，父session45403，权威pool.json随完成原子写。当前首个F0/001四运行全部exit0（保守stuck、see-dark arrived、乐观arrived、truth arrived），按规则为普通，尚不冻结任何名单；R2新增付费0/360。
+
+B2第二池192项已全结束（父45403 exit1，执行错误保留）：F0=0决定性/10普通/2无解；F1=12执行错误（平坦可视mesh零体积，不能当无解）；F2=0决定性/7普通/4无解/1执行错误；F3=1决定性/6普通/5无解。全部原summary、命令、run_id、stdout在outputs/suite/pool/r2_v2，汇总原文evidence/suite/pool/r2_v2/manifest_F0_F1_F2_F3_1_12_results.json。尚未冻组选取、未调Lux。
+
+两个实际程序错误：F1所有图像创建时v8_ground平坦mesh体积0被MuJoCo拒绝；F2/004 see-dark在need_mask空时centroid为NaN标量导致IndexError。另对候选点越地图边界加入索引保护。只改新平地可视mesh编译的shell惯量（不增地形厚度、不改相机/传感器参数）、空ROI返回无候选、越界跳过，旧所有有候选情况排序不变。最小零体积面片的shell属性已实际编译验证。旧池全部完成后才改源，避免混用源码。改完再完整§2.2回归、单测；重新生成全池，在非Lux分类基础上按规则扩不足2决定性的类别13–24一次，所有旧池保留。
+
+数据保全脚本先实际验证于已完成F0/001：96文件、46.26MB精简公有对象、46.53MB完整外部tar，单场景远低于150MB；原字节SHA与gzip恢复均验证。完整tar在/root/3d/artifacts/beforestep-r2，未包含凭证或上传账本。单测59/59通过（含按种子最早选择与禁止普通替代决定性）；ops/freeze_suite.py仅写好了，不实际冻结。

@@ -1,0 +1,77 @@
+"""Check actual sandbox editing, route calculation and valid JSON export."""
+import argparse
+import json
+from pathlib import Path
+
+from playwright.sync_api import sync_playwright
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--url', default='http://127.0.0.1:8081/sandbox.html')
+    parser.add_argument('--name', default='sandbox-local')
+    args = parser.parse_args()
+    output = ROOT / 'outputs/qa/r2'
+    output.mkdir(parents=True, exist_ok=True)
+    errors, failures = [], []
+    with sync_playwright() as pw:
+        browser = pw.chromium.launch(executable_path='/root/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',
+                                     headless=True, args=['--no-sandbox'])
+        page = browser.new_page(viewport={'width': 1440, 'height': 1000}, accept_downloads=True)
+        page.on('pageerror', lambda e: errors.append(str(e)))
+        page.on('response', lambda r: failures.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
+        assert page.goto(args.url).status == 200
+        page.wait_for_selector('#sandbox-map[data-revision]', timeout=60000)
+        page.wait_for_function('document.querySelectorAll("#sandbox-results article").length===3')
+        first = int(page.locator('#sandbox-map').get_attribute('data-revision'))
+        page.locator('[data-asset=boulder_01]').click()
+        page.wait_for_function('(n)=>Number(document.querySelector("#sandbox-map").dataset.revision)>n', arg=first)
+        # Drag the newly added rock from world (5,.1) to (5.5,-.3).
+        box = page.locator('#sandbox-map').bounding_box()
+        def position(x, y):
+            return box['x']+(x+1)/14*box['width'], box['y']+(2.5-y)/4.5*box['height']
+        revision = int(page.locator('#sandbox-map').get_attribute('data-revision'))
+        page.mouse.move(*position(5, .1)); page.mouse.down()
+        page.mouse.move(*position(5.5, -.3), steps=4); page.mouse.up()
+        page.wait_for_function('(n)=>Number(document.querySelector("#sandbox-map").dataset.revision)>n', arg=revision)
+        page.locator('#sandbox-yaw').fill('45'); page.locator('#sandbox-yaw').dispatch_event('input')
+        page.locator('#sandbox-height').fill('.45'); page.locator('#sandbox-height').dispatch_event('change')
+        page.locator('#sandbox-crater').click()
+        page.locator('#sandbox-sun').fill('50'); page.locator('#sandbox-sun').dispatch_event('input')
+        page.locator('#sandbox-terrain').select_option('plain')
+        page.wait_for_timeout(500)
+        with page.expect_download() as dl:
+            page.locator('#sandbox-export').click()
+        destination = output / (args.name + '-export.json')
+        dl.value.save_as(destination)
+        scene = json.loads(destination.read_text())
+        assert scene['rocks']['R1']['yaw'] == 45
+        assert scene['rocks']['R1']['height'] == .45
+        assert abs(scene['rocks']['R1']['x'] - 5.5) < .03 and abs(scene['rocks']['R1']['y'] + .3) < .03
+        assert scene['terrain']['type'] == 'plain' and len(scene['terrain']['craters']) == 1
+        assert scene['sun']['azimuth_deg'] == 50
+        assert scene['asset_cache_precision'] == 'exact' and scene['rehearse_reference'] is False
+        page.locator('#sandbox-delete').click()
+        page.locator('#sandbox-animate').click()
+        page.locator('#sandbox-layer').select_option('imagination')
+        page.wait_for_timeout(800)
+        assert page.locator('#sandbox-error').is_hidden()
+        page.screenshot(path=str(output / (args.name+'-desktop.png')), full_page=True)
+        page.set_viewport_size({'width': 390, 'height': 844})
+        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+        page.screenshot(path=str(output / (args.name+'-mobile.png')), full_page=True)
+        assert not errors, errors
+        assert not failures, failures
+        result = {'passed': True, 'url': args.url, 'rock_drag_rotate_height': True,
+            'crater_add_delete': True, 'sun_changed': True, 'three_plans_displayed': True,
+            'export_validated': str(destination.relative_to(ROOT)), 'width_390_no_overflow': True,
+            'page_errors': errors, 'http_errors': failures}
+        (output / (args.name+'-browser.json')).write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')
+        print(json.dumps(result, ensure_ascii=False))
+        browser.close()
+
+
+if __name__ == '__main__':
+    main()

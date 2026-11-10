@@ -183,6 +183,26 @@ def check():
     for literal in (f"B {audit['physical_clearance_B_m']*1000:.3f} mm", f"中心减半宽={audit['xy_center_minus_half_width_B_m']:.6f} m", f"墙钟 {audit['cold_wall_s']} s", '0/3', 'native_ok=false'):
         assert literal in report, literal
     inventory = {}
+    suite_audit = None
+    if (ROOT / 'evidence/suite/summary.json').exists():
+        from verify_suite_presentation import check as check_suite
+        suite_audit = check_suite()
+        def suite_facts(value, source):
+            if isinstance(value, dict):
+                for key, child in value.items():
+                    suite_facts(child, source + '/' + key)
+            elif isinstance(value, list):
+                for index, child in enumerate(value):
+                    suite_facts(child, source + '/' + str(index))
+            elif isinstance(value, (float, int)) and not isinstance(value, bool):
+                fact(value, source)
+                fact(value, source, 1000)
+        suite_facts(read(ROOT / 'evidence/suite/summary.json'), 'evidence/suite/summary.json#')
+        frozen = read(ROOT / 'config/suite/frozen.json')
+        for pool in frozen['pool_sources']:
+            suite_facts(read(ROOT / pool['path']), pool['path'] + '#')
+        for value in (1, 2, 3, 4, 5, 6, 8, 12, 150, 360):
+            fact(value, 'docs/reviews/SPEC_BEFORESTEP_R2.md: preregistered rules')
     for name, html in [('site/index.html', (ROOT / 'site/index.html').read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
         tokens = re.findall(r'(?<![A-Za-z0-9_.])[-+]?\d+(?:\.\d+)?(?![A-Za-z0-9_])', visible(html))
         inventory[name] = {}
@@ -194,7 +214,7 @@ def check():
     return {'schema': 'beforestep-r1-presentation-audit/v1', 'passed': True,
             'runs_checked': checks, 'candidate_metrics_checked': len(data['candidates']),
             'rehearsal_trajectories_checked': len(panes), 'report_html_matches_markdown': True,
-            'numeric_literal_sources': inventory}
+            'numeric_literal_sources': inventory, 'suite_audit': suite_audit}
 
 
 if __name__ == '__main__':

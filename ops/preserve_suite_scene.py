@@ -97,6 +97,15 @@ def main():
     # Every retained public byte has the same SHA as the original artifact.
     objects = output / 'objects'
     objects.mkdir(exist_ok=True)
+    # Small direct files make identities and results readable on GitHub without
+    # requiring a local restore of the content-addressed review data.
+    for name, record in runs.items():
+        public_run = output / 'runs' / name
+        public_run.mkdir(parents=True, exist_ok=True)
+        for filename in ('summary.json', 'run_identity.json', 'eval.json', 'physical_clearance.json'):
+            source = ROOT / record['source'] / filename
+            if source.exists():
+                shutil.copyfile(source, public_run / filename)
     for entry in entries:
         if entry['path'] not in selected:
             continue

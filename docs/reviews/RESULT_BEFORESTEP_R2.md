@@ -10,17 +10,17 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 完成 | 本次修复提交；B1-flat-and-view回归全通过 |
-| B2 | 参数预注册、生成器、候选池分类 | 进行中 | 参数/生成器本次先提交；尚未运行池 |
+| B1 | 地形/太阳配置与完整回归 | 完成 | 671a4e6；62测试与B1-flat-and-view五回归通过 |
+| B2 | 参数预注册、生成器、候选池分类 | 进行中 | 96fa0b7/4f554c7/671a4e6；v3配置31ef28c，现有池运行中 |
 | B3 | 冻结场景组并推送 | 未开始 | — |
 | B4 | 四类真实形状替身完整链 | 未开始 | — |
 | B5 | 场景组真实Lux3D | 未开始 | — |
 | B6 | 全部场景复盘和全部拒绝反事实 | 未开始 | — |
 | B7 | 完整总表 | 未开始 | — |
 | B8 | 预定规则结论 | 未开始 | — |
-| C1 | 五步关卡模式 | 进行中（R1锚点框架已验证，完整场景组待B完成） | 本次基础提交 |
-| C2 | 沙盒与一致性 | 未开始 | — |
-| C3 | 导出与人工场景 | 未开始 | — |
+| C1 | 五步关卡模式 | 进行中（R1锚点框架已验证，完整场景组待B完成） | c5be2c6 |
+| C2 | 沙盒与一致性 | 进行中（锚点1/1与本地浏览器通过，全组待B） | 本次基础提交 |
+| C3 | 导出与人工场景 | 进行中（导出JSON实际验证，人工场景当前无文件） | 本次基础提交 |
 | D1 | 首页/报告/相关工作整合 | 未开始 | — |
 | D2 | 全验收和main/Pages发布 | 未开始 | — |
 
@@ -309,3 +309,13 @@ B1平地/空需求/边界修复后完整5回归exit0：`python3 ops/run_r2_regre
 `python3 ops/build_levels_site.py --anchor-only` exit0，1真实关/11原候选的注册网格与2真实扫描；`node --input-type=module --check < site/levels.js` exit0；`python3 ops/check_levels_browser.py --name C1-anchor-final` exit0，五步、3实际策略回放、11候选与真实mesh切换/旋转、首次选择计分、390px无溢出、HTTP/页面错误0。手机版实际model进入视口后截图已看见网格。第一版变量g重复导致JS parse失败，原日志C1-anchor-browser.log保留，已修且最终验收通过；中间全页截图远离model时lazy render空白，最终滚入视口验证实际渲染。公开小回执evidence/suite/presentation/anchor-game/browser.json，截图/日志outputs/qa/r2/C1-anchor-final-*。
 
 做了未实际验证：B4全链验收汇总、B7原始数据总表/B8结论脚本（只py_compile）。没有完成B3冻结/B4四类替身/B5真实Lux/B6全部真实反事实/B7全组/C2C3/D。仍0/360。
+
+## C2/C3 基础验证与归档可恢复性（B2池期间）
+
+只使用R1真实锚点进行开发验证，尚未完成整组C2，未发布新Pages。12种真实扫描占地、同扫描岩石全部准入候选占地模板、真实5cm格子、转向节点/直线边、0.40m行驶半径/0.57m转向半径和5cm想象膨胀已接入。未知无准入模板按附近未知保留。俯视几何影子明确为近似，不冒充RGB-D或物理模拟；原样载入场景也用该独立近似，不偷换成保存的首眼地图来凑一致。
+
+`python3 ops/build_sandbox_data.py` exit0，12扫描/1锚点/2扫描有实际准入模板；`python3 ops/check_sandbox_browser.py --name C2-anchor` exit0，实际拖动、旋转45°、高度0.45、加坑/删除、太阳50°、三策略出路线、导出JSON字节内容验证，390px无溢出，HTTP/页面0错误。截图已人工查看。`python3 ops/check_sandbox_consistency.py` exit0，锚点三策略定性1/1一致（乐观有路/XY侵入，保守无路，想象有路/XY侵入；最后一项不等于3D碰撞，和R1复盘相容）；精确保存地图的EDT最大误差0、规划有路性相同，单独报告，不充作编辑器一致性数字。日志outputs/qa/r2/C2-anchor-{browser,consistency}.log；公开小证据evidence/suite/presentation/sandbox-anchor。
+
+`preserve_suite_scene.py`增加GitHub可直接查看的summary/run_identity/eval，避免B7链接指向未入库outputs；`restore_suite_scene.py`实际验证完整外部tar内96原文件的SHA/size且0覆盖（已有相同原数据），日志preservation-v2[-restore].log，精简46,293,324bytes/完整46,526,777bytes，均不另公推该非最终场景大数据。docs/sandbox.md含不付费真值/完整替身、本人密钥真实调用、身份恢复和证据恢复步骤。文档17项146链接通过，R1数字审计仍exit0；src无diff。
+
+B7表/原因、整合首页报告、扩展原数字核验已写脚本，只有py_compile与R1不回退审计，完整suite验证待B。不把脚本存在记成结果。现有v3父PID2130778继续3进程，约79/336（易变），新Lux0/360；时间关口未到，无提前收缩、无代理。

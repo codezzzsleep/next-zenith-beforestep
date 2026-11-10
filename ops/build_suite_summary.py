@@ -86,7 +86,18 @@ def main():
                       'optimistic_max_intrusion_m': max(r['planned_envelope_intrusion_proxy_m'] for r in optimistic['first_departure_plan_by_rock'].values())}
         else:
             review = read(ROOT / args.review_root / scene / 'review.json')
-        rows.append({**entry, 'runs': runs, 'targets': targets, 'review': review,
+        events = [json.loads(line) for line in (actual / 'events.jsonl').read_text().splitlines()]
+        plans = [e for e in events if e['kind'] == 'plan']
+        physical_collision = runs['imagination']['summary']['collision']
+        outcome = runs['imagination']['summary']['result']
+        failure = None
+        if physical_collision:
+            failure = {'category': 'physical_collision', 'detail': physical_collision}
+        elif outcome != 'arrived':
+            exhausted = [e for e in events if e['kind'] == 'sampling_exhausted']
+            failure = {'category': 'zero_admission_after_retry' if exhausted else 'approach_or_observation_control' if outcome == 'stopped_short' else 'no_accepted_route',
+                       'detail': exhausted[-1] if exhausted else plans[-1] if plans else {'result': outcome}}
+        rows.append({**entry, 'runs': runs, 'targets': targets, 'review': review, 'failure_reason': failure,
                      'second_eye': runs['imagination']['summary']['looks'] > 1,
                      'six_b': any(t['six_b'] for t in targets.values()), 'counterfactuals': cf,
                      'evidence': 'evidence/suite/scenes/' + scene + '/manifest.json' if not entry.get('anchor')

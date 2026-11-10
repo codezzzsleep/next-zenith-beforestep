@@ -122,6 +122,14 @@ def main():
             assert cf['completed'] and cf['all_executed_prefixes_verified'], 'Counterfactual validation incomplete'
             assert set(cf['runs']) == expected_keys, 'Some original rejected candidates are missing or added'
             assert cf['attempted'] == cf['rejected_candidates'] == len(expected_keys)
+            executed_cf = [r for r in cf['runs'].values() if r['executed']]
+            for candidate_run in cf['runs'].values():
+                if candidate_run['summary'] is not None:
+                    assert candidate_run['summary'] == read(ROOT / candidate_run['run'] / 'summary.json')
+            assert cf['executed'] == len(executed_cf)
+            assert cf['collisions'] == sum(has_collision(r['summary']) for r in executed_cf)
+            assert cf['noncollisions'] == len(executed_cf) - cf['collisions']
+            assert cf['unexecutable'] == len(expected_keys) - len(executed_cf)
         if entry.get('anchor'):
             physical = read(actual / 'physical_clearance.json')
             xy = read(actual / 'eval.json')

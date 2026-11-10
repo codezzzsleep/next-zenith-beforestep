@@ -1,0 +1,39 @@
+{
+  "scope": "Intermediate observed second-eye calls; not final navigation results",
+  "scenes": [
+    {
+      "scene": "suite_r2_v4_F0_001",
+      "views": [
+        {
+          "request": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look2/T2/lux_request.json",
+          "target": "T2",
+          "native_px": 527,
+          "native_ok": true,
+          "mode": "img",
+          "samples": 6
+        }
+      ]
+    },
+    {
+      "scene": "suite_r2_v4_F0_005",
+      "views": [
+        {
+          "request": "outputs/suite/real/suite_r2_v4_F0_005/imagination/looks/look2/T1/lux_request.json",
+          "target": "T1",
+          "native_px": 1249,
+          "native_ok": true,
+          "mode": "imgs",
+          "samples": 3
+        },
+        {
+          "request": "outputs/suite/real/suite_r2_v4_F0_005/imagination/looks/look2/T2/lux_request.json",
+          "target": "T2",
+          "native_px": 336,
+          "native_ok": false,
+          "mode": "img",
+          "samples": 6
+        }
+      ]
+    }
+  ]
+}

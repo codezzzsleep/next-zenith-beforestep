@@ -15,7 +15,7 @@
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 完成 | 当前源cfffaf8四类全链/复盘/allpanes通过；本提交 |
 | B5 | 场景组真实Lux3D | 进行中 | B4已push c465926后启动；实时预算见ledger |
-| B6 | 全部场景复盘和全部拒绝反事实 | 未开始 | — |
+| B6 | 全部场景复盘和全部拒绝反事实 | 进行中（复盘随B5，CF父等待已完成场景） | b790e92 |
 | B7 | 完整总表 | 未开始 | — |
 | B8 | 预定规则结论 | 未开始 | — |
 | C1 | 五步关卡模式 | 进行中（R1锚点框架已验证，完整场景组待B完成） | c5be2c6 |
@@ -536,3 +536,5 @@ B6调度决定（真实B5仍运行，未更改src）：使用单个普通Python�
 B6后处理调度与前缀核验已实现，ops三个文件compile exit0；只读QA在保存的R1真实形状第二眼CF上，原第二眼时间/实测姿态和全部5个prefix数组精确同，故意改1mm qpos的隔离副本正确被拒，public regressions/report-contracts/CF-prefix-audit.json。0新物理/0新paid，SRC与完整R1gate逐文件SHA仍相同。报告生成器同时纠正上限说明：保守/see-dark/乐观最多5眼，真实形状/真实Lux最多2眼；这只是忠实说明既有流程，不更改上限。新全组B6尚未执行，等待已完成真实scene。
 
 C2浏览器新增扫描库真实drag/drop验收exit0（C2-library-drop-anchor.log）：rock_07从库拖到(10,-1.5)并从导出JSON核对相同；既有岩石拖动/旋转/高度、坑增删、太阳、三路线、390px和0page/HTTP错误都通过。public presentation/sandbox-anchor/browser.json仍明确development_anchor_only=true，只有1个R1首关，完整12组C2尚未验收。
+
+B5中间观测（不是导航终态）：F0_001实际B第二眼527px/native_ok=true，但B首眼native_ok=false，正确调用新视角img六份；F0_005实际A第二眼1249px且两眼native_ok都true，正确调用imgs三份，B336px/native_ok=false调用新img六份。原请求字节与sample/task identity保存在真实out/budget，public regressions/report-contracts/real-second-eye-intermediate.json列出原请求路径与字段。此时33/360（29ok/4pending），完整源cfffaf8，两个真实父子和B6等待父继续运行；不得把补看输入成立写成到达。

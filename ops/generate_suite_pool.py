@@ -53,8 +53,11 @@ def generate(parameters, family, seed):
     if family == 'F2':
         # Every F2 foreground rock sits along a known crater rim. The angle and
         # rim gap are sampled before any run, without inspecting its outcome.
+        order = parameters.get('rim_crater_order', list(range(len(craters))))
+        if sorted(order) != list(range(len(craters))):
+            raise ValueError('rim_crater_order must be a permutation of the generated craters')
         for index, value in enumerate(rocks.values()):
-            crater = craters[index % len(craters)]
+            crater = craters[order[index % len(order)]]
             angle = np.radians(uniform('rim_angle_deg'))
             distance = crater['radius'] + uniform('rim_gap_m')
             sign_x = -1 if index == 0 else 1

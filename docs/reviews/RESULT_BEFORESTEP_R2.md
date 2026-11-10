@@ -351,3 +351,7 @@ C2边界补验：模板逆变换查询加入二维索引边界，避免拖出视
 C1真值访问补齐：build_levels_site重建R1锚点exit0，独立真实扫描入口不依赖生成候选；合并观测目标的真实参考为对应扫描组合；候选/真值按原物理场景body世界位置归一（R1 B的body_z=0.00002m）。JS语法通过，当前只构建验证；早启动的浏览器在build未终态前主动停止exit143，原C1-truth-access-browser.log保留；构建后C1-truth-access-final浏览器也返回143，原因未确认、日志空，不冒称通过。待两个候选池结束后再做完整C1浏览器，原c5be2c6五步验收仍保留。
 
 C2扫描库现用与正式场景相同的主轴对齐/底面归零/等比尺度（S.rock_asset_uniform），不再用原扫描任意坐标框。`build_sandbox_data.py`与`check_sandbox_consistency.py`均exit0；12扫描/1锚点/2扫描有准入模板，独立近似仍1/1、精确地图EDT误差0（C2-canonical-scan-*.log）。仅修查看/沙盒数据，src无改动，两个非Lux池仍同source。
+
+### B2 F2扩池完整终态与下一整池注册
+
+v3 F2全部24×4完成exit0：0决定性/16普通/8无解/0执行错误。按B2调整尚未运行的v4参数，F2采用下坑前A/上坑后B、两坑0.65–0.80m、坑沿gap0.15–0.30m、角色高度与太阳/目标的固定随机范围；全部范围与目的见decisions及pool_v4。旧0/24结果完整保留，仍不调Lux、不改单场景。`python3 -m unittest discover -s tests -v` exit0，64/64（7.582s），默认生成器全部84已注册v3配置逐字节相同，新F2角色与坑沿约束通过；日志B2-rim-generator-tests.log。物理src仍同671a4e6，现有F3/F1扩展不受影响。

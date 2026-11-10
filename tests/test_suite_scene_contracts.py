@@ -144,6 +144,18 @@ class SuiteSceneTests(unittest.TestCase):
 
 
 class PoolGeneratorTests(unittest.TestCase):
+    def test_registered_f2_front_and_back_roles_remain_on_the_intended_rims(self):
+        from ops.generate_suite_pool import generate
+        parameters = json.loads((S.ROOT / 'config/suite/pool_v4.json').read_text())
+        for seed in range(1, 13):
+            scene = generate(parameters, 'F2', seed)
+            self.assertLess(scene['rocks']['A']['x'], scene['rocks']['B']['x'])
+            self.assertLess(scene['rocks']['A']['y'], scene['rocks']['B']['y'])
+            for key, index in [('A', 1), ('B', 0)]:
+                rock, crater = scene['rocks'][key], scene['terrain']['craters'][index]
+                gap = np.linalg.norm(np.array([rock['x'], rock['y']])-crater['center'])-crater['radius']
+                self.assertTrue(.149999 <= gap <= .300001)
+
     def test_optional_role_ranges_preserve_all_registered_v3_scene_bytes(self):
         from ops.generate_suite_pool import generate
         parameters = json.loads((S.ROOT / 'config/suite/pool_v3.json').read_text())

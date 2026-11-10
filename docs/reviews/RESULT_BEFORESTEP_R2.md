@@ -530,3 +530,7 @@ B5真实dispatcher PID2077882/tool60090已启动并实际创建任务。账本�
 新11场景44同源非Lux基线全部exit0/completed=true；与修目标mask前的44运行逐项比较，所有traj.npz键和全部数组完全相同。说明此修复保留了全部场景的控制、机器人、传感器和导航禁行行为。新原结果public evidence/suite/pool/crater-target-baselines/manifest_results.json；比较44/44通过，regressions/crater-target-baselines/comparison.json，原旧44保留。新源cfffaf8与真实Lux正在使用的source一致，未重新筛选冻结场景。baseline parent2076311已退出；只剩真实dispatcher2077882/live，SRC不改。
 
 恢复核验（2026-11-10 22:56 UTC）：main本地/远端6c8c8f8同；只一个本项目写会话。实际重新逐项加载新/旧44份traj.npz，全部keys/arrays精确相同，current SRC SHA == B1-crater-target完整R1gate == B4 allpass == 新44基线，exit0（同既有PYTHONPATH）。首调用漏临时依赖路径exit1，补回路径后验证通过，无源码/实验改动。B5父2077882仍存活，两个F0场景处于注册/自检/物理链；此时budget24/360且24全部ok，不新建重复任务。新增candidate GLB仍由运行生成、暂未提交；整scene完成后按§2.5外部完整包+≤150MB精简集保全。三个时间关口未到，继续全12组。
+
+B6调度决定（真实B5仍运行，未更改src）：使用单个普通Python后处理父进程，按冻结seed顺序处理已完成并复盘exit0的场景，每场枚举全部每眼拒绝候选；B5运行期间最多1个CF物理子进程，B5全部结束后最多3个。当前16GB内存、B5两子各约3GB，此调度保持总约3个物理子，减少长注册阶段的空等，不改任何实验参数/数据/名单、不新增paid。每个第二眼CF追加只读核验：原/CF第二眼时刻与实测姿态及此前traj.npz全部5数组精确相同；不把未来候选放入首眼。数据保全仍在每scene全部CF终态后一次生成SHA manifest/完整外包，未完成的场景不冒称结果。
+
+B6后处理调度与前缀核验已实现，ops三个文件compile exit0；只读QA在保存的R1真实形状第二眼CF上，原第二眼时间/实测姿态和全部5个prefix数组精确同，故意改1mm qpos的隔离副本正确被拒，public regressions/report-contracts/CF-prefix-audit.json。0新物理/0新paid，SRC与完整R1gate逐文件SHA仍相同。报告生成器同时纠正上限说明：保守/see-dark/乐观最多5眼，真实形状/真实Lux最多2眼；这只是忠实说明既有流程，不更改上限。新全组B6尚未执行，等待已完成真实scene。

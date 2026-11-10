@@ -7,6 +7,8 @@ from pathlib import Path
 import subprocess
 import sys
 
+import numpy as np
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -22,6 +24,23 @@ def rejected_candidates(original):
                              'glb': candidate.get('glb'), 'source_decision': str(decision.relative_to(ROOT)),
                              'original_rejection': candidate})
     return rows
+
+
+def prefix_check(original, actual, events, look):
+    """Verify saved observations and all recorded actions before intervention."""
+    before_events = [json.loads(line) for line in (original / 'events.jsonl').read_text().splitlines()]
+    before_look = next(e for e in before_events if e['kind'] == 'look' and e['k'] == look)
+    after_look = next(e for e in events if e['kind'] == 'look' and e['k'] == look)
+    arrays = {}
+    with np.load(original / 'traj.npz') as before, np.load(actual / 'traj.npz') as after:
+        left = before['t'] <= before_look['t'] + 1e-9
+        right = after['t'] <= after_look['t'] + 1e-9
+        for key in set(before.files) | set(after.files):
+            arrays[key] = key in before.files and key in after.files and bool(
+                np.array_equal(before[key][left], after[key][right]))
+    same_look = before_look['t'] == after_look['t'] and before_look['measured_pose'] == after_look['measured_pose']
+    return {'passed': same_look and all(arrays.values()), 'look_time_and_pose_equal': same_look,
+            'arrays_equal': arrays, 'through_sim_time_s': before_look['t']}
 
 
 def main():
@@ -71,8 +90,10 @@ def main():
         interventions = [e for e in events if e['kind'] == 'counterfactual_intervention']
         intended = any(e['look'] == row['look'] and e['target'] == row['target']
                        and e['candidate'] == row['candidate'] for e in interventions)
+        prefix = prefix_check(original, actual, events, row['look']) if intended and summary else None
         return key, {'command': command, 'exit_code': code, 'summary': summary,
                      'intervention_verified': intended, 'run': str(actual.relative_to(ROOT)),
+                     'prefix_verification': prefix,
                      'executed': code == 0 and summary is not None and intended,
                      'collision': bool(summary and (summary['collision'] is not None or summary['result'] == 'collision')) if intended else None}
 
@@ -92,9 +113,13 @@ def main():
                   collisions=sum(r['collision'] for r in executed),
                   noncollisions=sum(not r['collision'] for r in executed),
                   unexecutable=len(report['runs']) - len(executed), paid_tasks=0)
+    report['all_executed_prefixes_verified'] = all(r.get('prefix_verification', {}).get('passed', False)
+                                                  for r in executed)
     save()
     print(json.dumps({k: report[k] for k in ('completed', 'rejected_candidates', 'attempted',
                                            'executed', 'collisions', 'unexecutable', 'paid_tasks')}), flush=True)
+    if not report['all_executed_prefixes_verified']:
+        raise SystemExit('Counterfactual prefix differs from the original; retain all data and inspect')
 
 
 if __name__ == '__main__':

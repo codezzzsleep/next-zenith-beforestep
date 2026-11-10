@@ -1,5 +1,6 @@
 """Read-only comparison of suite presentation with immutable raw run evidence."""
 import json
+import hashlib
 from pathlib import Path
 import subprocess
 import sys
@@ -15,14 +16,28 @@ def check():
     summary = json.loads((ROOT / 'evidence/suite/summary.json').read_text())
     scratch = ROOT / 'outputs/qa/r2/suite-summary-recomputed.json'
     scratch.parent.mkdir(parents=True, exist_ok=True)
-    subprocess.run([sys.executable, str(ROOT / 'ops/build_suite_summary.py'), '--out', str(scratch.relative_to(ROOT))],
+    command = [sys.executable, str(ROOT / 'ops/build_suite_summary.py'), '--out', str(scratch.relative_to(ROOT))]
+    if summary['incomplete_scenes']:
+        command.append('--allow-incomplete')
+    subprocess.run(command,
                    cwd=ROOT, check=True, stdout=subprocess.PIPE)
     assert summary == json.loads(scratch.read_text()), 'Summary diverges from raw evidence'
     levels = json.loads((ROOT / 'site/data/levels.json').read_text())
     assert not levels['anchor_only_development']
     assert [r['id'] for r in levels['levels']] == [r['scene'] for r in summary['scenes']]
+    assets = json.loads((ROOT / 'site/data/levels-assets.json').read_text())
+    assert not assets['anchor_only_development']
+    asset_names = {a['path'].removeprefix('site/') for a in assets['entries']}
+    for asset in assets['entries']:
+        path = ROOT / asset['path']
+        assert path.stat().st_size == asset['bytes']
+        assert hashlib.sha256(path.read_bytes()).hexdigest() == asset['sha256']
     candidates, points = 0, 0
     for row, level in zip(summary['scenes'], levels['levels']):
+        image = level['observation']
+        assert hashlib.sha256((ROOT / 'site' / image['image']).read_bytes()).hexdigest() == image['image_sha256']
+        original_image = ROOT / row['runs']['imagination']['run'] / 'looks/look1_rgb.png'
+        assert hashlib.sha256(original_image.read_bytes()).hexdigest() == image['source_sha256']
         for key in ('optimistic', 'conservative', 'imagination'):
             run = row['runs'][key]
             shown = level['runs'][key]
@@ -39,6 +54,13 @@ def check():
             decision = json.loads((ROOT / candidate['source_decision']).read_text())
             original = next(c for c in decision['candidates'] if c['id'] == candidate['sample'])
             assert original['admitted'] == candidate['admitted']
+            for key in ('model', 'truth_model'):
+                if candidate[key]:
+                    assert candidate[key] in asset_names
+            if candidate['model']:
+                assert hashlib.sha256((ROOT / 'site' / candidate['model']).read_bytes()).hexdigest() == candidate['model_sha256']
+            if original.get('glb'):
+                assert hashlib.sha256((ROOT / original['glb']).read_bytes()).hexdigest() == candidate['original_glb_sha256']
             footprint = ROOT / candidate['source_decision']
             occupied = np.load(footprint.parent / ('footprint_'+candidate['sample']+'.npy'))
             from beforestep.navigation import map as N
@@ -57,6 +79,7 @@ def check():
     return {'schema': 'beforestep-suite-presentation-audit/v1', 'passed': True,
             'scenes': len(summary['scenes']), 'candidate_footprints': candidates,
             'actual_trajectory_points': points, 'raw_summary_recomputed_equal': True,
+            'presentation_asset_sha_count': len(assets['entries']),
             'report_suite_chapter_matches': True, 'collision_scenes_prominent': summary['imagination_collision_scenes']}
 
 

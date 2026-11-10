@@ -7,6 +7,7 @@ import numpy as np
 
 from beforestep import scene as S
 from beforestep.evaluation import truth_footprints
+from run_suite_counterfactuals import rejected_candidates
 
 ROOT = Path(__file__).resolve().parents[1]
 R1 = ROOT / 'evidence/reviews/beforestep_r1'
@@ -92,6 +93,16 @@ def main():
         if not (actual / 'summary.json').exists():
             incomplete.append(scene)
             continue
+        if not entry.get('anchor'):
+            cf_path = ROOT / args.counterfactual_root / scene / 'counterfactuals.json'
+            review_path = ROOT / args.review_root / scene / 'review.json'
+            if not cf_path.exists() or not review_path.exists():
+                incomplete.append(scene)
+                continue
+            cf = read(cf_path)
+            if not cf.get('completed') or not cf.get('all_executed_prefixes_verified'):
+                incomplete.append(scene)
+                continue
         baseline_runs = baselines['scenes'][scene]['runs'] if baselines and not entry.get('anchor') else entry['runs']
         runs = {key: {'run': r['run'], 'summary': read(ROOT / r['run'] / 'summary.json'),
                       'run_id': read(ROOT / r['run'] / 'run_identity.json')['run_id']}
@@ -103,7 +114,14 @@ def main():
                                'run_id': read(actual / 'run_identity.json')['run_id']}
         assert all(v['summary']['controller'] == 'rules' for v in runs.values())
         targets = target_counts(actual, scene)
-        cf = anchor_counterfactuals() if entry.get('anchor') else read(ROOT / args.counterfactual_root / scene / 'counterfactuals.json')
+        cf = anchor_counterfactuals() if entry.get('anchor') else cf
+        if not entry.get('anchor'):
+            expected_rejections = rejected_candidates(actual)
+            expected_keys = {f"look{c['look']}_{c['target']}_{c['candidate']}" for c in expected_rejections}
+            assert cf['scene'] == scene and (ROOT / cf['original_run']).resolve() == actual.resolve()
+            assert cf['completed'] and cf['all_executed_prefixes_verified'], 'Counterfactual validation incomplete'
+            assert set(cf['runs']) == expected_keys, 'Some original rejected candidates are missing or added'
+            assert cf['attempted'] == cf['rejected_candidates'] == len(expected_keys)
         if entry.get('anchor'):
             physical = read(actual / 'physical_clearance.json')
             xy = read(actual / 'eval.json')
@@ -113,6 +131,8 @@ def main():
                       'optimistic_max_intrusion_m': max(r['planned_envelope_intrusion_proxy_m'] for r in optimistic['first_departure_plan_by_rock'].values())}
         else:
             review = read(ROOT / args.review_root / scene / 'review.json')
+            assert review['actual_run_id'] == runs['imagination']['run_id']
+            assert review['optimistic_run_id'] == runs['optimistic']['run_id']
         events = [json.loads(line) for line in (actual / 'events.jsonl').read_text().splitlines()]
         plans = [e for e in events if e['kind'] == 'plan']
         physical_collision = has_collision(runs['imagination']['summary'])

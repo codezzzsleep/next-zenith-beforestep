@@ -538,3 +538,5 @@ B6后处理调度与前缀核验已实现，ops三个文件compile exit0；只�
 C2浏览器新增扫描库真实drag/drop验收exit0（C2-library-drop-anchor.log）：rock_07从库拖到(10,-1.5)并从导出JSON核对相同；既有岩石拖动/旋转/高度、坑增删、太阳、三路线、390px和0page/HTTP错误都通过。public presentation/sandbox-anchor/browser.json仍明确development_anchor_only=true，只有1个R1首关，完整12组C2尚未验收。
 
 B5中间观测（不是导航终态）：F0_001实际B第二眼527px/native_ok=true，但B首眼native_ok=false，正确调用新视角img六份；F0_005实际A第二眼1249px且两眼native_ok都true，正确调用imgs三份，B336px/native_ok=false调用新img六份。原请求字节与sample/task identity保存在真实out/budget，public regressions/report-contracts/real-second-eye-intermediate.json列出原请求路径与字段。此时33/360（29ok/4pending），完整源cfffaf8，两个真实父子和B6等待父继续运行；不得把补看输入成立写成到达。
+
+B7/C1/D检查脚本准备：总表只接纳真实运行、复盘与全部拒绝CF均完成且prefix验证通过的场景，逐项核对原reject集合与复盘actual/optimistic run_id；未完成不写成完整结果。关卡图像/真值与候选mesh额外生成site/data/levels-assets.json，数字审计同时校验原照片SHA与导出图片/网格。compile exit0，实际R1锚点重建exit0/14资产SHA通过，关卡载荷除新增图片SHA字段外逐字段同已过浏览器版；当前B7隔离fixture只接受1原锚点、11新scene列未完成且不能支持多数有效结论，0新物理/0paid。public report-contracts/B7-completion-and-assets.json。这个fixture没有发布成总表、没有提前应用时间收缩；仍继续全部冻结12，完整B7与D审计待实际新数据。

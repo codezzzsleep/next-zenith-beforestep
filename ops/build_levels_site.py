@@ -61,7 +61,8 @@ def build(row):
     picture = Image.open(source_image).convert('RGB'); picture.thumbnail((1200, 900)); picture.save(image, quality=93)
     state = np.load(actual / 'decision/look1_state.npy')
     record = {'id': scene_id, 'goal': definition['goal'], 'robot': S.ROBOT,
-              'observation': {'image': str(image.relative_to(ROOT / 'site')), 'source_sha256': sha(source_image),
+              'observation': {'image': str(image.relative_to(ROOT / 'site')), 'image_sha256': sha(image),
+                 'source_sha256': sha(source_image),
                  'time': first['t'], 'pose': first['measured_pose'],
                  'map': {'origin': [N.X0, N.Y0], 'resolution': N.RES, 'shape': list(state.shape),
                          'values': state.ravel().tolist()}, 'nogo': N.prior_nogo().ravel().astype(int).tolist()},
@@ -170,6 +171,14 @@ def main():
             'scope': 'Recorded real experiment data; choice changes which saved physical trajectory is replayed.',
             'levels': [build(row) for row in rows]}
     (ROOT / 'site/data/levels.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
+    assets = {r['observation']['image'] for r in data['levels']}
+    assets.update(rock['model'] for r in data['levels'] for rock in r['truth']['rocks'])
+    assets.update(c[key] for r in data['levels'] for c in r['candidates']
+                  for key in ('model', 'truth_model') if c[key])
+    manifest = {'schema': 'beforestep-level-assets/v1', 'anchor_only_development': args.anchor_only,
+                'entries': [{'path': 'site/' + p, 'sha256': sha(ROOT / 'site' / p),
+                             'bytes': (ROOT / 'site' / p).stat().st_size} for p in sorted(assets)]}
+    (ROOT / 'site/data/levels-assets.json').write_text(json.dumps(manifest, indent=2) + '\n')
     print(json.dumps({'levels': len(data['levels']), 'anchor_only': args.anchor_only}))
 
 

@@ -18,7 +18,7 @@
 | B6 | 全部场景复盘和全部拒绝反事实 | 未开始 | — |
 | B7 | 完整总表 | 未开始 | — |
 | B8 | 预定规则结论 | 未开始 | — |
-| C1 | 五步关卡模式 | 未开始 | — |
+| C1 | 五步关卡模式 | 进行中（R1锚点框架已验证，完整场景组待B完成） | 本次基础提交 |
 | C2 | 沙盒与一致性 | 未开始 | — |
 | C3 | 导出与人工场景 | 未开始 | — |
 | D1 | 首页/报告/相关工作整合 | 未开始 | — |
@@ -301,3 +301,11 @@ B2 v3预注册：pool_v3仅改revision，所有参数范围、种子/RNG同v2。
 B1平地/空需求/边界修复后完整5回归exit0：`python3 ops/run_r2_regression.py --out outputs/qa/r2/B1-flat-and-view-regression --workers 3`，62tests全部通过，6冻结文件SHA不变，四基线结果与眼数/时间同R1，reuse12预演全pass、5数组与NPZ SHA同原。证据evidence/suite/regressions/B1-flat-and-view。源/参数提交推送后才能v3生成并运行；B6全拒绝反事实与3D/XY复盘驱动写好了，只py_compile，实际场景组验证尚未开始。
 
 合并池命令预注册：分别`generate_suite_pool.py --params config/suite/pool_v3.json --family F0 F2 F3 --seeds 1 24`与`--family F1 --seeds 1 12`，合并为一个84场景manifest，并提交全部生成配置；`run_suite_pool.py --manifest evidence/suite/pool/r2_v3/manifest_initial_and_expansion.json --out outputs/suite/pool/r2_v3 --regression evidence/suite/regressions/B1-flat-and-view/regression.json --workers 3`，先336非Lux，零新付费。
+
+## C1 独立框架工作（B2池等待期间）
+
+五步关卡已接真实R1 stress锚点：首眼只显示实际RGB与两类未知/已知禁行地图；选择后三种实际轨迹可回放；揭晓才画真值与全部准入/拒绝占地；3D注册候选与真实扫描同坐标同单位切换；首次选择只计一次，对比三种固定策略已经玩的通过数。没有伪造第二个场景或结果，开发payload明确anchor_only_development。主首页/Pages仍R1，待B全部真实结果完成后接入完整场景组并按D发布。
+
+`python3 ops/build_levels_site.py --anchor-only` exit0，1真实关/11原候选的注册网格与2真实扫描；`node --input-type=module --check < site/levels.js` exit0；`python3 ops/check_levels_browser.py --name C1-anchor-final` exit0，五步、3实际策略回放、11候选与真实mesh切换/旋转、首次选择计分、390px无溢出、HTTP/页面错误0。手机版实际model进入视口后截图已看见网格。第一版变量g重复导致JS parse失败，原日志C1-anchor-browser.log保留，已修且最终验收通过；中间全页截图远离model时lazy render空白，最终滚入视口验证实际渲染。公开小回执evidence/suite/presentation/anchor-game/browser.json，截图/日志outputs/qa/r2/C1-anchor-final-*。
+
+做了未实际验证：B4全链验收汇总、B7原始数据总表/B8结论脚本（只py_compile）。没有完成B3冻结/B4四类替身/B5真实Lux/B6全部真实反事实/B7全组/C2C3/D。仍0/360。

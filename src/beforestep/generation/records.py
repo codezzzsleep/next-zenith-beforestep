@@ -20,6 +20,51 @@ def items_second(t1state, t2state):
     return [{'id': f'M{i}', 'paths': [p1['path'], p2['path']], 'sha256': [p1['sha256'], p2['sha256']]} for i in (1, 2, 3)]
 
 
+def items_for_look(k, reference, current):
+    if k > 1 and reference is not current and reference.get('native_ok') and current.get('native_ok'):
+        return 'imgs', items_second(reference, current)
+    return 'img', items_first(current)
+
+
+def pending_request(tdir):
+    tdir = pathlib.Path(tdir)
+    if _read_single_result(tdir) is None:
+        return tdir / 'lux_request.json'
+    retry = tdir / 'retry'
+    if (retry / 'lux_request.json').exists() and _read_single_result(retry) is None:
+        return retry / 'lux_request.json'
+    return None
+
+
+def prepare_second_batch(tdir, decision, look):
+    """R1 preregistered one-time retry, preserving the original request and result."""
+    import shutil
+    tdir = pathlib.Path(tdir)
+    request = json.loads((tdir / 'lux_request.json').read_text())
+    if look != 2 or request['mode'] != 'img' or decision['admitted_ids']:
+        return None
+    if {it['id'] for it in request['items']} != {'A1', 'A2', 'B1', 'B2', 'C1', 'C2'}:
+        raise ValueError('R1 second-look batch must contain exactly the six original sample IDs')
+    retry = tdir / 'retry'
+    if (retry / 'lux_request.json').exists():
+        return None
+    if pending_request(tdir) is not None:
+        raise ValueError('Cannot retry an incomplete or uncertain first batch')
+    retry.mkdir(parents=True, exist_ok=True)
+    frozen = tdir / 'decide_before_retry'
+    if (tdir / 'decide').exists():
+        shutil.copytree(tdir / 'decide', frozen, dirs_exist_ok=True)
+    items = [{**it, 'id': it['id'] + 'b'} for it in request['items']]
+    preregistration = {'schema': 'beforestep-r1-retry/v1', 'look': 2, 'additional_tasks': 6,
+        'total_tasks_limit': 12, 'first_request_sha256': sha(tdir / 'lux_request.json'),
+        'first_result_sha256': sha(tdir / 'lux_result.json'),
+        'first_admitted_ids': decision['admitted_ids'], 'first_decision': decision,
+        'expected': 'At least one admitted candidate: plan/rehearse/execute. Zero across twelve tasks: safe stop; enter review section 2.4.'}
+    (retry / 'preregistration.json').write_text(json.dumps(preregistration, indent=2) + '\n')
+    write_request(retry, 'img', items)
+    return retry / 'lux_request.json'
+
+
 def write_request(tdir, mode, items):
     from PIL import Image
     import copy
@@ -60,7 +105,7 @@ def write_request(tdir, mode, items):
     return req
 
 
-def read_result(tdir):
+def _read_single_result(tdir):
     """返回 [{'id', 'glb'}]；结果不存在返回 None；不合规（两图不是真两图、输入图对不上、GLB 校验不过）抛错。"""
     tdir = pathlib.Path(tdir)
     p = tdir / 'lux_result.json'
@@ -100,6 +145,23 @@ def read_result(tdir):
                 raise RuntimeError(f'{p}: task {t["id"]} glb missing or sha256 mismatch')
             out.append({'id': t['id'], 'glb': str(g)})
     return out
+
+
+def read_result(tdir):
+    tdir = pathlib.Path(tdir)
+    first = _read_single_result(tdir)
+    if first is None:
+        return None
+    retry = tdir / 'retry'
+    if not (retry / 'lux_request.json').exists():
+        return first
+    second = _read_single_result(retry)
+    if second is None:
+        return None
+    combined = first + second
+    if len({c['id'] for c in combined}) != len(combined):
+        raise ValueError('Retry sample IDs overlap with the original batch')
+    return combined
 
 
 def same_inputs(old_state, new_state):

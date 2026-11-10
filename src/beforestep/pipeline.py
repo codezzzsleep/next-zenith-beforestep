@@ -293,6 +293,8 @@ def main():
         Image.fromarray(ob['rgb']).save(out / 'looks' / f'look{k}_rgb.png')
         np.save(out / 'looks' / f'look{k}_state.npy', ob['state']); np.save(out / 'looks' / f'look{k}_depth.npy', ob['depth'].astype(np.float32))
         np.save(out / 'looks' / f'look{k}_dark.npy', ob['dark'])
+        if 'zmax' in ob:
+            np.save(out / 'looks' / f'look{k}_zmax.npy', ob['zmax'])
         looks.append(ob)
         st = N.fuse(base_maps + [l['state'] for l in looks])
         x, y, yaw = pose(env)
@@ -306,7 +308,7 @@ def main():
 
     tlooks = []                       # 每一眼的目标石头 [{'target','dir','cells','state'}]
     imagined_meshes = {}              # 目标 -> [被采纳候选的世界坐标 OBJ]（用于在想象里预演）
-    focus = {'cells': None}           # 第二眼要看的地方：想象全被拒绝的石头周围
+    focus = {'cells': None, 'target': None, 'expected_px': None}
     why = {'reason': None, 'admitted': {}}   # 为什么看下一眼；每块（第一眼编号的）石头当前是否有被采纳的想象
 
     def capture_targets(k, state):
@@ -369,20 +371,26 @@ def main():
             t['skip'] = (k > 1 and why['reason'] == 'rejected' and why['admitted'].get(ref['target'], False))
             if t['skip'] or (t['dir'] / 'lux_request.json').exists():
                 continue
-            if k == 1 or ref is t:
-                LX.write_request(t['dir'], 'img', LX.items_first(t['state']))
-            else:
-                LX.write_request(t['dir'], 'imgs', LX.items_second(ref['state'], t['state']))
+            mode, items = LX.items_for_look(k, ref['state'], t['state'])
+            LX.write_request(t['dir'], mode, items)
+            ev('target_input_request', look=k, target=t['target'], reference=t['ref'], mode=mode,
+               first_native_ok=ref['state']['native_ok'], native_ok=t['state']['native_ok'],
+               crop_native_px=t['state']['crop_native_px'],
+               target_native_px_expected=focus.get('expected_px'), samples=len(items))
         for t in tg:
-            if not t['skip'] and LX.read_result(t['dir']) is None:
-                missing.append(LX.rel(t['dir'] / 'lux_request.json'))
+            if not t['skip']:
+                pending = LX.pending_request(t['dir'])
+                if pending is not None:
+                    missing.append(LX.rel(pending))
         if missing:
             ev('need_lux3d', look=k, requests=missing)
             (out / 'NEED_LUX3D.json').write_text(json.dumps({'look': k, 'requests': missing}, indent=2))
+            rec.save(out / 'partial_traj.npz')
             raise SystemExit(10)
         mask = np.zeros((N.NX, N.NY), bool)
         per = []
         focus['cells'] = None
+        focus['target'] = None
         VZ.release(vm)                 # 配准前释放渲染上下文（省约 1.4 GB）
         # 每块石头用它最近一次被拍到时的想象（第二眼没拍到的石头，沿用第一眼的结论）
         latest = {}
@@ -410,6 +418,20 @@ def main():
                 per.append({'target': t['target'], 'trusted': cid, 'admitted_by_self_check': c['admitted']})
                 continue
             n_adm = len(res['admitted_ids'])
+            if not trust:
+                retry = LX.prepare_second_batch(t['dir'], res, k)
+                if retry is not None:
+                    ev('need_lux3d', look=k, requests=[LX.rel(retry)], reason='r1_zero_admitted_first_batch',
+                       additional_samples=6, total_samples_limit=12)
+                    (out / 'NEED_LUX3D.json').write_text(json.dumps({'look': k, 'requests': [LX.rel(retry)],
+                        'reason': 'r1_zero_admitted_first_batch', 'total_samples_limit': 12}, indent=2))
+                    rec.save(out / 'partial_traj.npz')
+                    raise SystemExit(10)
+                if k == 2 and n_adm == 0 and (t['dir'] / 'retry/lux_request.json').exists():
+                    why['sampling_exhausted'] = True
+                    ev('sampling_stop', look=k, target=t['target'], total_samples=12,
+                       generated_candidates=len(res['candidates']), admitted=0,
+                       action='safe_stop_then_review_section_2_4')
             objs = []
             for c in res['candidates']:
                 if c['admitted']:
@@ -417,6 +439,12 @@ def main():
             imagined_meshes[t.get('ref', t['target'])] = objs
             why['admitted'][t.get('ref', t['target'])] = n_adm > 0
             if n_adm == 0:
+                if focus['target'] is None:
+                    zmax = looks[-1].get('zmax')
+                    visible = zmax[t['cells']] if zmax is not None else np.array([])
+                    visible = visible[np.isfinite(visible)]
+                    height = float(visible.max()) if visible.size else float(t['state']['visible']['H_vis'])
+                    focus['target'] = {'cells': t['cells'], 'H': height, 'id': t.get('ref', t['target'])}
                 focus['cells'] = (focus['cells'] if focus['cells'] is not None else np.zeros_like(t['cells'])) | ndimage.binary_dilation(t['cells'], iterations=int(1.0 / N.RES))
                 # 这块石头的想象全被自检拒绝：它背后与周围看不见的格子按保守处理
                 near = ndimage.binary_dilation(t['cells'], iterations=int(1.5 / N.RES))
@@ -474,9 +502,15 @@ def main():
         if focus['cells'] is not None and (unknown & focus['cells']).sum() > 50:
             need = unknown & focus['cells']          # 想象的车：去看想象被拒绝的那块石头
         attempts = 0
-        for vx, vy, vyaw, score, n in N.choose_second_look(state, (x, y), need, occ)[:40]:
+        target = focus['target'] if a.policy == 'imagination' else None
+        candidates = N.choose_second_look(state, (x, y), need, occ, target=target)
+        for candidate in candidates if target is not None else candidates[:40]:
+            vx, vy, vyaw, score, n = candidate[:5]
+            expected_px = candidate[5] if target is not None else None
             if n < 20:
-                break
+                if target is None:
+                    break
+                continue
             # A failed pose goal can leave the robot at another safe location.
             # Replan from its measured position; a different observation pose may
             # be reachable without weakening the learned controller's tolerances.
@@ -489,11 +523,14 @@ def main():
             ev('second_look_plan', attempt=attempts,
                viewpoint=[round(vx, 2), round(vy, 2), round(float(np.degrees(vyaw)), 1)],
                requested_viewpoint=[vx, vy, vyaw],
+               target_native_px_expected=expected_px,
+               target=target['id'] if target is not None else None,
                expected_new_cells=n, path=[[round(p[0], 3), round(p[1], 3)] for p in path])
             motion = execute_waypoints(env,path,rec,f'to_look{len(looks) + 1}',on_step,final_yaw=vyaw)
             if motion.collision:
                 return 'crash'
             if motion.completed:
+                focus['expected_px'] = expected_px
                 return 'ok'
             ev('viewpoint_attempt_failed', attempt=attempts, reason=motion.reason,
                measured_pose=list(pose(env)), requested_viewpoint=[vx,vy,vyaw])
@@ -518,6 +555,10 @@ def main():
         np.save(decision_dir / f'look{len(looks)}_state.npy', state)
         im = imagined_mask()
         last_im = im
+        if why.get('sampling_exhausted'):
+            result = 'stuck'
+            rec.hold(env, 'sampling_exhausted_safe_stop', 2.0)
+            break
         if a.policy == 'imagination':
             occ_m = N.occupancy(state, 'imagination', ndimage.binary_dilation(im, iterations=IMAG_MARGIN_CELLS))
             path = N.plan(occ_m, (x, y), S.GOAL)
@@ -553,7 +594,7 @@ def main():
                selected_margin_vs_truth=N.path_clearance(
                    path, (x,y), N.clearance(truth_union | N.prior_nogo())),
                note='Same observed state, robot and planner; only generated occupancy changes.')
-            if reference is not None and not same_path:
+            if reference is not None and not same_path and S.SCENE_ID != 'stress_v8':
                 supported, _ = rehearse(reference, len(looks), role='reference_without_generated_occupancy')
                 ev('reference_route_check', look=len(looks), supported_by_all_candidates=supported)
             ok, _ = rehearse(path, len(looks))

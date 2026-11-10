@@ -1585,10 +1585,13 @@
     },
     {
       "path": "config/scenes/stress_v8.json",
-      "sha256": "c07cdcbea2dda23c9087cd466130e06e4ea327f27ce6d94e70dedd9b26fcdebd",
+      "sha256": "a2ac80257e427ce6db44bfb94b506505eeac97ec5debeabb8c1743b1d79fbe36",
       "bytes": 372,
       "milestone": "beforestep_v0_2",
-      "role": "frozen_scene_config"
+      "role": "frozen_scene_config",
+      "previous_sha256": "c07cdcbea2dda23c9087cd466130e06e4ea327f27ce6d94e70dedd9b26fcdebd",
+      "previous_version_path": "evidence/reviews/beforestep_r1/frozen_before_r1/stress_v8.json",
+      "review_change": "R1 section 1: purpose metadata only; physical scene identity is unchanged."
     },
     {
       "path": "assets/observations/gate_passage_001/scene.json",
@@ -2765,6 +2768,12 @@
       "bytes": 563,
       "milestone": "observation-pose-20261110",
       "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/reviews/beforestep_r1/frozen_before_r1/stress_v8.json",
+      "sha256": "c07cdcbea2dda23c9087cd466130e06e4ea327f27ce6d94e70dedd9b26fcdebd",
+      "kind": "frozen_pre_r1_scene",
+      "source": "fdcf629:config/scenes/stress_v8.json"
     }
   ],
   "excluded_transport_caches": "Duplicate ZIP/GLB download caches omitted; authoritative generated_candidate assets retained.",

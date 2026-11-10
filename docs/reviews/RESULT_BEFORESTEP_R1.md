@@ -28,6 +28,21 @@
 
 尚未执行；每个新运行/付费批次在启动前于此登记。第二眼B输入不足时仍按§2.2单图6份，0采纳仅追加同字节一批6份；合计12份仍0安全停车并进入预注册§2.4。没有新增场景、放宽门槛或第三眼的授权。
 
+## §2.1–§2.3 实现与替身验证预注册（运行前）
+
+- `89421e2`：四项原始数据与结果保全，49个去重LFS对象84,273,178 bytes已上传、verify并再次查询确认可下载；main已同步。
+- 第二眼选点只用目标观测格及map.zmax中的可见高度，朝向对准观测格中心；相机距目标最近格<0.8 m按§2.1正文排除；≥512 px的点先于全部不达标点。无达标可达点时保留原排序低分辨率候选并如实记录。`target=None`完整74候选排序在修改前冻结并用于回归。
+- 两眼native_ok同时为true才发两图M1–M3，否则第二眼单图6份；追加批次是独立retry目录中的A1b…C2b，输入使用首次批次实际上传路径/字节，原始请求/结果保留。合计12份仍0时固定安全停车，不能继续采样或第三眼。
+- R1的stress_v8执行只预演将要执行的路线；旧程序新增的“无生成参照路线预演”不属于原V8主线，保留在历史gate附录；§2.0旧参照碰撞数据仍完整保留。
+
+替身验证命令（公共环境同§2.0）：
+
+`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_source --max-looks 2 --out outputs/reviews/r1/section21_standin`
+
+运行前预期：第一眼复用冻结的已有任务，A有准入、B全拒绝；第二眼选点使B预计≥512 px，实际采集记录crop_native_px；因第一眼251 px，生成单图6份请求，退出码10。替身结果在该请求中显式标为standin：只提供真实B网格的一份可用候选，其余5份为测试用失败状态；之后完整重启同命令，观测字节必须匹配，配准、自检、全部执行路线预演通过并≤2眼无碰撞到达。整个验证不创建任何付费任务，不计真实Lux3D成功。
+
+同一替身输出另设独立retry验证：第二眼首批6份都为测试用失败状态，预期自动生成且只生成一次同字节6份A1b…C2b并退出10；补入一份真实B替身后合计12判断，≤2眼完成预演并到达。另一单元测试将两批都失败，核对无第三批请求。每份替身状态及判断原样保存。
+
 ## §2.0 实测结果（预期保持原文）
 
 四次退出码均为0。保守为stuck/5眼、see-dark到达/3眼、乐观碰撞/1眼、真实形状替身到达/1眼。四项满足§2.0，可以进入§2.1；不需要触发旧代码差异核查。原始文件逐SHA256复制核对完成，见各运行preservation.json。
@@ -194,3 +209,17 @@ summary.json 原文：
   "collision": null
 }
 ```
+
+### 单元测试与purpose清单同步
+
+首次全套单测34项中33通过、1失败：原assets/manifest.json仍保留修改purpose前的stress_v8.json SHA。按复核§1更新当前清单SHA，原配置从fdcf629逐字节保存到evidence/reviews/beforestep_r1/frozen_before_r1/stress_v8.json，并核对除purpose外全部字段相同。未修改物理场景或门槛；失败日志outputs/reviews/r1/r1_unit_tests.log保留。下一次测试另存日志，不能覆盖第一次。
+
+### 替身第一次启动的输入核对
+
+上面预注册的旧首眼复用命令实际退出11：新传感器的首眼RGB/深度/掩码与历史reference_v8的SHA不同，程序正确拒绝复用，没有付费请求。实际车姿态相同，但不能把不同图当成同图。失败目录section21_standin及日志保留。处理按原输入保管规则：另外开一个独立fresh替身目录，使用当次实际观测；旧首眼不强行复用、不重创建旧任务。
+
+fresh替身命令（公共环境同§2.0）：
+
+`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --max-looks 2 --out outputs/reviews/r1/section21_standin_fresh`
+
+启动前预期：首眼写两个六份单图请求并退出10。测试提供A真实形状替身及B历史被拒几何替身（其余测试状态为failed），通过实际配准与原自检使A准入、B拒绝，随后第二眼为B单图6份并退出10。为第二眼提供真实B替身后，完整预演和执行≤2眼无碰撞到达。所有模拟任务标为offline standin，绝不计为真实Lux结果。本轮任何新真实首眼任务将在这条完整替身链与全部单测通过之后才创建。

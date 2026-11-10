@@ -287,7 +287,22 @@ def visible_cells(state, cam_xy, yaw, cells, hfov_deg=86.0, max_range=8.0):
     return n
 
 
-def choose_second_look(state, pose_xy, need_mask, policy_occ, reach=3.2, step=0.2, cam_ahead=0.42):
+F_HI = (3030 / 2) / np.tan(np.radians(35.0))
+MIN_NATIVE_PX = json.loads((S.ROOT / 'config/protocol.json').read_text())['inputs']['min_native_px']
+
+
+def target_px(cam_xy, target):
+    """Native pixel estimate from observed height and the nearest observed target cell."""
+    cells = np.asarray(target['cells'], dtype=bool)
+    height = float(target['H'])
+    if cells.shape != GX.shape or not cells.any() or not np.isfinite(height) or height <= 0:
+        raise ValueError('Target requires nonempty observed cells and a positive visible height')
+    ix, iy = np.nonzero(cells)
+    distance = float(np.min(np.hypot(XS[ix] - cam_xy[0], YS[iy] - cam_xy[1])))
+    return height * F_HI / max(distance, 0.3), distance
+
+
+def choose_second_look(state, pose_xy, need_mask, policy_occ, reach=3.2, step=0.2, cam_ahead=0.42, target=None):
     """need_mask：规划需要、但现在还不知道的格子（例如目标石块背后那片地）。
     候选：在当前策略下能安全开到、能原地转向的点；朝向：对准 need_mask 的重心。返回 (x, y, yaw, 预计新看到的格数)。"""
     clr = clearance(policy_occ)
@@ -295,16 +310,29 @@ def choose_second_look(state, pose_xy, need_mask, policy_occ, reach=3.2, step=0.
     if len(cells) > 600:
         idx = np.random.default_rng(0).choice(len(cells), 600, replace=False); cells = [cells[i] for i in idx]
     cxy = np.array([[XS[i], YS[j]] for i, j in cells]).mean(0)
+    if target is not None:
+        target_px(pose_xy, target)
+        tx, ty = np.nonzero(target['cells'])
+        txy = np.array([XS[tx].mean(), YS[ty].mean()])
     cands = []
     for x in np.arange(pose_xy[0] - 0.4, pose_xy[0] + reach, step):
         for y in np.arange(Y0 + 0.4, Y1 - 0.4, step):
             i, j = cell_of(x, y)
             if clr[i, j] < R_TURN or np.hypot(x - pose_xy[0], y - pose_xy[1]) > reach:
                 continue
-            yaw = float(np.arctan2(cxy[1] - y, cxy[0] - x))
+            aim = cxy if target is None else txy
+            yaw = float(np.arctan2(aim[1] - y, aim[0] - x))
             cam = (x + cam_ahead * np.cos(yaw), y + cam_ahead * np.sin(yaw))
             n = visible_cells(state, cam, yaw, cells)
             score = n - 3.0 * np.hypot(x - pose_xy[0], y - pose_xy[1])     # 看得多、走得少
-            cands.append((float(x), float(y), yaw, score, n))
+            if target is None:
+                cands.append((float(x), float(y), yaw, score, n))
+            else:
+                px, distance = target_px(cam, target)
+                if distance < 0.8:
+                    continue
+                if px < MIN_NATIVE_PX:
+                    score -= 1e4 - min(px, MIN_NATIVE_PX)
+                cands.append((float(x), float(y), yaw, score, n, px))
     cands.sort(key=lambda c: -c[3])
     return cands                                         # 按得分排序；调用方取第一个开得过去的

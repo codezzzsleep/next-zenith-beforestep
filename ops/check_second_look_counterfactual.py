@@ -28,6 +28,8 @@ def main():
         raise ValueError('Choose a fresh output; keep any previous failed call')
     output.mkdir(parents=True)
     shutil.copytree(original / 'looks', output / 'imagination/looks')
+    (output / 'trust_look2').mkdir()
+    shutil.copy2(original / 'standin_provenance.json', output / 'trust_look2/standin_provenance.json')
     command = [sys.executable, '-m', 'beforestep', 'run', '--scene', 'stress_v8',
                '--policy', 'imagination', '--imagine', 'lux', '--controller-model', 'rules',
                '--reuse-lux', str(original), '--out', str(output), '--tag', 'trust_look2',

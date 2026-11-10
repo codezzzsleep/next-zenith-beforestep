@@ -283,3 +283,7 @@ B2第一池源/参数96fa0b7、48候选提交9be060a；普通父18431被主动�
 最终B1/source含缓存和CF入口：`python3 ops/run_r2_regression.py --out outputs/qa/r2/B1-final-suite-regression --workers 2` exit0，57/57单测通过，6份冻结文件SHA不变，4非Lux结果/眼数/时间同R1，reuse到达/12预演全完成无碰撞，5轨迹数组与NPZ SHA全同。公开evidence/suite/regressions/B1-final。修复未改旧物理场景、门槛、两眼、传感器或控制，源/参数/预算与全链驱动在本次推送后才启动第二池。
 
 B2第二池命令预注册：`python3 ops/generate_suite_pool.py --params config/suite/pool_v2.json`，全部48场景；`python3 ops/run_suite_pool.py --manifest evidence/suite/pool/r2_v2/manifest_F0_F1_F2_F3_1_12.json --out outputs/suite/pool/r2_v2 --regression evidence/suite/regressions/B1-final/regression.json --workers 3`。预期192项非Luxexit0，按既定分类，数据好坏全保留。池期间补测`ops/check_second_look_counterfactual.py`：R1离线两眼替身作为机制验证，第二眼前全部轨迹数组同原，干预仅look2，0付费；不纳入场景组实测。
+
+第二眼CF完整离线机制验证exit0：`python3 ops/check_second_look_counterfactual.py --regression evidence/suite/regressions/B1-final/regression.json --out outputs/qa/r2/look2-counterfactual`。137.2s/2眼到达，无碰撞；唯一干预在look2/T2/A1，second-look前t/qpos/phase/control_actions/control_sources全部逐项同原，实际第二眼pose/time相同。素材是R1真实形状离线替身，0付费，不证明真实Lux第二眼或自检防撞。小证据evidence/suite/regressions/look2-counterfactual/validation.json，完整输出outputs/qa/r2/look2-counterfactual。
+
+最终源码4f554c7与第二池48配置b956530均已推main；v2pool已启动192非Lux，父session45403，权威pool.json随完成原子写。当前首个F0/001四运行全部exit0（保守stuck、see-dark arrived、乐观arrived、truth arrived），按规则为普通，尚不冻结任何名单；R2新增付费0/360。

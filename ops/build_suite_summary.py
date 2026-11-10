@@ -74,7 +74,7 @@ def main():
     parser.add_argument('--real-root', default='outputs/suite/real')
     parser.add_argument('--counterfactual-root', default='outputs/suite/counterfactuals')
     parser.add_argument('--review-root', default='outputs/suite/reviews')
-    parser.add_argument('--baseline-results', default='evidence/suite/pool/wallfix-baselines/manifest_results.json',
+    parser.add_argument('--baseline-results', default='evidence/suite/pool/crater-target-baselines/manifest_results.json',
                         help='Corrected-source baselines; original freeze remains the selection authority')
     parser.add_argument('--out', default='evidence/suite/summary.json')
     parser.add_argument('--allow-incomplete', action='store_true')

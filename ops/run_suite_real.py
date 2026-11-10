@@ -32,7 +32,7 @@ def main():
     parser.add_argument('--standins', default='evidence/suite/standins/summary.json')
     parser.add_argument('--out', default='outputs/suite/real')
     parser.add_argument('--reviews', default='outputs/suite/reviews')
-    parser.add_argument('--baselines', default='outputs/suite/baselines-wallfix/pool.json')
+    parser.add_argument('--baselines', default='outputs/suite/baselines-crater-target/pool.json')
     parser.add_argument('--budget', default='outputs/generation/r2-budget.json')
     parser.add_argument('--workers', type=int, default=2)
     args = parser.parse_args()

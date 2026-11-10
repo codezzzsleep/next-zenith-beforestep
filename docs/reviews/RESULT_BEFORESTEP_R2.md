@@ -496,3 +496,5 @@ F1_020替身1眼86.07s到达；F2_007替身2眼53.1s安全停车，第二眼实�
 所有旧物理作业/两个alternate/44同源基线已结束后才改源。运行前预期：新增跨坑沿ROCK目标完整提取，规划禁行阵列原字节不变；全单测和完整五R1gate/全部NPZ数组同原。新独立out outputs/qa/r2/B1-crater-target-regression，通过并push后才新四类全链（统一当前源，F0_001/F1_020/F2_003/F3_002）、新11四基线；原/新失败/原基线完整保留。新增Lux仍0/360，冻结12名单不动，不为单场景调参。
 
 修复后的保留观测单测重建exit0：同一RGB-D、同一真实诊断放置，目标mask29399→52882px，恢复91个坑禁行格内的ROCK观测格；IoU0.5504→0.9893，depth median1.217mm/P954.890mm。没有新运动或Lux；原/新mask和figure/after-unit.json在crater-target-clipping，不能当新套组结果。当前新67单测2.129s通过，四R1非Lux基线全部同原；完整真实重放仍在源gate中计算，不运行新场景或收费。
+
+新源cfffaf8已push（SRC map/capture）；67tests和四R1基线通过，完整replay仍待。下一B4样本预期写入crater-target-selection.json：F0_001/F1_020/F2_003/F3_002；同一当前源/原真形状导出/原完整链，不改冻结12清单。初始F1_001安全停车仍保留且仍在B5中。新44基线manifest在regressions/crater-target-baselines，out outputs/suite/baselines-crater-target；新B4 out outputs/suite/standins-crater-target。全部前先等B1-crater-target-regression完整pass并push，当前不启动。B5/B7默认指向该新同源基线，不混用旧source数据；旧44完整结果仍保留wallfix-baselines。

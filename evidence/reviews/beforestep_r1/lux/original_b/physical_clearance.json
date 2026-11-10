@@ -1,0 +1,87 @@
+{
+  "schema": "beforestep-r1-physical-clearance/v1",
+  "scope": "Post-run reconstruction at every saved qpos, original MuJoCo collision geoms and masks; no simulation advance or planning input.",
+  "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+  "trajectory_sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e",
+  "distance_function": "mujoco.mj_geomDistance; signed, negative means geometric penetration",
+  "sample_count": 5583,
+  "scene": {
+    "id": "stress_v8",
+    "purpose": "R1 primary showcase: V8 polar corridor with A and B; frozen geometry and rules controller",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.42,
+        "x": 6.86,
+        "y": 0.22,
+        "yaw": -26.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.5,
+      0.0
+    ]
+  },
+  "physical_contact_record": null,
+  "rocks": {
+    "A": {
+      "minimum_signed_collision_geometry_distance_m": 0.2561090942311839,
+      "witness": {
+        "trajectory_index": 2328,
+        "time_s": 47.76000000000187,
+        "robot_geom": 29,
+        "obstacle_geom": 53,
+        "nearest_points_xyz_m": [
+          [
+            4.588640633045155,
+            0.09591266977474061,
+            0.16606395164841026
+          ],
+          [
+            4.651442229349131,
+            -0.13768522731295316,
+            0.25020579692052836
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "B": {
+      "minimum_signed_collision_geometry_distance_m": 0.047541283739641456,
+      "witness": {
+        "trajectory_index": 4669,
+        "time_s": 94.57999999999832,
+        "robot_geom": 40,
+        "obstacle_geom": 54,
+        "nearest_points_xyz_m": [
+          [
+            7.343035658806688,
+            -0.37636578699203693,
+            0.15306807257140898
+          ],
+          [
+            7.334145638146409,
+            -0.3296706511296539,
+            0.15390800058409554
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    }
+  }
+}

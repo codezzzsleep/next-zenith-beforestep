@@ -1,0 +1,418 @@
+{
+  "schema": "v8-target-decision/v1",
+  "metric_version": 2,
+  "cache_identity": "a4b4e01f18b46294a25d2c0844cc70a3f52a14db3a15219f5893a62b5ea5ff51",
+  "obs": "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1",
+  "grid": {
+    "pitch": 0.006084,
+    "dims": [
+      273,
+      401,
+      121
+    ]
+  },
+  "volume_stats": {
+    "n_voxels": 13246233,
+    "n_free": 4815681,
+    "n_band": 45617,
+    "n_unknown": 8384935,
+    "n_in_fov": 12904572,
+    "n_masked_fov": 4932086,
+    "n_shell": 45617,
+    "valid_depth_frac": 0.79962,
+    "free_eps_m": 0.009126,
+    "band_m": 0.01521,
+    "shell_offset_m": 0.003042,
+    "pitch_m": 0.006084,
+    "depth_convention": "positive_camera_minus_z"
+  },
+  "thresholds": {
+    "schema": "v5-admission/v1",
+    "calibrated_from": "truth_v2 KA set",
+    "scale_ratio": {
+      "min": 0.889,
+      "max": 1.09
+    },
+    "hidden_frac_min": 0.3578,
+    "shell_contact_min": 0.0486,
+    "free_intrusion_max": 0.2864,
+    "contour_iou_min": 0.7068,
+    "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+  },
+  "candidates": [
+    {
+      "scale_ratio": 0.9888,
+      "hidden_frac": 0.894,
+      "shell_contact": 0.7474,
+      "free_intrusion_frac": 0.06814,
+      "intrusion_depth_p95_mm": 37.5,
+      "voxels": 1158676,
+      "contour_iou": 0.7998,
+      "scale_ratio_v5": 1.0602,
+      "id": "A1",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/5958685/tex_mesh.glb",
+      "M": [
+        [
+          -0.0029958210886951624,
+          0.005862172696084235,
+          -0.3132232930518871,
+          2.2483111323895764
+        ],
+        [
+          -0.3132678540292709,
+          0.0024829078226509278,
+          0.0030427164872379193,
+          -0.30041754429178635
+        ],
+        [
+          0.002539293382424293,
+          0.31322777881760133,
+          0.005837969603592758,
+          0.2733748440632507
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.7998,
+        "mask_iou_all_pixels": 0.771,
+        "outside_lit_px": 10648,
+        "in_dark_px": 5455,
+        "occluded_px": 38,
+        "depth_median_mm": 11.308,
+        "depth_p95_mm": 137.47,
+        "visible_median_mm": 12.906,
+        "visible_p95_mm": 114.904,
+        "n_candidate_pixels": 133600,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 268,
+      "footprint_x": [
+        4.2250000000000005,
+        4.875
+      ],
+      "footprint_y": [
+        -1.325,
+        -0.2749999999999999
+      ]
+    },
+    {
+      "scale_ratio": 0.9888,
+      "hidden_frac": 0.8956,
+      "shell_contact": 0.7782,
+      "free_intrusion_frac": 0.065,
+      "intrusion_depth_p95_mm": 41.26,
+      "voxels": 1154033,
+      "contour_iou": 0.828,
+      "scale_ratio_v5": 1.0602,
+      "id": "A2",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/5958690/tex_mesh.glb",
+      "M": [
+        [
+          -0.004565918830309448,
+          0.007476708701130355,
+          -0.31347823603007186,
+          2.249132905188903
+        ],
+        [
+          -0.3135630693786822,
+          0.0015361829490884158,
+          0.004603793659376403,
+          -0.2823913616176773
+        ],
+        [
+          0.0016453447499564392,
+          0.3135077227457667,
+          0.007453446968243378,
+          0.2714957219898745
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.828,
+        "mask_iou_all_pixels": 0.8031,
+        "outside_lit_px": 8621,
+        "in_dark_px": 4479,
+        "occluded_px": 16,
+        "depth_median_mm": 10.488,
+        "depth_p95_mm": 129.257,
+        "visible_median_mm": 11.768,
+        "visible_p95_mm": 100.319,
+        "n_candidate_pixels": 133077,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 272,
+      "footprint_x": [
+        4.2250000000000005,
+        4.875
+      ],
+      "footprint_y": [
+        -1.325,
+        -0.22499999999999987
+      ]
+    },
+    {
+      "scale_ratio": 0.9326,
+      "hidden_frac": 0.9347,
+      "shell_contact": 0.6837,
+      "free_intrusion_frac": 0.03888,
+      "intrusion_depth_p95_mm": 43.45,
+      "voxels": 1533278,
+      "contour_iou": 0.7991,
+      "scale_ratio_v5": 1.0,
+      "id": "B1",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/5958877/tex_mesh.glb",
+      "M": [
+        [
+          -0.075211749744887,
+          0.3597596635909976,
+          -2.4995214502656156,
+          2.4044019507875327
+        ],
+        [
+          -2.5244371306860782,
+          -0.07527970288039823,
+          0.06512635973541236,
+          -0.3246786310060133
+        ],
+        [
+          -0.06520482419622046,
+          2.4995194045999787,
+          0.3617214122973756,
+          0.21632906396193538
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.7991,
+        "mask_iou_all_pixels": 0.7734,
+        "outside_lit_px": 8916,
+        "in_dark_px": 4455,
+        "occluded_px": 348,
+        "depth_median_mm": 17.425,
+        "depth_p95_mm": 149.856,
+        "visible_median_mm": 17.978,
+        "visible_p95_mm": 138.297,
+        "n_candidate_pixels": 129129,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 412,
+      "footprint_x": [
+        4.2250000000000005,
+        5.2250000000000005
+      ],
+      "footprint_y": [
+        -1.375,
+        -0.2749999999999999
+      ]
+    },
+    {
+      "scale_ratio": 0.9326,
+      "hidden_frac": 0.9368,
+      "shell_contact": 0.6728,
+      "free_intrusion_frac": 0.03723,
+      "intrusion_depth_p95_mm": 43.45,
+      "voxels": 1530113,
+      "contour_iou": 0.7953,
+      "scale_ratio_v5": 1.0,
+      "id": "B2",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/5958911/tex_mesh.glb",
+      "M": [
+        [
+          -0.12240085998332767,
+          0.5049849350946106,
+          -3.5197047550167038,
+          2.4063217564047132
+        ],
+        [
+          -3.554112505646136,
+          -0.12412196775112641,
+          0.1057891866666453,
+          -0.32728000627318077
+        ],
+        [
+          -0.10777589883339485,
+          3.5196444806447906,
+          0.5087242899465019,
+          0.21505902840596525
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.7953,
+        "mask_iou_all_pixels": 0.7693,
+        "outside_lit_px": 9228,
+        "in_dark_px": 4345,
+        "occluded_px": 568,
+        "depth_median_mm": 17.071,
+        "depth_p95_mm": 151.602,
+        "visible_median_mm": 17.631,
+        "visible_p95_mm": 141.633,
+        "n_candidate_pixels": 128867,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 415,
+      "footprint_x": [
+        4.2250000000000005,
+        5.2250000000000005
+      ],
+      "footprint_y": [
+        -1.375,
+        -0.2749999999999999
+      ]
+    },
+    {
+      "scale_ratio": 0.9663,
+      "hidden_frac": 0.8987,
+      "shell_contact": 0.7822,
+      "free_intrusion_frac": 0.06368,
+      "intrusion_depth_p95_mm": 44.71,
+      "voxels": 1230489,
+      "contour_iou": 0.8362,
+      "scale_ratio_v5": 1.0361,
+      "id": "C1",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/5958948/tex_mesh.glb",
+      "M": [
+        [
+          -0.017279925729997106,
+          0.025596132592425165,
+          -0.3052911447273298,
+          2.28506393758986
+        ],
+        [
+          -0.3063509503112578,
+          -0.004073065797133312,
+          0.01699841946325213,
+          -0.2590242590844756
+        ],
+        [
+          -0.0026344441543178854,
+          0.30575265986932953,
+          0.025783940208481966,
+          0.25329501529604004
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.8362,
+        "mask_iou_all_pixels": 0.8198,
+        "outside_lit_px": 4990,
+        "in_dark_px": 2610,
+        "occluded_px": 214,
+        "depth_median_mm": 11.491,
+        "depth_p95_mm": 102.464,
+        "visible_median_mm": 12.442,
+        "visible_p95_mm": 86.922,
+        "n_candidate_pixels": 125564,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 297,
+      "footprint_x": [
+        4.2250000000000005,
+        4.9750000000000005
+      ],
+      "footprint_y": [
+        -1.275,
+        -0.22499999999999987
+      ]
+    },
+    {
+      "scale_ratio": 0.9663,
+      "hidden_frac": 0.9066,
+      "shell_contact": 0.7662,
+      "free_intrusion_frac": 0.05647,
+      "intrusion_depth_p95_mm": 41.26,
+      "voxels": 1213685,
+      "contour_iou": 0.8227,
+      "scale_ratio_v5": 1.0361,
+      "id": "C2",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/5959025/tex_mesh.glb",
+      "M": [
+        [
+          -0.016921783670131977,
+          0.042078844903833,
+          -0.42759659860054516,
+          2.284770144447145
+        ],
+        [
+          -0.42959446925721373,
+          -0.009246735058940135,
+          0.01609089680966192,
+          -0.27788471240688806
+        ],
+        [
+          -0.007620518801936646,
+          0.42783138710020424,
+          0.04240352568926804,
+          0.24796300526545428
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.8227,
+        "mask_iou_all_pixels": 0.8039,
+        "outside_lit_px": 6555,
+        "in_dark_px": 3218,
+        "occluded_px": 136,
+        "depth_median_mm": 11.577,
+        "depth_p95_mm": 118.167,
+        "visible_median_mm": 12.534,
+        "visible_p95_mm": 104.497,
+        "n_candidate_pixels": 127195,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 294,
+      "footprint_x": [
+        4.2250000000000005,
+        4.9750000000000005
+      ],
+      "footprint_y": [
+        -1.275,
+        -0.2749999999999999
+      ]
+    }
+  ],
+  "admitted_ids": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ]
+}

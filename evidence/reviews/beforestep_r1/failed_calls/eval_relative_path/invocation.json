@@ -1,0 +1,12 @@
+{
+  "command": [
+    "/bin/bash",
+    "-lc",
+    "PYTHONPATH=/tmp/lunar-review-20261109-deps:/tmp/beforestep-browser-deps:src PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 python3 - <<'PY'\nfrom evidence.reviews.beforestep_r1 import build_eval as E\nfrom pathlib import Path\nimport json\nprint(json.dumps(E.evaluate(Path('evidence/reviews/beforestep_r1/standins/registration_fixed')),indent=2))\nPY"
+  ],
+  "exit_code": 1,
+  "duration": {
+    "secs": 4,
+    "nanos": 528438037
+  }
+}

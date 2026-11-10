@@ -1,0 +1,25 @@
+{
+  "schema": "beforestep-r1-replay-validation/v1",
+  "original_run_id": "282e8d841b7a470bb80284dcd3a053dd",
+  "replay_run_id": "50b2d1d643024df4b72159748e41a570",
+  "source_commit": "2147b2f96092230881f5e4fc6157ecbaaadd5536",
+  "all_trajectory_arrays_equal": true,
+  "arrays": [
+    "t",
+    "qpos",
+    "phase",
+    "control_actions",
+    "control_sources"
+  ],
+  "original_trajectory_sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e",
+  "replay_trajectory_sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e",
+  "terminal_summary_equal_except_wall_time": true,
+  "rejected_B_counterfactuals": {
+    "A1": "arrived",
+    "C2": "arrived",
+    "B1": "arrived"
+  },
+  "counterfactual_collisions": 0,
+  "self_check_collision_prevention_demonstrated": false,
+  "physical_clearance_B_m": 0.047541283739641456
+}

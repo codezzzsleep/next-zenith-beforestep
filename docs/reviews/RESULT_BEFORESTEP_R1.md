@@ -7,7 +7,7 @@
 - `fdcf629`：按复核§7纳入训练控制附录与文献/同图审计；主线不使用训练控制或姿态模型。
 - `7b6f5b4`：复核原文SHA256 `0541ef2d38d695e7b6efd044ef6c64ed47cf0b89b7fd4aff50725a7ea36eed29`，与附件逐字节一致。
 - `73430ec`：§2.0预注册及stress_v8的purpose主展示标记；实际运行均以此源码启动。
-- 当前阶段：§2.0及最终源码复核四项通过；§2.1–§2.3实现、38单测和有界追加流程完成。完整注册替身未到达，因此真实Lux3D调用尚未开始，§2.5及§3尚未验收。
+- 当前阶段：配准修复、40单测和完整注册替身通过；真实Lux在原stress_v8一眼到达、12组合预演全部通过。§2.5完整重放、全部被拒B反事实与间隙复盘均已完成；先独立同步完整证据，再执行§3。
 
 ## §2.0 预注册（运行前）
 
@@ -792,3 +792,227 @@ summary.json原文：
   }
 }
 ```
+
+## 真实Lux原B主运行结果（无需触发§2.3或§2.4）
+
+`aaa1bc9`先提交成功替身/四基线及全部真实首眼输入和原GLB；108去重LFS对象248,093,317 bytes已再查询确认全部服务器可用。真实生产运行仍使用2147b2f的52份相同源码。真实首眼T1六份全生成成功且全准入；T2六任务中5958893/B2服务端失败，其余五份生成成功；A2、C1准入（IoU0.8459/0.7108，尺度1.0/0.9459），A1、B1、C2拒绝。
+
+首眼已规划出原5cm规则的路线，因此按原流程预演并执行，不需要第二眼、同字节追加或B替换。12个A×B准入组合全部完成且无碰撞；独立执行到达/1眼/112.84s总仿真/无碰撞。冷配准及物理运行wall1223.6s，不含此前异步云生成等待，不将其误称端到端实时延迟。T2第一眼仍251px/native_ok=false；事实表明这次有准入，不用历史0/12结论改写这次结果。完整原数据[lux/original_b](../../evidence/reviews/beforestep_r1/lux/original_b/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 111.64,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    -0.001,
+    10.57
+  ],
+  "sim_time_s": 112.84,
+  "wall_s": 1223.6,
+  "collision": null
+}
+```
+
+### 完整重放与全部反事实预注册（运行前）
+
+重放命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/section23_lux_original_b --max-looks 2 --out outputs/reviews/r1/section25_lux_replay`。预期不创建任何任务，完整重新预演12组合并独立到达；与原运行终态、轨迹全部数组/摘要一致（wall时间与run_id分别保留）。
+
+B第一眼被自检拒绝的全部可用候选为A1、B1、C2，逐一运行，不挑选。B2服务端失败无GLB，不能冒充自检拒绝候选。命令分别为`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --trust T2=<A1|B1|C2> --tag trust_T2_<id> --max-looks 2 --out outputs/reviews/r1/section25_counterfactuals`；其已有imagination/looks从原真实运行逐字节复制。预期为无新API调用、只信这份被拒B，完整独立执行或按原规则停止；如出现至少一份碰撞才报告自检挡住了会撞的想象，若0碰撞则按原要求写自检偏保守，不修改结论。
+
+### 重放复用路径的首次调用错误与修正预注册
+
+首次重放exit2：复用参数指向策略输出的父目录section23_lux_original_b，实际观测在其imagination/looks，CLI要求直接指向包含looks的运行目录。失败目录和原日志保留，无新API调用。修正只改复用参数为`outputs/reviews/r1/section23_lux_original_b/imagination`，另开输出`outputs/reviews/r1/section25_lux_replay_corrected`；其余命令/原预期不变，预期12完整预演+到达且轨迹摘要一致。
+
+## 赛后真实三维碰撞几何间隙预注册
+
+二维凸包/车身矩形包络复盘发现真实Lux轨迹对B的XY包络最小间隙为0，中心距减半宽最小-0.062778 m；这不是独立物理接触记录（原记录无碰撞）。因此单独按原冻结物理构型重建世界、逐保存qpos求机器人与A/B实际可碰撞几何之间的`mujoco.mj_geomDistance`有符号最小距离；不推进仿真、不改变场景/门槛，也不把真值提供给任何规划。预期主Lux的实际碰撞几何距离非负，与无接触记录相容；若不符，保留原值再查明，不能改参数或掩盖。输出完整最小距离、时刻、几何对和最近点。
+
+## §2.5完整重放和全部反事实实测
+
+修正复用路径后的重放exit0：12组合预演全部完成无碰撞；原运行和重放的t/qpos/phase/control_actions/control_sources全部数组逐字节一致，traj.npz SHA也一致，终态摘要除wall_s外逐项相同。无新生成任务。三份被拒B均独立执行到达/无碰撞，碰撞数0/3，按预注册结论为**本批自检偏保守**，不声称自检挡住了会撞的想象。
+
+### lux/replay
+
+退出码：`0`。原始数据：[运行身份](../../evidence/reviews/beforestep_r1/lux/replay/run_identity.json)。命令参数原文在运行身份的arguments及本节预注册；反事实完整命令另在运行ledger与原日志。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 111.64,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    -0.001,
+    10.57
+  ],
+  "sim_time_s": 112.84,
+  "wall_s": 309.5,
+  "collision": null
+}
+```
+
+### counterfactuals/A1
+
+退出码：`0`。原始数据：[运行身份](../../evidence/reviews/beforestep_r1/counterfactuals/A1/run_identity.json)。命令参数原文在运行身份的arguments及本节预注册；反事实完整命令另在运行ledger与原日志。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trust_T2_A1",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 102.8,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    0.0,
+    12.15
+  ],
+  "sim_time_s": 104.0,
+  "wall_s": 105.9,
+  "collision": null
+}
+```
+
+### counterfactuals/C2
+
+退出码：`0`。原始数据：[运行身份](../../evidence/reviews/beforestep_r1/counterfactuals/C2/run_identity.json)。命令参数原文在运行身份的arguments及本节预注册；反事实完整命令另在运行ledger与原日志。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trust_T2_C2",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 117.96,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    0.001,
+    10.8
+  ],
+  "sim_time_s": 119.16,
+  "wall_s": 109.4,
+  "collision": null
+}
+```
+
+### counterfactuals/B1
+
+退出码：`0`。原始数据：[运行身份](../../evidence/reviews/beforestep_r1/counterfactuals/B1/run_identity.json)。命令参数原文在运行身份的arguments及本节预注册；反事实完整命令另在运行ledger与原日志。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trust_T2_B1",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 102.8,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    0.0,
+    12.15
+  ],
+  "sim_time_s": 104.0,
+  "wall_s": 109.4,
+  "collision": null
+}
+```
+
+### 赛后三维间隙
+
+真实Lux按全部保存qpos重建原MuJoCo可碰撞几何，`build_physical_clearance.py` exit0，A最小有符号距离0.2561091 m，B为0.0475413 m（47.541 mm），均为正，与独立执行无碰撞记录相容。二维0.76×0.66m矩形包络对B的间隙为0、中心减半宽=-0.062778m，这是XY包络复盘值，不当作实际3D接触；同时报告两个指标，不把47.541mm向上写成5cm。规划始终使用原5cm占据扩张规则，未读取真值或改阈值。[完整几何对、最近点和时刻](../../evidence/reviews/beforestep_r1/lux/original_b/physical_clearance.json)。
+
+## §2.5 逐项验收与证据入库（2026-11-10）
+
+| 条款 | 实测与判断 |
+| --- | --- |
+| 保守≤5眼停车 | stuck、5眼、142.20 s；无法规划路线，无碰撞。 |
+| see-dark对照 | arrived、3眼、147.26 s；同源码/场景/规则控制，只改变黑影深度观测。 |
+| 乐观碰撞且计划压入≥10 cm | collision、1眼、80.87 s；出发前连续路线5 mm采样，对B中心减半宽=-0.218988626 m，压入代理218.989 mm，满足≥100 mm。 |
+| 真实Lux≤2眼及全部预演 | arrived、1眼、112.84 s；12/12执行预演格completed且无碰撞，独立执行无碰撞。 |
+| 实际间隙复盘 | B实际3D可碰撞几何47.541 mm；XY车身矩形包络间隙0，中心减半宽=-0.062778 m，同时报告。规划5 cm规则未改，不能把实测写成5 cm。 |
+| truth检验 | arrived、1眼、115.88 s；明确检验身份，不计Lux收益。 |
+| 全部被拒B反事实 | A1/B1/C2各独立到达，无碰撞0/3；本批自检偏保守，未证明自检挡碰撞。B2失败无GLB，不计拒绝资产。 |
+| 完整重放 | arrived、1眼、112.84 s；再次12/12预演完成无碰撞，5数组及traj.npz SHA完全一致，终态除wall_s外一致。 |
+| §2.1–§2.4判断 | 真实首眼B 251 px/native_ok=false，仍有A2/C1两份准入；因此一眼直接规划，第二眼、6b追加与B替换均未真实触发。第二眼仅独立替身验证，不能冒称真实触发。 |
+
+上述最终基线、Lux、重放和反事实各52源码SHA均逐项匹配2147b2f；原场景、传感器链、自检与rules一致。墙钟1223.6 s含冷配准及预演、不含此前云端排队，不是端到端延迟。
+
+证据核对命令：`PYTHONPATH=/tmp/lunar-review-20261109-deps:/tmp/beforestep-browser-deps:src python3 ops/verify_r1_evidence.py --originals`，exit0。23份保全清单、1499个文件摘要与原outputs逐项一致，10次运行共520源文件摘要一致，30份原日志一致，重放与间隙身份自洽。[核对结果](../../evidence/reviews/beforestep_r1/section25_integrity_check.json)。不带`--originals`可在新checkout独立验证保留数据。首次核对脚本误读不存在的rehearsal.pass字段exit1，修正为panes中的completed/collided原字段后通过；未改证据或源码。
+
+首次eval调用相对Path在汇总relative_to时exit1，eval已写出；随后以绝对Path调用exit0，未重跑物理。[原始失败输出及命令](../../evidence/reviews/beforestep_r1/failed_calls/eval_relative_path/invocation.json)、[原日志](../../evidence/reviews/beforestep_r1/failed_calls/eval_relative_path/original_output.log)。首次重放父目录调用exit2的全部输出继续保留。

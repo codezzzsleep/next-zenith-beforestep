@@ -1,0 +1,180 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": true,
+  "run_id": "e6f0d6de36b04ba881cc9c7b041b5265",
+  "summary_sha256": "6efbade7167be6cfa13546d887c01439324e72bcfe6bc255167b46bb6d13b38e",
+  "scene": {
+    "id": "suite_r2_v4_F2_003",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.558187,
+        "x": 4.667239,
+        "y": -0.667954,
+        "yaw": 89.137059
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.403294,
+        "x": 6.828958,
+        "y": 0.142096,
+        "yaw": -26.953166
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.730404,
+      0.01719
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": [
+        {
+          "center": [
+            6.365303,
+            1.071171
+          ],
+          "radius": 0.761878,
+          "depth": 0.530885
+        },
+        {
+          "center": [
+            5.07923,
+            -1.521669
+          ],
+          "radius": 0.786155,
+          "depth": 0.547345
+        }
+      ]
+    },
+    "sun": {
+      "elevation_deg": 10.426988,
+      "azimuth_deg": 31.509003
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F2",
+      "seed": 3,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5661207034988015,
+      "min_center_minus_half_width_m": 0.2361207034988015,
+      "min_xy_rectangle_envelope_gap_m": 0.23302827451199293
+    },
+    "B": {
+      "min_center_distance_m": 0.48689353981011096,
+      "min_center_minus_half_width_m": 0.15689353981011095,
+      "min_xy_rectangle_envelope_gap_m": 0.1554204897096461
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 2,
+    "path": [
+      [
+        5.7,
+        -0.2
+      ],
+      [
+        6.8,
+        -1.0
+      ],
+      [
+        8.3,
+        -0.7
+      ],
+      [
+        10.73,
+        0.017
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5687979216080319,
+      "center_minus_half_width_m": 0.23879792160803187,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.4815185541042927,
+      "center_minus_half_width_m": 0.15151855410429266,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 2,
+      "role": "execution",
+      "path": [
+        [
+          5.699999999999998,
+          -0.19999999999999862
+        ],
+        [
+          6.799999999999998,
+          -0.9999999999999993
+        ],
+        [
+          8.299999999999997,
+          -0.6999999999999991
+        ],
+        [
+          10.730404,
+          0.01719
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/standins-crater-target/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/standins-crater-target/suite_r2_v4_F2_003/imagination/looks/look2/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00866713934223494,
+            0.009773334945851217,
+            0.007302867282058814,
+            0.008194386489090329
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

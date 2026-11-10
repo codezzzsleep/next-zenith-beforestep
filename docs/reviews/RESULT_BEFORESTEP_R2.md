@@ -13,7 +13,7 @@
 | B1 | 地形/太阳配置与完整回归 | 完成 | cfffaf8；67测试、完整五R1回归同原 |
 | B2 | 参数预注册、生成器、候选池分类 | 完成 | v4主池与F1唯一扩展60场景/240非Lux全完成；名单a810e14 |
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
-| B4 | 四类真实形状替身完整链 | 进行中 | 冻结后运行，0付费 |
+| B4 | 四类真实形状替身完整链 | 完成 | 当前源cfffaf8四类全链/复盘/allpanes通过；本提交 |
 | B5 | 场景组真实Lux3D | 未开始 | — |
 | B6 | 全部场景复盘和全部拒绝反事实 | 未开始 | — |
 | B7 | 完整总表 | 未开始 | — |
@@ -508,3 +508,17 @@ F1_020替身1眼86.07s到达；F2_007替身2眼53.1s安全停车，第二眼实�
 新完整gate提交6fb2423de031f38fb1ea93de9a8aee3b9aa0d2d4已push0/远端同，启动前git status干净。新B4 parent2076238/tool88791、44基线parent2076311/tool99784已实际运行，sourcecfffaf8保持不变，ledger/log上述独立out，3普通physics；0paid。服务重启前结束的gate没有重启；B4全新完整验证尚待结果。
 
 旧B4-wallfix四个完整初始运行+两个完整alternate的原GLB/观测/配准/预演/轨迹已外部保全：/root/3d/artifacts/beforestep-r2/B4-wallfix-and-alternates-complete.tar.gz，483680028bytes，SHA256 230e3ea03a5cd495a71d2ed0678553e47bdd539b80dc87310d322c31a451072d，tar exit0。公开initial-wallfix/archive.json与alternates-wallfix两份完整身份/事件/复盘；全部not_real_lux/0paid。新当前源B4与44仍在计算，旧数据包不包含新运行，也不覆盖旧错误记录。
+
+C1浏览器验收另加入纯UI fixture：保留实际首关扫描/轨迹，仅在被拦截的测试载荷中令imagination result=arrived且带原乐观接触记录，要求显示碰撞且玩家/想象固定策略均不计通过。实际实验JSON不变；该新增验收分支目前仅compile，待C1全组真实浏览器验证后才标完成，不计新实验。
+
+### 阶段 B4 小结（§8）
+
+1. 完成并验证：SRC cfffaf8；完整R1gate提交6fb2423、67tests2.129s/6冻结SHA/五运行/原5轨迹数组与NPZ SHA同。当前四类source==R1gate，run_suite_standins driver exit0/四child与review均0：F0_0012眼139.48s、F1_0201眼86.07s、F2_0032眼142.74s、F3_0022眼136.56s全部独立到达且无碰撞；各1个完整无碰撞预演格。公开standins/summary.json和crater-target中的身份、事件、复盘、每scene SHA清单；原始out standins-crater-target。远端main此前9faed59（已push0），本小结/证据提交后继续。
+2. 做了未验证：B5 dispatcher仅compile/门禁mock，尚未运行真实新Lux；新44同源基线还在跑；C1/C2只有原R1锚点基础，完整组待真实数据。
+3. 失败保留：最初虚构右墙、F1_001停车、F2_003碰撞、F2_007真形状0准入都在before-wall-fix/initial-wallfix/alternates-wallfix及完整外部数据包，没有被替换成新成功。
+4. 自决：按B4修两处场景配置程序遗漏；原mask删掉23101个坑禁行格内可见岩石像素，修复后同保存观测IoU.5504→.9893。所有阈值/控制/相机/场景/5cm/两眼不动；F1用同类另一已冻结D走通，B5仍保留全部12原名单。时间关口未到，不提前收缩。
+5. 新Lux0，累计0/360；全部替身not_real_lux、unused slots不是服务商失败。
+6. 新B4和外包均终态；baseline父2076311/tool99784仍在跑，当前约20/44（易变）。源码固定cfffaf8，提交前仅本回执/已compile C1 fixture改变。
+7. 下一动作：本小结与B4 gate push并核远端，启动run_suite_real.py --regression evidence/suite/regressions/B1-crater-target/regression.json --workers2，冻结11个新场景真实Lux；每sample先账本，再create，360上限、known/uncertain只query。
+
+新B4完整二进制数据外包：/root/3d/artifacts/beforestep-r2/B4-crater-target-complete.tar.gz，328443345bytes，SHA256 81269163c2a67fbc2b3530d7c2a5589b72b80f6ba021ee2c98e08e0b5317a9ac；tar exit0/每scene public set远小于150MB。Source/目标输入/原扫描GLB/配准/全部预演/执行/复盘都保全，供负责人渲染，未渲染新Demo视频。

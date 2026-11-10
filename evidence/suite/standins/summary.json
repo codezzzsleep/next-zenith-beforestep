@@ -32,9 +32,9 @@
     "src/beforestep/learning/train.py": "3df3464cbc8056f36e4ae1e6e8a59186992405629c9c1707fa17aaa127db9a23",
     "src/beforestep/navigation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
     "src/beforestep/navigation/controller.py": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083",
-    "src/beforestep/navigation/map.py": "fe1190d206bceccea83f5d89db2d146153cdd5fcbaf8c8835a71083553e1dee4",
+    "src/beforestep/navigation/map.py": "0113fa0e86cb3aa33bbb268d39113a57e8114c923c5c375b2821e9af42a9365c",
     "src/beforestep/observation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
-    "src/beforestep/observation/capture.py": "27fd8534f4f12042721e135da9139296f2e7d154eecc41e750010514c27f7371",
+    "src/beforestep/observation/capture.py": "ed7a90ca2699171dd2421414b01173ff2ffe8fb056def92f0598375cbbd7507c",
     "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
     "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
     "src/beforestep/pipeline.py": "76eb2520c5a070a1764e62e90611fcc5a7e3bb201c0a00c6df0dd35124f296fb",
@@ -63,8 +63,8 @@
   "families": {
     "F0": {
       "scene": "suite_r2_v4_F0_001",
-      "run": "outputs/suite/standins-wallfix/suite_r2_v4_F0_001/imagination",
-      "run_id": "ececf27a31bf4a0f83456ea6dbdae7ab",
+      "run": "outputs/suite/standins-crater-target/suite_r2_v4_F0_001/imagination",
+      "run_id": "295362b1667145fbb82e6d61ceb53ae9",
       "passed": true,
       "summary": {
         "policy": "imagination",
@@ -90,7 +90,7 @@
           17.37
         ],
         "sim_time_s": 139.48,
-        "wall_s": 209.7,
+        "wall_s": 225.4,
         "collision": null
       },
       "rehearsals": 1,
@@ -98,35 +98,35 @@
       "paid_tasks": 0
     },
     "F1": {
-      "scene": "suite_r2_v4_F1_001",
-      "run": "outputs/suite/standins-wallfix/suite_r2_v4_F1_001/imagination",
-      "run_id": "32a478b5cfe345a0acf1db3a3495052e",
-      "passed": false,
+      "scene": "suite_r2_v4_F1_020",
+      "run": "outputs/suite/standins-crater-target/suite_r2_v4_F1_020/imagination",
+      "run_id": "b62af26456f646d9b84ee461bd9df164",
+      "passed": true,
       "summary": {
         "policy": "imagination",
         "tag": "imagination",
         "see_dark": false,
         "imagine": "lux",
-        "result": "stuck",
+        "result": "arrived",
         "controller": "rules",
         "controller_sha256": null,
         "pose_controller_sha256": null,
-        "scene_id": "suite_r2_v4_F1_001",
+        "scene_id": "suite_r2_v4_F1_020",
         "goal": [
-          8.777473,
-          0.01785
+          10.000132,
+          -0.030448
         ],
         "start_mode": "scene_start",
-        "execution_elapsed_s": 54.68,
+        "execution_elapsed_s": 84.87,
         "sensor_mode": "live",
-        "looks": 2,
+        "looks": 1,
         "final_pose": [
-          4.272,
-          0.403,
-          -31.42
+          9.982,
+          -0.037,
+          -43.38
         ],
-        "sim_time_s": 55.88,
-        "wall_s": 281.9,
+        "sim_time_s": 86.07,
+        "wall_s": 317.9,
         "collision": null
       },
       "rehearsals": 1,
@@ -135,15 +135,15 @@
     },
     "F2": {
       "scene": "suite_r2_v4_F2_003",
-      "run": "outputs/suite/standins-wallfix/suite_r2_v4_F2_003/imagination",
-      "run_id": "6f445896602e441f9738db2d668aee31",
-      "passed": false,
+      "run": "outputs/suite/standins-crater-target/suite_r2_v4_F2_003/imagination",
+      "run_id": "e6f0d6de36b04ba881cc9c7b041b5265",
+      "passed": true,
       "summary": {
         "policy": "imagination",
         "tag": "imagination",
         "see_dark": false,
         "imagine": "lux",
-        "result": "collision",
+        "result": "arrived",
         "controller": "rules",
         "controller_sha256": null,
         "pose_controller_sha256": null,
@@ -153,26 +153,17 @@
           0.01719
         ],
         "start_mode": "scene_start",
-        "execution_elapsed_s": 82.86,
+        "execution_elapsed_s": 141.54,
         "sensor_mode": "live",
-        "looks": 1,
+        "looks": 2,
         "final_pose": [
-          6.866,
-          -0.633,
-          9.03
+          10.722,
+          0.017,
+          16.33
         ],
-        "sim_time_s": 84.06,
-        "wall_s": 211.9,
-        "collision": {
-          "body": "obstacle1",
-          "robot_geom": null,
-          "pos": [
-            7.097,
-            -0.377,
-            0.118
-          ],
-          "t": 84.062
-        }
+        "sim_time_s": 142.74,
+        "wall_s": 201.6,
+        "collision": null
       },
       "rehearsals": 1,
       "not_real_lux": true,
@@ -180,8 +171,8 @@
     },
     "F3": {
       "scene": "suite_r2_v4_F3_002",
-      "run": "outputs/suite/standins-wallfix/suite_r2_v4_F3_002/imagination",
-      "run_id": "cdceb355720947b5a5851d474812dd55",
+      "run": "outputs/suite/standins-crater-target/suite_r2_v4_F3_002/imagination",
+      "run_id": "bcd462f65adc4f4ea1ec0886613f1c54",
       "passed": true,
       "summary": {
         "policy": "imagination",
@@ -207,7 +198,7 @@
           14.62
         ],
         "sim_time_s": 136.56,
-        "wall_s": 192.7,
+        "wall_s": 152.6,
         "collision": null
       },
       "rehearsals": 1,
@@ -215,5 +206,5 @@
       "paid_tasks": 0
     }
   },
-  "all_passed": false
+  "all_passed": true
 }

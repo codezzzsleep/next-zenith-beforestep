@@ -106,6 +106,21 @@ def main():
         page.wait_for_function('(src)=>document.querySelector("#level-model").src.endsWith(src)&&document.querySelector("#level-model").loaded', arg=truth_src, timeout=60000)
         assert page.locator('#level-model-error').is_hidden()
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+        # Browser-only contract fixture: an arrival label cannot suppress a
+        # contact record. The actual experiment payload remains unchanged.
+        contact = expected['levels'][0]['runs']['optimistic']['collision']
+        assert contact is not None
+        fixture['levels'][0]['runs']['imagination'].update(result='arrived', collision=contact)
+        page.reload(wait_until='networkidle')
+        page.locator('#level-choose').click()
+        page.locator('[data-level-choice=imagination]').click()
+        page.locator('#level-finish').click()
+        assert page.locator('#level-run-status').inner_text() == status['collision']
+        page.locator('#level-reveal').click()
+        assert page.locator('#level-results .metric').all_inner_texts()[-1] == status['collision']
+        page.locator('#level-score').click()
+        values = page.locator('#level-scoreboard .metric').all_inner_texts()
+        assert values[0] == '0 / 1' and values[-1] == '0 / 1'
         assert not errors, errors
         assert not failures, failures
         report = {'schema': 'beforestep-levels-browser-acceptance/v1', 'passed': True,
@@ -113,6 +128,7 @@ def main():
                   'page_errors': errors, 'http_errors': failures,
                   'anchor_only_development': expected.get('anchor_only_development', False)}
         report['no_candidate_truth_access_verified_with_ui_fixture'] = True
+        report['contact_priority_verified_with_ui_fixture'] = True
         (output / (args.name + '-browser.json')).write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
         print(json.dumps(report, ensure_ascii=False), flush=True)
         browser.close()

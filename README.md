@@ -1,5 +1,7 @@
 # 先见一步 · BeforeStep
 
+当前主线以 [负责人R1复核](docs/reviews/REVIEW_BEFORESTEP_R1.md) 为准：stress_v8 A+B、规则控制器与原终点(10.5,0)。[R1执行结果](docs/reviews/RESULT_BEFORESTEP_R1.md)逐项保留预期、原始结果与未完成项；以下v0.3与训练模型材料保留为历史交付和迭代附录。
+
 面向轮腿机器人导航实验的盲区推演系统：用 **Aholo Lux3D** 生成受实际观测约束的候选几何，在物理仿真中检验路线，再决定前进、补充观察或停下。当前任务是在月球南极的岩壁、月溪和遮挡岩石之间完成通行。
 
 由 Next Zenith 开发，参加 Aholo 黑客松。[项目目标与开发原则](docs/project.md)说明系统解决的问题、当前能力和后续验证方向。

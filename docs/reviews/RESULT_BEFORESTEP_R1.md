@@ -7,7 +7,7 @@
 - `fdcf629`：按复核§7纳入训练控制附录与文献/同图审计；主线不使用训练控制或姿态模型。
 - `7b6f5b4`：复核原文SHA256 `0541ef2d38d695e7b6efd044ef6c64ed47cf0b89b7fd4aff50725a7ea36eed29`，与附件逐字节一致。
 - `73430ec`：§2.0预注册及stress_v8的purpose主展示标记；实际运行均以此源码启动。
-- 当前阶段：§2.0四项已完成且按预期；准备§2.1–§2.3，没有新Lux3D付费任务。
+- 当前阶段：§2.0及最终源码复核四项通过；§2.1–§2.3实现、38单测和有界追加流程完成。完整注册替身未到达，因此真实Lux3D调用尚未开始，§2.5及§3尚未验收。
 
 ## §2.0 预注册（运行前）
 
@@ -26,7 +26,7 @@
 
 ## §2.1–§2.5 与§3
 
-尚未执行；每个新运行/付费批次在启动前于此登记。第二眼B输入不足时仍按§2.2单图6份，0采纳仅追加同字节一批6份；合计12份仍0安全停车并进入预注册§2.4。没有新增场景、放宽门槛或第三眼的授权。
+此处为启动前的规则登记；实际执行和未完成项见后文。每个新运行/付费批次在启动前于此登记。第二眼B输入不足时仍按§2.2单图6份，0采纳仅追加同字节一批6份；合计12份仍0安全停车并进入预注册§2.4。没有新增场景、放宽门槛或第三眼的授权。
 
 ## §2.1–§2.3 实现与替身验证预注册（运行前）
 
@@ -276,3 +276,278 @@ summary.json原文：
 赛后替身几何诊断在standin_geometry_diagnostic.json：同一个第二眼地图/同一起点，真实A+真实B和注册A+真实B都有路线；真实A+注册B与注册A+注册B均无5 cm余量路线。注册B占地x=[6.175,7.475]、y=[-0.375,0.775]，该诊断不进入生产规划。问题不是A，也不是改变终点；目前是B通过自检但配准占据仍留不出余量。按§0.3不降低门槛，不自行扩大§2.4替换条件。
 
 追加采样及全零分支已按前述预期各产生且只产生一次6b请求，准备过程退出10，输入路径/SHA与首批逐项相同。下面的续跑仍按已预注册预期核对；不因单图替身失败而修改任何预期。
+
+## 真值隔离与最终源码复核的运行前预期
+
+生产保守/乐观/Lux模式现在不构建真实几何占据，也不在运行中计算隐藏真值余量；这些数字统一由赛后build_eval.py生成。明确的--imagine truth检验模式仍允许真实形状替身，物理环境保留真实障碍用于独立执行和接触检查。为核对该隔离及当前源码，另存section20_final，使用与§2.0相同的四条命令，仅--out换成outputs/reviews/r1/section20_final/<case>。预期仍是保守stuck≤5眼、see-dark到达≤5眼、乐观碰撞且计划压入≥10 cm、truth检验到达≤2眼且全部执行预演无碰撞。结果不会覆盖初次§2.0数据。
+
+站位/追加采样/真值隔离/离线任务身份防混入的单元测试在r1_final_boundary_tests.log；真实Lux调用依旧没有开始。离线单图替身与追加一份候选的替身未到达，因此还不能宣布完整注册替身链通过，不能花钱继续生产生成。
+
+## 恢复后核验与源码提交
+
+- `719e1ce`：§2.1目标选点、§2.2输入模式、§2.3一次追加与74候选黄金回归。
+- `00e9a41`：追加预注册排除运行数组，首眼历史目标不误触发第二眼追加。单批、追加一份和全零替身的52份源码SHA均逐项匹配此提交；旧输入不一致运行匹配719e1ce。
+- `974c37b`：生产保守/乐观/Lux不推导隐藏真值，赛后单独复盘；付费客户端拒绝离线替身身份。最终四项基线的52份源码SHA逐项匹配此提交，38项单测通过。原始运行的identity和文件没有为匹配提交而改写。
+- [逐文件核验](../../evidence/reviews/beforestep_r1/preservation_audit.json)：初次与最终四项基线的全部轨迹数组逐项完全相同；原始输入/输出、离线共享GLB与源身份均核验。第一次单测失败、复用输入失败和替身未到达均保留。
+
+### 最终源码四项复核：命令、退出码、summary原文
+
+公共环境仍为§2.0所列；以下运行前预期已在“真值隔离与最终源码复核”登记，未因终态调整。
+
+#### conservative
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy conservative --max-looks 5 --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section20_final/conservative`。退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section20_final/conservative/run_identity.json)、[eval](../../evidence/reviews/beforestep_r1/section20_final/conservative/eval.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 141.0,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.033,
+    0.382,
+    -7.39
+  ],
+  "sim_time_s": 142.2,
+  "wall_s": 97.9,
+  "collision": null
+}
+```
+
+无可规划路线而停车/5眼/无碰撞，符合原预期。
+
+#### see_dark
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy conservative --see-dark --max-looks 5 --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section20_final/see_dark`。退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section20_final/see_dark/run_identity.json)、[eval](../../evidence/reviews/beforestep_r1/section20_final/see_dark/eval.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": true,
+  "imagine": null,
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 146.06,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    10.491,
+    -0.001,
+    18.08
+  ],
+  "sim_time_s": 147.26,
+  "wall_s": 96.8,
+  "collision": null
+}
+```
+
+到达/3眼/无碰撞，≤5眼；XY车身包络最小间隙0.0870334 m。
+
+#### optimistic
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy optimistic --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section20_final/optimistic`。退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section20_final/optimistic/run_identity.json)、[eval](../../evidence/reviews/beforestep_r1/section20_final/optimistic/eval.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 79.67,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.713,
+    -0.526,
+    7.58
+  ],
+  "sim_time_s": 80.87,
+  "wall_s": 66.0,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.954,
+      -0.276,
+      0.111
+    ],
+    "t": 80.866
+  }
+}
+```
+
+按5 mm间距复盘原计划：车身中心距真实B最近0.1110114 m，半车宽0.33 m，压入代理量0.2189886 m ≥0.10 m，满足原要求；独立执行有真实碰撞。
+
+#### truth
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine truth --max-looks 2 --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section20_final/truth`。退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section20_final/truth/run_identity.json)、[eval](../../evidence/reviews/beforestep_r1/section20_final/truth/eval.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 114.68,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    -0.001,
+    19.09
+  ],
+  "sim_time_s": 115.88,
+  "wall_s": 103.1,
+  "collision": null
+}
+```
+
+到达/1眼；执行预演全部完成且无碰撞。实测yaw下XY车身包络最小间隙0.0952750 m；仅是替身检验，不计真实Lux结果。
+
+### §2.3两条独立离线分支：实际终态
+
+两条分支均为首批6份failed→追加一次同字节6b并退出10→补齐后同命令续跑退出0。该流程真实发生在运行中；替身身份明确与付费任务隔离。
+
+#### retry_one_candidate
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_validated_first_source --max-looks 2 --out outputs/reviews/r1/section23_retry_standin`。阶段退出码：准备`10`、一次追加`10`、最终`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/standins/retry_one_candidate/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.68,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.075,
+    0.397,
+    -0.69
+  ],
+  "sim_time_s": 54.88,
+  "wall_s": 135.3,
+  "collision": null
+}
+```
+
+两批12份中第二批A1b为真实B替身、其余11份failed。A1b准入（IoU0.9300、尺度1.0256），但low_margin无执行路线；stuck/2眼/54.88s/无碰撞，**不符合预注册到达预期**。这一分支验证追加结果参与配准与合计判定，未验证到达；没有第三批。
+
+#### retry_all_rejected
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_validated_first_source --max-looks 2 --out outputs/reviews/r1/section23_zero_standin`。阶段退出码：准备`10`、一次追加`10`、最终`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/standins/retry_all_rejected/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.68,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.075,
+    0.397,
+    -0.69
+  ],
+  "sim_time_s": 54.88,
+  "wall_s": 81.8,
+  "collision": null
+}
+```
+
+12份全部failed/0准入，sampling_stop明确记录total_samples=12、action=safe_stop_then_review_section_2_4；stuck/2眼/54.88s/无碰撞、无第三批，符合此分支安全停止预期。测试failed是控制流替身，不能推出Lux无法生成，也不能据此触发真实§2.4替换。
+
+## 对照§2.5与剩余依赖
+
+| 条件 | 当前结论 |
+| --- | --- |
+| 保守≤5眼规划不出路线、停车 | 初次和最终源码均通过 |
+| see-dark同控制到达≤5眼 | 两次均到达/3眼，无碰撞 |
+| 乐观碰撞、原计划压入≥10cm | 两次均碰撞；计划压入21.8989cm |
+| 真实形状检验到达 | 直接truth检验两次到达；**经实际配准的完整B替身仍未到达** |
+| 真实Lux≤2眼到达、全部预演完成且无碰撞 | 未运行，不能宣称通过 |
+| 真实Lux完整reuse、终态/轨迹一致 | 未运行 |
+| B首眼全部被拒候选逐一trust反事实 | 待真实首眼结果，不挑选；当前不声称自检挡住碰撞 |
+| §3报告与首页改写 | R1权威/历史附录入口已改；最终主线数字与叙事待验收，未完成 |
+
+当前两个实际依赖：其一，受限执行环境对api.aholo3d.cn的DNS再次gaierror/-3，已有终态任务的只读GET有限重试失败，见[联网记录](../../evidence/reviews/beforestep_r1/connectivity.json)；不缺付费授权且没有新create。其二，注册替身B准入但low_margin，§2.4只覆盖真实12份0准入，未覆盖此结果。按§0.3先提交完整证据后请求负责人给出此情况的处理规则；不改场景、门槛、5cm或替换触发条件，不拿替身当真实Lux成功。
+
+代码与文档的空白检查通过；初次失败单测的原始日志有一处行尾空格，按原始证据保管规则保留字节，不为格式检查改写失败日志。

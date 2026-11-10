@@ -1,0 +1,90 @@
+{
+  "schema": "v8-lux-request/v1",
+  "mode": "img",
+  "version": "G1-Turbo",
+  "faceCount": 30000,
+  "items": [
+    {
+      "id": "A1",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/A1_upload.jpg",
+      "sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf"
+    },
+    {
+      "id": "A2",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/A2_upload.jpg",
+      "sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf"
+    },
+    {
+      "id": "B1",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/B1.png",
+      "sha256": "f7ad06b194c998f40fca8aa49e931e18b0571dbb54d35f793d79b2426ab13e0b"
+    },
+    {
+      "id": "B2",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/B2.png",
+      "sha256": "f7ad06b194c998f40fca8aa49e931e18b0571dbb54d35f793d79b2426ab13e0b"
+    },
+    {
+      "id": "C1",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/C1_upload.jpg",
+      "sha256": "39c99c447cbb30ee0a0ffd0f87a22653d9439a9605a031c0e20ed8423aab3d2c"
+    },
+    {
+      "id": "C2",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/C2_upload.jpg",
+      "sha256": "39c99c447cbb30ee0a0ffd0f87a22653d9439a9605a031c0e20ed8423aab3d2c"
+    }
+  ],
+  "input_conversions": [
+    {
+      "source": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/A1.png",
+      "source_sha256": "ddf9c13917dc99ea505504935d80a2be0b22455024d55a4170273c3186a4b3c2",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/A1_upload.jpg",
+      "sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/A2.png",
+      "source_sha256": "ddf9c13917dc99ea505504935d80a2be0b22455024d55a4170273c3186a4b3c2",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/A2_upload.jpg",
+      "sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/C1.png",
+      "source_sha256": "2e54e21126d90464fbfe05c45b63c7c6bd8aea6ab0aecfe21dce71cdfab236d9",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/C1_upload.jpg",
+      "sha256": "39c99c447cbb30ee0a0ffd0f87a22653d9439a9605a031c0e20ed8423aab3d2c",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    },
+    {
+      "source": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/C2.png",
+      "source_sha256": "2e54e21126d90464fbfe05c45b63c7c6bd8aea6ab0aecfe21dce71cdfab236d9",
+      "path": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/gen/variants/C2_upload.jpg",
+      "sha256": "39c99c447cbb30ee0a0ffd0f87a22653d9439a9605a031c0e20ed8423aab3d2c",
+      "encoding": "JPEG95, no resize, 4:4:4",
+      "reason": "Provider single-upload block limit; original PNG retained"
+    }
+  ],
+  "result_file": "outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T2/lux_result.json",
+  "result_schema": {
+    "tasks": [
+      {
+        "id": "A1",
+        "task_id": "...",
+        "status": "ok|failed",
+        "submitted_at": "...",
+        "finished_at": "...",
+        "fetched_at": "...",
+        "glb": "repo-relative path of tex_mesh.glb",
+        "glb_sha256": "...",
+        "inputs": [
+          "repo-relative input image paths"
+        ]
+      }
+    ]
+  }
+}

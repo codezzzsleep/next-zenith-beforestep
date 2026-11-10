@@ -1,0 +1,54 @@
+{
+  "schema": "beforestep-r1-retry/v1",
+  "look": 2,
+  "additional_tasks": 6,
+  "total_tasks_limit": 12,
+  "first_request_sha256": "5471da2a21c5d82f8865c0c41f377f41733edf8ed4efd806f123061e13c3d7b1",
+  "first_result_sha256": "b1ec6c990a44ab27ac16acdbb61750e489a35aa0f5d2d921904f4e0b63405b3b",
+  "first_admitted_ids": [],
+  "first_decision": {
+    "schema": "v8-target-decision/v1",
+    "metric_version": 2,
+    "cache_identity": "3c9233ad618f8aeb3427abb26fbf5f7426ca2bfff4064ebea89acb1e82be6b06",
+    "obs": "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section23_retry_standin/imagination/looks/look2/T2",
+    "grid": {
+      "pitch": 0.00529,
+      "dims": [
+        313,
+        403,
+        109
+      ]
+    },
+    "volume_stats": {
+      "n_voxels": 13749151,
+      "n_free": 9153304,
+      "n_band": 32287,
+      "n_unknown": 4563560,
+      "n_in_fov": 13749151,
+      "n_masked_fov": 2837053,
+      "n_shell": 32287,
+      "valid_depth_frac": 0.75018,
+      "free_eps_m": 0.007935000000000001,
+      "band_m": 0.013225,
+      "shell_offset_m": 0.002645,
+      "pitch_m": 0.00529,
+      "depth_convention": "positive_camera_minus_z"
+    },
+    "thresholds": {
+      "schema": "v5-admission/v1",
+      "calibrated_from": "truth_v2 KA set",
+      "scale_ratio": {
+        "min": 0.889,
+        "max": 1.09
+      },
+      "hidden_frac_min": 0.3578,
+      "shell_contact_min": 0.0486,
+      "free_intrusion_max": 0.2864,
+      "contour_iou_min": 0.7068,
+      "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+    },
+    "candidates": [],
+    "admitted_ids": []
+  },
+  "expected": "At least one admitted candidate: plan/rehearse/execute. Zero across twelve tasks: safe stop; enter review section 2.4."
+}

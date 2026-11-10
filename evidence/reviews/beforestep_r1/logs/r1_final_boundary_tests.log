@@ -1,0 +1,53 @@
+test_camera_and_robot_mismatch_is_rejected_before_initialization (test_learning_contracts.LearningContracts.test_camera_and_robot_mismatch_is_rejected_before_initialization) ... ok
+test_changed_recorded_observation_is_rejected_before_state_initialization (test_learning_contracts.LearningContracts.test_changed_recorded_observation_is_rejected_before_state_initialization) ... ok
+test_complete_checkpoint_preserves_optimizer_randomness_and_next_physics (test_learning_contracts.LearningContracts.test_complete_checkpoint_preserves_optimizer_randomness_and_next_physics) ... ok
+test_explicit_goal_variant_never_accepts_changed_scene_geometry (test_learning_contracts.LearningContracts.test_explicit_goal_variant_never_accepts_changed_scene_geometry) ... ok
+test_fair_live_comparison_keeps_observation_identity_and_real_failures (test_learning_contracts.LearningContracts.test_fair_live_comparison_keeps_observation_identity_and_real_failures) ... ok
+test_invalid_pose_weights_are_rejected_before_motor_control (test_learning_contracts.LearningContracts.test_invalid_pose_weights_are_rejected_before_motor_control) ... ok
+test_pose_evidence_keeps_fair_inputs_and_original_capture_tolerances (test_learning_contracts.LearningContracts.test_pose_evidence_keeps_fair_inputs_and_original_capture_tolerances) ... ok
+test_rotation_never_relaxes_original_position_or_heading_acceptance (test_learning_contracts.LearningContracts.test_rotation_never_relaxes_original_position_or_heading_acceptance) ... ok
+test_shipped_live_model_changes_route_and_completes_independent_trials (test_learning_contracts.LearningContracts.test_shipped_live_model_changes_route_and_completes_independent_trials) ... ok
+test_substep_collision_is_reported_even_if_contact_monitor_is_transient (test_learning_contracts.LearningContracts.test_substep_collision_is_reported_even_if_contact_monitor_is_transient) ... ok
+test_terminal_rotation_uses_learned_head_and_recenters_after_drift (test_learning_contracts.LearningContracts.test_terminal_rotation_uses_learned_head_and_recenters_after_drift) ... ok
+test_trained_pose_head_has_finite_actions_without_forward_motion (test_learning_contracts.LearningContracts.test_trained_pose_head_has_finite_actions_without_forward_motion) ... ok
+test_offline_standin_cannot_contaminate_the_paid_identity_ledger (test_r1_review_contracts.InputBatchTests.test_offline_standin_cannot_contaminate_the_paid_identity_ledger) ... ok
+test_retry_preserves_exact_input_bytes_and_occurs_only_once (test_r1_review_contracts.InputBatchTests.test_retry_preserves_exact_input_bytes_and_occurs_only_once) ... ok
+test_two_images_require_both_native_views_to_pass (test_r1_review_contracts.InputBatchTests.test_two_images_require_both_native_views_to_pass) ... ok
+test_body_envelope_clearance_changes_with_actual_yaw (test_r1_review_contracts.PostRunGeometryTests.test_body_envelope_clearance_changes_with_actual_yaw) ... ok
+test_hidden_geometry_is_not_derived_in_any_production_policy (test_r1_review_contracts.PostRunGeometryTests.test_hidden_geometry_is_not_derived_in_any_production_policy) ... ok
+test_route_center_distance_measures_rock_edges_and_interior (test_r1_review_contracts.PostRunGeometryTests.test_route_center_distance_measures_rock_edges_and_interior) ... ok
+test_nearer_camera_has_more_native_pixels (test_r1_review_contracts.TargetViewTests.test_nearer_camera_has_more_native_pixels) ... ok
+test_quality_priority_target_aim_and_too_close_exclusion (test_r1_review_contracts.TargetViewTests.test_quality_priority_target_aim_and_too_close_exclusion) ... ok
+test_target_none_preserves_frozen_complete_ranking (test_r1_review_contracts.TargetViewTests.test_target_none_preserves_frozen_complete_ranking) ... ok
+test_completed_trial_cannot_overwrite_original_evidence (test_runtime_contracts.EvidenceTests.test_completed_trial_cannot_overwrite_original_evidence) ... usage: beforestep run [-h] --policy {conservative,optimistic,imagination}
+                      [--scene SCENE] [--controller-model CONTROLLER_MODEL]
+                      [--pose-model POSE_MODEL] --out OUT
+                      [--imagine {lux,truth}] [--see-dark]
+                      [--max-looks MAX_LOOKS] [--reuse-lux REUSE_LUX]
+                      [--recorded-observations RECORDED_OBSERVATIONS]
+                      [--start-at-recorded-look] [--goal X Y] [--tag TAG]
+                      [--trust TRUST]
+beforestep run: error: 完整运行结果已存在：/tmp/tmplzc9_jxr/imagination；请使用新的 --out 或 --tag 保留独立试验。
+ok
+test_curated_assets_match_provenance (test_runtime_contracts.EvidenceTests.test_curated_assets_match_provenance) ... ok
+test_effective_main_uses_real_lux_and_completes_rehearsals_and_arrival (test_runtime_contracts.EvidenceTests.test_effective_main_uses_real_lux_and_completes_rehearsals_and_arrival) ... ok
+test_imagination_import_does_not_replace_shared_registration (test_runtime_contracts.EvidenceTests.test_imagination_import_does_not_replace_shared_registration) ... ok
+test_named_scene_preserves_real_obstacle_and_does_not_change_admission (test_runtime_contracts.EvidenceTests.test_named_scene_preserves_real_obstacle_and_does_not_change_admission) ... ok
+test_nonfinite_metrics_are_rejected (test_runtime_contracts.EvidenceTests.test_nonfinite_metrics_are_rejected) ... ok
+test_scene_selection_rejects_escaping_config_directory (test_runtime_contracts.EvidenceTests.test_scene_selection_rejects_escaping_config_directory) ... ok
+test_independent_samples_are_not_deduplicated (test_runtime_contracts.GenerationTests.test_independent_samples_are_not_deduplicated) ... ok
+test_known_paid_task_is_queried_without_create (test_runtime_contracts.GenerationTests.test_known_paid_task_is_queried_without_create) ... ok
+test_lost_create_response_is_not_retried (test_runtime_contracts.GenerationTests.test_lost_create_response_is_not_retried) ... ok
+test_packaged_known_tasks_never_create_when_private_ledger_is_absent (test_runtime_contracts.GenerationTests.test_packaged_known_tasks_never_create_when_private_ledger_is_absent) ... {"tasks": 1, "ok": 1, "reused_frozen_result": true, "created_tasks": 0}
+ok
+test_paid_post_transport_failure_is_never_automatically_retried (test_runtime_contracts.GenerationTests.test_paid_post_transport_failure_is_never_automatically_retried) ... ok
+test_read_only_query_retries_a_transient_transport_failure (test_runtime_contracts.GenerationTests.test_read_only_query_retries_a_transient_transport_failure) ... ok
+test_contact_during_drive_does_not_brake_after_contact (test_runtime_contracts.MotionTests.test_contact_during_drive_does_not_brake_after_contact) ... ok
+test_contact_during_turn_stops_before_next_step (test_runtime_contracts.MotionTests.test_contact_during_turn_stops_before_next_step) ... ok
+test_hold_on_existing_contact_never_advances_physics (test_runtime_contracts.MotionTests.test_hold_on_existing_contact_never_advances_physics) ... ok
+test_no_motion_cannot_claim_arrival (test_runtime_contracts.MotionTests.test_no_motion_cannot_claim_arrival) ... ok
+
+----------------------------------------------------------------------
+Ran 38 tests in 3.656s
+
+OK

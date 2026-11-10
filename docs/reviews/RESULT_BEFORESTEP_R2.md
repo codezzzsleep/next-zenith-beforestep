@@ -10,7 +10,7 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 进行中（月坑目标掩码配置遗漏，先修复再回归） | ed7c9ba旧gate已通过；本次新增修正 |
+| B1 | 地形/太阳配置与完整回归 | 完成 | cfffaf8；67测试、完整五R1回归同原 |
 | B2 | 参数预注册、生成器、候选池分类 | 完成 | v4主池与F1唯一扩展60场景/240非Lux全完成；名单a810e14 |
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 进行中 | 冻结后运行，0付费 |
@@ -498,3 +498,9 @@ F1_020替身1眼86.07s到达；F2_007替身2眼53.1s安全停车，第二眼实�
 修复后的保留观测单测重建exit0：同一RGB-D、同一真实诊断放置，目标mask29399→52882px，恢复91个坑禁行格内的ROCK观测格；IoU0.5504→0.9893，depth median1.217mm/P954.890mm。没有新运动或Lux；原/新mask和figure/after-unit.json在crater-target-clipping，不能当新套组结果。当前新67单测2.129s通过，四R1非Lux基线全部同原；完整真实重放仍在源gate中计算，不运行新场景或收费。
 
 新源cfffaf8已push（SRC map/capture）；67tests和四R1基线通过，完整replay仍待。下一B4样本预期写入crater-target-selection.json：F0_001/F1_020/F2_003/F3_002；同一当前源/原真形状导出/原完整链，不改冻结12清单。初始F1_001安全停车仍保留且仍在B5中。新44基线manifest在regressions/crater-target-baselines，out outputs/suite/baselines-crater-target；新B4 out outputs/suite/standins-crater-target。全部前先等B1-crater-target-regression完整pass并push，当前不启动。B5/B7默认指向该新同源基线，不混用旧source数据；旧44完整结果仍保留wallfix-baselines。
+
+### B1月坑目标过滤修复：完整回归通过与恢复检查点
+
+源码cfffaf8与运行预期e22dc2c均已push/远端e22dc2cdc681e916dac1fa19ae1eedfcd61ba8ea。`run_r2_regression.py --out outputs/qa/r2/B1-crater-target-regression --workers 3` 实际exit0；67/67单测2.129s、6冻结配置SHA同，四基线结果/眼数/时间同R1。真实Lux原数据reuse一眼112.84s、12预演完整无碰撞，traj.npz全部5数组与键集合逐项同原，NPZ SHA6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e相同。此次冷重放1139.3s不含云队列，不是端到端延迟。公开gate evidence/suite/regressions/B1-crater-target/{regression.json,tests.log,driver.log}。
+
+服务进程重启发生在gate结束后、保存回执之前。实际核查：main与远端e22dc2c同、工作区干净；旧gate/44基线/全部替身/alternate均终态，无存活物理或云作业。没有重跑已完成gate或创建任何Lux任务。此回执push后继续新四类完整standin和新44同源基线，源cfffaf8保持固定；新B4全四通过/复盘0后才B5真实Lux。docs/sandbox当前全链例子已更新为此有效gate。新增Lux0/360。

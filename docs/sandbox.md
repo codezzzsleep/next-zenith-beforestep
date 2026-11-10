@@ -22,7 +22,7 @@ MUJOCO_GL=egl .venv/bin/python -m beforestep run --scene <场景id> \
 ```bash
 MUJOCO_GL=egl .venv/bin/python ops/run_suite_imagination.py \
   --scene <场景id> --mode standin --out outputs/user_scenes/<场景id>-standin \
-  --regression evidence/suite/regressions/B1-rehearsal-wall/regression.json
+  --regression evidence/suite/regressions/B1-crater-target/regression.json
 ```
 
 替身会明确记录 `not_real_lux=true`，不能记作真实 Lux3D 收益。

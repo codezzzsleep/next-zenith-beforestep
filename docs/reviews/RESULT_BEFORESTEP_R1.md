@@ -1016,3 +1016,5 @@ summary.json原文：
 证据核对命令：`PYTHONPATH=/tmp/lunar-review-20261109-deps:/tmp/beforestep-browser-deps:src python3 ops/verify_r1_evidence.py --originals`，exit0。23份保全清单、1499个文件摘要与原outputs逐项一致，10次运行共520源文件摘要一致，30份原日志一致，重放与间隙身份自洽。[核对结果](../../evidence/reviews/beforestep_r1/section25_integrity_check.json)。不带`--originals`可在新checkout独立验证保留数据。首次核对脚本误读不存在的rehearsal.pass字段exit1，修正为panes中的completed/collided原字段后通过；未改证据或源码。
 
 首次eval调用相对Path在汇总relative_to时exit1，eval已写出；随后以绝对Path调用exit0，未重跑物理。[原始失败输出及命令](../../evidence/reviews/beforestep_r1/failed_calls/eval_relative_path/invocation.json)、[原日志](../../evidence/reviews/beforestep_r1/failed_calls/eval_relative_path/original_output.log)。首次重放父目录调用exit2的全部输出继续保留。
+
+证据入库提交 `0041af9ee0cab8b2a3ac9354dfa2ce9e21bda3bd`，仅R1证据、核对脚本与本RESULT，未混入网页半成品。`git lfs push origin main` exit0（38个新增对象约54 MB）；本提交涉及60个去重对象94,548,863 bytes，全部服务器下载后SHA/size一致、再次upload batch无待传。`git push origin main` exit0，`git ls-remote origin refs/heads/main` exit0，远端为同一0041af9（由aaa1bc9 fast-forward）。[服务器核验汇总](../../evidence/reviews/beforestep_r1/section25_lfs_remote_check.json)。

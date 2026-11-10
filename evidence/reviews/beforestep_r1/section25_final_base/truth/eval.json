@@ -1,0 +1,143 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "25d8003986024282b43bb3b1a82461c0",
+  "summary_sha256": "b811a8ae19246b88567eb65b1b43fd60ff4c9683274f70d32e33e88e64803380",
+  "scene": {
+    "id": "stress_v8",
+    "purpose": "R1 primary showcase: V8 polar corridor with A and B; frozen geometry and rules controller",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.42,
+        "x": 6.86,
+        "y": 0.22,
+        "yaw": -26.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.5,
+      0.0
+    ]
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4758729839812392,
+      "min_center_minus_half_width_m": 0.14587298398123916,
+      "min_xy_rectangle_envelope_gap_m": 0.14577574360194553
+    },
+    "B": {
+      "min_center_distance_m": 0.4252907957569135,
+      "min_center_minus_half_width_m": 0.09529079575691346,
+      "min_xy_rectangle_envelope_gap_m": 0.09527498087599284
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 1,
+    "path": [
+      [
+        4.6,
+        0.5
+      ],
+      [
+        6.5,
+        -0.8
+      ],
+      [
+        8.5,
+        -0.7
+      ],
+      [
+        10.5,
+        0.0
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": {
+      "drive_margin_m": 0.117,
+      "turn_margin_m": 0.1
+    }
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.47256991383410496,
+      "center_minus_half_width_m": 0.14256991383410494,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.42520556552155686,
+      "center_minus_half_width_m": 0.09520556552155685,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 1,
+      "role": "execution",
+      "path": [
+        [
+          4.599999999999999,
+          0.500000000000002
+        ],
+        [
+          6.499999999999998,
+          -0.7999999999999992
+        ],
+        [
+          8.499999999999998,
+          -0.6999999999999991
+        ],
+        [
+          10.5,
+          0.0
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/truth/imagination/truth_standin/A.obj",
+            "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/truth/imagination/truth_standin/B.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008429662438385787,
+            0.011259872472454753,
+            0.008255206998564052,
+            0.0077924332814050664
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

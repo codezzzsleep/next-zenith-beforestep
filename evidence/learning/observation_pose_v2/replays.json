@@ -1,0 +1,220 @@
+[
+  {
+    "id": "pose_v2_live",
+    "title": "pose_v2_live",
+    "result": "arrived",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      -2.9387841865902858e-05,
+      -0.49997711880106865
+    ],
+    "duration": 302.220000000014,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从场景起点实际运行；实时仿真观测，移动和转向由固定神经网络控制。",
+    "evidence": "evidence/learning/pose_v2_live/summary.json",
+    "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+    "trajectory": "evidence/learning/pose_v2_live/traj.npz",
+    "execution_source": "evidence/learning/pose_v2_live/source_manifest.json"
+  },
+  {
+    "id": "pose_v2_recorded",
+    "title": "pose_v2_recorded",
+    "result": "arrived",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      2.242430485311661,
+      -0.49571452159461454
+    ],
+    "duration": 205.18000000003886,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从同一首次记录观测状态开始；后续由真实动力学推进并实时采集，无生成几何；接近第一观察点不计入本次执行。",
+    "evidence": "evidence/learning/pose_v2_recorded/summary.json",
+    "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+    "trajectory": "evidence/learning/pose_v2_recorded/traj.npz",
+    "execution_source": "evidence/learning/pose_v2_recorded/source_manifest.json"
+  },
+  {
+    "id": "pose_v2_joint",
+    "title": "pose_v2_joint",
+    "result": "stopped_short",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      2.242430485311661,
+      -0.49571452159461454
+    ],
+    "duration": 270.0200000000313,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从同一首次记录观测状态开始；后续由真实动力学推进并实时采集，无生成几何；接近第一观察点不计入本次执行。",
+    "evidence": "evidence/learning/pose_v2_joint/summary.json",
+    "pose_controller_sha256": null,
+    "trajectory": "evidence/learning/pose_v2_joint/traj.npz",
+    "execution_source": "evidence/learning/pose_v2_joint/source_manifest.json"
+  },
+  {
+    "id": "pose_v2_lux_regression",
+    "title": "pose_v2_lux_regression",
+    "result": "arrived",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      2.242430485311661,
+      -0.49571452159461454
+    ],
+    "duration": 32.600000000002005,
+    "panes": 3,
+    "panes_passed": 3,
+    "reference_path": [
+      [
+        4.399999999999999,
+        0.4000000000000019
+      ],
+      [
+        5.299999999999999,
+        0.10000000000000164
+      ],
+      [
+        5.7,
+        -0.5
+      ]
+    ],
+    "selected_path": [
+      [
+        4.199999999999999,
+        0.3000000000000018
+      ],
+      [
+        5.199999999999998,
+        0.3000000000000018
+      ],
+      [
+        5.7,
+        -0.5
+      ]
+    ],
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从保存的真实观测状态开始，使用记录 RGB-D 和真实 Lux3D 资产；接近观察点的运动不计入本次模型执行。",
+    "evidence": "evidence/learning/pose_v2_lux_regression/summary.json",
+    "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+    "trajectory": "evidence/learning/pose_v2_lux_regression/traj.npz",
+    "execution_source": "evidence/learning/pose_v2_lux_regression/source_manifest.json"
+  },
+  {
+    "id": "pose_v1_initial_live",
+    "title": "pose_v1_initial_live",
+    "result": "arrived",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      -2.9387841865902858e-05,
+      -0.49997711880106865
+    ],
+    "duration": 345.07999999997503,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "历史初版曾到达，但停车后采集朝向处于4°边缘；不计入最终严格采集姿态验收。",
+    "evidence": "evidence/learning/pose_v1_initial_live/summary.json",
+    "pose_controller_sha256": "457e9e89f01169816a08eeb7828c40c0e2b4478c7b56c6612a335455822d5dd3",
+    "trajectory": "evidence/learning/pose_v1_initial_live/traj.npz",
+    "execution_source": "evidence/learning/pose_v1_initial_live/source_manifest.json"
+  },
+  {
+    "id": "pose_v1_capture_failed",
+    "title": "pose_v1_capture_failed",
+    "result": "stopped_short",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      -2.9387841865902858e-05,
+      -0.49997711880106865
+    ],
+    "duration": 283.48000000003105,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从场景起点实际运行；实时仿真观测，移动和转向由固定神经网络控制。",
+    "evidence": "evidence/learning/pose_v1_capture_failed/summary.json",
+    "pose_controller_sha256": "457e9e89f01169816a08eeb7828c40c0e2b4478c7b56c6612a335455822d5dd3",
+    "trajectory": "evidence/learning/pose_v1_capture_failed/traj.npz",
+    "execution_source": "evidence/learning/pose_v1_capture_failed/source_manifest.json"
+  },
+  {
+    "id": "pose_v1_calibrated_failed",
+    "title": "pose_v1_calibrated_failed",
+    "result": "stopped_short",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      -2.9387841865902858e-05,
+      -0.49997711880106865
+    ],
+    "duration": 283.58000000003096,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从场景起点实际运行；实时仿真观测，移动和转向由固定神经网络控制。",
+    "evidence": "evidence/learning/pose_v1_calibrated_failed/summary.json",
+    "pose_controller_sha256": "457e9e89f01169816a08eeb7828c40c0e2b4478c7b56c6612a335455822d5dd3",
+    "trajectory": "evidence/learning/pose_v1_calibrated_failed/traj.npz",
+    "execution_source": "evidence/learning/pose_v1_calibrated_failed/source_manifest.json"
+  },
+  {
+    "id": "pose_v2_unsettled_failed",
+    "title": "pose_v2_unsettled_failed",
+    "result": "stopped_short",
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "start": [
+      -2.9387841865902858e-05,
+      -0.49997711880106865
+    ],
+    "duration": 362.85999999995886,
+    "panes": 0,
+    "panes_passed": 0,
+    "reference_path": null,
+    "selected_path": null,
+    "controller_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "note": "从场景起点实际运行；实时仿真观测，移动和转向由固定神经网络控制。",
+    "evidence": "evidence/learning/pose_v2_unsettled_failed/summary.json",
+    "pose_controller_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+    "trajectory": "evidence/learning/pose_v2_unsettled_failed/traj.npz",
+    "execution_source": "evidence/learning/pose_v2_unsettled_failed/source_manifest.json"
+  }
+]

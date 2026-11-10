@@ -1,0 +1,104 @@
+[
+  {
+    "id": "pose_v1_held_out",
+    "title": "pose_v1_held_out",
+    "controllers": [
+      {
+        "label": "训练模型 v4",
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": null,
+        "episodes": 16,
+        "successes": 16,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.036238702576521016
+      },
+      {
+        "label": "pose",
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": "457e9e89f01169816a08eeb7828c40c0e2b4478c7b56c6612a335455822d5dd3",
+        "episodes": 16,
+        "successes": 16,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.049754332937055154
+      },
+      {
+        "label": "规则专家",
+        "checkpoint_sha256": null,
+        "pose_checkpoint_sha256": null,
+        "episodes": 16,
+        "successes": 16,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.04626078233755153
+      }
+    ],
+    "note": "种子 140001 起；同一任务清单，每回合最多 65s；坡度 0.0°、粗糙度 0mm。"
+  },
+  {
+    "id": "pose_v2_held_out",
+    "title": "pose_v2_held_out",
+    "controllers": [
+      {
+        "label": "训练模型 v4",
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": null,
+        "episodes": 16,
+        "successes": 16,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.031901454577149865
+      },
+      {
+        "label": "pose",
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+        "episodes": 16,
+        "successes": 16,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.013234935406943314
+      },
+      {
+        "label": "规则专家",
+        "checkpoint_sha256": null,
+        "pose_checkpoint_sha256": null,
+        "episodes": 16,
+        "successes": 16,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.04452984370027165
+      }
+    ],
+    "note": "种子 150001 起；同一任务清单，每回合最多 65s；坡度 0.0°、粗糙度 0mm。"
+  },
+  {
+    "id": "pose_v2_final_held_out",
+    "title": "pose_v2_final_held_out",
+    "controllers": [
+      {
+        "label": "训练模型 v4",
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": null,
+        "episodes": 8,
+        "successes": 8,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.0413015363514081
+      },
+      {
+        "label": "pose",
+        "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+        "pose_checkpoint_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+        "episodes": 8,
+        "successes": 8,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.024201279042987432
+      },
+      {
+        "label": "规则专家",
+        "checkpoint_sha256": null,
+        "pose_checkpoint_sha256": null,
+        "episodes": 8,
+        "successes": 8,
+        "success_rate": 1.0,
+        "mean_goal_error_m": 0.05032995491543171
+      }
+    ],
+    "note": "种子 160001 起；同一任务清单，每回合最多 65s；坡度 0.0°、粗糙度 0mm。"
+  }
+]

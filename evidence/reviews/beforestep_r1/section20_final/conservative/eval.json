@@ -1,0 +1,62 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "b3c6aee9114e49de80593872f438400d",
+  "summary_sha256": "9c924994c94f6f1c5eef059de405c2dc9d014d778083d16fcdf7de086e168265",
+  "scene": {
+    "id": "stress_v8",
+    "purpose": "R1 primary showcase: V8 polar corridor with A and B; frozen geometry and rules controller",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.42,
+        "x": 6.86,
+        "y": 0.22,
+        "yaw": -26.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.5,
+      0.0
+    ]
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "stuck",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.6136737056319245,
+      "min_center_minus_half_width_m": 0.28367370563192446,
+      "min_xy_rectangle_envelope_gap_m": 0.12758521766059797
+    },
+    "B": {
+      "min_center_distance_m": 1.6778866087968638,
+      "min_center_minus_half_width_m": 1.3478866087968637,
+      "min_xy_rectangle_envelope_gap_m": 1.1861908595326767
+    }
+  },
+  "first_departure_plan": null,
+  "first_departure_plan_by_rock": {},
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": []
+}

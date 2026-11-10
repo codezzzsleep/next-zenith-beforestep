@@ -1,0 +1,37 @@
+{
+  "schema": "beforestep-r1-preservation/v1",
+  "original_output": "outputs/reviews/r1/section25_final_base/optimistic/optimistic",
+  "source_commits_matching_actual_code": [
+    "2147b2f"
+  ],
+  "files_sha256": {
+    "events.jsonl": "59618099f20a19986077453abccc3de545f170f22e656473d48eb3d1291e985f",
+    "summary.json": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+    "traj.npz": "f2e0cdb4f5ffda2bae45350b5d892cc9e80606f7be76b6d317c761f92e8264ed",
+    "scene.json": "2a9c215b449382a8a58f69f0d47c1e99b5ed6ade4c5e49fd62f89e5e6d4384ba",
+    "run_identity.json": "7148851ec9ea951969f1cc5b3cb8e3295897166fd25ad283d7f9e8004e190c0a",
+    "map_final.png": "21ac8862f231f372e2f7884ccf0d471be2fba41262d7110248667c286612e8ea",
+    "state_final.npy": "be09ecfd862352c8c910a090ff88ee528b9909405ae30cbdffce1a4daaebca84",
+    "looks/look1_zmax.npy": "9cce095fd33dd2112038191dedc40f09aa4153da3a98a11f4c265e282ed6276b",
+    "looks/look1_state.npy": "f973b3fd40afc0da221cfee93ecd2f7ad07e3a00530001c0544ea04314c5caaa",
+    "looks/look1_dark.npy": "6dc04ecf513f39836beee9097a02f8ddd3ff7c20be55053559967cb7aeb6cdb4",
+    "looks/look1_rgb.png": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d",
+    "looks/look1_depth.npy": "748ef5c1b5c455c7aeb5911dc6d8789af1a9be86b932622f2ea1987fdf3c9a5f",
+    "decision/look1_state.npy": "be09ecfd862352c8c910a090ff88ee528b9909405ae30cbdffce1a4daaebca84"
+  },
+  "command": [
+    "python3",
+    "-m",
+    "beforestep",
+    "run",
+    "--scene",
+    "stress_v8",
+    "--controller-model",
+    "rules",
+    "--policy",
+    "optimistic",
+    "--out",
+    "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/optimistic"
+  ],
+  "exit_code": 0
+}

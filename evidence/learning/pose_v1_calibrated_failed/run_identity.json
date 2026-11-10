@@ -1,0 +1,121 @@
+{
+  "schema": "beforestep-run-identity/v1",
+  "run_id": "e281f49908a74e16b14e9d4a48ab0dd1",
+  "started_at": "2026-11-10T04:32:11.798475+00:00",
+  "arguments": {
+    "policy": "conservative",
+    "scene": "gate_passage_001",
+    "controller_model": "assets/models/goal_controller_v4/behavior_cloning.npz",
+    "pose_model": "assets/models/observation_pose_v1/pose.npz",
+    "out": "outputs/learning/observation_pose_v1_calibrated_live",
+    "imagine": "lux",
+    "see_dark": false,
+    "max_looks": 5,
+    "reuse_lux": null,
+    "recorded_observations": null,
+    "start_at_recorded_look": false,
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "tag": null,
+    "trust": null
+  },
+  "scene": {
+    "id": "gate_passage_001",
+    "purpose": "Effective rock-gate main scene: fresh Lux3D candidates, complete physical rehearsals, and independent arrival verified",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      5.7,
+      -0.5
+    ],
+    "task_variant": "explicit_goal",
+    "observation_scene_goal": [
+      8.5,
+      0.0
+    ]
+  },
+  "source_sha256": {
+    "src/beforestep/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "src/beforestep/cli.py": "ed7791e155b2ef01f5c1d6b5da22ff6b6318252a0099af085b07f25474e5f547",
+    "src/beforestep/delivery/__init__.py": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523",
+    "src/beforestep/delivery/artifacts.py": "25725e113aa775aa9f81bdc334d8c2ecc3a325de163e7c37c84271313fd07d94",
+    "src/beforestep/delivery/learning.py": "0a597af61c757c19261e7f4826584a239402f33d4d6340c0f060d943e9d56240",
+    "src/beforestep/delivery/server.py": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab",
+    "src/beforestep/delivery/video.py": "6bd3693ba83413eec422bda993a1594c947442cf07d3bd67f4e3c32951f70513",
+    "src/beforestep/evaluation.py": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135",
+    "src/beforestep/generation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/generation/client.py": "aae3c06931bee95bdd7598b7fc46818eb11c90a3ec1d8ae653a6be078da6fb30",
+    "src/beforestep/generation/evaluate.py": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a",
+    "src/beforestep/generation/records.py": "510af1775b0803368603faff9f7a212d9b7307b1f5f4c4431fd7b87c93a13429",
+    "src/beforestep/geometry/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/geometry/admission.py": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf",
+    "src/beforestep/geometry/camera.py": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910",
+    "src/beforestep/geometry/imagination.py": "bb0a680aa6b67a53514066777983ef702a8cec3ffd8ffd05ec066d180ddcc771",
+    "src/beforestep/geometry/metrics.py": "32ca63a31666f274a8d2b62e7cd14019d397d2960eb8a41792a04ce73239642e",
+    "src/beforestep/geometry/registration.py": "03a523ab7a3ee7786d5db4bc2bb8cfb54cee410acf76cdb4d84b3cf540337ad6",
+    "src/beforestep/geometry/solid.py": "663a3f7e8a3011614f7951a7e1239b58897d79ddb521508992510f436ba5830d",
+    "src/beforestep/geometry/volume.py": "e26ab39219ebb5be58fac2b48db7326f5e99c09140a080b7613503985fde2239",
+    "src/beforestep/learning/__init__.py": "2d4b42443926bf506ac7cbc6fc09f1d17df868e256377669dcf80624c8110a2f",
+    "src/beforestep/learning/checkpoints.py": "0be9fefd265a58b078c67705dd6c82b7b3bcbb3dbdb81ec4c233fdf3d3b01df2",
+    "src/beforestep/learning/evaluate.py": "13ebf5529282182ac16cce5825bb50fefc784f77f30bb2be0ce52dbf2fe7ed8c",
+    "src/beforestep/learning/policy.py": "e1acf994c4e9a130bee9325c357fc73e56a15f7b17616603e386adf18dcb93b2",
+    "src/beforestep/learning/pose.py": "6035e2b6247fd830300405d488feef00ec961a17c3c37cc85c076a144df0a03b",
+    "src/beforestep/learning/pose_train.py": "71899f4a22587f80f445b90eefee1bd8ab6067afaa4188ac52396906179adc0d",
+    "src/beforestep/learning/ppo.py": "6982815993f697477eae61b18e6766cb2ce60bc0d1153094e75c08407d82520d",
+    "src/beforestep/learning/train.py": "3df3464cbc8056f36e4ae1e6e8a59186992405629c9c1707fa17aaa127db9a23",
+    "src/beforestep/navigation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/navigation/controller.py": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083",
+    "src/beforestep/navigation/map.py": "442f5a0dbd6f12b31ab5c410e0c1cdfee0ed0d6fd1d8698f204b2ea8edd0e51c",
+    "src/beforestep/observation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/observation/capture.py": "27fd8534f4f12042721e135da9139296f2e7d154eecc41e750010514c27f7371",
+    "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
+    "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
+    "src/beforestep/pipeline.py": "0b153ed5dce204c731eb739df8c2cb59aacf7d1c1874b43dce45a5d9a3de917a",
+    "src/beforestep/resources.py": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c",
+    "src/beforestep/scene.py": "4d40e1075bc50a75aab6a79442b226d42f54bc423e3032a9b86c6e0ce2c7fe11",
+    "src/beforestep/simulation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/simulation/assets.py": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3",
+    "src/beforestep/simulation/environment.py": "7d9fe894461e14a5f6e5485c0e1bfcce4fe24a3b91d6d9e62773cf3a21a6e1b3",
+    "src/beforestep/simulation/robot.py": "123635fb0b22e2a5d36f8560c2438772dd186c3045a2edf249e24e08bd501942",
+    "src/beforestep/simulation/robot_model.py": "6b1187699d644e082f32ff55fbd6a00daec1b60aee5296baec7e9519c7476b0c",
+    "src/beforestep/simulation/soil.py": "ffc028f8c1e2f47b86132fce9411b98cf57e52a902e2b4bc338534b9a752533d",
+    "src/beforestep/simulation/soil_profiles.py": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73",
+    "src/beforestep/simulation/terrain.py": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e",
+    "src/beforestep/visualization/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/visualization/camera.py": "3311f310179298dd09131d2cdee1746c8f71f59f84a6336a5f0aaf9f797acebe",
+    "src/beforestep/visualization/model.py": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569",
+    "src/beforestep/visualization/scene.py": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332",
+    "src/beforestep/visualization/textures.py": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"
+  },
+  "config_sha256": {
+    "config/admission.json": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0",
+    "config/protocol.json": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee",
+    "config/robot-assets.json": "e7826ab51a881c7d0e6572eb1d7e2e0c8e1a9f924d3e2512955f76ede23f5b9f",
+    "config/runtime-assets.json": "cb6af7d5efd6beb97b51e046415c4695d6dd7212ed1191d0856ecab714d957cd"
+  },
+  "controller": {
+    "type": "learned",
+    "checkpoint": "assets/models/goal_controller_v4/behavior_cloning.npz",
+    "checkpoint_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "pose_checkpoint": "assets/models/observation_pose_v1/pose.npz",
+    "pose_checkpoint_sha256": "457e9e89f01169816a08eeb7828c40c0e2b4478c7b56c6612a335455822d5dd3"
+  }
+}

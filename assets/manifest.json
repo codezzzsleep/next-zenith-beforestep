@@ -1585,10 +1585,13 @@
     },
     {
       "path": "config/scenes/stress_v8.json",
-      "sha256": "c07cdcbea2dda23c9087cd466130e06e4ea327f27ce6d94e70dedd9b26fcdebd",
+      "sha256": "a2ac80257e427ce6db44bfb94b506505eeac97ec5debeabb8c1743b1d79fbe36",
       "bytes": 372,
       "milestone": "beforestep_v0_2",
-      "role": "frozen_scene_config"
+      "role": "frozen_scene_config",
+      "previous_sha256": "c07cdcbea2dda23c9087cd466130e06e4ea327f27ce6d94e70dedd9b26fcdebd",
+      "previous_version_path": "evidence/reviews/beforestep_r1/frozen_before_r1/stress_v8.json",
+      "review_change": "R1 section 1: purpose metadata only; physical scene identity is unchanged."
     },
     {
       "path": "assets/observations/gate_passage_001/scene.json",
@@ -2548,6 +2551,339 @@
       "bytes": 1884166,
       "milestone": "v0.3.0",
       "role": "cold_recomputed_qualified_geometry"
+    },
+    {
+      "path": "assets/models/observation_pose_v1/pose.npz",
+      "sha256": "457e9e89f01169816a08eeb7828c40c0e2b4478c7b56c6612a335455822d5dd3",
+      "bytes": 20566,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/models/observation_pose_v2/pose.npz",
+      "sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da",
+      "bytes": 20559,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_live/look1_rgb.png",
+      "sha256": "95d67c2ac3b4ee2d8c931aad1b2ecf70259633ac6472b7ca86df687e66ed6c85",
+      "bytes": 1862039,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_live/look2_rgb.png",
+      "sha256": "3ad3c29cfee664112872f76c78f8dbb4ff87e965426ff81b3f3a1556fefe241d",
+      "bytes": 1664261,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_live/look3_rgb.png",
+      "sha256": "29f19bb5a9d1524eb16b2013761cb43f8e92b292d582c634267326fa600f15f8",
+      "bytes": 1661560,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_live/look4_rgb.png",
+      "sha256": "36868a7a3aa4f99b316f98cbe705a433bea7fdd41a69466dd4a2b0f61685f1d2",
+      "bytes": 1602646,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_live/manifest.json",
+      "sha256": "f2ab30ef961ed93be677327f58515dbab6071caca6c5da03b6fc576342229234",
+      "bytes": 2713,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_live/sensors.tar.gz",
+      "sha256": "20e259f8b7c064bdb0c826cac04b22e77c37ea748b7b3cf75c852745c3902a7c",
+      "bytes": 25610909,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_recorded/look1_rgb.png",
+      "sha256": "9c59759edc4282372ecb4bf388de44853402c13387fa22a682694623f069824d",
+      "bytes": 1860591,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_recorded/look2_rgb.png",
+      "sha256": "589ef0fc1298113a02bade73bec494160c61b3f83380a7ddc85a7b18b6144d35",
+      "bytes": 1665703,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_recorded/look3_rgb.png",
+      "sha256": "511213cdeee0736d59522c41d2174df214767fa2d2516d56a3eff52c6fa2dd22",
+      "bytes": 1655774,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_recorded/look4_rgb.png",
+      "sha256": "994a7496944ab6cc8fa71dc2d608e61aafeb84972f0efd8ffff57157c980e25d",
+      "bytes": 1608431,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_recorded/manifest.json",
+      "sha256": "f0053d4ed787e056ebbe2385ddbd818513c3662bc98d0e5024e008193f64b27a",
+      "bytes": 2717,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/observations/pose_v2_recorded/sensors.tar.gz",
+      "sha256": "29a9e699f4d61eae9676604e2f42f65dbb2603b53c02c1809a88d153138b17ae",
+      "bytes": 26733922,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/training/observation_pose_v1/demonstration_manifest.json",
+      "sha256": "c468e1c7505e30f153483e07a0b8ff4120b02d20ee65fb8486a6bd1a542c835a",
+      "bytes": 23640,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "assets/training/observation_pose_v1/demonstrations.npz",
+      "sha256": "eee55d907cc251eecdfe4fa54794e959dd221e3147ceb6b67f0d5b8a20045d7e",
+      "bytes": 8908633,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/learning/observation_pose_v2/comparison.png",
+      "sha256": "b00fa6c50d54cb538e720e46ed5614d2810d98c7a2c71179754348d8f3b51b1f",
+      "bytes": 174195,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/learning/observation_pose_v2/demo-poster.jpg",
+      "sha256": "1e6a0f9c90ac927b86d3cb64e55b5642de7ed236b2a11bd8821df878241dda14",
+      "bytes": 141072,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/learning/observation_pose_v2/demo.mp4",
+      "sha256": "9ac8e8b17f02f201f64ac2b63742c0e29ebde4ff3622fd2129a1e9adebf5e695",
+      "bytes": 1803616,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/learning/observation_pose_v2/training.png",
+      "sha256": "41ab0ff0d7aa294239c2e0a12c44c6ae41ccf0dceb0751f30829fce9b93a0ba1",
+      "bytes": 119974,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/learning/observation_pose_v2/validation.json",
+      "sha256": "57b99325ad88c4f9eb53e87f7044244ef53c55e6b19cf8f01de1e305e7ef2c24",
+      "bytes": 9878,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v1/behavior_cloning.json",
+      "sha256": "9e5c027c7e3b768da310e0f448d5ca009cae5c6510d2c3df79769f41e07ce869",
+      "bytes": 4508,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v1/demonstration_manifest.json",
+      "sha256": "c468e1c7505e30f153483e07a0b8ff4120b02d20ee65fb8486a6bd1a542c835a",
+      "bytes": 23640,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v1/manifest.json",
+      "sha256": "321006692c344679ea4f2c7ee74c0df78e62752201e07ed013027ece588ecb3a",
+      "bytes": 503,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v1/run_identity.json",
+      "sha256": "71d3aa416ce028171767ca49481a667c16d96d0c0815264aebeaed05e6719a50",
+      "bytes": 6611,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v1/summary.json",
+      "sha256": "52da5cd9d0c3cb7552aac5c7e34a0c3429f1badaaba8f353937e4f56e2e0c599",
+      "bytes": 491,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v2/behavior_cloning.json",
+      "sha256": "09068b80c1e29b4c214831c876ce8e1d0cf7619f0bf29c755f43e856f70edbc5",
+      "bytes": 9053,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v2/demonstration_manifest.json",
+      "sha256": "c468e1c7505e30f153483e07a0b8ff4120b02d20ee65fb8486a6bd1a542c835a",
+      "bytes": 23640,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v2/manifest.json",
+      "sha256": "4646013d087fcdecc7af65220faef199a43ca5813eb59b72df059a085048706e",
+      "bytes": 503,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v2/run_identity.json",
+      "sha256": "05bfc820bf18cdcfd27d338493f7fb240aeb81dc864b38a31224f44deaeaf74c",
+      "bytes": 7156,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/training/observation_pose_v2/summary.json",
+      "sha256": "8fa1c73a7521be7c76028147933baafba4e486e990754a47124fc2aa1395a6b0",
+      "bytes": 563,
+      "milestone": "observation-pose-20261110",
+      "role": "optional_trained_pose_control_and_preserved_observations"
+    },
+    {
+      "path": "evidence/reviews/beforestep_r1/frozen_before_r1/stress_v8.json",
+      "sha256": "c07cdcbea2dda23c9087cd466130e06e4ea327f27ce6d94e70dedd9b26fcdebd",
+      "kind": "frozen_pre_r1_scene",
+      "source": "fdcf629:config/scenes/stress_v8.json"
+    },
+    {
+      "path": "assets/candidates/5958642/tex_mesh.glb",
+      "sha256": "99992bdf6983f309aef947e0c8761609773c746589137d1dd2467b6958048f48",
+      "bytes": 9227616,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958642,
+      "target": "T2",
+      "sample_id": "A1"
+    },
+    {
+      "path": "assets/candidates/5958654/tex_mesh.glb",
+      "sha256": "f717d8ae187c424f06b5f798b7a9b81328cde19982845c6526713415806ab890",
+      "bytes": 8879388,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958654,
+      "target": "T2",
+      "sample_id": "A2"
+    },
+    {
+      "path": "assets/candidates/5958703/tex_mesh.glb",
+      "sha256": "9211d01efbacec5a6897c3d2b1897c347c256b73030853f1f442ae9f2a476f8d",
+      "bytes": 9770700,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958703,
+      "target": "T2",
+      "sample_id": "B1"
+    },
+    {
+      "path": "assets/candidates/5958934/tex_mesh.glb",
+      "sha256": "9f04359d698fab5bc5ba1980acb467ddccc56a6199e115cbf80751733dd743a2",
+      "bytes": 10126988,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958934,
+      "target": "T2",
+      "sample_id": "C1"
+    },
+    {
+      "path": "assets/candidates/5958937/tex_mesh.glb",
+      "sha256": "794b8ce647df494371376fa466458528b453511cea7c5cd3c1a42e13239486cd",
+      "bytes": 10597924,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958937,
+      "target": "T2",
+      "sample_id": "C2"
+    },
+    {
+      "path": "assets/candidates/5958685/tex_mesh.glb",
+      "sha256": "6be9c81656748329cc2bde212939abac7bce0b9c793ccdc754ded3c7747ce180",
+      "bytes": 7702168,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958685,
+      "target": "T1",
+      "sample_id": "A1"
+    },
+    {
+      "path": "assets/candidates/5958690/tex_mesh.glb",
+      "sha256": "ec76de88b7c32a5282cd956607ac5bef8b8748e9e15e66f256447ae3bdfe39a8",
+      "bytes": 7502232,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958690,
+      "target": "T1",
+      "sample_id": "A2"
+    },
+    {
+      "path": "assets/candidates/5958877/tex_mesh.glb",
+      "sha256": "fa16bfa00c716f3adca2cc7603edc876f2279a4978d6019dd0291cc8cae17ee4",
+      "bytes": 8717692,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958877,
+      "target": "T1",
+      "sample_id": "B1"
+    },
+    {
+      "path": "assets/candidates/5958911/tex_mesh.glb",
+      "sha256": "a65c93bbfb3947641baf86f113d5664f27ee8a60c2e236eed08cfafc17a4593c",
+      "bytes": 7939716,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958911,
+      "target": "T1",
+      "sample_id": "B2"
+    },
+    {
+      "path": "assets/candidates/5958948/tex_mesh.glb",
+      "sha256": "2e2cb4ca88a9fdcf9949790603a5bf1718c2f018cbbae624c5ded0f77ffaf2a3",
+      "bytes": 7610396,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5958948,
+      "target": "T1",
+      "sample_id": "C1"
+    },
+    {
+      "path": "assets/candidates/5959025/tex_mesh.glb",
+      "sha256": "129202136afe2c75ea95aba7c0c02b5b58f0b8374eef98c89a9e8bfe0e678bc1",
+      "bytes": 7737840,
+      "milestone": "beforestep-r1-original-b-first-eye",
+      "role": "real_lux_candidate_pending_frozen_admission",
+      "task_id": 5959025,
+      "target": "T1",
+      "sample_id": "C2"
     }
   ],
   "excluded_transport_caches": "Duplicate ZIP/GLB download caches omitted; authoritative generated_candidate assets retained.",
@@ -2556,5 +2892,11 @@
     "controller": "assets/models/goal_controller_v4/behavior_cloning.npz",
     "validation": "evidence/scenes/trained_live_gate_001/validation.json",
     "original_entries_preserved": 147
+  },
+  "optional_pose_control": {
+    "model": "assets/models/observation_pose_v2/pose.npz",
+    "validation": "evidence/learning/observation_pose_v2/validation.json",
+    "default_v03_preserved": true,
+    "original_v03_entries_preserved": 280
   }
 }

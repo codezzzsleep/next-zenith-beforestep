@@ -1,0 +1,108 @@
+{
+  "schema": "v8-target-decision/v1",
+  "metric_version": 2,
+  "cache_identity": "6b1a0e7c4713426063992eb701c78e2fb4b343c63277d2605a558c25f344a521",
+  "obs": "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section21_standin_fresh/imagination/looks/look1/T1",
+  "grid": {
+    "pitch": 0.006084,
+    "dims": [
+      273,
+      401,
+      121
+    ]
+  },
+  "volume_stats": {
+    "n_voxels": 13246233,
+    "n_free": 4815681,
+    "n_band": 45617,
+    "n_unknown": 8384935,
+    "n_in_fov": 12904572,
+    "n_masked_fov": 4932086,
+    "n_shell": 45617,
+    "valid_depth_frac": 0.79962,
+    "free_eps_m": 0.009126,
+    "band_m": 0.01521,
+    "shell_offset_m": 0.003042,
+    "pitch_m": 0.006084,
+    "depth_convention": "positive_camera_minus_z"
+  },
+  "thresholds": {
+    "schema": "v5-admission/v1",
+    "calibrated_from": "truth_v2 KA set",
+    "scale_ratio": {
+      "min": 0.889,
+      "max": 1.09
+    },
+    "hidden_frac_min": 0.3578,
+    "shell_contact_min": 0.0486,
+    "free_intrusion_max": 0.2864,
+    "contour_iou_min": 0.7068,
+    "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+  },
+  "candidates": [
+    {
+      "scale_ratio": 1.0112,
+      "hidden_frac": 0.8269,
+      "shell_contact": 0.9258,
+      "free_intrusion_frac": 0.12699,
+      "intrusion_depth_p95_mm": 94.45,
+      "voxels": 1193569,
+      "contour_iou": 0.9328,
+      "scale_ratio_v5": 1.0843,
+      "id": "A1",
+      "glb": "/root/3d/next-zenith-beforestep/outputs/reviews/r1/standin_meshes/A.glb",
+      "M": [
+        [
+          0.1241770649210301,
+          -0.9932628198811413,
+          -0.02990168321844857,
+          2.251504626119766
+        ],
+        [
+          0.9937125510842902,
+          0.12414236939061833,
+          0.003020167143211344,
+          -0.22127809198675102
+        ],
+        [
+          0.0007112208435121029,
+          -0.0300454028726712,
+          1.0009904352195713,
+          0.0010099564842280832
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": true,
+      "eval": {
+        "mask_iou": 0.9328,
+        "mask_iou_all_pixels": 0.9096,
+        "outside_lit_px": 8168,
+        "in_dark_px": 3683,
+        "occluded_px": 0,
+        "depth_median_mm": 24.214,
+        "depth_p95_mm": 76.477,
+        "visible_median_mm": 15.103,
+        "visible_p95_mm": 54.489,
+        "n_candidate_pixels": 146608,
+        "n_mask_pixels": 136301
+      },
+      "footprint_cells": 301,
+      "footprint_x": [
+        4.175000000000001,
+        4.825
+      ],
+      "footprint_y": [
+        -1.325,
+        -0.125
+      ]
+    }
+  ],
+  "admitted_ids": [
+    "A1"
+  ]
+}

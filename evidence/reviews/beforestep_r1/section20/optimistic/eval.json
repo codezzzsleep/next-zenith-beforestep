@@ -1,0 +1,105 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "58874b315bee427d8a7fbb7e5b78203d",
+  "summary_sha256": "fc818641d56f3445915ebe293862b494df004bcfb4357c6544d0f57dca0a7379",
+  "scene": {
+    "id": "stress_v8",
+    "purpose": "R1 primary showcase: V8 polar corridor with A and B; frozen geometry and rules controller",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.42,
+        "x": 6.86,
+        "y": 0.22,
+        "yaw": -26.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.5,
+      0.0
+    ]
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "collision",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4362834459365184,
+      "min_center_minus_half_width_m": 0.1062834459365184,
+      "min_xy_rectangle_envelope_gap_m": 0.10615455622208018
+    },
+    "B": {
+      "min_center_distance_m": 0.30275397681729355,
+      "min_center_minus_half_width_m": -0.02724602318270647,
+      "min_xy_rectangle_envelope_gap_m": 0.0
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "optimistic",
+    "look": 1,
+    "path": [
+      [
+        4.5,
+        0.5
+      ],
+      [
+        6.2,
+        -0.6
+      ],
+      [
+        10.5,
+        0.0
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": {
+      "drive_margin_m": -0.23,
+      "turn_margin_m": 0.083
+    }
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4294487323449576,
+      "center_minus_half_width_m": 0.0994487323449576,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.111011374342027,
+      "center_minus_half_width_m": -0.218988625657973,
+      "planned_envelope_intrusion_proxy_m": 0.218988625657973
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": true,
+  "physical_collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.954,
+      -0.276,
+      0.111
+    ],
+    "t": 80.866
+  },
+  "execution_rehearsals": []
+}

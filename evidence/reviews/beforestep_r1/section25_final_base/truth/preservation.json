@@ -1,0 +1,49 @@
+{
+  "schema": "beforestep-r1-preservation/v1",
+  "original_output": "outputs/reviews/r1/section25_final_base/truth/imagination",
+  "source_commits_matching_actual_code": [
+    "2147b2f"
+  ],
+  "files_sha256": {
+    "events.jsonl": "300913a4be15a3d25a37c059c3645efd6368041aee73b5f03d3279f7b7e427bd",
+    "summary.json": "b811a8ae19246b88567eb65b1b43fd60ff4c9683274f70d32e33e88e64803380",
+    "traj.npz": "4ca271c6459a339822a96a0177448d0acc3b47b10391c162b3424b49c881c5c0",
+    "scene.json": "2a9c215b449382a8a58f69f0d47c1e99b5ed6ade4c5e49fd62f89e5e6d4384ba",
+    "run_identity.json": "b0126fb036fa141a695a2285bcdf06810ae1a5bc8095a4e3b9d30a4131f9ca93",
+    "map_final.png": "fefa1d5470a0c936c18edea0380bf29c269eb04a11f29464fc392dc6d3d9d6e0",
+    "state_final.npy": "be09ecfd862352c8c910a090ff88ee528b9909405ae30cbdffce1a4daaebca84",
+    "looks/look1_zmax.npy": "9cce095fd33dd2112038191dedc40f09aa4153da3a98a11f4c265e282ed6276b",
+    "looks/look1_state.npy": "f973b3fd40afc0da221cfee93ecd2f7ad07e3a00530001c0544ea04314c5caaa",
+    "looks/look1_dark.npy": "6dc04ecf513f39836beee9097a02f8ddd3ff7c20be55053559967cb7aeb6cdb4",
+    "looks/look1_rgb.png": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d",
+    "looks/look1_depth.npy": "748ef5c1b5c455c7aeb5911dc6d8789af1a9be86b932622f2ea1987fdf3c9a5f",
+    "decision/look1_state.npy": "be09ecfd862352c8c910a090ff88ee528b9909405ae30cbdffce1a4daaebca84",
+    "truth_standin/B.obj": "53bb0e29c58be997bb2530031b2a0c28eff82bf2691c3b01d465b8f35d81ca88",
+    "truth_standin/A.obj": "396062bf42416bc3d668e261548bd6b6433002206d8ee74775ae37713a29edde",
+    "rehearsal/look1/pane0/pane.json": "4b453fcc485cb9c1908ee128befc0fdaa509c3d36dbdce839d4044bf7e8080b6",
+    "rehearsal/look1/pane0/traj.npz": "2af324b7d9168d2a911550048db0c7b0fc9369f6d1ca418e97a1b064ab966cce",
+    "rehearsal/look1/pane0/wall.obj": "305b8a7f680b70363e3e0306dbe67acba4790fda9645e81aeb5a4ec57389d68a",
+    "rehearsal/look1/pane0/posed_0/manifest.json": "b62ab3e2a3c6be92940d0f51cc31a0e96b403dbd337aea47cacebe4840c41352",
+    "rehearsal/look1/pane0/posed_wall/manifest.json": "11ad3ab96f41faa41b263bcfcf2f99883544ef8f8a4a33c6d3b54c34cf3c57b2",
+    "rehearsal/look1/pane0/posed_1/manifest.json": "7a679d8cec8fab3aec2cc3f058e7422ee7a3f307d6b8be598f2ce2ca3db1d116"
+  },
+  "command": [
+    "python3",
+    "-m",
+    "beforestep",
+    "run",
+    "--scene",
+    "stress_v8",
+    "--controller-model",
+    "rules",
+    "--policy",
+    "imagination",
+    "--imagine",
+    "truth",
+    "--max-looks",
+    "2",
+    "--out",
+    "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/truth"
+  ],
+  "exit_code": 0
+}

@@ -1,0 +1,256 @@
+{
+  "schema": "beforestep-primary-literature/v1",
+  "note": "Primary source metadata retrieved in this research session. Selected-section reading is not a full-text review. Paper results are not BeforeStep results.",
+  "papers": [
+    {
+      "key": "saund2021",
+      "url": "https://proceedings.mlr.press/v155/saund21a.html",
+      "venue": "Proceedings of the 2020 Conference on Robot Learning, PMLR 155",
+      "year": 2021,
+      "verified_on": "2026-11-10",
+      "verification_scope": "Publisher metadata, abstract and BibTeX",
+      "metadata": [
+        [
+          "publisher",
+          "PMLR"
+        ],
+        [
+          "title",
+          "Diverse Plausible Shape Completions from Ambiguous Depth Images"
+        ],
+        [
+          "language",
+          "en"
+        ],
+        [
+          "abstract_html_url",
+          "https://proceedings.mlr.press/v155/saund21a.html"
+        ],
+        [
+          "pdf_url",
+          "https://proceedings.mlr.press/v155/saund21a/saund21a.pdf"
+        ],
+        [
+          "firstpage",
+          "1802"
+        ],
+        [
+          "lastpage",
+          "1813"
+        ],
+        [
+          "author",
+          "Bradley Saund"
+        ],
+        [
+          "author",
+          "Dmitry Berenson"
+        ],
+        [
+          "publication_date",
+          "2021/10/04"
+        ],
+        [
+          "inbook_title",
+          "Conference on Robot Learning"
+        ],
+        [
+          "conference_title",
+          "Conference on Robot Learning"
+        ],
+        [
+          "issn",
+          "2640-3498"
+        ],
+        [
+          "abstract",
+          "We propose PSSNet, a network architecture for generating diverse plausible 3D reconstructions from a single 2.5D depth image. Existing methods tend to produce only small variations on a single shape, even when multiple shapes are consistent with an observation. To obtain diversity we alter a Variational Auto Encoder by providing a learned shape bounding box feature as side information during training. Since these features are known during training, we are able to add a supervised loss to the encoder and noiseless values to the decoder. To evaluate, we sample a set of completions from a network, construct a set of plausible shape matches for each test observation, and compare using our plausible diversity metric defined over sets of shapes. We perform experiments using Shapenet mugs and partially-occluded YCB objects and find that our method performs comparably in datasets with little ambiguity, and outperforms existing methods when many shapes plausibly fit an observed depth image. We demonstrate one use for PSSNet on a physical robot when grasping objects in occlusion and clutter."
+        ]
+      ]
+    },
+    {
+      "key": "zhou2021",
+      "url": "https://arxiv.org/abs/2104.03670",
+      "venue": "ICCV",
+      "year": 2021,
+      "verified_on": "2026-11-10",
+      "verification_scope": "arXiv abstract and selected HTML sections; author repository README",
+      "metadata": [
+        [
+          "title",
+          "3D Shape Generation and Completion through Point-Voxel Diffusion"
+        ],
+        [
+          "author",
+          "Linqi Zhou"
+        ],
+        [
+          "author",
+          "Yilun Du"
+        ],
+        [
+          "author",
+          "Jiajun Wu"
+        ],
+        [
+          "arxiv_id",
+          "2104.03670"
+        ],
+        [
+          "abstract",
+          "We propose a novel approach for probabilistic generative modeling of 3D shapes. Unlike most existing models that learn to deterministically translate a latent vector to a shape, our model, Point-Voxel Diffusion (PVD), is a unified, probabilistic formulation for unconditional shape generation and conditional, multi-modal shape completion. PVD marries denoising diffusion models with the hybrid, point-voxel representation of 3D shapes. It can be viewed as a series of denoising steps, reversing the diffusion process from observed point cloud data to Gaussian noise, and is trained by optimizing a variational lower bound to the (conditional) likelihood function. Experiments demonstrate that PVD is capable of synthesizing high-fidelity shapes, completing partial point clouds, and generating multiple completion results from single-view depth scans of real objects."
+        ]
+      ]
+    },
+    {
+      "key": "lundell2019",
+      "url": "https://arxiv.org/abs/1903.00645",
+      "venue": "IROS",
+      "year": 2019,
+      "verified_on": "2026-11-10",
+      "verification_scope": "arXiv metadata and abstract; selected HTML sections III-A/III-B and IV-C/IV-D",
+      "metadata": [
+        [
+          "title",
+          "Robust Grasp Planning Over Uncertain Shape Completions"
+        ],
+        [
+          "author",
+          "Lundell, Jens"
+        ],
+        [
+          "author",
+          "Verdoja, Francesco"
+        ],
+        [
+          "author",
+          "Kyrki, Ville"
+        ],
+        [
+          "doi",
+          "10.1109/IROS40897.2019.8967816"
+        ],
+        [
+          "date",
+          "2019/03/02"
+        ],
+        [
+          "online_date",
+          "2019/08/12"
+        ],
+        [
+          "pdf_url",
+          "https://arxiv.org/pdf/1903.00645"
+        ],
+        [
+          "arxiv_id",
+          "1903.00645"
+        ],
+        [
+          "abstract",
+          "We present a method for planning robust grasps over uncertain shape completed objects. For shape completion, a deep neural network is trained to take a partial view of the object as input and outputs the completed shape as a voxel grid. The key part of the network is dropout layers which are enabled not only during training but also at run-time to generate a set of shape samples representing the shape uncertainty through Monte Carlo sampling. Given the set of shape completed objects, we generate grasp candidates on the mean object shape but evaluate them based on their joint performance in terms of analytical grasp metrics on all the shape candidates. We experimentally validate and benchmark our method against another state-of-the-art method with a Barrett hand on 90000 grasps in simulation and 200 grasps on a real Franka Emika Panda. All experimental results show statistically significant improvements both in terms of grasp quality metrics and grasp success rate, demonstrating that planning shape-uncertainty-aware grasps brings significant advantages over solely planning on a single shape estimate, especially when dealing with complex or unknown objects."
+        ]
+      ]
+    },
+    {
+      "key": "humt2023",
+      "url": "https://arxiv.org/abs/2308.00377",
+      "venue": "IROS",
+      "year": 2023,
+      "verified_on": "2026-11-10",
+      "verification_scope": "arXiv metadata and abstract; author repository README",
+      "metadata": [
+        [
+          "title",
+          "Shape Completion with Prediction of Uncertain Regions"
+        ],
+        [
+          "author",
+          "Humt, Matthias"
+        ],
+        [
+          "author",
+          "Winkelbauer, Dominik"
+        ],
+        [
+          "author",
+          "Hillenbrand, Ulrich"
+        ],
+        [
+          "doi",
+          "10.1109/IROS55552.2023.10342487"
+        ],
+        [
+          "date",
+          "2023/08/01"
+        ],
+        [
+          "online_date",
+          "2026/01/19"
+        ],
+        [
+          "pdf_url",
+          "https://arxiv.org/pdf/2308.00377"
+        ],
+        [
+          "arxiv_id",
+          "2308.00377"
+        ],
+        [
+          "abstract",
+          "Shape completion, i.e., predicting the complete geometry of an object from a partial observation, is highly relevant for several downstream tasks, most notably robotic manipulation. When basing planning or prediction of real grasps on object shape reconstruction, an indication of severe geometric uncertainty is indispensable. In particular, there can be an irreducible uncertainty in extended regions about the presence of entire object parts when given ambiguous object views. To treat this important case, we propose two novel methods for predicting such uncertain regions as straightforward extensions of any method for predicting local spatial occupancy, one through postprocessing occupancy scores, the other through direct prediction of an uncertainty indicator. We compare these methods together with two known approaches to probabilistic shape completion. Moreover, we generate a dataset, derived from ShapeNet, of realistically rendered depth images of object views with ground-truth annotations for the uncertain regions. We train on this dataset and test each method in shape completion and prediction of uncertain regions for known and novel object instances and on synthetic and real data. While direct uncertainty prediction is by far the most accurate in the segmentation of uncertain regions, both novel methods outperform the two baselines in shape completion and uncertain region prediction, and avoiding the predicted uncertain regions increases the quality of grasps for all tested methods."
+        ]
+      ]
+    },
+    {
+      "key": "menon2023",
+      "url": "https://arxiv.org/abs/2209.15376",
+      "venue": "IROS",
+      "year": 2023,
+      "verified_on": "2026-11-10",
+      "verification_scope": "arXiv metadata and abstract; Crossref/OpenAlex conference metadata",
+      "metadata": [
+        [
+          "title",
+          "NBV-SC: Next Best View Planning based on Shape Completion for Fruit Mapping and Reconstruction"
+        ],
+        [
+          "author",
+          "Menon, Rohit"
+        ],
+        [
+          "author",
+          "Zaenker, Tobias"
+        ],
+        [
+          "author",
+          "Dengler, Nils"
+        ],
+        [
+          "author",
+          "Bennewitz, Maren"
+        ],
+        [
+          "date",
+          "2022/09/30"
+        ],
+        [
+          "online_date",
+          "2023/08/30"
+        ],
+        [
+          "pdf_url",
+          "https://arxiv.org/pdf/2209.15376"
+        ],
+        [
+          "arxiv_id",
+          "2209.15376"
+        ],
+        [
+          "abstract",
+          "Active perception for fruit mapping and harvesting is a difficult task since occlusions occur frequently and the location as well as size of fruits change over time. State-of-the-art viewpoint planning approaches utilize computationally expensive ray casting operations to find good viewpoints aiming at maximizing information gain and covering the fruits in the scene. In this paper, we present a novel viewpoint planning approach that explicitly uses information about the predicted fruit shapes to compute targeted viewpoints that observe as yet unobserved parts of the fruits. Furthermore, we formulate the concept of viewpoint dissimilarity to reduce the sampling space for more efficient selection of useful, dissimilar viewpoints. Our simulation experiments with a UR5e arm equipped with an RGB-D sensor provide a quantitative demonstration of the efficacy of our iterative next best view planning method based on shape completion. In comparative experiments with a state-of-the-art viewpoint planner, we demonstrate improvement not only in the estimation of the fruit sizes, but also in their reconstruction, while significantly reducing the planning time. Finally, we show the viability of our approach for mapping sweet peppers plants with a real robotic system in a commercial glasshouse."
+        ]
+      ]
+    }
+  ]
+}

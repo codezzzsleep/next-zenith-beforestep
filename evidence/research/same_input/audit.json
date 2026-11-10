@@ -1,0 +1,221 @@
+{
+  "schema": "beforestep-same-input-audit/v1",
+  "scope": "All six preserved trained_live_gate_001 tasks; one observed rock, three input cohorts",
+  "geometry_identity": "0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1",
+  "thresholds": {
+    "schema": "v5-admission/v1",
+    "calibrated_from": "truth_v2 KA set",
+    "scale_ratio": {
+      "min": 0.889,
+      "max": 1.09
+    },
+    "hidden_frac_min": 0.3578,
+    "shell_contact_min": 0.0486,
+    "free_intrusion_max": 0.2864,
+    "contour_iou_min": 0.7068,
+    "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+  },
+  "map": {
+    "resolution_m": 0.05,
+    "shape": [
+      280,
+      90
+    ],
+    "unknown_labels": [
+      "DARK",
+      "HIDDEN",
+      "UNSEEN"
+    ]
+  },
+  "groups": [
+    {
+      "mode": "img",
+      "version": "G1-Turbo",
+      "faceCount": 30000,
+      "ordered_input_sha256": [
+        "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
+      ],
+      "tasks": [
+        {
+          "id": "A1",
+          "task_id": 5125347,
+          "status": "ok",
+          "glb": "assets/candidates/5125347/tex_mesh.glb",
+          "glb_sha256": "884fab2e3e911c0897361d91667938cbfeebc705d9894733240d9798f4a43cf4",
+          "admitted": false,
+          "metrics": {
+            "contour_iou": 0.6327,
+            "scale_ratio": 0.8764,
+            "hidden_frac": 0.7873,
+            "shell_contact": 0.6121,
+            "free_intrusion_frac": 0.17057
+          }
+        },
+        {
+          "id": "A2",
+          "task_id": 5125373,
+          "status": "ok",
+          "glb": "assets/candidates/5125373/tex_mesh.glb",
+          "glb_sha256": "eddea877e25d4e5edb81af1c62664b0c5ec525e32fc1d86b30772c92f3402c01",
+          "admitted": false,
+          "metrics": {
+            "contour_iou": 0.6398,
+            "scale_ratio": 0.9663,
+            "hidden_frac": 0.7973,
+            "shell_contact": 0.5968,
+            "free_intrusion_frac": 0.16046
+          }
+        }
+      ],
+      "submitted": 2,
+      "generated": 2,
+      "admitted": 0,
+      "pairs": [
+        {
+          "ids": [
+            "A1",
+            "A2"
+          ],
+          "both_admitted": false,
+          "all_map_different_cells": 43,
+          "unknown_occupied_cells": [
+            100,
+            94
+          ],
+          "unknown_intersection_cells": 86,
+          "unknown_union_cells": 108,
+          "unknown_different_cells": 22,
+          "unknown_disagreement_area_m2": 0.05500000000000001,
+          "unknown_footprint_iou": 0.7962962962962963
+        }
+      ]
+    },
+    {
+      "mode": "img",
+      "version": "G1-Turbo",
+      "faceCount": 30000,
+      "ordered_input_sha256": [
+        "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903"
+      ],
+      "tasks": [
+        {
+          "id": "B1",
+          "task_id": 5125456,
+          "status": "ok",
+          "glb": "assets/candidates/5125456/tex_mesh.glb",
+          "glb_sha256": "dd79a970d8163538dcba115cab8441becf995d232a9fbe0b57303f7c7554a4c7",
+          "admitted": true,
+          "metrics": {
+            "contour_iou": 0.7723,
+            "scale_ratio": 0.9326,
+            "hidden_frac": 0.9163,
+            "shell_contact": 0.7385,
+            "free_intrusion_frac": 0.05389
+          }
+        },
+        {
+          "id": "B2",
+          "task_id": 5125485,
+          "status": "failed"
+        }
+      ],
+      "submitted": 2,
+      "generated": 1,
+      "admitted": 1,
+      "pairs": []
+    },
+    {
+      "mode": "img",
+      "version": "G1-Turbo",
+      "faceCount": 30000,
+      "ordered_input_sha256": [
+        "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60"
+      ],
+      "tasks": [
+        {
+          "id": "C1",
+          "task_id": 5125592,
+          "status": "ok",
+          "glb": "assets/candidates/5125592/tex_mesh.glb",
+          "glb_sha256": "48ad16bc6e557b1a84fd1d1059476e1b85497e9ec1b7e4a73d65e1fa8b3c5385",
+          "admitted": true,
+          "metrics": {
+            "contour_iou": 0.7861,
+            "scale_ratio": 1.0337,
+            "hidden_frac": 0.8726,
+            "shell_contact": 0.8142,
+            "free_intrusion_frac": 0.08942
+          }
+        },
+        {
+          "id": "C2",
+          "task_id": 5125771,
+          "status": "ok",
+          "glb": "assets/candidates/5125771/tex_mesh.glb",
+          "glb_sha256": "a393705690aa3f2e435156f237f2bf529d03aa8206ea3bc961652ad841089d13",
+          "admitted": true,
+          "metrics": {
+            "contour_iou": 0.8422,
+            "scale_ratio": 0.9888,
+            "hidden_frac": 0.8743,
+            "shell_contact": 0.8351,
+            "free_intrusion_frac": 0.08431
+          }
+        }
+      ],
+      "submitted": 2,
+      "generated": 2,
+      "admitted": 2,
+      "pairs": [
+        {
+          "ids": [
+            "C1",
+            "C2"
+          ],
+          "both_admitted": true,
+          "all_map_different_cells": 31,
+          "unknown_occupied_cells": [
+            134,
+            128
+          ],
+          "unknown_intersection_cells": 125,
+          "unknown_union_cells": 137,
+          "unknown_different_cells": 12,
+          "unknown_disagreement_area_m2": 0.030000000000000006,
+          "unknown_footprint_iou": 0.9124087591240876
+        }
+      ]
+    }
+  ],
+  "sources_sha256": {
+    "assets/candidates/5125347/tex_mesh.glb": "884fab2e3e911c0897361d91667938cbfeebc705d9894733240d9798f4a43cf4",
+    "assets/candidates/5125373/tex_mesh.glb": "eddea877e25d4e5edb81af1c62664b0c5ec525e32fc1d86b30772c92f3402c01",
+    "assets/candidates/5125456/tex_mesh.glb": "dd79a970d8163538dcba115cab8441becf995d232a9fbe0b57303f7c7554a4c7",
+    "assets/candidates/5125592/tex_mesh.glb": "48ad16bc6e557b1a84fd1d1059476e1b85497e9ec1b7e4a73d65e1fa8b3c5385",
+    "assets/candidates/5125771/tex_mesh.glb": "a393705690aa3f2e435156f237f2bf529d03aa8206ea3bc961652ad841089d13",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A2_upload.jpg": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/B1.png": "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/B2.png": "7a6de34db0c4f034afba2d477aff46f11fa21927aa70cd596813e950c74b8903",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C1_upload.jpg": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/C2_upload.jpg": "654fb5d059ba47e1b053be25e4275b44a4f567d97bbedf3a558254020ba68a60",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/lux_request.json": "6575aec9e23018b945d3fb3e409f82dd3ef9437785c9224bcd71f087d78d99e0",
+    "assets/observations/trained_live_gate_001/looks/look1/T1/lux_result.json": "000d4b35bcb0c2d5f5cbb39dbdbc55caff671a969a6331d182556dcefccd7af9",
+    "assets/observations/trained_live_gate_001/looks/look1_state.npy": "41b4fd019023998a96a1ab8ac6f1cd3b6510a26acf33a72d7bafa9a1a26efbc3",
+    "evidence/learning/geometry/0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1/T1/footprint_A1.npy": "98a224a3c3607e3e18f6836d470a145aa1e1c08efdf926b858c22ba9a6977569",
+    "evidence/learning/geometry/0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1/T1/footprint_A2.npy": "c51f2cd5fe1b29d7a9a96322e934dbf010a529b55f9327eaf70a62405a5c6d4b",
+    "evidence/learning/geometry/0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1/T1/footprint_B1.npy": "b400a25e0c45198102c4ddcd07cd51bd43f63217fb552570022ac254dceec6ca",
+    "evidence/learning/geometry/0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1/T1/footprint_C1.npy": "5e8bee0d7e0b54145e33f18841037e7a892d74e89d2a33027e2cc6fb4e306cd9",
+    "evidence/learning/geometry/0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1/T1/footprint_C2.npy": "6169fb6f64b126fa88d888b0bbcb6248650e5caf9d6004683a01a72bd1135410",
+    "evidence/learning/geometry/0127c83bdf403e44d6a36580bd773c10e9cddc396def70caf388b52b1e21b7e1/T1/target_decision.json": "329859fb432184d66d770914996f867640fc7680138c7c5ca5dcc8dda427d670",
+    "evidence/research/same_input/build_evidence.py": "ec333242fc396dc822e8db11af12c36d993057391f247da7288e6dfa4bbe67bc",
+    "src/beforestep/navigation/map.py": "442f5a0dbd6f12b31ab5c410e0c1cdfee0ed0d6fd1d8698f204b2ea8edd0e51c"
+  },
+  "limitations": [
+    "Independent task IDs do not establish statistically independent or calibrated posterior samples.",
+    "Unknown map cells include shadow and occlusion; they are not a back-face-only segmentation.",
+    "World occupancy differences include generation, registration and grid discretization effects.",
+    "The two admitted same-input samples do not establish hazard coverage, cliff geometry or safety gains.",
+    "Existing admission results are audited, not recalibrated or rerun here."
+  ]
+}

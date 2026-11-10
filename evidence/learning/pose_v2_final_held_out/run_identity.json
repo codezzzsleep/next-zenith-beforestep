@@ -1,0 +1,176 @@
+{
+  "schema": "beforestep-controller-evaluation/v1",
+  "run_id": "028e834aaa6843a38008125e14de5abe",
+  "started_at": "2026-11-10T04:45:59.241412+00:00",
+  "tasks": [
+    {
+      "seed": 160001,
+      "goal": [
+        0.3604561459194223,
+        -0.549681538053109
+      ],
+      "initial_yaw": 0.3789041850311623,
+      "goal_yaw": -1.3461240280054607
+    },
+    {
+      "seed": 160002,
+      "goal": [
+        1.2164961763153128,
+        2.573070580505512
+      ],
+      "initial_yaw": -0.8112027868564851,
+      "goal_yaw": 2.0479250250797296
+    },
+    {
+      "seed": 160003,
+      "goal": [
+        0.3436331817596928,
+        -0.20032738162183017
+      ],
+      "initial_yaw": 2.5401465827384433,
+      "goal_yaw": -0.7077829928353773
+    },
+    {
+      "seed": 160004,
+      "goal": [
+        0.784009734983394,
+        -0.4790786512942318
+      ],
+      "initial_yaw": 1.7786793455744703,
+      "goal_yaw": -1.794967551297305
+    },
+    {
+      "seed": 160005,
+      "goal": [
+        2.373364870510525,
+        0.8714194133832212
+      ],
+      "initial_yaw": 0.15277081825831873,
+      "goal_yaw": 0.7059779288007189
+    },
+    {
+      "seed": 160006,
+      "goal": [
+        0.11637435969986912,
+        0.2419647952761051
+      ],
+      "initial_yaw": 1.3504748193699652,
+      "goal_yaw": -1.2869858356352288
+    },
+    {
+      "seed": 160007,
+      "goal": [
+        1.523137917038868,
+        2.220884610796907
+      ],
+      "initial_yaw": 2.212969866812694,
+      "goal_yaw": -1.5625114072356612
+    },
+    {
+      "seed": 160008,
+      "goal": [
+        1.0783645832302668,
+        0.2450570701173902
+      ],
+      "initial_yaw": 2.939401481204118,
+      "goal_yaw": -1.1894598556958467
+    }
+  ],
+  "max_seconds_per_episode": 65.0,
+  "terrain": {
+    "slope_degrees": 0.0,
+    "roughness_m": 0.0
+  },
+  "task_distribution": {
+    "relative_yaw_range": 3.141592653589793,
+    "near_goal_fraction": 0.4,
+    "goal_yaw_fraction": 1.0,
+    "goal_yaw_range_rad": 3.141592653589793
+  },
+  "gravity_mps2": 1.62,
+  "navigation_base": false,
+  "acceptance": {
+    "position_error_m": 0.075,
+    "specified_yaw_error_degrees": 4.0,
+    "linear_speed_mps": 0.035,
+    "yaw_rate_rps": 0.08,
+    "stable_control_frames": 5
+  },
+  "controllers": [
+    {
+      "label": "v4",
+      "path": "assets/models/goal_controller_v4/behavior_cloning.npz",
+      "sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+      "pose_path": null,
+      "pose_sha256": null
+    },
+    {
+      "label": "pose",
+      "path": "assets/models/goal_controller_v4/behavior_cloning.npz",
+      "sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+      "pose_path": "assets/models/observation_pose_v2/pose.npz",
+      "pose_sha256": "dc48b6404a6c0118e1ef82fd89b42a07bd7953bfb625e5ed60a6ed945e36f5da"
+    },
+    {
+      "label": "rules",
+      "path": "rules",
+      "sha256": null,
+      "pose_path": null,
+      "pose_sha256": null
+    }
+  ],
+  "source_sha256": {
+    "src/beforestep/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "src/beforestep/cli.py": "ed7791e155b2ef01f5c1d6b5da22ff6b6318252a0099af085b07f25474e5f547",
+    "src/beforestep/delivery/__init__.py": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523",
+    "src/beforestep/delivery/artifacts.py": "25725e113aa775aa9f81bdc334d8c2ecc3a325de163e7c37c84271313fd07d94",
+    "src/beforestep/delivery/learning.py": "0a597af61c757c19261e7f4826584a239402f33d4d6340c0f060d943e9d56240",
+    "src/beforestep/delivery/server.py": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab",
+    "src/beforestep/delivery/video.py": "6bd3693ba83413eec422bda993a1594c947442cf07d3bd67f4e3c32951f70513",
+    "src/beforestep/evaluation.py": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135",
+    "src/beforestep/generation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/generation/client.py": "aae3c06931bee95bdd7598b7fc46818eb11c90a3ec1d8ae653a6be078da6fb30",
+    "src/beforestep/generation/evaluate.py": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a",
+    "src/beforestep/generation/records.py": "510af1775b0803368603faff9f7a212d9b7307b1f5f4c4431fd7b87c93a13429",
+    "src/beforestep/geometry/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/geometry/admission.py": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf",
+    "src/beforestep/geometry/camera.py": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910",
+    "src/beforestep/geometry/imagination.py": "bb0a680aa6b67a53514066777983ef702a8cec3ffd8ffd05ec066d180ddcc771",
+    "src/beforestep/geometry/metrics.py": "32ca63a31666f274a8d2b62e7cd14019d397d2960eb8a41792a04ce73239642e",
+    "src/beforestep/geometry/registration.py": "03a523ab7a3ee7786d5db4bc2bb8cfb54cee410acf76cdb4d84b3cf540337ad6",
+    "src/beforestep/geometry/solid.py": "663a3f7e8a3011614f7951a7e1239b58897d79ddb521508992510f436ba5830d",
+    "src/beforestep/geometry/volume.py": "e26ab39219ebb5be58fac2b48db7326f5e99c09140a080b7613503985fde2239",
+    "src/beforestep/learning/__init__.py": "2d4b42443926bf506ac7cbc6fc09f1d17df868e256377669dcf80624c8110a2f",
+    "src/beforestep/learning/checkpoints.py": "0be9fefd265a58b078c67705dd6c82b7b3bcbb3dbdb81ec4c233fdf3d3b01df2",
+    "src/beforestep/learning/evaluate.py": "13ebf5529282182ac16cce5825bb50fefc784f77f30bb2be0ce52dbf2fe7ed8c",
+    "src/beforestep/learning/policy.py": "b101549135a21ee8a2d44a8514e7738ae31582521171d65fecc8464c1f00f44f",
+    "src/beforestep/learning/pose.py": "6035e2b6247fd830300405d488feef00ec961a17c3c37cc85c076a144df0a03b",
+    "src/beforestep/learning/pose_train.py": "49a63337d31ebf7c35c7950e58536f5d21456e19497725f0ae761124f349ef0f",
+    "src/beforestep/learning/ppo.py": "6982815993f697477eae61b18e6766cb2ce60bc0d1153094e75c08407d82520d",
+    "src/beforestep/learning/train.py": "3df3464cbc8056f36e4ae1e6e8a59186992405629c9c1707fa17aaa127db9a23",
+    "src/beforestep/navigation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/navigation/controller.py": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083",
+    "src/beforestep/navigation/map.py": "442f5a0dbd6f12b31ab5c410e0c1cdfee0ed0d6fd1d8698f204b2ea8edd0e51c",
+    "src/beforestep/observation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/observation/capture.py": "27fd8534f4f12042721e135da9139296f2e7d154eecc41e750010514c27f7371",
+    "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
+    "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
+    "src/beforestep/pipeline.py": "0c91de0c11c68eb1359ec233bb6a0535482f8546ab985608f3a1ec5e2cd44e7d",
+    "src/beforestep/resources.py": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c",
+    "src/beforestep/scene.py": "4d40e1075bc50a75aab6a79442b226d42f54bc423e3032a9b86c6e0ce2c7fe11",
+    "src/beforestep/simulation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/simulation/assets.py": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3",
+    "src/beforestep/simulation/environment.py": "7d9fe894461e14a5f6e5485c0e1bfcce4fe24a3b91d6d9e62773cf3a21a6e1b3",
+    "src/beforestep/simulation/robot.py": "123635fb0b22e2a5d36f8560c2438772dd186c3045a2edf249e24e08bd501942",
+    "src/beforestep/simulation/robot_model.py": "6b1187699d644e082f32ff55fbd6a00daec1b60aee5296baec7e9519c7476b0c",
+    "src/beforestep/simulation/soil.py": "ffc028f8c1e2f47b86132fce9411b98cf57e52a902e2b4bc338534b9a752533d",
+    "src/beforestep/simulation/soil_profiles.py": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73",
+    "src/beforestep/simulation/terrain.py": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e",
+    "src/beforestep/visualization/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/visualization/camera.py": "3311f310179298dd09131d2cdee1746c8f71f59f84a6336a5f0aaf9f797acebe",
+    "src/beforestep/visualization/model.py": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569",
+    "src/beforestep/visualization/scene.py": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332",
+    "src/beforestep/visualization/textures.py": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"
+  }
+}

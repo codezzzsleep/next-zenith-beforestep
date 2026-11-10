@@ -1,0 +1,101 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "504560bf00ac47579bc279e990a89fda",
+  "summary_sha256": "ac6c6a6d93caa877cde7a059cf076723de9f1f93a3d1652726ebdf8cf11b42e2",
+  "scene": {
+    "id": "stress_v8",
+    "purpose": "R1 primary showcase: V8 polar corridor with A and B; frozen geometry and rules controller",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.55,
+        "x": 4.55,
+        "y": -0.735,
+        "yaw": 90.0
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.42,
+        "x": 6.86,
+        "y": 0.22,
+        "yaw": -26.0
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.5,
+      0.0
+    ]
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4144289396956432,
+      "min_center_minus_half_width_m": 0.08442893969564319,
+      "min_xy_rectangle_envelope_gap_m": 0.08432606342048064
+    },
+    "B": {
+      "min_center_distance_m": 0.24982490255705525,
+      "min_center_minus_half_width_m": -0.08017509744294476,
+      "min_xy_rectangle_envelope_gap_m": 0.0
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 1,
+    "path": [
+      [
+        4.2,
+        0.3
+      ],
+      [
+        5.2,
+        0.3
+      ],
+      [
+        6.1,
+        -0.8
+      ],
+      [
+        8.4,
+        -0.4
+      ],
+      [
+        10.5,
+        0.0
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4158060571468385,
+      "center_minus_half_width_m": 0.08580605714683848,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.2519200591803735,
+      "center_minus_half_width_m": -0.07807994081962649,
+      "planned_envelope_intrusion_proxy_m": 0.07807994081962649
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": []
+}

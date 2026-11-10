@@ -1,0 +1,132 @@
+{
+  "schema": "beforestep-r1-preservation-audit/v1",
+  "verified_at": "2026-11-10T10:45:29.121826+00:00",
+  "original_files_verified": 603,
+  "runs": [
+    {
+      "run": "section20/conservative",
+      "source_commit": "73430ec80d617e8b905069b0c674fe24e3626f31",
+      "source_files_verified": 52,
+      "original_files_verified": 32
+    },
+    {
+      "run": "section20/optimistic",
+      "source_commit": "73430ec80d617e8b905069b0c674fe24e3626f31",
+      "source_files_verified": 52,
+      "original_files_verified": 12
+    },
+    {
+      "run": "section20/see_dark",
+      "source_commit": "73430ec80d617e8b905069b0c674fe24e3626f31",
+      "source_files_verified": 52,
+      "original_files_verified": 22
+    },
+    {
+      "run": "section20/truth",
+      "source_commit": "73430ec80d617e8b905069b0c674fe24e3626f31",
+      "source_files_verified": 52,
+      "original_files_verified": 26
+    },
+    {
+      "run": "section20_final/conservative",
+      "source_commit": "974c37bbd328b0fb3832e18d4a0c3a42dc32887e",
+      "source_files_verified": 52,
+      "original_files_verified": 37
+    },
+    {
+      "run": "section20_final/optimistic",
+      "source_commit": "974c37bbd328b0fb3832e18d4a0c3a42dc32887e",
+      "source_files_verified": 52,
+      "original_files_verified": 13
+    },
+    {
+      "run": "section20_final/see_dark",
+      "source_commit": "974c37bbd328b0fb3832e18d4a0c3a42dc32887e",
+      "source_files_verified": 52,
+      "original_files_verified": 25
+    },
+    {
+      "run": "section20_final/truth",
+      "source_commit": "974c37bbd328b0fb3832e18d4a0c3a42dc32887e",
+      "source_files_verified": 52,
+      "original_files_verified": 21
+    },
+    {
+      "run": "standins/legacy_input_mismatch",
+      "source_commit": "719e1ce71aad3f349932d251403db2d9b8266b3f",
+      "source_files_verified": 52,
+      "original_files_verified": 80
+    },
+    {
+      "run": "standins/retry_all_rejected",
+      "source_commit": "00e9a41c428c29e4855a4ed0e4ac91889e95b4ac",
+      "source_files_verified": 52,
+      "original_files_verified": 109
+    },
+    {
+      "run": "standins/retry_one_candidate",
+      "source_commit": "00e9a41c428c29e4855a4ed0e4ac91889e95b4ac",
+      "source_files_verified": 52,
+      "original_files_verified": 114
+    },
+    {
+      "run": "standins/single_batch",
+      "source_commit": "00e9a41c428c29e4855a4ed0e4ac91889e95b4ac",
+      "source_files_verified": 52,
+      "original_files_verified": 110
+    }
+  ],
+  "bounded_retry": [
+    {
+      "run": "retry_one_candidate",
+      "identical_ordered_upload_bytes": true,
+      "tasks": 12,
+      "retry_requests": 1,
+      "sampling_stop": []
+    },
+    {
+      "run": "retry_all_rejected",
+      "identical_ordered_upload_bytes": true,
+      "tasks": 12,
+      "retry_requests": 1,
+      "sampling_stop": [
+        {
+          "kind": "sampling_stop",
+          "look": 2,
+          "target": "T2",
+          "total_samples": 12,
+          "generated_candidates": 0,
+          "admitted": 0,
+          "action": "safe_stop_then_review_section_2_4"
+        }
+      ]
+    }
+  ],
+  "baseline_reproduction": [
+    {
+      "run": "conservative",
+      "all_trajectory_arrays_equal": true
+    },
+    {
+      "run": "optimistic",
+      "all_trajectory_arrays_equal": true
+    },
+    {
+      "run": "see_dark",
+      "all_trajectory_arrays_equal": true
+    },
+    {
+      "run": "truth",
+      "all_trajectory_arrays_equal": true
+    }
+  ],
+  "tests": {
+    "count": 38,
+    "result": "passed",
+    "log": "logs/r1_final_boundary_tests.log"
+  },
+  "new_paid_tasks": 0,
+  "registered_standin_chain_arrived": false,
+  "replay_source_files_verified": 58,
+  "replay_source_restoration": "shared_geometry/manifest.json maps the validated first-eye source to already preserved identical bytes"
+}

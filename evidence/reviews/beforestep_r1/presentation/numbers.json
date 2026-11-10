@@ -1,0 +1,277 @@
+{
+  "schema": "beforestep-r1-presentation-audit/v1",
+  "passed": true,
+  "runs_checked": [
+    {
+      "run": "conservative",
+      "run_id": "3ed8bc6df1b04a249dd3730f612e4c7b",
+      "trajectory_points": 1009
+    },
+    {
+      "run": "optimistic",
+      "run_id": "16d8f0da8895425c8cc9bea3778ceb05",
+      "trajectory_points": 997
+    },
+    {
+      "run": "see_dark",
+      "run_id": "7ae5e58b7bca4aadbe668cf7c22bec92",
+      "trajectory_points": 914
+    },
+    {
+      "run": "truth",
+      "run_id": "25d8003986024282b43bb3b1a82461c0",
+      "trajectory_points": 957
+    },
+    {
+      "run": "imagination",
+      "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+      "trajectory_points": 932
+    },
+    {
+      "run": "replay",
+      "run_id": "50b2d1d643024df4b72159748e41a570",
+      "trajectory_points": 932
+    },
+    {
+      "run": "trust_A1",
+      "run_id": "13585711b95941baae73b939b63ae13d",
+      "trajectory_points": 1029
+    },
+    {
+      "run": "trust_B1",
+      "run_id": "55e22be54729401b940ea424df03a19d",
+      "trajectory_points": 1029
+    },
+    {
+      "run": "trust_C2",
+      "run_id": "504560bf00ac47579bc279e990a89fda",
+      "trajectory_points": 984
+    }
+  ],
+  "candidate_metrics_checked": 11,
+  "rehearsal_trajectories_checked": 12,
+  "report_html_matches_markdown": true,
+  "numeric_literal_sources": {
+    "site/index.html": {
+      "10.5": [
+        "lux/original_b/scene.json#/goal"
+      ],
+      "0": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+        "lux/original_b/eval.json",
+        "lux/original_b/scene.json#/goal"
+      ],
+      "0.0": [
+        "lux/original_b/eval.json",
+        "lux/original_b/scene.json#/goal"
+      ],
+      "512": [
+        "config/protocol.json#/inputs/min_native_px"
+      ],
+      "251": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/state.json#/crop_native_px"
+      ],
+      "513.388": [
+        "standins/registration_fixed/events.jsonl#/second_look_plan"
+      ],
+      "506": [
+        "standins/registration_fixed/looks/look2/T2/state.json"
+      ],
+      "47.541": [
+        "lux/original_b/physical_clearance.json"
+      ],
+      "-0.062778": [
+        "lux/original_b/eval.json"
+      ],
+      "1223.6": [
+        "lux/original_b/summary.json#/wall_s"
+      ],
+      "3": [
+        "evidence/reviews/beforestep_r1/section25_final_base/see_dark/summary.json#/looks",
+        "lux/original_b: task/admission/rehearsal counts"
+      ]
+    },
+    "docs/report.md": {
+      "21.899": [
+        "section25_final_base/optimistic/eval.json"
+      ],
+      "10": [
+        "lux/original_b/scene.json#/goal"
+      ],
+      "12": [
+        "lux/original_b: task/admission/rehearsal counts"
+      ],
+      "5": [
+        "REVIEW_BEFORESTEP_R1.md: frozen 5 cm planning rule",
+        "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json#/looks"
+      ],
+      "142.2": [
+        "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json#/sim_time_s"
+      ],
+      "3": [
+        "evidence/reviews/beforestep_r1/section25_final_base/see_dark/summary.json#/looks",
+        "lux/original_b: task/admission/rehearsal counts"
+      ],
+      "147.26": [
+        "evidence/reviews/beforestep_r1/section25_final_base/see_dark/summary.json#/sim_time_s"
+      ],
+      "1": [
+        "evidence/reviews/beforestep_r1/counterfactuals/A1/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/counterfactuals/B1/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/counterfactuals/C2/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+        "evidence/reviews/beforestep_r1/lux/original_b/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/lux/replay/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/section25_final_base/truth/summary.json#/looks",
+        "lux/original_b/eval.json#/robot_envelope",
+        "lux/original_b/looks/look1/T2/decide/target_decision.json#/thresholds",
+        "lux/original_b: registered footprint vs post-run truth",
+        "standins/registration_fixed/looks/look2/T2/decide/target_decision.json"
+      ],
+      "80.87": [
+        "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json#/sim_time_s"
+      ],
+      "112.84": [
+        "evidence/reviews/beforestep_r1/lux/original_b/summary.json#/sim_time_s",
+        "evidence/reviews/beforestep_r1/lux/replay/summary.json#/sim_time_s"
+      ],
+      "115.88": [
+        "evidence/reviews/beforestep_r1/section25_final_base/truth/summary.json#/sim_time_s"
+      ],
+      "11": [
+        "lux/original_b: task/admission/rehearsal counts"
+      ],
+      "5958642": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/lux_result.json"
+      ],
+      "0.4325": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "1.0676": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "0.7068": [
+        "lux/original_b/looks/look1/T2/decide/target_decision.json#/thresholds"
+      ],
+      "5958654": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/lux_result.json"
+      ],
+      "0.8459": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "1.0": [
+        "evidence/reviews/beforestep_r1/counterfactuals/A1/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/counterfactuals/B1/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/counterfactuals/C2/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+        "evidence/reviews/beforestep_r1/lux/original_b/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/lux/replay/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json#/looks",
+        "evidence/reviews/beforestep_r1/section25_final_base/truth/summary.json#/looks",
+        "standins/registration_fixed/looks/look2/T2/decide/target_decision.json"
+      ],
+      "5958703": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/lux_result.json"
+      ],
+      "0.2715": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "0.9324": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "5958934": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/lux_result.json"
+      ],
+      "0.7108": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "0.9459": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "5958937": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/lux_result.json"
+      ],
+      "0.63": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "0.9054": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+      ],
+      "0.889": [
+        "lux/original_b/looks/look1/T2/decide/target_decision.json#/thresholds"
+      ],
+      "1.09": [
+        "lux/original_b/looks/look1/T2/decide/target_decision.json#/thresholds"
+      ],
+      "0.70": [
+        "lux/original_b: registered footprint vs post-run truth"
+      ],
+      "0.60": [
+        "lux/original_b: registered footprint vs post-run truth"
+      ],
+      "512": [
+        "config/protocol.json#/inputs/min_native_px"
+      ],
+      "251": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/state.json#/crop_native_px"
+      ],
+      "513.388": [
+        "standins/registration_fixed/events.jsonl#/second_look_plan"
+      ],
+      "506": [
+        "standins/registration_fixed/looks/look2/T2/state.json"
+      ],
+      "0.9673": [
+        "standins/registration_fixed/looks/look2/T2/decide/target_decision.json"
+      ],
+      "40": [
+        "logs/r1_registration_fix_tests.log"
+      ],
+      "256.109": [
+        "lux/original_b/physical_clearance.json"
+      ],
+      "47.541": [
+        "lux/original_b/physical_clearance.json"
+      ],
+      "0.76": [
+        "lux/original_b/eval.json#/robot_envelope"
+      ],
+      "0.66": [
+        "lux/original_b/eval.json#/robot_envelope"
+      ],
+      "-62.778": [
+        "lux/original_b/eval.json"
+      ],
+      "-0.062778": [
+        "lux/original_b/eval.json"
+      ],
+      "1223.6": [
+        "lux/original_b/summary.json#/wall_s"
+      ],
+      "0": [
+        "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+        "lux/original_b/eval.json",
+        "lux/original_b/scene.json#/goal"
+      ],
+      "104.0": [
+        "evidence/reviews/beforestep_r1/counterfactuals/A1/summary.json#/sim_time_s",
+        "evidence/reviews/beforestep_r1/counterfactuals/B1/summary.json#/sim_time_s"
+      ],
+      "119.16": [
+        "evidence/reviews/beforestep_r1/counterfactuals/C2/summary.json#/sim_time_s"
+      ],
+      "115490": [
+        "assets/training/goal_controller_v4/demonstrations.npz"
+      ],
+      "15": [
+        "evidence/learning/held_out_v4/summary.json#/controllers/v4"
+      ],
+      "16": [
+        "evidence/learning/held_out_v4/summary.json#/controllers/v4"
+      ]
+    }
+  }
+}

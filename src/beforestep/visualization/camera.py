@@ -3,6 +3,13 @@ import pathlib, re, sys
 import numpy as np
 from beforestep import scene as S
 
+
+def terrain_mesh_asset(path):
+    # A truly planar visual mesh has zero enclosed volume. Shell inertia allows
+    # compilation without adding thickness or changing the rendered surface.
+    shell = ' inertia="shell"' if S.TERRAIN['type'] == 'plain' and not S.TERRAIN['craters'] else ''
+    return f'<mesh name="v8_ground" file="{path}"{shell}/>'
+
 def video_model(env, rock_bodies, holos=(), width=1920, height=1080, ambient=0.012, sun=2.7, off=None):
     from . import scene as VV
     from . import model as vmodel
@@ -18,7 +25,7 @@ def video_model(env, rock_bodies, holos=(), width=1920, height=1080, ambient=0.0
                                                               (L, (F - L) / 2, 0, (F + L) / 2), (L, (F - L) / 2, 0, -(F + L) / 2)]))
         terr = S.terrain_visual_obj(S.LW.CACHE / S.terrain_cache_name())
         xml = xml.replace(far, boxes + '<geom name="v8_ground" type="mesh" mesh="v8_ground" material="v8_reg" contype="0" conaffinity="0"/>')
-        xml = xml.replace('<asset>', f'<asset><mesh name="v8_ground" file="{terr}"/>'
+        xml = xml.replace('<asset>', f'<asset>{terrain_mesh_asset(terr)}'
                           '<material name="v8_reg" texture="v7_reg" specular="0" shininess="0"/>', 1)
         xml = xml.replace('ambient="0.035 0.037 0.045"', f'ambient="{ambient} {ambient} {ambient * 1.2}"')
         xml = xml.replace('<headlight ambient="0.05 0.05 0.06" diffuse="0.05 0.05 0.05"',

@@ -314,6 +314,8 @@ def choose_second_look(state, pose_xy, need_mask, policy_occ, reach=3.2, step=0.
     候选：在当前策略下能安全开到、能原地转向的点；朝向：对准 need_mask 的重心。返回 (x, y, yaw, 预计新看到的格数)。"""
     clr = clearance(policy_occ)
     cells = list(zip(*np.nonzero(need_mask)))
+    if not cells:
+        return []
     if len(cells) > 600:
         idx = np.random.default_rng(0).choice(len(cells), 600, replace=False); cells = [cells[i] for i in idx]
     cxy = np.array([[XS[i], YS[j]] for i, j in cells]).mean(0)
@@ -325,6 +327,8 @@ def choose_second_look(state, pose_xy, need_mask, policy_occ, reach=3.2, step=0.
     for x in np.arange(pose_xy[0] - 0.4, pose_xy[0] + reach, step):
         for y in np.arange(Y0 + 0.4, Y1 - 0.4, step):
             i, j = cell_of(x, y)
+            if i < 0 or i >= NX or j < 0 or j >= NY:
+                continue
             if clr[i, j] < R_TURN or np.hypot(x - pose_xy[0], y - pose_xy[1]) > reach:
                 continue
             aim = cxy if target is None else txy

@@ -113,6 +113,35 @@ class SuiteSceneTests(unittest.TestCase):
         S.configure('stress_v8')
         self.assertEqual(S.ASSET_CACHE_PRECISION, 'legacy_mm')
 
+    def test_planar_visual_terrain_compiles_without_changing_its_height(self):
+        import mujoco
+        from beforestep.visualization.camera import terrain_mesh_asset
+        self.select(terrain={'type': 'plain', 'right_wall': False})
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / 'flat.obj'
+            path.write_text('v -1 -1 0\nv 1 -1 0\nv 1 1 0\nv -1 1 0\nf 1 2 3\nf 1 3 4\n')
+            asset = terrain_mesh_asset(path)
+            model = mujoco.MjModel.from_xml_string('<mujoco><asset>' + asset + '</asset><worldbody>'
+                '<geom type="mesh" mesh="v8_ground" contype="0" conaffinity="0"/></worldbody></mujoco>')
+            data = mujoco.MjData(model); mujoco.mj_forward(model, data)
+            vertices = model.mesh_vert @ data.geom_xmat[0].reshape(3, 3).T + data.geom_xpos[0]
+            np.testing.assert_allclose(vertices[:, 2], 0., atol=1e-12)
+
+    def test_empty_observation_need_has_no_viewpoint(self):
+        state = np.full(N.GX.shape, N.FREE, np.int8)
+        empty = np.zeros_like(state, dtype=bool)
+        self.assertEqual(N.choose_second_look(state, (3., 0.), empty, empty), [])
+
+    def test_viewpoint_candidates_near_map_end_stay_in_bounds(self):
+        state = np.full(N.GX.shape, N.FREE, np.int8)
+        need = np.zeros_like(state, dtype=bool); need[-8:-2, 40:45] = True
+        with patch.object(N, 'visible_cells', return_value=60):
+            candidates = N.choose_second_look(state, (12.2, .1), need, np.zeros_like(need))
+        self.assertTrue(candidates)
+        for x, y, *_ in candidates:
+            i, j = N.cell_of(x, y)
+            self.assertTrue(0 <= i < N.NX and 0 <= j < N.NY)
+
 
 class PoolGeneratorTests(unittest.TestCase):
     def test_seeded_pool_is_reproducible_and_respects_preregistered_ranges(self):

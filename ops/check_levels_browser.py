@@ -1,5 +1,6 @@
 """Real-browser five-step acceptance, all choices, meshes and score integrity."""
 import argparse
+import copy
 import json
 from pathlib import Path
 
@@ -54,6 +55,10 @@ def main():
                     models.append(candidate['id'])
                 page.locator('[data-level-model=truth]').click()
                 page.wait_for_function('(src)=>document.querySelector("#level-model").src.endsWith(src)&&document.querySelector("#level-model").loaded', arg=candidate['truth_model'], timeout=60000)
+            page.locator('[data-level-model=truth]').click()
+            for rock in level['truth']['rocks']:
+                page.locator('#level-truth-rock').select_option(rock['id'])
+                page.wait_for_function('(src)=>document.querySelector("#level-model").src.endsWith(src)&&document.querySelector("#level-model").loaded', arg=rock['model'], timeout=60000)
             page.evaluate('document.querySelector("#level-model").cameraOrbit="140deg 65deg 2m";document.querySelector("#level-model").jumpCameraToGoal()')
             for key in ('conservative', 'imagination'):
                 page.locator('[data-level-rewatch=' + key + ']').click()
@@ -84,12 +89,28 @@ def main():
         page.locator('#level-model').screenshot(path=str(output / (args.name + '-mobile-model.png')))
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         page.screenshot(path=str(output / (args.name + '-mobile.png')), full_page=True)
+        # Exercise the absence branch without inventing an experimental result:
+        # intercept only the browser payload in this test and retain real scans.
+        fixture = copy.deepcopy(expected)
+        fixture['levels'] = fixture['levels'][:1]
+        fixture['levels'][0]['candidates'] = []
+        page.route('**/data/levels.json', lambda route: route.fulfill(json=fixture))
+        page.reload(wait_until='networkidle')
+        page.locator('#level-choose').click(); page.locator('[data-level-choice=imagination]').click()
+        page.locator('#level-finish').click(); page.locator('#level-reveal').click()
+        page.locator('[data-level-model=truth]').click()
+        page.locator('#level-model').scroll_into_view_if_needed()
+        truth_src = fixture['levels'][0]['truth']['rocks'][0]['model']
+        page.wait_for_function('(src)=>document.querySelector("#level-model").src.endsWith(src)&&document.querySelector("#level-model").loaded', arg=truth_src, timeout=60000)
+        assert page.locator('#level-model-error').is_hidden()
+        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         assert not errors, errors
         assert not failures, failures
         report = {'schema': 'beforestep-levels-browser-acceptance/v1', 'passed': True,
                   'url': args.url, 'levels': checked, 'width_390_no_overflow': True,
                   'page_errors': errors, 'http_errors': failures,
                   'anchor_only_development': expected.get('anchor_only_development', False)}
+        report['no_candidate_truth_access_verified_with_ui_fixture'] = True
         (output / (args.name + '-browser.json')).write_text(json.dumps(report, ensure_ascii=False, indent=2) + '\n')
         print(json.dumps(report, ensure_ascii=False), flush=True)
         browser.close()

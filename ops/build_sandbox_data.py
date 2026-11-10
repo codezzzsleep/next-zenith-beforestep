@@ -22,7 +22,10 @@ def main():
         path = asset / 'h1/body_vis.obj'
         if not path.is_file():
             continue
-        mesh = trimesh.load(path, force='mesh', process=False)
+        # Use the same principal-axis alignment and ground normalization as the
+        # real scene exporter, rather than the raw scan's arbitrary frame.
+        canonical, _ = S.rock_asset_uniform(asset.name, 1.0)
+        mesh = trimesh.load(canonical, force='mesh', process=False)
         from scipy.spatial import ConvexHull
         points = mesh.vertices[:, :2]
         hull = points[ConvexHull(points).vertices]

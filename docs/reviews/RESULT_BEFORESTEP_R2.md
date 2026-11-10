@@ -345,3 +345,9 @@ F1修复后的种子1–12全部48非Luxexit0：D1/O5/U5/未归类1，0执行错
 C2边界补验：模板逆变换查询加入二维索引边界，避免拖出视野的源格子被线性索引折回到另一行；`check_sandbox_consistency.py` exit0，锚点独立近似仍1/1、精确EDT误差0（C2-anchor-grid-bounds.log）。D报告转换将目录证据链接指向GitHub实际目录，避免Pages无目录索引；整合脚本compile，完整D待B。
 
 后续B5付费前，另检查多目标第二眼的全局停止：当前pipeline在某一目标6b仍零准入时设置sampling_exhausted，但只在目标循环之后停车；若同一眼另有零准入目标，prepare_second_batch可能先写额外6b。需要离线验证“已有目标用满12份后停车、仍对已生成GLB完成自检”的请求行为。当前未改src，正在跑的两个池保持源671a4e6；若需修正，等两个池终态后一次改source并跑完整§2.2与全部单测，再进入下一完整新池/B4，0付费阶段允许修，不带不一致前进。
+
+多目标停止专项IO已经复现，预期断言exit1（`outputs/qa/r2/multi-target-stop/before.log`，public regressions/multi-target-stop/before.*）：在模拟的同眼两个目标中，T1原6+6b共12份全部失败/准入0、已有全局sampling_exhausted=true，继续T2的当前prepare_second_batch仍会写另外6份请求。无真实Lux、无物理模拟、0付费；这个失败是新增场景付费之前发现的请求状态缺口。需保持所有已生成GLB自检，在已有一目标用满12份时禁止给剩余目标新增6b；不改阈值/两眼/相机/控制。两个池仍在跑，暂不改src避免混源；待终态后一次修、63+新机制测试和完整§2.2全回归，通过后再新池/B4。
+
+C1真值访问补齐：build_levels_site重建R1锚点exit0，独立真实扫描入口不依赖生成候选；合并观测目标的真实参考为对应扫描组合；候选/真值按原物理场景body世界位置归一（R1 B的body_z=0.00002m）。JS语法通过，当前只构建验证；早启动的浏览器在build未终态前主动停止exit143，原C1-truth-access-browser.log保留；构建后C1-truth-access-final浏览器也返回143，原因未确认、日志空，不冒称通过。待两个候选池结束后再做完整C1浏览器，原c5be2c6五步验收仍保留。
+
+C2扫描库现用与正式场景相同的主轴对齐/底面归零/等比尺度（S.rock_asset_uniform），不再用原扫描任意坐标框。`build_sandbox_data.py`与`check_sandbox_consistency.py`均exit0；12扫描/1锚点/2扫描有准入模板，独立近似仍1/1、精确地图EDT误差0（C2-canonical-scan-*.log）。仅修查看/沙盒数据，src无改动，两个非Lux池仍同source。

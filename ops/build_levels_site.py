@@ -81,13 +81,28 @@ def build(row):
     true_masks = {}
     from matplotlib.path import Path as Polygon
     true_models = {}
+    # Match the actual scan placement from the frozen collision scene, including
+    # its terrain-dependent vertical position. This is post-run presentation.
+    import mujoco
+    world = ROOT / 'outputs/site/levels/world' / scene_id
+    spec, _, meta = S.scene_spec(world)
+    environment = S.make_env(spec)
+    placements = {key: environment.data.xpos[mujoco.mj_name2id(environment.model,
+                  mujoco.mjtObj.mjOBJ_BODY, value['body'])].copy()
+                  for key, value in meta['rocks'].items()}
+    world_scans = {}
     for key, rock in definition['rocks'].items():
         polygon = polygons[key]
         true_masks[key] = Polygon(polygon).contains_points(np.c_[N.GX.ravel(), N.GY.ravel()]).reshape(N.GX.shape)
-        record['truth']['rocks'].append({'id': key, 'polygon': polygon.tolist()})
         scan, _ = S.rock_asset_uniform(rock['rock'], rock['height'])
-        true_models[key] = model(trimesh.load(scan, force='mesh', process=False),
-                                 DATA / 'meshes' / (scene_id + '_truth_' + key + '.glb'), yaw=rock['yaw'])
+        mesh = trimesh.load(scan, force='mesh', process=False)
+        mesh.apply_transform(trimesh.transformations.rotation_matrix(np.radians(rock['yaw']), [0, 0, 1]))
+        mesh.apply_translation(placements[key])
+        world_scans[key] = mesh
+        true_models[key] = model(mesh, DATA / 'meshes' / (scene_id + '_truth_' + key + '.glb'), anchor=placements[key])
+        record['truth']['rocks'].append({'id': key, 'polygon': polygon.tolist(), 'model': true_models[key],
+            'model_sha256': sha(ROOT / 'site' / true_models[key]), 'world_body_position': placements[key].tolist()})
+    del environment
     scratch = ROOT / 'outputs/site/levels'
     scratch.mkdir(parents=True, exist_ok=True)
     for decision in sorted(actual.glob('looks/look*/T*/decide/target_decision.json')):
@@ -96,6 +111,12 @@ def build(row):
         cells = np.load(target / 'cells.npy')
         key = max(true_masks, key=lambda k: int((true_masks[k] & cells).sum()))
         rock = definition['rocks'][key]
+        associated = [k for k in true_masks if (true_masks[k] & cells).any()]
+        reference = true_models[key]
+        if len(associated) > 1:
+            reference = model(trimesh.util.concatenate([world_scans[k] for k in associated]),
+                DATA / 'meshes' / (scene_id + '_' + target_state['look'] + '_' + target.name + '_truth.glb'),
+                anchor=placements[key])
         look = int(target_state['look'].removeprefix('look'))
         for candidate in read(decision)['candidates']:
             cid = f'{scene_id}_L{look}_{target.name}_{candidate["id"]}'
@@ -106,10 +127,10 @@ def build(row):
             if candidate.get('M') is not None and candidate.get('glb'):
                 world = candidate_world_mesh(candidate['glb'], candidate['M'], target_state['local_frame'], scratch / (cid + '.obj'))
                 uri = model(trimesh.load(world, force='mesh', process=False), DATA / 'meshes' / (cid + '.glb'),
-                            anchor=[rock['x'], rock['y'], 0.])
+                            anchor=placements[key])
             record['candidates'].append({'id': cid, 'look': '首眼' if look == 1 else '第二眼',
                 'target': target.name, 'sample': candidate['id'], 'admitted': candidate['admitted'],
-                'task_id': candidate.get('task_id'), 'model': uri, 'truth_model': true_models[key],
+                'task_id': candidate.get('task_id'), 'model': uri, 'truth_model': reference, 'truth_rocks': associated,
                 'original_glb_sha256': sha(ROOT / candidate['glb']) if candidate.get('glb') else None,
                 'model_sha256': sha(ROOT / 'site' / uri) if uri else None,
                 'footprint': np.c_[N.XS[ix], N.YS[iy]].tolist(), 'source_decision': str(decision.relative_to(ROOT))})

@@ -30,6 +30,7 @@ def related_work_block(summary):
     lines.append(f"全部可执行拒绝候选反事实中碰撞{cf['collisions']}/{cf['executed']}，另{cf['unexecutable']}份不能执行。" +
                  ('自检确实拒绝过会导致碰撞的候选，具体比例和运行身份公开。' if summary['selfcheck_collision_evidence']
                   else '该批没有证明自检挡住碰撞，仍报告自检偏保守。'))
+    lines.append('反事实完成试验包含规划停车，不能把未碰撞直接等同于成功通行；到达、停车、未完成和碰撞的终态在总表同时列出。')
     lines.append('真实第二眼场景：' + ('、'.join(summary['second_eye_scenes']) or '无') + '；真实6b追加场景：' +
                  ('、'.join(summary['six_b_scenes']) or '无') + '。')
     lines.extend(['', '这是有限扫描岩石、低太阳角与预注册摆放分布下的受控仿真实验。它没有比较多候选与单候选，也没有测量生成分布的覆盖率或证明任意月面的有效性；不继承上述论文的实体实验结论。', ''])

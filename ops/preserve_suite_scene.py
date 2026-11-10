@@ -42,6 +42,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--scene', required=True)
     parser.add_argument('--runs', required=True, help='JSON mapping variant names to completed run directories')
+    parser.add_argument('--extras', help='JSON list of this scene\'s real/review/CF trees, including failed attempts')
     parser.add_argument('--archive-dir', default='/root/3d/artifacts/beforestep-r2')
     parser.add_argument('--out', default='evidence/suite/scenes')
     args = parser.parse_args()
@@ -70,6 +71,17 @@ def main():
                     path = ROOT / task['glb']
                     assert path.is_file() and sha(path) == task['glb_sha256']
                     files[str(path.relative_to(ROOT))] = path
+    extras = json.loads((ROOT / args.extras).read_text()) if args.extras else []
+    for relative_root in extras:
+        directory = (ROOT / relative_root).resolve()
+        assert directory.is_relative_to(ROOT / 'outputs/suite') and directory.name == args.scene
+        for path in directory.rglob('*'):
+            if not path.is_file() or 'lux_cache' in path.parts:
+                continue
+            relative = str(path.relative_to(ROOT))
+            files[relative] = path
+            if path.name in ('chain.json', 'counterfactuals.json'):
+                selected.add(relative)
     output = ROOT / args.out / args.scene
     output.mkdir(parents=True, exist_ok=True)
     archive_dir = Path(args.archive_dir).resolve()
@@ -86,6 +98,9 @@ def main():
             entries.append(entry)
             info = tar.gettarinfo(str(path), arcname='repo/' + relative)
             info.mtime = 0; info.uid = info.gid = 0; info.uname = info.gname = ''
+            # Store file bytes even when a runtime asset is a machine-local
+            # symlink. The portable archive must not depend on its old target.
+            info.type = tarfile.REGTYPE; info.linkname = ''; info.size = path.stat().st_size
             if digest in seen:
                 info.type = tarfile.LNKTYPE; info.linkname = seen[digest]; info.size = 0
                 tar.addfile(info)
@@ -121,6 +136,7 @@ def main():
         raise ValueError(f'Public scene review set exceeds 150 MB ({size}); keep the full archive and narrow derived caches')
     manifest = {'schema': 'beforestep-suite-scene-preservation/v1', 'scene': args.scene,
                 'runs': runs, 'files': entries, 'public_bytes': size,
+                'supplementary_run_trees': extras,
                 'complete_archive': {'path': str(archive), 'bytes': archive.stat().st_size, 'sha256': sha(archive)},
                 'scope': 'Exact raw run artifacts and original generated GLBs in the external archive; bounded public evidence objects retain exact original byte identities. No credentials or upload ledgers.'}
     (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')

@@ -21,6 +21,15 @@ def has_collision(summary):
     return summary['collision'] is not None or summary['result'] == 'collision'
 
 
+def counterfactual_outcomes(cf):
+    rows = cf['runs'] if isinstance(cf['runs'], list) else [r for r in cf['runs'].values() if r['executed']]
+    counts = {}
+    for row in rows:
+        outcome = 'collision' if has_collision(row['summary']) else row['summary']['result']
+        counts[outcome] = counts.get(outcome, 0) + 1
+    return counts
+
+
 def target_counts(actual, scene):
     definition = S.configure(scene)
     truth = truth_footprints(actual)
@@ -158,6 +167,7 @@ def main():
                      'runs': runs, 'targets': targets, 'review': review, 'failure_reason': failure,
                      'second_eye': runs['imagination']['summary']['looks'] > 1,
                      'six_b': any(t['six_b'] for t in targets.values()), 'counterfactuals': cf,
+                     'counterfactual_outcomes': counterfactual_outcomes(cf),
                      'evidence': 'evidence/suite/scenes/' + scene + '/manifest.json' if not entry.get('anchor')
                      else 'evidence/reviews/beforestep_r1/lux/original_b/run_identity.json'})
     if incomplete and not args.allow_incomplete:
@@ -185,6 +195,8 @@ def main():
                      'mean_extra_sim_time_s': float(np.mean(extra_time)) if extra_time else None},
         'imagination_collision_scenes': collisions,
         'counterfactuals': {'collisions': cf_collisions, 'executed': cf_executed,
+                           'outcomes': {key: sum(r['counterfactual_outcomes'].get(key, 0) for r in rows)
+                                        for key in ('arrived', 'stuck', 'stopped_short', 'collision')},
                            'unexecutable': sum(r['counterfactuals']['unexecutable'] for r in rows),
                            'collision_ratio': cf_collisions / cf_executed if cf_executed else None},
         'second_eye_scenes': [r['scene'] for r in rows if r['second_eye']],

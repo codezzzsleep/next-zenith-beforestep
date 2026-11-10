@@ -60,12 +60,13 @@ def main():
                               for v in target['views']) or '全程没有生成观测请求'
             lines.append(f"| {row['scene']} | {rock} | {target['tasks']} / {target['succeeded']} / {target['admitted']} | {views} | {'是' if row['second_eye'] else '否'} | {'是' if target['six_b'] else '否'} |")
     lines.extend(['', '从未形成观测请求的目标也以零任务保留；若一个连通观测目标对应多块真实岩石，各岩石行共享同一批任务身份，不能相加当作额外独立生成。每份成功、失败与被拒候选均保留；第二眼单图首次零准入时只追加同字节 6b 一批，仍零准入就停止。两眼都 native_ok 的两图分支按原协议三份执行。', '',
-        '## 赛后真值与全部拒绝反事实', '', '| 场景 | 3D最小间隙mm | XY包络间隙mm | 乐观原路线压入mm | 反事实碰撞 / 可执行 | 不能执行的拒绝候选 |',
-        '| --- | ---: | ---: | ---: | --- | ---: |'])
+        '## 赛后真值与全部拒绝反事实', '', '| 场景 | 3D最小间隙mm | XY包络间隙mm | 乐观原路线压入mm | 反事实碰撞 / 完成试验 | 反事实终态分布 | 不能执行的拒绝候选 |',
+        '| --- | ---: | ---: | ---: | --- | --- | ---: |'])
     for row in data['scenes']:
         review, cf = row['review'], row['counterfactuals']
-        lines.append(f"| {row['scene']} | {review['minimum_3d_clearance_m']*1000:.3f} | {review['minimum_xy_envelope_clearance_m']*1000:.3f} | {review['optimistic_max_intrusion_m']*1000:.3f} | {cf['collisions']} / {cf['executed']} | {cf['unexecutable']} |")
-    lines.extend(['', '3D量来自每个保存姿态的原 MuJoCo 可碰撞几何；XY矩形与真实扫描平面包络是单独的复盘近似。二者同时报告，XY相交不等于真实3D接触。碰撞按原始接触记录优先判断，离散保存姿态的正间隙不能抵消接触事件。反事实枚举每一眼每份被拒候选，不挑选；第二眼候选在原第一眼与移动前缀重放之后干预，不在第一眼泄露未来观测。不能形成可执行反事实的失败另列，不能当作“不会撞”。', '', '## 预先约定的结论', ''])
+        outcomes = '、'.join(f'{LABELS.get(k, k)}{v}' for k, v in row['counterfactual_outcomes'].items()) or '无'
+        lines.append(f"| {row['scene']} | {review['minimum_3d_clearance_m']*1000:.3f} | {review['minimum_xy_envelope_clearance_m']*1000:.3f} | {review['optimistic_max_intrusion_m']*1000:.3f} | {cf['collisions']} / {cf['executed']} | {outcomes} | {cf['unexecutable']} |")
+    lines.extend(['', '3D量来自每个保存姿态的原 MuJoCo 可碰撞几何；XY矩形与真实扫描平面包络是单独的复盘近似。二者同时报告，XY相交不等于真实3D接触。碰撞按原始接触记录优先判断，离散保存姿态的正间隙不能抵消接触事件。反事实枚举每一眼每份被拒候选，不挑选；第二眼候选在原第一眼与移动前缀重放之后干预，不在第一眼泄露未来观测。完成试验包括因无路线而停车，不等于完成通行，所以终态分布同时报告。不能形成可执行反事实的失败另列，不能当作“不会撞”。', '', '## 预先约定的结论', ''])
     d, o, cf = data['decisive'], data['ordinary'], data['counterfactuals']
     if data['imagination_collision_scenes']:
         lines.append('**想象策略实际发生碰撞：' + '、'.join(data['imagination_collision_scenes']) + '。这是最重要的安全边界，首页与总表同时公开。**')

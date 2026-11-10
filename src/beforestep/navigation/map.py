@@ -41,13 +41,19 @@ def cell_of(x, y):
     return int((x - X0) / RES), int((y - Y0) / RES)
 
 
-def prior_nogo():
-    """Orbital-map no-go terrain: corridor, wall and crater rims with 5 cm buffer."""
+def target_exclusion_mask():
+    """Exclude known corridor/wall geometry from generated rock targets."""
     blocked = np.zeros_like(GX, dtype=bool)
     if S.TERRAIN['type'] == 'corridor':
         blocked |= GY > S.rille_edge(GX) - 0.05
     if S.TERRAIN['right_wall']:
         blocked |= GY < S.WALL['y_inner']
+    return blocked
+
+
+def prior_nogo():
+    """Orbital-map no-go terrain: corridor, wall and crater rims with 5 cm buffer."""
+    blocked = target_exclusion_mask()
     for crater in S.TERRAIN['craters']:
         blocked |= ((GX - crater['center'][0]) ** 2 + (GY - crater['center'][1]) ** 2
                     <= (crater['radius'] + 0.05) ** 2)

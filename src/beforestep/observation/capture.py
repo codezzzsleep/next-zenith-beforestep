@@ -18,8 +18,8 @@ def _sha(p):
 
 
 def targets_from_map(state, min_cells=20):
-    """地图上看到的石头连成块；去掉轨道图禁行区里的（大石堆）。返回 [bool 网格]，按 x 排序。"""
-    rock = (state == N.ROCK) & ~N.prior_nogo()
+    """Visible rock components; known walls are excluded, crater-rim rocks remain."""
+    rock = (state == N.ROCK) & ~N.target_exclusion_mask()
     lab, n = ndimage.label(ndimage.binary_dilation(rock, iterations=2), structure=np.ones((3, 3)))
     out = []
     for k in range(1, n + 1):
@@ -28,6 +28,11 @@ def targets_from_map(state, min_cells=20):
             out.append(m)
     out.sort(key=lambda m: float(N.GX[m].min()))
     return out
+
+
+def target_growth(cells):
+    """Keep visible rim-rock pixels even where the floor is known to be unsafe."""
+    return ndimage.binary_dilation(cells, iterations=3) & ~N.target_exclusion_mask()
 
 
 def _render(vm, cam, W, H):
@@ -75,7 +80,7 @@ def capture(vm, env, out_root, look_label, state, dark_thr=0.10, cam='front_cam'
     for k, cells in enumerate(targets_from_map(state)):
         tid = f'T{k + 1}'
         d = out_root / tid; d.mkdir(parents=True, exist_ok=True)
-        grow = ndimage.binary_dilation(cells, iterations=3) & ~N.prior_nogo()     # 不把旁边大石堆的像素算进来
+        grow = target_growth(cells)
         def mask_of(P):
             fin = np.isfinite(P).all(-1)
             Px = np.nan_to_num(P[..., 0], nan=-99.0); Py = np.nan_to_num(P[..., 1], nan=-99.0); Pz = np.nan_to_num(P[..., 2], nan=-99.0)

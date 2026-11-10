@@ -89,6 +89,28 @@ class SuiteSceneTests(unittest.TestCase):
         self.assertFalse(np.allclose(changed, S.sun_dir()))
         self.assertFalse(S.REHEARSE_REFERENCE)
 
+    def test_rim_rock_observation_is_complete_while_crater_stays_forbidden(self):
+        from beforestep.observation.capture import targets_from_map, target_growth
+        crater = {'center': [5., .2], 'radius': .8, 'depth': .6}
+        self.select(terrain={'type': 'plain', 'right_wall': False, 'craters': [crater]})
+        state = np.full(N.GX.shape, N.FREE, np.int8)
+        rock = (N.GX >= 5.3) & (N.GX <= 6.1) & (N.GY >= -.1) & (N.GY <= .5)
+        state[rock] = N.ROCK
+        self.assertTrue((rock & N.prior_nogo()).any())
+        targets = targets_from_map(state)
+        self.assertEqual(len(targets), 1)
+        np.testing.assert_array_equal(targets[0], rock)
+        self.assertTrue(target_growth(targets[0])[rock].all())
+        expected = (N.GX - 5.) ** 2 + (N.GY - .2) ** 2 <= .85 ** 2
+        np.testing.assert_array_equal(N.prior_nogo(), expected)
+        for policy in ('conservative', 'optimistic', 'imagination'):
+            self.assertTrue(N.occupancy(state, policy)[expected].all())
+        S.configure('stress_v8')
+        np.testing.assert_array_equal(N.target_exclusion_mask(), N.prior_nogo())
+        state[:] = N.FREE
+        state[N.GY < S.WALL['y_inner']] = N.ROCK
+        self.assertEqual(targets_from_map(state), [])
+
     def test_recorded_identity_rejects_different_terrain_or_sun(self):
         from beforestep.pipeline import recorded_scene_matches
         for field in ({'terrain': {'type': 'plain'}}, {'sun': {'azimuth_deg': 55.}}):

@@ -59,6 +59,8 @@ def main():
         if url.startswith(('https:', 'http:', '#')):
             return match.group(0)
         path = (ROOT / 'docs' / url).resolve()
+        if path.is_dir():
+            return attribute+'="https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/'+str(path.relative_to(ROOT))+'"'
         if path == ROOT / 'README.md':
             return attribute+'="https://github.com/codezzzsleep/next-zenith-beforestep"'
         if path.is_relative_to(ROOT / 'site'):

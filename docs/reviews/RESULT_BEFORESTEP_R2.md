@@ -341,3 +341,7 @@ D整合脚本保留R1八段与旧报告打印样式，按实际Markdown路径换
 F1修复后的种子1–12全部48非Luxexit0：D1/O5/U5/未归类1，0执行错误。决定性不足2，按B2追加13–24一次，参数范围/RNG/source不变，不拿see-dark碰撞当执行错误、不放宽分类。现有336池继续跑F2/F3；新增F1扩展单独out outputs/suite/pool/r2_v3_f1_expansion，workers1普通计算，避免重复任何已有任务。当前约3GB/physics进程，可用内存9.1GB（第三进程尚在加载），一额外F1进程预计≤3.2GB；总四普通进程，不使用代理。
 
 生成预期：`generate_suite_pool.py --params config/suite/pool_v3.json --family F1 --seeds 13 24` exit0，12个候选。配置/manifest提交推送之后才运行：`run_suite_pool.py --manifest evidence/suite/pool/r2_v3/manifest_F1_13_24.json --out outputs/suite/pool/r2_v3_f1_expansion --regression evidence/suite/regressions/B1-flat-and-view/regression.json --workers 1`，预期48次exit0并按原定义分类，不预设决定性个数。全部原结果保留；新增Lux0/360。
+
+C2边界补验：模板逆变换查询加入二维索引边界，避免拖出视野的源格子被线性索引折回到另一行；`check_sandbox_consistency.py` exit0，锚点独立近似仍1/1、精确EDT误差0（C2-anchor-grid-bounds.log）。D报告转换将目录证据链接指向GitHub实际目录，避免Pages无目录索引；整合脚本compile，完整D待B。
+
+后续B5付费前，另检查多目标第二眼的全局停止：当前pipeline在某一目标6b仍零准入时设置sampling_exhausted，但只在目标循环之后停车；若同一眼另有零准入目标，prepare_second_batch可能先写额外6b。需要离线验证“已有目标用满12份后停车、仍对已生成GLB完成自检”的请求行为。当前未改src，正在跑的两个池保持源671a4e6；若需修正，等两个池终态后一次改source并跑完整§2.2与全部单测，再进入下一完整新池/B4，0付费阶段允许修，不带不一致前进。

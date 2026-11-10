@@ -1,6 +1,6 @@
 // Same 5 cm grid, turn nodes, straight edges and margins as navigation/map.py.
 export const grid = {x0:-1,y0:-2,nx:280,ny:90,res:.05};
-const at=(x,y)=>Math.trunc((x-grid.x0)/grid.res)*grid.ny+Math.trunc((y-grid.y0)/grid.res);
+const at=(x,y)=>{const i=Math.trunc((x-grid.x0)/grid.res),j=Math.trunc((y-grid.y0)/grid.res);return i<0||i>=grid.nx||j<0||j>=grid.ny?-1:i*grid.ny+j;};
 export function inside(p,poly){let hit=false;for(let i=0,j=poly.length-1;i<poly.length;j=i++){
   const a=poly[i],b=poly[j];if((a[1]>p[1])!==(b[1]>p[1])&&p[0]<(b[0]-a[0])*(p[1]-a[1])/(b[1]-a[1])+a[0])hit=!hit;}return hit;}
 export function polygons(def,library){return Object.entries(def.rocks).map(([id,r])=>{

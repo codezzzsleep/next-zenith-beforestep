@@ -9,7 +9,7 @@ function projection(x,y){const m=scene.observation.map,g=geometry();return[g.x+(
 function polygon(points,fill,stroke){ctx.beginPath();points.forEach((v,i)=>{const p=projection(...v);i?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke()}}
 function draw(){
  if(!scene)return;ctx.fillStyle='#101720';ctx.fillRect(0,0,canvas.width,canvas.height);
- const m=scene.observation.map,[nx,ny]=m.shape,g=geometry(),dx=g.scale*m.resolution,dy=dx,colors=['#17362d','#a1aaa7','#685088','#987246','#152029','#344c5c'];
+ const m=scene.observation.map,[nx,ny]=m.shape,g=geometry(),dx=g.scale*m.resolution,dy=dx,colors=['#17362d','#a1aaa7','#987246','#685088','#152029','#344c5c'];
  for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){ctx.fillStyle=scene.observation.nogo[i*ny+j]?'#344c5c':colors[m.values[i*ny+j]];ctx.fillRect(g.x+i*dx,g.y+(ny-j-1)*dy,dx+.3,dy+.3)}
  if(phase==='reveal'||phase==='score'){
   for(const rock of scene.truth.rocks)polygon(rock.polygon,'#bbc2c17d','#e5ece8');

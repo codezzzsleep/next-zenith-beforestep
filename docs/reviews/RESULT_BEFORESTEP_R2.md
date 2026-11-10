@@ -355,3 +355,9 @@ C2扫描库现用与正式场景相同的主轴对齐/底面归零/等比尺度�
 ### B2 F2扩池完整终态与下一整池注册
 
 v3 F2全部24×4完成exit0：0决定性/16普通/8无解/0执行错误。按B2调整尚未运行的v4参数，F2采用下坑前A/上坑后B、两坑0.65–0.80m、坑沿gap0.15–0.30m、角色高度与太阳/目标的固定随机范围；全部范围与目的见decisions及pool_v4。旧0/24结果完整保留，仍不调Lux、不改单场景。`python3 -m unittest discover -s tests -v` exit0，64/64（7.582s），默认生成器全部84已注册v3配置逐字节相同，新F2角色与坑沿约束通过；日志B2-rim-generator-tests.log。物理src仍同671a4e6，现有F3/F1扩展不受影响。
+
+### B2 F1唯一扩展终态
+
+F1种子13–24的48非Lux全部exit0，父2745203/session39826已完成：D1/O5/U3/未归类3；与初始1–12合计24场景为D2/O10/U8/未归类4，0执行错误。原始所有summary/run_id/命令见evidence/suite/pool/r2_v3/manifest_F1_13_24_results.json与初始results，raw outputs/suite/pool/r2_v3_f1_expansion。达到2D，但不提前冻结：原v3 F3仍运行，下一完整新池需源stop修复/全R1回归/所有候选提交后再跑。F1不调整参数范围，仍保持原广范围。
+
+关卡地图的DARK=2改棕色、HIDDEN=3改紫色，使配色与图例语义一致；JS语法通过，只改查看，不改观测数据/实验结果。

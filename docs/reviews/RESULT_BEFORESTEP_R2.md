@@ -584,3 +584,11 @@ run_suite_imagination与evaluate_suite_scene均exit0；真实run_id 38c42f1ee833
 D覆盖报告前保留：原已发布R1 PDF复制到[原R1报告](../../site/media/history/stress_v8_r1/report.pdf)，5页/1625235bytes/SHA ae4ceacbc684b4a681cacee2f19442d80fb3f096e70666e5865a0f4574fb5f87，原字节保留；当前报告仍R1，R2完整PDF尚未渲染。没有新Demo视频。人工场景目录已准备，当前0个JSON，最终C3再查；不会把可选用户输入当成停工条件。
 
 后处理/保全预备：B7总表额外报告每份CF到达、停车、未完成、碰撞的终态分布；完成CF试验包含无路停车，不等于成功通行。只读当前13份CF核对为12stuck/1arrived、R1为3arrived，compile exit0；没有重新运行或筛选CF。preserve_suite_scene新增单scene extras树，保留real/review/CF容器的世界配置、命令/退出码与中途失败日志，避开私有generation/client/upload账本；所有路径只限outputs/suite/<...>/<scene>，仍一份SHAmanifest/≤150MB精简集/一个完整外包。新增保全范围目前compile，待首场全CF终态后在真实数据上实际保全验证。
+
+### B6首个新场景全量反事实与数据保全完成
+
+F0_005全部20份拒绝CF已完成，scene child2080857 exit0：3arrived/17stuck/0collision，全部20干预前观测时刻/实测姿态/5个prefix数组相同，未筛选候选。只信第二眼被拒A的M1/M2/M3都到达，其他17按规划停车；0/20不是20次成功通行。原ledger与每份完整真实轨迹/事件/summary/run_identity都保全。
+
+`ops/preserve_suite_scene.py --scene suite_r2_v4_F0_005 --runs outputs/suite/preservation/suite_r2_v4_F0_005-runs.json --extras outputs/suite/preservation/suite_r2_v4_F0_005-extras.json` exit0，25variants/3567文件/21原GLB，一份[SHA清单](../../evidence/suite/scenes/suite_r2_v4_F0_005/manifest.json)。完整外包：/root/3d/artifacts/beforestep-r2/suite_r2_v4_F0_005-complete.tar.gz，403352843bytes，SHA84f00b3209424cbffccccf5ea5372f7a6db43c40e2f19d3c74f56b11bf0c9102；精简集实测含manifest103426472bytes，<150MB。首次日志102151269未含最后清单，已修helper计总目录最终尺寸；只更新metadata，原tar/原输入/轨迹不重做。附加real/review/CF树包含世界配置、自动命令/退出码和失败日志，未复制generation/client/upload私有账本或密钥。日志B6-preserve-F0-005.log。
+
+LFS配额readAPI仍HTTP404，未能确认余额；按§2.5保守完整外包+精简集，推送将实际检验可用性，不声称剩余配额已知。

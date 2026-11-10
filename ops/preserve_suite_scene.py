@@ -38,6 +38,19 @@ def public_file(path, relative):
     return 'rehearsal' in relative.parts and relative.name in ('traj.npz', 'pane.json')
 
 
+def write_manifest(output, manifest):
+    path = output / 'manifest.json'
+    for _ in range(4):
+        path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+        size = sum(p.stat().st_size for p in output.rglob('*') if p.is_file())
+        if size == manifest['public_bytes']:
+            if size >= LIMIT:
+                raise ValueError(f'Public scene review set exceeds 150 MB including its manifest ({size})')
+            return
+        manifest['public_bytes'] = size
+    raise RuntimeError('Public evidence changed while its manifest was being finalized')
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--scene', required=True)
@@ -139,8 +152,8 @@ def main():
                 'supplementary_run_trees': extras,
                 'complete_archive': {'path': str(archive), 'bytes': archive.stat().st_size, 'sha256': sha(archive)},
                 'scope': 'Exact raw run artifacts and original generated GLBs in the external archive; bounded public evidence objects retain exact original byte identities. No credentials or upload ledgers.'}
-    (output / 'manifest.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
-    print(json.dumps({'scene': args.scene, 'files': len(entries), 'public_bytes': size,
+    write_manifest(output, manifest)
+    print(json.dumps({'scene': args.scene, 'files': len(entries), 'public_bytes': manifest['public_bytes'],
                       'archive_bytes': archive.stat().st_size}, ensure_ascii=False))
 
 

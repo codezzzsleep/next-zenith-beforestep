@@ -19,3 +19,5 @@
 ```
 
 完整命令、退出码、预期与每次summary原文在[RESULT_BEFORESTEP_R1](../../../docs/reviews/RESULT_BEFORESTEP_R1.md)。真实Lux主线、逐候选trust反事实和完整真实重放尚未完成，不能根据替身或单元测试宣称主线成立。
+
+联网恢复后的只读API记录在`connectivity_restored.json`。`diagnose_standin_registration.py`只读比较保留B替身的放置矩阵及三种占据，生成`standin_placement_diagnostic.json`；真实形状和真实放置仅用于赛后诊断，不进入生产或新Lux任务。

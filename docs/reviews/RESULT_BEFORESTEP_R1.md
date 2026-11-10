@@ -548,7 +548,7 @@ summary.json原文：
 | B首眼全部被拒候选逐一trust反事实 | 待真实首眼结果，不挑选；当前不声称自检挡住碰撞 |
 | §3报告与首页改写 | R1权威/历史附录入口已改；最终主线数字与叙事待验收，未完成 |
 
-当前两个实际依赖：其一，受限执行环境对api.aholo3d.cn的DNS再次gaierror/-3，已有终态任务的只读GET有限重试失败，见[联网记录](../../evidence/reviews/beforestep_r1/connectivity.json)；不缺付费授权且没有新create。其二，注册替身B准入但low_margin，§2.4只覆盖真实12份0准入，未覆盖此结果。按§0.3先提交完整证据后请求负责人给出此情况的处理规则；不改场景、门槛、5cm或替换触发条件，不拿替身当真实Lux成功。
+截至该检查点的两个实际依赖（联网恢复见后文）：其一，当时受限执行环境对api.aholo3d.cn的DNS再次gaierror/-3，已有终态任务的只读GET有限重试失败，见[联网记录](../../evidence/reviews/beforestep_r1/connectivity.json)；不缺付费授权且没有新create。其二，注册替身B准入但low_margin，§2.4只覆盖真实12份0准入，未覆盖此结果。按§0.3先提交完整证据后请求负责人给出此情况的处理规则；不改场景、门槛、5cm或替换触发条件，不拿替身当真实Lux成功。
 
 代码与文档的空白检查通过；初次失败单测的原始日志有一处行尾空格，按原始证据保管规则保留字节，不为格式检查改写失败日志。
 
@@ -559,3 +559,14 @@ summary.json原文：
 - 主线仍未成立：注册B替身通过自检却low_margin停车，真实Lux和§2.5反事实/重放、§3最终首页报告仍未执行。没有新付费任务，不自制Demo视频。
 
 请负责人按§0.3补充“准入但low_margin”的处理规则：是否先在冻结场景和全部冻结门槛下排查、修正配准实现，并预注册重跑完整替身链？同时需要恢复可调用Lux3D的执行环境；当前实际DNS/只读GET失败已有证据。§2.4的真实12份0准入触发条件保持，不用离线failed替身扩大该例外。
+
+## 联网恢复后的只读核查预注册
+
+用户已恢复联网。先只读查询既有终态任务5125592，预期DNS及真实API认证成功；不新建任务。随后只读比较已保留的B真实替身和其配准矩阵，量化世界平移、旋转、尺度及导航占据变化；预期定位既有low_margin的几何来源，不修改配准、准入或规划规则。这是赛后诊断，真值不进入生产决策。
+
+### 联网恢复与只读诊断结果
+
+- 只读API查询命令：`PYTHONPATH=/tmp/lunar-review-20261109-deps:/tmp/beforestep-browser-deps:src python3` 中调用 `client.api("GET", "/lux3d/v1/generate/task/get?taskid=5125592", timeout=15)`；退出0。DNS解析及认证成功，旧任务status=3。实际时间和结果见[connectivity_restored.json](../../evidence/reviews/beforestep_r1/connectivity_restored.json)。没有create或新付费任务；旧联网失败证据保留，当前联网依赖已解除。
+- 赛后只读诊断命令：`PYTHONPATH=/tmp/lunar-review-20261109-deps:/tmp/beforestep-browser-deps:src PYTHONDONTWRITEBYTECODE=1 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python3 evidence/reviews/beforestep_r1/diagnose_standin_registration.py`；退出0，[完整数字](../../evidence/reviews/beforestep_r1/standin_placement_diagnostic.json)。B原世界偏航-26°，配准后-29.2925°；三维旋转偏差3.3651°、XY平移偏差0.0202528 m、等比尺度1.0204609。该矩阵在生产过程中仅由观测求得；这里的真实矩阵只用于赛后诊断。
+- 同一个二眼观测地图/同一实际起点/真实A/原5cm规则：真实B的411格可通（右侧边界y=-0.325）；配准B网格凸包432格已无路（y=-0.375）；保存的体素占据467格亦无路。体素占据比配准网格凸包多35格；故封路已经发生在配准后的网格，不只是体素化。
+- 未修改配准、场景、自检或规划方法。仍需负责人补充§0.3未覆盖的“准入但封路”处理规则；只解除网络依赖不能跳过完整替身链到达条件。

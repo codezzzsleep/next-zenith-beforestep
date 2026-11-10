@@ -68,6 +68,7 @@ def generate(parameters, family, seed):
              'sun': {'elevation_deg': uniform('sun_elevation_deg'),
                      'azimuth_deg': uniform('sun_azimuth_deg')},
              'rehearse_reference': parameters['rehearse_reference'],
+             'asset_cache_precision': parameters.get('asset_cache_precision', 'legacy_mm'),
              'suite': {'family': family, 'seed': seed, 'revision': parameters['revision'],
                        'generator_rng': 'numpy PCG64 / SeedSequence(version,family,seed)',
                        'layout': 'broad' if broad else 'compact',

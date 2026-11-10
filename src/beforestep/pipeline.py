@@ -112,6 +112,11 @@ def diagnostic_truth(arguments, env, meta):
     return None
 
 
+def active_trust(trust, current_look, requested_look=1):
+    """Preserve the actual prefix until the rejected candidate's observation."""
+    return trust if current_look >= requested_look else None
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--policy', required=True, choices=['conservative', 'optimistic', 'imagination'])
@@ -130,7 +135,11 @@ def main():
                     help='Explicit task-goal variant; scene geometry and recorded observations remain checked')
     ap.add_argument('--tag', default=None, help='输出子目录名（默认等于策略名）')
     ap.add_argument('--trust', default=None, help='反事实：T1=A2,T2=B1 —— 这几块石头只用指定的那份想象，不管自检结论，也不看第二眼')
+    ap.add_argument('--trust-look', type=int, choices=(1, 2), default=1,
+                    help='反事实干预眼数；第二眼先重放原第一眼和移动前缀，干预后不补看')
     a = ap.parse_args()
+    if a.trust_look != 1 and not a.trust:
+        ap.error('--trust-look requires --trust')
     from .paths import ROOT
     model_path=(ROOT/pathlib.Path(a.controller_model)).resolve() if a.controller_model not in (None,'rules') else None
     if model_path is not None and not model_path.is_file():ap.error('Trained controller checkpoint is missing')
@@ -368,6 +377,7 @@ def main():
         from .geometry import imagination as IM
         from .generation import records as LX
         k = len(looks)
+        trust_now = active_trust(trust, k, a.trust_look)
         tg = tlooks[-1]
         missing = []
         for t in tg:
@@ -416,16 +426,19 @@ def main():
                 fp = np.load(dd / 'footprint_union.npy')
             else:
                 res = IM.decide_target(t['dir'], glbs, dd); fp = res['footprint']
-            if trust and t['target'] in trust:
-                cid = trust[t['target']]
+            if (trust_now and t['target'] in trust_now
+                    and t['state']['look'] == f'look{a.trust_look}'):
+                cid = trust_now[t['target']]
                 fp = np.load(dd / f'footprint_{cid}.npy')
                 c = next(c for c in res['candidates'] if c['id'] == cid)
                 imagined_meshes[t.get('ref', t['target'])] = [IM.candidate_world_mesh(c['glb'], c['M'], t['state']['local_frame'], dd / f'world_{cid}.obj')]
                 mask |= fp
                 per.append({'target': t['target'], 'trusted': cid, 'admitted_by_self_check': c['admitted']})
+                ev('counterfactual_intervention', look=k, target=t['target'], candidate=cid,
+                   source_look=t['state']['look'], admitted_by_self_check=c['admitted'])
                 continue
             n_adm = len(res['admitted_ids'])
-            if not trust:
+            if not trust_now:
                 target_look = int(t['state']['look'].removeprefix('look'))
                 retry = LX.prepare_second_batch(t['dir'], res, target_look)
                 if retry is not None:
@@ -562,6 +575,7 @@ def main():
         decision_dir.mkdir(exist_ok=True)
         np.save(decision_dir / f'look{len(looks)}_state.npy', state)
         im = imagined_mask()
+        trust_now = active_trust(trust, len(looks), a.trust_look)
         last_im = im
         if why.get('sampling_exhausted'):
             result = 'stuck'
@@ -573,7 +587,7 @@ def main():
             if path is None:
                 raw = N.plan(N.occupancy(state, 'imagination', im), (x, y), S.GOAL)
                 reason = 'low_margin' if raw is not None else 'imagined_blocked'
-                if trust and raw is not None:
+                if trust_now and raw is not None:
                     path, reason = raw, 'trusted_without_margin'
             else:
                 reason = None
@@ -584,7 +598,7 @@ def main():
             reason = None if path is not None else 'no_path'
         ev('plan', policy=a.policy, look=len(looks), path=None if path is None else [[round(p[0], 3), round(p[1], 3)] for p in path],
            reason=reason, margin_vs_truth=None if path is None or truth_union is None else N.path_clearance(path, (x, y), N.clearance(truth_union | N.prior_nogo())))
-        if path is not None and a.policy == 'imagination' and not trust:
+        if path is not None and a.policy == 'imagination' and not trust_now:
             reference = N.plan(N.occupancy(state, 'optimistic',
                                known_free=N.swept(np.array(rec.q)[:, :2])), (x, y), S.GOAL)
             same_path = (reference is not None and len(reference) == len(path)
@@ -617,7 +631,7 @@ def main():
                 result = 'arrived' if motion.completed and np.hypot(xg - S.GOAL[0], yg - S.GOAL[1]) < 0.3 else 'stopped_short'
                 rec.hold(env, result, 1.5)
             break
-        if len(looks) >= a.max_looks or trust:
+        if len(looks) >= a.max_looks or trust_now:
             result = 'stuck'; rec.hold(env, 'stuck', 2.0); break
         if a.policy == 'imagination':
             why['reason'] = 'rejected' if focus['cells'] is not None else reason

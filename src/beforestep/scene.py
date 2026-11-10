@@ -44,6 +44,7 @@ DEFAULT_TERRAIN = {'type': 'corridor', 'craters': [], 'right_wall': True}
 DEFAULT_SUN = {'elevation_deg': 10.0, 'azimuth_deg': 35.0}
 TERRAIN = dict(DEFAULT_TERRAIN)
 REHEARSE_REFERENCE = False
+ASSET_CACHE_PRECISION = 'legacy_mm'
 
 
 def terrain_settings(definition):
@@ -70,7 +71,7 @@ def sun_settings(definition):
 
 def configure(scene_id='stress_v8'):
     """Select a documented scene before creating any observation or physics model."""
-    global ROCKS, START, STOP1, GOAL, SCENE_ID, TERRAIN, SUN_EL_DEG, SUN_AZ_DEG, REHEARSE_REFERENCE
+    global ROCKS, START, STOP1, GOAL, SCENE_ID, TERRAIN, SUN_EL_DEG, SUN_AZ_DEG, REHEARSE_REFERENCE, ASSET_CACHE_PRECISION
     if pathlib.Path(scene_id).name != scene_id:
         raise ValueError('Scene must be a config/scenes name')
     path = ROOT / 'config/scenes' / f'{scene_id}.json'
@@ -89,12 +90,16 @@ def configure(scene_id='stress_v8'):
     reference = definition.get('rehearse_reference', scene_id != 'stress_v8')
     if type(reference) is not bool:
         raise ValueError('rehearse_reference must be boolean')
+    precision = definition.get('asset_cache_precision', 'legacy_mm')
+    if precision not in ('legacy_mm', 'exact'):
+        raise ValueError('Invalid asset_cache_precision')
     ROCKS = definition['rocks']
     START, STOP1, GOAL = (tuple(definition[k]) for k in ('start','first_stop','goal'))
     SCENE_ID = scene_id
     TERRAIN = selected_terrain
     SUN_EL_DEG, SUN_AZ_DEG = selected_sun['elevation_deg'], selected_sun['azimuth_deg']
     REHEARSE_REFERENCE = reference
+    ASSET_CACHE_PRECISION = precision
     return definition
 
 
@@ -104,6 +109,8 @@ def physical_identity(definition):
                                  ('sun', sun_settings(definition), DEFAULT_SUN)):
         if value != default:
             identity[name] = value
+    if definition.get('asset_cache_precision', 'legacy_mm') != 'legacy_mm':
+        identity['asset_cache_precision'] = definition['asset_cache_precision']
     return identity
 
 
@@ -185,7 +192,9 @@ def terrain_visual_obj(path, step=0.08, tile=0.9):
 def rock_asset_uniform(rock_id, height, level='h1'):
     """扫描岩石等比缩放到给定高度：水平主轴转到 x，底面落在 z=0，包围盒中心在原点。"""
     src, tex = LW.rock_asset(rock_id, level)
-    dst = LW.CACHE / f'{rock_id}_{level}_v8ax_h{int(height * 1000)}_2s.obj'
+    key = f'h{int(height * 1000)}' if ASSET_CACHE_PRECISION == 'legacy_mm' else 'exact_' + hashlib.sha256(
+        float(height).hex().encode()).hexdigest()[:16]
+    dst = LW.CACHE / f'{rock_id}_{level}_v8ax_{key}_2s.obj'
     if not dst.exists():
         lines = pathlib.Path(src).read_text().splitlines()
         V = np.array([[float(t) for t in l.split()[1:4]] for l in lines if l.startswith('v ')])
@@ -203,7 +212,10 @@ def rock_asset_uniform(rock_id, height, level='h1'):
                 out.append(f'vn {n[0]:.6f} {n[1]:.6f} {n[2]:.6f}')
             else:
                 out.append(l)
-        dst.write_text('\n'.join(out) + '\n')
+        import uuid
+        temporary = dst.with_name(dst.name + '.' + uuid.uuid4().hex + '.tmp')
+        temporary.write_text('\n'.join(out) + '\n')
+        temporary.replace(dst)
     return dst, tex
 
 

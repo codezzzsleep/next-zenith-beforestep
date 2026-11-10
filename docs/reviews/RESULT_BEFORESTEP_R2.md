@@ -10,7 +10,7 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 完成 | 本次源提交及evidence/suite/regressions/B1 |
+| B1 | 地形/太阳配置与完整回归 | 完成 | 原96fa0b7；最终修复回归见B1-final与本次提交 |
 | B2 | 参数预注册、生成器、候选池分类 | 进行中 | 参数/生成器本次先提交；尚未运行池 |
 | B3 | 冻结场景组并推送 | 未开始 | — |
 | B4 | 四类真实形状替身完整链 | 未开始 | — |
@@ -271,3 +271,15 @@ B1纠正后47/47单测exit0/2.258s；5项物理回归普通计算作业已经开
 B2首次池运行预期：每类12个种子，共48场景/192次非Lux运行；不预设分类比例，不调Lux。只按四结果用原规则分类，全部输出保留；目标每类2决定性/1普通，不足时按原规则扩一次13–24。参数、随机数规则、岩石/布局/太阳/月坑范围已在docs/decisions.md写明，并在本次提交推送后才生成/运行。禁止单场景修改。
 
 运行命令预注册：`python3 ops/generate_suite_pool.py --params config/suite/pool_v1.json`；随后`python3 ops/run_suite_pool.py --manifest evidence/suite/pool/r2_v1/manifest_F0_F1_F2_F3_1_12.json --out outputs/suite/pool/r2_v1 --regression evidence/suite/regressions/B1/regression.json --workers 3`。退出预期0，分类/到达/碰撞原样报告，不把执行错误当无解。R2新付费仍0/360。
+
+B2运行中发现全局复现错误（不是按结果调参）：`rock_asset_uniform()`以int(height×1000)命名缓存。池F3/009与F2/010同岩石分别0.594954/0.594908m，共享缓存名，先运行的形状会影响后运行的物理输入；此外新缓存非原子写有并发风险。修复仅新配置启用精确高度缓存身份，旧四场景默认旧缓存原字节不变，写入改原子替换。保留首池全部已完成/部分输出作为中断错误记录；停止其普通进程避免源混用，完整§2.2回归后将全部48场景四运行重跑，不挑单例、不调Lux。生成器数值范围/种子不改，新revision仅记录缓存选项。
+
+B6前置源码兼容：现有--trust固定在首眼干预，不能逐一运行真实第二眼的拒绝候选。新增仅反事实启用的--trust-look=2：首眼及去观察点的前缀按原准入/预演/控制完整重放，第二眼按该眼目标编号强制单候选，之后不补看；原--trust默认首眼不变。新增干预事件记录实际来源眼数/候选，避免未来观测泄露到首眼和未干预却计为成功。该必要支持在任何场景组Lux之前实现，随后再完整§2.2回归；不改变主线或场景组生产传感器/门槛/两眼/rules。
+
+B1精确缓存版本完整五回归已通过（父21524完成，outputs/qa/r2/B1-exact-cache-regression/，53tests、全部5结果与R1重放5数组相同）。随后必要的第二眼反事实入口使最终源身份变化，因此正在独立B1-final-suite-regression再验证，父79642/workers2；原版本source_variants与全部输出保留，不冒充最新源码已通过。最终回归启动时57单测通过；付费预算mock测试证明先持久预留再create、360硬上限、uncertain只query、确定未提交释放容量而保留身份历史，未产生真实任务。
+
+B2第一池源/参数96fa0b7、48候选提交9be060a；普通父18431被主动终止exit143以修全局缓存，原pool.json/每项command/process/log/已完成及partial数据全部保留，不能纳入最终冻结组。第二池pool_v2范围、种子/RNG不变，精确缓存选项全池启用；最终源完整回归及提交推送后才生成/运行。
+
+最终B1/source含缓存和CF入口：`python3 ops/run_r2_regression.py --out outputs/qa/r2/B1-final-suite-regression --workers 2` exit0，57/57单测通过，6份冻结文件SHA不变，4非Lux结果/眼数/时间同R1，reuse到达/12预演全完成无碰撞，5轨迹数组与NPZ SHA全同。公开evidence/suite/regressions/B1-final。修复未改旧物理场景、门槛、两眼、传感器或控制，源/参数/预算与全链驱动在本次推送后才启动第二池。
+
+B2第二池命令预注册：`python3 ops/generate_suite_pool.py --params config/suite/pool_v2.json`，全部48场景；`python3 ops/run_suite_pool.py --manifest evidence/suite/pool/r2_v2/manifest_F0_F1_F2_F3_1_12.json --out outputs/suite/pool/r2_v2 --regression evidence/suite/regressions/B1-final/regression.json --workers 3`。预期192项非Luxexit0，按既定分类，数据好坏全保留。池期间补测`ops/check_second_look_counterfactual.py`：R1离线两眼替身作为机制验证，第二眼前全部轨迹数组同原，干预仅look2，0付费；不纳入场景组实测。

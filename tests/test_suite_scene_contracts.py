@@ -95,6 +95,24 @@ class SuiteSceneTests(unittest.TestCase):
             self.assertEqual(S.SCENE_ID, 'stress_v8')
             self.assertEqual(S.TERRAIN, S.DEFAULT_TERRAIN)
 
+    def test_exact_height_cache_preserves_two_dimensions_within_one_millimeter(self):
+        self.select(asset_cache_precision='exact')
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            source = root / 'original.obj'
+            source.write_text('v -1 0 0\nv 1 0 0\nv 0 1 1\nf 1 2 3\n')
+            with patch.object(S.LW, 'CACHE', root), patch.object(S.LW, 'rock_asset', return_value=(source, 'unused.png')):
+                first, _ = S.rock_asset_uniform('synthetic', .450111)
+                second, _ = S.rock_asset_uniform('synthetic', .450999)
+                self.assertNotEqual(first, second)
+                for path, height in ((first, .450111), (second, .450999)):
+                    vertices = np.array([[float(v) for v in line.split()[1:4]]
+                                         for line in path.read_text().splitlines() if line.startswith('v ')])
+                    self.assertAlmostEqual(np.ptp(vertices[:, 2]), height, places=6)
+                self.assertFalse(list(root.glob('*.tmp')))
+        S.configure('stress_v8')
+        self.assertEqual(S.ASSET_CACHE_PRECISION, 'legacy_mm')
+
 
 class PoolGeneratorTests(unittest.TestCase):
     def test_seeded_pool_is_reproducible_and_respects_preregistered_ranges(self):
@@ -150,4 +168,14 @@ class PoolClassificationTests(unittest.TestCase):
         from ops.run_suite_pool import classify
         runs = self.runs(); runs['truth']['exit_code'] = 1
         self.assertEqual(classify(runs), 'incomplete')
+
+
+class CounterfactualViewTests(unittest.TestCase):
+    def test_later_rejection_cannot_intervene_before_its_actual_view(self):
+        from beforestep.pipeline import active_trust
+        chosen = {'T2': 'A1b'}
+        self.assertIsNone(active_trust(chosen, 1, 2))
+        self.assertIs(active_trust(chosen, 2, 2), chosen)
+        self.assertIs(active_trust(chosen, 1), chosen)
+        self.assertIsNone(active_trust(None, 2, 2))
 

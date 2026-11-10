@@ -1,0 +1,52 @@
+{
+  "schema": "beforestep-r1-preservation/v1",
+  "original_output": "outputs/reviews/r1/section25_final_base/see_dark/conservative",
+  "source_commits_matching_actual_code": [
+    "2147b2f"
+  ],
+  "files_sha256": {
+    "events.jsonl": "946af2db50072e4dd761dd68dd6a71f674fc5c3910e70cf116faf64d1323d62b",
+    "summary.json": "1856c991685eb7f76524b0b667fd42bb70a7651a236fa74e7b84bbfc01abff2d",
+    "traj.npz": "b7c54363846564d96a50c4aa1fdb1188813e87fac395e5847fdbff9bebfbd159",
+    "scene.json": "2a9c215b449382a8a58f69f0d47c1e99b5ed6ade4c5e49fd62f89e5e6d4384ba",
+    "run_identity.json": "cb205f445e89531c6ad4e486eadd1df0d13f6eefa4ca67df7610a98d2f9bcdd7",
+    "map_final.png": "4503514539ab34825ffbfa11b8013179912bd2544e36da09a29711d3b7739029",
+    "state_final.npy": "248b6a7b66f01d2655e6810309d84773ea60e6ed2b7c4dc4f8d4157174aa6f2a",
+    "looks/look3_rgb.png": "91ab117150644f2c75fc2de2b2b174e6fb620f4ed5809dc7f3fec8966346334d",
+    "looks/look1_zmax.npy": "94d4740d6ae12d995e8d6aa4063e22dbe1acca27f71d894479156ab5647c6bf5",
+    "looks/look3_depth.npy": "5f3c6dccdb4261d6fa245c13f4e7e5621e72c275466b2367e6132c2478caa99a",
+    "looks/look2_state.npy": "d184454f791e3959ee9ce789c50e9fcc9f444e7b19861fc5539963ec720169ca",
+    "looks/look3_state.npy": "2c9db86f8f30736b8cfbc636467fc0f0aa9f496e5f8c7d82d7aa02498a0f30c6",
+    "looks/look1_state.npy": "8f3c1eeb153494bea8c31fcc318a4a55e3cbb41d794caf8cd1b10e138568d336",
+    "looks/look3_dark.npy": "faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae",
+    "looks/look2_dark.npy": "faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae",
+    "looks/look2_depth.npy": "b278b39656c97eb118a12307d0a39d7492675bc859a1094766b195641392368f",
+    "looks/look1_dark.npy": "faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae",
+    "looks/look1_rgb.png": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d",
+    "looks/look3_zmax.npy": "cf5f0c79e090ac26c70807db29471b1bd4a3cd2f0d84934f9039400fd1b76148",
+    "looks/look2_zmax.npy": "0d575222a9bf8572abb8d9b35970e462884e5648cc8aacbbcbe12cf8d6c00ab0",
+    "looks/look2_rgb.png": "2c735061d58610d674ec649d04ddcc8c004474c081a556d2699ef951f19c04cf",
+    "looks/look1_depth.npy": "748ef5c1b5c455c7aeb5911dc6d8789af1a9be86b932622f2ea1987fdf3c9a5f",
+    "decision/look2_state.npy": "fb7dab3ce1906c2c3ed20d808b40b6a1597c48be67dc5d9a9c9bf34effeb096b",
+    "decision/look3_state.npy": "248b6a7b66f01d2655e6810309d84773ea60e6ed2b7c4dc4f8d4157174aa6f2a",
+    "decision/look1_state.npy": "9ed5216a58ab288e56023e8d07213e04fd0198375fe46290bbdd91ca801fb586"
+  },
+  "command": [
+    "python3",
+    "-m",
+    "beforestep",
+    "run",
+    "--scene",
+    "stress_v8",
+    "--controller-model",
+    "rules",
+    "--policy",
+    "conservative",
+    "--see-dark",
+    "--max-looks",
+    "5",
+    "--out",
+    "/root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/see_dark"
+  ],
+  "exit_code": 0
+}

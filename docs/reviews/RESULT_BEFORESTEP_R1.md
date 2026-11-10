@@ -578,3 +578,217 @@ summary.json原文：
 源码核查发现：ICP保留的最终可见面评分5.898，后续稀疏点local_polish结果被无条件接受，最终评分反而19.786。修复预期：局部优化结果必须以现有最终可见面评分和原排序复核，保留更好的矩阵，不改冻结准入。新增单测覆盖优化退化回退及真正改善时采纳；原38项仍通过。
 
 离线完整链命令（公共环境同§2.0）：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --reuse-lux outputs/reviews/r1/standin_validated_first_source --max-looks 2 --out outputs/reviews/r1/section21_standin_registration_fixed`。预期首眼A准入/B历史拒绝；第二眼仍按原目标/单图6份；补入一份同真实B离线替身后，新代码以实际观测冷配准、自检、原5cm路线、完整预演及独立执行≤2眼到达且无碰撞。替身任务仍明确OFFLINE-STANDIN，不能计Lux成功；预期不因实际失败而改写。
+
+### 第一处配准修复的阶段结果与真实运行准备预注册
+
+`2147b2f`已提交并同步：局部优化后的矩阵必须以原最终可见面评分复核，退化时保留ICP；40项单测exit0，完整替身的52份源码SHA与该提交逐项一致。替身准备exit10，第二眼仍是实际506px/native_ok=false、单图6份，不改站位或512门槛。已填一份真实B离线替身，正在原命令续跑完整冷配准/自检/预演/执行。
+
+另外准备后续真实运行的首眼请求，命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine lux --max-looks 2 --out outputs/reviews/r1/section23_lux_original_b`。此准备不调用API。预期首眼生成请求并退出10，原场景/传感器/规则控制/两眼不变；只有完整替身到达且单测通过后才提交真实任务。真实运行总体预期仍为§2.5的≤2眼到达、全部执行预演完成无碰撞及独立执行无碰撞，任何不符原样记录。第二眼按§2.2/§2.3执行单图六份、最多同字节追加一次；不提前启动§2.4。
+
+### 完整注册替身通过（真实任务启动条件已满足）
+
+2147b2f源码的修复替身最终exit0，到达/2眼/137.20s仿真总时长/无碰撞；第二眼B IoU0.9673、尺度比1.0，原5cm规则有路。执行预演全部完成且无碰撞。局部polish最终评分19.786高于ICP的5.898，修复正确保留ICP；自检、场景和门槛未改。原始数据[registration_fixed](../../evidence/reviews/beforestep_r1/standins/registration_fixed/run_identity.json)，原失败继续保留。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 136.0,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.493,
+    -0.001,
+    18.16
+  ],
+  "sim_time_s": 137.2,
+  "wall_s": 333.7,
+  "collision": null
+}
+```
+
+40项单测exit0；完整替身通过。真实首眼准备命令exit10，T1为765px/native_ok=true、T2为251px/native_ok=false，各有6份单图请求。按既有授权现提交这两个有限首眼批次，全部候选与失败保留；后续按原预注册第二眼/追加规则，不重复创建已有身份。
+
+## §2.5 最终同源码基线预注册（运行前）
+
+为让最终主对比的运行源码均与真实Lux的2147b2f一致，原四条基线另开独立输出，不覆盖前两组。公共环境同§2.0，统一stress_v8/rules/原起点与goal(10.5,0)。
+
+| 命令 | 预期 |
+| --- | --- |
+| `python3 -m beforestep run --scene stress_v8 --controller-model rules --policy conservative --max-looks 5 --out outputs/reviews/r1/section25_final_base/conservative` | 无路线、停车≤5眼、无碰撞 |
+| `python3 -m beforestep run --scene stress_v8 --controller-model rules --policy conservative --see-dark --max-looks 5 --out outputs/reviews/r1/section25_final_base/see_dark` | 到达≤5眼、无碰撞 |
+| `python3 -m beforestep run --scene stress_v8 --controller-model rules --policy optimistic --out outputs/reviews/r1/section25_final_base/optimistic` | 碰撞，原计划压入真实B≥10cm |
+| `python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine truth --max-looks 2 --out outputs/reviews/r1/section25_final_base/truth` | 到达，全部执行预演完成无碰撞 |
+
+源只修改了配准优化结果保留规则，不改变任何基线策略；实际结果仍须按原预期核对。
+
+### §2.5同源码四项基线实测
+
+全部exit0，原预期保持。实际source52份SHA逐项匹配2147b2f；完整原始数据复制后逐SHA核验。
+
+#### 最终 conservative
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy conservative --max-looks 5 --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/conservative`；退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 141.0,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.033,
+    0.382,
+    -7.39
+  ],
+  "sim_time_s": 142.2,
+  "wall_s": 101.5,
+  "collision": null
+}
+```
+
+#### 最终 truth
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy imagination --imagine truth --max-looks 2 --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/truth`；退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 114.68,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.492,
+    -0.001,
+    19.09
+  ],
+  "sim_time_s": 115.88,
+  "wall_s": 105.0,
+  "collision": null
+}
+```
+
+#### 最终 see_dark
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy conservative --see-dark --max-looks 5 --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/see_dark`；退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": true,
+  "imagine": null,
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 146.06,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    10.491,
+    -0.001,
+    18.08
+  ],
+  "sim_time_s": 147.26,
+  "wall_s": 95.2,
+  "collision": null
+}
+```
+
+#### 最终 optimistic
+
+命令：`python3 -m beforestep run --scene stress_v8 --controller-model rules --policy optimistic --out /root/3d/next-zenith-beforestep/outputs/reviews/r1/section25_final_base/optimistic`；退出码：`0`。数据：[运行身份](../../evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json)。
+
+summary.json原文：
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 79.67,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.713,
+    -0.526,
+    7.58
+  ],
+  "sim_time_s": 80.87,
+  "wall_s": 64.7,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.954,
+      -0.276,
+      0.111
+    ],
+    "t": 80.866
+  }
+}
+```

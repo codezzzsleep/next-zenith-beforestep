@@ -385,3 +385,7 @@ C2单位扫描用exact高度缓存创建，避免单位尺寸预处理占用旧l
 ### B2 v4全部候选已注册，运行前预期
 
 源修正/65测试/五R1gate/参数完整提交7833286已推；v4全部四类别各1–12的48配置与SHA manifest提交28e7302已推（尚非B3最终组）。现在运行`run_suite_pool.py --manifest evidence/suite/pool/r2_v4/manifest_F0_F1_F2_F3_1_12.json --out outputs/suite/pool/r2_v4 --regression evidence/suite/regressions/B1-global-stop/regression.json --workers 3`。预期192个非Lux子运行exit0；分类只按原三类定义，未归类单列，不预设结果或比例。每类不足2D再按新池实际完整12结果判断扩13–24一次，仍不足则B2允许整池改范围。无真实Lux，仍0/360，B3最终freeze未创建。
+
+### B2 v4 F0初始池完整结果
+
+F0种子1–12所有48子运行exit0，D9/O2/U1，0执行错误；原v3宽范围0/24与新邻域9/12并排保留，不能将集中分布比例当成任意月面发生频率。只说明有更多符合D定义的任务，不是实际Lux收益（本轮尚0付费）。其它三类还在跑，当前results completed=false，不可提前B3冻结。完整原summary/identity/命令已同步该v4同一results路径，raw仍outputs/suite/pool/r2_v4。docs/sandbox.md的本地全链示例已指向最新B1-global-stop源回归，避免调用旧源SHA而拒绝。

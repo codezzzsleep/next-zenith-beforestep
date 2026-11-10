@@ -10,7 +10,7 @@
 | A4 | R1报告PDF | 完成 | 800ef64；发布回执见本提交 |
 | A5 | main/Pages发布及公网验收 | 完成 | 800ef64；发布回执见本提交 |
 | A6 | R1结果收尾 | 完成 | 800ef64；发布回执见本提交 |
-| B1 | 地形/太阳配置与完整回归 | 进行中（替身发现预演残留墙，先修复回归） | 本次global-stop源修正与完整五回归通过；65测试 |
+| B1 | 地形/太阳配置与完整回归 | 完成 | ed7c9ba；预演墙修66测试与完整五R1回归通过 |
 | B2 | 参数预注册、生成器、候选池分类 | 完成 | v4主池与F1唯一扩展60场景/240非Lux全完成；名单a810e14 |
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 进行中 | 冻结后运行，0付费 |
@@ -456,3 +456,9 @@ wallfix之后的非Lux同源校验预期：完整R1gate通过后，冻结11新�
 原F2碰撞复盘evaluate_suite_scene exit0，3D最小间隙0.0008718763999253496m、XY包络0.0m，公开before-wall-fix/F2_003的review/eval/physical文件，原archive仍精确保留打包时数据（补复盘JSON单独保留）。新替身导出QA exit0，三已观测真实扫描1000对顶点距离误差最大4.89e-8m/高度同/底面0/未供应配准矩阵；B4-wallfix-helpers-tests全66/66 exit0（2.597s）。
 
 B7/helper预备支持公开wallfix-baselines完整44结果，与实际Lux source SHA相同；冻结分类/选择依据另保留，禁止更新frozen.json。当前仅compile，待完整B结果后真实数字审计，不冒称B7完成。
+
+### B1预演墙配置修复：完整回归实际通过
+
+源提交ed7c9ba，ops/预期/失败保全63ee1da已push且远端同SHA。`run_r2_regression.py --out outputs/qa/r2/B1-rehearsal-wall-regression --workers 3` 实际driver exit0；66/66单测（2.353s），6冻结配置SHA同；四基线stuck/arrived/collision/arrived、眼数/仿真时间同R1。R1原真实Lux重放1眼112.84s/无碰撞，12预演全部完整无碰撞，traj.npz全部数组与keys逐项同原，NPZ SHA 6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e相同。冷重配准墙钟1161.2s不含云排队，不是端到端延迟。公开gate evidence/suite/regressions/B1-rehearsal-wall/{regression.json,tests.log,driver.log}，完整原始输出仍outputs。
+
+B4新统一导出/全链运行预期与同源44基线manifest已提交推送。现在允许开始新out outputs/suite/standins-wallfix（四类最早新D、workers2、每类含复盘）和outputs/suite/baselines-wallfix（冻结11全部四基线、workers1）。总3普通物理进程，0付费；源码ed7c9ba固定，旧B4原失败不覆盖，frozen.json不改。B4源同一gate/所有预演完整且无碰撞/独立到达/复盘四类全pass之后才真实Lux。

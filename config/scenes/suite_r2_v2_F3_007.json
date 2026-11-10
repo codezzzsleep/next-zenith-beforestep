@@ -1,0 +1,72 @@
+{
+  "id": "suite_r2_v2_F3_007",
+  "purpose": "R2 preregistered candidate pool; classification pending",
+  "rocks": {
+    "A": {
+      "rock": "moon_rock_06",
+      "height": 0.378142,
+      "x": 4.724045,
+      "y": -0.668189,
+      "yaw": 89.273543
+    },
+    "B": {
+      "rock": "moon_rock_07",
+      "height": 0.387347,
+      "x": 6.958292,
+      "y": 0.252457,
+      "yaw": -30.354167
+    },
+    "C": {
+      "rock": "moon_rock_07",
+      "height": 0.494841,
+      "x": 7.806721,
+      "y": 0.102762,
+      "yaw": 78.690772
+    }
+  },
+  "start": [
+    0.0,
+    -0.5
+  ],
+  "first_stop": [
+    2.3,
+    -0.5
+  ],
+  "goal": [
+    10.567382,
+    0.07241
+  ],
+  "terrain": {
+    "type": "plain",
+    "right_wall": false,
+    "craters": [
+      {
+        "center": [
+          6.704848,
+          1.666755
+        ],
+        "radius": 0.753879,
+        "depth": 0.59679
+      }
+    ]
+  },
+  "sun": {
+    "elevation_deg": 8.086193,
+    "azimuth_deg": 33.162256
+  },
+  "rehearse_reference": false,
+  "asset_cache_precision": "exact",
+  "suite": {
+    "family": "F3",
+    "seed": 7,
+    "revision": "r2_v2",
+    "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+    "layout": "compact",
+    "target_rocks": [
+      "A",
+      "B",
+      "C"
+    ],
+    "note": "Target labels describe layout intent; production capture uses only observed connected components."
+  }
+}

@@ -580,3 +580,5 @@ run_suite_imagination与evaluate_suite_scene均exit0；真实run_id 38c42f1ee833
 ```
 
 预期是普通场景也到达，实际2眼53.0s安全停车/无碰撞，未满足到达预期。首眼A/B各0准入；第二眼A两图3份仍0、B单图6份中B2准入，未知A仍无可执行路线。没有6b（两图分支不追加、B已非零准入），没有B替换/第三眼。赛后3D最小间隙0.970602167679948m，XY包络0.8393517866102103m，乐观原计划侵入代理0.029070841771640044m；乐观实际到达，平面侵入代理不抵消无实际接触。原raw/summary/events/输入/配准/复盘在outputs/suite/real/suite_r2_v4_F0_005/imagination与outputs/suite/reviews/suite_r2_v4_F0_005。B6当前枚举全部20份被拒候选（首眼12、第二眼8），parent2079440/场景子2080857，workers1；没有只挑会撞的候选。全CF结束后统一一次SHAmanifest/原GLB完整外包与精简保全。B5已按冻结名单继续F1_001，不因首个未到达删除或替换场景，F0_001同字节6b仍在计算。
+
+D覆盖报告前保留：原已发布R1 PDF复制到[原R1报告](../../site/media/history/stress_v8_r1/report.pdf)，5页/1625235bytes/SHA ae4ceacbc684b4a681cacee2f19442d80fb3f096e70666e5865a0f4574fb5f87，原字节保留；当前报告仍R1，R2完整PDF尚未渲染。没有新Demo视频。人工场景目录已准备，当前0个JSON，最终C3再查；不会把可选用户输入当成停工条件。

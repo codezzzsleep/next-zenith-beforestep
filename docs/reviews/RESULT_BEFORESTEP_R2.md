@@ -540,3 +540,5 @@ C2浏览器新增扫描库真实drag/drop验收exit0（C2-library-drop-anchor.lo
 B5中间观测（不是导航终态）：F0_001实际B第二眼527px/native_ok=true，但B首眼native_ok=false，正确调用新视角img六份；F0_005实际A第二眼1249px且两眼native_ok都true，正确调用imgs三份，B336px/native_ok=false调用新img六份。原请求字节与sample/task identity保存在真实out/budget，public regressions/report-contracts/real-second-eye-intermediate.json列出原请求路径与字段。此时33/360（29ok/4pending），完整源cfffaf8，两个真实父子和B6等待父继续运行；不得把补看输入成立写成到达。
 
 B7/C1/D检查脚本准备：总表只接纳真实运行、复盘与全部拒绝CF均完成且prefix验证通过的场景，逐项核对原reject集合与复盘actual/optimistic run_id；未完成不写成完整结果。关卡图像/真值与候选mesh额外生成site/data/levels-assets.json，数字审计同时校验原照片SHA与导出图片/网格。compile exit0，实际R1锚点重建exit0/14资产SHA通过，关卡载荷除新增图片SHA字段外逐字段同已过浏览器版；当前B7隔离fixture只接受1原锚点、11新scene列未完成且不能支持多数有效结论，0新物理/0paid。public report-contracts/B7-completion-and-assets.json。这个fixture没有发布成总表、没有提前应用时间收缩；仍继续全部冻结12，完整B7与D审计待实际新数据。
+
+D整合预备：integrate_suite从最终summary生成related-work场景组贡献、碰撞/补看/CF比例和有限适用范围，保留R1原锚点及文献说明；报告导言将区分R1与R2。verify_suite_presentation额外重新生成整张suite表对比，核对相关工作贡献块与实际summary，防止网页/报告复制同一错误表而绕过核验。两个ops compile exit0，在只读R1保存数据隔离preview上正确显示12冻结/1完成、不能支持多数有效、CF0/3；没有修改发布报告或构造新实验。完整D仍待真实B数据。

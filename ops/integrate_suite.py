@@ -18,6 +18,24 @@ def replace_block(text, start, end, block, before):
     return text.replace(before, framed+before, 1)
 
 
+def related_work_block(summary):
+    d, cf = summary['decisive'], summary['counterfactuals']
+    lines = ['## 项目贡献：预注册场景组的实测范围', '',
+        f"R2原冻结{summary['frozen_scene_count']}个场景，完整完成{summary['completed_scene_count']}个；决定性场景中想象到达{d['arrived']}、安全终止{d['safe_stop']}、碰撞{d['collisions']}。",
+        '全部分类与选择在本轮真实Lux结果之前完成，随后使用同一冻结流程、规则控制器与准入门槛；没有逐场景调参或训练新模型。逐场五种运行、任务身份、复盘与反事实见[场景组实测](suite.md)和[原始总表](../evidence/suite/summary.json)。', '']
+    if summary['imagination_collision_scenes']:
+        lines.append('想象执行发生碰撞：' + '、'.join(summary['imagination_collision_scenes']) + '。这些失败限定了该流程的安全适用范围，不能以候选通过自检或预演代替实际安全。')
+    lines.append('满足预注册的多数决定性场景有效且无碰撞条件。' if summary['majority_effectiveness_supported']
+                 else '没有满足预注册的多数决定性场景有效且无碰撞条件；贡献限于可复核的系统与逐类实测边界。')
+    lines.append(f"全部可执行拒绝候选反事实中碰撞{cf['collisions']}/{cf['executed']}，另{cf['unexecutable']}份不能执行。" +
+                 ('自检确实拒绝过会导致碰撞的候选，具体比例和运行身份公开。' if summary['selfcheck_collision_evidence']
+                  else '该批没有证明自检挡住碰撞，仍报告自检偏保守。'))
+    lines.append('真实第二眼场景：' + ('、'.join(summary['second_eye_scenes']) or '无') + '；真实6b追加场景：' +
+                 ('、'.join(summary['six_b_scenes']) or '无') + '。')
+    lines.extend(['', '这是有限扫描岩石、低太阳角与预注册摆放分布下的受控仿真实验。它没有比较多候选与单候选，也没有测量生成分布的覆盖率或证明任意月面的有效性；不继承上述论文的实体实验结论。', ''])
+    return '\n'.join(lines).strip()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--sandbox', action='store_true', help='Include only after full browser and consistency checks')
@@ -29,7 +47,14 @@ def main():
     report_path = ROOT / 'docs/report.md'
     report = replace_block(report_path.read_text(), '<!-- SUITE-START -->', '<!-- SUITE-END -->', suite,
                            '## 两种影子，一个行动问题')
+    report = re.sub(r'^Next Zenith · 负责人 R1 主线复核[^\n]+$',
+        'Next Zenith · Aholo Lux3D。报告保留R1原窄道锚点与R2预注册场景组；R1主实验源码 `2147b2f`，R2源码身份逐场保存在原运行记录。完整结果见[R1执行记录](reviews/RESULT_BEFORESTEP_R1.md)与[R2执行记录](reviews/RESULT_BEFORESTEP_R2.md)。',
+        report, flags=re.M)
     report_path.write_text(report)
+    related = ROOT / 'docs/related-work.md'
+    related.write_text(replace_block(related.read_text(), '<!-- SUITE-CONTRIBUTION-START -->',
+        '<!-- SUITE-CONTRIBUTION-END -->', related_work_block(summary),
+        '## 项目贡献：冻结窄道里的行动实证'))
     homepage_path = ROOT / 'site/index.html'
     page = homepage_path.read_text()
     page = page.replace('<a class="button" href="#experience">查看窄道里的三种选择 ↓</a>',

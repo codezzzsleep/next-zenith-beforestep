@@ -68,6 +68,14 @@ def check():
             assert candidate['footprint'] == np.c_[N.XS[i], N.YS[j]].tolist()
             candidates += 1
     suite = (ROOT / 'docs/suite.md').read_text().strip()
+    generated_suite = ROOT / 'outputs/qa/r2/suite-document-recomputed.md'
+    subprocess.run([sys.executable, str(ROOT / 'ops/write_suite_docs.py'), '--out',
+                    str(generated_suite.relative_to(ROOT))], cwd=ROOT, check=True, stdout=subprocess.PIPE)
+    assert suite == generated_suite.read_text().strip(), 'Published table differs from the recomputed raw result table'
+    from integrate_suite import related_work_block
+    related = (ROOT / 'docs/related-work.md').read_text()
+    contribution = related.split('<!-- SUITE-CONTRIBUTION-START -->', 1)[1].split('<!-- SUITE-CONTRIBUTION-END -->', 1)[0].strip()
+    assert contribution == related_work_block(summary), 'Related-work contribution differs from measured suite outcomes'
     report = (ROOT / 'docs/report.md').read_text()
     assert '<!-- SUITE-START -->' in report and '<!-- SUITE-END -->' in report
     block = report.split('<!-- SUITE-START -->', 1)[1].split('<!-- SUITE-END -->', 1)[0].strip()

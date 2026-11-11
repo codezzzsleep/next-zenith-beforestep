@@ -10,7 +10,7 @@
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
-| E1 | 原12冻结场景赛后修订复测 | 进行中 | 全12与17新CF/本地完整保全已完成；末场远端对象核对与公开proof待完成 |
+| E1 | 原12冻结场景赛后修订复测 | 完成 | f971519数据；12原summary/17CF/全复盘/完整tar+publicmanifest/独立远端下载通过，frozen-complete.json阶段证明 |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
@@ -1816,3 +1816,9 @@ ops预检查发现一批请求逐项创建，预算可能在中途用满：旧ca
 ```
 
 <!-- R3-RETAINED-SUMMARIES-END -->
+
+## E1公开完成，进入固定E2
+
+E1数据f971519已实际push：1137末场新LFS对象46MB上传成功；再次只从origin下载到独立存储，1137对象45874439bytes逐Git pointer SHA/size核对全pass/exit0。[末场远端回执](../../evidence/reviews/beforestep_r3/final-verification/last-frozen-publication-audit.json)。加前947对象383711275bytes，已公开新增2084对象429585714bytes，全部分两次独立远端验证；本地旧缓存未用于证明远端下载。
+
+[公开E1阶段证明](../../evidence/reviews/beforestep_r3/frozen-complete.json)附全12原summary、逐首眼byte核对、17CF精确前缀、每场manifest SHA和完整tar核对/远端回执。监督验证这份证明已在远端main后才自动运行E2：F0_002、F2_011、F3_005，预算尚余146时继续F0_003、F3_006。E1已完成不是整个R3完成；继续E2、V1、D，不等确认。

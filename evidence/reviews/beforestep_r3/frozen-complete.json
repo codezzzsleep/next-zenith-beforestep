@@ -1,0 +1,718 @@
+{
+  "schema": "beforestep-r3-frozen-complete/v1",
+  "completed": true,
+  "source_sha256": {
+    "src/beforestep/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "src/beforestep/cli.py": "d938e72187283c2d9504ad8c778aae16b8d9f8f5cef732d7c1c7d5ea978c5b76",
+    "src/beforestep/delivery/__init__.py": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523",
+    "src/beforestep/delivery/artifacts.py": "25725e113aa775aa9f81bdc334d8c2ecc3a325de163e7c37c84271313fd07d94",
+    "src/beforestep/delivery/learning.py": "0a597af61c757c19261e7f4826584a239402f33d4d6340c0f060d943e9d56240",
+    "src/beforestep/delivery/server.py": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab",
+    "src/beforestep/delivery/video.py": "6bd3693ba83413eec422bda993a1594c947442cf07d3bd67f4e3c32951f70513",
+    "src/beforestep/evaluation.py": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135",
+    "src/beforestep/generation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/generation/client.py": "0774684a7e12bcc8eaffa29a4593a13aab5775758a0b135684f290961671f36e",
+    "src/beforestep/generation/evaluate.py": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a",
+    "src/beforestep/generation/records.py": "8f73f34348d63d9650336e86d9bc179f42088d3eec7306816af04a32f922e9f6",
+    "src/beforestep/geometry/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/geometry/admission.py": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf",
+    "src/beforestep/geometry/camera.py": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910",
+    "src/beforestep/geometry/imagination.py": "d7ced1d1f56a03fa9c9cc64ef34cba42c8ce01f1346185d72f0b6c174d9821af",
+    "src/beforestep/geometry/metrics.py": "32ca63a31666f274a8d2b62e7cd14019d397d2960eb8a41792a04ce73239642e",
+    "src/beforestep/geometry/registration.py": "6f00b28d5aabfc62769615055ea4036df3bbf91287eeb4b7072ca0b57982986d",
+    "src/beforestep/geometry/solid.py": "663a3f7e8a3011614f7951a7e1239b58897d79ddb521508992510f436ba5830d",
+    "src/beforestep/geometry/volume.py": "e26ab39219ebb5be58fac2b48db7326f5e99c09140a080b7613503985fde2239",
+    "src/beforestep/learning/__init__.py": "2d4b42443926bf506ac7cbc6fc09f1d17df868e256377669dcf80624c8110a2f",
+    "src/beforestep/learning/checkpoints.py": "0be9fefd265a58b078c67705dd6c82b7b3bcbb3dbdb81ec4c233fdf3d3b01df2",
+    "src/beforestep/learning/evaluate.py": "13ebf5529282182ac16cce5825bb50fefc784f77f30bb2be0ce52dbf2fe7ed8c",
+    "src/beforestep/learning/policy.py": "b101549135a21ee8a2d44a8514e7738ae31582521171d65fecc8464c1f00f44f",
+    "src/beforestep/learning/pose.py": "6035e2b6247fd830300405d488feef00ec961a17c3c37cc85c076a144df0a03b",
+    "src/beforestep/learning/pose_train.py": "49a63337d31ebf7c35c7950e58536f5d21456e19497725f0ae761124f349ef0f",
+    "src/beforestep/learning/ppo.py": "6982815993f697477eae61b18e6766cb2ce60bc0d1153094e75c08407d82520d",
+    "src/beforestep/learning/train.py": "3df3464cbc8056f36e4ae1e6e8a59186992405629c9c1707fa17aaa127db9a23",
+    "src/beforestep/navigation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/navigation/controller.py": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083",
+    "src/beforestep/navigation/map.py": "52f3754be73b0bc68b02dfc0228533b57969093ebed04d9e892205fdfe97a4b0",
+    "src/beforestep/navigation/shadows.py": "d5c6e8964b52f95845725e4b98dab9272fc2c3c41a3d601a664f338af00c2783",
+    "src/beforestep/observation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/observation/capture.py": "ed7a90ca2699171dd2421414b01173ff2ffe8fb056def92f0598375cbbd7507c",
+    "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
+    "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
+    "src/beforestep/pipeline.py": "76eb2520c5a070a1764e62e90611fcc5a7e3bb201c0a00c6df0dd35124f296fb",
+    "src/beforestep/resources.py": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c",
+    "src/beforestep/scene.py": "7203849439a30fe32651e7cbbf2b32e1883df65fe10baf93e80ffc77d1853704",
+    "src/beforestep/simulation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/simulation/assets.py": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3",
+    "src/beforestep/simulation/environment.py": "7d9fe894461e14a5f6e5485c0e1bfcce4fe24a3b91d6d9e62773cf3a21a6e1b3",
+    "src/beforestep/simulation/robot.py": "123635fb0b22e2a5d36f8560c2438772dd186c3045a2edf249e24e08bd501942",
+    "src/beforestep/simulation/robot_model.py": "6b1187699d644e082f32ff55fbd6a00daec1b60aee5296baec7e9519c7476b0c",
+    "src/beforestep/simulation/soil.py": "ffc028f8c1e2f47b86132fce9411b98cf57e52a902e2b4bc338534b9a752533d",
+    "src/beforestep/simulation/soil_profiles.py": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73",
+    "src/beforestep/simulation/terrain.py": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e",
+    "src/beforestep/strict_pipeline.py": "1d9ad235ce142ce63b5ba64817f44e98a563f2575496feb222c70e022f87e3ae",
+    "src/beforestep/visualization/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/visualization/camera.py": "a816ff4e9b173b99d1ac5e54722659bfe4b2dbb132990f9781fab3bd0980fb81",
+    "src/beforestep/visualization/model.py": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569",
+    "src/beforestep/visualization/scene.py": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332",
+    "src/beforestep/visualization/textures.py": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"
+  },
+  "post_result_revision": true,
+  "scope": "Completed known-scene E1 reruns, counterfactuals, postmortems and custody; this is not held-out evidence.",
+  "runs": [
+    {
+      "scene": "stress_v8",
+      "run_id": "4909541f64eb4f2cb4dba2715248c46c",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8",
+        "goal": [
+          10.5,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 86.54,
+        "sensor_mode": "live",
+        "looks": 3,
+        "final_pose": [
+          4.044,
+          0.496,
+          -0.81
+        ],
+        "sim_time_s": 87.74,
+        "wall_s": 399.4,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/qa/r3/S2-v3/R1-regression/replay"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/stress_v8/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/stress_v8/manifest.json",
+      "public_manifest_sha256": "1b89475cfed687a66ee28aa599e1c83e9412de170a61331521a850ff77557caf",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/stress_v8/objects/8263c3977c26c436592c38c54887ed74aeaa99f3e275571137eaecd45df590f4.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F0_001",
+      "run_id": "d29f081bbe354b40a563e9876f13a6e1",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_001",
+        "goal": [
+          10.273944,
+          -0.043551
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.38,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.075,
+          0.397,
+          -0.2
+        ],
+        "sim_time_s": 54.58,
+        "wall_s": 136.5,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F0_001/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_001/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_001/manifest.json",
+      "public_manifest_sha256": "638144300906449097411dca2992829c2192bfb80d84c8f3cbfe0db99d23e8e0",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_001/objects/4f190b585e3b32903f14ef567c45aa6d7efce0932ef58e2d6feb465be81e7d33.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F0_005",
+      "run_id": "f4f137935b14427c8d0320dc7c2bd185",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_005",
+        "goal": [
+          10.305374,
+          0.008717
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 51.8,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          3.289,
+          0.551,
+          -43.77
+        ],
+        "sim_time_s": 53.0,
+        "wall_s": 81.0,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F0_005/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_005/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_005/manifest.json",
+      "public_manifest_sha256": "365b5617c6d27ca5591e9dcd8986aa79ddd36c2a25391d7c98f5ab7f9d3ff4c3",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_005/objects/fc8c7e07e9d7f208e48a4493dfd2e9140e80d3c4dfbbf39f757d412adf521b81.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F1_001",
+      "run_id": "1eb6e6e77f914cdc8c1c29d0efbd70f5",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F1_001",
+        "goal": [
+          8.777473,
+          0.01785
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 81.48,
+        "sensor_mode": "live",
+        "looks": 3,
+        "final_pose": [
+          8.081,
+          -1.014,
+          79.05
+        ],
+        "sim_time_s": 82.68,
+        "wall_s": 1661.6,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F1_001/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_001/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_001/manifest.json",
+      "public_manifest_sha256": "704928503d026f6e84e93fc577c510538323a2d323d497ab964602fa3e62ce48",
+      "counterfactuals": {
+        "rejected_candidates": 14,
+        "executed": 14,
+        "collisions": 0,
+        "noncollisions": 14,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_001/objects/7e69ae9b24535773002e227eb7cf7cc288ad414a9c67c233650f3957a8f4a6e4.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F1_020",
+      "run_id": "0d59fb7b9ff54a9aaf0df55d19c26773",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F1_020",
+        "goal": [
+          10.000132,
+          -0.030448
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 137.08,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          6.425,
+          -1.412,
+          36.88
+        ],
+        "sim_time_s": 138.28,
+        "wall_s": 769.6,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F1_020/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_020/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_020/manifest.json",
+      "public_manifest_sha256": "350332673f682e9164e6d28e4e589efcf28eb770302055e88b8299810566dfbe",
+      "counterfactuals": {
+        "rejected_candidates": 3,
+        "executed": 3,
+        "collisions": 0,
+        "noncollisions": 3,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_020/objects/b96c34a2637859256a80678ad2485af6ff906e1558b5ea7d7b60586f32d9d398.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F1_003",
+      "run_id": "f95286df2a8947789eeaea8552f27962",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F1_003",
+        "goal": [
+          9.095304,
+          -0.071513
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 100.29,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          8.681,
+          2.008,
+          -53.79
+        ],
+        "sim_time_s": 101.49,
+        "wall_s": 546.8,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F1_003/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_003/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_003/manifest.json",
+      "public_manifest_sha256": "3da3d229937048a48ce382288927c481e8a84dff869f6691047a381105b574cf",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F1_003/objects/8a10147e908b9fff5aa5bf8f40c84d61a35e887e21d24448c63702d1c3bfd199.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F2_003",
+      "run_id": "c504a985dee045099bb8d2cc3940dd1f",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_003",
+        "goal": [
+          10.730404,
+          0.01719
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 82.28,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          4.266,
+          1.995,
+          38.74
+        ],
+        "sim_time_s": 83.48,
+        "wall_s": 600.4,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F2_003/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_003/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_003/manifest.json",
+      "public_manifest_sha256": "a59a4027f0f3dad509237fc8bf8bab9d428473ead4a1234c0b1bdd488cb8c561",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_003/objects/bff9b833856d8694044a97458c91f9e7bddc93558fabdbefb19eafe2f95110dd.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F2_007",
+      "run_id": "6f83424271654501a8583c9d86c675c9",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_007",
+        "goal": [
+          10.056258,
+          0.005516
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 79.08,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          4.252,
+          2.007,
+          -30.71
+        ],
+        "sim_time_s": 80.28,
+        "wall_s": 368.9,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F2_007/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_007/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_007/manifest.json",
+      "public_manifest_sha256": "872b9b814e070c1d7cc0db1a84216911a8dc1d3f9b73f0cddbc7b74d6c252aa0",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_007/objects/70b917a4c3bd34c8b6b8cd8d70664898486d3a574913ba37eb71c91faa390987.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F2_001",
+      "run_id": "4e8125f3734444a4a82fa7be0fbac9d5",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_001",
+        "goal": [
+          10.640641,
+          -0.049459
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 117.37,
+        "sensor_mode": "live",
+        "looks": 4,
+        "final_pose": [
+          10.632,
+          -0.05,
+          20.37
+        ],
+        "sim_time_s": 118.57,
+        "wall_s": 491.7,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F2_001/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_001/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_001/manifest.json",
+      "public_manifest_sha256": "1118f407641c728cfe3cee24206268e0187253dc863ddf5b1cbe47fe3d23ae30",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F2_001/objects/4aad6d8a7cf635c04e287332d233b30873b5b925788852fb3685695c59967be4.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F3_002",
+      "run_id": "379c9d5d0be64945a92ad0420d95c4b9",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_002",
+        "goal": [
+          11.178607,
+          -0.032265
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 175.51,
+        "sensor_mode": "live",
+        "looks": 4,
+        "final_pose": [
+          11.162,
+          -0.022,
+          31.41
+        ],
+        "sim_time_s": 176.71,
+        "wall_s": 337.1,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F3_002/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_002/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_002/manifest.json",
+      "public_manifest_sha256": "00758cc8ce3037017147cecace4d9013c406758e5e3f18be14954ce40ae1a40c",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_002/objects/457febcb6417b7c5860f441d3d9ee464c7585741cb7d83d2808d7f8afd680fc2.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F3_004",
+      "run_id": "ccfc1605a2834a82b77091dbe89840d2",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_004",
+        "goal": [
+          10.771229,
+          0.025802
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.9,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          -0.03
+        ],
+        "sim_time_s": 18.1,
+        "wall_s": 81.5,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F3_004/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_004/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_004/manifest.json",
+      "public_manifest_sha256": "23bc841b00ed54ccefb58864b6dcc14544bb415641da064bad48820ebda9dd10",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_004/objects/3b6a7614c07e6b3f59a657760dfd94b6f040ac94863446411f22246a04c47936.gz"
+    },
+    {
+      "scene": "suite_r2_v4_F3_001",
+      "run_id": "54dd8a71c12f4cfe9f1cea5214f43566",
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "imagination_strict",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_001",
+        "goal": [
+          11.478607,
+          -0.046403
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 142.23,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          11.471,
+          -0.049,
+          24.66
+        ],
+        "sim_time_s": 143.43,
+        "wall_s": 294.7,
+        "collision": null
+      },
+      "first_view_verification": {
+        "passed": true,
+        "files_equal": {
+          "look1_rgb.png": true,
+          "look1_depth.npy": true,
+          "look1_dark.npy": true,
+          "look1_state.npy": true,
+          "look1_zmax.npy": true
+        },
+        "source": "outputs/suite/real/suite_r2_v4_F3_001/imagination"
+      },
+      "public_summary": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_001/runs/imagination_strict/summary.json",
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_001/manifest.json",
+      "public_manifest_sha256": "ef7abbab3f2022cab1cc7a0f6c8350808e2264e18694f3c87830960d2fbfeb18",
+      "counterfactuals": {
+        "rejected_candidates": 0,
+        "executed": 0,
+        "collisions": 0,
+        "noncollisions": 0,
+        "unexecutable": 0,
+        "all_executed_prefixes_verified": true
+      },
+      "public_counterfactual_ledger": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_001/objects/2429a0cd97a873692d8ddb7312981d5100bff46921945141ea64cf7b9c67a823.gz"
+    }
+  ],
+  "new_r3_tasks_at_e1_completion": 24,
+  "custody_audit": "evidence/reviews/beforestep_r3/frozen-custody-audit.json",
+  "publication_audits": [
+    "evidence/reviews/beforestep_r3/final-verification/early-publication-audit.json",
+    "evidence/reviews/beforestep_r3/final-verification/last-frozen-publication-audit.json"
+  ]
+}

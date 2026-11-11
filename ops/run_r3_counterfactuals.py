@@ -6,6 +6,7 @@ import os
 from pathlib import Path
 import subprocess
 import sys
+import uuid
 
 import numpy as np
 
@@ -13,6 +14,33 @@ from beforestep.generation import client as C
 from run_suite_imagination import sources
 
 ROOT = C.ROOT
+
+
+def share_completed_observations(original, actual):
+    """Keep all paths and exact bytes while sharing immutable replay copies.
+
+    JSON, logs and active runs stay independent. Completed run directories are
+    guarded against being simulated again at the same path by the drivers.
+    """
+    assert (original / 'summary.json').is_file() and (actual / 'summary.json').is_file()
+    shared, byte_copies = 0, 0
+    for path in actual.rglob('*'):
+        if path.is_symlink() or not path.is_file() or path.suffix.lower() not in ('.png', '.jpg', '.npy', '.npz', '.obj', '.glb'):
+            continue
+        source = original / path.relative_to(actual)
+        if not source.is_file() or source.is_symlink():
+            continue
+        left, right = source.stat(), path.stat()
+        if left.st_dev != right.st_dev or left.st_size != right.st_size or (left.st_dev, left.st_ino) == (right.st_dev, right.st_ino):
+            continue
+        if C.sha(source) != C.sha(path):
+            continue
+        temporary = path.with_name(path.name + '.share-' + uuid.uuid4().hex)
+        os.link(source, temporary)
+        os.replace(temporary, path)
+        shared += 1; byte_copies += right.st_size
+    return {'files': shared, 'identical_byte_copies_shared': byte_copies,
+            'all_original_paths_and_bytes_preserved': True}
 
 
 def prefix_check(original, actual, events, look, target):
@@ -116,8 +144,10 @@ def main():
         intended = any(e['kind'] == 'counterfactual_intervention' and e['look'] == row['look'] and
                        e['target'] == row['target'] and e['candidate'] == row['candidate'] for e in events)
         prefix = prefix_check(original, actual, events, row['look'], row['target']) if intended and actual_summary else None
+        shared = share_completed_observations(original, actual) if actual_summary else None
         return key, {'command': command, 'exit_code': code, 'summary': actual_summary,
                      'intervention_verified': intended, 'prefix_verification': prefix,
+                     'immutable_observation_storage': shared,
                      'run': str(actual.relative_to(ROOT)),
                      'executed': code == 0 and actual_summary is not None and intended,
                      'collision': bool(actual_summary and (actual_summary['collision'] is not None or

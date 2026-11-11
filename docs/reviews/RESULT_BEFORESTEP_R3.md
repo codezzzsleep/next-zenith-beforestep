@@ -3634,3 +3634,73 @@ F0_002完整保全与核验实际完成：7230files、完整tar432468208bytes、
 ```
 
 F0_002 publicscene已5735eeb push；368新增LFS96981747bytes已从origin独立storage实际下载，全部Git pointer SHA/size通过。[远端核验](../../evidence/reviews/beforestep_r3/final-verification/F0-002-publication-audit.json)。完整F0实验/新CF/XY/3D/原GLB/失败与输入清单均完成保全，后续监督复用；当前F2真实链继续，不以此阶段结束R3。
+
+### E2 suite_r2_v4_F2_011 imagination summary原文
+
+原方法exit0，第二眼两批12任务中10成功模型仍0准入，依规则停车；无碰撞。未新增第三批。首眼5准入/第二眼0并未保证可通行，strict首眼复用继续。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_011",
+  "goal": [
+    10.564532,
+    -0.007639
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 54.86,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.597,
+    -1.72
+  ],
+  "sim_time_s": 56.06,
+  "wall_s": 1028.1,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F2_011 imagination_strict summary原文
+
+strict与原方法均2眼56.06s停车、0碰撞；first5原观测字节复用pass。后眼已知SDK同身份复用，未重create，实际未到达。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_011",
+  "goal": [
+    10.564532,
+    -0.007639
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 54.86,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.597,
+    -1.72
+  ],
+  "sim_time_s": 56.06,
+  "wall_s": 134.5,
+  "collision": null
+}
+```
+
+F2_011六栏实际complete；下一固定F3_005已复用提前完成四baseline并进入原想象首眼真实生成。F2原方法新拒CF进行中，已出现强制采纳被拒候选后的碰撞，属于反事实干预结果；真实orig/strict本场均无碰撞。全部17份仍继续，不挑选碰撞样本。

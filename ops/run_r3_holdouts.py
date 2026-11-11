@@ -14,6 +14,11 @@ from r3_lux_budget import R3Budget
 ROOT = C.ROOT
 
 
+def first_view_ready(original, chain):
+    return ((original / 'looks/look1_state.npy').is_file() and
+            not (not chain.get('completed') and chain.get('pending', {}).get('look') == 1))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--regression', required=True)
@@ -96,7 +101,8 @@ def main():
                        '--standins', a.standins]
             if policy == 'imagination_strict':
                 original = output / scene / 'imagination/imagination'
-                if not (original / 'looks/look1_state.npy').exists():
+                original_chain = json.loads((original.parent / 'chain.json').read_text())
+                if not first_view_ready(original, original_chain):
                     row['runs'][policy] = {'completed': False, 'reason': 'original-first-view-chain-incomplete'}
                     save()
                     continue

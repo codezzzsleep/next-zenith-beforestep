@@ -798,3 +798,11 @@ F1_020 第4眼三份新拒绝候选都已实际执行并停车、无碰撞。初
 ## E1免费复盘与已结束场景的保全核对
 
 12个正式v3运行的XY与逐qpos三维复盘均已完成/exit0；早期4份复用，8份缺失记录补于独立sidecar，没有改原轨迹。11个已可保全的场景完成完整tar与≤150MB唯一manifest；F1_001等全部新拒绝CF终态后才保全，不能称E1全部完成。`PYTHONPATH=… python3 ops/verify_r3_custody.py --archives --out outputs/qa/r3/final/early-custody-audit.json` 实际exit0：11份manifest、1796个去重公开gzip对象全部解压SHA/大小正确，每个完整tar的全部条目逐项对原manifest SHA/大小相同。[薄核对回执](../../evidence/reviews/beforestep_r3/final-verification/early-custody-audit.json)。原GLB、旧v2失败与未完成尝试均纳入各场完整包，不删原件。
+
+## 留出运行的预算边界与部分生成保全
+
+ops预检查发现一批请求逐项创建，预算可能在中途用满：旧catch会直接结束，留下已知ID尚未查询；仅有look1_state也不足以证明首眼生成完整。R3-only收尾现在只查询已创建ID并下载原结果，缺失样本不创建，写独立lux_result.partial.json供完整scene包保存原GLB与输入；首眼generation仍pending时，strict明确未完成，不绕过首眼复用限制。src、170上限、截止时间、控制和观测规则均不变，正常完整请求原行为不变。
+
+三条真正边界测试实际通过（3/0.065s/exit0）：169→170后一批第二份不创建，第一份原ID仅查询一次并留partial；已有观测但首眼生成未完不复用，后眼未完仍可复用完整首眼；无完整lux_result时已返回模型仍在完整tar内且SHA/原字节一致。[原日志](../../evidence/reviews/beforestep_r3/final-verification/partial-generation-tests.log)。此前全82已过，最终D全85一次尚待执行，不宣称全85已通过。
+
+11场数据提交b754f16，947个LFS对象384MB实际上传完成；独立存储从origin下载947对象383711275bytes并逐Git pointer SHA/size核对全部通过。[远端回执](../../evidence/reviews/beforestep_r3/final-verification/early-publication-audit.json)。最后F1_001反事实仍在运行，E1阶段未完成。

@@ -155,10 +155,14 @@ def main():
                 except PendingTask:
                     time.sleep(10)
                 except BudgetExhausted:
+                    from r3_partial_results import settle_request
+                    report['partial_generation'] = settle_request(ROOT / request, budget, scene=a.scene)
                     report.update(completed=False, budget_exhausted=True)
                     C.atomic_json(ledger, report)
                     raise SystemExit(2)
                 except ExperimentDeadline:
+                    from r3_partial_results import settle_request
+                    report['partial_generation'] = settle_request(ROOT / request, budget, scene=a.scene)
                     report.update(completed=False, experiment_deadline_reached=True)
                     C.atomic_json(ledger, report)
                     raise SystemExit(2)

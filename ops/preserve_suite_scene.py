@@ -90,7 +90,7 @@ def preserve(args):
             files[repo_path] = path
             if public_file(path, path.relative_to(directory)):
                 selected.add(repo_path)
-        for result in directory.glob('looks/look*/T*/**/lux_result.json'):
+        for result in directory.glob('looks/look*/T*/**/lux_result*.json'):
             for task in json.loads(result.read_text()).get('tasks', []):
                 if task.get('glb'):
                     path = ROOT / task['glb']
@@ -105,9 +105,9 @@ def preserve(args):
                 continue
             relative = str(path.relative_to(ROOT))
             files[relative] = path
-            if path.name in ('chain.json', 'counterfactuals.json'):
+            if path.name in ('chain.json', 'counterfactuals.json', 'lux_result.partial.json'):
                 selected.add(relative)
-        for result in directory.rglob('lux_result.json'):
+        for result in directory.rglob('lux_result*.json'):
             for task in json.loads(result.read_text()).get('tasks', []):
                 if task.get('glb'):
                     asset = ROOT / task['glb']

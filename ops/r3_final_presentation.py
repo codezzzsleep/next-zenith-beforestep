@@ -50,6 +50,9 @@ def chapter(data):
     collided = sum(r['collisions'] for r in cfs)
     unexecutable = sum(r['unexecutable'] for r in cfs)
     cf_line = f'只对本轮新生成且被拒的候选逐份干预：已执行 {executed} 份，其中 {collided} 份碰撞；{unexecutable} 份未完成干预，不当作安全结果。每份都保留原观测、移动前缀及全部 5 个轨迹数组的核验。复用 R1/R2 的旧拒绝候选不再重复计数。统计单位是一次策略干预：共用首眼的同一新候选可能在原方法与修订方法下分别干预，不能把这些运行当作独立生成样本。'
+    known_cf = data['new_rejected_counterfactual_stats_by_scope']['known_frozen']
+    held_cf = data['new_rejected_counterfactual_stats_by_scope']['designated_holdout']
+    cf_line += f" 已知冻结场景的新增干预为 {known_cf['executed']} 份、{known_cf['collisions']} 份碰撞；指定留出的新增干预为 {held_cf['executed']} 份、{held_cf['collisions']} 份碰撞，只有后者提供本轮样本外的反事实证据。"
     substitute = ('修订想象没有在全部黑影测深可到达的场景中替代缺失深度。'
                   if aggregate['strict_arrived_among_see_dark_arrived'] < aggregate['see_dark_arrived_scenes']
                   else '这一对应关系仅在已完成的场景中成立。')

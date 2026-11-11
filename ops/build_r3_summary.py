@@ -122,12 +122,20 @@ def main():
         cf.append({**{k: result[k] for k in ('scene', 'policy', 'completed', 'rejected_candidates', 'executed',
                                            'collisions', 'noncollisions', 'unexecutable', 'all_executed_prefixes_verified')},
                    'ledger': str(path.relative_to(ROOT))})
+    known_scenes = {row['scene'] for row in rows}
+    held_scenes = {row['scene'] for row in held_rows}
+    cf_by_scope = {}
+    for name, selected in (('known_frozen', known_scenes), ('designated_holdout', held_scenes)):
+        group = [row for row in cf if row['scene'] in selected]
+        cf_by_scope[name] = {key: sum(row[key] for row in group)
+                             for key in ('executed', 'collisions', 'noncollisions', 'unexecutable')}
     report = {'schema': 'beforestep-r3-suite-summary/v1', 'post_result_revision': True,
               'original_preregistered_primary_results': 'evidence/suite/summary.json',
               'frozen': rows, 'holdouts': held_rows, 'frozen_stats': strict_stats(rows),
               'holdout_stats': strict_stats(held_rows), 'all_run_stats': strict_stats(rows + held_rows),
               'prior_real_v2': prior_rows, 'prior_real_v2_stats': strict_stats(prior_rows),
               'f1_unused_decisive_available': False, 'new_rejected_counterfactuals': cf,
+              'new_rejected_counterfactual_stats_by_scope': cf_by_scope,
               'new_rejected_counterfactual_stats': {
                   'executed': sum(r['executed'] for r in cf),
                   'collisions': sum(r['collisions'] for r in cf),

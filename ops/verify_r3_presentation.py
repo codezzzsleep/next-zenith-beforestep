@@ -88,10 +88,18 @@ def check():
     for record in data['new_rejected_counterfactuals']:
         cf = read(ROOT / record['ledger'])
         assert cf['completed'] and cf['all_executed_prefixes_verified']
+        for key in ('executed', 'collisions', 'noncollisions', 'unexecutable'):
+            assert record[key] == cf[key], (record['ledger'], key)
         assert cf['candidates'] == new_rejections(ROOT / cf['original_run'], budget)
         assert cf['executed'] + cf['unexecutable'] == len(cf['candidates'])
         assert cf['collisions'] == sum(r['collision'] for r in cf['runs'].values() if r['executed'])
         cf_count += cf['executed']; cf_collisions += cf['collisions']
+    for scope, rows in (('known_frozen', data['frozen']), ('designated_holdout', data['holdouts'])):
+        selected = {row['scene'] for row in rows}
+        group = [row for row in data['new_rejected_counterfactuals'] if row['scene'] in selected]
+        expected = {key: sum(row[key] for row in group)
+                    for key in ('executed', 'collisions', 'noncollisions', 'unexecutable')}
+        assert data['new_rejected_counterfactual_stats_by_scope'][scope] == expected
     report = (ROOT / 'docs/report.md').read_text()
     assert report.count('<!-- R3-METHOD-START -->') == 1
     assert report.count('<!-- R3-METHOD-END -->') == 1

@@ -17,7 +17,7 @@
 | B5 | 场景组真实Lux3D | 进行中 | B4已push c465926后启动；实时预算见ledger |
 | B6 | 全部场景复盘和全部拒绝反事实 | 进行中（复盘随B5，CF父等待已完成场景） | b790e92 |
 | B7 | 完整总表 | 未开始 | — |
-| B8 | 预定规则结论 | 未开始 | — |
+| B8 | 预定规则结论 | 进行中（真实主流程碰撞已显著披露，最终全组结论待B7） | 本次安全边界记录 |
 | C1 | 五步关卡模式 | 进行中（R1锚点框架已验证，完整场景组待B完成） | c5be2c6 |
 | C2 | 沙盒与一致性 | 进行中（锚点1/1与本地浏览器通过，全组待B） | 本次基础提交 |
 | C3 | 导出与人工场景 | 进行中（导出JSON实际验证，人工场景当前无文件） | 本次基础提交 |
@@ -592,3 +592,56 @@ F0_005全部20份拒绝CF已完成，scene child2080857 exit0：3arrived/17stuck
 `ops/preserve_suite_scene.py --scene suite_r2_v4_F0_005 --runs outputs/suite/preservation/suite_r2_v4_F0_005-runs.json --extras outputs/suite/preservation/suite_r2_v4_F0_005-extras.json` exit0，25variants/3567文件/21原GLB，一份[SHA清单](../../evidence/suite/scenes/suite_r2_v4_F0_005/manifest.json)。完整外包：/root/3d/artifacts/beforestep-r2/suite_r2_v4_F0_005-complete.tar.gz，403352843bytes，SHA84f00b3209424cbffccccf5ea5372f7a6db43c40e2f19d3c74f56b11bf0c9102；精简集实测含manifest103426472bytes，<150MB。首次日志102151269未含最后清单，已修helper计总目录最终尺寸；只更新metadata，原tar/原输入/轨迹不重做。附加real/review/CF树包含世界配置、自动命令/退出码和失败日志，未复制generation/client/upload私有账本或密钥。日志B6-preserve-F0-005.log。
 
 LFS配额readAPI仍HTTP404，未能确认余额；按§2.5保守完整外包+精简集，推送将实际检验可用性，不声称剩余配额已知。
+
+### B8重要主流程失败：F1_020真实执行撞C
+
+scene chain/review均exit0，run_id eaf899ee66a24fee84de39ee19697eaa；完整原summary：
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 60.26,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    7.202,
+    -0.94,
+    18.18
+  ],
+  "sim_time_s": 61.46,
+  "wall_s": 937.4,
+  "collision": {
+    "body": "obstacle2",
+    "robot_geom": null,
+    "pos": [
+      7.405,
+      -0.656,
+      0.089
+    ],
+    "t": 61.458
+  }
+}
+```
+
+这不是反事实。真实主想象流程一眼61.46s发生与真实C/obstacle2的接触：位置(7.405,-.656,.089)、61.458s。A/C2和B/A1,A2准入，两个A+B候选预演格均complete且无碰撞；但赛后目标关联显示C全程0任务/0候选，没有C模型进入想象世界。通过可见目标的自检与候选预演，没有覆盖这份未生成目标的实际障碍。三维离散保存姿态最小间隙0.0007104297863684395m、XY0，正离散间隙不能抵消实际接触。原记录与[实际summary](../../evidence/suite/scenes/suite_r2_v4_F1_020/runs/imagination/summary.json)、[复盘/目标请求数](../../evidence/suite/regressions/report-contracts/observed-real-collision.json)已公开保留。
+
+按B8，此失败放在main首页hero后、R1案例前的显眼告示；targeted真实browser exit0：原接触JSON加载、390px无溢出、页面/HTTP错误0，collision-alert-browser.json；R1原报告与数字审计exit0（B8-intermediate-R1-number-audit.log），没有弱化R1结论。这是中间披露，Pages尚未发布新R2；最终D顶端告示更新为全部实际碰撞场景，完整浏览器验收仍待全部组。
+
+判断：保留原12冻结组、原所有准入与失败，不改变Source cfffaf8/门槛/控制/两眼/goal，不用隐藏真值位置补模型来改写本批结果。R2无碰撞条件已经不满足，不能声称多数决定性场景有效且无碰撞；仍完成全部B5/B6/B7/C/D。
+
+B6另有F0_001全部20拒绝CF终态，4collision/14arrived/2stuck，全部prefix验证通过；碰撞发生在首眼B/A1,A2,C1,C2，与真实B在81.092s接触，主真实F0_001保持2眼54.58s安全停车。下一为此第二完整scene一次manifest/外包，不用局部CF分母代替全组结果。
+
+首场bundle1063597已实际push0/远端同，LFS全新缓存远端代表对象5,966,676bytes下载0且SHA/字节同本地，证明本批上传/读取可用，余额仍未知。B7额外真实来源检查在R1/R2实际数据通过、保留offline stand-in正确被拒；普通提前停车的较短仿真时长不写成更快完成任务。compile0/0新增物理或付费。

@@ -73,6 +73,8 @@ def main():
     lines.append(f"决定性完成 {d['completed']} 个：想象到达 {d['arrived']}，安全终止 {d['safe_stop']}，碰撞 {d['collisions']}。")
     lines.append('在预注册场景组的多数决定性场景中有效，且本组未观察到想象执行碰撞。' if data['majority_effectiveness_supported'] else '没有满足“决定性场景到达至少2/3且无碰撞”的预注册条件，结论限于逐项实测的有效范围。')
     lines.append(f"普通场景完成 {o['completed']}、想象到达 {o['arrived']}；相对乐观额外眼数与仿真时间分别为 {o['extra_eyes']}、{o['extra_sim_time_s']}s。")
+    if o['arrived'] < o['completed']:
+        lines.append('未到达运行的较短仿真时间可能来自提前停车；这里比较终态时长，不能解释成更快完成任务。')
     lines.append(f"被拒候选反事实碰撞 {cf['collisions']}/{cf['executed']}，另 {cf['unexecutable']} 份不能执行。" + ('自检拒绝的候选中出现过会碰撞的想象，比例和场景逐项公开。' if data['selfcheck_collision_evidence'] else '本批未证明自检挡住碰撞，继续报告自检偏保守。'))
     lines.append('第二眼真实触发：' + ('、'.join(data['second_eye_scenes']) or '无') + '；6b：' + ('、'.join(data['six_b_scenes']) or '无') + '。')
     failed = [r for r in data['scenes'] if r.get('failure_reason')]

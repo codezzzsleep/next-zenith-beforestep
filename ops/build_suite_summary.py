@@ -30,6 +30,17 @@ def counterfactual_outcomes(cf):
     return counts
 
 
+def require_real_provenance(actual):
+    assert not (actual / 'standin_provenance.json').exists(), 'Stand-in data cannot count as real Lux'
+    for result in actual.glob('looks/look*/T*/**/lux_result.json'):
+        data = read(result)
+        assert not data.get('not_real_lux'), 'Offline generation cannot count as real Lux'
+        for task in data['tasks']:
+            assert not task.get('not_real_lux'), 'Offline task cannot count as real Lux'
+            if task['status'] == 'ok':
+                assert isinstance(task['task_id'], int) and task['task_id'] > 0
+
+
 def target_counts(actual, scene):
     definition = S.configure(scene)
     truth = truth_footprints(actual)
@@ -102,6 +113,7 @@ def main():
         if not (actual / 'summary.json').exists():
             incomplete.append(scene)
             continue
+        require_real_provenance(actual)
         if not entry.get('anchor'):
             cf_path = ROOT / args.counterfactual_root / scene / 'counterfactuals.json'
             review_path = ROOT / args.review_root / scene / 'review.json'

@@ -1,0 +1,266 @@
+{
+  "schema": "beforestep-observed-suite-collision/v1",
+  "scope": "One completed actual Lux experiment; the full frozen suite is still running",
+  "scene": "suite_r2_v4_F1_020",
+  "run_id": "eaf899ee66a24fee84de39ee19697eaa",
+  "summary": {
+    "policy": "imagination",
+    "tag": "imagination",
+    "see_dark": false,
+    "imagine": "lux",
+    "result": "collision",
+    "controller": "rules",
+    "controller_sha256": null,
+    "pose_controller_sha256": null,
+    "scene_id": "suite_r2_v4_F1_020",
+    "goal": [
+      10.000132,
+      -0.030448
+    ],
+    "start_mode": "scene_start",
+    "execution_elapsed_s": 60.26,
+    "sensor_mode": "live",
+    "looks": 1,
+    "final_pose": [
+      7.202,
+      -0.94,
+      18.18
+    ],
+    "sim_time_s": 61.46,
+    "wall_s": 937.4,
+    "collision": {
+      "body": "obstacle2",
+      "robot_geom": null,
+      "pos": [
+        7.405,
+        -0.656,
+        0.089
+      ],
+      "t": 61.458
+    }
+  },
+  "target_counts": {
+    "A": {
+      "tasks": 6,
+      "succeeded": 4,
+      "admitted": 1,
+      "views": [
+        {
+          "look": "look1",
+          "target": "T1",
+          "associated_rocks": [
+            "A"
+          ],
+          "native_px": 957,
+          "native_ok": true,
+          "mode": "img",
+          "task_ids": [
+            6347854,
+            6347859,
+            6347870,
+            6347875,
+            6347880,
+            6347883
+          ]
+        }
+      ],
+      "six_b": false,
+      "shared_observation_target": false
+    },
+    "B": {
+      "tasks": 6,
+      "succeeded": 4,
+      "admitted": 2,
+      "views": [
+        {
+          "look": "look1",
+          "target": "T2",
+          "associated_rocks": [
+            "B"
+          ],
+          "native_px": 363,
+          "native_ok": false,
+          "mode": "img",
+          "task_ids": [
+            6347945,
+            6347951,
+            6347955,
+            6347964,
+            6347970,
+            6347977
+          ]
+        }
+      ],
+      "six_b": false,
+      "shared_observation_target": false
+    },
+    "C": {
+      "tasks": 0,
+      "succeeded": 0,
+      "admitted": 0,
+      "views": [],
+      "six_b": false,
+      "shared_observation_target": false
+    }
+  },
+  "review": {
+    "schema": "beforestep-suite-post-run-review/v1",
+    "scene": "suite_r2_v4_F1_020",
+    "scope": "Post-run truth only; no hidden geometry was supplied to production planning",
+    "actual_run_id": "eaf899ee66a24fee84de39ee19697eaa",
+    "optimistic_run_id": "11013dbba4fb424282202789f9981efc",
+    "minimum_3d_clearance_m": 0.0007104297863684395,
+    "actual_3d_by_rock": {
+      "A": {
+        "minimum_signed_collision_geometry_distance_m": 0.23580036039551056,
+        "witness": {
+          "trajectory_index": 6260,
+          "time_s": 44.95800000001107,
+          "robot_geom": 40,
+          "obstacle_geom": 53,
+          "nearest_points_xyz_m": [
+            [
+              4.363969086110199,
+              -1.537798920139683,
+              0.0577611650894375
+            ],
+            [
+              4.340463058928728,
+              -1.3031845992698907,
+              0.05543800095341539
+            ]
+          ]
+        },
+        "tested_geom_pairs": 27
+      },
+      "B": {
+        "minimum_signed_collision_geometry_distance_m": 0.551187512648238,
+        "witness": {
+          "trajectory_index": 11133,
+          "time_s": 59.90600000002318,
+          "robot_geom": 18,
+          "obstacle_geom": 54,
+          "nearest_points_xyz_m": [
+            [
+              7.0319442584190535,
+              -0.7649193047087574,
+              0.14968051208356037
+            ],
+            [
+              6.854731672090679,
+              -0.24300862926525138,
+              0.15323300476667953
+            ]
+          ]
+        },
+        "tested_geom_pairs": 27
+      },
+      "C": {
+        "minimum_signed_collision_geometry_distance_m": 0.0007104297863684395,
+        "witness": {
+          "trajectory_index": 11211,
+          "time_s": 61.45800000002342,
+          "robot_geom": 18,
+          "obstacle_geom": 55,
+          "nearest_points_xyz_m": [
+            [
+              7.405163408277752,
+              -0.6566868344128911,
+              0.0887118375359999
+            ],
+            [
+              7.405737077962959,
+              -0.6562698829785103,
+              0.08875385033168741
+            ]
+          ]
+        },
+        "tested_geom_pairs": 27
+      },
+      "D": {
+        "minimum_signed_collision_geometry_distance_m": 1.4767850274658836,
+        "witness": {
+          "trajectory_index": 1329,
+          "time_s": 27.779999999999497,
+          "robot_geom": 36,
+          "obstacle_geom": 56,
+          "nearest_points_xyz_m": [
+            [
+              2.09974450907452,
+              -0.1471125176286129,
+              0.25254484227717433
+            ],
+            [
+              1.5685512351772046,
+              1.230158160566021,
+              0.20949600839105245
+            ]
+          ]
+        },
+        "tested_geom_pairs": 27
+      }
+    },
+    "actual_xy_by_rock": {
+      "A": {
+        "min_center_distance_m": 0.4548222726768161,
+        "min_center_minus_half_width_m": 0.12482227267681606,
+        "min_xy_rectangle_envelope_gap_m": 0.12482176521495109
+      },
+      "B": {
+        "min_center_distance_m": 0.7705196015632755,
+        "min_center_minus_half_width_m": 0.44051960156327546,
+        "min_xy_rectangle_envelope_gap_m": 0.43985909147773744
+      },
+      "C": {
+        "min_center_distance_m": 0.33069627590341316,
+        "min_center_minus_half_width_m": 0.000696275903413146,
+        "min_xy_rectangle_envelope_gap_m": 0.0
+      },
+      "D": {
+        "min_center_distance_m": 1.7296680314220165,
+        "min_center_minus_half_width_m": 1.3996680314220165,
+        "min_xy_rectangle_envelope_gap_m": 1.3678297424366352
+      }
+    },
+    "minimum_xy_envelope_clearance_m": 0.0,
+    "optimistic_plan_intrusion_by_rock": {
+      "A": {
+        "min_center_distance_m": 0.4239872524546528,
+        "center_minus_half_width_m": 0.09398725245465278,
+        "planned_envelope_intrusion_proxy_m": 0
+      },
+      "B": {
+        "min_center_distance_m": 0.08417856707919014,
+        "center_minus_half_width_m": -0.24582143292080988,
+        "planned_envelope_intrusion_proxy_m": 0.24582143292080988
+      },
+      "C": {
+        "min_center_distance_m": 0.0,
+        "center_minus_half_width_m": -0.33,
+        "planned_envelope_intrusion_proxy_m": 0.33
+      },
+      "D": {
+        "min_center_distance_m": 1.8615481649396015,
+        "center_minus_half_width_m": 1.5315481649396014,
+        "planned_envelope_intrusion_proxy_m": 0
+      }
+    },
+    "optimistic_max_intrusion_m": 0.33,
+    "diagnostic_results": [
+      {
+        "run": "outputs/suite/real/suite_r2_v4_F1_020/imagination",
+        "result": "collision",
+        "planned_B_intrusion_m": 0,
+        "actual_min_xy_envelope_gap_m": 0.0
+      },
+      {
+        "run": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_020/optimistic/run",
+        "result": "collision",
+        "planned_B_intrusion_m": 0.24582143292080988,
+        "actual_min_xy_envelope_gap_m": 0.0
+      }
+    ]
+  },
+  "evidence": "evidence/suite/scenes/suite_r2_v4_F1_020/runs/imagination/summary.json",
+  "observed_failure": "Actual collision with C/obstacle2; C had zero observation requests/candidates. Both A+B candidate rehearsal panes completed without collision; the unmodeled C was absent from the imagined worlds."
+}

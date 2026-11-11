@@ -68,6 +68,10 @@ def main():
     table = table.replace('href="decisions.md"', 'href="docs/decisions.md"').replace('href="reviews/RESULT_BEFORESTEP_R2.md"', 'href="docs/reviews/RESULT_BEFORESTEP_R2.md"')
     block = game+'\n<section id="suite-summary">'+warning+'<div class="table-wrap">'+table+'</div></section>'
     page = replace_block(page, '<!-- SUITE-HOME-START -->', '<!-- SUITE-HOME-END -->', block, '<section id="shadows">')
+    if summary['imagination_collision_scenes']:
+        alert = '<section id="suite-collision-alert" class="suite-warning"><div class="eyebrow">R2 / 实测安全边界</div><h2>想象策略实际发生碰撞。</h2><p><strong>' + html.escape('、'.join(summary['imagination_collision_scenes'])) + '</strong></p><p>全部实际接触、复盘与失败原因在预注册结果总表中保留。</p><a href="#suite-summary">查看碰撞场景与原始运行身份 ↓</a></section>'
+        page = replace_block(page, '<!-- SUITE-COLLISION-ALERT-START -->', '<!-- SUITE-COLLISION-ALERT-END -->', alert,
+                             '<!-- SUITE-HOME-START -->')
     resize = '<script>addEventListener("message",function(e){if(e.origin!==location.origin||!Number.isFinite(e.data?.beforestepLevelHeight))return;var f=document.querySelector("#levels iframe");if(f&&e.source===f.contentWindow)f.style.height=Math.max(700,e.data.beforestepLevelHeight)+"px";});</script>'
     if 'beforestepLevelHeight' not in page:
         page = page.replace('</body>', resize+'</body>')

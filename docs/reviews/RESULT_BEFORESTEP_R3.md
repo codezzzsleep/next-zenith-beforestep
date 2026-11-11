@@ -8,9 +8,9 @@
 | P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
-| S1 | imagination_strict与预测阴影 | 进行中 | v1已提交；保守选点修复后重验，原pipeline.py未改 |
+| S1 | imagination_strict与预测阴影 | 完成 | 887b23f；75单测/全五R1gate；原pipeline.py未改 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | v1全五R1回归pass；选点修复后的v2回归/替身进行中 |
-| E1 | 原12冻结场景赛后修订复测 | 未开始 | — |
+| E1 | 原12冻结场景赛后修订复测 | 进行中 | 只复用已有首眼；需要新样本时停车，0新增任务 |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
@@ -77,3 +77,143 @@ S2完整R1 gate实际终态pass：stuck/arrived/collision/arrived，真实重放
 [保存地图选点诊断](../../evidence/reviews/beforestep_r3/viewpoint-diagnostic/diagnostic.json) 发现新strict代码额外按strict占据过滤了unknown，改变R3要求沿用的保守选点排序。F1_020首眼原规则前40有可达(1.892,−0.8)，过滤后没有；锚点第4眼原规则最高135格且(3.871,0.6)可达，过滤后最高13格，低于原20格条件，于是提前no_viewpoint。修复仅恢复保守观察需求掩码，不改原选点函数、控制器、传感器、5cm或冻结参数；等已有离线作业终态，再改src并重新过全部单测、全五R1gate、两场替身。v1全部失败保留。
 
 S2 v1四次替身全部终态，[v1原始summary](../../evidence/reviews/beforestep_r3/standins/v1/summary.json) 保留；E1门卫因all_passed=false退出1，未创建任何付费任务。新strict已恢复保守观察需求，75项单测实际pass/10.692s；完整v2回归 `outputs/qa/r3/S2-v2/R1-regression` 正在运行，仍核原R1所有数组，太阳实现/固定参数不变。v2替身只复用逐字节相同的旧离线首眼扫描资产，后面几眼重新实际观测，独立输出目标为 `evidence/reviews/beforestep_r3/standins/v2/summary.json`，当前尚未完成，不宣称通过。
+
+## S2 v2：源回归通过，锚点到达预期未满足
+
+[全五R1回归](../../evidence/reviews/beforestep_r3/regression/v2/regression.json) 已实际pass，75项单测、12个预演全无碰撞，真实重放五个数组与原R1完全相同。原扫描与物理碰撞网格的预测阴影逐格相同（IoU1.0），方向/坐标未发现错误；不调参数拟合DARK。
+
+[四个v2替身原记录](../../evidence/reviews/beforestep_r3/standins/v2/summary.json)：锚点truth5眼142.2s停车、生产注册5眼135.42s停车；F1_020 truth5眼129.12s停车、生产注册2眼48.84s停车，全无碰撞。锚点真值替身的5个轨迹数组与保守车完全相同；[保存地图诊断](../../evidence/reviews/beforestep_r3/standins/v2/blockage-diagnostic.json) 显示只放开某一类未知仍无路，原全部未知放开的想象可以规划。规定的锚点到达预期未满足，保持all_passed=false，不把停车冒充通过，不创建新增任务。
+
+为了完成不依赖新增付费的工作，按已提交12名单用真实旧首眼资产运行新策略；只mode=reuse、不会加载key/调用provider，需要新样本就保留实际观测与请求等待，不改变门槛/输入/名单。新source原R1回归已过，先复用再判断尚未完成项；这些是已知场景赛后修订复测，不是样本外证据。
+
+云端实际只读查询旧R2任务6376018成功/status3/1.787s：[安全摘要](../../evidence/reviews/beforestep_r3/cloud-query.json)。未创建、上传或新生成。当前问题是严格方法的锚点验收。
+
+8份替身与复盘完整保全：[stress清单](../../evidence/reviews/beforestep_r3/checks/stress_v8/manifest.json)、[F1_020清单](../../evidence/reviews/beforestep_r3/checks/suite_r2_v4_F1_020/manifest.json)。完整外包分别499050306与300576788bytes，路径/SHA在manifest；公开对象87.172MB/30.934MB，每scene低于150MB，422对象实际解压SHA/字节全通过。大native/RGBD原件在完整外包，P0视频指定19个原运行1193对象仍全部公开repo/LFS，不以外包替代视频索引。归档manifest的st_size属性调用错误已修，已完成tar原件复用核对member名字/size、不重包；初始失败log保留。
+
+### v2 stress_v8-truth summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 141.0,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.033,
+    0.382,
+    -7.39
+  ],
+  "sim_time_s": 142.2,
+  "wall_s": 77.2,
+  "collision": null
+}
+```
+
+### v2 suite_r2_v4_F1_020-truth summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 127.92,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    1.668,
+    -0.789,
+    4.69
+  ],
+  "sim_time_s": 129.12,
+  "wall_s": 80.1,
+  "collision": null
+}
+```
+
+### v2 stress_v8-registered summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 134.22,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    3.975,
+    0.38,
+    -8.07
+  ],
+  "sim_time_s": 135.42,
+  "wall_s": 228.1,
+  "collision": null
+}
+```
+
+### v2 suite_r2_v4_F1_020-registered summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 47.64,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    2.283,
+    0.184,
+    7.16
+  ],
+  "sim_time_s": 48.84,
+  "wall_s": 149.6,
+  "collision": null
+}
+```

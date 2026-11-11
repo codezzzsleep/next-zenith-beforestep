@@ -122,7 +122,9 @@ def main():
         report['pending'] = pending
         C.atomic_json(ledger, report)
         if a.mode == 'reuse':
-            raise RuntimeError('Reuse needs unavailable tasks; preserve run, never create in reuse mode')
+            report.update(completed=False, awaiting_new_samples=True)
+            C.atomic_json(ledger, report)
+            raise SystemExit(10)
         if a.first_reuse and pending['look'] == 1:
             raise RuntimeError('Reused first view cannot create new requests; investigate missing immutable evidence')
         for request in pending['requests']:

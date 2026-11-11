@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--url', default='http://127.0.0.1:8081/')
 parser.add_argument('--name', default='local')
 parser.add_argument('--pdf', action='store_true')
+parser.add_argument('--entry', default='index.html')
 args = parser.parse_args()
 qa = ROOT / 'outputs/qa/r1'
 qa.mkdir(parents=True, exist_ok=True)
@@ -24,7 +25,7 @@ with sync_playwright() as playwright:
     page.on('pageerror', lambda e: errors.append(str(e)))
     page.on('response', lambda r: failures.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
     page.on('requestfailed', lambda r: failures.append({'url': r.url, 'failure': r.failure}) if r.failure != 'net::ERR_ABORTED' else None)
-    assert page.goto(args.url, wait_until='networkidle').status == 200
+    assert page.goto(urljoin(args.url, args.entry), wait_until='networkidle').status == 200
     page.wait_for_function("document.querySelector('#scene-title').textContent.includes('R1')")
     assert page.locator('#scene-select').input_value() == 'data/demo.json'
     assert page.locator('#controller-label').inner_text() == '同一场景 · 同一规则控制器'
@@ -99,13 +100,14 @@ with sync_playwright() as playwright:
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         assert '历史' in page.locator('#video-title').inner_text()
         historical.append(scene['id'])
-    assert page.goto(args.url + 'report.html', wait_until='networkidle').status == 200
+    report_name = 'project-report.html' if (ROOT / 'evidence/web-assets/technical-transfer.json').exists() else 'report.html'
+    assert page.goto(urljoin(args.url, report_name), wait_until='networkidle').status == 200
     assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
     assert all(page.locator('img').evaluate_all('(els)=>els.map(el=>el.complete&&el.naturalWidth>0)'))
     page.screenshot(path=str(qa / (args.name + '-report-mobile.png')), full_page=True)
     if args.pdf:
         page.pdf(path=str(ROOT / 'site/media/report.pdf'), print_background=True, prefer_css_page_size=True)
-    assert page.goto(args.url + 'learning.html', wait_until='networkidle').status == 200
+    assert page.goto(urljoin(args.url, 'learning.html'), wait_until='networkidle').status == 200
     page.wait_for_function("document.querySelector('#learning-status').textContent==='到达终点'")
     learning_count = page.locator('#learning-run option').count()
     assert learning_count == 20

@@ -35,7 +35,7 @@ class AwardBudget:
                 prior = [p.stem for p in (C.LEDGER / 'tasks').glob('*.json')
                          if (lambda r: r.get('task_id') or r.get('status') == 'uncertain')(json.loads(p.read_text()))]
                 r3 = json.loads((C.LEDGER / 'r3-budget.json').read_text())
-                data = {'schema': 'beforestep-award-paid-budget/v1', 'limit': 30,
+                data = {'schema': 'beforestep-award-paid-budget/v1', 'limit': 28,
                         'cumulative_limit': 316, 'prior_r2_tasks': r3['r2_new_tasks'],
                         'prior_r3_tasks': R3Budget.usage(r3), 'prior_identities': sorted(prior),
                         'tasks': {}, 'started_at': datetime.now(timezone.utc).isoformat(),

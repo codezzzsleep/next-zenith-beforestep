@@ -167,7 +167,8 @@ def check():
     assert 'Ran 40 tests' in (BASE / 'logs/r1_registration_fix_tests.log').read_text()
     fact(40, 'logs/r1_registration_fix_tests.log')
     report = (ROOT / 'docs/report.md').read_text()
-    report_html = (ROOT / 'site/report.html').read_text()
+    transferred = (ROOT / 'evidence/web-assets/technical-transfer.json').exists()
+    report_html = (ROOT / ('site/project-report.html' if transferred else 'site/report.html')).read_text()
     assert visible(markdown.markdown(report, extensions=['tables', 'fenced_code'])) == visible(report_html)
     # Check table columns and exact key claims, so unrelated valid numbers cannot mask drift.
     for key in ('conservative', 'see_dark', 'optimistic', 'imagination', 'truth'):
@@ -261,7 +262,8 @@ def check():
                             assert task['glb_sha256'] == model['sha256']
                             assert task['task_id'] == version['task_id']
                             fact(task['task_id'], version['source_result'] + f'#/tasks/{index}/task_id')
-    for name, html in [('site/index.html', (ROOT / 'site/index.html').read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
+    page_name = 'site/report.html' if transferred else 'site/index.html'
+    for name, html in [(page_name, (ROOT / page_name).read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
         tokens = re.findall(r'(?<![A-Za-z0-9_.])[-+]?\d+(?:\.\d+)?(?![A-Za-z0-9_])', visible(html))
         inventory[name] = {}
         for token in tokens:

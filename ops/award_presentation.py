@@ -6,6 +6,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    if (ROOT / 'evidence/web-assets/technical-transfer.json').exists():
+        raise RuntimeError('The preserved award design is a technical report; homepage authoring now belongs to the project lead.')
     path = ROOT / 'site/index.html'
     page = path.read_text()
     if 'id="hero-real-image"' not in page:

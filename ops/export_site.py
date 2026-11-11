@@ -29,7 +29,8 @@ def main():
     # training source snapshots remain in the repository and release ZIP.
     def linked_evidence(path):
         award_media = ('award' in path.parts and path.suffix in ('.png', '.jpg', '.md', '.srt'))
-        return (path.suffix in ('.json','.jsonl','.log') or award_media) and 'source_snapshot' not in path.parts
+        web_asset = 'web-assets' in path.parts
+        return (path.suffix in ('.json','.jsonl','.log') or award_media or web_asset) and 'source_snapshot' not in path.parts
     evidence=output/'evidence'
     if evidence.exists():
         for path in evidence.rglob('*'):

@@ -105,7 +105,7 @@ def main():
     from r3_presentation import render_report
     render_report(body)
     html = markdown.markdown(chapter, extensions=['tables']).replace('<table>', '<div class="table-wrap"><table>').replace('</table>', '</table></div>').replace('href="../site/', 'href="').replace('href="../evidence/', 'href="evidence/')
-    page = ROOT / 'site/index.html'
+    page = ROOT / ('site/report.html' if (ROOT / 'evidence/web-assets/technical-transfer.json').exists() else 'site/index.html')
     content = re.sub(r'<section id="award-demonstration">[\s\S]*?</section>', '', page.read_text())
     content = content.replace('<section id="sandbox">', '<section id="award-demonstration">'+html+'</section><section id="sandbox">', 1)
     page.write_text(content)

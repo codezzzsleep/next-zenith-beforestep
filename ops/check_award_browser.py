@@ -89,7 +89,9 @@ def main():
                 page.wait_for_function('(src)=>Array.from(document.querySelectorAll("model-viewer")).find(e=>e.getAttribute("src")===src).loaded===true',
                                        arg=model.get_attribute('src'), timeout=60000)
             assert all(page.locator('img').evaluate_all('(es)=>es.map(e=>e.complete&&e.naturalWidth>0)'))
-            page.screenshot(path=str(ROOT / 'site/media/award/asset-iterations.png'), full_page=True)
+            screenshot = (ROOT / 'site/media/award/asset-iterations.png' if args.url.startswith('http://127.0.0.1:')
+                          else out / (args.name + '-asset-iterations.png'))
+            page.screenshot(path=str(screenshot), full_page=True)
             page.set_viewport_size({'width': 390, 'height': 844})
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         revision_checked = []

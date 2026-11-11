@@ -21,11 +21,15 @@ def main():
     parser.add_argument('--headless', action='store_true', help='Verify the real reuse command without a desktop viewer')
     parser.add_argument('--port', type=int, default=8082)
     parser.add_argument('--out', help='A new output directory; existing results are never overwritten')
+    parser.add_argument('--reuse-lux', default='evidence/reviews/beforestep_r1/lux/original_b',
+                        help='The preserved anchor Lux run; this screen-recording entry never creates tasks')
     args = parser.parse_args()
     os.environ.setdefault('MUJOCO_GL', 'egl' if args.headless else 'glfw')
     os.environ.pop('AHOLO_API_KEY', None)
     from beforestep import pipeline
-    first = ROOT / 'evidence/reviews/beforestep_r1/lux/original_b'
+    first = (ROOT / args.reuse_lux).resolve()
+    if first != (ROOT / 'evidence/reviews/beforestep_r1/lux/original_b').resolve():
+        parser.error('Use the preserved stress_v8 anchor for this screen-recording entry')
     stamp = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     out = Path(args.out) if args.out else ROOT / 'outputs/award/screen-recording' / stamp
     if (out / 'imagination').exists():

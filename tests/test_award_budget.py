@@ -34,16 +34,16 @@ class AwardBudgetTests(unittest.TestCase):
                 self.assertEqual(budget.reserve('new0', {})['status'], 'uncertain')
                 self.assertEqual(AwardBudget.usage(json.loads(budget.path.read_text())), 28)
 
-    def test_separate_thirty_task_cap_even_with_larger_global_allowance(self):
+    def test_separate_twenty_eight_task_cap_even_with_larger_global_allowance(self):
         with tempfile.TemporaryDirectory() as temporary:
             root = Path(temporary)
             self.fixture(root, prior_r3=0)
             with patch('award_lux_budget.C.LEDGER', root):
                 budget = AwardBudget(root / 'award.json')
-                for i in range(30):
+                for i in range(28):
                     budget.reserve('new' + str(i), {})
                 with self.assertRaises(BudgetExhausted):
-                    budget.reserve('task31', {})
+                    budget.reserve('task29', {})
 
     def test_deadline_and_lost_known_identity_block_creation(self):
         with tempfile.TemporaryDirectory() as temporary:

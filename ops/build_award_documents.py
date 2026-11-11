@@ -1,5 +1,6 @@
 """Derive the showcase diagram, report additions and English summary from evidence."""
 import hashlib
+from collections import Counter
 import json
 from pathlib import Path
 import re
@@ -60,7 +61,8 @@ def main():
     for eyebrow, title, description in steps:
         diagram += f'<article><span>{eyebrow}</span><h3>{title}</h3><p>{description}</p></article>'
     diagram += '</div><a class="textlink" href="evidence/award/facts.json">每个数字的原始出处 ↗</a></section>'
-    page = ROOT / 'site/index.html'
+    transferred = (ROOT / 'evidence/web-assets/technical-transfer.json').exists()
+    page = ROOT / ('site/report.html' if transferred else 'site/index.html')
     text = re.sub(r'<section id="award-lux-pipeline">[\s\S]*?</section>', '', page.read_text())
     text = text.replace('<section id="assets">', diagram + '\n<section id="assets">', 1)
     if 'id="award-asset-comparison"' not in text:
@@ -92,15 +94,18 @@ def main():
     from r3_presentation import render_report
     render_report(body)
     f, h = revised['frozen_stats'], revised['holdout_stats']
+    decisive = [row for row in original['scenes'] if row['classification'] == 'decisive']
+    known_original = Counter(row['runs']['imagination']['summary']['result'] for row in decisive)
+    holdout_original = Counter(row['runs']['imagination']['summary']['result'] for row in revised['holdouts'])
     en = f'''# BeforeStep — rehearse the side you cannot see
 
-**What.** A wheel-leg robot uses real RGB-D, Aholo Lux3D geometry candidates, frozen observation checks and complete physics rehearsals before acting in an independent simulation.
+**What.** Aholo Lux3D turns a robot's actual flat photograph into a complete 3D rock, including the unseen side. A wheel-leg robot checks and rehearses these geometry hypotheses before acting in an independent simulation.
 
 **Why.** Solar darkness removes reliable depth; rocks also hide space from view. Changing viewpoint changes visibility, not sunlight. A plausible backside can still be wrong.
 
 **How.** Generate multiple hypotheses → register and check them → construct occupancy → rehearse every admitted world with the same controller → execute independently → review and intervene on rejected candidates. Original R1/R2: {len(tasks)} unique tasks, {generated} successful GLBs, {admitted} admissions and {generated-admitted} rejections.
 
-**Results.** The original corridor Lux run arrived, but the preregistered suite contains two real imagination collisions, F1_020 and F3_004. The strict method is a **post-result revision**: known-scene retests, {f['completed']} completed / {f['arrived']} arrived / {f['safe_stop']} stopped / {f['collisions']} collisions; designated holdouts, {h['completed']} completed / {h['arrived']} arrived / {h['safe_stop']} stopped / {h['collisions']} collisions. Only the holdouts support out-of-sample conclusions. Early oldv2 collided in F1_003; the final v3 statistics do not cover every revision attempt. The revision did not replace missing shadow depth in all scenarios that the depth-enabled control could traverse.
+**Results.** Original imagination, {len(decisive)} preregistered decisive scenes: {known_original['arrived']} arrived / {known_original['stuck']} stopped / {known_original['collision']} collisions (F1_020, unseen C; F3_004, underestimated backside). In the {h['completed']} designated holdouts, original imagination: {holdout_original['arrived']} arrived / {holdout_original['stuck']} stopped / {holdout_original['collision']} collisions; final v3 **post-result revision**: {h['arrived']} arrived / {h['safe_stop']} stopped / {h['collisions']} collisions. The revision removed both collisions and the holdout arrival benefit. Only holdouts support out-of-sample conclusions. Across all {f['completed']} known-scene retests, final v3: {f['arrived']} arrived / {f['safe_stop']} stopped / {f['collisions']} collisions. Early oldv2 collided in F1_003 and remains separate. Imagination is useful, with a measured failure boundary.
 
 **Evidence.** [Report and failures](../site/report.html), [machine-readable results](../evidence/reviews/beforestep_r3/summary.json), [real asset iterations](../site/award-assets.html), [complete video source index](../evidence/video/index.json). This is simulation evidence; universal navigation and hardware success are unproven.
 

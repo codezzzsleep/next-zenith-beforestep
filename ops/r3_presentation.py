@@ -74,6 +74,8 @@ B 的 A1、A2 轮廓 IoU 分别为 {data['F3_004_B_contour_ious']['A1']}、{data
 
 
 def main():
+    if (ROOT / 'evidence/web-assets/technical-transfer.json').exists():
+        raise RuntimeError('Homepage is supplied by the project lead; update technical report data without rebuilding index.html.')
     data = facts()
     stats = json.loads((ROOT / 'evidence/reviews/beforestep_r3/back-error/stats.json').read_text())
     chapter = failure_chapter(data, stats)
@@ -127,9 +129,10 @@ def render_report(report):
             value = str(path.relative_to(ROOT / 'site')) if path.is_relative_to(ROOT / 'site') else str(path.relative_to(ROOT))
         return attr+'="'+value+'"'
     body = re.sub(r'(href|src)="([^\"]+)"', url, body)
-    previous = (ROOT / 'site/report.html').read_text()
+    report_page = ROOT / ('site/project-report.html' if (ROOT / 'evidence/web-assets/technical-transfer.json').exists() else 'site/report.html')
+    previous = report_page.read_text()
     style = re.search(r'<style>[\s\S]*?</style>', previous).group(0)
-    (ROOT / 'site/report.html').write_text('<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title>'+style+'</head><body>'+body+'</body></html>')
+    report_page.write_text('<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title>'+style+'</head><body>'+body+'</body></html>')
 
 
 if __name__ == '__main__':

@@ -19,6 +19,8 @@ def main():
     assert gate['passed'] and datetime.fromisoformat(gate['completed_at']) < datetime(2026, 11, 15, 4, tzinfo=timezone.utc)
     assert json.loads((ROOT / 'outputs/r3/v3/completion.json').read_text())['status'] == 'complete'
     assert sources() == plan['source_sha256']
+    assert C.sha(ROOT / plan['scene_config']) == plan['scene_config_sha256']
+    assert C.sha(ROOT / plan['pool']) == plan['pool_sha256']
     commit = subprocess.check_output(['git', 'log', '-1', '--format=%H', '--', str(plan_path.relative_to(ROOT))], cwd=ROOT, text=True).strip()
     remote = subprocess.check_output(['git', 'ls-remote', 'origin', 'refs/heads/main'], cwd=ROOT, text=True).split()[0]
     subprocess.run(['git', 'merge-base', '--is-ancestor', commit, remote], cwd=ROOT, check=True)

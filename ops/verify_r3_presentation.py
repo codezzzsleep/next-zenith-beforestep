@@ -116,7 +116,7 @@ def check():
                 assert expected in cell
             else:
                 assert '未完成' in cell
-    page = (ROOT / 'site/index.html').read_text()
+    page = (ROOT / ('site/report.html' if (ROOT / 'evidence/web-assets/technical-transfer.json').exists() else 'site/index.html')).read_text()
     assert page.count('id="post-result-revision"') == 1
     collisions = data['all_run_stats']['collision_scenes'] + data['prior_real_v2_stats']['collision_scenes']
     if collisions:

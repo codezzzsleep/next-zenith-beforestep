@@ -106,7 +106,7 @@ def check():
     assert '<!-- SUITE-START -->' in report and '<!-- SUITE-END -->' in report
     block = report.split('<!-- SUITE-START -->', 1)[1].split('<!-- SUITE-END -->', 1)[0].strip()
     assert block == suite, 'Report suite chapter differs from the generated evidence table'
-    homepage = (ROOT / 'site/index.html').read_text()
+    homepage = (ROOT / ('site/report.html' if (ROOT / 'evidence/web-assets/technical-transfer.json').exists() else 'site/index.html')).read_text()
     for scene in summary['imagination_collision_scenes']:
         assert scene in homepage and '想象策略实际发生碰撞' in homepage
     assert 'levels.html' in homepage and 'id="suite-summary"' in homepage

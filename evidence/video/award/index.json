@@ -80,24 +80,28 @@
       "source_sha256": "840967dba73cc19eebcbd60474be906b54f5ed7e9557dff0da42f36dcc637d71"
     },
     {
+      "path": "evidence/video/award/number-sources.json",
+      "sha256": "6bd2f6b934d33711d747387cc30887772f6e018b0ca842321ca438bc01041d64"
+    },
+    {
       "path": "evidence/video/award/record-screen.md",
-      "sha256": "69971201221d420f96aeca38e822412e4a5a86508ea66f19d8955059d51d6252"
+      "sha256": "48126c8fe6afe6812ce2c25b91cadef43db693bd5fc6127bb7f99d0d8dc427e6"
     },
     {
       "path": "evidence/video/award/storyboard-45s.md",
-      "sha256": "6a9e22d2ceb48240052f14aed05ac93466cdae21d577a1a0f75c576c5a512c39"
+      "sha256": "bdadb09a2add47c6c8ee86025e927a5a704bc5c768b77e067d36ec2eb2e5739f"
     },
     {
       "path": "evidence/video/award/storyboard-90s.md",
-      "sha256": "dd8d5e939d9134a415521000adfd80538e0bc8b4832ce314c93601843161f3a9"
+      "sha256": "307c7834aaaa6282e1fb38ebfad8aeb2aaa701813629624841694ae97dd08ccf"
     },
     {
       "path": "evidence/video/award/subtitles-45s.srt",
-      "sha256": "751e8381e1c108684de56ba8281e4a55488589a1b3b87a616746ccd1a8c33f21"
+      "sha256": "7a600c2d0bf44c415819d33f7e24b24f00e35525df51b34a1df6725cbc632a73"
     },
     {
       "path": "evidence/video/award/subtitles-90s.srt",
-      "sha256": "dfd718d8dffd0859603deaa44c0b0b53570209e35bb8a61e4a54be2ff05f724b"
+      "sha256": "8e95b3af5c1dd06d9cf1a0a3e10ee38039bf673f499e97508472b6a53c8405a1"
     }
   ],
   "storyboards": [
@@ -105,5 +109,10 @@
     45
   ],
   "source_run_index": "evidence/video/index.json",
+  "generator": {
+    "path": "ops/build_award_materials.py",
+    "sha256": "5544b2d2937aec8e9cb67654331e2650df939babf3212dc453a3770afe97091e"
+  },
+  "number_sources": "evidence/video/award/number-sources.json",
   "renderer": "Project lead; the agent prepared data, scripts and subtitles only."
 }

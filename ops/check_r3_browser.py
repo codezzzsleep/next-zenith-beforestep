@@ -13,6 +13,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--url', default='http://127.0.0.1:8081/')
     parser.add_argument('--name', default='r3-local')
+    parser.add_argument('--entry', default='index.html')
     args = parser.parse_args()
     data = json.loads((ROOT / 'evidence/reviews/beforestep_r3/summary.json').read_text())
     output = ROOT / 'outputs/qa/r3/final'
@@ -25,7 +26,7 @@ def main():
         page.on('pageerror', lambda e: errors.append(str(e)))
         page.on('response', lambda r: failures.append({'url': r.url, 'status': r.status}) if r.status >= 400 else None)
         page.on('requestfailed', lambda r: failures.append({'url': r.url, 'failure': r.failure}) if r.failure != 'net::ERR_ABORTED' else None)
-        assert page.goto(args.url, wait_until='networkidle').status == 200
+        assert page.goto(urljoin(args.url, args.entry), wait_until='networkidle').status == 200
         assert page.evaluate('document.getElementById("failure-analysis").compareDocumentPosition(document.getElementById("post-result-revision")) & Node.DOCUMENT_POSITION_FOLLOWING')
         assert page.evaluate('document.getElementById("post-result-revision").compareDocumentPosition(document.getElementById("sandbox")) & Node.DOCUMENT_POSITION_FOLLOWING')
         section = page.locator('#post-result-revision')
@@ -70,7 +71,8 @@ def main():
         page.set_viewport_size({'width': 390, 'height': 844})
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         page.screenshot(path=str(output / (args.name + '-mobile.png')), full_page=True)
-        assert page.goto(urljoin(args.url, 'report.html'), wait_until='networkidle').status == 200
+        report_name = 'project-report.html' if (ROOT / 'evidence/web-assets/technical-transfer.json').exists() else 'report.html'
+        assert page.goto(urljoin(args.url, report_name), wait_until='networkidle').status == 200
         assert '赛后修订：想象只解释太阳的影子' in page.locator('body').inner_text()
         assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
         assert not errors, errors

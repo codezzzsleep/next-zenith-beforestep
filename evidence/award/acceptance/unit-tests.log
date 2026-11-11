@@ -1,6 +1,6 @@
 test_cumulative_cap_counts_reserved_and_uncertain_and_allows_known_query (test_award_budget.AwardBudgetTests.test_cumulative_cap_counts_reserved_and_uncertain_and_allows_known_query) ... ok
 test_deadline_and_lost_known_identity_block_creation (test_award_budget.AwardBudgetTests.test_deadline_and_lost_known_identity_block_creation) ... ok
-test_separate_thirty_task_cap_even_with_larger_global_allowance (test_award_budget.AwardBudgetTests.test_separate_thirty_task_cap_even_with_larger_global_allowance) ... ok
+test_separate_twenty_eight_task_cap_even_with_larger_global_allowance (test_award_budget.AwardBudgetTests.test_separate_twenty_eight_task_cap_even_with_larger_global_allowance) ... ok
 test_camera_and_robot_mismatch_is_rejected_before_initialization (test_learning_contracts.LearningContracts.test_camera_and_robot_mismatch_is_rejected_before_initialization) ... ok
 test_changed_recorded_observation_is_rejected_before_state_initialization (test_learning_contracts.LearningContracts.test_changed_recorded_observation_is_rejected_before_state_initialization) ... ok
 test_complete_checkpoint_preserves_optimizer_randomness_and_next_physics (test_learning_contracts.LearningContracts.test_complete_checkpoint_preserves_optimizer_randomness_and_next_physics) ... ok
@@ -51,7 +51,7 @@ test_completed_trial_cannot_overwrite_original_evidence (test_runtime_contracts.
                       [--recorded-observations RECORDED_OBSERVATIONS]
                       [--start-at-recorded-look] [--goal X Y] [--tag TAG]
                       [--trust TRUST] [--trust-look {1,2}]
-beforestep run: error: 完整运行结果已存在：/tmp/tmpbb170pej/imagination；请使用新的 --out 或 --tag 保留独立试验。
+beforestep run: error: 完整运行结果已存在：/tmp/tmp_1s2dd76/imagination；请使用新的 --out 或 --tag 保留独立试验。
 ok
 test_curated_assets_match_provenance (test_runtime_contracts.EvidenceTests.test_curated_assets_match_provenance) ... ok
 test_effective_main_uses_real_lux_and_completes_rehearsals_and_arrival (test_runtime_contracts.EvidenceTests.test_effective_main_uses_real_lux_and_completes_rehearsals_and_arrival) ... ok
@@ -99,6 +99,6 @@ test_earliest_seeds_and_anchor_slot_are_preserved (test_suite_selection_contract
 test_insufficient_decisive_pool_cannot_be_replaced_by_ordinary_cases (test_suite_selection_contracts.SelectionTests.test_insufficient_decisive_pool_cannot_be_replaced_by_ordinary_cases) ... ok
 
 ----------------------------------------------------------------------
-Ran 88 tests in 12.328s
+Ran 88 tests in 16.955s
 
 OK

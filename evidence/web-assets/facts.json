@@ -1,0 +1,1932 @@
+{
+  "schema": "beforestep-award-facts/v1",
+  "original_unique_tasks": 180,
+  "original_generated_glb": 166,
+  "original_admitted": 64,
+  "original_rejected": 102,
+  "original_collision_scenes": [
+    "suite_r2_v4_F1_020",
+    "suite_r2_v4_F3_004"
+  ],
+  "original_counterfactuals": {
+    "collisions": 17,
+    "executed": 102,
+    "outcomes": {
+      "arrived": 44,
+      "stuck": 41,
+      "stopped_short": 0,
+      "collision": 17
+    },
+    "unexecutable": 0,
+    "collision_ratio": 0.16666666666666666
+  },
+  "frozen_revision": {
+    "completed": 12,
+    "incomplete": [],
+    "arrived": 3,
+    "safe_stop": 9,
+    "collisions": 0,
+    "collision_scenes": [],
+    "see_dark_arrived_scenes": 9,
+    "strict_arrived_among_see_dark_arrived": 3,
+    "see_dark_pairwise_looks_and_sim_time": [
+      {
+        "scene": "stress_v8",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 147.26
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 3,
+          "sim_time_s": 87.74
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 145.24
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 2,
+          "sim_time_s": 54.58
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_005",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 151.76
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 2,
+          "sim_time_s": 53.0
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 129.45
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 101.49
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "see_dark": {
+          "looks": 4,
+          "sim_time_s": 165.2
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 83.48
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "see_dark": {
+          "looks": 4,
+          "sim_time_s": 157.28
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 80.28
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 133.18
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 4,
+          "sim_time_s": 118.57
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 119.05
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 4,
+          "sim_time_s": 176.71
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 125.97
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 5,
+          "sim_time_s": 143.43
+        }
+      }
+    ]
+  },
+  "heldout_revision": {
+    "completed": 5,
+    "incomplete": [],
+    "arrived": 0,
+    "safe_stop": 5,
+    "collisions": 0,
+    "collision_scenes": [],
+    "see_dark_arrived_scenes": 3,
+    "strict_arrived_among_see_dark_arrived": 0,
+    "see_dark_pairwise_looks_and_sim_time": [
+      {
+        "scene": "suite_r2_v4_F3_005",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 139.18
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 92.17
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_003",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 138.58
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 3,
+          "sim_time_s": 87.74
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_006",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 115.02
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 87.81
+        }
+      }
+    ]
+  },
+  "earlier_v2": {
+    "completed": 8,
+    "incomplete": [
+      "suite_r2_v4_F0_001",
+      "suite_r2_v4_F0_005",
+      "suite_r2_v4_F1_001",
+      "suite_r2_v4_F2_007"
+    ],
+    "arrived": 0,
+    "safe_stop": 7,
+    "collisions": 1,
+    "collision_scenes": [
+      "suite_r2_v4_F1_003"
+    ],
+    "see_dark_arrived_scenes": 0,
+    "strict_arrived_among_see_dark_arrived": 0,
+    "see_dark_pairwise_looks_and_sim_time": []
+  },
+  "revision_paid_tasks": {
+    "new_r3": 120,
+    "r2": 168,
+    "cumulative_r2_r3": 288,
+    "r3_limit": 170,
+    "original_limit": 360
+  },
+  "revision_new_counterfactuals_by_scope": {
+    "known_frozen": {
+      "executed": 17,
+      "collisions": 0,
+      "noncollisions": 17,
+      "unexecutable": 0
+    },
+    "designated_holdout": {
+      "executed": 112,
+      "collisions": 13,
+      "noncollisions": 99,
+      "unexecutable": 0
+    }
+  },
+  "sources": [
+    "evidence/suite/summary.json",
+    "evidence/reviews/beforestep_r3/summary.json",
+    "evidence/award/asset-iterations/manifest.json"
+  ],
+  "anchor_audit": {
+    "xy_center_minus_half_width_B_m": -0.06277800489824892,
+    "cold_wall_s": 1223.6,
+    "optimistic_intrusion_m": 0.218988625657973,
+    "physical_clearance_B_m": 0.047541283739641456,
+    "xy_envelope_clearance_B_m": 0.0,
+    "counterfactual_collisions": 0,
+    "replay_trajectory_sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+  },
+  "original_failure_facts": {
+    "schema": "beforestep-r3-original-failure-facts/v1",
+    "scope": "Post-run explanation; original R1/R2 results and evidence remain unchanged",
+    "anchor": {
+      "id": "stress_v8",
+      "purpose": "R1 primary showcase: V8 polar corridor with A and B; frozen geometry and rules controller",
+      "rocks": {
+        "A": {
+          "rock": "rock_07",
+          "height": 0.55,
+          "x": 4.55,
+          "y": -0.735,
+          "yaw": 90.0
+        },
+        "B": {
+          "rock": "moon_rock_04",
+          "height": 0.42,
+          "x": 6.86,
+          "y": 0.22,
+          "yaw": -26.0
+        }
+      },
+      "start": [
+        0.0,
+        -0.5
+      ],
+      "first_stop": [
+        2.3,
+        -0.5
+      ],
+      "goal": [
+        10.5,
+        0.0
+      ],
+      "terrain": {
+        "type": "corridor",
+        "craters": [],
+        "right_wall": true
+      },
+      "sun": {
+        "elevation_deg": 10.0,
+        "azimuth_deg": 35.0
+      }
+    },
+    "similar_scene": {
+      "id": "suite_r2_v4_F3_004",
+      "purpose": "R2 preregistered candidate pool; classification pending",
+      "rocks": {
+        "A": {
+          "rock": "rock_07",
+          "height": 0.531943,
+          "x": 4.511506,
+          "y": -0.702907,
+          "yaw": 92.431208
+        },
+        "B": {
+          "rock": "moon_rock_04",
+          "height": 0.431052,
+          "x": 6.762424,
+          "y": 0.161885,
+          "yaw": -23.023966
+        },
+        "C": {
+          "rock": "moon_rock_02",
+          "height": 0.387203,
+          "x": 8.272014,
+          "y": -1.391995,
+          "yaw": -52.73759
+        },
+        "D": {
+          "rock": "rock_07",
+          "height": 0.502873,
+          "x": 1.3,
+          "y": 1.7,
+          "yaw": -10.356546
+        }
+      },
+      "start": [
+        0.0,
+        -0.5
+      ],
+      "first_stop": [
+        2.3,
+        -0.5
+      ],
+      "goal": [
+        10.771229,
+        0.025802
+      ],
+      "terrain": {
+        "type": "plain",
+        "craters": [
+          {
+            "center": [
+              6.901076,
+              1.73762
+            ],
+            "radius": 0.654708,
+            "depth": 0.737776
+          }
+        ],
+        "right_wall": false
+      },
+      "sun": {
+        "elevation_deg": 10.419667,
+        "azimuth_deg": 38.771361
+      },
+      "rehearse_reference": false,
+      "asset_cache_precision": "exact",
+      "suite": {
+        "family": "F3",
+        "seed": 4,
+        "revision": "r2_v4",
+        "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+        "layout": "broad",
+        "target_rocks": [
+          "A",
+          "B",
+          "C"
+        ],
+        "note": "Target labels describe layout intent; production capture uses only observed connected components."
+      }
+    },
+    "F1_020_C_tasks": 0,
+    "F1_020_run_id": "eaf899ee66a24fee84de39ee19697eaa",
+    "F3_004_run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+    "F3_004_B_contour_ious": {
+      "A1": 0.8429,
+      "A2": 0.8588
+    },
+    "F3_004_plan_B_intrusion_m": 0.2650281217470627,
+    "anchor_clearance_3d_mm": 47.541,
+    "anchor_xy_envelope_clearance_mm": 0,
+    "sources": [
+      "evidence/suite/summary.json",
+      "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/target_decision.json"
+    ]
+  },
+  "all_original_back_errors": {
+    "schema": "beforestep-r3-admitted-back-error/v1",
+    "scope": "Post-run 5cm XY footprint diagnostic; never provided to production planning",
+    "definition": "Candidate farthest minus associated truth-union farthest along the recorded robot forward axis at that observation",
+    "candidate_count": 64,
+    "r1_count": 8,
+    "r2_count": 56,
+    "shorter_than_five_cm": 23,
+    "threshold_m": -0.05,
+    "rows": [
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 5958685,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.8746979067376,
+        "truth_farthest_m": 4.874353574758418,
+        "back_error_m": 0.0003443319791820443,
+        "shorter_than_five_cm": false,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "df0b0b8c5a4e631217ecba0b5fb344c8abb373ebc75c4cc8b09ef12e23e5bb7d"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 5958690,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.8746979067376,
+        "truth_farthest_m": 4.874353574758418,
+        "back_error_m": 0.0003443319791820443,
+        "shorter_than_five_cm": false,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "30e1b8f18dc07330eabc089867a051f6c96ff729dcf3a1c04e566e0e8727271f"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B1",
+        "task_id": 5958877,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 5.224640460438873,
+        "truth_farthest_m": 4.874353574758418,
+        "back_error_m": 0.35028688568045485,
+        "shorter_than_five_cm": false,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_B1.npy",
+        "footprint_sha256": "faafbe6d8a455b22f7aff46838c1c0e1595f6fda176dae173d8f9a97d97923e6"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B2",
+        "task_id": 5958911,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 5.224640460438873,
+        "truth_farthest_m": 4.874353574758418,
+        "back_error_m": 0.35028688568045485,
+        "shorter_than_five_cm": false,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_B2.npy",
+        "footprint_sha256": "6f92bb0c446c306e46acba6f54a6f3f85a9483bc7dc4602f65cbd50240475e4e"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C1",
+        "task_id": 5958948,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.974697890270306,
+        "truth_farthest_m": 4.874353574758418,
+        "back_error_m": 0.10034431551188838,
+        "shorter_than_five_cm": false,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_C1.npy",
+        "footprint_sha256": "c8d35319b742899ea494f6ffa7182bcbcbe9159596f49f7a49bfd21f4a992968"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 5959025,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.974697890270306,
+        "truth_farthest_m": 4.874353574758418,
+        "back_error_m": 0.10034431551188838,
+        "shorter_than_five_cm": false,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "ff3c49aa220259ed6b4f67efc6495a0b22231830602f4b05a5c3d108e9cbb962"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A2",
+        "task_id": 5958654,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 6.725328877387817,
+        "truth_farthest_m": 7.425185290458762,
+        "back_error_m": -0.699856413070945,
+        "shorter_than_five_cm": true,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/footprint_A2.npy",
+        "footprint_sha256": "95ce07a860f7660261ac8cedae9f0c4456f27f9c59e83896c5d7e49bf9cda337"
+      },
+      {
+        "scene": "stress_v8",
+        "anchor": true,
+        "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "C1",
+        "task_id": 5958934,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 6.825185389262529,
+        "truth_farthest_m": 7.425185290458762,
+        "back_error_m": -0.5999999011962327,
+        "shorter_than_five_cm": true,
+        "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab",
+        "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/footprint_C1.npy",
+        "footprint_sha256": "1f9526a5c01e6ddeb2ec07212573a236e69ccd8a4368bc113227ac25eeac8567"
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "anchor": false,
+        "run_id": "f6946bd1d6d0466f9557c20f901c0c8a",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6338966,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.82466922063965,
+        "truth_farthest_m": 4.824324888660468,
+        "back_error_m": 0.0003443319791820443,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "3064b7444322998e65e51705ec6effbe1038758f3f0eecbfb25d7fc3f595b3e0",
+        "footprint": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "0de6e5d74dfcad79e3d7bc981e7df23915e38dbe92deabfd6adc425afd7b6735"
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "anchor": false,
+        "run_id": "f6946bd1d6d0466f9557c20f901c0c8a",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6338976,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.824640526308051,
+        "truth_farthest_m": 4.824324888660468,
+        "back_error_m": 0.00031563764758324453,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "3064b7444322998e65e51705ec6effbe1038758f3f0eecbfb25d7fc3f595b3e0",
+        "footprint": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "9daf157633a0ab9a87568dde935d639b6e2f92d9c3ab05dc5239098155832094"
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "anchor": false,
+        "run_id": "f6946bd1d6d0466f9557c20f901c0c8a",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C1",
+        "task_id": 6339460,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.8747552954007976,
+        "truth_farthest_m": 4.824324888660468,
+        "back_error_m": 0.050430406740329836,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "3064b7444322998e65e51705ec6effbe1038758f3f0eecbfb25d7fc3f595b3e0",
+        "footprint": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/footprint_C1.npy",
+        "footprint_sha256": "a025a8fa7c62ed4f5df8de3de972567d38287e2e7ff628d47fa162f01a04906c"
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "anchor": false,
+        "run_id": "f6946bd1d6d0466f9557c20f901c0c8a",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6339491,
+        "forward_axis_world_xy": [
+          0.9999998353270533,
+          0.000573886631970119
+        ],
+        "predicted_farthest_m": 4.8747552954007976,
+        "truth_farthest_m": 4.824324888660468,
+        "back_error_m": 0.050430406740329836,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "3064b7444322998e65e51705ec6effbe1038758f3f0eecbfb25d7fc3f595b3e0",
+        "footprint": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "0488be76d6b592b81123698f869eabaf407de84814dc179908fa96d07613d33a"
+      },
+      {
+        "scene": "suite_r2_v4_F0_005",
+        "anchor": false,
+        "run_id": "38c42f1ee8334f15843bc35b1884c5b4",
+        "look": "look2",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B2",
+        "task_id": 6345343,
+        "forward_axis_world_xy": [
+          0.7210447716422401,
+          -0.6928884739172603
+        ],
+        "predicted_farthest_m": 5.0063338108116975,
+        "truth_farthest_m": 5.436145044024544,
+        "back_error_m": -0.4298112332128463,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F0_005/imagination/looks/look2/T2/decide/target_decision.json",
+        "decision_sha256": "be975578550b5b1297da7a6784bc6b7cd27c155086ef59535786718a56d82dba",
+        "footprint": "outputs/suite/real/suite_r2_v4_F0_005/imagination/looks/look2/T2/decide/footprint_B2.npy",
+        "footprint_sha256": "1fbf9beae3db4434f1c9c19ddb684fb1b14b807442af5ec156d6a5d89c5fd536"
+      },
+      {
+        "scene": "suite_r2_v4_F1_001",
+        "anchor": false,
+        "run_id": "788ae2feaad848f399d9c62fd15b3211",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6346798,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 4.974663534644704,
+        "truth_farthest_m": 4.874809472504367,
+        "back_error_m": 0.09985406214033699,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "5cff850e9ec1c20d2396e04373fdcd69ce4e457a4fe303d148704726c5046f15",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_001/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "c0e9f1ae9ebc6e0124ef32dfe41c6fb9c283e126d154eb3fcb97d8c3ac8c77f4"
+      },
+      {
+        "scene": "suite_r2_v4_F1_001",
+        "anchor": false,
+        "run_id": "788ae2feaad848f399d9c62fd15b3211",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6346802,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 4.974663534644704,
+        "truth_farthest_m": 4.874809472504367,
+        "back_error_m": 0.09985406214033699,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "5cff850e9ec1c20d2396e04373fdcd69ce4e457a4fe303d148704726c5046f15",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_001/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "403ddf9a0de706310bd7c545e311f7b9920164e11c106aff6a474a8e31ef7a64"
+      },
+      {
+        "scene": "suite_r2_v4_F1_020",
+        "anchor": false,
+        "run_id": "eaf899ee66a24fee84de39ee19697eaa",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6347883,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 4.774984594529102,
+        "truth_farthest_m": 4.674459296592144,
+        "back_error_m": 0.10052529793695797,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_020/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "bdedefbcbf24f509c9aaa7c301c815720da74f5686f1e4de1f3dffb1080fb885",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_020/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "689dc1793ed07606e9d5d70cf70cd6cbe3b25a2189ef8a5d64ea5595d41737af"
+      },
+      {
+        "scene": "suite_r2_v4_F1_020",
+        "anchor": false,
+        "run_id": "eaf899ee66a24fee84de39ee19697eaa",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A1",
+        "task_id": 6347945,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 6.27548046982063,
+        "truth_farthest_m": 7.174984185705632,
+        "back_error_m": -0.8995037158850012,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_020/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "810052c44e56ed36cde13f7fe09ad5f30088e8e436d151caf42860f6a0eecc57",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_020/imagination/looks/look1/T2/decide/footprint_A1.npy",
+        "footprint_sha256": "2a8e23600709e53379054b7d779b3a9ec8bb1d5d844a6632f4ffcd7975e10f82"
+      },
+      {
+        "scene": "suite_r2_v4_F1_020",
+        "anchor": false,
+        "run_id": "eaf899ee66a24fee84de39ee19697eaa",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A2",
+        "task_id": 6347951,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 6.27548046982063,
+        "truth_farthest_m": 7.174984185705632,
+        "back_error_m": -0.8995037158850012,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_020/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "810052c44e56ed36cde13f7fe09ad5f30088e8e436d151caf42860f6a0eecc57",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_020/imagination/looks/look1/T2/decide/footprint_A2.npy",
+        "footprint_sha256": "15263eaf2ed217241e6a0c8a3b27e839945bbc1ba4230ac608837d48b0257458"
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "anchor": false,
+        "run_id": "c954016cecb341c3849c9f2005607291",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6348090,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 4.874634367513944,
+        "truth_farthest_m": 4.624400936779159,
+        "back_error_m": 0.2502334307347853,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "025ff7fd2a1a8f81efece9d50651bfc139979956b0f22c696ac5199f11ed00e7",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "4266944d190bc8e53f01fc1b2b05d3d11ffe8964f1e704185e1a9edd9b01741f"
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "anchor": false,
+        "run_id": "c954016cecb341c3849c9f2005607291",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6348094,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 4.8246635601961705,
+        "truth_farthest_m": 4.624400936779159,
+        "back_error_m": 0.20026262341701173,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "025ff7fd2a1a8f81efece9d50651bfc139979956b0f22c696ac5199f11ed00e7",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "3b37796eb72bca14fcc7e0ccb3c5def4738aa0459c2d6431b261d2f8b522fc30"
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "anchor": false,
+        "run_id": "c954016cecb341c3849c9f2005607291",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B2",
+        "task_id": 6348106,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 4.974546797984423,
+        "truth_farthest_m": 4.624400936779159,
+        "back_error_m": 0.3501458612052639,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "025ff7fd2a1a8f81efece9d50651bfc139979956b0f22c696ac5199f11ed00e7",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/footprint_B2.npy",
+        "footprint_sha256": "8cbc71c0c7b6d7f4b9f2487422cb904347ebbf69b20281bc6eb536b22552af1f"
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "anchor": false,
+        "run_id": "c954016cecb341c3849c9f2005607291",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B",
+          "C"
+        ],
+        "candidate": "B1",
+        "task_id": 6348228,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 7.625567792352641,
+        "truth_farthest_m": 8.575188236380768,
+        "back_error_m": -0.9496204440281275,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "11594d8f309bf6b1e76676ff780185b6ec8026bb41a2dab10741ebbfdee9670e",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/footprint_B1.npy",
+        "footprint_sha256": "c4665ff01aabf67a4dbd988dc17d530dbb992d17d8eaf33f61a59d261b29a4a1"
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "anchor": false,
+        "run_id": "c954016cecb341c3849c9f2005607291",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B",
+          "C"
+        ],
+        "candidate": "B2",
+        "task_id": 6348233,
+        "forward_axis_world_xy": [
+          0.9999998296568873,
+          0.0005836833014098539
+        ],
+        "predicted_farthest_m": 7.625567792352641,
+        "truth_farthest_m": 8.575188236380768,
+        "back_error_m": -0.9496204440281275,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "11594d8f309bf6b1e76676ff780185b6ec8026bb41a2dab10741ebbfdee9670e",
+        "footprint": "outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/footprint_B2.npy",
+        "footprint_sha256": "8a51f68116af9d57b908ac45e49bdda1f8d7785c6acfebcaa4a9dbcccf1fabec"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6348862,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 5.275006968094941,
+        "truth_farthest_m": 4.97501559586186,
+        "back_error_m": 0.29999137223308114,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "ede35957a4c27dbc7a2bea3ad34b0b54727297e47bcc46150572fd92255a541c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "94d69c8f75f3fb612870ae611799d8e4e9fd9bcad7a7a839912df367b38618cc"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6348866,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 5.275006968094941,
+        "truth_farthest_m": 4.97501559586186,
+        "back_error_m": 0.29999137223308114,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "ede35957a4c27dbc7a2bea3ad34b0b54727297e47bcc46150572fd92255a541c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "2e045899a64fd137ec27c22b47ec8001a8f7173c89918f7f3f5cc6de5eacc010"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B2",
+        "task_id": 6348881,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 5.325009622779919,
+        "truth_farthest_m": 4.97501559586186,
+        "back_error_m": 0.3499940269180586,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "ede35957a4c27dbc7a2bea3ad34b0b54727297e47bcc46150572fd92255a541c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/footprint_B2.npy",
+        "footprint_sha256": "0c7aab7a8ad58f666c49a6bd7bbf14e223e1f5d246373db2a677505188633530"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C1",
+        "task_id": 6348888,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 5.025007631789309,
+        "truth_farthest_m": 4.97501559586186,
+        "back_error_m": 0.04999203592744905,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "ede35957a4c27dbc7a2bea3ad34b0b54727297e47bcc46150572fd92255a541c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/footprint_C1.npy",
+        "footprint_sha256": "de86c6eba1dac3a9cb65dc84848cb9236eee167686b8afd9aec0ca1879fd78c8"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6348894,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 4.9750109501554425,
+        "truth_farthest_m": 4.97501559586186,
+        "back_error_m": -4.6457064177829466e-06,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "ede35957a4c27dbc7a2bea3ad34b0b54727297e47bcc46150572fd92255a541c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "fefbba507097cc9a49bfda2088eaf31aede53c149217cca3a1bf5d9fb0c3cc69"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A1",
+        "task_id": 6348989,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 6.6249956855461445,
+        "truth_farthest_m": 7.3750029858758746,
+        "back_error_m": -0.7500073003297301,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "d2b1af21146cd9f8b7cefcf122664c2687bc76369670b769f7aa5d946c628a00",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/footprint_A1.npy",
+        "footprint_sha256": "7b49ce846ca8d97f9ddcfe12cfa1df0b4ae694db18c68e4a07456cd7d1f556af"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A2",
+        "task_id": 6348991,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 6.6249956855461445,
+        "truth_farthest_m": 7.3750029858758746,
+        "back_error_m": -0.7500073003297301,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "d2b1af21146cd9f8b7cefcf122664c2687bc76369670b769f7aa5d946c628a00",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/footprint_A2.npy",
+        "footprint_sha256": "7b49ce846ca8d97f9ddcfe12cfa1df0b4ae694db18c68e4a07456cd7d1f556af"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B1",
+        "task_id": 6349000,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 6.624995021873799,
+        "truth_farthest_m": 7.3750029858758746,
+        "back_error_m": -0.7500079640020756,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "d2b1af21146cd9f8b7cefcf122664c2687bc76369670b769f7aa5d946c628a00",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/footprint_B1.npy",
+        "footprint_sha256": "6db10e9afee7aa8224a0217f8bc56a3d0a119568f6ec2df2f7bc3075d8e1a889"
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "anchor": false,
+        "run_id": "a339f8d8b96f45218149680e89e274f5",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B2",
+        "task_id": 6349004,
+        "forward_axis_world_xy": [
+          0.9999999999119078,
+          -1.3273446908933383e-05
+        ],
+        "predicted_farthest_m": 6.624995021873799,
+        "truth_farthest_m": 7.3750029858758746,
+        "back_error_m": -0.7500079640020756,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "d2b1af21146cd9f8b7cefcf122664c2687bc76369670b769f7aa5d946c628a00",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_003/imagination/looks/look1/T2/decide/footprint_B2.npy",
+        "footprint_sha256": "9e1352cb48ab7d2483d8cb0c18511c2d78e23ea81a7f9243fe11516d322d6bee"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6349651,
+        "forward_axis_world_xy": [
+          0.9999997568657517,
+          0.0006973295042227998
+        ],
+        "predicted_farthest_m": 5.074458335727917,
+        "truth_farthest_m": 4.974284027665287,
+        "back_error_m": 0.1001743080626305,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8f059025ed9dcc661b384058ddf86fe27a892e264f9a1f19c4e9cc3343034b03",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "aa2abe52e3eb73a1810ba7fce6ac526c076889d6dcbd21350c39eef220434a68"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6349656,
+        "forward_axis_world_xy": [
+          0.9999997568657517,
+          0.0006973295042227998
+        ],
+        "predicted_farthest_m": 5.074493202203128,
+        "truth_farthest_m": 4.974284027665287,
+        "back_error_m": 0.1002091745378415,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8f059025ed9dcc661b384058ddf86fe27a892e264f9a1f19c4e9cc3343034b03",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "fe484d7a34179db94717f5d98e2751058d1d9f7db675c4f9014121ab4b510a01"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B1",
+        "task_id": 6349659,
+        "forward_axis_world_xy": [
+          0.9999997568657517,
+          0.0006973295042227998
+        ],
+        "predicted_farthest_m": 5.324423408469144,
+        "truth_farthest_m": 4.974284027665287,
+        "back_error_m": 0.3501393808038573,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8f059025ed9dcc661b384058ddf86fe27a892e264f9a1f19c4e9cc3343034b03",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_B1.npy",
+        "footprint_sha256": "4d02f24ac7e5f0e738ffa4427cb42b53a2295c325f193d077d23277d69e9d946"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B2",
+        "task_id": 6349662,
+        "forward_axis_world_xy": [
+          0.9999997568657517,
+          0.0006973295042227998
+        ],
+        "predicted_farthest_m": 5.324423408469144,
+        "truth_farthest_m": 4.974284027665287,
+        "back_error_m": 0.3501393808038573,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8f059025ed9dcc661b384058ddf86fe27a892e264f9a1f19c4e9cc3343034b03",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_B2.npy",
+        "footprint_sha256": "392ba15ae761081b685b246b3ca031e60ddf53c1407021f1602cf703fc346f5c"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6349718,
+        "forward_axis_world_xy": [
+          0.9999997568657517,
+          0.0006973295042227998
+        ],
+        "predicted_farthest_m": 5.074528068678339,
+        "truth_farthest_m": 4.974284027665287,
+        "back_error_m": 0.10024404101305251,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "8f059025ed9dcc661b384058ddf86fe27a892e264f9a1f19c4e9cc3343034b03",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "90f64e49001d099187fef5e5886cb6b6b7226ff4182495ebfa57140626e2d0c9"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look2",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B1",
+        "task_id": 6350945,
+        "forward_axis_world_xy": [
+          0.9988418781833301,
+          0.048113432502758666
+        ],
+        "predicted_farthest_m": 7.334559294881429,
+        "truth_farthest_m": 7.432037811074624,
+        "back_error_m": -0.09747851619319459,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/target_decision.json",
+        "decision_sha256": "0caaceed7c1a7af658ab9130463756e35794b1a5304851eaaf52e1d6e30eaa37",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/footprint_B1.npy",
+        "footprint_sha256": "bb4ae8cc96cdf4ffd744fd2ba30cb8ed6ab7e5dfdbf40fa38e5ae64e90cb6788"
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "anchor": false,
+        "run_id": "5108252d2c1d42228c41c846aa27cda0",
+        "look": "look2",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B2",
+        "task_id": 6350950,
+        "forward_axis_world_xy": [
+          0.9988418781833301,
+          0.048113432502758666
+        ],
+        "predicted_farthest_m": 7.334559294881429,
+        "truth_farthest_m": 7.432037811074624,
+        "back_error_m": -0.09747851619319459,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/target_decision.json",
+        "decision_sha256": "0caaceed7c1a7af658ab9130463756e35794b1a5304851eaaf52e1d6e30eaa37",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/footprint_B2.npy",
+        "footprint_sha256": "d4600717ebb58fe92005f9e92e3fb2e4df5c7da9ecb144f19cb0b8455b1b7d2f"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6351791,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 4.724790939389237,
+        "truth_farthest_m": 4.923673636200692,
+        "back_error_m": -0.19888269681145498,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "00cfa993a3477943fe6be324c309915bfdc40a26bea624e4eb56303129bb1c6c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "ae00b5ec9c0ba5ad439405bb98085e9edf0fcda1a0624c6166faaaf98828468d"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B2",
+        "task_id": 6351806,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 5.224261410293354,
+        "truth_farthest_m": 4.923673636200692,
+        "back_error_m": 0.30058777409266213,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "00cfa993a3477943fe6be324c309915bfdc40a26bea624e4eb56303129bb1c6c",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T1/decide/footprint_B2.npy",
+        "footprint_sha256": "09ccdea616c4433e89b511c501f1cfc8e86741f6feb94be920c2de1a97524c79"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A1",
+        "task_id": 6351940,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 7.025671321355371,
+        "truth_farthest_m": 7.125494857753062,
+        "back_error_m": -0.09982353639769137,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cd372bea23ecc45722e76ac2a4d63d7b2a736d1dc9b474a5473a587ea3c251eb",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/footprint_A1.npy",
+        "footprint_sha256": "dcdaeb4c60266c2045bffda50cd7aa6d7191282be7d06986d23dfacf8b00f1a6"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A2",
+        "task_id": 6351943,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 7.025671321355371,
+        "truth_farthest_m": 7.125494857753062,
+        "back_error_m": -0.09982353639769137,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cd372bea23ecc45722e76ac2a4d63d7b2a736d1dc9b474a5473a587ea3c251eb",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/footprint_A2.npy",
+        "footprint_sha256": "a6ed8d83469ae9a79319f742aa0f7cc8cf601c4fabc3cedd606fd52ea9ad650b"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B1",
+        "task_id": 6351950,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 6.97573015408022,
+        "truth_farthest_m": 7.125494857753062,
+        "back_error_m": -0.149764703672842,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cd372bea23ecc45722e76ac2a4d63d7b2a736d1dc9b474a5473a587ea3c251eb",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/footprint_B1.npy",
+        "footprint_sha256": "3eabff6df63cc7ec191e048fcc825c54102f28002ea40e4f8b73f8a0bcc67169"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B2",
+        "task_id": 6351955,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 7.025671321355371,
+        "truth_farthest_m": 7.125494857753062,
+        "back_error_m": -0.09982353639769137,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cd372bea23ecc45722e76ac2a4d63d7b2a736d1dc9b474a5473a587ea3c251eb",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/footprint_B2.npy",
+        "footprint_sha256": "d1ccf1ea8a45009c8ab28eb4c3f3881d2425177a0700bdb2837c3cd754c6ef37"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "C1",
+        "task_id": 6351964,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 6.92573018865246,
+        "truth_farthest_m": 7.125494857753062,
+        "back_error_m": -0.19976466910060253,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cd372bea23ecc45722e76ac2a4d63d7b2a736d1dc9b474a5473a587ea3c251eb",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/footprint_C1.npy",
+        "footprint_sha256": "ed43f54e674b257d291196ef2cca855c6d843736560b607ef15914a60cab4f81"
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "anchor": false,
+        "run_id": "7db5cd9f8be34ea09994bc3276772ed1",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "C2",
+        "task_id": 6352007,
+        "forward_axis_world_xy": [
+          0.9999993085552109,
+          0.001175963052198038
+        ],
+        "predicted_farthest_m": 6.9257889868050695,
+        "truth_farthest_m": 7.125494857753062,
+        "back_error_m": -0.19970587094799264,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cd372bea23ecc45722e76ac2a4d63d7b2a736d1dc9b474a5473a587ea3c251eb",
+        "footprint": "outputs/suite/real/suite_r2_v4_F2_001/imagination/looks/look1/T2/decide/footprint_C2.npy",
+        "footprint_sha256": "b3401d44bf6cb3d83b27f7dc8103450bb88894cb3342f5409e7961c44f8f8787"
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "anchor": false,
+        "run_id": "5848aa1e1e6d4a8fab7246e5685ae5dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6352977,
+        "forward_axis_world_xy": [
+          0.9999995904757888,
+          0.0009050128477656656
+        ],
+        "predicted_farthest_m": 4.87461337310917,
+        "truth_farthest_m": 4.873934613473346,
+        "back_error_m": 0.0006787596358241998,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "81791d451017a0bb302e68ddf196f4df9c637dd83dac76b42124037410bf9517",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "76bf72219c07f19d17b3d412d981240acc2d8c6cb0108e3e8fcd8410af0c42df"
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "anchor": false,
+        "run_id": "5848aa1e1e6d4a8fab7246e5685ae5dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6352980,
+        "forward_axis_world_xy": [
+          0.9999995904757888,
+          0.0009050128477656656
+        ],
+        "predicted_farthest_m": 4.87461337310917,
+        "truth_farthest_m": 4.873934613473346,
+        "back_error_m": 0.0006787596358241998,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "81791d451017a0bb302e68ddf196f4df9c637dd83dac76b42124037410bf9517",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "e22d5a2032bea631e9c88d8c6ed09e252372c12f71fc1660d9e75b8022460684"
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "anchor": false,
+        "run_id": "5848aa1e1e6d4a8fab7246e5685ae5dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C1",
+        "task_id": 6374035,
+        "forward_axis_world_xy": [
+          0.9999995904757888,
+          0.0009050128477656656
+        ],
+        "predicted_farthest_m": 4.924387099421018,
+        "truth_farthest_m": 4.873934613473346,
+        "back_error_m": 0.050452485947672265,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "81791d451017a0bb302e68ddf196f4df9c637dd83dac76b42124037410bf9517",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/footprint_C1.npy",
+        "footprint_sha256": "2ad2b90fe1463c8e5d917612b13ffd154f8c71ee737182a6069fea816ea78393"
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "anchor": false,
+        "run_id": "5848aa1e1e6d4a8fab7246e5685ae5dd",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6374043,
+        "forward_axis_world_xy": [
+          0.9999995904757888,
+          0.0009050128477656656
+        ],
+        "predicted_farthest_m": 4.924341848778631,
+        "truth_farthest_m": 4.873934613473346,
+        "back_error_m": 0.05040723530528446,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "81791d451017a0bb302e68ddf196f4df9c637dd83dac76b42124037410bf9517",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "543d5e79d0cd404d615e65856eef755cc808731519c31a701ee6308b0971f7f1"
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "anchor": false,
+        "run_id": "5848aa1e1e6d4a8fab7246e5685ae5dd",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "B2",
+        "task_id": 6374198,
+        "forward_axis_world_xy": [
+          0.9999995904757888,
+          0.0009050128477656656
+        ],
+        "predicted_farthest_m": 6.725381876409981,
+        "truth_farthest_m": 7.325200628125901,
+        "back_error_m": -0.5998187517159206,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "075523a3e400cf098d3750e579b0a48143e8223a55abaceb7c3e6d33b804d28d",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T2/decide/footprint_B2.npy",
+        "footprint_sha256": "f8652a5ea32cfa89d912f9119245047999521be45bda4f1fb977aaabcf0aa5c7"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6374032,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 4.975294282062307,
+        "truth_farthest_m": 4.825419273126469,
+        "back_error_m": 0.1498750089358376,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "a498d0439f99c4731fc22a6c636ba1b5e85f377af6ef96cc4a907c56208d9c36",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "93a186086070ab8597f1834739fcd6664a5b1ec7ec7a05171027d37f175929ab"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6374034,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 4.975294282062307,
+        "truth_farthest_m": 4.825419273126469,
+        "back_error_m": 0.1498750089358376,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "a498d0439f99c4731fc22a6c636ba1b5e85f377af6ef96cc4a907c56208d9c36",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "dca318d0692179d3836315453a051c684152a28e7ba1c43524ed2cf40a1b82df"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B1",
+        "task_id": 6374060,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 5.325312114247579,
+        "truth_farthest_m": 4.825419273126469,
+        "back_error_m": 0.49989284112110965,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "a498d0439f99c4731fc22a6c636ba1b5e85f377af6ef96cc4a907c56208d9c36",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/footprint_B1.npy",
+        "footprint_sha256": "11de63628ab051fd1732a9990c0f1bec054f8a9ea677e20e786176725b5ed736"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "B2",
+        "task_id": 6374102,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 5.125401399499382,
+        "truth_farthest_m": 4.825419273126469,
+        "back_error_m": 0.299982126372913,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "a498d0439f99c4731fc22a6c636ba1b5e85f377af6ef96cc4a907c56208d9c36",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/footprint_B2.npy",
+        "footprint_sha256": "d599ff56af8adad20a707eab483c9c80db179e04c69bc4e3cba495d9204baa5f"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C1",
+        "task_id": 6374108,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 4.975294282062307,
+        "truth_farthest_m": 4.825419273126469,
+        "back_error_m": 0.1498750089358376,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "a498d0439f99c4731fc22a6c636ba1b5e85f377af6ef96cc4a907c56208d9c36",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/footprint_C1.npy",
+        "footprint_sha256": "5339f38c9184f4a23b9bb4c275872f9753848ee68002522b5d001a3dc01a8b43"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6374113,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 4.975294282062307,
+        "truth_farthest_m": 4.825419273126469,
+        "back_error_m": 0.1498750089358376,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "a498d0439f99c4731fc22a6c636ba1b5e85f377af6ef96cc4a907c56208d9c36",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "5339f38c9184f4a23b9bb4c275872f9753848ee68002522b5d001a3dc01a8b43"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A1",
+        "task_id": 6374231,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 6.524883529737325,
+        "truth_farthest_m": 7.375062020545138,
+        "back_error_m": -0.8501784908078127,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cb2f7c7286d83ecdfe6f3063d272cc394f2bbe4a44ac9f7f61aa561cc9080996",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/footprint_A1.npy",
+        "footprint_sha256": "e9076c601fd8460dd4ad6f752c408ace5b96f1f88d981530a01fddcbe7c2592a"
+      },
+      {
+        "scene": "suite_r2_v4_F3_004",
+        "anchor": false,
+        "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+        "look": "look1",
+        "target": "T2",
+        "associated_true_rocks": [
+          "B"
+        ],
+        "candidate": "A2",
+        "task_id": 6374258,
+        "forward_axis_world_xy": [
+          0.9999999362433633,
+          -0.00035709000190731736
+        ],
+        "predicted_farthest_m": 6.524883529737325,
+        "truth_farthest_m": 7.375062020545138,
+        "back_error_m": -0.8501784908078127,
+        "shorter_than_five_cm": true,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/target_decision.json",
+        "decision_sha256": "cb2f7c7286d83ecdfe6f3063d272cc394f2bbe4a44ac9f7f61aa561cc9080996",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/footprint_A2.npy",
+        "footprint_sha256": "b7e429f45c993b217034c0a472cc21ef4d7aebdd23a31b495deb02eae2e3d3c4"
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "anchor": false,
+        "run_id": "271ddbb2f9704fb0baff24d86d703edb",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A1",
+        "task_id": 6375967,
+        "forward_axis_world_xy": [
+          0.9999998725943402,
+          -0.0005047883748613374
+        ],
+        "predicted_farthest_m": 5.075289606731822,
+        "truth_farthest_m": 4.9256177382863315,
+        "back_error_m": 0.1496718684454903,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "1328f51d57d14045bc96823be04ca1bf210651ca8a82e00e7d2737625987fbe8",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_A1.npy",
+        "footprint_sha256": "36ec9da1a22aac47bc00e108bd0816ccc4073973e1fe1f6d18381333705f9a81"
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "anchor": false,
+        "run_id": "271ddbb2f9704fb0baff24d86d703edb",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "A2",
+        "task_id": 6375973,
+        "forward_axis_world_xy": [
+          0.9999998725943402,
+          -0.0005047883748613374
+        ],
+        "predicted_farthest_m": 5.075289606731822,
+        "truth_farthest_m": 4.9256177382863315,
+        "back_error_m": 0.1496718684454903,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "1328f51d57d14045bc96823be04ca1bf210651ca8a82e00e7d2737625987fbe8",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_A2.npy",
+        "footprint_sha256": "5bc91af411a64c61ee6210a48bae61a956b06ae5c2f70b6559d53bbf2ace02f8"
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "anchor": false,
+        "run_id": "271ddbb2f9704fb0baff24d86d703edb",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C1",
+        "task_id": 6376007,
+        "forward_axis_world_xy": [
+          0.9999998725943402,
+          -0.0005047883748613374
+        ],
+        "predicted_farthest_m": 5.075415803825537,
+        "truth_farthest_m": 4.9256177382863315,
+        "back_error_m": 0.14979806553920572,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "1328f51d57d14045bc96823be04ca1bf210651ca8a82e00e7d2737625987fbe8",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_C1.npy",
+        "footprint_sha256": "d770ef658159c9241d6825427465253f9068772c1e680f6f36c520a06e4a1a4d"
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "anchor": false,
+        "run_id": "271ddbb2f9704fb0baff24d86d703edb",
+        "look": "look1",
+        "target": "T1",
+        "associated_true_rocks": [
+          "A"
+        ],
+        "candidate": "C2",
+        "task_id": 6376018,
+        "forward_axis_world_xy": [
+          0.9999998725943402,
+          -0.0005047883748613374
+        ],
+        "predicted_farthest_m": 5.075441043244281,
+        "truth_farthest_m": 4.9256177382863315,
+        "back_error_m": 0.14982330495794915,
+        "shorter_than_five_cm": false,
+        "decision": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/target_decision.json",
+        "decision_sha256": "1328f51d57d14045bc96823be04ca1bf210651ca8a82e00e7d2737625987fbe8",
+        "footprint": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_C2.npy",
+        "footprint_sha256": "210c0352862b2f3aeb7631a6554adedd67e34ada62e6f9167e7b2a90fa34d7ff"
+      }
+    ]
+  }
+}

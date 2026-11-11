@@ -1,0 +1,200 @@
+{
+  "known_decisive_original": {
+    "arrived": 3,
+    "stuck": 3,
+    "collision": 2
+  },
+  "holdout_original": {
+    "stuck": 2,
+    "arrived": 1,
+    "collision": 2
+  },
+  "holdout_final_v3": {
+    "completed": 5,
+    "incomplete": [],
+    "arrived": 0,
+    "safe_stop": 5,
+    "collisions": 0,
+    "collision_scenes": [],
+    "see_dark_arrived_scenes": 3,
+    "strict_arrived_among_see_dark_arrived": 0,
+    "see_dark_pairwise_looks_and_sim_time": [
+      {
+        "scene": "suite_r2_v4_F3_005",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 139.18
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 92.17
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_003",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 138.58
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 3,
+          "sim_time_s": 87.74
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_006",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 115.02
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 87.81
+        }
+      }
+    ]
+  },
+  "known_final_v3": {
+    "completed": 12,
+    "incomplete": [],
+    "arrived": 3,
+    "safe_stop": 9,
+    "collisions": 0,
+    "collision_scenes": [],
+    "see_dark_arrived_scenes": 9,
+    "strict_arrived_among_see_dark_arrived": 3,
+    "see_dark_pairwise_looks_and_sim_time": [
+      {
+        "scene": "stress_v8",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 147.26
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 3,
+          "sim_time_s": 87.74
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 145.24
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 2,
+          "sim_time_s": 54.58
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_005",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 151.76
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 2,
+          "sim_time_s": 53.0
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 129.45
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 101.49
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "see_dark": {
+          "looks": 4,
+          "sim_time_s": 165.2
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 83.48
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "see_dark": {
+          "looks": 4,
+          "sim_time_s": 157.28
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 80.28
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 133.18
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 4,
+          "sim_time_s": 118.57
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 119.05
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 4,
+          "sim_time_s": 176.71
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 125.97
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 5,
+          "sim_time_s": 143.43
+        }
+      }
+    ]
+  },
+  "original_counterfactuals": {
+    "collisions": 17,
+    "executed": 102,
+    "outcomes": {
+      "arrived": 44,
+      "stuck": 41,
+      "stopped_short": 0,
+      "collision": 17
+    },
+    "unexecutable": 0,
+    "collision_ratio": 0.16666666666666666
+  },
+  "anchor_gap_published_mm": 47.541,
+  "anchor_xy_gap_mm": 0,
+  "sources": [
+    "evidence/suite/summary.json",
+    "evidence/reviews/beforestep_r3/summary.json",
+    "evidence/reviews/beforestep_r3/failure-facts.json",
+    "evidence/web-assets/anchor.json"
+  ]
+}

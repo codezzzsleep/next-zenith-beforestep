@@ -13,7 +13,7 @@
 | E1 | 原12冻结场景赛后修订复测 | 完成 | f971519数据；12原summary/17CF/全复盘/完整tar+publicmanifest/独立远端下载通过，frozen-complete.json阶段证明 |
 | E2 | 指定留出场景六栏运行 | 进行中 | E1 proof454951a已远端确认；F0_002六栏已完成；F2_011同身份中断恢复配准，固定其余场继续 |
 | V1 | 加入三个修订想象视频记录 | 完成 | b00edc0已push；22run/1544byte本地pass；306LFS/407763387bytes从origin独立下载SHA/size全部pass |
-| D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
+| D | 修订结果/对照/报告/相关工作/最终验收发布 | 进行中 | 恢复与V1改动后85单测pass；最终统计/页面/PDF/公网待E2终态 |
 
 ## 身份、预算与保护
 
@@ -2187,3 +2187,5 @@ V1远端实际确认：`b00edc0c97f29cc790da279b547707e11a2e8a19`已push，独�
   "collision": null
 }
 ```
+
+最终验收单测已在恢复及V1改动后实际运行：`python3 -m unittest discover -s tests -v`，exit0，85项/11.751s全部通过。[原日志](../../evidence/reviews/beforestep_r3/final-verification/unit-tests-after-video-recovery.log)。后续源码没有变化时不重复昂贵物理回归；最终数字/文档/页面验收仍待全部实验与保全终态。

@@ -1,0 +1,32 @@
+{
+  "schema": "beforestep-pre-http-transport-recovery/v1",
+  "scene": "suite_r2_v4_F3_002",
+  "sample": "B2",
+  "identity": "f59b706257f55352dbe6919068f1824067797338a2b60972ade25cc75bce8e78",
+  "created_tasks_in_recovery": 0,
+  "error": "TLS handshake timed out in ssl.SSLSocket._create before HTTPConnection.send sent the POST request",
+  "source_log": "outputs/suite/real/suite_r2_v4_F3_002.log",
+  "old_record": {
+    "id": "B2",
+    "identity": "f59b706257f55352dbe6919068f1824067797338a2b60972ade25cc75bce8e78",
+    "status": "uncertain",
+    "inputs": [
+      "outputs/suite/real/suite_r2_v4_F3_002/imagination/looks/look1/T1/gen/variants/B2.png"
+    ],
+    "input_sha256": [
+      "b29eef2ae4c12aa79da58de9e01c7da5706c65c41954d51c3699379bf1eb17de"
+    ],
+    "submitted_at": 1794360228.2746918,
+    "task_id": null,
+    "api_field": "img",
+    "n_images": 1
+  },
+  "provider_checked_at": "2026-11-11T05:54:14.743652+00:00",
+  "provider_total": 141,
+  "latest_task": {
+    "taskId": 6352991,
+    "created": 1794360228000,
+    "status": 4
+  },
+  "decision": "Reclassify as definitively not_submitted based on pre-HTTP exception, retaining the original uncertain record. A lost HTTP create response remains uncertain and is never retried."
+}

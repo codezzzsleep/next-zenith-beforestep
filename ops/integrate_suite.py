@@ -79,6 +79,7 @@ def main():
         browser = json.loads((ROOT / 'evidence/suite/presentation/sandbox/browser.json').read_text())
         consistency = json.loads((ROOT / 'evidence/suite/presentation/sandbox/consistency.json').read_text())
         assert browser['passed'] and not consistency['development_anchor_only']
+        assert not consistency['development_partial_suite'], 'Full frozen-suite consistency required'
         assert consistency['scene_count'] == summary['completed_scene_count']
         sandbox = '<section id="sandbox"><div class="eyebrow">SANDBOX / YOUR MOONSCAPE</div><h2>石头，由你来放。</h2><p>拖动扫描岩石，旋转、调整太阳与月坑，查看三种策略的轻量路线，再导出到本地完整物理验证。</p><a class="button" href="sandbox.html">打开月面沙盒 →</a><p class="caption">不做物理仿真，不实时调用 Lux3D。一致性 '+str(consistency['consistent_scenes'])+'/'+str(consistency['scene_count'])+'；所有不一致在<a href="evidence/suite/presentation/sandbox/consistency.json">原始检查</a>中列出。</p></section>'
         page = replace_block(page, '<!-- SANDBOX-HOME-START -->', '<!-- SANDBOX-HOME-END -->', sandbox, '<section id="evolution">')

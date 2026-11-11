@@ -15,11 +15,11 @@
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 完成 | 当前源cfffaf8四类全链/复盘/allpanes通过；本提交 |
 | B5 | 场景组真实Lux3D | 进行中 | B4已push c465926后启动；实时预算见ledger |
-| B6 | 全部场景复盘和全部拒绝反事实 | 进行中（复盘随B5，CF父等待已完成场景） | b790e92 |
+| B6 | 全部场景复盘和全部拒绝反事实 | 进行中（6场全部CF完成，F2余场与F3继续） | b790e92 |
 | B7 | 完整总表 | 未开始 | — |
 | B8 | 预定规则结论 | 进行中（真实主流程碰撞已显著披露，最终全组结论待B7） | 本次安全边界记录 |
-| C1 | 五步关卡模式 | 进行中（R1锚点框架已验证，完整场景组待B完成） | c5be2c6 |
-| C2 | 沙盒与一致性 | 进行中（锚点1/1与本地浏览器通过，全组待B） | 本次基础提交 |
+| C1 | 五步关卡模式 | 进行中（6/12真实开发关卡已完整浏览器验证，完整组待B） | c5be2c6 |
+| C2 | 沙盒与一致性 | 进行中（6/12首眼几何4/6一致、浏览器通过，全组待B） | 本次基础提交 |
 | C3 | 导出与人工场景 | 进行中（导出JSON实际验证，人工场景当前无文件） | 本次基础提交 |
 | D1 | 首页/报告/相关工作整合 | 未开始 | — |
 | D2 | 全验收和main/Pages发布 | 未开始 | — |
@@ -663,3 +663,13 @@ F1_003全7份拒绝CF已完成、7arrived/0collision/allprefixpass，完整5策�
 B7检查用六场预览exit0（含R1锚点和全部已完成的5新场景）：原frozen12不变、6余场未完成；完整CF63=13collision/27arrived/23stuck，0不能执行；主碰撞F1_020显著披露，拒绝多数有效无撞声明。没有把这份预览发布成总表或提前应用关口收缩；继续F2/F3。
 
 C1已完成数据的部分组开发验收：build6actual exit0/86可用候选，[development-six/browser.json](../../evidence/suite/presentation/development-six/browser.json)真实Chromium exit0，每关5步/3真实策略回放/全部候选mesh+独立真值/首次计分/390px/0pageHTTP；全部110显示资产SHA核对通过，actualdata只有6/12而非全组，data/API和页面明确partial。未新做物理实验或Lux请求，源cfff不动；完整12数据后按C/D再验全组。log C1-six-actual-levels-build.log/C1-six-real-partial-browser.log。
+
+## 2026-11-11 中断恢复与六场沙盒检查
+
+读取权威Memory/R1/R2及旧会话原记录后核实：main/remote5456752，src与cfffaf8完整67测试/五R1回归完全同；旧B5父已exit1，旧B6与CF子PID均不存在。全部8个新真实终态保留（加R1锚点为9/12），未提前收缩名单。F2_003两眼57.8s停车、F2_007两眼128.4s到达、F2_001一眼102.7s到达，三场均无实际contact且review exit0。
+
+TLS创建异常仅发生F3_002/B2，原错误栈在SSL握手、HTTP尚未发送。官方list最新6352991创建时间早于B2尝试，旧uncertain记录与纠正依据保留[原件](../../evidence/suite/regressions/pre-http-transport/recovery.json)。只纠正明确未发送槽为not_submitted，丢失HTTP响应的uncertain仍禁止重建。已知6352977/6352980成功、6352991 provider failed，继续查询和下载，不重create。142身份/paid usage141（含旧not_submitted不计付费），恢复后新增任务实时以budget为准。B5/B6各唯一父resume，已完成项跳过。F2_003CF已有5/17终态保留，唯一无summary中断目录另存后只重跑未完成干预。
+
+C2修复原preset借用其他scene/第二眼候选的问题：只取该scene首眼真实准入模板，自由编辑可复用同扫描全部准入模板。`build_sandbox_data.py` exit0；`check_sandbox_consistency.py --out outputs/qa/r2/C2-six-context-consistency.json` exit0，正常几何首眼4/6一致，F1_020/F1_003不一致，数值EDT/共享规划器6/6通过，明确分开报告。`check_sandbox_browser.py --name C2-six-context` exit0：实际拖放、移动/旋转/高度、月坑、太阳、三条规划/动画、导出、390px、零页面/HTTP错误。开发证据[目录](../../evidence/suite/presentation/development-six-sandbox/)；原1/6失败证据保留outputs/qa/r2/C2-six-before-context-fix。仍partial=true/frozen12，不声称全组C2或D完成。
+
+F2_007第六套完整场景数据：14variants含9CF，public含manifest87,802,318bytes<150MB；完整原件tar302,453,547bytes/SHA`4e28561bbf75aab20d2417223f278ecad26f503d213e68b48799afe388432334`，仓库外`/root/3d/artifacts/beforestep-r2/suite_r2_v4_F2_007-complete.tar.gz`。沿用LFS不足时外包+精简集方案，配额API仍不可用、不虚报余额，上传后实际核push。

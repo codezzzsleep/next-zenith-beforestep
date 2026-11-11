@@ -15,7 +15,7 @@ export function nogo(def){const t=def.terrain||{type:'corridor',right_wall:true,
 function rayBlocked(a,b,poly){for(let i=0;i<poly.length;i++){const c=poly[i],d=poly[(i+1)%poly.length],u=[b[0]-a[0],b[1]-a[1]],v=[d[0]-c[0],d[1]-c[1]],det=u[0]*v[1]-u[1]*v[0];
   if(Math.abs(det)<1e-12)continue;const w=[c[0]-a[0],c[1]-a[1]],t=(w[0]*v[1]-w[1]*v[0])/det,s=(w[0]*u[1]-w[1]*u[0])/det;
   if(t>0&&t<.999&&s>=0&&s<=1)return true;}return false;}
-export function observe(def,library){const rocks=polygons(def,library),truth=raster(rocks.map(r=>r.poly)),prior=nogo(def),state=new Uint8Array(truth.length);
+export function observe(def,library,{sourceScene=null}={}){const rocks=polygons(def,library).map(r=>sourceScene?{...r,base:{...r.base,candidates:r.base.candidates.filter(c=>c.scene===sourceScene&&c.look===1)}}:r),truth=raster(rocks.map(r=>r.poly)),prior=nogo(def),state=new Uint8Array(truth.length);
   const cam=[def.first_stop[0]+.42,def.first_stop[1]],sun=def.sun||{elevation_deg:10,azimuth_deg:35},az=sun.azimuth_deg*Math.PI/180;
   const shadows=rocks.map(r=>({poly:r.poly,shift:[Math.cos(az)*r.rock.height/Math.tan(sun.elevation_deg*Math.PI/180),-Math.sin(az)*r.rock.height/Math.tan(sun.elevation_deg*Math.PI/180)]}));
   for(let i=0;i<grid.nx;i++)for(let j=0;j<grid.ny;j++){const z=i*grid.ny+j,p=[grid.x0+(i+.5)*grid.res,grid.y0+(j+.5)*grid.res],dx=p[0]-cam[0],dy=p[1]-cam[1];

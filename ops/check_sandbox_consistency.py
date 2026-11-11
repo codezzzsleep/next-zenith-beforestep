@@ -53,7 +53,7 @@ def main():
         script.write_text("""import fs from 'node:fs';
 import {observe,occupancies,plan,intrusion,clearance} from './planner.mjs';
 const input=JSON.parse(fs.readFileSync(process.argv[2],'utf8')),rows=[];
-for(const c of input.cases){const obs=observe(c.definition,input.data.library),occ=occupancies(c.definition,obs),actual={};
+for(const c of input.cases){const obs=observe(c.definition,input.data.library,{sourceScene:c.id}),occ=occupancies(c.definition,obs),actual={};
  for(const key of ['optimistic','conservative','imagination']){const p=plan(occ[key],c.definition.first_stop,c.definition.goal,input.data.drive_radius,input.data.turn_radius);actual[key]={route:p!==null,intrudes:p?intrusion(p,c.definition.first_stop,obs.truth,input.data.robot.half_wid)>0:null};}
  const field=clearance(c.exact.occupancy),error=Math.max(...field.map((v,i)=>Math.abs(v-c.exact.clearance[i])));
  const p=plan(c.exact.occupancy,c.exact.start,c.exact.goal,input.data.drive_radius,input.data.turn_radius);
@@ -63,6 +63,8 @@ console.log(JSON.stringify(rows));""")
         rows = json.loads(result.stdout)
     assert all(r['exact_map_clearance_max_error_m'] < 1e-10 and r['exact_map_route_agrees'] for r in rows)
     report = {'schema': 'beforestep-sandbox-consistency/v1', 'scene_count': len(rows),
+              'development_partial_suite': data.get('development_partial_suite', True),
+              'frozen_scene_count': data.get('frozen_scene_count', len(rows)),
               'consistent_scenes': sum(r['consistent'] for r in rows),
               'inconsistent_scenes': [r['scene'] for r in rows if not r['consistent']], 'scenes': rows,
               'development_anchor_only': data['development_anchor_only'],

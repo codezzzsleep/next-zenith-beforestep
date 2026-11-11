@@ -54,9 +54,8 @@ def main():
                 continue
             rock = definition['rocks'][overlapping[0]]
             row = library[rock['rock']]
-            if row['candidates'] and row['candidates'][0]['scene'] != level['id']:
-                continue
             row['candidates'].append({'source': candidate['source_decision'],
+                'look': 1 if candidate['look'] == '首眼' else 2,
                 'scene': level['id'], 'task_id': candidate['task_id'],
                 'sample': candidate['sample'], 'height': rock['height'],
                 'pose': [rock['x'], rock['y'], rock['yaw']],
@@ -65,6 +64,8 @@ def main():
                         'observation': level['observation'],
                         'candidates': [c for c in level['candidates'] if c['admitted']]})
     output = {'schema': 'beforestep-sandbox-data/v1',
+        'development_partial_suite': levels.get('development_partial_suite', True),
+        'frozen_scene_count': levels.get('frozen_scene_count', len(levels['levels'])),
         'development_anchor_only': levels['anchor_only_development'],
         'scope': 'Lightweight geometry and planning; no physics or live Lux3D.',
         'grid': {'origin': [N.X0, N.Y0], 'shape': [N.NX, N.NY], 'resolution': N.RES},

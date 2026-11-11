@@ -8,9 +8,9 @@
 | P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
-| S1 | imagination_strict与预测阴影 | 进行中 | v3修复全动作占据一致性；79单测pass，旧pipeline原样 |
-| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | v1/v2全五R1pass；v3回归及两场替身进行中 |
-| E1 | 原12冻结场景赛后修订复测 | 进行中 | 只复用已有首眼；需要新样本时停车，0新增任务 |
+| S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
+| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
+| E1 | 原12冻结场景赛后修订复测 | 进行中 | 正式v3全12；首眼复用，新增任务≤170 |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
@@ -227,3 +227,139 @@ S2 v1四次替身全部终态，[v1原始summary](../../evidence/reviews/befores
 v2的旧12复用波次8终态（7停车、1碰撞）/4待样本，原路径`outputs/r3/frozen`不写；F1_003碰撞134.486s/obstacle2显著记录，source与原consv对照待复盘。新版必须全部12在独立v3目录重跑，保留旧版，当前0新增paid。
 
 已知SDK身份可以跨相同字节的文件路径复用：当前inputs重绑定但保留original_task_inputs，验证imageSHA/identity/双图字段/GLB SHA，不改旧ledger；只在全state（除路径）/pose/time/所有obs字节和旧cache代码身份相同时复用旧元数据与自检，不伪造cacheID。未知/uncertain仍等待，不重建。
+
+v3完整五R1回归实际通过，[原记录](../../evidence/reviews/beforestep_r3/regression/v3/regression.json)；79单测、真实重放全部5数组/NPZ SHA仍同原。新strict truth锚点已到达·5眼·232.52s·0碰撞，完成指定预期，源整合修复有效；F1及生产注册替身尚在运行，先等其终态，不提前新增任务。
+
+## S2 v3 完成，进入正式E1
+
+[四个完整替身](../../evidence/reviews/beforestep_r3/standins/v3/summary.json) 已全部终态、all_passed=true：锚点truth到达5眼232.52s、生产注册到达5眼228.02s；F1_020 truth到达4眼155.51s、生产注册2眼48.84s安全停车，均未碰撞。完整peek路径与最后朝向全部先在对应模型世界预演；保持S2明确预期不改。当前80项单测11.091s实际pass（多出的截止时间case验证已过11/14禁止create、旧任务仍可恢复），五R1源回归/原全部数组/SHA通过，实际源4d53214。
+
+正式v3 E1独立目录`outputs/r3/v3/frozen`，全部原12名单按既定次序，各一次strict真实Lux；第一眼只用已通过原数组核对的R1缓存/原R2真实数据。已知同字节后续任务只在SDK身份和输入SHA完全相同才复用，旧ledger不写；新视角产生的新任务在R3budget创建前落ledger≤170。原v2 8终态/4待样本保留不覆写；本次修复后整个12重跑，不只重跑失败例。日期11/11，未到11/14关口，不收缩名单/预算。
+
+### v3 stress_v8-truth summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 231.32,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    10.492,
+    -0.002,
+    18.36
+  ],
+  "sim_time_s": 232.52,
+  "wall_s": 133.9,
+  "collision": null
+}
+```
+
+### v3 suite_r2_v4_F1_020-truth summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 154.31,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    9.993,
+    -0.035,
+    15.63
+  ],
+  "sim_time_s": 155.51,
+  "wall_s": 92.1,
+  "collision": null
+}
+```
+
+### v3 stress_v8-registered summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 226.82,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    10.491,
+    -0.0,
+    23.35
+  ],
+  "sim_time_s": 228.02,
+  "wall_s": 289.6,
+  "collision": null
+}
+```
+
+### v3 suite_r2_v4_F1_020-registered summary 原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 47.64,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    2.283,
+    0.184,
+    7.16
+  ],
+  "sim_time_s": 48.84,
+  "wall_s": 150.0,
+  "collision": null
+}
+```

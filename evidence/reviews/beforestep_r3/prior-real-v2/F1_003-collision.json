@@ -1,0 +1,205 @@
+{
+  "post_run_diagnostic_only": true,
+  "scene": "suite_r2_v4_F1_003",
+  "revision": "v2",
+  "summary": {
+    "policy": "imagination_strict",
+    "tag": "imagination_strict",
+    "see_dark": false,
+    "imagine": "lux",
+    "result": "collision",
+    "controller": "rules",
+    "controller_sha256": null,
+    "pose_controller_sha256": null,
+    "scene_id": "suite_r2_v4_F1_003",
+    "goal": [
+      9.095304,
+      -0.071513
+    ],
+    "start_mode": "scene_start",
+    "execution_elapsed_s": 133.29,
+    "sensor_mode": "live",
+    "looks": 4,
+    "final_pose": [
+      8.093,
+      1.515,
+      -71.87
+    ],
+    "sim_time_s": 134.49,
+    "wall_s": 188.1,
+    "collision": {
+      "body": "obstacle2",
+      "robot_geom": null,
+      "pos": [
+        7.979,
+        1.186,
+        0.086
+      ],
+      "t": 134.486
+    }
+  },
+  "trajectory_arrays_equal_original_conservative": {
+    "t": true,
+    "qpos": true,
+    "phase": true,
+    "control_actions": true,
+    "control_sources": true
+  },
+  "contact_phase": "to_look5",
+  "contact_qpos": [
+    8.09283620241257,
+    1.51545294009001,
+    0.3837023933033058,
+    0.8096810906838866,
+    -0.002356859680757362,
+    -0.00023005423750865528,
+    -0.5868653369184846,
+    0.0032942060726814876,
+    0.8449149180722941,
+    -1.6562650474757294,
+    172.29157943336307,
+    0.0031157955482367734,
+    0.8540424737697279,
+    -1.6539078370498708,
+    157.37744729548635,
+    0.0010545366469653266,
+    0.840415181621148,
+    -1.6656159769209884,
+    157.17328027569874,
+    -0.007372788352767672,
+    0.8531498622016048,
+    -1.65256197876156,
+    142.9989273188385
+  ],
+  "last_events": [
+    {
+      "kind": "look",
+      "k": 4,
+      "label": "extra3",
+      "pose": [
+        6.247,
+        2.002,
+        60.91
+      ],
+      "t": 119.12,
+      "measured_pose": [
+        6.24664460100686,
+        2.0017432258524868,
+        1.0630130151844985
+      ],
+      "measured_velocity": [
+        -0.0013980136139554104,
+        0.0006026557276264841,
+        -0.0003364840779103106,
+        -0.005133978474337405,
+        -0.0012368861383414448,
+        0.014877004056441497
+      ],
+      "sensor_source": "live",
+      "cells": {
+        "FREE": 13534,
+        "ROCK": 419,
+        "DARK": 5871,
+        "HIDDEN": 518,
+        "UNSEEN": 4858,
+        "NOGO": 0
+      },
+      "cam_pos": [
+        6.4509,
+        2.3687,
+        0.3829
+      ]
+    },
+    {
+      "kind": "plan",
+      "policy": "imagination_strict",
+      "look": 4,
+      "path": null,
+      "reason": "imagined_blocked",
+      "margin_vs_truth": null
+    },
+    {
+      "kind": "second_look_plan",
+      "attempt": 1,
+      "viewpoint": [
+        6.25,
+        1.8,
+        -26.3
+      ],
+      "requested_viewpoint": [
+        6.24664460100686,
+        1.7999999999999994,
+        -0.4585404421023668
+      ],
+      "target_native_px_expected": null,
+      "target": null,
+      "expected_new_cells": 277,
+      "path": [
+        [
+          6.247,
+          1.8
+        ]
+      ]
+    },
+    {
+      "kind": "second_look_plan",
+      "attempt": 2,
+      "viewpoint": [
+        6.05,
+        1.8,
+        -24.8
+      ],
+      "requested_viewpoint": [
+        6.04664460100686,
+        1.7999999999999994,
+        -0.43216400705335195
+      ],
+      "target_native_px_expected": null,
+      "target": null,
+      "expected_new_cells": 265,
+      "path": [
+        [
+          6.047,
+          1.8
+        ]
+      ]
+    },
+    {
+      "kind": "result",
+      "policy": "imagination_strict",
+      "tag": "imagination_strict",
+      "see_dark": false,
+      "imagine": "lux",
+      "result": "collision",
+      "controller": "rules",
+      "controller_sha256": null,
+      "pose_controller_sha256": null,
+      "scene_id": "suite_r2_v4_F1_003",
+      "goal": [
+        9.095304,
+        -0.071513
+      ],
+      "start_mode": "scene_start",
+      "execution_elapsed_s": 133.29,
+      "sensor_mode": "live",
+      "looks": 4,
+      "final_pose": [
+        8.093,
+        1.515,
+        -71.87
+      ],
+      "sim_time_s": 134.49,
+      "wall_s": 188.1,
+      "collision": {
+        "body": "obstacle2",
+        "robot_geom": null,
+        "pos": [
+          7.979,
+          1.186,
+          0.086
+        ],
+        "t": 134.486
+      }
+    }
+  ]
+}

@@ -11,7 +11,7 @@ import time
 from beforestep.generation import client as C
 from run_suite_imagination import offline_result, sources
 from suite_lux_budget import generate_request, PendingTask, BudgetExhausted
-from r3_lux_budget import R3Budget
+from r3_lux_budget import R3Budget, ExperimentDeadline
 
 ROOT = C.ROOT
 
@@ -156,6 +156,10 @@ def main():
                     time.sleep(10)
                 except BudgetExhausted:
                     report.update(completed=False, budget_exhausted=True)
+                    C.atomic_json(ledger, report)
+                    raise SystemExit(2)
+                except ExperimentDeadline:
+                    report.update(completed=False, experiment_deadline_reached=True)
                     C.atomic_json(ledger, report)
                     raise SystemExit(2)
         report.pop('pending', None)

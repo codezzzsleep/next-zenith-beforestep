@@ -1,5 +1,6 @@
 """Separate the known-scene revision reruns from held-out evidence."""
 import json
+import argparse
 from pathlib import Path
 
 from beforestep.generation import client as C
@@ -31,15 +32,20 @@ def strict_stats(rows):
 
 
 def main():
+    ap = argparse.ArgumentParser()
+    ap.add_argument('--frozen', default='outputs/r3/v3/frozen/processes.json')
+    ap.add_argument('--holdouts', default='outputs/r3/v3/holdouts/processes.json')
+    ap.add_argument('--counterfactuals', default='outputs/r3/v3/counterfactuals')
+    a = ap.parse_args()
     original = json.loads((ROOT / 'evidence/suite/summary.json').read_text())
-    frozen = json.loads((ROOT / 'outputs/r3/frozen/processes.json').read_text())
+    frozen = json.loads((ROOT / a.frozen).read_text())
     plan = json.loads((ROOT / 'evidence/reviews/beforestep_r3/experiment-plan.json').read_text())
     rows = []
     for row in original['scenes']:
         runs = {key: row['runs'][key] for key in ('conservative', 'see_dark', 'optimistic', 'truth', 'imagination')}
         strict = frozen['jobs'].get(row['scene'], {})
         if strict.get('summary'):
-            actual = ROOT / 'outputs/r3/frozen' / row['scene'] / 'imagination_strict'
+            actual = (ROOT / strict['chain']).parent / 'imagination_strict'
             chain = json.loads((actual.parent / 'chain.json').read_text())
             assert chain['first_view_verification']['passed']
             runs['imagination_strict'] = {'summary': strict['summary'], 'run_id': strict['run_id'],
@@ -49,7 +55,7 @@ def main():
             runs['imagination_strict'] = {'completed': False}
         rows.append({'scene': row['scene'], 'family': row['family'], 'classification': row['classification'],
                      'sample_scope': 'known_scene_post_result_rerun', 'runs': runs})
-    holdouts_path = ROOT / 'outputs/r3/holdouts/processes.json'
+    holdouts_path = ROOT / a.holdouts
     holdouts = json.loads(holdouts_path.read_text()) if holdouts_path.exists() else {'jobs': {}}
     held_rows = []
     for row in plan['holdouts']:
@@ -59,7 +65,7 @@ def main():
                           'runs': job.get('runs', {})})
     budget = json.loads((ROOT / 'outputs/generation/r3-budget.json').read_text())
     cf = []
-    for path in sorted((ROOT / 'outputs/r3/counterfactuals').rglob('counterfactuals.json')):
+    for path in sorted((ROOT / a.counterfactuals).rglob('counterfactuals.json')):
         result = json.loads(path.read_text())
         cf.append({**{k: result[k] for k in ('scene', 'policy', 'completed', 'rejected_candidates', 'executed',
                                            'collisions', 'noncollisions', 'unexecutable', 'all_executed_prefixes_verified')},

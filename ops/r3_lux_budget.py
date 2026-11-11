@@ -9,6 +9,11 @@ from beforestep.generation import client as C
 from suite_lux_budget import BudgetExhausted
 
 LIMIT = 170
+EXPERIMENT_END = datetime(2026, 11, 14, 16, 0, tzinfo=timezone.utc)
+
+
+class ExperimentDeadline(RuntimeError):
+    pass
 
 
 class R3Budget:
@@ -57,6 +62,8 @@ class R3Budget:
             else:
                 if not is_new:
                     raise RuntimeError('A pre-R3 identity lost its client record; never recreate it')
+                if datetime.now(timezone.utc) >= EXPERIMENT_END:
+                    raise ExperimentDeadline('R3 experiment deadline passed; no new create allowed')
                 if not (old and old['status'] == 'reserved') and self.usage(data) >= LIMIT:
                     raise BudgetExhausted('R3 reached 170 new tasks; no new create allowed')
                 row = {**metadata, 'identity': identity, 'new_r3_task': True,

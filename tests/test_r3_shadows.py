@@ -64,5 +64,20 @@ class StrictShadowTests(unittest.TestCase):
                 self.assertTrue(reachable, 'The original conservative ranking has a safe reachable observation')
 
 
+    def test_explained_solar_shadow_allows_a_safe_forward_viewpoint(self):
+        from beforestep.strict_pipeline import viewpoint_need
+        S.configure('stress_v8')
+        path = S.ROOT / 'evidence/reviews/beforestep_r3/viewpoint-diagnostic/strict-motion.npz'
+        with np.load(path) as fixture:
+            state, pose = fixture['state'], fixture['pose']
+            occ = N.occupancy(state, 'imagination_strict', fixture['imagined'], fixture['known'],
+                              predicted_shadow=fixture['shadow'])
+            need = viewpoint_need(state, pose[0], occupied=occ)
+            candidates = N.choose_second_look(state, pose, need, occ)
+            reachable = [c for c in candidates[:40] if c[4] >= 20 and N.plan(occ, pose, c[:2]) is not None]
+            self.assertTrue(reachable)
+            self.assertGreater(reachable[0][0], pose[0] + 1.0)
+
+
 if __name__ == '__main__':
     unittest.main()

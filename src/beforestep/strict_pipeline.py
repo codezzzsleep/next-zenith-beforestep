@@ -118,9 +118,11 @@ def active_trust(trust, current_look, requested_look=1):
     return trust if current_look >= requested_look else None
 
 
-def viewpoint_need(state, x, focus_cells=None):
+def viewpoint_need(state, x, focus_cells=None, occupied=None):
     """Use the original conservative observation ranking and safe-motion scope."""
     unknown = np.isin(state, (N.DARK, N.HIDDEN, N.UNSEEN)) & ~N.prior_nogo()
+    if occupied is not None:
+        unknown &= occupied
     need = unknown & (N.GX > x + 1.0) & (N.GX < x + 4.5)
     if focus_cells is not None and (unknown & focus_cells).sum() > 50:
         need = unknown & focus_cells
@@ -494,7 +496,7 @@ def main():
         ev('imagination_strict', look=k, targets=per)
         return mask
 
-    def rehearse(path, k, role='execution'):
+    def rehearse(path, k, role='execution', final_yaw=None):
         """在想象里先走一遍：把规划好的路线放进只有想象石块的场景里，每份想象一格；任何一格碰了就不执行。"""
         from .geometry import imagination as IM
         if a.imagine == 'truth':
@@ -524,7 +526,7 @@ def main():
                 return False
             env_r.physics_monitor=stop
             rr = Recorder(); rr.frame(env_r, 'START', 'rehearsal')
-            motion = execute_waypoints(env_r,path,rr,'rehearsal',stop,final_yaw=None)
+            motion = execute_waypoints(env_r,path,rr,'rehearsal',stop,final_yaw=final_yaw)
             rr.save(pd / 'traj.npz')
             record = {'objects': objs, 'collided': motion.collision, 'completed': motion.completed,
                       'reason': motion.reason, 'waypoint_errors_m': motion.errors, 'contact': hit or None}
@@ -534,13 +536,13 @@ def main():
         ev('rehearsal', look=k, role=role, path=[[float(x),float(y)] for x,y in path], panes=results)
         return bool(results) and all(r['completed'] and not r['collided'] for r in results), results
 
-    def go_to_viewpoint(state, occ):
+    def go_to_viewpoint(state, occ, predicted_shadow=None, imagined=None):
         x, y, _ = pose(env)
-        need = viewpoint_need(state, x, focus['cells'])
+        need = viewpoint_need(state, x, focus['cells'], occupied=occ)
         attempts = 0
         target = focus['target'] if a.policy == 'imagination_strict' else None
         candidates = N.choose_second_look(state, (x, y), need, occ, target=target)
-        for candidate in candidates if target is not None else candidates[:40]:
+        for index, candidate in enumerate(candidates if target is not None else candidates[:40]):
             vx, vy, vyaw, score, n = candidate[:5]
             expected_px = candidate[5] if target is not None else None
             if n < 20:
@@ -551,10 +553,20 @@ def main():
             # Replan from its measured position; a different observation pose may
             # be reachable without weakening the learned controller's tolerances.
             current_x, current_y, _ = pose(env)
-            occ_current = N.occupancy(state, 'conservative', known_free=N.swept(np.array(rec.q)[:, :2]))
+            known = N.swept(np.array(rec.q)[:, :2])
+            if predicted_shadow is not None:
+                occ_current = N.occupancy(state, 'imagination_strict', imagined, known,
+                                          predicted_shadow=predicted_shadow)
+            else:
+                occ_current = N.occupancy(state, 'conservative', known_free=known)
             path = N.plan(occ_current, (current_x, current_y), (vx, vy))
             if path is None:
                 continue
+            if predicted_shadow is not None:
+                supported, _ = rehearse(path, len(looks), role=f'viewpoint_{index}', final_yaw=vyaw)
+                if not supported:
+                    ev('viewpoint_rejected_by_rehearsal', viewpoint=[vx,vy,vyaw], look=len(looks))
+                    continue
             attempts += 1
             ev('second_look_plan', attempt=attempts,
                viewpoint=[round(vx, 2), round(vy, 2), round(float(np.degrees(vyaw)), 1)],
@@ -598,7 +610,8 @@ def main():
             break
         if a.policy == 'imagination_strict':
             from .navigation import shadows as SH
-            height_seen = np.maximum.reduce([item['zmax'] for item in looks if 'zmax' in item])
+            height_maps = ([ob0['zmax']] if 'zmax' in ob0 else []) + [item['zmax'] for item in looks if 'zmax' in item]
+            height_seen = np.maximum.reduce(height_maps)
             shadow_objects = truth_objs if a.imagine == 'truth' else [obj for group in imagined_meshes.values() for obj in group]
             predicted, shadow_height, ground = SH.predict(height_seen, shadow_objects, spec['terrain']['custom_height_file'])
             np.save(decision_dir / f'look{len(looks)}_predicted_shadow.npy', predicted)
@@ -661,8 +674,17 @@ def main():
             result = 'stuck'; rec.hold(env, 'stuck', 2.0); break
         if a.policy == 'imagination_strict':
             why['reason'] = 'rejected' if focus['cells'] is not None else reason
-        occ_safe = N.occupancy(state, 'conservative', known_free=N.swept(np.array(rec.q)[:, :2]))   # 去第二眼的位置只走看得见、开过的地方
-        r = go_to_viewpoint(state, occ_safe)
+        model_world_available = bool(truth_objs) if a.imagine == 'truth' else any(imagined_meshes.values())
+        if a.policy == 'imagination_strict' and model_world_available:
+            # Apply the specified strict occupancy consistently to every action.
+            # The same conservative ranking now uses the current policy's free
+            # cells, including explained solar shadow. Rehearse the full move
+            # and final camera turn in every admitted world before acting.
+            r = go_to_viewpoint(state, occ_m, predicted_shadow=predicted, imagined=expanded)
+        else:
+            # With no admitted world, retain the established seen-space retry.
+            occ_safe = N.occupancy(state, 'conservative', known_free=N.swept(np.array(rec.q)[:, :2]))
+            r = go_to_viewpoint(state, occ_safe)
         if r is None:
             result = 'stuck'; ev('no_viewpoint'); rec.hold(env, 'stuck', 2.0); break
         if r == 'crash':

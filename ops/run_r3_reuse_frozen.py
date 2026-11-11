@@ -32,7 +32,7 @@ def main():
     C.atomic_json(ledger, report)
 
     def run(scene):
-        if scene in report['jobs']:
+        if scene in report['jobs'] and report['jobs'][scene]['status'] == 'complete':
             return
         original = originals[scene]['runs']['imagination']['run']
         reuse = 'outputs/qa/r3/S2-v2/R1-regression/replay' if scene == 'stress_v8' else original

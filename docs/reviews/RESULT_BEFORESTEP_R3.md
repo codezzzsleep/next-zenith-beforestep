@@ -8,8 +8,8 @@
 | P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
-| S1 | imagination_strict与预测阴影 | 完成 | 887b23f；75单测/全五R1gate；原pipeline.py未改 |
-| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | v1全五R1回归pass；选点修复后的v2回归/替身进行中 |
+| S1 | imagination_strict与预测阴影 | 进行中 | v3修复全动作占据一致性；79单测pass，旧pipeline原样 |
+| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | v1/v2全五R1pass；v3回归及两场替身进行中 |
 | E1 | 原12冻结场景赛后修订复测 | 进行中 | 只复用已有首眼；需要新样本时停车，0新增任务 |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
@@ -217,3 +217,13 @@ S2 v1四次替身全部终态，[v1原始summary](../../evidence/reviews/befores
   "collision": null
 }
 ```
+
+### v3 整合修复：补看也使用当前策略的可通行定义
+
+[只读保存地图诊断](../../evidence/reviews/beforestep_r3/standins/v2/view_motion_policy_diagnostic.json) 明确：固定Rturn0.57、相同N.choose排序，第3眼严格占据可达(5.445,−0.4)，旧保守占据没有可达候选；第4眼严格占据可达(6.064,−0.6)，旧保守也没有。v2只给目标路线应用了严格占据，却给补看路线/转向圈继续硬套旧保守占据，违反新策略已解释DARK可通行的统一定义；这是整合遗漏，不改冻结规则去拟合到达。
+
+修复只在新strict模块：补看选点/路径也用同一严格占据，HIDDEN/UNSEEN仍阻塞，所有采纳世界先完整预演路径与最终相机转向，全部通过才移动；无模型时保持既有已见空间重试。N.choose算法、Rturn、512px、5cm、控制/机器人/相机/太阳均未改；H加入出发前已观测ob0.zmax，满足全部地图可见高度逐格max。79项单测实际pass/11.343s，含原consv排序与模型解释Solar圈后前向观察点可达；新的五R1 gate/四个truth与生产注册替身运行于 `outputs/qa/r3/S2-v3`。v1/v2失败all_passed=false与原输出保持，不改验收预期。
+
+v2的旧12复用波次8终态（7停车、1碰撞）/4待样本，原路径`outputs/r3/frozen`不写；F1_003碰撞134.486s/obstacle2显著记录，source与原consv对照待复盘。新版必须全部12在独立v3目录重跑，保留旧版，当前0新增paid。
+
+已知SDK身份可以跨相同字节的文件路径复用：当前inputs重绑定但保留original_task_inputs，验证imageSHA/identity/双图字段/GLB SHA，不改旧ledger；只在全state（除路径）/pose/time/所有obs字节和旧cache代码身份相同时复用旧元数据与自检，不伪造cacheID。未知/uncertain仍等待，不重建。

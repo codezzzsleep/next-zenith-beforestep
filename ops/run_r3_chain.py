@@ -121,19 +121,36 @@ def main():
         pending = json.loads((run / 'NEED_LUX3D.json').read_text())
         report['pending'] = pending
         C.atomic_json(ledger, report)
+        if a.first_reuse and pending['look'] == 1:
+            raise RuntimeError('Reused first view cannot create new requests; investigate missing immutable evidence')
         if a.mode == 'reuse':
+            from r3_known_results import complete_known_request
+            if all(complete_known_request(ROOT / request) for request in pending['requests']):
+                report.pop('pending', None)
+                report.pop('awaiting_new_samples', None)
+                C.atomic_json(ledger, report)
+                continue
             report.update(completed=False, awaiting_new_samples=True)
             C.atomic_json(ledger, report)
             raise SystemExit(10)
-        if a.first_reuse and pending['look'] == 1:
-            raise RuntimeError('Reused first view cannot create new requests; investigate missing immutable evidence')
         for request in pending['requests']:
             if a.mode == 'standin':
                 offline_result(ROOT / request, a.scene)
                 continue
+            from r3_known_results import complete_known_request, result_for_request
+            if complete_known_request(ROOT / request):
+                continue
             while True:
                 try:
-                    generate_request(ROOT / request, budget, a.scene)
+                    records = generate_request(ROOT / request, budget, a.scene)
+                    specification = json.loads((ROOT / request).read_text())
+                    normalized = []
+                    for record in records:
+                        item = next(row for row in specification['items'] if row['id'] == record['id'])
+                        inputs = item.get('paths') or [item['path']]
+                        normalized.append(record if record['inputs'] == inputs else result_for_request(specification, record))
+                    C.atomic_json((ROOT / request).parent / 'lux_result.json', {
+                        'schema': 'beforestep-lux-result/v1', 'tasks': normalized})
                     break
                 except PendingTask:
                     time.sleep(10)

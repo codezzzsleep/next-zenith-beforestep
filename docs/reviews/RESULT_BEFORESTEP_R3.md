@@ -10,7 +10,7 @@
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
-| E1 | 原12冻结场景赛后修订复测 | 进行中 | 正式v3全12；首眼复用，新增任务≤170 |
+| E1 | 原12冻结场景赛后修订复测 | 进行中 | 正式12已完成（3到达/9停车/0碰撞）；反事实/保全与公开阶段记录尚在完成 |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
@@ -364,11 +364,13 @@ v3完整五R1回归实际通过，[原记录](../../evidence/reviews/beforestep_
 }
 ```
 
-## 正式实验续接与后处理准备
+## 正式实验终态与后处理
 
-正式 E1 使用冻结源码 4d53214，原 80 单测与五项 R1 回归通过；现有进程持续执行，不重建已知任务。6 份新增云端任务已实际返回模型（任务身份及状态以本机付费账本为准）。`finish_r3_experiments.py` 等待 E1 完成后才启动指定 E2；随后只处理本轮新拒绝候选的反事实、原前缀验证、独立逐 qpos 复盘、每场完整外包与精简公开清单、三个修订视频索引和分组总表。后处理驱动状态为 `outputs/r3/v3/completion.json`，日志 `outputs/qa/r3/final-completion-driver.log`。
+正式E1使用冻结源码4d53214，原80单测与五R1门卫已通过；新会话全82单测实际通过（24.938s/exit0），含两个prefix边界反例。[单测原日志](../../evidence/reviews/beforestep_r3/final-verification/unit-tests.log)。[当前原字节核对](../../evidence/reviews/beforestep_r3/final-verification/integrity.json) 实核3995个受保护R1/R2文件无变化、54份源码与正式身份相同、全部12首眼五文件与原运行SHA相同、R1重放全部五数组及NPZ SHA仍与原件完全一致。这是已保存数据验证，没有重新推进物理或创建任务。
 
-这些后处理与最终展示脚本当前仅通过 `python3 -m py_compile`，不声称已完成实验、打包、最终网页或公网验收。3995 个保护条目相对原 R2 提交的 diff 为空；附加规范原件 SHA 一致。原 `src/` 在实验开始后未修改。
+`outputs/r3/v3/frozen/processes.json` 已complete/completed=true，正式12场全部exit0：3到达（F2_001、F3_002、F3_001）、9停车、0碰撞。多数场景未达到预期到达，锚点stress_v8也停车；这些真实结果保留，不调规则或换场景。E1阶段仍进行中：完整新拒绝候选反事实、复盘、每场保全与公开提交全部完成后，才进入E2。
+
+E1正式运行终态时新增真实Lux任务24/170（22成功、2服务端失败），均终态。普通Python完成监督使用outputs/r3/v3/completion.json和outputs/qa/r3/final-completion-driver-v2.log。顺序为E1全部新拒绝CF与精确前缀核对、逐qpos复盘、每场完整外包与≤150MB公开manifest、E1summary；提交公开frozen-complete.json后才E2指定留出，随后同样保全、V1和最终D。提前的免费复盘/保全只读取已终态运行，完成内容会由监督直接复用；每run/scene锁避免并发写入。最终展示脚本尚未实际验收，不能把编译通过当作D完成。
 
 ## 新拒绝候选反事实的时间边界修正
 
@@ -377,3 +379,422 @@ F1_020 第4眼三份新拒绝候选都已实际执行并停车、无碰撞。初
 两条真实边界反例对应的单测已通过（允许干预后分歧；真正干预前分歧仍拒绝），命令 `python3 -m unittest discover -s tests -p test_r3_counterfactual_prefix.py -v`，2 tests/0.009s/exit0，日志outputs/qa/r3/final/prefix-boundary-tests.log。全部单测的最终验收仍待最终D执行。
 
 早期v2全12真实复用尝试将单列完整表（8完成=7停车+1碰撞、4未完成），与最终v3并列，不能用v3安全结果覆盖旧碰撞；首页和相关工作同样明确版本范围。
+
+<!-- R3-E1-COMPLETE-RUNS-START -->
+## 最终v3：正式12场 summary 原文
+
+以下为实际运行原summary，完整E1后处理与样本外E2仍需完成；眼数、时间和停车不能被解释成到达或速度收益。
+
+### stress_v8
+
+运行身份 `4909541f64eb4f2cb4dba2715248c46c`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 86.54,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    4.044,
+    0.496,
+    -0.81
+  ],
+  "sim_time_s": 87.74,
+  "wall_s": 399.4,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F0_001
+
+运行身份 `d29f081bbe354b40a563e9876f13a6e1`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_001",
+  "goal": [
+    10.273944,
+    -0.043551
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.38,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.075,
+    0.397,
+    -0.2
+  ],
+  "sim_time_s": 54.58,
+  "wall_s": 136.5,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F0_005
+
+运行身份 `f4f137935b14427c8d0320dc7c2bd185`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_005",
+  "goal": [
+    10.305374,
+    0.008717
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 51.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    3.289,
+    0.551,
+    -43.77
+  ],
+  "sim_time_s": 53.0,
+  "wall_s": 81.0,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001
+
+运行身份 `1eb6e6e77f914cdc8c1c29d0efbd70f5`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 81.48,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.081,
+    -1.014,
+    79.05
+  ],
+  "sim_time_s": 82.68,
+  "wall_s": 1661.6,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_020
+
+运行身份 `0d59fb7b9ff54a9aaf0df55d19c26773`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 137.08,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    6.425,
+    -1.412,
+    36.88
+  ],
+  "sim_time_s": 138.28,
+  "wall_s": 769.6,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_003
+
+运行身份 `f95286df2a8947789eeaea8552f27962`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_003",
+  "goal": [
+    9.095304,
+    -0.071513
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 100.29,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    8.681,
+    2.008,
+    -53.79
+  ],
+  "sim_time_s": 101.49,
+  "wall_s": 546.8,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F2_003
+
+运行身份 `c504a985dee045099bb8d2cc3940dd1f`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_003",
+  "goal": [
+    10.730404,
+    0.01719
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 82.28,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.266,
+    1.995,
+    38.74
+  ],
+  "sim_time_s": 83.48,
+  "wall_s": 600.4,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F2_007
+
+运行身份 `6f83424271654501a8583c9d86c675c9`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_007",
+  "goal": [
+    10.056258,
+    0.005516
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 79.08,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.252,
+    2.007,
+    -30.71
+  ],
+  "sim_time_s": 80.28,
+  "wall_s": 368.9,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F2_001
+
+运行身份 `4e8125f3734444a4a82fa7be0fbac9d5`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_001",
+  "goal": [
+    10.640641,
+    -0.049459
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 117.37,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    10.632,
+    -0.05,
+    20.37
+  ],
+  "sim_time_s": 118.57,
+  "wall_s": 491.7,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F3_002
+
+运行身份 `379c9d5d0be64945a92ad0420d95c4b9`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_002",
+  "goal": [
+    11.178607,
+    -0.032265
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 175.51,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    11.162,
+    -0.022,
+    31.41
+  ],
+  "sim_time_s": 176.71,
+  "wall_s": 337.1,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F3_004
+
+运行身份 `ccfc1605a2834a82b77091dbe89840d2`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_004",
+  "goal": [
+    10.771229,
+    0.025802
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.9,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    -0.03
+  ],
+  "sim_time_s": 18.1,
+  "wall_s": 81.5,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F3_001
+
+运行身份 `54dd8a71c12f4cfe9f1cea5214f43566`；正式driver退出码0。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_001",
+  "goal": [
+    11.478607,
+    -0.046403
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 142.23,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    11.471,
+    -0.049,
+    24.66
+  ],
+  "sim_time_s": 143.43,
+  "wall_s": 294.7,
+  "collision": null
+}
+```
+
+<!-- R3-E1-COMPLETE-RUNS-END -->
+
+## E1免费复盘与已结束场景的保全核对
+
+12个正式v3运行的XY与逐qpos三维复盘均已完成/exit0；早期4份复用，8份缺失记录补于独立sidecar，没有改原轨迹。11个已可保全的场景完成完整tar与≤150MB唯一manifest；F1_001等全部新拒绝CF终态后才保全，不能称E1全部完成。`PYTHONPATH=… python3 ops/verify_r3_custody.py --archives --out outputs/qa/r3/final/early-custody-audit.json` 实际exit0：11份manifest、1796个去重公开gzip对象全部解压SHA/大小正确，每个完整tar的全部条目逐项对原manifest SHA/大小相同。[薄核对回执](../../evidence/reviews/beforestep_r3/final-verification/early-custody-audit.json)。原GLB、旧v2失败与未完成尝试均纳入各场完整包，不删原件。

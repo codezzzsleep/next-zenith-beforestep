@@ -6,6 +6,7 @@ Raw generated GLBs are retained in the complete archive. Private upload ledgers
 and authentication files are never read or included.
 """
 import argparse
+import fcntl
 import gzip
 import hashlib
 import json
@@ -41,7 +42,9 @@ def public_file(path, relative):
 def write_manifest(output, manifest):
     path = output / 'manifest.json'
     for _ in range(4):
-        path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+        temporary = output / '.manifest.tmp'
+        temporary.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + '\n')
+        temporary.replace(path)
         size = sum(p.stat().st_size for p in output.rglob('*') if p.is_file())
         if size == manifest['public_bytes']:
             if size >= LIMIT:
@@ -60,6 +63,14 @@ def main():
     parser.add_argument('--out', default='evidence/suite/scenes')
     parser.add_argument('--reuse-public-objects', action='store_true', help='R3: reference identical already published gzip objects')
     args = parser.parse_args()
+    lock_directory = ROOT / 'outputs/qa/preservation-locks'
+    lock_directory.mkdir(parents=True, exist_ok=True)
+    with (lock_directory / (args.scene + '.lock')).open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        preserve(args)
+
+
+def preserve(args):
     mapping = json.loads((ROOT / args.runs).read_text())
     files = {}
     selected = set()

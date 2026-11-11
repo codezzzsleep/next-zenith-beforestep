@@ -1,5 +1,160 @@
 <!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title><style>@page{size:A4;margin:16mm}body{max-width:860px;margin:35px auto;padding:0 16px;overflow-wrap:anywhere;color:#1d2730;font:14px/1.8 "WenQuanYi Zen Hei",sans-serif}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:7px;overflow-wrap:anywhere}table{font-size:12px}code{font-size:11px;overflow-wrap:anywhere}</style></head><body><h1>先见一步：看不见的那一面，先走一遍</h1>
 <p>Next Zenith · Aholo Lux3D。报告保留R1原窄道锚点与R2预注册场景组；R1主实验源码 <code>2147b2f</code>，R2源码身份逐场保存在原运行记录。完整结果见<a href="docs/reviews/RESULT_BEFORESTEP_R1.md">R1执行记录</a>与<a href="docs/reviews/RESULT_BEFORESTEP_R2.md">R2执行记录</a>。</p>
+<p>锚点场景中，想象车是三台车里唯一安全到达的；12 个预注册场景中，决定性 8 个：到达 3、安全停车 3、碰撞 2（原因已查明）。</p>
+<h2>两种影子，一个行动问题</h2>
+<p>太阳照不到的地方没有可靠深度；岩石挡住的地方也看不见。机器人沿月溪和大石堆之间的窄道前进，A 挡在前面，B 的一部分藏在盲区。第二次观察能改变视线遮挡，却不能照亮太阳黑影。系统让 Lux3D 提出符合可见观测的几何假设，检验路线后再行动。</p>
+<p><img alt="第一眼画面与两种未知" src="media/r1-shadows.png" /></p>
+<h2>窄道的约束</h2>
+<p>月溪与大石堆构成禁行边界，A遮住前方空间，B后半截凸进必须换道的通路。</p>
+<h2>三台车的实际结果</h2>
+<p>主场景保留 stress_v8 的 A+B、太阳、起点、第一眼和终点 <code>(10.5,0)</code>；所有主对比统一规则控制。保守车看五眼仍没有路线；只让相机在黑影里也有深度，三眼到达。乐观车碰撞，其出发前原计划车身压入真实 B 21.899 cm，满足原要求的至少 10 cm。真实 Lux3D 分支一眼到达，12 个候选组合预演全部完成且无碰撞，独立执行也无碰撞。</p>
+<table>
+<thead>
+<tr>
+<th>运行</th>
+<th>结果</th>
+<th>观察次数</th>
+<th>仿真总时长</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>看清再走</td>
+<td>无路线、停车</td>
+<td>5</td>
+<td>142.2 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>黑影测深对照</td>
+<td>到达</td>
+<td>3</td>
+<td>147.26 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>直接走</td>
+<td>碰撞</td>
+<td>1</td>
+<td>80.87 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>想一想再走</td>
+<td>到达</td>
+<td>1</td>
+<td>112.84 s</td>
+<td><a href="evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>真实形状检验</td>
+<td>到达</td>
+<td>1</td>
+<td>115.88 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">原始身份</a></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="三种策略的实际轨迹" src="media/r1-routes.png" /></p>
+<p>这些结果支持在本次冻结场景中生成几何对行动判断的作用；不宣称对任意石头或场景都可靠。地图上的扫描轮廓只用于赛后复盘，生产规划器不读取隐藏真值。</p>
+<h2>真实生成、自检与被拒候选</h2>
+<p>首眼共提交 12 个独立真实任务，获得 11 个 GLB、1 个服务端失败。A 的六份全部准入；B 的五个可用模型中两份准入、三份拒绝。B2 任务 <code>5958893</code> 失败，无 GLB；不能将它计为自检拒绝。所有原始输入、实际上传字节、任务身份、模型、矩阵和占据保留在 <a href="https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/evidence/reviews/beforestep_r1/lux/original_b">完整实验数据</a>。</p>
+<table>
+<thead>
+<tr>
+<th>候选</th>
+<th>真实 task ID</th>
+<th>轮廓 IoU</th>
+<th>尺度比</th>
+<th>冻结自检</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B/A1</td>
+<td>5958642</td>
+<td>0.4325</td>
+<td>1.0676</td>
+<td>轮廓 IoU 低于 0.7068</td>
+</tr>
+<tr>
+<td>B/A2</td>
+<td>5958654</td>
+<td>0.8459</td>
+<td>1.0</td>
+<td>准入</td>
+</tr>
+<tr>
+<td>B/B1</td>
+<td>5958703</td>
+<td>0.2715</td>
+<td>0.9324</td>
+<td>轮廓 IoU 低于 0.7068</td>
+</tr>
+<tr>
+<td>B/C1</td>
+<td>5958934</td>
+<td>0.7108</td>
+<td>0.9459</td>
+<td>准入</td>
+</tr>
+<tr>
+<td>B/C2</td>
+<td>5958937</td>
+<td>0.63</td>
+<td>0.9054</td>
+<td>轮廓 IoU 低于 0.7068</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="B 的冻结轮廓检查" src="media/r1-self-check.png" /></p>
+<p>轮廓门槛 0.7068、尺度比 0.889–1.09、壳层接触、已知自由空间侵入和未知比例等原门槛保持。准入表示符合当前可见观测，生成背面仍可能错误：两份准入 B 的后缘相对真实占据分别偏短 0.70 m、0.60 m。此次行动结果通过，不把它说成生成背面已准确。</p>
+<h2>第二眼的条件分支与配准修复</h2>
+<p>需要补看时，用目标可见高度、相机到最近观测格的距离和原图焦距估计像素高度；排除过近点，优先可达的 ≥512 px 点。两眼 native_ok 同时为真才调用两图三份，否则单用新视角六份；第二眼零准入仅追加同字节六份，合计十二仍零则停车，不看第三眼。</p>
+<p><img alt="真实首眼与独立替身的第二眼输入" src="media/r1-observation.png" /></p>
+<p>本次真实B首眼251 px、native_ok=false，仍有A2和C1两份准入。独立完整替身验证中，第二眼预计513.388 px，实际506 px，仍按单图分支。发现局部配准优化的稀疏点评分变好、最终可见面评分反而退化；修复只保留最终评分更好的矩阵。原自检与余量没有放宽，B替身修复后IoU为0.9673，完整两眼预演与执行到达。40 项单测通过。本次真实主线首眼已有准入和路线，第二眼、追加与 B 替换均未触发；不冒称做了新的多轮 Lux 生成。</p>
+<h2>在想象中预演，然后在独立世界执行</h2>
+<p>规划使用全部八份准入几何的占据；执行前，在 A 六份 × B 两份共十二种物理场景中完整运行同一规则控制器。十二格均完成、无碰撞，其全部轨迹与原配置在仓库。之后在独立扫描几何世界执行，实际到达。完整 <code>--reuse-lux</code> 重放再次完成十二格与独立执行，t、qpos、阶段和动作来源等全部数组逐字节相同，轨迹 SHA256 为 <code>6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e</code>。</p>
+<h2>赛后真值与间隙复盘</h2>
+<p>按每一个保存 qpos 重建原 MuJoCo 可碰撞几何，其最小有符号距离为 A 256.109 mm、B 47.541 mm，均为正，与执行无碰撞相容。XY 的 0.76×0.66 m 矩形包络对 B 间隙为零，中心距离减半车宽最小为 -62.778 mm；这是平面包络指标，同时公开（中心减半宽=-0.062778 m），不当作三维接触。原规划始终遵循冻结的 5 cm 占据扩张规则；不将 47.541 mm 向上写成真实 5 cm。</p>
+<p><img alt="真实可碰撞几何的最小距离" src="media/r1-clearance.png" /></p>
+<p>原运行墙钟 1223.6 s，含冷配准和完整物理预演，不含此前云端排队，不能称为端到端延迟；仿真总时长与执行时间分别记录在summary。</p>
+<p>原始 <a href="evidence/reviews/beforestep_r1/lux/original_b/eval.json">eval</a>、<a href="evidence/reviews/beforestep_r1/lux/original_b/physical_clearance.json">三维最近点和时刻</a> 与 <a href="evidence/reviews/beforestep_r1/replay_validation.json">完整重放核验</a> 可独立检查。</p>
+<h2>全部反事实：本批自检偏保守</h2>
+<p>按预注册逐一只信 B 第一眼被拒的 A1、B1、C2，不挑选，不补看，不重新调用 Lux3D。三次均到达、无碰撞，碰撞数 0/3。因此此次不能说“自检挡住了会撞的想象”；结论是本批自检偏保守。</p>
+<table>
+<thead>
+<tr>
+<th>只信的被拒 B</th>
+<th>实际终态</th>
+<th>仿真总时长</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B/A1</td>
+<td>到达、无碰撞</td>
+<td>104.0 s</td>
+<td><a href="evidence/reviews/beforestep_r1/counterfactuals/A1/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>B/B1</td>
+<td>到达、无碰撞</td>
+<td>104.0 s</td>
+<td><a href="evidence/reviews/beforestep_r1/counterfactuals/B1/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>B/C2</td>
+<td>到达、无碰撞</td>
+<td>119.16 s</td>
+<td><a href="evidence/reviews/beforestep_r1/counterfactuals/C2/run_identity.json">原始身份</a></td>
+</tr>
+</tbody>
+</table>
+<h2>关卡：先选，再揭晓</h2>
+<p>每关先看真实第一眼，选策略，回放原物理轨迹，再看真值与全部候选、记分。<a href="levels.html">进入12关</a>。</p>
 <!-- SUITE-START -->
 <h1>预注册月面场景组</h1>
 <p>场景组在任何本轮 Lux3D 结果之前冻结。选择只依据保守、see-dark、乐观和真实形状检验四次非 Lux 运行；各类别按种子从小到大取决定性与普通场景，stress_v8 直接使用已完成的 R1 锚点。冻结后不换场景、不放宽门槛、不迭代控制器。</p>
@@ -622,159 +777,50 @@
 </table>
 <p>这是有限扫描岩石、有限摆放和极区低太阳角下的受控仿真实验，不支持“对任何场景都有效”或“通用”的结论。每个数字均能追溯到原始运行身份、任务与保全清单。</p>
 <!-- SUITE-END -->
-<h2>两种影子，一个行动问题</h2>
-<p>太阳照不到的地方没有可靠深度；岩石挡住的地方也看不见。机器人沿月溪和大石堆之间的窄道前进，A 挡在前面，B 的一部分藏在盲区。第二次观察能改变视线遮挡，却不能照亮太阳黑影。系统让 Lux3D 提出符合可见观测的几何假设，检验路线后再行动。</p>
-<p><img alt="第一眼画面与两种未知" src="media/r1-shadows.png" /></p>
-<h2>窄道的约束</h2>
-<p>月溪与大石堆构成禁行边界，A遮住前方空间，B后半截凸进必须换道的通路。</p>
-<h2>三台车的实际结果</h2>
-<p>主场景保留 stress_v8 的 A+B、太阳、起点、第一眼和终点 <code>(10.5,0)</code>；所有主对比统一规则控制。保守车看五眼仍没有路线；只让相机在黑影里也有深度，三眼到达。乐观车碰撞，其出发前原计划车身压入真实 B 21.899 cm，满足原要求的至少 10 cm。真实 Lux3D 分支一眼到达，12 个候选组合预演全部完成且无碰撞，独立执行也无碰撞。</p>
+
+<!-- R3-FAILURE-START -->
+<h2>失败分析：想象只能检验看得见的一面</h2>
+<h3>F1_020：从没被看见的石头</h3>
+<p>C 完全藏在 A 后面，没有形成观测目标，任务数为 0；原计划路线侵入 C 的真实占地。原想象占据规则是乐观占据加候选占地，视线遮挡 HIDDEN 与未观测 UNSEEN 只要不落在候选中就可通行。<strong>这是方法设计的缺陷，不是 Lux3D 没有生成 C 的问题。</strong></p>
+<h3>F3_004：背面想错，正面仍通过自检</h3>
 <table>
 <thead>
 <tr>
-<th>运行</th>
-<th>结果</th>
-<th>观察次数</th>
-<th>仿真总时长</th>
-<th>证据</th>
+<th>场景</th>
+<th>A</th>
+<th>B</th>
+<th>地形</th>
+<th>太阳高度 / 方位</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>看清再走</td>
-<td>无路线、停车</td>
-<td>5</td>
-<td>142.2 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">原始身份</a></td>
+<td>stress_v8</td>
+<td>rock_07，0.55 m，(4.55, -0.73)，90°</td>
+<td>moon_rock_04，0.42 m，(6.86, 0.22)，-26°</td>
+<td>窄道</td>
+<td>10.0° / 35.0°</td>
 </tr>
 <tr>
-<td>黑影测深对照</td>
-<td>到达</td>
-<td>3</td>
-<td>147.26 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">原始身份</a></td>
-</tr>
-<tr>
-<td>直接走</td>
-<td>碰撞</td>
-<td>1</td>
-<td>80.87 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">原始身份</a></td>
-</tr>
-<tr>
-<td>想一想再走</td>
-<td>到达</td>
-<td>1</td>
-<td>112.84 s</td>
-<td><a href="evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">原始身份</a></td>
-</tr>
-<tr>
-<td>真实形状检验</td>
-<td>到达</td>
-<td>1</td>
-<td>115.88 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">原始身份</a></td>
+<td>F3_004</td>
+<td>rock_07，0.53 m，(4.51, -0.70)，92°</td>
+<td>moon_rock_04，0.43 m，(6.76, 0.16)，-23°</td>
+<td>开阔月面 + 1 个坑</td>
+<td>10.4° / 38.8°</td>
 </tr>
 </tbody>
 </table>
-<p><img alt="三种策略的实际轨迹" src="media/r1-routes.png" /></p>
-<p>这些结果支持在本次冻结场景中生成几何对行动判断的作用；不宣称对任意石头或场景都可靠。地图上的扫描轮廓只用于赛后复盘，生产规划器不读取隐藏真值。</p>
-<h2>真实生成、自检与被拒候选</h2>
-<p>首眼共提交 12 个独立真实任务，获得 11 个 GLB、1 个服务端失败。A 的六份全部准入；B 的五个可用模型中两份准入、三份拒绝。B2 任务 <code>5958893</code> 失败，无 GLB；不能将它计为自检拒绝。所有原始输入、实际上传字节、任务身份、模型、矩阵和占据保留在 <a href="https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/evidence/reviews/beforestep_r1/lux/original_b">完整实验数据</a>。</p>
-<table>
-<thead>
-<tr>
-<th>候选</th>
-<th>真实 task ID</th>
-<th>轮廓 IoU</th>
-<th>尺度比</th>
-<th>冻结自检</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>B/A1</td>
-<td>5958642</td>
-<td>0.4325</td>
-<td>1.0676</td>
-<td>轮廓 IoU 低于 0.7068</td>
-</tr>
-<tr>
-<td>B/A2</td>
-<td>5958654</td>
-<td>0.8459</td>
-<td>1.0</td>
-<td>准入</td>
-</tr>
-<tr>
-<td>B/B1</td>
-<td>5958703</td>
-<td>0.2715</td>
-<td>0.9324</td>
-<td>轮廓 IoU 低于 0.7068</td>
-</tr>
-<tr>
-<td>B/C1</td>
-<td>5958934</td>
-<td>0.7108</td>
-<td>0.9459</td>
-<td>准入</td>
-</tr>
-<tr>
-<td>B/C2</td>
-<td>5958937</td>
-<td>0.63</td>
-<td>0.9054</td>
-<td>轮廓 IoU 低于 0.7068</td>
-</tr>
-</tbody>
-</table>
-<p><img alt="B 的冻结轮廓检查" src="media/r1-self-check.png" /></p>
-<p>轮廓门槛 0.7068、尺度比 0.889–1.09、壳层接触、已知自由空间侵入和未知比例等原门槛保持。准入表示符合当前可见观测，生成背面仍可能错误：两份准入 B 的后缘相对真实占据分别偏短 0.70 m、0.60 m。此次行动结果通过，不把它说成生成背面已准确。</p>
-<h2>第二眼的条件分支与配准修复</h2>
-<p>需要补看时，用目标可见高度、相机到最近观测格的距离和原图焦距估计像素高度；排除过近点，优先可达的 ≥512 px 点。两眼 native_ok 同时为真才调用两图三份，否则单用新视角六份；第二眼零准入仅追加同字节六份，合计十二仍零则停车，不看第三眼。</p>
-<p><img alt="真实首眼与独立替身的第二眼输入" src="media/r1-observation.png" /></p>
-<p>本次真实B首眼251 px、native_ok=false，仍有A2和C1两份准入。独立完整替身验证中，第二眼预计513.388 px，实际506 px，仍按单图分支。发现局部配准优化的稀疏点评分变好、最终可见面评分反而退化；修复只保留最终评分更好的矩阵。原自检与余量没有放宽，B替身修复后IoU为0.9673，完整两眼预演与执行到达。40 项单测通过。本次真实主线首眼已有准入和路线，第二眼、追加与 B 替换均未触发；不冒称做了新的多轮 Lux 生成。</p>
-<h2>在想象中预演，然后在独立世界执行</h2>
-<p>规划使用全部八份准入几何的占据；执行前，在 A 六份 × B 两份共十二种物理场景中完整运行同一规则控制器。十二格均完成、无碰撞，其全部轨迹与原配置在仓库。之后在独立扫描几何世界执行，实际到达。完整 <code>--reuse-lux</code> 重放再次完成十二格与独立执行，t、qpos、阶段和动作来源等全部数组逐字节相同，轨迹 SHA256 为 <code>6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e</code>。</p>
-<h2>赛后真值与间隙复盘</h2>
-<p>按每一个保存 qpos 重建原 MuJoCo 可碰撞几何，其最小有符号距离为 A 256.109 mm、B 47.541 mm，均为正，与执行无碰撞相容。XY 的 0.76×0.66 m 矩形包络对 B 间隙为零，中心距离减半车宽最小为 -62.778 mm；这是平面包络指标，同时公开（中心减半宽=-0.062778 m），不当作三维接触。原规划始终遵循冻结的 5 cm 占据扩张规则；不将 47.541 mm 向上写成真实 5 cm。</p>
-<p><img alt="真实可碰撞几何的最小距离" src="media/r1-clearance.png" /></p>
-<p>原运行墙钟 1223.6 s，含冷配准和完整物理预演，不含此前云端排队，不能称为端到端延迟；仿真总时长与执行时间分别记录在summary。</p>
-<p>原始 <a href="evidence/reviews/beforestep_r1/lux/original_b/eval.json">eval</a>、<a href="evidence/reviews/beforestep_r1/lux/original_b/physical_clearance.json">三维最近点和时刻</a> 与 <a href="evidence/reviews/beforestep_r1/replay_validation.json">完整重放核验</a> 可独立检查。</p>
-<h2>全部反事实：本批自检偏保守</h2>
-<p>按预注册逐一只信 B 第一眼被拒的 A1、B1、C2，不挑选，不补看，不重新调用 Lux3D。三次均到达、无碰撞，碰撞数 0/3。因此此次不能说“自检挡住了会撞的想象”；结论是本批自检偏保守。</p>
-<table>
-<thead>
-<tr>
-<th>只信的被拒 B</th>
-<th>实际终态</th>
-<th>仿真总时长</th>
-<th>证据</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>B/A1</td>
-<td>到达、无碰撞</td>
-<td>104.0 s</td>
-<td><a href="evidence/reviews/beforestep_r1/counterfactuals/A1/run_identity.json">原始身份</a></td>
-</tr>
-<tr>
-<td>B/B1</td>
-<td>到达、无碰撞</td>
-<td>104.0 s</td>
-<td><a href="evidence/reviews/beforestep_r1/counterfactuals/B1/run_identity.json">原始身份</a></td>
-</tr>
-<tr>
-<td>B/C2</td>
-<td>到达、无碰撞</td>
-<td>119.16 s</td>
-<td><a href="evidence/reviews/beforestep_r1/counterfactuals/C2/run_identity.json">原始身份</a></td>
-</tr>
-</tbody>
-</table>
+<p>B 的 A1、A2 轮廓 IoU 分别为 0.8429、0.8588，通过冻结自检；原计划路线却按真值压入 B 26.5 cm，实际发生碰撞。自检只约束可见的一面，不能证明不可见背面的假设正确。</p>
+<p>锚点的三维最小间隙 <strong>47.541 mm</strong> 与二维包络间隙 <strong>0 mm</strong> 必须一起理解：同一块扁平石板、几乎相同的摆放换到开阔地形就撞了。<strong>锚点的成功不稳健。</strong> R1 原锚点仍是一眼到达的预注册结果，视频继续使用它，不替换成赛后修订结果。</p>
+<h3>全部准入候选的背面误差</h3>
+<p><img alt="原R1和R2全部准入候选的赛后背面误差分布" src="media/r3-back-error.png" /></p>
+<p>原 R1 + R2 共 <strong>64</strong> 份通过自检的候选，其中 <strong>23</strong> 份的背面比关联真值短 <strong>5 cm 以上</strong>。误差为每次观测时沿机器人前进轴的候选占地最远端减真值最远端；图中的负 <strong>5 cm</strong> 线是冻结余量。联合观测对关联真值并集统计，所有准入候选逐份入列，真值仅用于赛后诊断，不能证明阴影中的几何已经还原。</p>
+<p><a href="evidence/reviews/beforestep_r3/back-error/stats.json">原始统计与每份候选身份</a> · <a href="evidence/reviews/beforestep_r3/failure-facts.json">两次失败的原始数值</a> · <a href="evidence/video/index.json">给负责人渲染视频的数据索引</a></p>
+<!-- R3-FAILURE-END -->
+
+<h2>沙盒</h2>
+<p><a href="sandbox.html">自由摆石头</a>是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。</p>
 <h2>迭代、训练与相关工作</h2>
 <p>V6/V7/V8 的源码、输入、生成资产、融合几何和失败结果保留。旧 gate_passage_001、终点 <code>(5.7,-0.5)</code> 的实验及训练控制移到附录：它们证明了工程闭环与网络运动，但对照同样能到达，没有证明 Lux3D 的必要性。固定 v4 实际训练 115490 行物理示教，部署权重与独立任务 15/16 评估均保留；新姿态网络、四眼实测和失败也保留，不继续训练迭代。</p>
 <p><a href="docs/training.md">训练附录</a> · <a href="docs/observation-control.md">主动观察控制附录</a> · <a href="docs/milestones.md">版本证据</a> · <a href="docs/history/report_v03.md">旧 v0.3 报告</a>。PSSNet、PVD、Robust Grasp Planning、Uncertain Regions 与 NBV-SC 为多候选形状、动作评价及补看提供研究依据；本项目贡献是受观测自检约束、同控制器完整预演与独立执行的轮腿导航实证，不主张全球首次或科学上只有 Lux3D 能实现。<a href="docs/related-work.md">相关工作</a>。</p>
-<p>首页提供实际轨迹、全部候选与十二格预演的交互查看。当前是受控仿真实验，不是实机或月球部署。R1 新 Demo 由负责人使用完整保存数据制作；网页保留视频位置，现有 v0.3 视频明确作为历史，冻结发布不改。完整可运行源码、原资产、失败和恢复输入见 <a href="https://github.com/codezzzsleep/next-zenith-beforestep">仓库</a>、<a href="evidence/reviews/beforestep_r1/README.md">R1 数据说明</a>。</p></body></html>
+<p>首页提供实际轨迹、全部候选与十二格预演的交互查看。当前是受控仿真实验，不是实机或月球部署。R1 新 Demo 由负责人使用完整保存数据制作；网页保留视频位置，现有 v0.3 视频明确作为历史，冻结发布不改。完整可运行源码、原资产、失败和恢复输入见 <a href="README.md">仓库</a>、<a href="evidence/reviews/beforestep_r1/README.md">R1 数据说明</a>。</p></body></html>

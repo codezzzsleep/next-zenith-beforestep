@@ -1,0 +1,333 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "5108252d2c1d42228c41c846aa27cda0",
+  "summary_sha256": "eee2dd048760c6b6cea9ebc435fc54ff494844d325fdc730bbd732e785d7cb29",
+  "scene": {
+    "id": "suite_r2_v4_F2_007",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.543712,
+        "x": 4.659217,
+        "y": -0.815908,
+        "yaw": 92.89564
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.426735,
+        "x": 6.849273,
+        "y": 0.220222,
+        "yaw": -29.668813
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.056258,
+      0.005516
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": [
+        {
+          "center": [
+            6.351693,
+            1.120645
+          ],
+          "radius": 0.762503,
+          "depth": 0.441876
+        },
+        {
+          "center": [
+            5.099554,
+            -1.646994
+          ],
+          "radius": 0.783232,
+          "depth": 0.499014
+        }
+      ]
+    },
+    "sun": {
+      "elevation_deg": 10.69366,
+      "azimuth_deg": 30.894854
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F2",
+      "seed": 7,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4624761424775857,
+      "min_center_minus_half_width_m": 0.1324761424775857,
+      "min_xy_rectangle_envelope_gap_m": 0.13136115732060433
+    },
+    "B": {
+      "min_center_distance_m": 0.4020152534443738,
+      "min_center_minus_half_width_m": 0.07201525344437376,
+      "min_xy_rectangle_envelope_gap_m": 0.071292361209347
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 2,
+    "path": [
+      [
+        5.0,
+        0.3
+      ],
+      [
+        6.7,
+        -0.9
+      ],
+      [
+        8.2,
+        -0.6
+      ],
+      [
+        10.056,
+        0.006
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4631624425254671,
+      "center_minus_half_width_m": 0.1331624425254671,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.4051781487870579,
+      "center_minus_half_width_m": 0.07517814878705786,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 2,
+      "role": "execution",
+      "path": [
+        [
+          4.999999999999999,
+          0.3000000000000018
+        ],
+        [
+          6.699999999999998,
+          -0.8999999999999992
+        ],
+        [
+          8.199999999999998,
+          -0.599999999999999
+        ],
+        [
+          10.056258,
+          0.005516
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 1,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 2,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_A2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 3,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_A2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 4,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_B1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 5,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_B1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 6,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_B2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 7,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_B2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 8,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_C2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        },
+        {
+          "pane": 9,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/world_C2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.00795270941226888,
+            0.008524070328860513,
+            0.008518520253260614,
+            0.008904464793315737
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

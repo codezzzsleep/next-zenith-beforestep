@@ -1024,3 +1024,5 @@ summary.json原文：
 40/40单测、323/323资产SHA、16文档139本地链接、9运行11候选12预演数字来源均实际通过，结果在`evidence/reviews/beforestep_r1/presentation/`。正文status改run-status，避免三维库Shadow DOM冲突；验收数字按summary比较，不改变实验。真实本地Chromium完整通过9回放、11GLB、12画廊、历史/训练附录、390px无溢出、页面/HTTP错误0；报告PDF已生成，历史PDF/视频保留。当前主默认stress_v8/rules，§2.5逐项结论维持上表，第二眼/6b/替换未真实触发、0/3偏保守、47.541mm与二维0及1223.6s口径同时公开。
 
 发布提交、Pages及公网结果在后续回执和[RESULT_R2](RESULT_BEFORESTEP_R2.md)阶段A。
+
+§3发布验收完成：main实现800ef64860566241af11b3f312c848f533b82bc9、Pages49eddf8d51893aca091a4d1ff0f07133c870e3e6；Pages built/error=null，run42829258154 success。公网真实浏览器命令见RESULT_R2阶段A，exit0，9运行/11GLB/12画廊/3历史/20训练/390px全部通过，HTTP/页面错误0，报告和视频SHA逐项一致。公开`presentation/public-browser.json`。§2.5上表全部满足；0/3不宣称挡碰撞，原B和门槛未改。R1收尾完成；随后按R2阶段B扩展预注册场景组。

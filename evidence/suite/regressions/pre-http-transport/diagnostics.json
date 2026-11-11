@@ -1,0 +1,56 @@
+{
+  "schema": "beforestep-cloud-recovery-diagnostics/v1",
+  "checked_at": "2026-11-11T06:00:00.047404+00:00",
+  "endpoint_host": "api.aholo3d.cn",
+  "dns_addresses": [
+    "42.192.25.212"
+  ],
+  "dns_seconds": 0.002,
+  "proxy_configured": false,
+  "original_failure": "TLS handshake timeout before HTTP creation request transmission",
+  "read_only_checks": [
+    {
+      "endpoint": "/lux3d/v1/generate/task/get?taskid=6352977",
+      "passed": true,
+      "elapsed_seconds": 0.504,
+      "task_status": 3,
+      "total_tasks": null
+    },
+    {
+      "endpoint": "/lux3d/v1/generate/task/list?page=1&pageSize=20",
+      "passed": true,
+      "elapsed_seconds": 23.212,
+      "task_status": null,
+      "total_tasks": 162
+    }
+  ],
+  "generated_and_downloaded_examples": [
+    {
+      "id": "A1",
+      "identity": "9c2569352d1001ae0ed274075700854666b8f96dd54baae4c9c53f491b818061",
+      "task_id": 6374032,
+      "status": "ok",
+      "glb": "assets/candidates/6374032/tex_mesh.glb",
+      "glb_sha256": "da85d8adbb82af42df51e199e746d851b138fbc5bb9a6dd5d2da5e5ce1c2281d"
+    },
+    {
+      "id": "C1",
+      "identity": "313fc53b584967e513db5b1e5c2f9745867930926756d90e7789e1eb1b6bedd2",
+      "task_id": 6374035,
+      "status": "ok",
+      "glb": "assets/candidates/6374035/tex_mesh.glb",
+      "glb_sha256": "39362194f82b2d2f341a14112a546e223897f53175ce1421f0f5b7b43cee06da"
+    },
+    {
+      "id": "A2",
+      "identity": "d5a2a98d7d25e6237fff5098c48209efbf4344399034334980bf5104ba7d2374",
+      "task_id": 6374034,
+      "status": "ok",
+      "glb": "assets/candidates/6374034/tex_mesh.glb",
+      "glb_sha256": "d87303f0bcf21ba9a83e63e4b27ecc12f2fe1d3715e7ba4c6f64a700d22050db"
+    }
+  ],
+  "new_r2_usage_at_check": 162,
+  "budget_limit": 360,
+  "finding": "DNS, authenticated API query, actual paid creation and downloaded generated GLB all work now. Earlier failure was a transient TLS connection timeout; exact network cause is not established."
+}

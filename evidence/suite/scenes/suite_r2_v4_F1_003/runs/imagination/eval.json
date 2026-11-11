@@ -1,0 +1,283 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "c954016cecb341c3849c9f2005607291",
+  "summary_sha256": "d16b65bd81ece3521bc1bea9888ac10ce8136b94492b13dd1fb43de847cbc24c",
+  "scene": {
+    "id": "suite_r2_v4_F1_003",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.421985,
+        "x": 4.369772,
+        "y": -0.726405,
+        "yaw": 90.958422
+      },
+      "B": {
+        "rock": "moon_rock_05",
+        "height": 0.359955,
+        "x": 6.803644,
+        "y": 0.276002,
+        "yaw": -31.297326
+      },
+      "C": {
+        "rock": "moon_rock_04",
+        "height": 0.576196,
+        "x": 7.710423,
+        "y": 0.599223,
+        "yaw": -16.303792
+      },
+      "D": {
+        "rock": "stone_01",
+        "height": 0.557569,
+        "x": 1.3,
+        "y": 1.7,
+        "yaw": 87.22953
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      9.095304,
+      -0.071513
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 7.816513,
+      "azimuth_deg": 58.928476
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F1",
+      "seed": 3,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "compact",
+      "target_rocks": [
+        "A",
+        "B",
+        "C"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5004966680128508,
+      "min_center_minus_half_width_m": 0.17049666801285074,
+      "min_xy_rectangle_envelope_gap_m": 0.16926852040964363
+    },
+    "B": {
+      "min_center_distance_m": 0.47368236041556283,
+      "min_center_minus_half_width_m": 0.14368236041556282,
+      "min_xy_rectangle_envelope_gap_m": 0.14260240888105166
+    },
+    "C": {
+      "min_center_distance_m": 0.3676306913903184,
+      "min_center_minus_half_width_m": 0.03763069139031838,
+      "min_xy_rectangle_envelope_gap_m": 0.03688553945653925
+    },
+    "D": {
+      "min_center_distance_m": 1.640297702356504,
+      "min_center_minus_half_width_m": 1.310297702356504,
+      "min_xy_rectangle_envelope_gap_m": 1.3099533279759614
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 1,
+    "path": [
+      [
+        4.7,
+        0.4
+      ],
+      [
+        7.1,
+        -0.5
+      ],
+      [
+        8.9,
+        -0.4
+      ],
+      [
+        9.095,
+        -0.072
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.49875812182260804,
+      "center_minus_half_width_m": 0.16875812182260802,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.4709748126296582,
+      "center_minus_half_width_m": 0.14097481262965816,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "C": {
+      "min_center_distance_m": 0.36646238594591646,
+      "center_minus_half_width_m": 0.03646238594591644,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "D": {
+      "min_center_distance_m": 1.9755306663226362,
+      "center_minus_half_width_m": 1.6455306663226361,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 1,
+      "role": "execution",
+      "path": [
+        [
+          4.699999999999999,
+          0.4000000000000019
+        ],
+        [
+          7.099999999999998,
+          -0.4999999999999989
+        ],
+        [
+          8.899999999999999,
+          -0.3999999999999988
+        ],
+        [
+          9.095304,
+          -0.071513
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008022457745061247,
+            0.008412345320240228,
+            0.007577983241126084,
+            0.0077704285909702695
+          ],
+          "contact": null
+        },
+        {
+          "pane": 1,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008022457745061247,
+            0.008412345320240228,
+            0.007577983241126084,
+            0.0077704285909702695
+          ],
+          "contact": null
+        },
+        {
+          "pane": 2,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/world_A2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008022457745061247,
+            0.008412345320240228,
+            0.007577983241126084,
+            0.0077704285909702695
+          ],
+          "contact": null
+        },
+        {
+          "pane": 3,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/world_A2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008022457745061247,
+            0.008412345320240228,
+            0.007577983241126084,
+            0.0077704285909702695
+          ],
+          "contact": null
+        },
+        {
+          "pane": 4,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/world_B2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/world_B1.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008022457745061247,
+            0.008412345320240228,
+            0.007577983241126084,
+            0.0077704285909702695
+          ],
+          "contact": null
+        },
+        {
+          "pane": 5,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T1/decide/world_B2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/suite/real/suite_r2_v4_F1_003/imagination/looks/look1/T2/decide/world_B2.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008022457745061247,
+            0.008412345320240228,
+            0.007577983241126084,
+            0.0077704285909702695
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

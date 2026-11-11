@@ -1,0 +1,164 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "11013dbba4fb424282202789f9981efc",
+  "summary_sha256": "3555fa5e391d163ebedc447eefb71f379af65bc2b1d80a52fefec861a5f058aa",
+  "scene": {
+    "id": "suite_r2_v4_F1_020",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.585454,
+        "x": 4.322668,
+        "y": -0.644988,
+        "yaw": 93.655448
+      },
+      "B": {
+        "rock": "moon_rock_01",
+        "height": 0.544952,
+        "x": 6.508457,
+        "y": 0.296908,
+        "yaw": -34.955063
+      },
+      "C": {
+        "rock": "moon_rock_02",
+        "height": 0.566362,
+        "x": 7.665063,
+        "y": -0.456289,
+        "yaw": 48.833067
+      },
+      "D": {
+        "rock": "moon_rock_06",
+        "height": 0.598062,
+        "x": 1.3,
+        "y": 1.7,
+        "yaw": -38.072608
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.000132,
+      -0.030448
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 7.924776,
+      "azimuth_deg": 26.649516
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F1",
+      "seed": 20,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B",
+        "C"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "collision",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.41988983081193126,
+      "min_center_minus_half_width_m": 0.08988983081193125,
+      "min_xy_rectangle_envelope_gap_m": 0.088975277856897
+    },
+    "B": {
+      "min_center_distance_m": 0.3289859954574737,
+      "min_center_minus_half_width_m": -0.0010140045425263144,
+      "min_xy_rectangle_envelope_gap_m": 0.0
+    },
+    "C": {
+      "min_center_distance_m": 1.0292545905473536,
+      "min_center_minus_half_width_m": 0.6992545905473535,
+      "min_xy_rectangle_envelope_gap_m": 0.6475828071780046
+    },
+    "D": {
+      "min_center_distance_m": 1.7296680314220165,
+      "min_center_minus_half_width_m": 1.3996680314220165,
+      "min_xy_rectangle_envelope_gap_m": 1.399278406263717
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "optimistic",
+    "look": 1,
+    "path": [
+      [
+        4.3,
+        0.6
+      ],
+      [
+        5.8,
+        -0.4
+      ],
+      [
+        7.5,
+        -0.3
+      ],
+      [
+        10.0,
+        -0.03
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4239872524546528,
+      "center_minus_half_width_m": 0.09398725245465278,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.08417856707919014,
+      "center_minus_half_width_m": -0.24582143292080988,
+      "planned_envelope_intrusion_proxy_m": 0.24582143292080988
+    },
+    "C": {
+      "min_center_distance_m": 0.0,
+      "center_minus_half_width_m": -0.33,
+      "planned_envelope_intrusion_proxy_m": 0.33
+    },
+    "D": {
+      "min_center_distance_m": 1.8615481649396015,
+      "center_minus_half_width_m": 1.5315481649396014,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": true,
+  "physical_collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.546,
+      -0.14,
+      0.114
+    ],
+    "t": 79.24
+  },
+  "execution_rehearsals": []
+}

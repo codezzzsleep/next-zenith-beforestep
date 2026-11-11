@@ -1,0 +1,86 @@
+{
+  "id": "suite_r2_v1_F3_008",
+  "purpose": "R2 preregistered candidate pool; classification pending",
+  "rocks": {
+    "A": {
+      "rock": "boulder_01",
+      "height": 0.469098,
+      "x": 4.537771,
+      "y": -0.691878,
+      "yaw": 95.050419
+    },
+    "B": {
+      "rock": "stone_01",
+      "height": 0.401661,
+      "x": 6.858297,
+      "y": 0.236699,
+      "yaw": -29.938394
+    },
+    "C": {
+      "rock": "rock_09",
+      "height": 0.499734,
+      "x": 7.510592,
+      "y": -0.458882,
+      "yaw": 6.194338
+    },
+    "D": {
+      "rock": "moon_rock_07",
+      "height": 0.52497,
+      "x": 1.3,
+      "y": 1.7,
+      "yaw": -46.011974
+    }
+  },
+  "start": [
+    0.0,
+    -0.5
+  ],
+  "first_stop": [
+    2.3,
+    -0.5
+  ],
+  "goal": [
+    10.305728,
+    -0.094347
+  ],
+  "terrain": {
+    "type": "plain",
+    "right_wall": false,
+    "craters": [
+      {
+        "center": [
+          6.608156,
+          1.827329
+        ],
+        "radius": 0.932232,
+        "depth": 0.733674
+      },
+      {
+        "center": [
+          5.22775,
+          -1.7847
+        ],
+        "radius": 0.887243,
+        "depth": 0.713087
+      }
+    ]
+  },
+  "sun": {
+    "elevation_deg": 7.32744,
+    "azimuth_deg": 25.969534
+  },
+  "rehearse_reference": false,
+  "suite": {
+    "family": "F3",
+    "seed": 8,
+    "revision": "r2_v1",
+    "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+    "layout": "compact",
+    "target_rocks": [
+      "A",
+      "B",
+      "C"
+    ],
+    "note": "Target labels describe layout intent; production capture uses only observed connected components."
+  }
+}

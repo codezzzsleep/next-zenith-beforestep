@@ -1,0 +1,42 @@
+{
+  "schema": "beforestep-actual-collision-diagnostic/v1",
+  "scene": "suite_r2_v4_F3_004",
+  "run_id": "0a1da762aebb4f7c9a88cbeaa009773e",
+  "scope": "Post-run 5cm XY grid comparison to actual scan; no truth supplied to planning or candidate registration",
+  "physical_contact": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.681,
+      -0.3,
+      0.1
+    ],
+    "t": 82.14
+  },
+  "rehearsal_combinations": 12,
+  "all_rehearsals_completed_without_collision": true,
+  "contact_grid_cell": [
+    153,
+    34
+  ],
+  "truth_B_contact_cell_occupied": true,
+  "admitted_B_candidates": [
+    {
+      "sample": "A1",
+      "footprint_source": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/footprint_A1.npy",
+      "footprint_sha256": "e9076c601fd8460dd4ad6f752c408ace5b96f1f88d981530a01fddcbe7c2592a",
+      "contact_cell_occupied": false,
+      "truth_B_covered_fraction": 0.1431818181818182,
+      "truth_B_missed_cells": 377
+    },
+    {
+      "sample": "A2",
+      "footprint_source": "outputs/suite/real/suite_r2_v4_F3_004/imagination/looks/look1/T2/decide/footprint_A2.npy",
+      "footprint_sha256": "b7e429f45c993b217034c0a472cc21ef4d7aebdd23a31b495deb02eae2e3d3c4",
+      "contact_cell_occupied": false,
+      "truth_B_covered_fraction": 0.14772727272727273,
+      "truth_B_missed_cells": 375
+    }
+  ],
+  "finding": "实际碰撞位置在真值B占地内，却不在两份准入B候选的占地内；候选只约覆盖真值B投影的14%。12格预演没有覆盖这个真实接触位置。"
+}

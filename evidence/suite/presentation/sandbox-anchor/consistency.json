@@ -1,0 +1,44 @@
+{
+  "schema": "beforestep-sandbox-consistency/v1",
+  "scene_count": 1,
+  "consistent_scenes": 1,
+  "inconsistent_scenes": [],
+  "scenes": [
+    {
+      "scene": "stress_v8",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    }
+  ],
+  "development_anchor_only": true,
+  "scope": "Normal editable geometric first-eye approximation compared with actual first plan. Exact-map numerical port check is separate."
+}

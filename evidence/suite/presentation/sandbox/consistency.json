@@ -1,0 +1,425 @@
+{
+  "schema": "beforestep-sandbox-consistency/v1",
+  "scene_count": 12,
+  "development_partial_suite": false,
+  "frozen_scene_count": 12,
+  "consistent_scenes": 8,
+  "inconsistent_scenes": [
+    "suite_r2_v4_F1_020",
+    "suite_r2_v4_F1_003",
+    "suite_r2_v4_F2_001",
+    "suite_r2_v4_F3_001"
+  ],
+  "scenes": [
+    {
+      "scene": "stress_v8",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F0_001",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F0_005",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F1_001",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F1_020",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": false
+        }
+      },
+      "consistent": false,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F1_003",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": false
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": false
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": false,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F2_003",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F2_007",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F2_001",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": false
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": false
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": false
+        }
+      },
+      "consistent": false,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F3_002",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F3_004",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": true
+        }
+      },
+      "consistent": true,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    },
+    {
+      "scene": "suite_r2_v4_F3_001",
+      "expected": {
+        "optimistic": {
+          "route": true,
+          "intrudes": false
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": true,
+          "intrudes": false
+        }
+      },
+      "sandbox": {
+        "optimistic": {
+          "route": true,
+          "intrudes": true
+        },
+        "conservative": {
+          "route": false,
+          "intrudes": null
+        },
+        "imagination": {
+          "route": false,
+          "intrudes": null
+        }
+      },
+      "consistent": false,
+      "exact_map_clearance_max_error_m": 0,
+      "exact_map_route_agrees": true
+    }
+  ],
+  "development_anchor_only": false,
+  "scope": "Normal editable geometric first-eye approximation compared with actual first plan. Exact-map numerical port check is separate."
+}

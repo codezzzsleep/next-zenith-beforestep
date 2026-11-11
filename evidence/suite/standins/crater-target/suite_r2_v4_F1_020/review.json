@@ -1,0 +1,158 @@
+{
+  "schema": "beforestep-suite-post-run-review/v1",
+  "scene": "suite_r2_v4_F1_020",
+  "scope": "Post-run truth only; no hidden geometry was supplied to production planning",
+  "actual_run_id": "b62af26456f646d9b84ee461bd9df164",
+  "optimistic_run_id": "ef6c4162eef0419d9976192feb98fd64",
+  "minimum_3d_clearance_m": 0.2592643883827931,
+  "actual_3d_by_rock": {
+    "A": {
+      "minimum_signed_collision_geometry_distance_m": 0.3621564190388299,
+      "witness": {
+        "trajectory_index": 1849,
+        "time_s": 38.18000000000037,
+        "robot_geom": 25,
+        "obstacle_geom": 53,
+        "nearest_points_xyz_m": [
+          [
+            4.132935530776285,
+            0.3242534731747584,
+            0.3968598857873666
+          ],
+          [
+            4.303111648910102,
+            0.011860486166714757,
+            0.46474200667443055
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "B": {
+      "minimum_signed_collision_geometry_distance_m": 0.2592643883827931,
+      "witness": {
+        "trajectory_index": 3032,
+        "time_s": 54.640000000003795,
+        "robot_geom": 51,
+        "obstacle_geom": 54,
+        "nearest_points_xyz_m": [
+          [
+            6.017367173980756,
+            1.186060889336602,
+            0.15370940414674522
+          ],
+          [
+            6.127861467775974,
+            0.9526169427968505,
+            0.17635797907201625
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "C": {
+      "minimum_signed_collision_geometry_distance_m": 1.3773147227163571,
+      "witness": {
+        "trajectory_index": 12529,
+        "time_s": 78.70999999999297,
+        "robot_geom": 51,
+        "obstacle_geom": 55,
+        "nearest_points_xyz_m": [
+          [
+            9.02364591218338,
+            0.6438627057983752,
+            0.08014055867776483
+          ],
+          [
+            7.986062867080071,
+            -0.26190239561756334,
+            0.08275799680621213
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "D": {
+      "minimum_signed_collision_geometry_distance_m": 1.511168989691201,
+      "witness": {
+        "trajectory_index": 365,
+        "time_s": 8.499999999999908,
+        "robot_geom": 18,
+        "obstacle_geom": 56,
+        "nearest_points_xyz_m": [
+          [
+            1.5719611458809577,
+            -0.27997044504048485,
+            0.15353457129130896
+          ],
+          [
+            1.5685512351772046,
+            1.230158160566021,
+            0.20949600839105245
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    }
+  },
+  "actual_xy_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5112138061102597,
+      "min_center_minus_half_width_m": 0.18121380611025967,
+      "min_xy_rectangle_envelope_gap_m": 0.17973332719604787
+    },
+    "B": {
+      "min_center_distance_m": 0.47693428665812354,
+      "min_center_minus_half_width_m": 0.14693428665812353,
+      "min_xy_rectangle_envelope_gap_m": 0.14678163778122197
+    },
+    "C": {
+      "min_center_distance_m": 1.6007665344403474,
+      "min_center_minus_half_width_m": 1.2707665344403474,
+      "min_xy_rectangle_envelope_gap_m": 1.2631665262135017
+    },
+    "D": {
+      "min_center_distance_m": 1.7296680314220165,
+      "min_center_minus_half_width_m": 1.3996680314220165,
+      "min_xy_rectangle_envelope_gap_m": 1.399278406263717
+    }
+  },
+  "minimum_xy_envelope_clearance_m": 0.14678163778122197,
+  "optimistic_plan_intrusion_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4239872524546528,
+      "center_minus_half_width_m": 0.09398725245465278,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.08417856707919014,
+      "center_minus_half_width_m": -0.24582143292080988,
+      "planned_envelope_intrusion_proxy_m": 0.24582143292080988
+    },
+    "C": {
+      "min_center_distance_m": 0.0,
+      "center_minus_half_width_m": -0.33,
+      "planned_envelope_intrusion_proxy_m": 0.33
+    },
+    "D": {
+      "min_center_distance_m": 1.8615481649396015,
+      "center_minus_half_width_m": 1.5315481649396014,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_max_intrusion_m": 0.33,
+  "diagnostic_results": [
+    {
+      "run": "outputs/suite/standins-crater-target/suite_r2_v4_F1_020/imagination",
+      "result": "arrived",
+      "planned_B_intrusion_m": 0,
+      "actual_min_xy_envelope_gap_m": 0.14678163778122197
+    },
+    {
+      "run": "outputs/suite/pool/r2_v4_f1_expansion/suite_r2_v4_F1_020/optimistic/run",
+      "result": "collision",
+      "planned_B_intrusion_m": 0.24582143292080988,
+      "actual_min_xy_envelope_gap_m": 0.0
+    }
+  ]
+}

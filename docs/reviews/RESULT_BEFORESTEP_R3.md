@@ -11,7 +11,7 @@
 | S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
 | E1 | 原12冻结场景赛后修订复测 | 完成 | f971519数据；12原summary/17CF/全复盘/完整tar+publicmanifest/独立远端下载通过，frozen-complete.json阶段证明 |
-| E2 | 指定留出场景六栏运行 | 未开始 | — |
+| E2 | 指定留出场景六栏运行 | 进行中 | E1 proof454951a已远端确认；F0_002四当前基线已终态，真实双方法继续 |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
 
@@ -1822,3 +1822,147 @@ ops预检查发现一批请求逐项创建，预算可能在中途用满：旧ca
 E1数据f971519已实际push：1137末场新LFS对象46MB上传成功；再次只从origin下载到独立存储，1137对象45874439bytes逐Git pointer SHA/size核对全pass/exit0。[末场远端回执](../../evidence/reviews/beforestep_r3/final-verification/last-frozen-publication-audit.json)。加前947对象383711275bytes，已公开新增2084对象429585714bytes，全部分两次独立远端验证；本地旧缓存未用于证明远端下载。
 
 [公开E1阶段证明](../../evidence/reviews/beforestep_r3/frozen-complete.json)附全12原summary、逐首眼byte核对、17CF精确前缀、每场manifest SHA和完整tar核对/远端回执。监督验证这份证明已在远端main后才自动运行E2：F0_002、F2_011、F3_005，预算尚余146时继续F0_003、F3_006。E1已完成不是整个R3完成；继续E2、V1、D，不等确认。
+
+<!-- R3-E2-BEGIN -->
+## E2固定留出已经启动
+
+监督已确认E1阶段证明454951a在远端main后，开始F0_002，后续按F2_011/F3_005/预算余F0_003/F3_006固定次序。第一场四个当前源码基线均exit0：conservative停车、see-dark停车、optimistic碰撞、truth到达；与选择时的旧分布标签并列，不因为当前see-dark停车而更换场景。原想象正在真实首眼配准/自检，尚无终态；strict随后只复用同byte首眼。当前R3新36/170（32ok/4providerfailed），全终态，其中本场新增12（10ok/2failed），不能把生成返回或配准产出当作通行结果。
+
+### E2 suite_r2_v4_F0_002 conservative summary原文
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 142.0,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.077,
+    0.214,
+    -8.08
+  ],
+  "sim_time_s": 143.2,
+  "wall_s": 72.7,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F0_002 see_dark summary原文
+
+```json
+{
+  "policy": "conservative",
+  "tag": "see_dark",
+  "see_dark": true,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 92.44,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    5.663,
+    -0.597,
+    17.28
+  ],
+  "sim_time_s": 93.64,
+  "wall_s": 57.7,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F0_002 optimistic summary原文
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 79.73,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.934,
+    -0.557,
+    3.54
+  ],
+  "sim_time_s": 80.93,
+  "wall_s": 48.7,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      7.189,
+      -0.325,
+      0.121
+    ],
+    "t": 80.934
+  }
+}
+```
+
+### E2 suite_r2_v4_F0_002 truth summary原文
+
+```json
+{
+  "policy": "imagination",
+  "tag": "truth",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 113.76,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.048,
+    18.05
+  ],
+  "sim_time_s": 114.96,
+  "wall_s": 55.6,
+  "collision": null
+}
+```
+
+<!-- R3-E2-BASELINES-F0-002-END -->

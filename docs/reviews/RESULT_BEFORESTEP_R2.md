@@ -18,11 +18,11 @@
 | B6 | 全部场景复盘和全部拒绝反事实 | 完成 | 本次全组证据提交；命令/结果见收尾 |
 | B7 | 完整总表 | 完成 | 本次全组证据提交；命令/结果见收尾 |
 | B8 | 预定规则结论 | 完成 | 本次全组证据提交；命令/结果见收尾 |
-| C1 | 五步关卡模式 | 进行中（6/12真实开发关卡已完整浏览器验证，完整组待B） | c5be2c6 |
-| C2 | 沙盒与一致性 | 进行中（6/12首眼几何4/6一致、浏览器通过，全组待B） | 本次基础提交 |
-| C3 | 导出与人工场景 | 进行中（导出JSON实际验证，人工场景当前无文件） | 本次基础提交 |
-| D1 | 首页/报告/相关工作整合 | 未开始 | — |
-| D2 | 全验收和main/Pages发布 | 未开始 | — |
+| C1 | 五步关卡模式 | 完成 | 本次完整C/D本地验证提交；见收尾 |
+| C2 | 沙盒与一致性 | 完成 | 本次完整C/D本地验证提交；见收尾 |
+| C3 | 导出与人工场景 | 完成 | 本次完整C/D本地验证提交；见收尾 |
+| D1 | 首页/报告/相关工作整合 | 完成 | 本次完整C/D本地验证提交；见收尾 |
+| D2 | 全验收和main/Pages发布 | 进行中（完整本地验收已通过，待公网） | 本次前端/报告提交 |
 
 ## 当前身份与授权
 
@@ -1069,3 +1069,19 @@ F3_002全部5/5拒绝CF exit0，5到达、0碰撞、allprefixpass；第9newScene
   "collision": null
 }
 ```
+
+## 阶段 C 完整收尾
+
+`build_levels_site.py` exit0：完整12实际关、166原成功候选，210展示资产SHA全部通过，partial=false。`check_levels_browser.py --name C1-full-final` exit0：12关各五步/三策略真实回放/全部候选与独立truth扫描/首次选择记分/无候选及contact优先fixture/390px/HTTP与页面错误0，公开presentation/levels/browser.json。
+
+`build_sandbox_data.py`与全组`check_sandbox_consistency.py` exit0：正常几何首眼8/12一致，F1_020/F1_003/F2_001/F3_001不一致，全部原结果逐项公开；exact-map EDT0与route12/12通过另列，不代替正常几何匹配。`check_sandbox_browser.py --name C2-full-final` exit0，实际载入全部12preset、三规划、库拖放/地图移动/旋转高度/坑/太阳/导出内容/390/0error。网页与文档明示8/12及所有差异。规格要求比较并报告差异，未给100%匹配门槛，未通过注入savedRGBD/map/outcome强凑一致；沙盒继续明确为轻量规划。
+
+C3真实导出符合B1字段已全browser验证，文档standin/本人key生成/restore命令保留。user_scenes结束前再查0JSON，按规则无人工指定实验，不把可选输入当阻塞。没有新增训练或Demo视频。
+
+## 阶段 D 本地验收与发布准备
+
+`integrate_suite.py --sandbox` exit0，完整总表、README、报告/related-work都由真实summary生成；两次actual collision同时在390px首屏可见，嵌入关卡五步可走完，沙盒8/12明示与全部不一致链接可访问。冻结名单原config字节镜像evidence/suite/frozen.json支持本地现有preview服务，原config仍权威。首验config路径404日志保留，未改冻结src/server。
+
+最终67单测exit0/2.487s、323原资产SHA通过、210展示资产SHA通过、18文档296链接无缺失；完整数字audit exit0：12scene/166候选占地/34803实际trajectory点逐原值、整表/README/related-work/报告一致、第二collision contact格和coverage/SHA独立重算。原只读audit重复解压NPZ过慢主动TERM143日志保留，优化为每文件一次读数组、逐点断言不变后通过。
+
+`check_r1_browser.py --name D-final-local-corrected --pdf` exit0：R1全部9回放/11原GLB/12gallery/3历史/20learning、全新增网页链接/390/0error，R1结论不弱化。PDF13页/1693912bytes/SHA ba6c5047e215fb74fb5b9462b794a7a4d4feb2d353da344b4c482689cc93a9dc，pypdf实际读取全12场/两collision/47.541/1223.6/0/3/没有满足多数条件。历史R1原5页PDF未改。完整本地证据presentation/final-local；公网仍待实际发布与浏览器，不声称D2完成。

@@ -53,6 +53,9 @@ def main():
     parser.add_argument('--sandbox', action='store_true', help='Include only after full browser and consistency checks')
     args = parser.parse_args()
     summary = json.loads((ROOT / 'evidence/suite/summary.json').read_text())
+    # The existing preview server serves public evidence, while config remains
+    # an on-disk reproduction input. Keep this viewer mirror byte-identical.
+    (ROOT / 'evidence/suite/frozen.json').write_bytes((ROOT / summary['freeze']).read_bytes())
     levels = json.loads((ROOT / 'site/data/levels.json').read_text())
     assert not levels['anchor_only_development'] and len(levels['levels']) == summary['completed_scene_count']
     suite = (ROOT / 'docs/suite.md').read_text().strip()
@@ -72,6 +75,10 @@ def main():
         '## 项目贡献：冻结窄道里的行动实证'))
     homepage_path = ROOT / 'site/index.html'
     page = homepage_path.read_text()
+    if summary['imagination_collision_scenes']:
+        hero_warning = '<p id="suite-hero-warning" class="suite-warning"><strong>冻结组实测：想象策略实际发生碰撞。</strong> ' + html.escape('、'.join(summary['imagination_collision_scenes'])) + '。<a href="#suite-summary">查看完整结果与安全边界 ↓</a></p>'
+        page = replace_block(page, '<!-- SUITE-HERO-WARNING-START -->', '<!-- SUITE-HERO-WARNING-END -->',
+                             hero_warning, '<p>轮腿机器人只能看见岩石的一部分')
     page = page.replace('<a class="button" href="#experience">查看窄道里的三种选择 ↓</a>',
                         '<a class="button" href="levels.html">开始第一关 →</a>')
     game = '<section id="levels"><div class="eyebrow">PLAY / CHOOSE YOUR ROUTE</div><h2>先做选择，再揭晓。</h2><p>看机器人实际第一眼，选择直接走、多看几眼或想一想，再回放实际轨迹、翻看背面并记分。</p><a class="button" href="levels.html">进入完整关卡 →</a><iframe title="真实月面实验关卡" src="levels.html?embedded=1" loading="lazy" style="width:100%;height:1600px;border:0;margin-top:2rem"></iframe></section>'
@@ -79,6 +86,7 @@ def main():
     table = markdown.markdown(suite, extensions=['tables', 'fenced_code']).replace('<h1>', '<h2>').replace('</h1>', '</h2>')
     # The Markdown paths are relative to docs/, while this is the site root.
     table = re.sub(r'href="\.\./([^\"]+)"', r'href="\1"', table)
+    table = table.replace('href="config/suite/frozen.json"', 'href="evidence/suite/frozen.json"')
     table = table.replace('href="decisions.md"', 'href="docs/decisions.md"').replace('href="reviews/RESULT_BEFORESTEP_R2.md"', 'href="docs/reviews/RESULT_BEFORESTEP_R2.md"')
     block = game+'\n<section id="suite-summary">'+warning+'<div class="table-wrap">'+table+'</div></section>'
     page = replace_block(page, '<!-- SUITE-HOME-START -->', '<!-- SUITE-HOME-END -->', block, '<section id="shadows">')
@@ -95,6 +103,15 @@ def main():
         assert browser['passed'] and not consistency['development_anchor_only']
         assert not consistency['development_partial_suite'], 'Full frozen-suite consistency required'
         assert consistency['scene_count'] == summary['completed_scene_count']
+        assert not browser.get('development_partial_suite', True), 'Full sandbox browser acceptance required'
+        assert [r['scene'] for r in browser['presets_checked']] == [r['scene'] for r in summary['scenes']]
+        comparison = f"完整冻结组首眼几何检查：{consistency['consistent_scenes']}/{consistency['scene_count']} 一致。不一致：" + '、'.join(consistency['inconsistent_scenes']) + '。'
+        sandbox_page = ROOT / 'site/sandbox.html'
+        sandbox_page.write_text(replace_block(sandbox_page.read_text(), '<!-- SANDBOX-CHECK-START -->',
+            '<!-- SANDBOX-CHECK-END -->', '<p class="caption">'+html.escape(comparison)+' <a href="evidence/suite/presentation/sandbox/consistency.json">对照原始结果 ↗</a></p>', '<div id="sandbox-error"'))
+        sandbox_doc = ROOT / 'docs/sandbox.md'
+        sandbox_doc.write_text(replace_block(sandbox_doc.read_text(), '<!-- SANDBOX-CHECK-START -->',
+            '<!-- SANDBOX-CHECK-END -->', '## 一致性实测\n\n'+comparison+' [完整对照](../evidence/suite/presentation/sandbox/consistency.json)。数值距离场与规划器移植检查另列，不能代替正常几何近似的匹配率。', '## 导出与运行'))
         sandbox = '<section id="sandbox"><div class="eyebrow">SANDBOX / YOUR MOONSCAPE</div><h2>石头，由你来放。</h2><p>拖动扫描岩石，旋转、调整太阳与月坑，查看三种策略的轻量路线，再导出到本地完整物理验证。</p><a class="button" href="sandbox.html">打开月面沙盒 →</a><p class="caption">不做物理仿真，不实时调用 Lux3D。一致性 '+str(consistency['consistent_scenes'])+'/'+str(consistency['scene_count'])+'；所有不一致在<a href="evidence/suite/presentation/sandbox/consistency.json">原始检查</a>中列出。</p></section>'
         page = replace_block(page, '<!-- SANDBOX-HOME-START -->', '<!-- SANDBOX-HOME-END -->', sandbox, '<section id="evolution">')
     homepage_path.write_text(page)
@@ -104,6 +121,8 @@ def main():
         if url.startswith(('https:', 'http:', '#')):
             return match.group(0)
         path = (ROOT / 'docs' / url).resolve()
+        if path == ROOT / 'config/suite/frozen.json':
+            return attribute+'="evidence/suite/frozen.json"'
         if path.is_dir():
             return attribute+'="https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/'+str(path.relative_to(ROOT))+'"'
         if path == ROOT / 'README.md':

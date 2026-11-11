@@ -1,0 +1,59 @@
+{
+  "id": "user_sandbox_1794380686893",
+  "purpose": "User-created sandbox scene; complete local physical evaluation pending",
+  "rocks": {
+    "A": {
+      "rock": "rock_07",
+      "height": 0.55,
+      "x": 4.55,
+      "y": -0.735,
+      "yaw": 90
+    },
+    "B": {
+      "rock": "moon_rock_04",
+      "height": 0.42,
+      "x": 6.86,
+      "y": 0.22,
+      "yaw": -26
+    },
+    "R1": {
+      "rock": "boulder_01",
+      "height": 0.45,
+      "x": 5.5,
+      "y": -0.3,
+      "yaw": 45
+    }
+  },
+  "start": [
+    0,
+    -0.5
+  ],
+  "first_stop": [
+    2.3,
+    -0.5
+  ],
+  "goal": [
+    10.5,
+    0
+  ],
+  "terrain": {
+    "type": "plain",
+    "right_wall": false,
+    "craters": [
+      {
+        "center": [
+          6,
+          1.5
+        ],
+        "radius": 0.8,
+        "depth": 0.6
+      }
+    ]
+  },
+  "sun": {
+    "elevation_deg": 10,
+    "azimuth_deg": 50
+  },
+  "asset_cache_precision": "exact",
+  "rehearse_reference": false
+}

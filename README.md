@@ -15,6 +15,16 @@ Lux3D 是核心流程：真实观察图 → 原始生成 GLB → 配准与冻结
 - [训练模型与实际执行](site/learning.html) · [训练方法、权重和独立评估](docs/training.md)
 - [主动观察控制的新训练与四眼通行](docs/observation-control.md) · [真实同观测对照视频](evidence/learning/observation_pose_v2/demo.mp4)
 
+<!-- SUITE-README-START -->
+## 预注册场景组实测
+
+冻结 12 个场景，完整完成 12 个。决定性场景：到达 3、安全终止 3、碰撞 2；普通场景：到达 3/4。
+全部拒绝候选反事实碰撞 17/102，另 0 份不能执行。真实第二眼 5 场。
+
+**想象策略实际发生碰撞：suite_r2_v4_F1_020、suite_r2_v4_F3_004。候选自检和预演通过不能代替独立执行的安全结果。**
+
+[五种策略完整总表与逐类边界](docs/suite.md) · [冻结名单](config/suite/frozen.json) · [原始汇总](evidence/suite/summary.json) · [运行与保全记录](docs/reviews/RESULT_BEFORESTEP_R2.md)。网页关卡回放已完成物理实验；沙盒是轻量几何规划，完整物理验证与实时云端生成在本地运行。
+<!-- SUITE-README-END -->
 ## 运行
 
 需要 Python 3.12、Git LFS；Linux 离屏仿真需要 EGL 或 OSMesa。观看本地作品页无需 Lux3D 密钥或新增付费调用。

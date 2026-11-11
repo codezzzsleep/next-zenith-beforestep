@@ -4,6 +4,11 @@
 
 路线动画不做物理仿真；车身包络压到真实占地是规划诊断，不是 MuJoCo 碰撞结果。关卡模式提供完整真实物理运行。整组首眼定性一致性检查会逐项报告不一致，不把轻量沙盒等同于 RGB-D 传感器与物理预演。
 
+<!-- SANDBOX-CHECK-START -->
+## 一致性实测
+
+完整冻结组首眼几何检查：8/12 一致。不一致：suite_r2_v4_F1_020、suite_r2_v4_F1_003、suite_r2_v4_F2_001、suite_r2_v4_F3_001。 [完整对照](../evidence/suite/presentation/sandbox/consistency.json)。数值距离场与规划器移植检查另列，不能代替正常几何近似的匹配率。
+<!-- SANDBOX-CHECK-END -->
 ## 导出与运行
 
 点击“导出场景 JSON”，把文件复制到 `config/scenes/`。文件名必须是 JSON 中 `id` 加 `.json`。保留 `terrain`、`sun`、`asset_cache_precision`、起点、首眼和终点字段。安装锁定依赖，保持 MuJoCo 3.17.0，运行命令中的 `<场景id>` 使用导出的 id。

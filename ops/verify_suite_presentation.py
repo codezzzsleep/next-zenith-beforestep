@@ -14,6 +14,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def check():
     summary = json.loads((ROOT / 'evidence/suite/summary.json').read_text())
+    assert (ROOT / 'evidence/suite/frozen.json').read_bytes() == (ROOT / summary['freeze']).read_bytes()
     scratch = ROOT / 'outputs/qa/r2/suite-summary-recomputed.json'
     scratch.parent.mkdir(parents=True, exist_ok=True)
     command = [sys.executable, str(ROOT / 'ops/build_suite_summary.py'), '--out', str(scratch.relative_to(ROOT))]
@@ -45,13 +46,14 @@ def check():
             shown = level['runs'][key]
             assert all(shown[k] == v for k, v in run['summary'].items())
             assert shown['run_id'] == run['run_id']
-            with np.load(ROOT / run['run'] / 'traj.npz') as actual:
-                for t, x, y, yaw in shown['trajectory']:
-                    index = int(np.argmin(np.abs(actual['t']-t)))
-                    assert abs(actual['t'][index]-t) < 1e-9
-                    assert x == actual['qpos'][index, 0] and y == actual['qpos'][index, 1]
-                    assert abs(yaw-yaw_of(actual['qpos'][index])) < 1e-10
-                    points += 1
+            with np.load(ROOT / run['run'] / 'traj.npz') as archive:
+                times, poses = archive['t'], archive['qpos']
+            for t, x, y, yaw in shown['trajectory']:
+                index = int(np.argmin(np.abs(times-t)))
+                assert abs(times[index]-t) < 1e-9
+                assert x == poses[index, 0] and y == poses[index, 1]
+                assert abs(yaw-yaw_of(poses[index])) < 1e-10
+                points += 1
         for candidate in level['candidates']:
             decision = json.loads((ROOT / candidate['source_decision']).read_text())
             original = next(c for c in decision['candidates'] if c['id'] == candidate['sample'])

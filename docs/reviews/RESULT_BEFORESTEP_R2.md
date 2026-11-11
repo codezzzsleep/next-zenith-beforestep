@@ -22,7 +22,7 @@
 | C2 | 沙盒与一致性 | 完成 | 本次完整C/D本地验证提交；见收尾 |
 | C3 | 导出与人工场景 | 完成 | 本次完整C/D本地验证提交；见收尾 |
 | D1 | 首页/报告/相关工作整合 | 完成 | 本次完整C/D本地验证提交；见收尾 |
-| D2 | 全验收和main/Pages发布 | 进行中（完整本地验收已通过，待公网） | 本次前端/报告提交 |
+| D2 | 全验收和main/Pages发布 | 完成 | 前端8dbe2fa；Pages1ec4b33公网全验收；本次收尾提交 |
 
 ## 当前身份与授权
 
@@ -1085,3 +1085,15 @@ C3真实导出符合B1字段已全browser验证，文档standin/本人key生成/
 最终67单测exit0/2.487s、323原资产SHA通过、210展示资产SHA通过、18文档296链接无缺失；完整数字audit exit0：12scene/166候选占地/34803实际trajectory点逐原值、整表/README/related-work/报告一致、第二collision contact格和coverage/SHA独立重算。原只读audit重复解压NPZ过慢主动TERM143日志保留，优化为每文件一次读数组、逐点断言不变后通过。
 
 `check_r1_browser.py --name D-final-local-corrected --pdf` exit0：R1全部9回放/11原GLB/12gallery/3历史/20learning、全新增网页链接/390/0error，R1结论不弱化。PDF13页/1693912bytes/SHA ba6c5047e215fb74fb5b9462b794a7a4d4feb2d353da344b4c482689cc93a9dc，pypdf实际读取全12场/两collision/47.541/1223.6/0/3/没有满足多数条件。历史R1原5页PDF未改。完整本地证据presentation/final-local；公网仍待实际发布与浏览器，不声称D2完成。
+
+## 阶段 D 公网完成与最终七项
+
+main前端8dbe2fa8aa09abf139f11624b39e4f96e43bd7d5 push0；Pages1ec4b33dc75402e6b01dfed13854273cffa3be97 push0/API实际built/error null。公网`check_levels_browser.py --name D-full-public-levels` exit0：完整12关各5步/三实际策略/全部166candidate模型和独立真值/首次记分/390/0pageHTTP；`check_sandbox_browser.py --name D-full-public-sandbox` exit0：全部12preset载入/三规划/真实库拖放、移动旋转高度/坑/太阳/导出JSON/390/0pageHTTP。`check_r1_browser.py --name D-full-public-R1` exit0：原9回放11GLB12gallery/3历史20learning/全部新表链接/PDF及历史视频SHA同本地/390/0pageHTTP。首屏两实际collision同时可见、原config与viewer镜像公网字节同原，first-screen实际通过。公开presentation/final-public。
+
+1. 完成并验证：A–D所有小项，B冻结12/12、11真实链与全部99新CF、67unit/323原资产SHA/210新显示SHA、完整数字12scene166footprint34803trajectory point、18docs296links、local与public全browser0error。阶段提交与命令/退出码见上文和各JSON。main前端8dbe2fa/Pages1ec4b33为全public验收版本；本次只同步收尾文档/QA，不修改已验收网页数据/JS/PDF。
+2. 做了未验证：无。
+3. 失败：F1_020真实撞C、F3_004真实撞B；前者C未形成候选，后者准入B没有覆盖真实碰撞位置，原输出/GLB/全部反事实均在manifest完整外包与source保留。沙盒几何8/12一致，四不一致公开；没有声称完全复现物理。所有临时程序/transport/audit失败日志保留后已纠正，不掩盖。
+4. 按规则判断：固定12不筛、不改freeze/source/camera/threshold/rules、不训练，不用GT补模型；D8到达3/安全终止3/碰撞2未达多数且无撞条件；被拒CF17/102碰撞，可说自检拒绝过会撞候选，不说保证安全；普通负时差是提前停车，非速度收益。没有触发日期收缩，C3当前0人工JSON不等输入。
+5. 本轮新增Lux168/360，155ok/13provider failed全终态；known任务不重create，明确pre-HTTP未发送恢复原件保留。
+6. 物理/paid/C构建/浏览器作业均已完成；原始155GLB只在11完整tar和本机保留并本机exclude，已保全不删除。最终Git干净状态与remote最终SHA由私有checkpoint记录，Pages同步本次QA后进行内容SHA检查。预览HTTP服务为常驻，不是实验。
+7. Agent工程任务已完成；负责人可使用完整保全数据制作新版Demo并自行提交。禁止Agent自行渲染视频，历史视频保留，未索要任何新账号或审批。

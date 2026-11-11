@@ -30,7 +30,7 @@ def main():
             events = [json.loads(line) for line in (actual / 'events.jsonl').read_text().splitlines()]
             result = prefix_check(original, actual, events, expected[key]['look'])
             assert result['passed'] and result == run['prefix_verification'], (name, key)
-            assert set(result['arrays_equal']) == {'t', 'qpos', 'phase', 'actions', 'sources'}
+            assert set(result['arrays_equal']) == {'t', 'qpos', 'phase', 'control_actions', 'control_sources'}
             checked.append({'scene': name, 'candidate': key, **result})
     report = {'schema': 'beforestep-suite-prefix-recheck/v1', 'passed': True,
               'scene_count': len(frozen['scenes']) - 1, 'executed_counterfactuals': len(checked),

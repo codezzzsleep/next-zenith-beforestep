@@ -171,6 +171,12 @@ def main():
             failure = {'category': 'physical_collision',
                        'detail': runs['imagination']['summary']['collision'] or {'result': outcome},
                        'zero_request_rocks': [rock for rock, target in targets.items() if target['tasks'] == 0]}
+            diagnostic = ROOT / 'evidence/suite/actual-collisions' / scene / 'diagnostic.json'
+            if diagnostic.exists():
+                evidence = read(diagnostic)
+                assert evidence['run_id'] == runs['imagination']['run_id']
+                failure.update(diagnostic_evidence=str(diagnostic.relative_to(ROOT)),
+                               diagnostic_finding=evidence['finding'])
         elif outcome != 'arrived':
             exhausted = [e for e in events if e['kind'] == 'sampling_stop']
             failure = {'category': 'zero_admission_after_retry' if exhausted else 'approach_or_observation_control' if outcome == 'stopped_short' else 'no_accepted_route',

@@ -34,6 +34,7 @@ def check():
         assert path.stat().st_size == asset['bytes']
         assert hashlib.sha256(path.read_bytes()).hexdigest() == asset['sha256']
     candidates, points = 0, 0
+    collision_diagnostics = 0
     for row, level in zip(summary['scenes'], levels['levels']):
         image = level['observation']
         assert hashlib.sha256((ROOT / 'site' / image['image']).read_bytes()).hexdigest() == image['image_sha256']
@@ -68,6 +69,25 @@ def check():
             i, j = np.nonzero(occupied)
             assert candidate['footprint'] == np.c_[N.XS[i], N.YS[j]].tolist()
             candidates += 1
+        diagnostic_path = (row.get('failure_reason') or {}).get('diagnostic_evidence')
+        if diagnostic_path:
+            diagnostic = json.loads((ROOT / diagnostic_path).read_text())
+            assert diagnostic['run_id'] == row['runs']['imagination']['run_id']
+            assert diagnostic['physical_contact'] == row['runs']['imagination']['summary']['collision']
+            from beforestep import scene as S
+            from beforestep.evaluation import truth_footprints
+            S.configure(row['scene'])
+            truth = truth_footprints(ROOT / row['runs']['imagination']['run'])
+            cell = tuple(diagnostic['contact_grid_cell'])
+            assert bool(truth['B'][cell]) == diagnostic['truth_B_contact_cell_occupied']
+            for comparison in diagnostic['admitted_B_candidates']:
+                source = ROOT / comparison['footprint_source']
+                assert hashlib.sha256(source.read_bytes()).hexdigest() == comparison['footprint_sha256']
+                footprint = np.load(source)
+                assert bool(footprint[cell]) == comparison['contact_cell_occupied']
+                assert float((footprint & truth['B']).sum() / truth['B'].sum()) == comparison['truth_B_covered_fraction']
+                assert int((truth['B'] & ~footprint).sum()) == comparison['truth_B_missed_cells']
+            collision_diagnostics += 1
     suite = (ROOT / 'docs/suite.md').read_text().strip()
     generated_suite = ROOT / 'outputs/qa/r2/suite-document-recomputed.md'
     subprocess.run([sys.executable, str(ROOT / 'ops/write_suite_docs.py'), '--out',
@@ -91,6 +111,7 @@ def check():
     return {'schema': 'beforestep-suite-presentation-audit/v1', 'passed': True,
             'scenes': len(summary['scenes']), 'candidate_footprints': candidates,
             'actual_trajectory_points': points, 'raw_summary_recomputed_equal': True,
+            'actual_collision_diagnostics_rechecked': collision_diagnostics,
             'presentation_asset_sha_count': len(assets['entries']),
             'report_suite_chapter_matches': True, 'collision_scenes_prominent': summary['imagination_collision_scenes']}
 

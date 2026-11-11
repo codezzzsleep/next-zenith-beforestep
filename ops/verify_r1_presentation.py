@@ -198,6 +198,14 @@ def check():
                 fact(value, source)
                 fact(value, source, 1000)
         suite_facts(read(ROOT / 'evidence/suite/summary.json'), 'evidence/suite/summary.json#')
+        for row in read(ROOT / 'evidence/suite/summary.json')['scenes']:
+            diagnostic = (row.get('failure_reason') or {}).get('diagnostic_evidence')
+            if diagnostic:
+                value = read(ROOT / diagnostic)
+                fact(value['rehearsal_combinations'], diagnostic + '#/rehearsal_combinations')
+                for index, comparison in enumerate(value['admitted_B_candidates']):
+                    fact(comparison['truth_B_covered_fraction'],
+                         diagnostic + '#/admitted_B_candidates/' + str(index) + '/truth_B_covered_fraction', 100)
         frozen = read(ROOT / 'config/suite/frozen.json')
         for pool in frozen['pool_sources']:
             suite_facts(read(ROOT / pool['path']), pool['path'] + '#')

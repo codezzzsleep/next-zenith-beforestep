@@ -14,10 +14,10 @@
 | B2 | 参数预注册、生成器、候选池分类 | 完成 | v4主池与F1唯一扩展60场景/240非Lux全完成；名单a810e14 |
 | B3 | 冻结场景组并推送 | 完成 | a810e14；远端同SHA |
 | B4 | 四类真实形状替身完整链 | 完成 | 当前源cfffaf8四类全链/复盘/allpanes通过；本提交 |
-| B5 | 场景组真实Lux3D | 进行中 | B4已push c465926后启动；实时预算见ledger |
-| B6 | 全部场景复盘和全部拒绝反事实 | 进行中（6场全部CF完成，F2余场与F3继续） | b790e92 |
-| B7 | 完整总表 | 进行中（严格核验脚本等待全12真实及全部CF终态） | 实测全表尚未生成 |
-| B8 | 预定规则结论 | 进行中（真实主流程碰撞已显著披露，最终全组结论待B7） | 本次安全边界记录 |
+| B5 | 场景组真实Lux3D | 完成 | 本次全组证据提交；命令/结果见收尾 |
+| B6 | 全部场景复盘和全部拒绝反事实 | 完成 | 本次全组证据提交；命令/结果见收尾 |
+| B7 | 完整总表 | 完成 | 本次全组证据提交；命令/结果见收尾 |
+| B8 | 预定规则结论 | 完成 | 本次全组证据提交；命令/结果见收尾 |
 | C1 | 五步关卡模式 | 进行中（6/12真实开发关卡已完整浏览器验证，完整组待B） | c5be2c6 |
 | C2 | 沙盒与一致性 | 进行中（6/12首眼几何4/6一致、浏览器通过，全组待B） | 本次基础提交 |
 | C3 | 导出与人工场景 | 进行中（导出JSON实际验证，人工场景当前无文件） | 本次基础提交 |
@@ -681,3 +681,391 @@ F2_003全部17/17拒绝反事实exit0、碰撞0、终态{'stuck': 17}，全部�
 F2_001全部4/4拒绝CF exit0、0碰撞、终态{'arrived': 4}/allprefixpass；第8newScene完整包exit0，9variants/667files/public64431980<150MB，外包{'path': '/root/3d/artifacts/beforestep-r2/suite_r2_v4_F2_001-complete.tar.gz', 'bytes': 210121745, 'sha256': '81f14b96e8d2623a84c5bf62c2d85b6572dd43ccd220091afa421cb7313877a8'}。F3_002实际一眼107.6s到达，4/4预演格complete/no collision、chain/review exit0，原B5继续F3_004/F3_001、B6继续全部5份拒绝候选。C2全组浏览器脚本已加逐preset实际载入和三规划检查，仅compile；完整执行待全组数据，未宣称新验收完成。
 
 F3_002全部5/5拒绝CF exit0，5到达、0碰撞、allprefixpass；第9newScene完整包exit0，10variants/717files/public80446536<150MB，完整外包{'path': '/root/3d/artifacts/beforestep-r2/suite_r2_v4_F3_002-complete.tar.gz', 'bytes': 206018197, 'sha256': '834b8558a7986976c89981c07b14e82f6743cfddd91213a04fdb494efe71bacf'}。真实主流程一眼107.6s到达、4/4预演无撞/完整、复盘0；不能把本场全部反事实到达说成自检在该场挡住碰撞。完整组结论仍等待其余2场。
+
+第二场真实主碰撞F3_004：一眼82.14s，run_id0a1da762aebb4f7c9a88cbeaa009773e，contact obstacle1/B at(6.681,-.3,.1)/82.14s，chain/review exit0。A六份×B两份共12预演格complete/no collision，实际仍碰撞；明确说明自检/预演不能保证真实安全。冻结源cfff不改、不换失败场景，B5继续最后F3_001。赛后5cm XY比较：实际contact格在真值B内，而两份准入B A1/A2均不占据该格；覆盖真值B投影14.318%/14.773%。[实际原件与诊断](../../evidence/suite/actual-collisions/suite_r2_v4_F3_004/diagnostic.json)。离散3D最小0.939055mm/XY0不能抵消原实际contact。首页与F1_020两条一起显著披露，完整反事实和全组结论继续完成。
+
+## 阶段 B 完整收尾
+
+所有12冻结场景完成：原R1锚点复用，11新增场景真实链/复盘均exit0，全部11完整raw tar与≤150MB场景manifest保全。真实源仍cfffaf8，没有看到结果后改src或换名单。`build_suite_summary.py`严格exit0/12完成/0缺失，`check_suite_prefixes.py`修正实际数组名称后exit0/11scene/99新CF实际重新核验全部5数组/原观测时间pose，与原前缀报告完全同；另R1原3CF与完整reuse证据保留。`write_suite_docs.py` exit0，[全组总表](../suite.md)。
+
+决定性8：到达3、安全终止3、碰撞2；普通4：到达3、停车1。真实第二眼5次，1到达、4安全终止、0碰撞。全部拒绝CF含R1为17/102碰撞，44到达/41停车/17碰撞，0不能执行。没有满足“≥2/3到达且无碰撞”，两处actual collision必须首页显著披露；自检确实拒绝过17份会撞的候选，不能因此声称执行普遍安全。普通F0_005提前停车导致较短终态时长，不能解释成速度收益。
+
+新增Lux任务168/360，全终态155ok/13provider failed，known任务未重create；provider失败单列不算自检拒绝或不会撞。云端TLS一次明确未发送槽已恢复，原uncertain证据保留。未到任何日期关口，不收缩12冻结组。首次附加prefix checker误写数组别名失败log保留，源/实际arrays未变；中间R1presentation在suite未整合时自动完整检查失败，D全部数字审计仍须最后通过。
+
+最后两场完整包：
+
+- suite_r2_v4_F3_004: public48931843bytes，9variants；完整外包{'path': '/root/3d/artifacts/beforestep-r2/suite_r2_v4_F3_004-complete.tar.gz', 'bytes': 197926700, 'sha256': '741b2981d44af12ebc19c5c8e5267dd991a6485929882ba8002356bee2208455'}。
+
+- suite_r2_v4_F3_001: public40757962bytes，5variants；完整外包{'path': '/root/3d/artifacts/beforestep-r2/suite_r2_v4_F3_001-complete.tar.gz', 'bytes': 88577967, 'sha256': '2140bb56a567e4921f48abb26cd5bf4c3999b7fe963aeeeff13fbbfafc79edbb'}。
+
+### 11新增真实Lux原summary（运行前预期见B3冻结，结果不删换）
+
+#### suite_r2_v4_F0_001 / f6946bd1d6d0466f9557c20f901c0c8a
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_001",
+  "goal": [
+    10.273944,
+    -0.043551
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.38,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.075,
+    0.397,
+    -0.2
+  ],
+  "sim_time_s": 54.58,
+  "wall_s": 1479.5,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F0_005 / 38c42f1ee8334f15843bc35b1884c5b4
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_005",
+  "goal": [
+    10.305374,
+    0.008717
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 51.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    3.289,
+    0.551,
+    -43.77
+  ],
+  "sim_time_s": 53.0,
+  "wall_s": 835.3,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F1_001 / 788ae2feaad848f399d9c62fd15b3211
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 41.5,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.29,
+    -1.606,
+    -5.15
+  ],
+  "sim_time_s": 42.7,
+  "wall_s": 1205.9,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F1_020 / eaf899ee66a24fee84de39ee19697eaa
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 60.26,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    7.202,
+    -0.94,
+    18.18
+  ],
+  "sim_time_s": 61.46,
+  "wall_s": 937.4,
+  "collision": {
+    "body": "obstacle2",
+    "robot_geom": null,
+    "pos": [
+      7.405,
+      -0.656,
+      0.089
+    ],
+    "t": 61.458
+  }
+}
+```
+
+#### suite_r2_v4_F1_003 / c954016cecb341c3849c9f2005607291
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_003",
+  "goal": [
+    9.095304,
+    -0.071513
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 106.8,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    9.09,
+    -0.078,
+    57.5
+  ],
+  "sim_time_s": 108.0,
+  "wall_s": 1563.6,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F2_003 / a339f8d8b96f45218149680e89e274f5
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_003",
+  "goal": [
+    10.730404,
+    0.01719
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 56.6,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.473,
+    0.604,
+    -38.41
+  ],
+  "sim_time_s": 57.8,
+  "wall_s": 1515.8,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F2_007 / 5108252d2c1d42228c41c846aa27cda0
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_007",
+  "goal": [
+    10.056258,
+    0.005516
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 127.2,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.048,
+    0.006,
+    17.9
+  ],
+  "sim_time_s": 128.4,
+  "wall_s": 860.3,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F2_001 / 7db5cd9f8be34ea09994bc3276772ed1
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_001",
+  "goal": [
+    10.640641,
+    -0.049459
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.5,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.633,
+    -0.051,
+    3.42
+  ],
+  "sim_time_s": 102.7,
+  "wall_s": 1432.0,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F3_002 / 5848aa1e1e6d4a8fab7246e5685ae5dd
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_002",
+  "goal": [
+    11.178607,
+    -0.032265
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 106.4,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    11.17,
+    -0.034,
+    9.63
+  ],
+  "sim_time_s": 107.6,
+  "wall_s": 1288.9,
+  "collision": null
+}
+```
+
+#### suite_r2_v4_F3_004 / 0a1da762aebb4f7c9a88cbeaa009773e
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_004",
+  "goal": [
+    10.771229,
+    0.025802
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 80.94,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.436,
+    -0.549,
+    7.23
+  ],
+  "sim_time_s": 82.14,
+  "wall_s": 1844.6,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.681,
+      -0.3,
+      0.1
+    ],
+    "t": 82.14
+  }
+}
+```
+
+#### suite_r2_v4_F3_001 / 271ddbb2f9704fb0baff24d86d703edb
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_001",
+  "goal": [
+    11.478607,
+    -0.046403
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 111.3,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    11.47,
+    -0.047,
+    5.57
+  ],
+  "sim_time_s": 112.5,
+  "wall_s": 648.0,
+  "collision": null
+}
+```

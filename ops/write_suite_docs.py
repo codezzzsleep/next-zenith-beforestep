@@ -108,6 +108,8 @@ def main():
             detail = json.dumps(failure['detail'], ensure_ascii=False)
             if failure.get('zero_request_rocks'):
                 detail += '；未形成生成请求的岩石：' + '、'.join(failure['zero_request_rocks']) + '。候选自检和预演只覆盖实际形成的候选，不能证明未观测岩石安全。'
+            if failure.get('diagnostic_evidence'):
+                detail += '；' + failure['diagnostic_finding'] + ' [原始比较](../' + failure['diagnostic_evidence'] + ')'
             lines.append(f"| {row['scene']} / {row['family']} | {labels[failure['category']]} | {detail} |")
     lines.extend(['', '这是有限扫描岩石、有限摆放和极区低太阳角下的受控仿真实验，不支持“对任何场景都有效”或“通用”的结论。每个数字均能追溯到原始运行身份、任务与保全清单。', ''])
     (ROOT / args.out).write_text('\n'.join(lines))

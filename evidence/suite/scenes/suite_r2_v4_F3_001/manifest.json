@@ -1,0 +1,1067 @@
+{
+  "schema": "beforestep-suite-scene-preservation/v1",
+  "scene": "suite_r2_v4_F3_001",
+  "runs": {
+    "conservative": {
+      "source": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run",
+      "summary": {
+        "policy": "conservative",
+        "tag": "run",
+        "see_dark": false,
+        "imagine": null,
+        "result": "stopped_short",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_001",
+        "goal": [
+          11.478607,
+          -0.046403
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 110.63,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          9.332,
+          -0.06,
+          98.68
+        ],
+        "sim_time_s": 111.83,
+        "wall_s": 33.6,
+        "collision": null
+      },
+      "run_id": "d8dd703bd52446c698320daac3842fdc"
+    },
+    "see_dark": {
+      "source": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run",
+      "summary": {
+        "policy": "conservative",
+        "tag": "run",
+        "see_dark": true,
+        "imagine": null,
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_001",
+        "goal": [
+          11.478607,
+          -0.046403
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 124.77,
+        "sensor_mode": "live",
+        "looks": 3,
+        "final_pose": [
+          11.471,
+          -0.048,
+          16.31
+        ],
+        "sim_time_s": 125.97,
+        "wall_s": 37.1,
+        "collision": null
+      },
+      "run_id": "2c91be98e4c04909adbc79baf38d97dd"
+    },
+    "optimistic": {
+      "source": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run",
+      "summary": {
+        "policy": "optimistic",
+        "tag": "run",
+        "see_dark": false,
+        "imagine": null,
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_001",
+        "goal": [
+          11.478607,
+          -0.046403
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 110.68,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          11.47,
+          -0.046,
+          5.64
+        ],
+        "sim_time_s": 111.88,
+        "wall_s": 47.0,
+        "collision": null
+      },
+      "run_id": "5dc59df34adc4066922656827f25d630"
+    },
+    "truth": {
+      "source": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run",
+      "summary": {
+        "policy": "imagination",
+        "tag": "run",
+        "see_dark": false,
+        "imagine": "truth",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_001",
+        "goal": [
+          11.478607,
+          -0.046403
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 106.44,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          11.471,
+          -0.047,
+          5.14
+        ],
+        "sim_time_s": 107.64,
+        "wall_s": 73.3,
+        "collision": null
+      },
+      "run_id": "9888ec8f2b8c4316825f8f07b9c86944"
+    },
+    "imagination": {
+      "source": "outputs/suite/real/suite_r2_v4_F3_001/imagination",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_001",
+        "goal": [
+          11.478607,
+          -0.046403
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 111.3,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          11.47,
+          -0.047,
+          5.57
+        ],
+        "sim_time_s": 112.5,
+        "wall_s": 648.0,
+        "collision": null
+      },
+      "run_id": "271ddbb2f9704fb0baff24d86d703edb"
+    }
+  },
+  "files": [
+    {
+      "path": "assets/candidates/6375967/tex_mesh.glb",
+      "sha256": "c2b30820b097ad0fea5cdd46c23249d5d51d2fa1008b855af39fc38d6264ea44",
+      "bytes": 7705584
+    },
+    {
+      "path": "assets/candidates/6375973/tex_mesh.glb",
+      "sha256": "5f849fdf6fafe4dbfc18fb3f8e81476823bea93b37e6a21bebbd8b12a6c82e23",
+      "bytes": 7513700
+    },
+    {
+      "path": "assets/candidates/6376007/tex_mesh.glb",
+      "sha256": "b9fa43c0851c1bf1ffd344312acf46d9926726dd0f05a2ab2921b0a116b1209e",
+      "bytes": 7425016
+    },
+    {
+      "path": "assets/candidates/6376018/tex_mesh.glb",
+      "sha256": "7bc6332ebc90ebf07dd0e9afecfec8fd03dc730d04cf3557954f87aea2edb770",
+      "bytes": 8911892
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/decision/look1_state.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/decision/look2_state.npy",
+      "sha256": "f9e027f1be9b7aa93e35fb27a52f2abfcb6aaea3d374ac418ad72f00b5713a08",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/events.jsonl",
+      "sha256": "5f2497996087925ea23ea4942ac63f2b71da0fd4b954c2c02dda9da889e2f1e6",
+      "bytes": 2495,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/5f2497996087925ea23ea4942ac63f2b71da0fd4b954c2c02dda9da889e2f1e6.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look1_dark.npy",
+      "sha256": "171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look1_depth.npy",
+      "sha256": "2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look1_rgb.png",
+      "sha256": "cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c",
+      "bytes": 1783019,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look1_state.npy",
+      "sha256": "2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look1_zmax.npy",
+      "sha256": "9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look2_dark.npy",
+      "sha256": "d6ddc08bce0a9beb37a17479c05cbda8b4b6621c4c42c945722d5bddfd98a3e4",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/d6ddc08bce0a9beb37a17479c05cbda8b4b6621c4c42c945722d5bddfd98a3e4.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look2_depth.npy",
+      "sha256": "2eac21f3ad32bc1c7de1322dd02440d18fe2a2228b6762a42eea721a4182d251",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2eac21f3ad32bc1c7de1322dd02440d18fe2a2228b6762a42eea721a4182d251.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look2_rgb.png",
+      "sha256": "148c6d91c2a9821077438c4686c9777a6db461365b0f197c238356e0106d8859",
+      "bytes": 1494869,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/148c6d91c2a9821077438c4686c9777a6db461365b0f197c238356e0106d8859.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look2_state.npy",
+      "sha256": "6d5102cde3a0e9a80da7e9bc1c7ac5ab2ff5aff4bd459137bc7c749b4be07b7d",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/6d5102cde3a0e9a80da7e9bc1c7ac5ab2ff5aff4bd459137bc7c749b4be07b7d.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/looks/look2_zmax.npy",
+      "sha256": "3b0ecbc3bfbd1a71146f7549ea65b9143fcb7211e2253e49f11846e0b23481c0",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/3b0ecbc3bfbd1a71146f7549ea65b9143fcb7211e2253e49f11846e0b23481c0.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/map_final.png",
+      "sha256": "4e56ccdd61c8c6eb2bc5b991f02772288e3edc5b4cbd8a56e0c0c0448c01a8e4",
+      "bytes": 3369
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/run_identity.json",
+      "sha256": "c0b6a74e71716996ab2b25787b99be14ed85969a43674259d39058895000d2ff",
+      "bytes": 8339,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/c0b6a74e71716996ab2b25787b99be14ed85969a43674259d39058895000d2ff.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/scene.json",
+      "sha256": "67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20",
+      "bytes": 1226,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/state_final.npy",
+      "sha256": "f9e027f1be9b7aa93e35fb27a52f2abfcb6aaea3d374ac418ad72f00b5713a08",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/summary.json",
+      "sha256": "c6de4459b411af9f2ec72d562ffaccde947d52de956f7ccab9cdda78e61eb297",
+      "bytes": 506,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/c6de4459b411af9f2ec72d562ffaccde947d52de956f7ccab9cdda78e61eb297.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/traj.npz",
+      "sha256": "e4d5795c1260f9cd09838660d426a03e9811ffc21be304588007166f9b4702e9",
+      "bytes": 1736800,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/e4d5795c1260f9cd09838660d426a03e9811ffc21be304588007166f9b4702e9.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/decision/look1_state.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/eval.json",
+      "sha256": "3397d4fa40f9c95dc2f13e9d53a07946bd49ec996a3ce35c1c209403b2e9c837",
+      "bytes": 3060,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/3397d4fa40f9c95dc2f13e9d53a07946bd49ec996a3ce35c1c209403b2e9c837.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/events.jsonl",
+      "sha256": "93608ef955688d7f61478834592f1477a90958991af07695361a0406100e6cc9",
+      "bytes": 1097,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/93608ef955688d7f61478834592f1477a90958991af07695361a0406100e6cc9.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/looks/look1_dark.npy",
+      "sha256": "171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/looks/look1_depth.npy",
+      "sha256": "2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/looks/look1_rgb.png",
+      "sha256": "cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c",
+      "bytes": 1783019,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/looks/look1_state.npy",
+      "sha256": "2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/looks/look1_zmax.npy",
+      "sha256": "9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/map_final.png",
+      "sha256": "253b4ef998a8929d497ed109a24c8782fc13fedfbec307233ba8c611c52dca41",
+      "bytes": 3261
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/run_identity.json",
+      "sha256": "eb5308231796ebabb529f69e0cb712745612765f7c80aa736406436494eb39ac",
+      "bytes": 8335,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/eb5308231796ebabb529f69e0cb712745612765f7c80aa736406436494eb39ac.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/scene.json",
+      "sha256": "67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20",
+      "bytes": 1226,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/state_final.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/summary.json",
+      "sha256": "19d04203132184c6c8974a83035dcf3e593884e72e21bb7f3135035a77b27b5a",
+      "bytes": 498,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/19d04203132184c6c8974a83035dcf3e593884e72e21bb7f3135035a77b27b5a.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/traj.npz",
+      "sha256": "21eeb20406a2646e7efafe3b9d8de70d61d3246d9d91ee416b81cc6feb6c2159",
+      "bytes": 949289,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/21eeb20406a2646e7efafe3b9d8de70d61d3246d9d91ee416b81cc6feb6c2159.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/decision/look1_state.npy",
+      "sha256": "227ba878c6db746b413d4df7a5b8d4504d889e8da35a9f451e23a452426c4bdc",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/decision/look2_state.npy",
+      "sha256": "acdbd7ea9fb4d07a99a0edc734e1151378bf3fd687520174dfb53b48582dae58",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/decision/look3_state.npy",
+      "sha256": "c3f8eee78f0fb856b1fc610a1f8d82cad0d595d8d60033295cf9ada60f2faeb3",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/events.jsonl",
+      "sha256": "870169806b72b9a09f05536cf61e6e933656b5a7f84c1044bffc2be71b8779dc",
+      "bytes": 2793,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/870169806b72b9a09f05536cf61e6e933656b5a7f84c1044bffc2be71b8779dc.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look1_dark.npy",
+      "sha256": "faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look1_depth.npy",
+      "sha256": "2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look1_rgb.png",
+      "sha256": "cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c",
+      "bytes": 1783019,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look1_state.npy",
+      "sha256": "e005526a03fb9862ed237a1d7c9cadef746aaeb7e84164e2b690080de139e850",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/e005526a03fb9862ed237a1d7c9cadef746aaeb7e84164e2b690080de139e850.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look1_zmax.npy",
+      "sha256": "3701a714eff8e80b0dbdf015622639d31c68bde9b68f7744b228d12ddc5cfbab",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/3701a714eff8e80b0dbdf015622639d31c68bde9b68f7744b228d12ddc5cfbab.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look2_dark.npy",
+      "sha256": "faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look2_depth.npy",
+      "sha256": "723a0c65ee1dbb04abc463b0776520d83a35063c93350f2e2fdedbd090c79281",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/723a0c65ee1dbb04abc463b0776520d83a35063c93350f2e2fdedbd090c79281.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look2_rgb.png",
+      "sha256": "cad1ad3ae7cdf9d7fc8e0adea8a28d3cffab3ac733a648f8832dd19bf3a04279",
+      "bytes": 1465527,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/cad1ad3ae7cdf9d7fc8e0adea8a28d3cffab3ac733a648f8832dd19bf3a04279.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look2_state.npy",
+      "sha256": "dca045f3fb061a3caa1fbea71828ef6108146cfd69f12570af1ffee32e925fa0",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/dca045f3fb061a3caa1fbea71828ef6108146cfd69f12570af1ffee32e925fa0.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look2_zmax.npy",
+      "sha256": "a4ba2fd620d2c9d8427f07ec6c6d24e49782e0fa0c1f6c220a4ba2b4809137d6",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/a4ba2fd620d2c9d8427f07ec6c6d24e49782e0fa0c1f6c220a4ba2b4809137d6.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look3_dark.npy",
+      "sha256": "faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/faf3ba89d82cf3cde0094a79bfbfaad14c42cfabaf8655ec7f15f8bc5444f9ae.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look3_depth.npy",
+      "sha256": "fc0eeb83215a7ded60f758a131f013221f35646223b068f6e569841c7c1869f8",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/fc0eeb83215a7ded60f758a131f013221f35646223b068f6e569841c7c1869f8.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look3_rgb.png",
+      "sha256": "5d36bd6666a46fed6c772fa5e96c1a4796d95ffa42e1bd9c04f05788b03fa62f",
+      "bytes": 1533849,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/5d36bd6666a46fed6c772fa5e96c1a4796d95ffa42e1bd9c04f05788b03fa62f.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look3_state.npy",
+      "sha256": "39dfccfbe9a30cbd4902e1f1f48fcdbd4d229b97d66a8b1fee41bc6280f75dda",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/39dfccfbe9a30cbd4902e1f1f48fcdbd4d229b97d66a8b1fee41bc6280f75dda.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/looks/look3_zmax.npy",
+      "sha256": "d898475251401537410abfb984c033f32a51dec60df196f01854b84bcb60d89a",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/d898475251401537410abfb984c033f32a51dec60df196f01854b84bcb60d89a.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/map_final.png",
+      "sha256": "fb59c44b3558736138e83665e4a3103e08ab45c2e943e4f7f5c6393498545683",
+      "bytes": 3050
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/run_identity.json",
+      "sha256": "6daf9cf343da408f20c67b0dcf92780f62804939826c01751f8447e18002c489",
+      "bytes": 8334,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/6daf9cf343da408f20c67b0dcf92780f62804939826c01751f8447e18002c489.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/scene.json",
+      "sha256": "67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20",
+      "bytes": 1226,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/state_final.npy",
+      "sha256": "c3f8eee78f0fb856b1fc610a1f8d82cad0d595d8d60033295cf9ada60f2faeb3",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/summary.json",
+      "sha256": "bf0c84f3ccfc9177ec8b6248dd6bbada3a2aed5c30376e38663dfcfc656a8c26",
+      "bytes": 501,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/bf0c84f3ccfc9177ec8b6248dd6bbada3a2aed5c30376e38663dfcfc656a8c26.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/see_dark/run/traj.npz",
+      "sha256": "dcd9a4cbc5438aa0a5ca89c3a998f0cfbaa5743fb66d5f33cc36d8f103d74c79",
+      "bytes": 1191312,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/dcd9a4cbc5438aa0a5ca89c3a998f0cfbaa5743fb66d5f33cc36d8f103d74c79.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/decision/look1_state.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/events.jsonl",
+      "sha256": "8300767b17e78d3b934ff7e34c60c260a4160741c607bfdcb0147cc1708e6677",
+      "bytes": 2532,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8300767b17e78d3b934ff7e34c60c260a4160741c607bfdcb0147cc1708e6677.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/looks/look1_dark.npy",
+      "sha256": "171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/looks/look1_depth.npy",
+      "sha256": "2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/looks/look1_rgb.png",
+      "sha256": "cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c",
+      "bytes": 1783019,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/looks/look1_state.npy",
+      "sha256": "2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/looks/look1_zmax.npy",
+      "sha256": "9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/map_final.png",
+      "sha256": "b34bb0acc1816b4ba13c5cbcf6c8d785ce612bd951bb1694626dec961e4b5cc7",
+      "bytes": 3507
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/rehearsal/look1/pane0/pane.json",
+      "sha256": "fb4c20fc0fb057de2feea63b2e719e0edeb8a16e1a14a17d6140036dbfead9ba",
+      "bytes": 466,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/fb4c20fc0fb057de2feea63b2e719e0edeb8a16e1a14a17d6140036dbfead9ba.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/rehearsal/look1/pane0/posed_0/manifest.json",
+      "sha256": "aa55951bb1fa916743925f0150a91e09151fab323235ba5b42adebbf8454583e",
+      "bytes": 187
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/rehearsal/look1/pane0/posed_1/manifest.json",
+      "sha256": "0c562f14f236c8e2eef7f0cdc7facd3fe0028fdedcb88552351a4779426a78ce",
+      "bytes": 187
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/rehearsal/look1/pane0/traj.npz",
+      "sha256": "96595df46d7684f10b8afcd3ed6271a7207543b67cd83fad061414a6254cee49",
+      "bytes": 779190,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/96595df46d7684f10b8afcd3ed6271a7207543b67cd83fad061414a6254cee49.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/run_identity.json",
+      "sha256": "d1366c4634ee707a88c6c13557c1d3fab97d5309647e92f74aa39062fec8a65e",
+      "bytes": 8333,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/d1366c4634ee707a88c6c13557c1d3fab97d5309647e92f74aa39062fec8a65e.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/scene.json",
+      "sha256": "67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20",
+      "bytes": 1226,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/state_final.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/summary.json",
+      "sha256": "ccfae06c2207dc30929929421cd2e25f70475672f31ac4ad31c48d61ced79849",
+      "bytes": 503,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/ccfae06c2207dc30929929421cd2e25f70475672f31ac4ad31c48d61ced79849.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/traj.npz",
+      "sha256": "6ea4a6372ec71cd958a67baa51bc33d9a60ab7e8fc6e5b09e313d9c26695a9f0",
+      "bytes": 913491,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/6ea4a6372ec71cd958a67baa51bc33d9a60ab7e8fc6e5b09e313d9c26695a9f0.gz"
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/truth_standin/A.obj",
+      "sha256": "d50b77f0160f002fe0144e294293e201a46a0b282caf61c6e41230aaf8a98fd9",
+      "bytes": 777639
+    },
+    {
+      "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/truth/run/truth_standin/B.obj",
+      "sha256": "d1f2766f1657025a48ec265436820440ec7a3902b826db9be3a7eccce5e09a4b",
+      "bytes": 165129
+    },
+    {
+      "path": "outputs/suite/counterfactuals/suite_r2_v4_F3_001/counterfactuals.json",
+      "sha256": "a66b359f7a7b6ceb56b6a11584486e6fa0171deed9588b80dda118618889295e",
+      "bytes": 412,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/a66b359f7a7b6ceb56b6a11584486e6fa0171deed9588b80dda118618889295e.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/attempt001.log",
+      "sha256": "9f842b4bbf6536313cf6fd548646dfd1a397f97607ef7b7884147f3d45036851",
+      "bytes": 830
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/attempt002.log",
+      "sha256": "7d6870de1ea5726902ade468324dd512e16a6794d8e0417389a49c78e0c6af5e",
+      "bytes": 3545
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/chain.json",
+      "sha256": "99e3708181fcc9643ad1d36799c305da4408704c19b3249624145157e33703e8",
+      "bytes": 7650,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/99e3708181fcc9643ad1d36799c305da4408704c19b3249624145157e33703e8.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/NEED_LUX3D.json",
+      "sha256": "11758ee01910d72abfaae74670d97a238d32995f3a29f987e68d7c3f40ce37d2",
+      "bytes": 124
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/decision/look1_state.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/eval.json",
+      "sha256": "c0714f45f811165ab352b6ba5b1a493c78b25361800b7e79e7ab64b2db6431fb",
+      "bytes": 5522,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/c0714f45f811165ab352b6ba5b1a493c78b25361800b7e79e7ab64b2db6431fb.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/events.jsonl",
+      "sha256": "7d6870de1ea5726902ade468324dd512e16a6794d8e0417389a49c78e0c6af5e",
+      "bytes": 3545,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/7d6870de1ea5726902ade468324dd512e16a6794d8e0417389a49c78e0c6af5e.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/camera_world.json",
+      "sha256": "64493f15ff23941e7e9ca8dcce0b757bac72b21c6b2b18b7bbb38bffdcd03b01",
+      "bytes": 1762,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/64493f15ff23941e7e9ca8dcce0b757bac72b21c6b2b18b7bbb38bffdcd03b01.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/cells.npy",
+      "sha256": "68a036f9609c036d3e5df6cf88a4dd7497f61fc38603b67e0000ec27d9dbb8bd",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/68a036f9609c036d3e5df6cf88a4dd7497f61fc38603b67e0000ec27d9dbb8bd.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/dark.png",
+      "sha256": "faef2676a2aa6281d2213f28074d4d4343530c1b56a6c6b5cb6d93cff045a521",
+      "bytes": 11960
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_A1.npy",
+      "sha256": "36ec9da1a22aac47bc00e108bd0816ccc4073973e1fe1f6d18381333705f9a81",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/36ec9da1a22aac47bc00e108bd0816ccc4073973e1fe1f6d18381333705f9a81.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_A2.npy",
+      "sha256": "5bc91af411a64c61ee6210a48bae61a956b06ae5c2f70b6559d53bbf2ace02f8",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/5bc91af411a64c61ee6210a48bae61a956b06ae5c2f70b6559d53bbf2ace02f8.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_C1.npy",
+      "sha256": "d770ef658159c9241d6825427465253f9068772c1e680f6f36c520a06e4a1a4d",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/d770ef658159c9241d6825427465253f9068772c1e680f6f36c520a06e4a1a4d.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_C2.npy",
+      "sha256": "210c0352862b2f3aeb7631a6554adedd67e34ada62e6f9167e7b2a90fa34d7ff",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/210c0352862b2f3aeb7631a6554adedd67e34ada62e6f9167e7b2a90fa34d7ff.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/footprint_union.npy",
+      "sha256": "fdc2ed14a046b03350d51bc29f6d8ed9358ffe1974611a67861aa03a80aa7b88",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/fdc2ed14a046b03350d51bc29f6d8ed9358ffe1974611a67861aa03a80aa7b88.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/material.mtl",
+      "sha256": "ca4deadbb314a7d180f552345fc0411e5becebcbb61fac04171a2f364eb9f396",
+      "bytes": 198
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/material_0.png",
+      "sha256": "73f8909b70db297a15e575095811573d8c17e805622b8ebdcfbe28387f79fba1",
+      "bytes": 5180491
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/reg/A1/align.json",
+      "sha256": "c5dd0fe19c85859be9a246e307ed13b078f0d997927000eccadf05a7b5ab19e7",
+      "bytes": 19088,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/c5dd0fe19c85859be9a246e307ed13b078f0d997927000eccadf05a7b5ab19e7.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/reg/A2/align.json",
+      "sha256": "665232abc6bcd9ae649d556602f3f151f0cee8766fe7b0c082ef6fa4dafd1ae1",
+      "bytes": 19014,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/665232abc6bcd9ae649d556602f3f151f0cee8766fe7b0c082ef6fa4dafd1ae1.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/reg/C1/align.json",
+      "sha256": "19556cd110a67b869c52c6c68e57df0c33721da69e4d768206aef8d7cc51316e",
+      "bytes": 19017,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/19556cd110a67b869c52c6c68e57df0c33721da69e4d768206aef8d7cc51316e.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/reg/C2/align.json",
+      "sha256": "1ef5e694e9753a3945974e4703fb7854701957b9892f76d859705cf048a691c3",
+      "bytes": 19069,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/1ef5e694e9753a3945974e4703fb7854701957b9892f76d859705cf048a691c3.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/target_decision.json",
+      "sha256": "1328f51d57d14045bc96823be04ca1bf210651ca8a82e00e7d2737625987fbe8",
+      "bytes": 7181,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/1328f51d57d14045bc96823be04ca1bf210651ca8a82e00e7d2737625987fbe8.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/world_A1.obj",
+      "sha256": "02fd2e490100689bd6853838308df4f1e4b1fbc5e8c51b8fbdcca0a158c1adb3",
+      "bytes": 1917908,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/02fd2e490100689bd6853838308df4f1e4b1fbc5e8c51b8fbdcca0a158c1adb3.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/world_A2.obj",
+      "sha256": "ebab85be3b7e61ff01246c1cd86097048afed288b43ff978d07f5303e2e8be55",
+      "bytes": 1835040,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/ebab85be3b7e61ff01246c1cd86097048afed288b43ff978d07f5303e2e8be55.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/world_C1.obj",
+      "sha256": "9b670c7a83275f3295e33f0a74e42eb23fe9d092eb1f046d343f4a777643216d",
+      "bytes": 1811065,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/9b670c7a83275f3295e33f0a74e42eb23fe9d092eb1f046d343f4a777643216d.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/decide/world_C2.obj",
+      "sha256": "d1ec46b913f16a32b4c16c1c8ce5779edb5b99c591d15f4e82d868284d11ab07",
+      "bytes": 1911747,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/d1ec46b913f16a32b4c16c1c8ce5779edb5b99c591d15f4e82d868284d11ab07.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/depth.npy",
+      "sha256": "43b10e1a29d376d61e6a041efad6d19b42d8b786cd2a9c205dcfd81adddeb173",
+      "bytes": 7680128
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/A1.png",
+      "sha256": "90931b632ecf01ccf3192711eab4312d92f9885b18ffc7aa314051cafead1f66",
+      "bytes": 2104179,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/90931b632ecf01ccf3192711eab4312d92f9885b18ffc7aa314051cafead1f66.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/A1_upload.jpg",
+      "sha256": "f7bcdc5aeba6929de87ac531bd05c2d89b0163bfdecb31cda49ac5dc54bab27f",
+      "bytes": 502172,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/f7bcdc5aeba6929de87ac531bd05c2d89b0163bfdecb31cda49ac5dc54bab27f.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/A2.png",
+      "sha256": "90931b632ecf01ccf3192711eab4312d92f9885b18ffc7aa314051cafead1f66",
+      "bytes": 2104179,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/90931b632ecf01ccf3192711eab4312d92f9885b18ffc7aa314051cafead1f66.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/A2_upload.jpg",
+      "sha256": "f7bcdc5aeba6929de87ac531bd05c2d89b0163bfdecb31cda49ac5dc54bab27f",
+      "bytes": 502172,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/f7bcdc5aeba6929de87ac531bd05c2d89b0163bfdecb31cda49ac5dc54bab27f.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/B1.png",
+      "sha256": "b518a5b21b2a760b75b4319c3e8b3fa9297a80a00b46e6df1b3b1f4236262b8c",
+      "bytes": 818222,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/b518a5b21b2a760b75b4319c3e8b3fa9297a80a00b46e6df1b3b1f4236262b8c.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/B2.png",
+      "sha256": "b518a5b21b2a760b75b4319c3e8b3fa9297a80a00b46e6df1b3b1f4236262b8c",
+      "bytes": 818222,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/b518a5b21b2a760b75b4319c3e8b3fa9297a80a00b46e6df1b3b1f4236262b8c.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/C1.png",
+      "sha256": "8400274b0cbb91e3ac529e51b5875ff4824af0a5493e91bac96c2c4416ca1b3d",
+      "bytes": 2179595,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8400274b0cbb91e3ac529e51b5875ff4824af0a5493e91bac96c2c4416ca1b3d.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/C1_upload.jpg",
+      "sha256": "06964aba02852e8136016173d6d6da4eb14b6b0d9134f9c562a93febabeb9262",
+      "bytes": 498544,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/06964aba02852e8136016173d6d6da4eb14b6b0d9134f9c562a93febabeb9262.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/C2.png",
+      "sha256": "8400274b0cbb91e3ac529e51b5875ff4824af0a5493e91bac96c2c4416ca1b3d",
+      "bytes": 2179595,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8400274b0cbb91e3ac529e51b5875ff4824af0a5493e91bac96c2c4416ca1b3d.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/C2_upload.jpg",
+      "sha256": "06964aba02852e8136016173d6d6da4eb14b6b0d9134f9c562a93febabeb9262",
+      "bytes": 498544,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/06964aba02852e8136016173d6d6da4eb14b6b0d9134f9c562a93febabeb9262.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/gen/variants/variants.json",
+      "sha256": "51fb2c587929463c57dd152c30be119237ed3f9ab6416128a66a63f2d6fcd58a",
+      "bytes": 2366,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/51fb2c587929463c57dd152c30be119237ed3f9ab6416128a66a63f2d6fcd58a.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/lux_request.json",
+      "sha256": "e4a45b3791c7393a971713037c1ac2996d8ef99adc4637bda21a5871106546d2",
+      "bytes": 4048,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/e4a45b3791c7393a971713037c1ac2996d8ef99adc4637bda21a5871106546d2.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/lux_result.json",
+      "sha256": "f98fcc1f563634562d41e64be9c2487def8d11c7139d09964785637283f89e3a",
+      "bytes": 4000,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/f98fcc1f563634562d41e64be9c2487def8d11c7139d09964785637283f89e3a.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/mask.png",
+      "sha256": "df2a7e832002176344aeec010ed06a9f4fe3ef0b562c3a49d87b54105efe58bb",
+      "bytes": 5482
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/observation.json",
+      "sha256": "556b400756ddf0e3bb8768da799babc826cd396e7a97fde509d3830fee942593",
+      "bytes": 2596,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/556b400756ddf0e3bb8768da799babc826cd396e7a97fde509d3830fee942593.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/rgb.png",
+      "sha256": "cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c",
+      "bytes": 1783019
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/rgb_gen.png",
+      "sha256": "88f7f05716a6b396ce942e7f407af7bc7147fd441144cd81b2874db688b717a8",
+      "bytes": 8773512
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/state.json",
+      "sha256": "308ea66b2381d89de5554be13d19416233da2e3785ff46812513772ff792065a",
+      "bytes": 3842,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/308ea66b2381d89de5554be13d19416233da2e3785ff46812513772ff792065a.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1/T1/visible_points.npy",
+      "sha256": "fbfc690e34e3cfa5020ad7e23d8af946c9853674bdb75ec2381826c2bf725308",
+      "bytes": 3304928,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/fbfc690e34e3cfa5020ad7e23d8af946c9853674bdb75ec2381826c2bf725308.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1_dark.npy",
+      "sha256": "171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8",
+      "bytes": 1920128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/171add0241f25c14d96b560f328c788212942d6cb39d6411411bc8f3e5d2d1c8.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1_depth.npy",
+      "sha256": "2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38",
+      "bytes": 7680128,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2b8b68b7847dd6c4221a0d34f71e437d34d6c273a0f5e31dfc17d0bc7c0c1b38.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1_rgb.png",
+      "sha256": "cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c",
+      "bytes": 1783019,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/cdc72aebf00f09e414a3e6bbd90f4bed21ad76bfb6c82d2e249227597e45bb8c.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1_state.npy",
+      "sha256": "2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790",
+      "bytes": 25328,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/2856e8a194ff0c2b1b34ea158db605d71c8d64380a5dddde01e189aa046f1790.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/looks/look1_zmax.npy",
+      "sha256": "9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162",
+      "bytes": 201728,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/9532297e8b17e783aa25eb6f3d92ebc131af70ac9256b3f06ec37c07144cd162.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/map_final.png",
+      "sha256": "ce0584e86665ce2fdbfbecd13bd4db97c431212c293ac4ade5eb2cac25bb4e2d",
+      "bytes": 3428
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/partial_traj.npz",
+      "sha256": "52378cad60fc488e0c913c1fdd775ed420bd3a9d36281128cced592e3b8c1703",
+      "bytes": 129081
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/physical_clearance.json",
+      "sha256": "f1e7d8f87a795bc24bcc4a5c9bce8bd75c8ecb14707f7c0f281ed30c7bf1fc37",
+      "bytes": 2996,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/f1e7d8f87a795bc24bcc4a5c9bce8bd75c8ecb14707f7c0f281ed30c7bf1fc37.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane0/pane.json",
+      "sha256": "83684d075b4a68dcf5923dae3b20e918463527a75d6ac02ea8b62869fe9ce980",
+      "bytes": 364,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/83684d075b4a68dcf5923dae3b20e918463527a75d6ac02ea8b62869fe9ce980.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane0/posed_0/manifest.json",
+      "sha256": "4cc24dfdc6a14d85ba5c5695258055d32ca8275376b60f172f3cf2cb3c983730",
+      "bytes": 185
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane0/traj.npz",
+      "sha256": "8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7",
+      "bytes": 820879,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane1/pane.json",
+      "sha256": "d2bc60fd01b3eceaa53c71c79a2a1385151d9c6639f3dc738edd5d45040f8f52",
+      "bytes": 364,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/d2bc60fd01b3eceaa53c71c79a2a1385151d9c6639f3dc738edd5d45040f8f52.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane1/posed_0/manifest.json",
+      "sha256": "99f298c716b2e671127a021a85886e421c9822d2aae30caa339e11ad66f71ffa",
+      "bytes": 185
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane1/traj.npz",
+      "sha256": "8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7",
+      "bytes": 820879,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane2/pane.json",
+      "sha256": "7bf44d59e09a18a5894ac0d329e12a78b4fb28fcbe957f960cbeb354732ca836",
+      "bytes": 364,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/7bf44d59e09a18a5894ac0d329e12a78b4fb28fcbe957f960cbeb354732ca836.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane2/posed_0/manifest.json",
+      "sha256": "62eb53662966966d9fc91fa4c275ec427b79a5b61f18ff7b014a2d8291834a85",
+      "bytes": 185
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane2/traj.npz",
+      "sha256": "8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7",
+      "bytes": 820879,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane3/pane.json",
+      "sha256": "c207b992c3f31145722922611262d315dbe54b9a176a4330973af9e6a1923d96",
+      "bytes": 364,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/c207b992c3f31145722922611262d315dbe54b9a176a4330973af9e6a1923d96.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane3/posed_0/manifest.json",
+      "sha256": "ca374ce17a53186496d2678e83e76419b673de8256eec904bab6a22715f03513",
+      "bytes": 185
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/rehearsal/look1/pane3/traj.npz",
+      "sha256": "8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7",
+      "bytes": 820879,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/8d37b87b194a63c26dbc3ae3cf0d70c2b817eeea90566083cd21072f9d2beae7.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/run_identity.json",
+      "sha256": "3a63ff7f6ba925d5a46bd5408c29472d4ae7b6023984fe39c7bbee4222e59d61",
+      "bytes": 8305,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/3a63ff7f6ba925d5a46bd5408c29472d4ae7b6023984fe39c7bbee4222e59d61.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/scene.json",
+      "sha256": "67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20",
+      "bytes": 1226,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/67c6c2cb28e0fc9049948555769425e41be6f5cd118999c81c7516357cfc3b20.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/state_final.npy",
+      "sha256": "785b7403519e05033795cdd667bc698bf2f44ce21b2640481cabc7720fe1a0af",
+      "bytes": 25328
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/summary.json",
+      "sha256": "6a81f892d2830f9ea85b7f1e7b6591b719eea479462e58624b24d69276ca4f7d",
+      "bytes": 507,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/6a81f892d2830f9ea85b7f1e7b6591b719eea479462e58624b24d69276ca4f7d.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/traj.npz",
+      "sha256": "b0a44d394f746ee5798a02dda9e18da1e3a4cec582be35233571c86f2fb5d670",
+      "bytes": 954965,
+      "public_object": "evidence/suite/scenes/suite_r2_v4_F3_001/objects/b0a44d394f746ee5798a02dda9e18da1e3a4cec582be35233571c86f2fb5d670.gz"
+    },
+    {
+      "path": "outputs/suite/real/suite_r2_v4_F3_001/scene/scene/height.npy",
+      "sha256": "910a3cb2b39c887197d62e67bc3ac20bc5c5607c51e61ee2f0b740a46068e35b",
+      "bytes": 528520
+    },
+    {
+      "path": "outputs/suite/reviews/suite_r2_v4_F3_001/review.json",
+      "sha256": "8c0fd04ecc9dfe6be232019c94f3721dc86bfeaff84ff2f27a8a891277e59785",
+      "bytes": 2833
+    },
+    {
+      "path": "outputs/suite/reviews/suite_r2_v4_F3_001/world/scene/height.npy",
+      "sha256": "910a3cb2b39c887197d62e67bc3ac20bc5c5607c51e61ee2f0b740a46068e35b",
+      "bytes": 528520
+    }
+  ],
+  "public_bytes": 40757962,
+  "supplementary_run_trees": [
+    "outputs/suite/real/suite_r2_v4_F3_001",
+    "outputs/suite/reviews/suite_r2_v4_F3_001",
+    "outputs/suite/counterfactuals/suite_r2_v4_F3_001"
+  ],
+  "complete_archive": {
+    "path": "/root/3d/artifacts/beforestep-r2/suite_r2_v4_F3_001-complete.tar.gz",
+    "bytes": 88577967,
+    "sha256": "2140bb56a567e4921f48abb26cd5bf4c3999b7fe963aeeeff13fbbfafc79edbb"
+  },
+  "scope": "Exact raw run artifacts and original generated GLBs in the external archive; bounded public evidence objects retain exact original byte identities. No credentials or upload ledgers."
+}

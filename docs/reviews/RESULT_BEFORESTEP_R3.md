@@ -3632,3 +3632,5 @@ F0_002完整保全与核验实际完成：7230files、完整tar432468208bytes、
   "collision": null
 }
 ```
+
+F0_002 publicscene已5735eeb push；368新增LFS96981747bytes已从origin独立storage实际下载，全部Git pointer SHA/size通过。[远端核验](../../evidence/reviews/beforestep_r3/final-verification/F0-002-publication-audit.json)。完整F0实验/新CF/XY/3D/原GLB/失败与输入清单均完成保全，后续监督复用；当前F2真实链继续，不以此阶段结束R3。

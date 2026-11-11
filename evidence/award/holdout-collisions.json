@@ -1,0 +1,367 @@
+{
+  "schema": "beforestep-award-heldout-collision-explanations/v1",
+  "scope": "Original imagination in designated holdouts; post-run truth diagnostics only, no production input and no rerun.",
+  "source_summary": "evidence/reviews/beforestep_r3/summary.json",
+  "source_summary_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+  "back_error_definition": "5cm footprint farthest minus associated true-union farthest along the recorded observation forward axis; same definition as the original back-error diagnostic.",
+  "rows": [
+    {
+      "scene": "suite_r2_v4_F0_003",
+      "run_id": "f5e10f0ac58349b78e620ab843c16f84",
+      "trajectory_sha256": "0aafc5a68b5e3d5698331250a36040acada8325d9b59e56dbd1a341315c77a35",
+      "contact": {
+        "body": "obstacle1",
+        "robot_geom": null,
+        "pos": [
+          7.093,
+          -0.258,
+          0.113
+        ],
+        "t": 93.696
+      },
+      "contact_rock": "B",
+      "sim_time_s": 93.7,
+      "all_rehearsals_passed": true,
+      "completed_rehearsals": 18,
+      "planned_envelope_intrusion_proxy_m": 0.17843487917553086,
+      "contact_rock_candidates": [
+        {
+          "target": "T2",
+          "sample": "B1",
+          "task_id": 6531800,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8851,
+          "back_error_m": -0.3999138511360245,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "d0ee69638102aa52f2f4f6ef4d9c511af79d9a0c6ff83e6d7c33b8575d929260",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/footprint_B1.npy",
+          "footprint_sha256": "48758a6d232e1aa38b4711eaa0b1bb901e33f6b4f046e63c2364915db2851f7c"
+        },
+        {
+          "target": "T2",
+          "sample": "B2",
+          "task_id": 6531807,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8883,
+          "back_error_m": -0.3999425454676233,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "d0ee69638102aa52f2f4f6ef4d9c511af79d9a0c6ff83e6d7c33b8575d929260",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/footprint_B2.npy",
+          "footprint_sha256": "b41f69ea209f2a58e8ddc4720798b1f1264bc8645fc67d5904471d698851751d"
+        },
+        {
+          "target": "T2",
+          "sample": "C1",
+          "task_id": 6531837,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.7222,
+          "back_error_m": -0.7997990079404529,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "d0ee69638102aa52f2f4f6ef4d9c511af79d9a0c6ff83e6d7c33b8575d929260",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/footprint_C1.npy",
+          "footprint_sha256": "f6653a0f9811d5201a2b489ac5a5d608c7a11a58076494b43bb69ca40b9c9144"
+        }
+      ],
+      "all_admitted_candidates": [
+        {
+          "target": "T1",
+          "sample": "A1",
+          "task_id": 6530780,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8135,
+          "back_error_m": 0.050373018077133125,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "8e22957224c42cf520fbdbba7f83a7230b740a6ff9d8aa790b1978d3223a1437",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/footprint_A1.npy",
+          "footprint_sha256": "d0fc3282927f0e63410602dfd9b5a1913b444cdae0d3fa85b41a665e7da8769f"
+        },
+        {
+          "target": "T1",
+          "sample": "A2",
+          "task_id": 6530790,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8227,
+          "back_error_m": 0.050373018077133125,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "8e22957224c42cf520fbdbba7f83a7230b740a6ff9d8aa790b1978d3223a1437",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/footprint_A2.npy",
+          "footprint_sha256": "4f24c2ccd86d9e7d6134c91d495723ab9b9a145042769ba5c7b822cd95a5c0c4"
+        },
+        {
+          "target": "T1",
+          "sample": "B1",
+          "task_id": 6530819,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.745,
+          "back_error_m": 0.35020080268565756,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "8e22957224c42cf520fbdbba7f83a7230b740a6ff9d8aa790b1978d3223a1437",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/footprint_B1.npy",
+          "footprint_sha256": "35a2572abcf89c3fc421fc559154e3c4bd43199ae1e1c7bc77f1d800f1162ba3"
+        },
+        {
+          "target": "T1",
+          "sample": "B2",
+          "task_id": 6530826,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.7489,
+          "back_error_m": 0.35020080268565756,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "8e22957224c42cf520fbdbba7f83a7230b740a6ff9d8aa790b1978d3223a1437",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/footprint_B2.npy",
+          "footprint_sha256": "bdd25d24df9455b99ea1668359f8ad50d367ba4031767e743f67368f2ca594a9"
+        },
+        {
+          "target": "T1",
+          "sample": "C1",
+          "task_id": 6530870,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8261,
+          "back_error_m": 0.3505451346648396,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "8e22957224c42cf520fbdbba7f83a7230b740a6ff9d8aa790b1978d3223a1437",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/footprint_C1.npy",
+          "footprint_sha256": "0898b0b577f4d5b3b8d286591d1d00e74dc8c8a2bfdcdaf8462566d47bb8f855"
+        },
+        {
+          "target": "T1",
+          "sample": "C2",
+          "task_id": 6531134,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8252,
+          "back_error_m": 0.3505451346648396,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "8e22957224c42cf520fbdbba7f83a7230b740a6ff9d8aa790b1978d3223a1437",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T1/decide/footprint_C2.npy",
+          "footprint_sha256": "7eb0006db350f0d19e5d53dd436405db18b531a9d3985b1d2efcc01aea50dc4d"
+        },
+        {
+          "target": "T2",
+          "sample": "B1",
+          "task_id": 6531800,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8851,
+          "back_error_m": -0.3999138511360245,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "d0ee69638102aa52f2f4f6ef4d9c511af79d9a0c6ff83e6d7c33b8575d929260",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/footprint_B1.npy",
+          "footprint_sha256": "48758a6d232e1aa38b4711eaa0b1bb901e33f6b4f046e63c2364915db2851f7c"
+        },
+        {
+          "target": "T2",
+          "sample": "B2",
+          "task_id": 6531807,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8883,
+          "back_error_m": -0.3999425454676233,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "d0ee69638102aa52f2f4f6ef4d9c511af79d9a0c6ff83e6d7c33b8575d929260",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/footprint_B2.npy",
+          "footprint_sha256": "b41f69ea209f2a58e8ddc4720798b1f1264bc8645fc67d5904471d698851751d"
+        },
+        {
+          "target": "T2",
+          "sample": "C1",
+          "task_id": 6531837,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.7222,
+          "back_error_m": -0.7997990079404529,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "d0ee69638102aa52f2f4f6ef4d9c511af79d9a0c6ff83e6d7c33b8575d929260",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/looks/look1/T2/decide/footprint_C1.npy",
+          "footprint_sha256": "f6653a0f9811d5201a2b489ac5a5d608c7a11a58076494b43bb69ca40b9c9144"
+        }
+      ],
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_003/manifest.json"
+    },
+    {
+      "scene": "suite_r2_v4_F3_006",
+      "run_id": "552f4a5380b74506be13e041a394897f",
+      "trajectory_sha256": "e9e6b6dcdf9bbcbd63de459838baf3025e18edaf6df7a948778cd11cbc39366d",
+      "contact": {
+        "body": "obstacle1",
+        "robot_geom": null,
+        "pos": [
+          7.125,
+          -0.362,
+          0.135
+        ],
+        "t": 83.28
+      },
+      "contact_rock": "B",
+      "sim_time_s": 83.28,
+      "all_rehearsals_passed": true,
+      "completed_rehearsals": 12,
+      "planned_envelope_intrusion_proxy_m": 0.12694207414826353,
+      "contact_rock_candidates": [
+        {
+          "target": "T2",
+          "sample": "A1",
+          "task_id": 6545127,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8441,
+          "back_error_m": -0.8502062351769979,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "ca7bcb34d26464e0a7cec444e5f631f8a8bc25e9c901777bf25e87e112a14b55",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/footprint_A1.npy",
+          "footprint_sha256": "b7549eb15592de0c5e9b73cb508384382dc0241d46fcd2d4bc238ccb2497a68b"
+        },
+        {
+          "target": "T2",
+          "sample": "A2",
+          "task_id": 6545135,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8257,
+          "back_error_m": -0.8502062351769979,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "ca7bcb34d26464e0a7cec444e5f631f8a8bc25e9c901777bf25e87e112a14b55",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/footprint_A2.npy",
+          "footprint_sha256": "7d9cdc2d11fa64514938399017d7e5374e04eae6470ed944bb10aad22ac85fd4"
+        }
+      ],
+      "all_admitted_candidates": [
+        {
+          "target": "T1",
+          "sample": "A1",
+          "task_id": 6544318,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8197,
+          "back_error_m": 0.049759145673129446,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "c480763455e00f58d91c0bd68365d42eeb5301c8ae12dbcd3f97ab1ccdec68a0",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/footprint_A1.npy",
+          "footprint_sha256": "18435e0a7489d6e1c3d32d7a84c2a75e1e8e2de2251ac2bf963aadf21a856ccf"
+        },
+        {
+          "target": "T1",
+          "sample": "A2",
+          "task_id": 6544325,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8278,
+          "back_error_m": 0.049759145673129446,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "c480763455e00f58d91c0bd68365d42eeb5301c8ae12dbcd3f97ab1ccdec68a0",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/footprint_A2.npy",
+          "footprint_sha256": "a381829adabb23543e224ff99148f5175181c3384bacef9a42625e9c80f7b0f3"
+        },
+        {
+          "target": "T1",
+          "sample": "B1",
+          "task_id": 6544375,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8031,
+          "back_error_m": 0.34969026250672197,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "c480763455e00f58d91c0bd68365d42eeb5301c8ae12dbcd3f97ab1ccdec68a0",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/footprint_B1.npy",
+          "footprint_sha256": "7c699516b8680b6b1a885f058dde8091b708db85ee85f74d6f399f2d04d6d47a"
+        },
+        {
+          "target": "T1",
+          "sample": "B2",
+          "task_id": 6544377,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8051,
+          "back_error_m": 0.34969026250672197,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "c480763455e00f58d91c0bd68365d42eeb5301c8ae12dbcd3f97ab1ccdec68a0",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/footprint_B2.npy",
+          "footprint_sha256": "76d91c8ded641ab53776535c6e182167fd0a7e05e2df02e6e0bc3fd86459459f"
+        },
+        {
+          "target": "T1",
+          "sample": "C1",
+          "task_id": 6544396,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8159,
+          "back_error_m": 0.14969030985783327,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "c480763455e00f58d91c0bd68365d42eeb5301c8ae12dbcd3f97ab1ccdec68a0",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/footprint_C1.npy",
+          "footprint_sha256": "9ff2e3d2d667ba11e113beb721eaf7810139f54e7a0c24d52868acf8305f21f2"
+        },
+        {
+          "target": "T1",
+          "sample": "C2",
+          "task_id": 6544648,
+          "associated_true_rocks": [
+            "A"
+          ],
+          "contour_iou": 0.8286,
+          "back_error_m": 0.14969030985783327,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/target_decision.json",
+          "decision_sha256": "c480763455e00f58d91c0bd68365d42eeb5301c8ae12dbcd3f97ab1ccdec68a0",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T1/decide/footprint_C2.npy",
+          "footprint_sha256": "d249e556572ac09e2f8280d9d19b4541c21158de34dc45bd969c6db00ac747b7"
+        },
+        {
+          "target": "T2",
+          "sample": "A1",
+          "task_id": 6545127,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8441,
+          "back_error_m": -0.8502062351769979,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "ca7bcb34d26464e0a7cec444e5f631f8a8bc25e9c901777bf25e87e112a14b55",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/footprint_A1.npy",
+          "footprint_sha256": "b7549eb15592de0c5e9b73cb508384382dc0241d46fcd2d4bc238ccb2497a68b"
+        },
+        {
+          "target": "T2",
+          "sample": "A2",
+          "task_id": 6545135,
+          "associated_true_rocks": [
+            "B"
+          ],
+          "contour_iou": 0.8257,
+          "back_error_m": -0.8502062351769979,
+          "decision": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/target_decision.json",
+          "decision_sha256": "ca7bcb34d26464e0a7cec444e5f631f8a8bc25e9c901777bf25e87e112a14b55",
+          "footprint": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/looks/look1/T2/decide/footprint_A2.npy",
+          "footprint_sha256": "7d9cdc2d11fa64514938399017d7e5374e04eae6470ed944bb10aad22ac85fd4"
+        }
+      ],
+      "public_manifest": "evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F3_006/manifest.json"
+    }
+  ]
+}

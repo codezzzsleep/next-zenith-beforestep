@@ -40,6 +40,18 @@ def main():
             text = path.read_text()
             target.write_text(text.replace('assets/', 'home-assets/'))
             assert target.read_text().replace('home-assets/', 'assets/') == text
+        elif relative.endswith('.json'):
+            text = path.read_text()
+            bound = text
+            for asset in originals:
+                if asset.startswith('assets/'):
+                    bound = bound.replace(json.dumps(asset), json.dumps('home-assets/' + asset.removeprefix('assets/')))
+            target.write_text(bound)
+            restored = bound
+            for asset in originals:
+                if asset.startswith('assets/'):
+                    restored = restored.replace(json.dumps('home-assets/' + asset.removeprefix('assets/')), json.dumps(asset))
+            assert restored == text
         else:
             shutil.copy2(path, target)
             assert sha(target) == digest

@@ -37,6 +37,17 @@ def related_work_block(summary):
     return '\n'.join(lines).strip()
 
 
+def repository_summary_block(summary):
+    d, o, cf = summary['decisive'], summary['ordinary'], summary['counterfactuals']
+    lines = ['## 预注册场景组实测', '',
+        f"冻结 {summary['frozen_scene_count']} 个场景，完整完成 {summary['completed_scene_count']} 个。决定性场景：到达 {d['arrived']}、安全终止 {d['safe_stop']}、碰撞 {d['collisions']}；普通场景：到达 {o['arrived']}/{o['completed']}。",
+        f"全部拒绝候选反事实碰撞 {cf['collisions']}/{cf['executed']}，另 {cf['unexecutable']} 份不能执行。真实第二眼 {len(summary['second_eye_scenes'])} 场。", '']
+    if summary['imagination_collision_scenes']:
+        lines.append('**想象策略实际发生碰撞：' + '、'.join(summary['imagination_collision_scenes']) + '。候选自检和预演通过不能代替独立执行的安全结果。**')
+    lines.extend(['', '[五种策略完整总表与逐类边界](docs/suite.md) · [冻结名单](config/suite/frozen.json) · [原始汇总](evidence/suite/summary.json) · [运行与保全记录](docs/reviews/RESULT_BEFORESTEP_R2.md)。网页关卡回放已完成物理实验；沙盒是轻量几何规划，完整物理验证与实时云端生成在本地运行。', ''])
+    return '\n'.join(lines).strip()
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--sandbox', action='store_true', help='Include only after full browser and consistency checks')
@@ -45,6 +56,9 @@ def main():
     levels = json.loads((ROOT / 'site/data/levels.json').read_text())
     assert not levels['anchor_only_development'] and len(levels['levels']) == summary['completed_scene_count']
     suite = (ROOT / 'docs/suite.md').read_text().strip()
+    readme = ROOT / 'README.md'
+    readme.write_text(replace_block(readme.read_text(), '<!-- SUITE-README-START -->',
+        '<!-- SUITE-README-END -->', repository_summary_block(summary), '## 运行'))
     report_path = ROOT / 'docs/report.md'
     report = replace_block(report_path.read_text(), '<!-- SUITE-START -->', '<!-- SUITE-END -->', suite,
                            '## 两种影子，一个行动问题')

@@ -675,3 +675,5 @@ C2修复原preset借用其他scene/第二眼候选的问题：只取该scene首�
 F2_007第六套完整场景数据：14variants含9CF，public含manifest87,802,318bytes<150MB；完整原件tar302,453,547bytes/SHA`4e28561bbf75aab20d2417223f278ecad26f503d213e68b48799afe388432334`，仓库外`/root/3d/artifacts/beforestep-r2/suite_r2_v4_F2_007-complete.tar.gz`。沿用LFS不足时外包+精简集方案，配额API仍不可用、不虚报余额，上传后实际核push。
 
 云端恢复补验：DNS解析成功、无代理配置，鉴权GET成功；正式新增模型6374032/6374035/6374034已生成并下载、原GLB SHA核对通过，[诊断](../../evidence/suite/regressions/pre-http-transport/diagnostics.json)。列表接口曾23.212s才返回，说明连接延迟有波动，无法定位具体网络设备；不是密钥失效或完全不能生成。恢复后全部67单测exit0/2.669s，17文档153链接exit0。静态导出携带272公开config JSON，冻结名单字节与原SHA相同；未发布部分组Pages。
+
+F2_003全部17/17拒绝反事实exit0、碰撞0、终态{'stuck': 17}，全部原观测时间/pose/5数组前缀pass；没有把停车当成通行。7th新scene完整包自动preserve exit0：22variants/3966files/public含manifest98797652bytes<150MB；原始GLB、全部真实/复盘/CF及中断未完成目录保留，外包{'path': '/root/3d/artifacts/beforestep-r2/suite_r2_v4_F2_003-complete.tar.gz', 'bytes': 459163399, 'sha256': 'e7d50b6ac7751f931529943d215a9fc96d3c32bbd456a848df549eda11f4918f'}。CF继续F2_001；F3真实运行仍在进行，完整B7/C1/D未完成。

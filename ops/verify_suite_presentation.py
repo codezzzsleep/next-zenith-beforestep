@@ -73,7 +73,10 @@ def check():
     subprocess.run([sys.executable, str(ROOT / 'ops/write_suite_docs.py'), '--out',
                     str(generated_suite.relative_to(ROOT))], cwd=ROOT, check=True, stdout=subprocess.PIPE)
     assert suite == generated_suite.read_text().strip(), 'Published table differs from the recomputed raw result table'
-    from integrate_suite import related_work_block
+    from integrate_suite import related_work_block, repository_summary_block
+    readme = (ROOT / 'README.md').read_text()
+    introduction = readme.split('<!-- SUITE-README-START -->', 1)[1].split('<!-- SUITE-README-END -->', 1)[0].strip()
+    assert introduction == repository_summary_block(summary), 'Repository introduction differs from measured suite outcomes'
     related = (ROOT / 'docs/related-work.md').read_text()
     contribution = related.split('<!-- SUITE-CONTRIBUTION-START -->', 1)[1].split('<!-- SUITE-CONTRIBUTION-END -->', 1)[0].strip()
     assert contribution == related_work_block(summary), 'Related-work contribution differs from measured suite outcomes'

@@ -43,7 +43,7 @@ def main():
                     summary = row['runs'].get(policy, {}).get('summary')
                     if summary:
                         assert f"{summary['looks']}眼" in cell
-                        assert f"{summary['sim_time_s']:.2f}s" in cell
+                        assert f"{summary['sim_time_s']}s" in cell
                         if summary['collision'] is not None or summary['result'] == 'collision':
                             assert '碰撞' in cell
                     else:
@@ -55,7 +55,7 @@ def main():
             cells = prior_rows.nth(j).locator('td').all_inner_texts()
             assert cells[0] == row['scene']
             old = row['runs']['imagination_strict'].get('summary')
-            assert (f"{old['looks']}眼" in cells[1] and f"{old['sim_time_s']:.2f}s" in cells[1]) if old else '未完成' in cells[1]
+            assert (f"{old['looks']}眼" in cells[1] and f"{old['sim_time_s']}s" in cells[1]) if old else '未完成' in cells[1]
         collisions = data['all_run_stats']['collision_scenes'] + data['prior_real_v2_stats']['collision_scenes']
         if collisions:
             warning = page.locator('#r3-collision-warning')

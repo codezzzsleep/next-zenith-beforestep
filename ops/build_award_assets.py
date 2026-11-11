@@ -57,7 +57,7 @@ def main():
                      'viewer': {'path': viewer, 'sha256': sha(viewer)},
                      'input': {'path': input_path, 'sha256': sha(input_path)},
                      'frozen_config': [{'path': p, 'sha256': sha(p)} for p in config], 'note': note})
-        cards.append(f'<article><h2>{version}</h2><model-viewer src="{url(viewer)}" camera-controls camera-orbit="35deg 65deg auto" shadow-intensity=".4" environment-image="neutral" alt="{version} 的真实资产"></model-viewer><img src="{url(input_path)}" alt="{version} 原始输入或注明的历史预览"><p>{html.escape(note)}</p></article>')
+        cards.append(f'<article><h2>{version}</h2><model-viewer src="{url(viewer)}" camera-controls interaction-prompt="none" camera-orbit="35deg 65deg auto" shadow-intensity=".4" environment-image="neutral" alt="{version} 的真实资产"></model-viewer><img src="{url(input_path)}" alt="{version} 原始输入或注明的历史预览"><p>{html.escape(note)}</p></article>')
     (out / 'manifest.json').write_text(json.dumps({'schema': 'beforestep-award-asset-iterations/v1',
         'scope': 'Real asset renders, not redrawn shapes; V8 and v0.1 share the historical asset. v0.1 input is an existing JPEG preview; other PNG inputs are original bytes.',
         'v6_source': 'Historical observation copied byte-for-byte; parent and fused STL remain in assets/geometry/reference_v6.',

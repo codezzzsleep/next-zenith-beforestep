@@ -5587,3 +5587,126 @@ F2_011完整scene保全已952e5df push；398新增LFS100829272bytes已从origin�
   "collision": null
 }
 ```
+
+<!-- E2-AWARD-RECOVERY-suite_r2_v4_F0_003-imagination -->
+### E2 suite_r2_v4_F0_003 imagination 原始终态
+
+来源：`outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/summary.json`，既定留出，不计入新增演示。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_003",
+  "goal": [
+    10.475129,
+    0.013346
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 92.5,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.854,
+    -0.51,
+    7.96
+  ],
+  "sim_time_s": 93.7,
+  "wall_s": 1625.0,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      7.093,
+      -0.258,
+      0.113
+    ],
+    "t": 93.696
+  }
+}
+```
+
+<!-- E2-AWARD-RECOVERY-suite_r2_v4_F0_003-imagination_strict -->
+### E2 suite_r2_v4_F0_003 imagination_strict 原始终态
+
+来源：`outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination_strict/imagination_strict/summary.json`，既定留出，不计入新增演示。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_003",
+  "goal": [
+    10.475129,
+    0.013346
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 86.54,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    4.045,
+    0.496,
+    0.17
+  ],
+  "sim_time_s": 87.74,
+  "wall_s": 439.3,
+  "collision": null
+}
+```
+
+<!-- E2-AWARD-RECOVERY-suite_r2_v4_F3_006-imagination -->
+### E2 suite_r2_v4_F3_006 imagination 原始终态
+
+来源：`outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/summary.json`，既定留出，不计入新增演示。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_006",
+  "goal": [
+    11.061803,
+    -0.030256
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 82.08,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.897,
+    -0.612,
+    7.74
+  ],
+  "sim_time_s": 83.28,
+  "wall_s": 1444.3,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      7.125,
+      -0.362,
+      0.135
+    ],
+    "t": 83.28
+  }
+}
+```

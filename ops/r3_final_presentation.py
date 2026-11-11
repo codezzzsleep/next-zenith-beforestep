@@ -17,7 +17,7 @@ def outcome(run):
     if not summary:
         return '未完成'
     result = 'collision' if summary.get('collision') is not None else summary['result']
-    return f"{LABELS.get(result, result)} · {summary['looks']}眼 · {summary['sim_time_s']:.2f}s"
+    return f"{LABELS.get(result, result)} · {summary['looks']}眼 · {summary['sim_time_s']}s"
 
 
 def table(rows):
@@ -42,8 +42,8 @@ def chapter(data):
     comparison = '| 场景 | see-dark眼数 / 仿真s | 修订想象结果 / 眼数 / 仿真s |\n| --- | --- | --- |\n'
     for row in paired:
         before, after = row['see_dark'], row['imagination_strict']
-        current = '未完成' if after is None else f"{LABELS.get(after['result'], after['result'])} / {after['looks']} / {after['sim_time_s']:.2f}"
-        comparison += f"| {row['scene']} | {before['looks']} / {before['sim_time_s']:.2f} | {current} |\n"
+        current = '未完成' if after is None else f"{LABELS.get(after['result'], after['result'])} / {after['looks']} / {after['sim_time_s']}"
+        comparison += f"| {row['scene']} | {before['looks']} / {before['sim_time_s']} | {current} |\n"
     anchor = next(r for r in frozen if r['scene'] == 'stress_v8')
     cfs = data['new_rejected_counterfactuals']
     executed = sum(r['executed'] for r in cfs)
@@ -65,7 +65,7 @@ def chapter(data):
 
 同一 5 cm 栅格，以已知地形、所有实际观测可见高度、通过自检的世界网格逐格最高点预测 0.05–5.00 m 的太阳阴影；方向取同一个渲染太阳函数。只有被解释的 DARK 可以通行，HIDDEN/UNSEEN 继续阻塞。补看和目标路线统一用这个占据定义，移动与最后转向都先在全部采纳世界完整预演。新方法最多 5 眼，第一眼的观测和真实任务逐字节复用。
 
-锚点首眼的真实形状阴影诊断：与原 DARK 全地图 IoU **{sun['raw_whole_map_iou']:.4f}**，在已观测地面内为 **{sun['observed_ground_iou']:.4f}**。方向已按同一渲染函数与方块单测核对，保留低 IoU 与差异，不调参数；真值仅用于这次诊断，不输入修订规划器。[完整太阳诊断](../evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json)。
+锚点首眼的真实形状阴影诊断：与原 DARK 全地图 IoU **{sun['raw_whole_map_iou']}**，在已观测地面内为 **{sun['observed_ground_iou']}**。方向已按同一渲染函数与方块单测核对，保留低 IoU 与差异，不调参数；真值仅用于这次诊断，不输入修订规划器。[完整太阳诊断](../evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json)。
 
 ### 已知冻结场景复测：最终 v3
 

@@ -111,7 +111,7 @@ def check():
         for cell, policy in zip(cells, ('conservative', 'see_dark', 'optimistic', 'imagination', 'imagination_strict')):
             summary = row['runs'].get(policy, {}).get('summary')
             if summary:
-                assert f"{summary['looks']}眼" in cell and f"{summary['sim_time_s']:.2f}s" in cell
+                assert f"{summary['looks']}眼" in cell and f"{summary['sim_time_s']}s" in cell
                 expected = '碰撞' if summary['collision'] is not None or summary['result'] == 'collision' else {'arrived': '到达', 'stuck': '停车', 'stopped_short': '未到达停车'}[summary['result']]
                 assert expected in cell
             else:

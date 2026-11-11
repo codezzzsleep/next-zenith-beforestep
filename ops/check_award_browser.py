@@ -16,6 +16,7 @@ def main():
     parser.add_argument('--url', default='http://127.0.0.1:8081/')
     parser.add_argument('--name', default='award-local')
     parser.add_argument('--assets', action='store_true')
+    parser.add_argument('--final', action='store_true')
     args = parser.parse_args()
     out = ROOT / 'evidence/award/browser'
     out.mkdir(parents=True, exist_ok=True)
@@ -67,6 +68,12 @@ def main():
         assert page.locator('#model').evaluate('(e)=>e.cameraOrbit') == '180deg 65deg auto'
         for href in ['en.html', 'award-assets.html', 'evidence/award/observations.json']:
             assert page.request.get(urljoin(args.url, href)).status == 200
+        if args.final:
+            for id_, suffix in [('award-choices', 'choices'), ('failure-analysis', 'failures'), ('post-result-revision', 'revision')]:
+                page.locator('#' + id_).screenshot(path=str(out / (args.name + '-' + suffix + '.png')))
+            assert page.locator('#award-lux-pipeline').count() == 1
+            for href in ['en.html', 'report.html', 'media/report.pdf', 'evidence/award/facts.json']:
+                assert page.request.get(urljoin(args.url, href)).status == 200
         page.set_viewport_size({'width': 390, 'height': 844})
         page.goto(args.url, wait_until='networkidle')
         page.wait_for_function('document.documentElement.dataset.awardReady === "true"')
@@ -85,6 +92,27 @@ def main():
             page.screenshot(path=str(ROOT / 'site/media/award/asset-iterations.png'), full_page=True)
             page.set_viewport_size({'width': 390, 'height': 844})
             assert page.evaluate('document.documentElement.scrollWidth<=innerWidth')
+        revision_checked = []
+        if args.final:
+            page.set_viewport_size({'width': 1440, 'height': 1000})
+            page.goto(urljoin(args.url, 'levels.html'), wait_until='networkidle')
+            levels = json.loads((ROOT / 'site/data/levels.json').read_text())['levels']
+            revision = json.loads((ROOT / 'site/data/award-revisions.json').read_text())['runs']
+            for i, level in enumerate(levels):
+                page.locator('#level-choose').click()
+                page.locator('[data-level-choice=imagination]').click()
+                page.locator('#level-finish').click()
+                page.locator('#level-reveal').click()
+                page.locator('#level-revision-rewatch').click()
+                page.locator('#level-finish').click()
+                run = revision[level['id']]
+                expected = {'stuck': '安全停车', 'arrived': '到达终点', 'collision': '发生碰撞', 'stopped_short': '未完成路线'}[run['result']]
+                assert page.locator('#level-run-status').inner_text() == expected
+                revision_checked.append(level['id'])
+                page.locator('#level-reveal').click()
+                page.locator('#level-score').click()
+                if i + 1 < len(levels):
+                    page.locator('#level-next').click()
         assert not errors, errors
         assert not failures, failures
         result = {'passed': True, 'url': args.url, 'real_first_second_views': True,
@@ -92,7 +120,8 @@ def main():
                   'button_response_s': elapsed, 'four_policy_choices': checked,
                   'local_real_glb_loaded_and_rotated': True, 'mobile_390_no_overflow': True,
                   'oldv2_collision_visible_in_hero_and_footer': True, 'console_errors': errors,
-                  'http_errors': failures, 'six_asset_renders': args.assets}
+                  'http_errors': failures, 'six_asset_renders': args.assets,
+                  'revision_level_replays_checked': revision_checked}
         (out / (args.name + '.json')).write_text(json.dumps(result, ensure_ascii=False, indent=2) + '\n')
         print(json.dumps(result, ensure_ascii=False))
         browser.close()

@@ -17,7 +17,7 @@ def main():
     output.mkdir(parents=True,exist_ok=True)
     shutil.copytree(ROOT/'site',output,dirs_exist_ok=True,
                     ignore=shutil.ignore_patterns('video-scene','__pycache__'))
-    for directory in ('docs','experiments'):
+    for directory in ('docs','experiments','config'):
         shutil.copytree(ROOT/directory,output/directory,dirs_exist_ok=True)
     # The viewer links JSON results. Full trajectories, physics meshes and
     # training source snapshots remain in the repository and release ZIP.

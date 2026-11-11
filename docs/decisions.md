@@ -159,3 +159,7 @@ F2最早D的真实扫描替身在源修前后均执行撞未形成观测请求�
 ## R2 TLS中断恢复（2026-11-11）
 
 F3_002/B2的原客户端uncertain记录已原样保留于`evidence/suite/regressions/pre-http-transport/recovery.json`。异常栈在TLS握手处终止，urllib尚未发送HTTP POST；恢复时provider任务列表最新仍是已知B1/6352991，创建时间早于B2尝试。因此依据明确的未发送证据将其纠正为not_submitted，再按原六槽请求续跑。此判断不适用于丢失HTTP响应，后者仍保持uncertain且禁止重建。F2_003反事实5/17已有终态跳过，唯一无summary的中断目录保留在其`interrupted-before-resume-20261111T0555Z/`，只重跑未完成干预，不改变原始真实运行或冻结源。
+
+## R2发布保留冻结配置
+
+结果总表链接到`config/suite/frozen.json`与预注册配置；静态导出必须携带公开config目录，避免评委在Pages上看到结果却无法打开冻结名单。只扩展交付脚本，不改变实验src、参数或运行。

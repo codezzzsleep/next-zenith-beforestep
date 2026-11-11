@@ -254,6 +254,13 @@ def check():
                 for index, entry in enumerate(asset_rows):
                     if entry['path'] == model['path'] and entry.get('task_id'):
                         fact(entry['task_id'], f'assets/manifest.json#/entries/{index}/task_id')
+                if version.get('source_result'):
+                    result = read(ROOT / version['source_result'])
+                    for index, task in enumerate(result['tasks']):
+                        if task.get('glb') == model['path']:
+                            assert task['glb_sha256'] == model['sha256']
+                            assert task['task_id'] == version['task_id']
+                            fact(task['task_id'], version['source_result'] + f'#/tasks/{index}/task_id')
     for name, html in [('site/index.html', (ROOT / 'site/index.html').read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
         tokens = re.findall(r'(?<![A-Za-z0-9_.])[-+]?\d+(?:\.\d+)?(?![A-Za-z0-9_])', visible(html))
         inventory[name] = {}

@@ -11,7 +11,7 @@
 | S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
 | E1 | 原12冻结场景赛后修订复测 | 完成 | f971519数据；12原summary/17CF/全复盘/完整tar+publicmanifest/独立远端下载通过，frozen-complete.json阶段证明 |
-| E2 | 指定留出场景六栏运行 | 实验与保全完成，末场公网核验中 | 五场六栏终态；strict五场停车；orig另两碰撞。112新CF/13coll全前缀验证；17场完整tar本地全SHA通过。 |
+| E2 | 指定留出场景六栏运行 | 完成 | 五场六栏终态、112新拒干预/13碰撞/全前缀验证；17完整tar+4905公开对象本地SHA通过，各场生成目录全保全；末场288LFS/106909202bytes实际origin独立下载通过。 |
 | V1 | 加入三个修订想象视频记录 | 完成 | b00edc0已push；22run/1544byte本地pass；306LFS/407763387bytes从origin独立下载SHA/size全部pass |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 本地完成，公网核验中 | 88单测pass；R1五数组与3995保护不变；R3数字与原12场数字/轨迹审计pass；21页PDF；本地原R1/R3/award浏览器通过。 |
 

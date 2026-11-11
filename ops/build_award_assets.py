@@ -43,10 +43,10 @@ def main():
          'assets/inputs/polar_retry_001/look1_T2.jpg', ['config/admission.json', 'config/protocol.json'],
          '真实两图重试任务 4979742 / M4，仍被拒；工程重构不能替代几何证据。'),
         ('v0.2', 'assets/candidates/5027323/tex_mesh.glb', 'assets/candidates/5027323/tex_mesh.glb',
-         'assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1.png', ['config/admission.json', 'config/protocol.json'],
+         'assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg', ['config/admission.json', 'config/protocol.json'],
          '实际关口任务 5027323；通过原自检，参与完整预演与执行。'),
         ('v0.3', 'assets/candidates/5125347/tex_mesh.glb', 'assets/candidates/5125347/tex_mesh.glb',
-         'assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1.png', ['config/admission.json', 'config/protocol.json'],
+         'assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg', ['config/admission.json', 'config/protocol.json'],
          '实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。')]
     sha = lambda p: hashlib.sha256((ROOT / p).read_bytes()).hexdigest()
     rows = []
@@ -70,6 +70,18 @@ def main():
             target = media / 'v01-original-input-pair.png'
             pair.save(target)
             display_input = str(target.relative_to(ROOT))
+        result_path = {'v0.1': 'experiments/polar_retry_001/lux_result.json',
+                       'v0.2': 'experiments/gate_passage_001/lux_result.json',
+                       'v0.3': 'experiments/trained_live_gate_001/result.json'}.get(version)
+        if result_path:
+            result = json.loads((ROOT / result_path).read_text())
+            receipt = next(task for task in result['tasks'] if task.get('glb') == model)
+            assert receipt['glb_sha256'] == row['model']['sha256']
+            actual_inputs = [row['input'], *row.get('additional_inputs', [])]
+            assert [p['path'] for p in actual_inputs] == receipt['inputs']
+            assert [p['sha256'] for p in actual_inputs] == receipt['input_sha256']
+            row['task_id'] = receipt['task_id']
+            row['source_result'] = result_path
         rows.append(row)
         cards.append(f'<article><h2>{version}</h2><model-viewer src="{url(viewer)}" camera-controls interaction-prompt="none" camera-orbit="35deg 65deg auto" shadow-intensity=".4" environment-image="neutral" alt="{version} 的真实资产"></model-viewer><img src="{url(display_input)}" alt="{version} 实际上传输入"><p>{html.escape(note)}</p></article>')
     (out / 'manifest.json').write_text(json.dumps({'schema': 'beforestep-award-asset-iterations/v1',

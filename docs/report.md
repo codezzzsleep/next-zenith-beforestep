@@ -13,6 +13,8 @@ Next Zenith · Aholo Lux3D。报告保留R1原窄道锚点与R2预注册场景�
 
 
 
+
+
 <!-- R3-FAILURE-START -->
 ## 失败分析：想象只能检验看得见的一面
 
@@ -344,6 +346,7 @@ see-dark 到达的 12 场中，修订想象到达 3 场。眼数和仿真时间�
 [自由摆石头](../site/sandbox.html)是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。
 
 
+
 <!-- AWARD-REPORT-START -->
 ## Lux3D 在完整工程链中的位置
 
@@ -375,8 +378,8 @@ see-dark 到达的 12 场中，修订想象到达 3 场。眼数和仿真时间�
 | V7 | [模型](../assets/candidates/reference_v7/A_naive1.glb) · [输入](../assets/inputs/reference_v7/A_naive1.png)<br>原真实候选；阴影深度与多视角比较仍有失败。 | `b52c8d2b0ec4d95b29d36e379bb0e0c8f8ec48eaf678b6f4d66a6f74c74b0276` | [v5_admission.json](../evidence/milestones/v7/config/v5_admission.json)<br>[unseen_v7_protocol.json](../evidence/milestones/v7/config/unseen_v7_protocol.json) |
 | V8 | [模型](../assets/candidates/reference_v8/look1/T1/B2.glb) · [输入](../assets/observations/reference_v8/looks/look1/T1/gen/variants/B2.png)<br>原窄道第一块采纳候选；第二块全拒，原任务停车。 | `5161562b0ff08802501a4c2c29a2fe42e4a0018af3c6112673ae6af0fe4c135a` | [v5_admission.json](../evidence/milestones/v8/config/v5_admission.json)<br>[v5_protocol.json](../evidence/milestones/v8/config/v5_protocol.json) |
 | v0.1 | [模型](../assets/candidates/4979742/tex_mesh.glb) · [输入](../assets/inputs/polar_retry_001/look1_T2.jpg) · [另一输入](../assets/inputs/polar_retry_001/look2_T2.jpg)<br>真实两图重试任务 4979742 / M4，仍被拒；工程重构不能替代几何证据。 | `ab211250eb52f1ede4958d4452bcb4ebfcccb6af6eac58f5b115786bdb49f73c`<br>`2cf5200405bddabefe4f87c4f838e8e326fc0363248c42f3a37b6898a146dba6` | [admission.json](../config/admission.json)<br>[protocol.json](../config/protocol.json) |
-| v0.2 | [模型](../assets/candidates/5027323/tex_mesh.glb) · [输入](../assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1.png)<br>实际关口任务 5027323；通过原自检，参与完整预演与执行。 | `58e62308b63b68fcdc095c6e65b3ff731a5245dc02fcd3a709c6c7cd8eb3c192` | [admission.json](../config/admission.json)<br>[protocol.json](../config/protocol.json) |
-| v0.3 | [模型](../assets/candidates/5125347/tex_mesh.glb) · [输入](../assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1.png)<br>实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。 | `cbc323ca10afb24374f64fa03bed226b5b8ede401343b3472bb93e9c3a793a42` | [admission.json](../config/admission.json)<br>[protocol.json](../config/protocol.json) |
+| v0.2 | [模型](../assets/candidates/5027323/tex_mesh.glb) · [输入](../assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg)<br>实际关口任务 5027323；通过原自检，参与完整预演与执行。 | `99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c` | [admission.json](../config/admission.json)<br>[protocol.json](../config/protocol.json) |
+| v0.3 | [模型](../assets/candidates/5125347/tex_mesh.glb) · [输入](../assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg)<br>实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。 | `ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2` | [admission.json](../config/admission.json)<br>[protocol.json](../config/protocol.json) |
 
 [所有模型、输入与配置的完整 SHA 表](../evidence/award/asset-iterations/manifest.json) · [可旋转对照](../site/award-assets.html)。V6 原观测与深度从历史证据逐字节保全在本仓库；v0.1 原上传的两张 JPEG 都有独立 SHA。
 

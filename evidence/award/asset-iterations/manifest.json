@@ -111,7 +111,9 @@
           "path": "assets/inputs/polar_retry_001/look2_T2.jpg",
           "sha256": "2cf5200405bddabefe4f87c4f838e8e326fc0363248c42f3a37b6898a146dba6"
         }
-      ]
+      ],
+      "task_id": 4979742,
+      "source_result": "experiments/polar_retry_001/lux_result.json"
     },
     {
       "version": "v0.2",
@@ -124,8 +126,8 @@
         "sha256": "008a1e778f62f9d6a783bb92eafe4f4c9203891834dcf82ff405c7ceaae358df"
       },
       "input": {
-        "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1.png",
-        "sha256": "58e62308b63b68fcdc095c6e65b3ff731a5245dc02fcd3a709c6c7cd8eb3c192"
+        "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+        "sha256": "99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c"
       },
       "frozen_config": [
         {
@@ -137,7 +139,9 @@
           "sha256": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee"
         }
       ],
-      "note": "实际关口任务 5027323；通过原自检，参与完整预演与执行。"
+      "note": "实际关口任务 5027323；通过原自检，参与完整预演与执行。",
+      "task_id": 5027323,
+      "source_result": "experiments/gate_passage_001/lux_result.json"
     },
     {
       "version": "v0.3",
@@ -150,8 +154,8 @@
         "sha256": "884fab2e3e911c0897361d91667938cbfeebc705d9894733240d9798f4a43cf4"
       },
       "input": {
-        "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1.png",
-        "sha256": "cbc323ca10afb24374f64fa03bed226b5b8ede401343b3472bb93e9c3a793a42"
+        "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+        "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
       },
       "frozen_config": [
         {
@@ -163,7 +167,9 @@
           "sha256": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee"
         }
       ],
-      "note": "实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。"
+      "note": "实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。",
+      "task_id": 5125347,
+      "source_result": "experiments/trained_live_gate_001/result.json"
     }
   ]
 }

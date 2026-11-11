@@ -114,7 +114,22 @@ def main():
             variants['cf_' + cf_path.parent.name + '_' + key + '_review'] = 'outputs/video/r3/reviews/' + identity['run_id']
     mapping, extras = base / 'custody-runs.json', base / 'custody-extras.json'
     C.atomic_json(mapping, variants)
-    C.atomic_json(extras, [str(base.relative_to(ROOT)), str(cf_tree.relative_to(ROOT))] if cf_tree.exists() else [str(base.relative_to(ROOT))])
+    paid = json.loads((ROOT / 'outputs/generation/award-budget.json').read_text())
+    from award_lux_budget import AwardBudget
+    extra_trees = [str(base.relative_to(ROOT))]
+    if cf_tree.exists():
+        extra_trees.append(str(cf_tree.relative_to(ROOT)))
+    for task in paid['tasks'].values():
+        folder = ROOT / 'assets/candidates' / str(task.get('task_id'))
+        if folder.is_dir():
+            extra_trees.append(str(folder.relative_to(ROOT)))
+    C.atomic_json(extras, sorted(set(extra_trees)))
+    C.atomic_json(ROOT / 'evidence/award/demo/generation.json', {
+        'schema': 'beforestep-award-generation-provenance/v1', 'new_tasks': AwardBudget.usage(paid),
+        'limit': paid['limit'], 'cumulative_limit': paid['cumulative_limit'],
+        'prior_r2_tasks': paid['prior_r2_tasks'], 'prior_r3_tasks': paid['prior_r3_tasks'],
+        'label': plan['label'], 'tasks': [{key: value for key, value in row.items() if key != 'new_r3_task'}
+                                        for row in paid['tasks'].values()]})
     step('preserve', ['ops/preserve_suite_scene.py', '--scene', scene, '--runs', str(mapping.relative_to(ROOT)),
                      '--extras', str(extras.relative_to(ROOT)), '--archive-dir', '/root/3d/artifacts/award-demo',
                      '--out', 'evidence/award/demo/scenes', '--reuse-public-objects'])

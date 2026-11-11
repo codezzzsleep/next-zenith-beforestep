@@ -15,8 +15,14 @@ def main():
     if output.is_relative_to(ROOT):
         parser.error('Choose a separate export directory')
     output.mkdir(parents=True,exist_ok=True)
-    shutil.copytree(ROOT/'site',output,dirs_exist_ok=True,
-                    ignore=shutil.ignore_patterns('video-scene','__pycache__'))
+    demo_pending = not (ROOT / 'site/data/award-demo.json').exists()
+    ignore = ['video-scene', '__pycache__'] + (['award-demo.html', 'award-demo.js'] if demo_pending else [])
+    shutil.copytree(ROOT/'site',output,dirs_exist_ok=True, ignore=shutil.ignore_patterns(*ignore))
+    if demo_pending:
+        for name in ('award-demo.html', 'award-demo.js'):
+            stale = output / name
+            if stale.exists():
+                stale.unlink()
     for directory in ('docs','experiments','config'):
         shutil.copytree(ROOT/directory,output/directory,dirs_exist_ok=True)
     # The viewer links JSON results. Full trajectories, physics meshes and
@@ -52,6 +58,9 @@ def main():
                 [row['model'], row['viewer'], row['input'], *row.get('additional_inputs', []), *row['frozen_config']])
             if row['viewer']['path'].startswith('site/'):
                 used_glbs.add(row['viewer']['path'].removeprefix('site/'))
+    demo_data = ROOT / 'site/data/award-demo.json'
+    if demo_data.exists():
+        used_glbs.update(row['glb'] for row in json.loads(demo_data.read_text())['candidates'])
     for path in (output/'media').rglob('*.glb'):
         if str(path.relative_to(output)) not in used_glbs:path.unlink()
     for candidate in candidates:

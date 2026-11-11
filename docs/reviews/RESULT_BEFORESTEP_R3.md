@@ -2189,3 +2189,1446 @@ V1远端实际确认：`b00edc0c97f29cc790da279b547707e11a2e8a19`已push，独�
 ```
 
 最终验收单测已在恢复及V1改动后实际运行：`python3 -m unittest discover -s tests -v`，exit0，85项/11.751s全部通过。[原日志](../../evidence/reviews/beforestep_r3/final-verification/unit-tests-after-video-recovery.log)。后续源码没有变化时不重复昂贵物理回归；最终数字/文档/页面验收仍待全部实验与保全终态。
+
+## E2 F0_002新增拒绝反事实实际完成
+
+两种方法各19份，共38次干预（共用首眼候选可能在两policy下分别干预，不能当作38个独立生成样本）。原方法17到达/2停车，strict19停车，均0碰撞；全部5轨迹数组及捕获时刻5观测字节前缀通过。只对本轮新生成且被拒的候选执行，未重复R1/R2拒绝候选。完整scene包与唯一SHA清单正在保全。
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T1_C1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T1_C1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 38.8,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T1_C2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T1_C2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 39.8,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T2_A1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T2_A1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.7,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.046,
+    12.06
+  ],
+  "sim_time_s": 102.9,
+  "wall_s": 60.5,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T2_A2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T2_A2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.7,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.046,
+    12.06
+  ],
+  "sim_time_s": 102.9,
+  "wall_s": 61.8,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T2_B1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T2_B1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.7,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.046,
+    12.06
+  ],
+  "sim_time_s": 102.9,
+  "wall_s": 57.4,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T2_B2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T2_B2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.7,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.046,
+    12.06
+  ],
+  "sim_time_s": 102.9,
+  "wall_s": 67.0,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T2_C1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T2_C1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.7,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.046,
+    12.06
+  ],
+  "sim_time_s": 102.9,
+  "wall_s": 65.6,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look1_T2_C2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look1_T2_C2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 101.7,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.294,
+    -0.046,
+    12.06
+  ],
+  "sim_time_s": 102.9,
+  "wall_s": 62.4,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_A1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_A1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 93.9,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_A2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_A2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 93.6,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_B1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_B1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 97.4,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_B2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_B2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 127.28,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.292,
+    -0.046,
+    18.87
+  ],
+  "sim_time_s": 128.48,
+  "wall_s": 96.2,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_C1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_C1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 87.1,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_C2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_C2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 86.5,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_A1b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_A1b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 87.1,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_A2b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_A2b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 86.4,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_B1b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_B1b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 86.3,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_C1b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_C1b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 87.9,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination look2_T2_C2b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination/look2_T2_C2b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 126.8,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    10.294,
+    -0.047,
+    17.33
+  ],
+  "sim_time_s": 128.0,
+  "wall_s": 92.2,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T1_C1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T1_C1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 46.9,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T1_C2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T1_C2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 54.1,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T2_A1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_A1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 54.0,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T2_A2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_A2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 54.0,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T2_B1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_B1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 53.1,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T2_B2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_B2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 53.5,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T2_C1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_C1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 57.9,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look1_T2_C2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_C2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.88,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.08,
+  "wall_s": 49.9,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_A1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 100.6,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_A2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 100.0,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_B1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 99.3,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_B2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 101.8,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_C1 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C1/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 100.3,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_C2 summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C2/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 99.5,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_A1b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A1b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 103.5,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_A2b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A2b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 100.3,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_B1b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B1b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 100.4,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_C1b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C1b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 93.3,
+  "collision": null
+}
+```
+
+### E2 CF suite_r2_v4_F0_002 imagination_strict look2_T2_C2b summary原文
+
+原运行 `outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C2b/trusted`；exit0，干预及前缀验证pass。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 103.2,
+  "collision": null
+}
+```
+
+F0_002完整保全与核验实际完成：7230files、完整tar432468208bytes、唯一公开scene集100636541bytes（≤150MB）；372去重public对象原SHA与tar全部成员SHA/size均通过。21个成功生成模型及其生成目录所有文件都进入完整清单，raw原件保留在outputs/assets并只在本机Git exclude。证据 [F0-002-custody-audit.json](../../evidence/reviews/beforestep_r3/final-verification/F0-002-custody-audit.json)、[生成资产核验](../../evidence/reviews/beforestep_r3/final-verification/F0-002-generated-assets.json)、[唯一manifest](../../evidence/reviews/beforestep_r3/scenes/suite_r2_v4_F0_002/manifest.json)。
+
+### E2 suite_r2_v4_F3_005 conservative summary原文
+
+固定第三场四baseline提前计算完成，exit0；真实双方法仍按既定顺序在F2之后进入，不按这些结果筛选。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_005",
+  "goal": [
+    11.330212,
+    0.045812
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 94.18,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.26,
+    1.993,
+    28.16
+  ],
+  "sim_time_s": 95.38,
+  "wall_s": 55.3,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F3_005 see_dark summary原文
+
+固定第三场四baseline提前计算完成，exit0；真实双方法仍按既定顺序在F2之后进入，不按这些结果筛选。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "see_dark",
+  "see_dark": true,
+  "imagine": null,
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_005",
+  "goal": [
+    11.330212,
+    0.045812
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 137.98,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    11.323,
+    0.046,
+    5.63
+  ],
+  "sim_time_s": 139.18,
+  "wall_s": 53.6,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F3_005 optimistic summary原文
+
+固定第三场四baseline提前计算完成，exit0；真实双方法仍按既定顺序在F2之后进入，不按这些结果筛选。
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_005",
+  "goal": [
+    11.330212,
+    0.045812
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 81.14,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.826,
+    -0.62,
+    8.13
+  ],
+  "sim_time_s": 82.34,
+  "wall_s": 33.6,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      7.061,
+      -0.368,
+      0.119
+    ],
+    "t": 82.338
+  }
+}
+```
+
+### E2 suite_r2_v4_F3_005 truth summary原文
+
+固定第三场四baseline提前计算完成，exit0；真实双方法仍按既定顺序在F2之后进入，不按这些结果筛选。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "truth",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_005",
+  "goal": [
+    11.330212,
+    0.045812
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 119.52,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    11.322,
+    0.045,
+    17.0
+  ],
+  "sim_time_s": 120.72,
+  "wall_s": 55.2,
+  "collision": null
+}
+```

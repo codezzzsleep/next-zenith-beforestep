@@ -118,6 +118,15 @@ def active_trust(trust, current_look, requested_look=1):
     return trust if current_look >= requested_look else None
 
 
+def viewpoint_need(state, x, focus_cells=None):
+    """Use the original conservative observation ranking and safe-motion scope."""
+    unknown = np.isin(state, (N.DARK, N.HIDDEN, N.UNSEEN)) & ~N.prior_nogo()
+    need = unknown & (N.GX > x + 1.0) & (N.GX < x + 4.5)
+    if focus_cells is not None and (unknown & focus_cells).sum() > 50:
+        need = unknown & focus_cells
+    return need
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--policy', required=True, choices=['conservative', 'optimistic', 'imagination_strict'])
@@ -127,7 +136,7 @@ def main():
     ap.add_argument('--pose-model', help='Optional learned terminal rotation checkpoint; default keeps historical joint control')
     ap.add_argument('--out', required=True); ap.add_argument('--imagine', choices=['lux', 'truth'], default='lux')
     ap.add_argument('--see-dark', action='store_true', help='对照实验：假设相机在黑影里也能测出深度')
-    ap.add_argument('--max-looks', type=int, default=None, help='最多看几眼（想象策略最多两眼；保守策略默认五眼）')
+    ap.add_argument('--max-looks', type=int, default=None, help='最多看几眼（赛后修订想象最多五眼）')
     ap.add_argument('--reuse-lux', default=None, help='已有想象运行：只复用逐字节相同的观测与生成结果，不复用旧决策')
     ap.add_argument('--recorded-observations', help='显式使用记录的传感器观测；核对姿态和时刻，不冒充本次实时输入')
     ap.add_argument('--start-at-recorded-look', action='store_true',
@@ -527,11 +536,7 @@ def main():
 
     def go_to_viewpoint(state, occ):
         x, y, _ = pose(env)
-        unknown = np.isin(state, (N.DARK, N.HIDDEN, N.UNSEEN)) & ~N.prior_nogo()
-        unknown &= last_strict_occ if last_strict_occ is not None else True
-        need = unknown & (N.GX > x + 1.0) & (N.GX < x + 4.5)
-        if focus['cells'] is not None and (unknown & focus['cells']).sum() > 50:
-            need = unknown & focus['cells']          # 想象的车：去看想象被拒绝的那块石头
+        need = viewpoint_need(state, x, focus['cells'])
         attempts = 0
         target = focus['target'] if a.policy == 'imagination_strict' else None
         candidates = N.choose_second_look(state, (x, y), need, occ, target=target)
@@ -574,7 +579,6 @@ def main():
     result = None
     extra = 0
     last_im = None
-    last_strict_occ = None
     while True:
         if approach_failed:
             result='stopped_short';break
@@ -602,7 +606,6 @@ def main():
             known = N.swept(np.array(rec.q)[:, :2])
             expanded = ndimage.binary_dilation(im, iterations=IMAG_MARGIN_CELLS)
             occ_m = N.occupancy(state, 'imagination_strict', expanded, known_free=known, predicted_shadow=predicted)
-            last_strict_occ = occ_m
             ev('shadow_explanation', look=len(looks), explained_dark_cells=int(((state == N.DARK) & predicted & ~expanded).sum()),
                hidden_blocked_cells=int(((state == N.HIDDEN) & occ_m).sum()), unseen_blocked_cells=int(((state == N.UNSEEN) & occ_m).sum()),
                source='known heightfield + observed zmax + admitted candidate world meshes', post_result_revision=True)

@@ -50,6 +50,19 @@ class StrictShadowTests(unittest.TestCase):
         original = (state == N.ROCK) | (state == N.NOGO) | N.prior_nogo() | footprint
         np.testing.assert_array_equal(N.occupancy(state, 'imagination', footprint), original)
 
+    def test_conservative_viewpoint_ranking_keeps_reachable_observations(self):
+        from beforestep.strict_pipeline import viewpoint_need
+        root = S.ROOT / 'evidence/reviews/beforestep_r3/viewpoint-diagnostic'
+        for scene, name in [('suite_r2_v4_F1_020', 'F1-first'), ('stress_v8', 'stress-fourth')]:
+            with self.subTest(scene=scene), np.load(root / (name + '.npz')) as fixture:
+                S.configure(scene)
+                state, pose = fixture['state'], fixture['pose']
+                occ = N.occupancy(state, 'conservative', known_free=fixture['known'])
+                candidates = N.choose_second_look(state, pose, viewpoint_need(state, pose[0]), occ)
+                reachable = [c for c in candidates[:40] if c[4] >= 20 and
+                             N.plan(occ, pose, c[:2]) is not None]
+                self.assertTrue(reachable, 'The original conservative ranking has a safe reachable observation')
+
 
 if __name__ == '__main__':
     unittest.main()

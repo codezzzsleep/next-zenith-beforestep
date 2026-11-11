@@ -26,6 +26,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', required=True)
     parser.add_argument('--workers', type=int, default=3)
+    parser.add_argument('--reuse-lux', help='Optional verified replay cache; arrays are still compared against the original R1 run')
     args = parser.parse_args()
     output = Path(args.out).resolve()
     output.mkdir(parents=True, exist_ok=True)
@@ -63,7 +64,7 @@ def main():
             ('optimistic', ['--policy', 'optimistic'], 'collision'),
             ('truth', ['--policy', 'imagination', '--imagine', 'truth'], 'arrived'),
             ('replay', ['--policy', 'imagination', '--imagine', 'lux', '--reuse-lux',
-                        str(R1 / 'lux/original_b')], 'arrived')]
+                        str(Path(args.reuse_lux).resolve() if args.reuse_lux else R1 / 'lux/original_b')], 'arrived')]
 
     def run(name, arguments, expected):
         run_dir = output / name

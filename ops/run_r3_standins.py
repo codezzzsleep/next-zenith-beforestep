@@ -18,6 +18,8 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('--regression', required=True)
     ap.add_argument('--out', default='outputs/qa/r3/S2/standins')
+    ap.add_argument('--summary', default='evidence/reviews/beforestep_r3/standins/summary.json')
+    ap.add_argument('--reuse-standins', help='Prior offline runs with byte-identical first views; reuse only their first-view assets')
     a = ap.parse_args()
     output = ROOT / a.out
     output.mkdir(parents=True, exist_ok=True)
@@ -55,6 +57,9 @@ def main():
         else:
             command = [sys.executable, 'ops/run_r3_chain.py', '--scene', scene, '--mode', 'standin',
                        '--regression', a.regression, '--out', str(folder.relative_to(ROOT))]
+            if a.reuse_standins:
+                original = ROOT / a.reuse_standins / (scene + '-registered') / 'imagination_strict'
+                command.extend(['--first-reuse', str(original.relative_to(ROOT))])
         with (folder / 'driver.log').open('w') as log:
             child = subprocess.Popen(command, cwd=ROOT, env={**os.environ, 'MUJOCO_GL': 'egl'},
                                      stdout=log, stderr=subprocess.STDOUT)
@@ -77,7 +82,7 @@ def main():
     report['status'] = 'complete'
     report['all_passed'] = len(report['jobs']) == 4 and all(r['passed'] for r in report['jobs'].values())
     C.atomic_json(ledger, report)
-    public = ROOT / 'evidence/reviews/beforestep_r3/standins/summary.json'
+    public = ROOT / a.summary
     C.atomic_json(public, report)
     raise SystemExit(0 if report['all_passed'] else 1)
 

@@ -19,6 +19,7 @@ def main():
     ap.add_argument('--regression', required=True)
     ap.add_argument('--out', default='outputs/r3/holdouts')
     ap.add_argument('--frozen', default='outputs/r3/frozen/processes.json')
+    ap.add_argument('--standins', default='evidence/reviews/beforestep_r3/standins/summary.json')
     a = ap.parse_args()
     frozen = json.loads((ROOT / a.frozen).read_text())
     assert frozen['completed'] and frozen['source_sha256'] == sources(), 'Finish E1 before E2'
@@ -89,7 +90,8 @@ def main():
                 continue
             container = output / scene / policy
             command = [sys.executable, 'ops/run_r3_chain.py', '--scene', scene, '--policy', policy,
-                       '--mode', 'real', '--out', str(container.relative_to(ROOT)), '--regression', a.regression]
+                       '--mode', 'real', '--out', str(container.relative_to(ROOT)), '--regression', a.regression,
+                       '--standins', a.standins]
             if policy == 'imagination_strict':
                 original = output / scene / 'imagination/imagination'
                 if not (original / 'summary.json').exists():

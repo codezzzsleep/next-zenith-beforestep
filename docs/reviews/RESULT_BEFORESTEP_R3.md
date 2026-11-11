@@ -8,8 +8,8 @@
 | P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
-| S1 | imagination_strict与预测阴影 | 完成 | 99729b8；74项单测通过；原pipeline.py未改 |
-| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | 全五R1回归已pass；四个truth/生产注册替身正在运行 |
+| S1 | imagination_strict与预测阴影 | 进行中 | v1已提交；保守选点修复后重验，原pipeline.py未改 |
+| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | v1全五R1回归pass；选点修复后的v2回归/替身进行中 |
 | E1 | 原12冻结场景赛后修订复测 | 未开始 | — |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
@@ -69,3 +69,11 @@ P0公网已实际完成：Pages e08f20d393e1e49a0dd7b840677c1ddc55c4f552 built/e
 E2固定次序F0_002、F2_011、F3_005，预算剩余再F0_003、F3_006；F1无未使用的决定性场景。每场在当前源码跑四基线和原/修订想象，共用首眼任务，不根据基线再选或跳场。本轮先E1再E2，新增170/累计最多338，不超过原360。
 
 S2完整R1 gate实际终态pass：stuck/arrived/collision/arrived，真实重放arrived·1眼·112.84s；全部t/qpos/phase/control_actions/control_sources逐项相同，NPZ SHA仍6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e。原件 [regression.json](../../evidence/reviews/beforestep_r3/regression/regression.json)，74单测日志同目录。现在四个truth/生产注册替身实际启动，尚无新增paid。
+
+### S2 v1 失败与选点排查（0新增任务）
+
+锚点truth替身实际stuck·4眼·116.68s，无碰撞；锚点生产注册替身实际stuck·4眼·112.54s，无碰撞。F1_020 truth替身stuck·1眼·18.1s，没有撞C；其生产注册替身已stuck·2眼·48.84s、无碰撞。所有原输出保留于 `outputs/qa/r3/S2/standins/`，未把失败写通过，付费门卫关闭。
+
+[保存地图选点诊断](../../evidence/reviews/beforestep_r3/viewpoint-diagnostic/diagnostic.json) 发现新strict代码额外按strict占据过滤了unknown，改变R3要求沿用的保守选点排序。F1_020首眼原规则前40有可达(1.892,−0.8)，过滤后没有；锚点第4眼原规则最高135格且(3.871,0.6)可达，过滤后最高13格，低于原20格条件，于是提前no_viewpoint。修复仅恢复保守观察需求掩码，不改原选点函数、控制器、传感器、5cm或冻结参数；等已有离线作业终态，再改src并重新过全部单测、全五R1gate、两场替身。v1全部失败保留。
+
+S2 v1四次替身全部终态，[v1原始summary](../../evidence/reviews/beforestep_r3/standins/v1/summary.json) 保留；E1门卫因all_passed=false退出1，未创建任何付费任务。新strict已恢复保守观察需求，75项单测实际pass/10.692s；完整v2回归 `outputs/qa/r3/S2-v2/R1-regression` 正在运行，仍核原R1所有数组，太阳实现/固定参数不变。v2替身只复用逐字节相同的旧离线首眼扫描资产，后面几眼重新实际观测，独立输出目标为 `evidence/reviews/beforestep_r3/standins/v2/summary.json`，当前尚未完成，不宣称通过。

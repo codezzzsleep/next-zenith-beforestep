@@ -4,10 +4,10 @@
 
 | 小项 | 内容 | 状态 | 提交/证据 |
 | --- | --- | --- | --- |
-| P0.1 | 首页/报告顺序与失败分析 | 进行中 | — |
-| P0.2 | 全部准入候选背面误差统计/数字核验 | 进行中 | — |
-| V0 | 指定原运行的全部公开视频数据索引 | 进行中 | — |
-| P0.3 | 本地/公网验收与PDF/Pages | 未开始 | — |
+| P0.1 | 首页/报告顺序与失败分析 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
+| P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
+| V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
+| P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | S1 | imagination_strict与预测阴影 | 未开始 | — |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 未开始 | — |
 | E1 | 原12冻结场景赛后修订复测 | 未开始 | — |
@@ -32,3 +32,5 @@ P0只使用既有真实数据。背面统计预先定义：以每次实际观测
 `check_r1_browser --name r3-P0-local-corrected --pdf` exit0/9回放11GLB12预演3历史20learning/390/0pageHTTP，第一版新图表无自适应导致overflow日志保留，已comparison/table-wrap修正；源src完全未改。数字audit exit0/原R1R2数字+64/23/26.5及新场景表，20docs303links全0。PDF14页1775024bytes/SHA3b8e6c1ed56601a1154cc4cd39818276978987f02714395dfc0b5ffd39388b3e，实际读取所有新关键文字；旧R2 Md/HTML/PDF原字节归档pre-revision。
 
 V0指定19run（锚点9+两失败场各5）/1193独立公开byte对象全部本地SHA验证，含RGB/depth/dark/state/zmax、原轨迹/事件/场景/summary、全部75候选记录的world OBJ/自检指标、每预演轨迹及eval/physical、岩石/纹理/height/robot assets。缺失原postmortem只在新sidecar复算原每qpos，无推进sim或改原结果；vendor alias字节公开在assets对象不靠旧目录取文件。索引逐条path/encoding/sourceSHA可从repo/LFS取，gzip注明解压恢复原字节，不需要仓库外tar。还需实际push/LFS远端检验/P0 Pages公网验收。当前R3新增paid0/170、原168全部不重create。
+
+P0公网已实际完成：Pages e08f20d393e1e49a0dd7b840677c1ddc55c4f552 built/error null，r3-P0-public browser exit0/9回放11GLB12预演3历史20learning/全部图和视频索引链接/390/0pageHTTP，PDF源SHA同本地。原R1/R2 protected tracked文件与dae2b58 diff空。接续§3；没有新增paid。

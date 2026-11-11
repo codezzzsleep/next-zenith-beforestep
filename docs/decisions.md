@@ -163,3 +163,7 @@ F3_002/B2的原客户端uncertain记录已原样保留于`evidence/suite/regress
 ## R2发布保留冻结配置
 
 结果总表链接到`config/suite/frozen.json`与预注册配置；静态导出必须携带公开config目录，避免评委在Pages上看到结果却无法打开冻结名单。只扩展交付脚本，不改变实验src、参数或运行。
+
+## R3 赛后方法隔离与阴影栅格
+
+R3明确授权imagination_strict五眼。为保持原imagination代码原样，新策略使用独立strict_pipeline模块（从cfff的原链派生），复用原场景/传感器/规则控制/注册/预演函数；原pipeline.py不改。只新增占据分支与CLI路由，原imagination分支字节保留，先完整原R1回归再paid。阴影高度按5cm格内网格最高点与可见zmax/已知实际heightfield最大值，太阳指向从S.sun_dir光线传播向量反向求得；5m固定射程需要以同5cm格扩展高度场5m，避免地图边界截断已知地形阴影，不调门槛。

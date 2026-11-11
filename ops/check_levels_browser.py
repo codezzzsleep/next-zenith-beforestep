@@ -126,6 +126,8 @@ def main():
         report = {'schema': 'beforestep-levels-browser-acceptance/v1', 'passed': True,
                   'url': args.url, 'levels': checked, 'width_390_no_overflow': True,
                   'page_errors': errors, 'http_errors': failures,
+                  'development_partial_suite': expected.get('development_partial_suite', False),
+                  'frozen_scene_count': expected.get('frozen_scene_count', len(expected['levels'])),
                   'anchor_only_development': expected.get('anchor_only_development', False)}
         report['no_candidate_truth_access_verified_with_ui_fixture'] = True
         report['contact_priority_verified_with_ui_fixture'] = True

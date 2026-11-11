@@ -661,3 +661,5 @@ F0_001/F1_001/F1_020全CF结束，三个preserve退出码均0；实际重新核�
 F1_003全7份拒绝CF已完成、7arrived/0collision/allprefixpass，完整5策略+7CF共12variants/948文件保全exit0；public含清单74692429bytes<150MB，外包/root/3d/artifacts/beforestep-r2/suite_r2_v4_F1_003-complete.tar.gz，239257704bytes/SHAf7d76da30212151383ff4876ab9756140a41dc031a4132ae019f80f5f9e198fb，log B6-preserve-F1-003.log。首个新增普通场景真实1眼108.0s到达，对应乐观105.18s，额外0眼/+2.82s模拟终态时长，不把云队列/冷注册墙钟当速度收益。
 
 B7检查用六场预览exit0（含R1锚点和全部已完成的5新场景）：原frozen12不变、6余场未完成；完整CF63=13collision/27arrived/23stuck，0不能执行；主碰撞F1_020显著披露，拒绝多数有效无撞声明。没有把这份预览发布成总表或提前应用关口收缩；继续F2/F3。
+
+C1已完成数据的部分组开发验收：build6actual exit0/86可用候选，[development-six/browser.json](../../evidence/suite/presentation/development-six/browser.json)真实Chromium exit0，每关5步/3真实策略回放/全部候选mesh+独立真值/首次计分/390px/0pageHTTP；全部110显示资产SHA核对通过，actualdata只有6/12而非全组，data/API和页面明确partial。未新做物理实验或Lux请求，源cfff不动；完整12数据后按C/D再验全组。log C1-six-actual-levels-build.log/C1-six-real-partial-browser.log。

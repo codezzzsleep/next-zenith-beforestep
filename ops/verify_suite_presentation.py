@@ -24,6 +24,7 @@ def check():
     assert summary == json.loads(scratch.read_text()), 'Summary diverges from raw evidence'
     levels = json.loads((ROOT / 'site/data/levels.json').read_text())
     assert not levels['anchor_only_development']
+    assert levels['development_partial_suite'] == bool(summary['incomplete_scenes'])
     assert [r['id'] for r in levels['levels']] == [r['scene'] for r in summary['scenes']]
     assets = json.loads((ROOT / 'site/data/levels-assets.json').read_text())
     assert not assets['anchor_only_development']

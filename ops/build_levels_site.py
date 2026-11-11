@@ -165,9 +165,16 @@ def main():
                  'runs': {'imagination': {'run': base + '/lux/original_b'},
                           'optimistic': {'run': base + '/section25_final_base/optimistic'},
                           'conservative': {'run': base + '/section25_final_base/conservative'}}}]
+        partial = True
+        freeze = ROOT / 'config/suite/frozen.json'
+        frozen_count = len(read(freeze)['scenes']) if freeze.exists() else 1
     else:
-        rows = read(ROOT / args.summary)['scenes']
+        summary = read(ROOT / args.summary)
+        rows = summary['scenes']
+        partial = bool(summary['incomplete_scenes'])
+        frozen_count = summary['frozen_scene_count']
     data = {'schema': 'beforestep-playable-levels/v1', 'anchor_only_development': args.anchor_only,
+            'development_partial_suite': partial, 'frozen_scene_count': frozen_count,
             'scope': 'Recorded real experiment data; choice changes which saved physical trajectory is replayed.',
             'levels': [build(row) for row in rows]}
     (ROOT / 'site/data/levels.json').write_text(json.dumps(data, ensure_ascii=False, separators=(',', ':')) + '\n')
@@ -176,6 +183,7 @@ def main():
     assets.update(c[key] for r in data['levels'] for c in r['candidates']
                   for key in ('model', 'truth_model') if c[key])
     manifest = {'schema': 'beforestep-level-assets/v1', 'anchor_only_development': args.anchor_only,
+                'development_partial_suite': partial,
                 'entries': [{'path': 'site/' + p, 'sha256': sha(ROOT / 'site' / p),
                              'bytes': (ROOT / 'site' / p).stat().st_size} for p in sorted(assets)]}
     (ROOT / 'site/data/levels-assets.json').write_text(json.dumps(manifest, indent=2) + '\n')

@@ -211,6 +211,17 @@ def check():
             suite_facts(read(ROOT / pool['path']), pool['path'] + '#')
         for value in (1, 2, 3, 4, 5, 6, 8, 12, 150, 360):
             fact(value, 'docs/reviews/SPEC_BEFORESTEP_R2.md: preregistered rules')
+        for path in ('evidence/reviews/beforestep_r3/back-error/stats.json',
+                     'evidence/reviews/beforestep_r3/failure-facts.json'):
+            if (ROOT / path).exists():
+                suite_facts(read(ROOT / path), path + '#')
+                def centimeters(value, source):
+                    if isinstance(value, dict):
+                        for key, child in value.items(): centimeters(child, source+'/'+key)
+                    elif isinstance(value, list):
+                        for index, child in enumerate(value): centimeters(child, source+'/'+str(index))
+                    elif isinstance(value, (int, float)) and not isinstance(value, bool): fact(value, source, 100)
+                centimeters(read(ROOT / path), path + '#')
     for name, html in [('site/index.html', (ROOT / 'site/index.html').read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
         tokens = re.findall(r'(?<![A-Za-z0-9_.])[-+]?\d+(?:\.\d+)?(?![A-Za-z0-9_])', visible(html))
         inventory[name] = {}

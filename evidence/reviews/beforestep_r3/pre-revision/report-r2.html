@@ -1,0 +1,780 @@
+<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title><style>@page{size:A4;margin:16mm}body{max-width:860px;margin:35px auto;padding:0 16px;overflow-wrap:anywhere;color:#1d2730;font:14px/1.8 "WenQuanYi Zen Hei",sans-serif}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:7px;overflow-wrap:anywhere}table{font-size:12px}code{font-size:11px;overflow-wrap:anywhere}</style></head><body><h1>先见一步：看不见的那一面，先走一遍</h1>
+<p>Next Zenith · Aholo Lux3D。报告保留R1原窄道锚点与R2预注册场景组；R1主实验源码 <code>2147b2f</code>，R2源码身份逐场保存在原运行记录。完整结果见<a href="docs/reviews/RESULT_BEFORESTEP_R1.md">R1执行记录</a>与<a href="docs/reviews/RESULT_BEFORESTEP_R2.md">R2执行记录</a>。</p>
+<!-- SUITE-START -->
+<h1>预注册月面场景组</h1>
+<p>场景组在任何本轮 Lux3D 结果之前冻结。选择只依据保守、see-dark、乐观和真实形状检验四次非 Lux 运行；各类别按种子从小到大取决定性与普通场景，stress_v8 直接使用已完成的 R1 锚点。冻结后不换场景、不放宽门槛、不迭代控制器。</p>
+<p>原冻结 12 个场景，完成 12 个。未完成：无。</p>
+<p><a href="evidence/suite/frozen.json">冻结名单与预期</a> · <a href="evidence/suite/summary.json">原始结果总表</a></p>
+<h2>候选池分布</h2>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th style="text-align: right;">候选数</th>
+<th style="text-align: right;">决定性</th>
+<th style="text-align: right;">普通</th>
+<th style="text-align: right;">无解</th>
+<th style="text-align: right;">未归类</th>
+<th style="text-align: right;">执行错误</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F0</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>F1</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>F2</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">8</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>F3</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">3</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>决定性：真实形状检验到达，乐观碰撞，保守停车或用满五眼。普通：真实形状与乐观均到达。无解：真实形状检验不到达。执行错误不会算成无解或被隐藏。此前错误池与参数调整理由保留在<a href="docs/decisions.md">决策记录</a>与<a href="docs/reviews/RESULT_BEFORESTEP_R2.md">R2结果</a>。</p>
+<h2>五次运行</h2>
+<table>
+<thead>
+<tr>
+<th>场景 / 类别 / 分类 / 种子</th>
+<th>保守</th>
+<th>see-dark</th>
+<th>乐观</th>
+<th>真实形状检验</th>
+<th>真实 Lux3D</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stress_v8 / F0 / 决定性 / R1锚点</td>
+<td>安全停车 · 5眼 · 142.2s · <a href="evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 147.26s · <a href="evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.87s · <a href="evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 115.88s · <a href="evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 112.84s · <a href="evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001 / F0 / 决定性 / 1</td>
+<td>安全停车 · 5眼 · 142.92s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 145.24s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.83s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 114.84s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 54.58s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005 / F0 / 普通 / 5</td>
+<td>安全停车 · 5眼 · 143.98s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 151.76s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.42s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 114.6s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 53.0s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001 / F1 / 决定性 / 1</td>
+<td>安全停车 · 5眼 · 111.74s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/conservative/run_identity.json">身份</a></td>
+<td>碰撞 · 4眼 · 91.03s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 72.47s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 2眼 · 124.38s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 42.7s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020 / F1 / 决定性 / 20</td>
+<td>安全停车 · 5眼 · 129.12s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/conservative/run_identity.json">身份</a></td>
+<td>未完成 · 4眼 · 121.09s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 79.24s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 78.16s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/truth/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 61.46s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003 / F1 / 普通 / 3</td>
+<td>碰撞 · 4眼 · 134.49s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 5眼 · 129.45s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 105.18s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 99.64s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 108.0s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003 / F2 / 决定性 / 3</td>
+<td>安全停车 · 5眼 · 83.06s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 4眼 · 165.2s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 82.79s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 124.92s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 57.8s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007 / F2 / 决定性 / 7</td>
+<td>安全停车 · 5眼 · 83.33s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 4眼 · 157.28s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.41s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 112.56s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 2眼 · 128.4s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001 / F2 / 普通 / 1</td>
+<td>安全停车 · 5眼 · 83.43s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 133.18s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.5s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.5s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.7s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002 / F3 / 决定性 / 2</td>
+<td>安全停车 · 5眼 · 218.48s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 5眼 · 119.05s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.4s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 117.54s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 107.6s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004 / F3 / 决定性 / 4</td>
+<td>安全停车 · 1眼 · 18.1s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/conservative/run_identity.json">身份</a></td>
+<td>未完成 · 4眼 · 129.63s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 79.59s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 106.44s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/truth/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 82.14s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001 / F3 / 普通 / 1</td>
+<td>未完成 · 2眼 · 111.83s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 125.97s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 111.88s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 107.64s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 112.5s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/imagination/run_identity.json">身份</a></td>
+</tr>
+</tbody>
+</table>
+<p>B4在付费前发现并纠正预演中的旧右墙配置遗漏。上表全部新增场景的四基线随后统一重跑，与真实Lux使用相同源码；最初用于选取的四次结果仍保存在冻结名单中，没有据修正后的结果增删或替换场景。
+<a href="evidence/suite/pool/crater-target-baselines/manifest_results.json">同源基线回归</a>。修正后分类发生变化的场景：无。</p>
+<p>每项时间为原始 summary 的仿真总时长，包含该运行的接近与观察，不包含云端排队。自检计算与预演计算墙钟另在原运行中保留，不作为端到端速度优势。所有运行使用 rules，传感器、机器人与5cm规则保持冻结；真实Lux流程使用同一准入门槛、最多两眼，保守、see-dark与乐观对照保留最多五眼，真实形状检验也最多两眼。真实形状是独立检验，未提供给生产规划器。</p>
+<h2>候选与补看</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>真实岩石</th>
+<th>任务 / 成功 / 准入</th>
+<th>原视角高度与方式</th>
+<th>第二眼</th>
+<th>6b</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stress_v8</td>
+<td>A</td>
+<td>6 / 6 / 6</td>
+<td>look1/T1: 765px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>stress_v8</td>
+<td>B</td>
+<td>6 / 5 / 2</td>
+<td>look1/T2: 251px, native_ok=False, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001</td>
+<td>A</td>
+<td>6 / 6 / 4</td>
+<td>look1/T1: 768px, native_ok=True, img</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001</td>
+<td>B</td>
+<td>18 / 18 / 0</td>
+<td>look1/T2: 260px, native_ok=False, img; look2/T2: 527px, native_ok=True, img</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005</td>
+<td>A</td>
+<td>9 / 9 / 0</td>
+<td>look1/T1: 805px, native_ok=True, img; look2/T1: 1249px, native_ok=True, imgs</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005</td>
+<td>B</td>
+<td>12 / 12 / 1</td>
+<td>look1/T2: 248px, native_ok=False, img; look2/T2: 336px, native_ok=False, img</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001</td>
+<td>A</td>
+<td>6 / 6 / 2</td>
+<td>look1/T1: 679px, native_ok=True, img</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001</td>
+<td>B</td>
+<td>6 / 4 / 0</td>
+<td>look1/T2: 351px, native_ok=False, img</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001</td>
+<td>C</td>
+<td>0 / 0 / 0</td>
+<td>全程没有生成观测请求</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020</td>
+<td>A</td>
+<td>6 / 4 / 1</td>
+<td>look1/T1: 957px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020</td>
+<td>B</td>
+<td>6 / 4 / 2</td>
+<td>look1/T2: 363px, native_ok=False, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020</td>
+<td>C</td>
+<td>0 / 0 / 0</td>
+<td>全程没有生成观测请求</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td>A</td>
+<td>6 / 6 / 3</td>
+<td>look1/T1: 621px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td>B</td>
+<td>6 / 6 / 2</td>
+<td>look1/T2: 322px, native_ok=False, img，共享目标 B+C</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td>C</td>
+<td>6 / 6 / 2</td>
+<td>look1/T2: 322px, native_ok=False, img，共享目标 B+C</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003</td>
+<td>A</td>
+<td>9 / 8 / 5</td>
+<td>look1/T1: 721px, native_ok=True, img; look2/T1: 1715px, native_ok=True, imgs</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003</td>
+<td>B</td>
+<td>18 / 18 / 4</td>
+<td>look1/T2: 223px, native_ok=False, img; look2/T2: 773px, native_ok=True, img</td>
+<td>是</td>
+<td>是</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007</td>
+<td>A</td>
+<td>6 / 6 / 5</td>
+<td>look1/T1: 705px, native_ok=True, img</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007</td>
+<td>B</td>
+<td>12 / 10 / 2</td>
+<td>look1/T2: 269px, native_ok=False, img; look2/T2: 509px, native_ok=False, img</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001</td>
+<td>A</td>
+<td>6 / 6 / 2</td>
+<td>look1/T1: 728px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001</td>
+<td>B</td>
+<td>6 / 6 / 6</td>
+<td>look1/T2: 248px, native_ok=False, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002</td>
+<td>A</td>
+<td>6 / 4 / 4</td>
+<td>look1/T1: 800px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002</td>
+<td>B</td>
+<td>6 / 6 / 1</td>
+<td>look1/T2: 243px, native_ok=False, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004</td>
+<td>A</td>
+<td>6 / 6 / 6</td>
+<td>look1/T1: 754px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004</td>
+<td>B</td>
+<td>6 / 6 / 2</td>
+<td>look1/T2: 257px, native_ok=False, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004</td>
+<td>C</td>
+<td>0 / 0 / 0</td>
+<td>全程没有生成观测请求</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001</td>
+<td>A</td>
+<td>6 / 4 / 4</td>
+<td>look1/T1: 772px, native_ok=True, img</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001</td>
+<td>B</td>
+<td>0 / 0 / 0</td>
+<td>全程没有生成观测请求</td>
+<td>否</td>
+<td>否</td>
+</tr>
+</tbody>
+</table>
+<p>从未形成观测请求的目标也以零任务保留；若一个连通观测目标对应多块真实岩石，各岩石行共享同一批任务身份，不能相加当作额外独立生成。每份成功、失败与被拒候选均保留；第二眼单图首次零准入时只追加同字节 6b 一批，仍零准入就停止。两眼都 native_ok 的两图分支按原协议三份执行。</p>
+<h2>赛后真值与全部拒绝反事实</h2>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th style="text-align: right;">3D最小间隙mm</th>
+<th style="text-align: right;">XY包络间隙mm</th>
+<th style="text-align: right;">乐观原路线压入mm</th>
+<th>反事实碰撞 / 完成试验</th>
+<th>反事实终态分布</th>
+<th style="text-align: right;">不能执行的拒绝候选</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stress_v8</td>
+<td style="text-align: right;">47.541</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">218.989</td>
+<td>0 / 3</td>
+<td>到达3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001</td>
+<td style="text-align: right;">416.194</td>
+<td style="text-align: right;">196.984</td>
+<td style="text-align: right;">212.560</td>
+<td>4 / 20</td>
+<td>安全停车2、碰撞4、到达14</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005</td>
+<td style="text-align: right;">970.602</td>
+<td style="text-align: right;">839.352</td>
+<td style="text-align: right;">29.071</td>
+<td>0 / 20</td>
+<td>安全停车17、到达3</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001</td>
+<td style="text-align: right;">344.242</td>
+<td style="text-align: right;">187.223</td>
+<td style="text-align: right;">190.572</td>
+<td>4 / 8</td>
+<td>安全停车4、碰撞4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020</td>
+<td style="text-align: right;">0.710</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">330.000</td>
+<td>5 / 5</td>
+<td>碰撞5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td style="text-align: right;">155.317</td>
+<td style="text-align: right;">36.886</td>
+<td style="text-align: right;">0.000</td>
+<td>0 / 7</td>
+<td>到达7</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003</td>
+<td style="text-align: right;">405.283</td>
+<td style="text-align: right;">178.033</td>
+<td style="text-align: right;">143.253</td>
+<td>0 / 17</td>
+<td>安全停车17</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007</td>
+<td style="text-align: right;">181.992</td>
+<td style="text-align: right;">71.292</td>
+<td style="text-align: right;">168.460</td>
+<td>0 / 9</td>
+<td>安全停车1、到达8</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001</td>
+<td style="text-align: right;">193.733</td>
+<td style="text-align: right;">81.055</td>
+<td style="text-align: right;">0.000</td>
+<td>0 / 4</td>
+<td>到达4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002</td>
+<td style="text-align: right;">107.740</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">231.371</td>
+<td>0 / 5</td>
+<td>到达5</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004</td>
+<td style="text-align: right;">0.939</td>
+<td style="text-align: right;">0.000</td>
+<td style="text-align: right;">265.028</td>
+<td>4 / 4</td>
+<td>碰撞4</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001</td>
+<td style="text-align: right;">148.585</td>
+<td style="text-align: right;">36.125</td>
+<td style="text-align: right;">0.000</td>
+<td>0 / 0</td>
+<td>无</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+<p>3D量来自每个保存姿态的原 MuJoCo 可碰撞几何；XY矩形与真实扫描平面包络是单独的复盘近似。二者同时报告，XY相交不等于真实3D接触。碰撞按原始接触记录优先判断，离散保存姿态的正间隙不能抵消接触事件。反事实枚举每一眼每份被拒候选，不挑选；第二眼候选在原第一眼与移动前缀重放之后干预，不在第一眼泄露未来观测。完成试验包括因无路线而停车，不等于完成通行，所以终态分布同时报告。不能形成可执行反事实的失败另列，不能当作“不会撞”。</p>
+<h2>预先约定的结论</h2>
+<p><strong>想象策略实际发生碰撞：suite_r2_v4_F1_020、suite_r2_v4_F3_004。这是最重要的安全边界，首页与总表同时公开。</strong>
+决定性完成 8 个：想象到达 3，安全终止 3，碰撞 2。
+没有满足“决定性场景到达至少2/3且无碰撞”的预注册条件，结论限于逐项实测的有效范围。
+普通场景完成 4、想象到达 3；相对乐观额外眼数与仿真时间分别为 [1, 0, 0, 0]、[-49.42, 2.82, 0.2, 0.62]s。
+未到达运行的较短仿真时间可能来自提前停车；这里比较终态时长，不能解释成更快完成任务。
+被拒候选反事实碰撞 17/102，另 0 份不能执行。自检拒绝的候选中出现过会碰撞的想象，比例和场景逐项公开。
+第二眼真实触发：suite_r2_v4_F0_001、suite_r2_v4_F0_005、suite_r2_v4_F1_001、suite_r2_v4_F2_003、suite_r2_v4_F2_007；6b：suite_r2_v4_F0_001、suite_r2_v4_F2_003。
+真实第二眼共 5 次：到达 1、安全终止 4、碰撞 0。</p>
+<h3>按类别的实测范围</h3>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>决定性到达 / 安全终止 / 碰撞</th>
+<th>普通到达 / 总数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>F0</td>
+<td>1 / 1 / 0</td>
+<td>0 / 1</td>
+</tr>
+<tr>
+<td>F1</td>
+<td>0 / 1 / 1</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>F2</td>
+<td>1 / 1 / 0</td>
+<td>1 / 1</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>1 / 0 / 1</td>
+<td>1 / 1</td>
+</tr>
+</tbody>
+</table>
+<h2>未到达与碰撞的原因</h2>
+<table>
+<thead>
+<tr>
+<th>场景 / 类别</th>
+<th>原始判断</th>
+<th>事件或物理接触</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>suite_r2_v4_F0_001 / F0</td>
+<td>追加后仍零准入</td>
+<td>{"kind": "sampling_stop", "look": 2, "target": "T2", "total_samples": 12, "generated_candidates": 12, "admitted": 0, "action": "safe_stop_then_review_section_2_4"}</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005 / F0</td>
+<td>没有可执行准入路线</td>
+<td>{"kind": "plan", "policy": "imagination", "look": 2, "path": null, "reason": "imagined_blocked", "margin_vs_truth": null}</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001 / F1</td>
+<td>没有可执行准入路线</td>
+<td>{"kind": "plan", "policy": "imagination", "look": 2, "path": null, "reason": "imagined_blocked", "margin_vs_truth": null}</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020 / F1</td>
+<td>真实物理接触</td>
+<td>{"body": "obstacle2", "robot_geom": null, "pos": [7.405, -0.656, 0.089], "t": 61.458}；未形成生成请求的岩石：C。候选自检和预演只覆盖实际形成的候选，不能证明未观测岩石安全。</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003 / F2</td>
+<td>追加后仍零准入</td>
+<td>{"kind": "sampling_stop", "look": 2, "target": "T2", "total_samples": 12, "generated_candidates": 12, "admitted": 0, "action": "safe_stop_then_review_section_2_4"}</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004 / F3</td>
+<td>真实物理接触</td>
+<td>{"body": "obstacle1", "robot_geom": null, "pos": [6.681, -0.3, 0.1], "t": 82.14}；未形成生成请求的岩石：C。候选自检和预演只覆盖实际形成的候选，不能证明未观测岩石安全。；实际碰撞位置在真值B占地内，却不在两份准入B候选的占地内；候选只约覆盖真值B投影的14%。12格预演没有覆盖这个真实接触位置。 <a href="evidence/suite/actual-collisions/suite_r2_v4_F3_004/diagnostic.json">原始比较</a></td>
+</tr>
+</tbody>
+</table>
+<p>这是有限扫描岩石、有限摆放和极区低太阳角下的受控仿真实验，不支持“对任何场景都有效”或“通用”的结论。每个数字均能追溯到原始运行身份、任务与保全清单。</p>
+<!-- SUITE-END -->
+<h2>两种影子，一个行动问题</h2>
+<p>太阳照不到的地方没有可靠深度；岩石挡住的地方也看不见。机器人沿月溪和大石堆之间的窄道前进，A 挡在前面，B 的一部分藏在盲区。第二次观察能改变视线遮挡，却不能照亮太阳黑影。系统让 Lux3D 提出符合可见观测的几何假设，检验路线后再行动。</p>
+<p><img alt="第一眼画面与两种未知" src="media/r1-shadows.png" /></p>
+<h2>窄道的约束</h2>
+<p>月溪与大石堆构成禁行边界，A遮住前方空间，B后半截凸进必须换道的通路。</p>
+<h2>三台车的实际结果</h2>
+<p>主场景保留 stress_v8 的 A+B、太阳、起点、第一眼和终点 <code>(10.5,0)</code>；所有主对比统一规则控制。保守车看五眼仍没有路线；只让相机在黑影里也有深度，三眼到达。乐观车碰撞，其出发前原计划车身压入真实 B 21.899 cm，满足原要求的至少 10 cm。真实 Lux3D 分支一眼到达，12 个候选组合预演全部完成且无碰撞，独立执行也无碰撞。</p>
+<table>
+<thead>
+<tr>
+<th>运行</th>
+<th>结果</th>
+<th>观察次数</th>
+<th>仿真总时长</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>看清再走</td>
+<td>无路线、停车</td>
+<td>5</td>
+<td>142.2 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>黑影测深对照</td>
+<td>到达</td>
+<td>3</td>
+<td>147.26 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>直接走</td>
+<td>碰撞</td>
+<td>1</td>
+<td>80.87 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>想一想再走</td>
+<td>到达</td>
+<td>1</td>
+<td>112.84 s</td>
+<td><a href="evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>真实形状检验</td>
+<td>到达</td>
+<td>1</td>
+<td>115.88 s</td>
+<td><a href="evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">原始身份</a></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="三种策略的实际轨迹" src="media/r1-routes.png" /></p>
+<p>这些结果支持在本次冻结场景中生成几何对行动判断的作用；不宣称对任意石头或场景都可靠。地图上的扫描轮廓只用于赛后复盘，生产规划器不读取隐藏真值。</p>
+<h2>真实生成、自检与被拒候选</h2>
+<p>首眼共提交 12 个独立真实任务，获得 11 个 GLB、1 个服务端失败。A 的六份全部准入；B 的五个可用模型中两份准入、三份拒绝。B2 任务 <code>5958893</code> 失败，无 GLB；不能将它计为自检拒绝。所有原始输入、实际上传字节、任务身份、模型、矩阵和占据保留在 <a href="https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/evidence/reviews/beforestep_r1/lux/original_b">完整实验数据</a>。</p>
+<table>
+<thead>
+<tr>
+<th>候选</th>
+<th>真实 task ID</th>
+<th>轮廓 IoU</th>
+<th>尺度比</th>
+<th>冻结自检</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B/A1</td>
+<td>5958642</td>
+<td>0.4325</td>
+<td>1.0676</td>
+<td>轮廓 IoU 低于 0.7068</td>
+</tr>
+<tr>
+<td>B/A2</td>
+<td>5958654</td>
+<td>0.8459</td>
+<td>1.0</td>
+<td>准入</td>
+</tr>
+<tr>
+<td>B/B1</td>
+<td>5958703</td>
+<td>0.2715</td>
+<td>0.9324</td>
+<td>轮廓 IoU 低于 0.7068</td>
+</tr>
+<tr>
+<td>B/C1</td>
+<td>5958934</td>
+<td>0.7108</td>
+<td>0.9459</td>
+<td>准入</td>
+</tr>
+<tr>
+<td>B/C2</td>
+<td>5958937</td>
+<td>0.63</td>
+<td>0.9054</td>
+<td>轮廓 IoU 低于 0.7068</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="B 的冻结轮廓检查" src="media/r1-self-check.png" /></p>
+<p>轮廓门槛 0.7068、尺度比 0.889–1.09、壳层接触、已知自由空间侵入和未知比例等原门槛保持。准入表示符合当前可见观测，生成背面仍可能错误：两份准入 B 的后缘相对真实占据分别偏短 0.70 m、0.60 m。此次行动结果通过，不把它说成生成背面已准确。</p>
+<h2>第二眼的条件分支与配准修复</h2>
+<p>需要补看时，用目标可见高度、相机到最近观测格的距离和原图焦距估计像素高度；排除过近点，优先可达的 ≥512 px 点。两眼 native_ok 同时为真才调用两图三份，否则单用新视角六份；第二眼零准入仅追加同字节六份，合计十二仍零则停车，不看第三眼。</p>
+<p><img alt="真实首眼与独立替身的第二眼输入" src="media/r1-observation.png" /></p>
+<p>本次真实B首眼251 px、native_ok=false，仍有A2和C1两份准入。独立完整替身验证中，第二眼预计513.388 px，实际506 px，仍按单图分支。发现局部配准优化的稀疏点评分变好、最终可见面评分反而退化；修复只保留最终评分更好的矩阵。原自检与余量没有放宽，B替身修复后IoU为0.9673，完整两眼预演与执行到达。40 项单测通过。本次真实主线首眼已有准入和路线，第二眼、追加与 B 替换均未触发；不冒称做了新的多轮 Lux 生成。</p>
+<h2>在想象中预演，然后在独立世界执行</h2>
+<p>规划使用全部八份准入几何的占据；执行前，在 A 六份 × B 两份共十二种物理场景中完整运行同一规则控制器。十二格均完成、无碰撞，其全部轨迹与原配置在仓库。之后在独立扫描几何世界执行，实际到达。完整 <code>--reuse-lux</code> 重放再次完成十二格与独立执行，t、qpos、阶段和动作来源等全部数组逐字节相同，轨迹 SHA256 为 <code>6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e</code>。</p>
+<h2>赛后真值与间隙复盘</h2>
+<p>按每一个保存 qpos 重建原 MuJoCo 可碰撞几何，其最小有符号距离为 A 256.109 mm、B 47.541 mm，均为正，与执行无碰撞相容。XY 的 0.76×0.66 m 矩形包络对 B 间隙为零，中心距离减半车宽最小为 -62.778 mm；这是平面包络指标，同时公开（中心减半宽=-0.062778 m），不当作三维接触。原规划始终遵循冻结的 5 cm 占据扩张规则；不将 47.541 mm 向上写成真实 5 cm。</p>
+<p><img alt="真实可碰撞几何的最小距离" src="media/r1-clearance.png" /></p>
+<p>原运行墙钟 1223.6 s，含冷配准和完整物理预演，不含此前云端排队，不能称为端到端延迟；仿真总时长与执行时间分别记录在summary。</p>
+<p>原始 <a href="evidence/reviews/beforestep_r1/lux/original_b/eval.json">eval</a>、<a href="evidence/reviews/beforestep_r1/lux/original_b/physical_clearance.json">三维最近点和时刻</a> 与 <a href="evidence/reviews/beforestep_r1/replay_validation.json">完整重放核验</a> 可独立检查。</p>
+<h2>全部反事实：本批自检偏保守</h2>
+<p>按预注册逐一只信 B 第一眼被拒的 A1、B1、C2，不挑选，不补看，不重新调用 Lux3D。三次均到达、无碰撞，碰撞数 0/3。因此此次不能说“自检挡住了会撞的想象”；结论是本批自检偏保守。</p>
+<table>
+<thead>
+<tr>
+<th>只信的被拒 B</th>
+<th>实际终态</th>
+<th>仿真总时长</th>
+<th>证据</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>B/A1</td>
+<td>到达、无碰撞</td>
+<td>104.0 s</td>
+<td><a href="evidence/reviews/beforestep_r1/counterfactuals/A1/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>B/B1</td>
+<td>到达、无碰撞</td>
+<td>104.0 s</td>
+<td><a href="evidence/reviews/beforestep_r1/counterfactuals/B1/run_identity.json">原始身份</a></td>
+</tr>
+<tr>
+<td>B/C2</td>
+<td>到达、无碰撞</td>
+<td>119.16 s</td>
+<td><a href="evidence/reviews/beforestep_r1/counterfactuals/C2/run_identity.json">原始身份</a></td>
+</tr>
+</tbody>
+</table>
+<h2>迭代、训练与相关工作</h2>
+<p>V6/V7/V8 的源码、输入、生成资产、融合几何和失败结果保留。旧 gate_passage_001、终点 <code>(5.7,-0.5)</code> 的实验及训练控制移到附录：它们证明了工程闭环与网络运动，但对照同样能到达，没有证明 Lux3D 的必要性。固定 v4 实际训练 115490 行物理示教，部署权重与独立任务 15/16 评估均保留；新姿态网络、四眼实测和失败也保留，不继续训练迭代。</p>
+<p><a href="docs/training.md">训练附录</a> · <a href="docs/observation-control.md">主动观察控制附录</a> · <a href="docs/milestones.md">版本证据</a> · <a href="docs/history/report_v03.md">旧 v0.3 报告</a>。PSSNet、PVD、Robust Grasp Planning、Uncertain Regions 与 NBV-SC 为多候选形状、动作评价及补看提供研究依据；本项目贡献是受观测自检约束、同控制器完整预演与独立执行的轮腿导航实证，不主张全球首次或科学上只有 Lux3D 能实现。<a href="docs/related-work.md">相关工作</a>。</p>
+<p>首页提供实际轨迹、全部候选与十二格预演的交互查看。当前是受控仿真实验，不是实机或月球部署。R1 新 Demo 由负责人使用完整保存数据制作；网页保留视频位置，现有 v0.3 视频明确作为历史，冻结发布不改。完整可运行源码、原资产、失败和恢复输入见 <a href="https://github.com/codezzzsleep/next-zenith-beforestep">仓库</a>、<a href="evidence/reviews/beforestep_r1/README.md">R1 数据说明</a>。</p></body></html>

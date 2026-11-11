@@ -77,6 +77,27 @@ def main():
         lines.append('未到达运行的较短仿真时间可能来自提前停车；这里比较终态时长，不能解释成更快完成任务。')
     lines.append(f"被拒候选反事实碰撞 {cf['collisions']}/{cf['executed']}，另 {cf['unexecutable']} 份不能执行。" + ('自检拒绝的候选中出现过会碰撞的想象，比例和场景逐项公开。' if data['selfcheck_collision_evidence'] else '本批未证明自检挡住碰撞，继续报告自检偏保守。'))
     lines.append('第二眼真实触发：' + ('、'.join(data['second_eye_scenes']) or '无') + '；6b：' + ('、'.join(data['six_b_scenes']) or '无') + '。')
+    second = [r for r in data['scenes'] if r['second_eye']]
+    second_collisions = sum(r['runs']['imagination']['summary']['collision'] is not None
+                            or r['runs']['imagination']['summary']['result'] == 'collision' for r in second)
+    second_arrivals = sum(r['runs']['imagination']['summary']['result'] == 'arrived'
+                          and r['runs']['imagination']['summary']['collision'] is None for r in second)
+    lines.append(f'真实第二眼共 {len(second)} 次：到达 {second_arrivals}、安全终止 {len(second)-second_arrivals-second_collisions}、碰撞 {second_collisions}。')
+    lines.extend(['', '### 按类别的实测范围', '',
+                  '| 类别 | 决定性到达 / 安全终止 / 碰撞 | 普通到达 / 总数 |',
+                  '| --- | --- | --- |'])
+    for family in frozen['families']:
+        decisive = [r for r in data['scenes'] if r['family'] == family and r['classification'] == 'decisive']
+        ordinary = [r for r in data['scenes'] if r['family'] == family and r['classification'] == 'ordinary']
+        def safe_arrival(row):
+            summary = row['runs']['imagination']['summary']
+            return summary['result'] == 'arrived' and summary['collision'] is None
+        def collision(row):
+            summary = row['runs']['imagination']['summary']
+            return summary['collision'] is not None or summary['result'] == 'collision'
+        arrived = sum(safe_arrival(r) for r in decisive)
+        collided = sum(collision(r) for r in decisive)
+        lines.append(f'| {family} | {arrived} / {len(decisive)-arrived-collided} / {collided} | {sum(safe_arrival(r) for r in ordinary)} / {len(ordinary)} |')
     failed = [r for r in data['scenes'] if r.get('failure_reason')]
     if failed:
         lines.extend(['', '## 未到达与碰撞的原因', '', '| 场景 / 类别 | 原始判断 | 事件或物理接触 |', '| --- | --- | --- |'])
@@ -84,7 +105,10 @@ def main():
                   'approach_or_observation_control': '接近或观察点控制未完成', 'no_accepted_route': '没有可执行准入路线'}
         for row in failed:
             failure = row['failure_reason']
-            lines.append(f"| {row['scene']} / {row['family']} | {labels[failure['category']]} | {json.dumps(failure['detail'], ensure_ascii=False)} |")
+            detail = json.dumps(failure['detail'], ensure_ascii=False)
+            if failure.get('zero_request_rocks'):
+                detail += '；未形成生成请求的岩石：' + '、'.join(failure['zero_request_rocks']) + '。候选自检和预演只覆盖实际形成的候选，不能证明未观测岩石安全。'
+            lines.append(f"| {row['scene']} / {row['family']} | {labels[failure['category']]} | {detail} |")
     lines.extend(['', '这是有限扫描岩石、有限摆放和极区低太阳角下的受控仿真实验，不支持“对任何场景都有效”或“通用”的结论。每个数字均能追溯到原始运行身份、任务与保全清单。', ''])
     (ROOT / args.out).write_text('\n'.join(lines))
     print(json.dumps({'document': args.out, 'scenes': len(data['scenes'])}))

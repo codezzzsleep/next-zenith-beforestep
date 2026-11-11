@@ -16,7 +16,7 @@
 | B4 | 四类真实形状替身完整链 | 完成 | 当前源cfffaf8四类全链/复盘/allpanes通过；本提交 |
 | B5 | 场景组真实Lux3D | 进行中 | B4已push c465926后启动；实时预算见ledger |
 | B6 | 全部场景复盘和全部拒绝反事实 | 进行中（6场全部CF完成，F2余场与F3继续） | b790e92 |
-| B7 | 完整总表 | 未开始 | — |
+| B7 | 完整总表 | 进行中（严格核验脚本等待全12真实及全部CF终态） | 实测全表尚未生成 |
 | B8 | 预定规则结论 | 进行中（真实主流程碰撞已显著披露，最终全组结论待B7） | 本次安全边界记录 |
 | C1 | 五步关卡模式 | 进行中（6/12真实开发关卡已完整浏览器验证，完整组待B） | c5be2c6 |
 | C2 | 沙盒与一致性 | 进行中（6/12首眼几何4/6一致、浏览器通过，全组待B） | 本次基础提交 |
@@ -673,3 +673,5 @@ TLS创建异常仅发生F3_002/B2，原错误栈在SSL握手、HTTP尚未发送�
 C2修复原preset借用其他scene/第二眼候选的问题：只取该scene首眼真实准入模板，自由编辑可复用同扫描全部准入模板。`build_sandbox_data.py` exit0；`check_sandbox_consistency.py --out outputs/qa/r2/C2-six-context-consistency.json` exit0，正常几何首眼4/6一致，F1_020/F1_003不一致，数值EDT/共享规划器6/6通过，明确分开报告。`check_sandbox_browser.py --name C2-six-context` exit0：实际拖放、移动/旋转/高度、月坑、太阳、三条规划/动画、导出、390px、零页面/HTTP错误。开发证据[目录](../../evidence/suite/presentation/development-six-sandbox/)；原1/6失败证据保留outputs/qa/r2/C2-six-before-context-fix。仍partial=true/frozen12，不声称全组C2或D完成。
 
 F2_007第六套完整场景数据：14variants含9CF，public含manifest87,802,318bytes<150MB；完整原件tar302,453,547bytes/SHA`4e28561bbf75aab20d2417223f278ecad26f503d213e68b48799afe388432334`，仓库外`/root/3d/artifacts/beforestep-r2/suite_r2_v4_F2_007-complete.tar.gz`。沿用LFS不足时外包+精简集方案，配额API仍不可用、不虚报余额，上传后实际核push。
+
+云端恢复补验：DNS解析成功、无代理配置，鉴权GET成功；正式新增模型6374032/6374035/6374034已生成并下载、原GLB SHA核对通过，[诊断](../../evidence/suite/regressions/pre-http-transport/diagnostics.json)。列表接口曾23.212s才返回，说明连接延迟有波动，无法定位具体网络设备；不是密钥失效或完全不能生成。恢复后全部67单测exit0/2.669s，17文档153链接exit0。静态导出携带272公开config JSON，冻结名单字节与原SHA相同；未发布部分组Pages。

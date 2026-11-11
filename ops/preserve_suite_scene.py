@@ -58,6 +58,7 @@ def main():
     parser.add_argument('--extras', help='JSON list of this scene\'s real/review/CF trees, including failed attempts')
     parser.add_argument('--archive-dir', default='/root/3d/artifacts/beforestep-r2')
     parser.add_argument('--out', default='evidence/suite/scenes')
+    parser.add_argument('--reuse-public-objects', action='store_true', help='R3: reference identical already published gzip objects')
     args = parser.parse_args()
     mapping = json.loads((ROOT / args.runs).read_text())
     files = {}
@@ -87,7 +88,7 @@ def main():
     extras = json.loads((ROOT / args.extras).read_text()) if args.extras else []
     for relative_root in extras:
         directory = (ROOT / relative_root).resolve()
-        assert directory.is_relative_to(ROOT / 'outputs/suite') and directory.name == args.scene
+        assert directory.is_relative_to(ROOT / 'outputs') and directory.name == args.scene
         for path in directory.rglob('*'):
             if not path.is_file() or 'lux_cache' in path.parts:
                 continue
@@ -95,12 +96,23 @@ def main():
             files[relative] = path
             if path.name in ('chain.json', 'counterfactuals.json'):
                 selected.add(relative)
+        for result in directory.rglob('lux_result.json'):
+            for task in json.loads(result.read_text()).get('tasks', []):
+                if task.get('glb'):
+                    asset = ROOT / task['glb']
+                    assert asset.is_file() and sha(asset) == task['glb_sha256']
+                    files[str(asset.relative_to(ROOT))] = asset
     output = ROOT / args.out / args.scene
     output.mkdir(parents=True, exist_ok=True)
     archive_dir = Path(args.archive_dir).resolve()
     assert not archive_dir.is_relative_to(ROOT)
     archive_dir.mkdir(parents=True, exist_ok=True)
     archive = archive_dir / (args.scene + '-complete.tar.gz')
+    if (output / 'manifest.json').exists():
+        saved = json.loads((output / 'manifest.json').read_text())
+        assert archive.exists() and saved['complete_archive']['sha256'] == sha(archive)
+        print(json.dumps({'scene': args.scene, 'already_preserved': True}))
+        return
     temporary = archive.with_suffix('.tmp')
     entries = []
     seen = {}
@@ -125,6 +137,19 @@ def main():
     # Every retained public byte has the same SHA as the original artifact.
     objects = output / 'objects'
     objects.mkdir(exist_ok=True)
+    existing_objects = {}
+    if args.reuse_public_objects:
+        for location in ('evidence/suite/scenes', 'evidence/reviews/beforestep_r3/checks',
+                         'evidence/reviews/beforestep_r3/scenes'):
+            for path in (ROOT / location).glob('*/manifest.json'):
+                for row in json.loads(path.read_text())['files']:
+                    if row.get('public_object'):
+                        existing_objects.setdefault(row['sha256'], row['public_object'])
+        index = ROOT / 'evidence/video/index.json'
+        if index.exists():
+            for row in json.loads(index.read_text())['objects'].values():
+                if row['encoding'] == 'gzip':
+                    existing_objects.setdefault(row['sha256'], row['path'])
     # Small direct files make identities and results readable on GitHub without
     # requiring a local restore of the content-addressed review data.
     for name, record in runs.items():
@@ -136,6 +161,9 @@ def main():
                 shutil.copyfile(source, public_run / filename)
     for entry in entries:
         if entry['path'] not in selected:
+            continue
+        if entry['sha256'] in existing_objects:
+            entry['public_object'] = existing_objects[entry['sha256']]
             continue
         blob = objects / (entry['sha256'] + '.gz')
         if not blob.exists():

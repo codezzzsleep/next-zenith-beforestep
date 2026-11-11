@@ -363,3 +363,9 @@ v3完整五R1回归实际通过，[原记录](../../evidence/reviews/beforestep_
   "collision": null
 }
 ```
+
+## 正式实验续接与后处理准备
+
+正式 E1 使用冻结源码 4d53214，原 80 单测与五项 R1 回归通过；现有进程持续执行，不重建已知任务。6 份新增云端任务已实际返回模型（任务身份及状态以本机付费账本为准）。`finish_r3_experiments.py` 等待 E1 完成后才启动指定 E2；随后只处理本轮新拒绝候选的反事实、原前缀验证、独立逐 qpos 复盘、每场完整外包与精简公开清单、三个修订视频索引和分组总表。后处理驱动状态为 `outputs/r3/v3/completion.json`，日志 `outputs/qa/r3/final-completion-driver.log`。
+
+这些后处理与最终展示脚本当前仅通过 `python3 -m py_compile`，不声称已完成实验、打包、最终网页或公网验收。3995 个保护条目相对原 R2 提交的 diff 为空；附加规范原件 SHA 一致。原 `src/` 在实验开始后未修改。

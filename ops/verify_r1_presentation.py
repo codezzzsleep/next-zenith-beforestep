@@ -211,6 +211,16 @@ def check():
             suite_facts(read(ROOT / pool['path']), pool['path'] + '#')
         for value in (1, 2, 3, 4, 5, 6, 8, 12, 150, 360):
             fact(value, 'docs/reviews/SPEC_BEFORESTEP_R2.md: preregistered rules')
+        revision = ROOT / 'evidence/reviews/beforestep_r3/summary.json'
+        if revision.exists():
+            from verify_r3_presentation import check as check_revision
+            check_revision()
+            suite_facts(read(revision), 'evidence/reviews/beforestep_r3/summary.json#')
+            for value in (0.05, 5.00, 170, 338):
+                fact(value, 'docs/reviews/SPEC_BEFORESTEP_R3.md: fixed revision rules')
+            prior = ROOT / 'evidence/reviews/beforestep_r3/prior-real-v2/F1_003-collision.json'
+            if prior.exists():
+                suite_facts(read(prior), str(prior.relative_to(ROOT)) + '#')
         for path in ('evidence/reviews/beforestep_r3/back-error/stats.json',
                      'evidence/reviews/beforestep_r3/failure-facts.json'):
             if (ROOT / path).exists():

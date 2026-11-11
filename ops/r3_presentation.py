@@ -108,6 +108,11 @@ def main():
     result = '<section id="suite-summary">'+aggregate+warning+'<details id="suite-details"><summary>展开完整预注册结果与逐场身份</summary>'+table_body+'</details></section>'
     ordered = [hero, sections['shadows'], *[sections[name] for name in ('experience','decision-effect','assets','observation-rule','rehearsal-gallery','truth-audit','counterfactual')], sections['levels'], result, failure, sections['sandbox'], sections['evolution']]
     (ROOT / 'site/index.html').write_text(page[:start]+'\n'+'\n'.join(ordered)+'\n'+page[end:])
+    render_report(report)
+    print(json.dumps({'candidate_count': stats['candidate_count'], 'shorter_than_five_cm': stats['shorter_than_five_cm'], 'original_result_blocks_preserved': True}))
+
+
+def render_report(report):
     body = markdown.markdown(report, extensions=['tables', 'fenced_code'])
     def url(match):
         attr, value = match.groups()
@@ -125,7 +130,6 @@ def main():
     previous = (ROOT / 'site/report.html').read_text()
     style = re.search(r'<style>[\s\S]*?</style>', previous).group(0)
     (ROOT / 'site/report.html').write_text('<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title>'+style+'</head><body>'+body+'</body></html>')
-    print(json.dumps({'candidate_count': stats['candidate_count'], 'shorter_than_five_cm': stats['shorter_than_five_cm'], 'original_result_blocks_preserved': True}))
 
 
 if __name__ == '__main__':

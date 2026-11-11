@@ -75,4 +75,7 @@ R1/R2 预注册主结果保留。看过两次碰撞后增加 `imagination_strict
 在 see-dark 到达的 12 场中，修订想象到达 3 场；眼数与仿真时间并列在 [修订五栏比较](reviews/R3-method-tables.md)。这些数据限定了想象替代缺失深度的实际范围，不能从避免碰撞推导成功通行，也没有证明生成分布覆盖真值或实机有效。
 
 只有固定留出表支持本轮样本外判断；锚点视频与原一眼到达仍取 R1 原运行。所有新生成拒绝候选的反事实、任务来源、完整物理数据及原输入 SHA 都保留在 [分组原始数据](../evidence/reviews/beforestep_r3/summary.json)。
+<!-- AWARD-HOLDOUT-CONTRIBUTION-START -->
+指定留出原想象：1到达、2停车、2碰撞；最终v3修订：0到达、5停车、0碰撞。修订消掉碰撞，也消掉这批留出中的到达收益。两次原想象碰撞的准入B背面偏短、全部候选预演通过与实际接触并列在[新增复盘](../evidence/award/holdout-collisions.json)；仍不据此宣称普遍安全或重建准确。
+<!-- AWARD-HOLDOUT-CONTRIBUTION-END -->
 <!-- R3-CONTRIBUTION-END -->

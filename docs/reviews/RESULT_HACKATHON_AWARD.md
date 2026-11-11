@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | 前置：磁盘/会话/后台恢复 | 完成 | 已按授权删除 `/root/rush`；原会话与实验终态已恢复，不重建已知任务。无在跑实验。 |
 | R3实验与完整保全 | 完成；最新技术报告公网核验继续 | 最终v3已知12场：3到达/9停车/0碰撞；留出5场：0到达/5停车/0碰撞。新增拒绝干预：已知17/0碰撞、留出112/13碰撞。完整tar/公开清单与独立origin核验已保全。 |
-| P1网页素材包与技术报告搬迁 | 素材/本地搬迁完成；首页待负责人交付 | 306真实网页版模型、526索引文件、521配准上下文；最大GLB 1999920字节。锚点12请求/11返回模型/8准入/3拒绝/1供应商失败、四完整轨迹、十二完整预演、每眼RGB/depth/DARK、真值与矩阵齐全。逐SHA、原几何、矩阵及轨迹实核通过。[index](../../evidence/web-assets/index.json) · [核验](../../evidence/award/acceptance/web-assets.json)。原首页按原字节与路径接通搬到 `site/report.html`，PDF源另存 `site/project-report.html`。 |
+| P1网页素材包与技术报告搬迁 | 素材/本地搬迁完成；首页待负责人交付 | 306真实网页版模型、526索引文件、521配准上下文；最大GLB 1999920字节。锚点12请求/11返回模型/8准入/3拒绝/1供应商失败、四完整轨迹、十二完整预演、每眼RGB/depth/DARK、真值与矩阵齐全。逐SHA、原几何、矩阵及轨迹实核通过；main `7cb3096` 已实际push，独立origin下载500对象/691547326字节，全部pointer SHA与size通过。[远端核验](../../evidence/award/acceptance/web-assets-origin.json)。[index](../../evidence/web-assets/index.json) · [核验](../../evidence/award/acceptance/web-assets.json)。原首页按原字节与路径接通搬到 `site/report.html`，PDF源另存 `site/project-report.html`。 |
 | P1首页集成 | 等待制作方交付 | 已实现 `ops/integrate_owner_homepage.py`，仅接通 `assets/`→`home-assets/`，model-viewer与仓库vendored字节相同；尚未替换正式首页。交付后做1440/390全页截图、模型/拖动/首屏时间/数字/公网验收。真人测试按负责人最新指令不由Agent跟进。 |
 | P2结果、回放、技术流程 | 本地完成；新技术报告公网核验继续 | 十二已知五栏与五指定留出单表、眼数/仿真时间并列、oldv2碰撞与最终v3范围、十二逐关修订回放、Lux核心工程链数字均齐全。R1/R2与R3数字审计、本地技术页/修订页通过。新版首页交付后原样接通相应入口。 |
 | P3补充演示 | 未开始；执行前置条件未满足 | 固定原提交 `f00a08f` 的 `suite_r2_v4_F0_006` 不更换；[原计划](../../evidence/award/demo/plan.json)与[新版28次上限修订](../../evidence/award/demo/budget-amendment.json)均保留。累计R2+R3=288，本项最多新增28/累计316，平台360；当前新增0。P1/P2在11/15 12:00北京时间前完成才执行，不提前伪造完成marker，也不提前写时间跳过。单列“赛后补充演示运行，不参与结论、不作为泛化证据”。 |

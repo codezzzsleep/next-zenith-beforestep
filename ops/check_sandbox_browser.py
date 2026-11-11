@@ -27,6 +27,19 @@ def main():
         assert page.goto(args.url).status == 200
         page.wait_for_selector('#sandbox-map[data-revision]', timeout=60000)
         page.wait_for_function('document.querySelectorAll("#sandbox-results article").length===3')
+        data = json.loads((ROOT / 'site/data/sandbox.json').read_text())
+        presets_checked = []
+        assert page.locator('#sandbox-preset option').count() == len(data['presets'])
+        for index, preset in enumerate(data['presets']):
+            previous = int(page.locator('#sandbox-map').get_attribute('data-revision'))
+            page.locator('#sandbox-preset').select_option(str(index))
+            page.wait_for_function('(n)=>Number(document.querySelector("#sandbox-map").dataset.revision)>n', arg=previous, timeout=60000)
+            assert page.locator('#sandbox-results article').count() == 3
+            assert page.locator('#sandbox-error').is_hidden()
+            presets_checked.append({'scene': preset['id'], 'three_plans_displayed': True})
+        previous = int(page.locator('#sandbox-map').get_attribute('data-revision'))
+        page.locator('#sandbox-preset').select_option('0')
+        page.wait_for_function('(n)=>Number(document.querySelector("#sandbox-map").dataset.revision)>n', arg=previous)
         first = int(page.locator('#sandbox-map').get_attribute('data-revision'))
         page.locator('[data-asset=boulder_01]').click()
         page.wait_for_function('(n)=>Number(document.querySelector("#sandbox-map").dataset.revision)>n', arg=first)
@@ -82,6 +95,8 @@ def main():
         assert not errors, errors
         assert not failures, failures
         result = {'passed': True, 'url': args.url, 'rock_drag_rotate_height': True,
+            'presets_checked': presets_checked,
+            'development_partial_suite': data['development_partial_suite'],
             'library_drag_and_drop': True,
             'crater_add_delete': True, 'sun_changed': True, 'three_plans_displayed': True,
             'export_validated': str(destination.relative_to(ROOT)), 'width_390_no_overflow': True,

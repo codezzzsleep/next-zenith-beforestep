@@ -22,7 +22,8 @@ def main():
     # The viewer links JSON results. Full trajectories, physics meshes and
     # training source snapshots remain in the repository and release ZIP.
     def linked_evidence(path):
-        return path.suffix in ('.json','.jsonl','.log') and 'source_snapshot' not in path.parts
+        award_media = ('award' in path.parts and path.suffix in ('.png', '.jpg', '.md', '.srt'))
+        return (path.suffix in ('.json','.jsonl','.log') or award_media) and 'source_snapshot' not in path.parts
     evidence=output/'evidence'
     if evidence.exists():
         for path in evidence.rglob('*'):

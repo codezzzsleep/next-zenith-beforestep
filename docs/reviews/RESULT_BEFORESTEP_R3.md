@@ -1966,3 +1966,71 @@ E1数据f971519已实际push：1137末场新LFS对象46MB上传成功；再次�
 ```
 
 <!-- R3-E2-BASELINES-F0-002-END -->
+
+## E2 F0_002六栏实际终态
+
+本场四baseline及原/strict真实链全部complete，orig和strict均2眼54.52s停车/0coll，首眼五文件与原方法逐byte相同；严格版本后眼相同请求复用已知SDK身份，没有重建任务。当前48新任务43ok5providerfailed，下一场F2_011按固定次序继续，首场两policy新拒绝CF提前用单worker与标准路径验证。仍不能以停车短时间解释效率或到达收益。
+
+### E2 suite_r2_v4_F0_002 imagination summary原文
+
+```json
+{
+  "policy": "imagination",
+  "tag": "imagination",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 1008.9,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F0_002 imagination_strict summary原文
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_002",
+  "goal": [
+    10.301463,
+    -0.045753
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 53.32,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    4.276,
+    0.398,
+    -1.17
+  ],
+  "sim_time_s": 54.52,
+  "wall_s": 91.3,
+  "collision": null
+}
+```

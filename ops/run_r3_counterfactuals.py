@@ -1,5 +1,6 @@
 """Trust every newly generated rejected candidate at its original R3 view."""
 import argparse
+import fcntl
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import json
 import os
@@ -104,6 +105,15 @@ def main():
     ap.add_argument('--budget', default='outputs/generation/r3-budget.json')
     ap.add_argument('--workers', type=int, default=3)
     a = ap.parse_args()
+    lock_directory = ROOT / 'outputs/qa/r3/counterfactual-locks'
+    lock_directory.mkdir(parents=True, exist_ok=True)
+    key = a.out.replace('/', '_')
+    with (lock_directory / (key + '.lock')).open('a') as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        execute(a)
+
+
+def execute(a):
     original = (ROOT / a.real_run).resolve()
     identity = json.loads((original / 'run_identity.json').read_text())
     summary = json.loads((original / 'summary.json').read_text())

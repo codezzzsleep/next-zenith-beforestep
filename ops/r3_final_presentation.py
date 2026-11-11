@@ -33,10 +33,11 @@ def stats_line(stats):
 def chapter(data):
     frozen, held = data['frozen'], data['holdouts']
     aggregate = data['all_run_stats']
+    sun = json.loads((ROOT / 'evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json').read_text())
     if aggregate['collisions']:
-        conclusion = '**修订想象仍有碰撞：' + '、'.join(aggregate['collision_scenes']) + '。** 原因与运行身份逐场公开，不能声称修订后没有碰撞。'
+        conclusion = '**最终 v3 修订想象仍有碰撞：' + '、'.join(aggregate['collision_scenes']) + '。** 原因与运行身份逐场公开，不能声称修订后没有碰撞。'
     else:
-        conclusion = f"**修订后在全部已完成的 {aggregate['completed']} 场中没有碰撞**：到达 {aggregate['arrived']}、停车 {aggregate['safe_stop']}。未完成场景不计入安全或到达数。"
+        conclusion = f"**最终 v3 在已完成的 {aggregate['completed']} 场中没有碰撞**：到达 {aggregate['arrived']}、停车 {aggregate['safe_stop']}。早期 v2 曾在 F1_003 碰撞，不能将本句扩展到所有修订尝试。未完成场景不计入安全或到达数。"
     paired = aggregate['see_dark_pairwise_looks_and_sim_time']
     comparison = '| 场景 | see-dark眼数 / 仿真s | 修订想象结果 / 眼数 / 仿真s |\n| --- | --- | --- |\n'
     for row in paired:
@@ -52,13 +53,18 @@ def chapter(data):
     substitute = ('修订想象没有在全部黑影测深可到达的场景中替代缺失深度。'
                   if aggregate['strict_arrived_among_see_dark_arrived'] < aggregate['see_dark_arrived_scenes']
                   else '这一对应关系仅在已完成的场景中成立。')
+    prior_table = '| 场景 | 早期 v2 真实任务复用尝试 |\n| --- | --- |\n' + '\n'.join(
+        '| ' + row['scene'] + ' | ' + outcome(row['runs']['imagination_strict']) + ' |'
+        for row in data['prior_real_v2'])
     return f"""## 赛后修订：想象只解释太阳的影子
 
 **想象只解释太阳的影子；视线的影子，再看一眼。** `imagination_strict` 出现在看过 R2 结果之后，始终标为赛后修订，不替换原 `imagination` 或预注册主结果。
 
 同一 5 cm 栅格，以已知地形、所有实际观测可见高度、通过自检的世界网格逐格最高点预测 0.05–5.00 m 的太阳阴影；方向取同一个渲染太阳函数。只有被解释的 DARK 可以通行，HIDDEN/UNSEEN 继续阻塞。补看和目标路线统一用这个占据定义，移动与最后转向都先在全部采纳世界完整预演。新方法最多 5 眼，第一眼的观测和真实任务逐字节复用。
 
-### 已知冻结场景复测
+锚点首眼的真实形状阴影诊断：与原 DARK 全地图 IoU **{sun['raw_whole_map_iou']:.4f}**，在已观测地面内为 **{sun['observed_ground_iou']:.4f}**。方向已按同一渲染函数与方块单测核对，保留低 IoU 与差异，不调参数；真值仅用于这次诊断，不输入修订规划器。[完整太阳诊断](../evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json)。
+
+### 已知冻结场景复测：最终 v3
 
 这 12 场是看过原结果后的修订复测，**不是样本外证据**。{stats_line(data['frozen_stats'])}
 
@@ -86,6 +92,12 @@ see-dark 到达的 {aggregate['see_dark_arrived_scenes']} 场中，修订想象�
 
 锚点在修订方法下：**{outcome(anchor['runs'].get('imagination_strict', {}))}**。视频仍使用 R1 原一眼到达运行。早期 v2 整合失败也保留：F1_003 去第 5 眼途中在 134.486s 接触 C，轨迹全部 5 个数组与原保守车相同；它是原观察路线的风险，不是一次新的模型生成失败。
 
+### 早期 v2 真实复用尝试：全部保留
+
+这批是策略整合修复之前对同一冻结 12 场的真实任务复用，新增付费为 0，**不是另一组样本外场景**。{stats_line(data['prior_real_v2_stats'])}修复后统一对全部 12 场重跑为上面的最终 v3，没有删掉碰撞或换场景；两版的原轨迹、事件与请求都进入每场完整清单。
+
+{prior_table}
+
 原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 [R3 数据](../evidence/reviews/beforestep_r3/summary.json)，执行与失败判断见 [R3 执行记录](reviews/RESULT_BEFORESTEP_R3.md)。
 """
 
@@ -105,9 +117,10 @@ def main():
     rendered = rendered.replace('href="../evidence/', 'href="evidence/').replace('href="reviews/', 'href="docs/reviews/')
     section = '<section id="post-result-revision"><div class="eyebrow">POST-RESULT REVISION / SEPARATE EVIDENCE</div>' + rendered + '</section>'
     content = page.read_text().replace('<section id="sandbox"', section + '\n<section id="sandbox"', 1)
-    if data['all_run_stats']['collisions']:
-        names = html.escape('、'.join(data['all_run_stats']['collision_scenes']))
-        notice = '<p id="r3-collision-warning" class="hero-result-line"><strong>赛后修订仍有碰撞：' + names + '。</strong> <a href="#post-result-revision">查看修订结果与原因 ↓</a></p>'
+    all_collisions = data['all_run_stats']['collision_scenes'] + data['prior_real_v2_stats']['collision_scenes']
+    if all_collisions:
+        names = html.escape('、'.join(dict.fromkeys(all_collisions)))
+        notice = '<p id="r3-collision-warning" class="hero-result-line"><strong>赛后修订曾有碰撞：' + names + '（包括早期 v2）。</strong> <a href="#post-result-revision">查看各版结果与原因 ↓</a></p>'
         content = content.replace('</section>', notice + '</section>', 1)
     page.write_text(content)
     (ROOT / 'docs/reviews/R3-method-tables.md').write_text(text)
@@ -118,6 +131,8 @@ def main():
 R1/R2 预注册主结果保留。看过两次碰撞后增加 `imagination_strict`：只放行由已知太阳方向、地形、可见高度与准入候选解释的太阳阴影，视线遮挡与未见空间继续等待观察；补看和目标路线在全部准入世界预演，预算统一为最多 5 眼。规则、实现和阴影方向诊断见 [R3 执行记录](reviews/RESULT_BEFORESTEP_R3.md)。
 
 已知 12 场复测：{stats_line(data['frozen_stats'])}这不是样本外证据。指定留出：{stats_line(data['holdout_stats'])}F1 已无未使用的决定性场景，固定留出顺序与失败都公开，不按结果选换。
+
+早期 v2 的同场景真实复用另列：{stats_line(data['prior_real_v2_stats'])}其中 F1_003 去第 5 眼途中碰撞。最终 v3 的数字不能扩展为所有修订尝试都没有碰撞，旧轨迹与修复前结果均保留。
 
 在 see-dark 到达的 {data['all_run_stats']['see_dark_arrived_scenes']} 场中，修订想象到达 {data['all_run_stats']['strict_arrived_among_see_dark_arrived']} 场；眼数与仿真时间并列在 [修订五栏比较](reviews/R3-method-tables.md)。这些数据限定了想象替代缺失深度的实际范围，不能从避免碰撞推导成功通行，也没有证明生成分布覆盖真值或实机有效。
 

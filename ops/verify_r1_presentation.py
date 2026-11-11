@@ -222,7 +222,8 @@ def check():
             if prior.exists():
                 suite_facts(read(prior), str(prior.relative_to(ROOT)) + '#')
         for path in ('evidence/reviews/beforestep_r3/back-error/stats.json',
-                     'evidence/reviews/beforestep_r3/failure-facts.json'):
+                     'evidence/reviews/beforestep_r3/failure-facts.json',
+                     'evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json'):
             if (ROOT / path).exists():
                 suite_facts(read(ROOT / path), path + '#')
                 def centimeters(value, source):

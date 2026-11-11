@@ -70,13 +70,20 @@ def check():
                 'safe_stop': sum(s['result'] != 'arrived' and s['result'] != 'collision' and s['collision'] is None for s in summaries),
                 'collisions': len(collisions), 'collision_scenes': collisions}
     for key, rows in (('frozen_stats', data['frozen']), ('holdout_stats', data['holdouts']),
-                      ('all_run_stats', data['frozen'] + data['holdouts'])):
+                      ('all_run_stats', data['frozen'] + data['holdouts']),
+                      ('prior_real_v2_stats', data['prior_real_v2'])):
         for field, expected in stats(rows).items():
             assert data[key][field] == expected, (key, field)
         sd = [r for r in rows if r['runs'].get('see_dark', {}).get('summary', {}).get('result') == 'arrived']
         assert data[key]['see_dark_arrived_scenes'] == len(sd)
         assert data[key]['strict_arrived_among_see_dark_arrived'] == sum(
             r['runs'].get('imagination_strict', {}).get('summary', {}).get('result') == 'arrived' for r in sd)
+    for row in data['prior_real_v2']:
+        record = row['runs']['imagination_strict']
+        if record.get('summary'):
+            run = ROOT / record['run']
+            assert record['summary'] == read(run / 'summary.json')
+            assert record['run_id'] == read(run / 'run_identity.json')['run_id']
     cf_count, cf_collisions = 0, 0
     for record in data['new_rejected_counterfactuals']:
         cf = read(ROOT / record['ledger'])
@@ -103,9 +110,10 @@ def check():
                 assert '未完成' in cell
     page = (ROOT / 'site/index.html').read_text()
     assert page.count('id="post-result-revision"') == 1
-    if data['all_run_stats']['collisions']:
+    collisions = data['all_run_stats']['collision_scenes'] + data['prior_real_v2_stats']['collision_scenes']
+    if collisions:
         assert 'id="r3-collision-warning"' in page
-        for scene in data['all_run_stats']['collision_scenes']:
+        for scene in collisions:
             assert scene in page.split('id="r3-collision-warning"')[1].split('</p>')[0]
     result = {'passed': True, 'checked_current_runs': checked,
               'first_view_original_bytes_verified': True,

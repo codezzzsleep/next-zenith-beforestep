@@ -7,11 +7,44 @@ from pathlib import Path
 import subprocess
 import sys
 
+import numpy as np
+
 from beforestep.generation import client as C
-from run_suite_counterfactuals import prefix_check
 from run_suite_imagination import sources
 
 ROOT = C.ROOT
+
+
+def prefix_check(original, actual, events, look, target):
+    """Use the exact captured sensor state, not the rounded display timestamp.
+
+    A display look time rounded to .01 s can include the first .002 s step
+    after intervention. That step must differ when the new decision differs.
+    Every actual sample through sensor capture remains subject to exact checks.
+    """
+    state = json.loads((original / 'looks' / f'look{look}' / target / 'state.json').read_text())
+    sensor_time = state['t_sim']
+    assert state['look'] == f'look{look}'
+    before_events = [json.loads(line) for line in (original / 'events.jsonl').read_text().splitlines()]
+    before_look = next(e for e in before_events if e['kind'] == 'look' and e['k'] == look)
+    after_look = next(e for e in events if e['kind'] == 'look' and e['k'] == look)
+    same_look = before_look['t'] == after_look['t'] and before_look['measured_pose'] == after_look['measured_pose']
+    arrays = {}
+    with np.load(original / 'traj.npz') as before, np.load(actual / 'traj.npz') as after:
+        left, right = before['t'] <= sensor_time, after['t'] <= sensor_time
+        for key in set(before.files) | set(after.files):
+            arrays[key] = key in before.files and key in after.files and bool(np.array_equal(before[key][left], after[key][right]))
+        sensor_pose = bool(np.array_equal(before['qpos'][left][-1], state['robot_qpos_world']) and
+                           np.array_equal(after['qpos'][right][-1], state['robot_qpos_world']))
+        count = int(left.sum())
+    observation = {suffix: C.sha(original / 'looks' / f'look{look}_{suffix}') ==
+                   C.sha(actual / 'looks' / f'look{look}_{suffix}')
+                   for suffix in ('rgb.png', 'depth.npy', 'dark.npy', 'state.npy', 'zmax.npy')}
+    return {'passed': same_look and sensor_pose and all(arrays.values()) and all(observation.values()),
+            'look_time_and_pose_equal': same_look, 'sensor_qpos_exact': sensor_pose,
+            'arrays_equal': arrays, 'observation_bytes_equal': observation,
+            'through_sim_time_s': sensor_time, 'display_look_time_s': before_look['t'],
+            'prefix_sample_count': count, 'boundary': 'All samples through exact sensor capture, inclusive'}
 
 
 def new_rejections(original, budget):
@@ -82,7 +115,7 @@ def main():
         events = [json.loads(line) for line in (actual / 'events.jsonl').read_text().splitlines()]
         intended = any(e['kind'] == 'counterfactual_intervention' and e['look'] == row['look'] and
                        e['target'] == row['target'] and e['candidate'] == row['candidate'] for e in events)
-        prefix = prefix_check(original, actual, events, row['look']) if intended and actual_summary else None
+        prefix = prefix_check(original, actual, events, row['look'], row['target']) if intended and actual_summary else None
         return key, {'command': command, 'exit_code': code, 'summary': actual_summary,
                      'intervention_verified': intended, 'prefix_verification': prefix,
                      'run': str(actual.relative_to(ROOT)),

@@ -1,0 +1,122 @@
+{
+  "scope": "Read-only counterfactual audit correction; arrays, observations and simulation unchanged",
+  "scene": "suite_r2_v4_F1_020",
+  "original_run": "outputs/r3/v3/frozen/suite_r2_v4_F1_020/imagination_strict",
+  "rounded_timestamp_included_first_post_intervention_step": true,
+  "original_failure_retained": "outputs/r3/v3/history/CF-F1_020-before-exact-sensor-time.json",
+  "rechecks": {
+    "look4_T3_B1": {
+      "original_rounded_check": {
+        "passed": false,
+        "look_time_and_pose_equal": true,
+        "arrays_equal": {
+          "phase": false,
+          "qpos": false,
+          "t": true,
+          "control_actions": true,
+          "control_sources": false
+        },
+        "through_sim_time_s": 103.96
+      },
+      "exact_sensor_check": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "qpos": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 103.9579999999935,
+        "display_look_time_s": 103.96,
+        "prefix_sample_count": 5762,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      }
+    },
+    "look4_T3_A2": {
+      "original_rounded_check": {
+        "passed": false,
+        "look_time_and_pose_equal": true,
+        "arrays_equal": {
+          "phase": false,
+          "qpos": false,
+          "t": true,
+          "control_actions": true,
+          "control_sources": false
+        },
+        "through_sim_time_s": 103.96
+      },
+      "exact_sensor_check": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "qpos": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 103.9579999999935,
+        "display_look_time_s": 103.96,
+        "prefix_sample_count": 5762,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      }
+    },
+    "look4_T3_B2": {
+      "original_rounded_check": {
+        "passed": false,
+        "look_time_and_pose_equal": true,
+        "arrays_equal": {
+          "phase": false,
+          "qpos": false,
+          "t": true,
+          "control_actions": true,
+          "control_sources": false
+        },
+        "through_sim_time_s": 103.96
+      },
+      "exact_sensor_check": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "qpos": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 103.9579999999935,
+        "display_look_time_s": 103.96,
+        "prefix_sample_count": 5762,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      }
+    }
+  },
+  "regression_cases": "tests/test_r3_counterfactual_prefix.py",
+  "paid_tasks": 0
+}

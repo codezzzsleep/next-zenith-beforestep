@@ -369,3 +369,11 @@ v3完整五R1回归实际通过，[原记录](../../evidence/reviews/beforestep_
 正式 E1 使用冻结源码 4d53214，原 80 单测与五项 R1 回归通过；现有进程持续执行，不重建已知任务。6 份新增云端任务已实际返回模型（任务身份及状态以本机付费账本为准）。`finish_r3_experiments.py` 等待 E1 完成后才启动指定 E2；随后只处理本轮新拒绝候选的反事实、原前缀验证、独立逐 qpos 复盘、每场完整外包与精简公开清单、三个修订视频索引和分组总表。后处理驱动状态为 `outputs/r3/v3/completion.json`，日志 `outputs/qa/r3/final-completion-driver.log`。
 
 这些后处理与最终展示脚本当前仅通过 `python3 -m py_compile`，不声称已完成实验、打包、最终网页或公网验收。3995 个保护条目相对原 R2 提交的 diff 为空；附加规范原件 SHA 一致。原 `src/` 在实验开始后未修改。
+
+## 新拒绝候选反事实的时间边界修正
+
+F1_020 第4眼三份新拒绝候选都已实际执行并停车、无碰撞。初检查误用事件中四舍五入的103.96s，把干预后的第一个0.002s采样算进前缀，产生false；原失败检查完整保留。只读重核传感器 `t_sim=103.9579999999935`（包含观察时刻），全部5762样本的t/qpos/phase/control_actions/control_sources逐项相同，完整传感器qpos和该眼五份观测原字节也相同。修复只在R3 ops检查器，不改实验数组、src或R1/R2旧检查/证据，不重跑物理或创建任务。[诊断与旧/新核验](../../evidence/reviews/beforestep_r3/counterfactual-prefix-diagnostic.json)。
+
+两条真实边界反例对应的单测已通过（允许干预后分歧；真正干预前分歧仍拒绝），命令 `python3 -m unittest discover -s tests -p test_r3_counterfactual_prefix.py -v`，2 tests/0.009s/exit0，日志outputs/qa/r3/final/prefix-boundary-tests.log。全部单测的最终验收仍待最终D执行。
+
+早期v2全12真实复用尝试将单列完整表（8完成=7停车+1碰撞、4未完成），与最终v3并列，不能用v3安全结果覆盖旧碰撞；首页和相关工作同样明确版本范围。

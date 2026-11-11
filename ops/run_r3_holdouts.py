@@ -67,6 +67,8 @@ def main():
     for entry in plan['holdouts']:
         scene = entry['scene']
         assert C.sha(ROOT / entry['config']) == entry['config_sha256']
+        if report['jobs'].get(scene, {}).get('status') == 'complete':
+            continue
         if entry['budget_optional'] and usage() >= 170:
             report['jobs'][scene] = {'status': 'not_started_no_remaining_budget', 'budget_optional': True}
             save()

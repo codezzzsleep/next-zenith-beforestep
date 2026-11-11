@@ -31,7 +31,7 @@ def main():
         section = page.locator('#post-result-revision')
         assert '赛后修订' in section.inner_text() and '不是样本外证据' in section.inner_text()
         tables = section.locator('table')
-        assert tables.count() == 3
+        assert tables.count() == 4
         checked = []
         for index, rows in enumerate((data['frozen'], data['holdouts'])):
             actual = tables.nth(index).locator('tbody tr')
@@ -49,10 +49,18 @@ def main():
                     else:
                         assert '未完成' in cell
                 checked.append(row['scene'])
-        if data['all_run_stats']['collisions']:
+        prior_rows = tables.nth(3).locator('tbody tr')
+        assert prior_rows.count() == len(data['prior_real_v2'])
+        for j, row in enumerate(data['prior_real_v2']):
+            cells = prior_rows.nth(j).locator('td').all_inner_texts()
+            assert cells[0] == row['scene']
+            old = row['runs']['imagination_strict'].get('summary')
+            assert (f"{old['looks']}眼" in cells[1] and f"{old['sim_time_s']:.2f}s" in cells[1]) if old else '未完成' in cells[1]
+        collisions = data['all_run_stats']['collision_scenes'] + data['prior_real_v2_stats']['collision_scenes']
+        if collisions:
             warning = page.locator('#r3-collision-warning')
             assert warning.count() == 1
-            for scene in data['all_run_stats']['collision_scenes']:
+            for scene in collisions:
                 assert scene in warning.inner_text()
         for href in section.locator('a[href]').evaluate_all('(es)=>es.map(e=>e.getAttribute("href"))'):
             if href.startswith('#'):

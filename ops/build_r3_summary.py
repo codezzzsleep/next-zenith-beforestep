@@ -105,6 +105,17 @@ def main():
                           'budget_optional': row['budget_optional'], 'status': job.get('status', 'not_started'),
                           'runs': held_runs})
     budget = json.loads((ROOT / 'outputs/generation/r3-budget.json').read_text())
+    previous = json.loads((ROOT / 'outputs/r3/frozen/processes.json').read_text())
+    prior_rows = []
+    for row in original['scenes']:
+        job = previous['jobs'][row['scene']]
+        prior_run = {'completed': False, 'status': job['status']}
+        if job.get('summary'):
+            actual = (ROOT / job['chain']).parent / 'imagination_strict'
+            prior_run.update(summary=job['summary'], run_id=job['run_id'],
+                             run=str(actual.relative_to(ROOT)), completed=True)
+        prior_rows.append({'scene': row['scene'], 'sample_scope': 'earlier_v2_same_scene_integration_attempt',
+                           'runs': {'imagination_strict': prior_run}})
     cf = []
     for path in sorted((ROOT / a.counterfactuals).rglob('counterfactuals.json')):
         result = json.loads(path.read_text())
@@ -115,6 +126,7 @@ def main():
               'original_preregistered_primary_results': 'evidence/suite/summary.json',
               'frozen': rows, 'holdouts': held_rows, 'frozen_stats': strict_stats(rows),
               'holdout_stats': strict_stats(held_rows), 'all_run_stats': strict_stats(rows + held_rows),
+              'prior_real_v2': prior_rows, 'prior_real_v2_stats': strict_stats(prior_rows),
               'f1_unused_decisive_available': False, 'new_rejected_counterfactuals': cf,
               'new_rejected_counterfactual_stats': {
                   'executed': sum(r['executed'] for r in cf),

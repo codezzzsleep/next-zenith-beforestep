@@ -8,8 +8,8 @@
 | P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
-| S1 | imagination_strict与预测阴影 | 进行中 | 独立strict_pipeline；原pipeline.py未改，72项单测通过 |
-| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | outputs/qa/r3/S2；现有作业继续，不重开 |
+| S1 | imagination_strict与预测阴影 | 完成 | 99729b8；74项单测通过；原pipeline.py未改 |
+| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | 全五R1回归已pass；四个truth/生产注册替身正在运行 |
 | E1 | 原12冻结场景赛后修订复测 | 未开始 | — |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
@@ -67,3 +67,5 @@ P0公网已实际完成：Pages e08f20d393e1e49a0dd7b840677c1ddc55c4f552 built/e
 | suite_r2_v4_F3_001 | 完整安全到达 |
 
 E2固定次序F0_002、F2_011、F3_005，预算剩余再F0_003、F3_006；F1无未使用的决定性场景。每场在当前源码跑四基线和原/修订想象，共用首眼任务，不根据基线再选或跳场。本轮先E1再E2，新增170/累计最多338，不超过原360。
+
+S2完整R1 gate实际终态pass：stuck/arrived/collision/arrived，真实重放arrived·1眼·112.84s；全部t/qpos/phase/control_actions/control_sources逐项相同，NPZ SHA仍6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e。原件 [regression.json](../../evidence/reviews/beforestep_r3/regression/regression.json)，74单测日志同目录。现在四个truth/生产注册替身实际启动，尚无新增paid。

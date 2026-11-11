@@ -116,8 +116,16 @@ def main():
               'frozen': rows, 'holdouts': held_rows, 'frozen_stats': strict_stats(rows),
               'holdout_stats': strict_stats(held_rows), 'all_run_stats': strict_stats(rows + held_rows),
               'f1_unused_decisive_available': False, 'new_rejected_counterfactuals': cf,
+              'new_rejected_counterfactual_stats': {
+                  'executed': sum(r['executed'] for r in cf),
+                  'collisions': sum(r['collisions'] for r in cf),
+                  'noncollisions': sum(r['noncollisions'] for r in cf),
+                  'unexecutable': sum(r['unexecutable'] for r in cf)},
               'paid_tasks': {'new_r3': R3Budget.usage(budget), 'r2': 168,
                              'cumulative_r2_r3': 168 + R3Budget.usage(budget), 'r3_limit': 170, 'original_limit': 360},
+              'new_task_provenance': [{key: task[key] for key in (
+                  'scene', 'sample', 'request', 'request_sha256', 'input_sha256', 'identity', 'status', 'task_id')}
+                  for task in budget['tasks'].values() if task['new_r3_task']],
               'scope': 'Known-scene reruns are a post-result revision. Only the prescribed held-out scenes can support an out-of-sample claim. All outcomes are retained.'}
     C.atomic_json(ROOT / 'evidence/reviews/beforestep_r3/summary.json', report)
     print(json.dumps({key: report[key] for key in ('frozen_stats', 'holdout_stats', 'paid_tasks')}, ensure_ascii=False))

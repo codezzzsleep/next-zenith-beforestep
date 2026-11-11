@@ -2,7 +2,6 @@
 import hashlib
 import json
 from pathlib import Path
-import re
 
 from beforestep.generation import client as C
 from r3_lux_budget import R3Budget
@@ -27,6 +26,10 @@ def check():
     assert R3Budget.usage(budget) == data['paid_tasks']['new_r3'] <= 170
     assert data['paid_tasks']['cumulative_r2_r3'] == 168 + R3Budget.usage(budget)
     assert all(t['status'] in ('ok', 'failed', 'not_submitted') for t in budget['tasks'].values())
+    assert {row['identity'] for row in data['new_task_provenance']} == {
+        row['identity'] for row in budget['tasks'].values() if row['new_r3_task']}
+    for row in data['new_task_provenance']:
+        assert all(value == budget['tasks'][row['identity']][key] for key, value in row.items())
     checked = []
     for row, old in zip(data['frozen'], original['scenes']):
         for policy in ('conservative', 'see_dark', 'optimistic', 'truth', 'imagination'):

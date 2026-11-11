@@ -94,7 +94,7 @@ def main():
                        '--standins', a.standins]
             if policy == 'imagination_strict':
                 original = output / scene / 'imagination/imagination'
-                if not (original / 'summary.json').exists():
+                if not (original / 'looks/look1_state.npy').exists():
                     row['runs'][policy] = {'completed': False, 'reason': 'original-first-view-chain-incomplete'}
                     save()
                     continue

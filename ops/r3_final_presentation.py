@@ -49,6 +49,9 @@ def chapter(data):
     collided = sum(r['collisions'] for r in cfs)
     unexecutable = sum(r['unexecutable'] for r in cfs)
     cf_line = f'只对本轮新生成且被拒的候选逐份干预：已执行 {executed} 份，其中 {collided} 份碰撞；{unexecutable} 份未完成干预，不当作安全结果。每份都保留原观测、移动前缀及全部 5 个轨迹数组的核验。复用 R1/R2 的旧拒绝候选不再重复计数。'
+    substitute = ('修订想象没有在全部黑影测深可到达的场景中替代缺失深度。'
+                  if aggregate['strict_arrived_among_see_dark_arrived'] < aggregate['see_dark_arrived_scenes']
+                  else '这一对应关系仅在已完成的场景中成立。')
     return f"""## 赛后修订：想象只解释太阳的影子
 
 **想象只解释太阳的影子；视线的影子，再看一眼。** `imagination_strict` 出现在看过 R2 结果之后，始终标为赛后修订，不替换原 `imagination` 或预注册主结果。
@@ -72,6 +75,8 @@ def chapter(data):
 {conclusion}
 
 see-dark 到达的 {aggregate['see_dark_arrived_scenes']} 场中，修订想象到达 {aggregate['strict_arrived_among_see_dark_arrived']} 场。眼数和仿真时间一起比较；停车导致的较短时间不当作速度收益。它检验的是能否在这些场景替代黑影里缺失的深度，不能写成对任意场景有效。
+
+{substitute}
 
 {comparison}
 
@@ -106,6 +111,21 @@ def main():
         content = content.replace('</section>', notice + '</section>', 1)
     page.write_text(content)
     (ROOT / 'docs/reviews/R3-method-tables.md').write_text(text)
+    related = ROOT / 'docs/related-work.md'
+    contribution = f"""<!-- R3-CONTRIBUTION-START -->
+## 项目贡献：赛后修订与指定留出验证
+
+R1/R2 预注册主结果保留。看过两次碰撞后增加 `imagination_strict`：只放行由已知太阳方向、地形、可见高度与准入候选解释的太阳阴影，视线遮挡与未见空间继续等待观察；补看和目标路线在全部准入世界预演，预算统一为最多 5 眼。规则、实现和阴影方向诊断见 [R3 执行记录](reviews/RESULT_BEFORESTEP_R3.md)。
+
+已知 12 场复测：{stats_line(data['frozen_stats'])}这不是样本外证据。指定留出：{stats_line(data['holdout_stats'])}F1 已无未使用的决定性场景，固定留出顺序与失败都公开，不按结果选换。
+
+在 see-dark 到达的 {data['all_run_stats']['see_dark_arrived_scenes']} 场中，修订想象到达 {data['all_run_stats']['strict_arrived_among_see_dark_arrived']} 场；眼数与仿真时间并列在 [修订五栏比较](reviews/R3-method-tables.md)。这些数据限定了想象替代缺失深度的实际范围，不能从避免碰撞推导成功通行，也没有证明生成分布覆盖真值或实机有效。
+
+只有固定留出表支持本轮样本外判断；锚点视频与原一眼到达仍取 R1 原运行。所有新生成拒绝候选的反事实、任务来源、完整物理数据及原输入 SHA 都保留在 [分组原始数据](../evidence/reviews/beforestep_r3/summary.json)。
+<!-- R3-CONTRIBUTION-END -->
+"""
+    original_related = re.sub(r'<!-- R3-CONTRIBUTION-START -->[\s\S]*?<!-- R3-CONTRIBUTION-END -->\n?', '', related.read_text())
+    related.write_text(original_related.rstrip() + '\n\n' + contribution)
     print(json.dumps({'frozen_rows': len(data['frozen']), 'holdout_rows': len(data['holdouts']),
                       'revision_collisions': data['all_run_stats']['collision_scenes']}))
 

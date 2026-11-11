@@ -657,3 +657,7 @@ F0_001/F1_001/F1_020全CF结束，三个preserve退出码均0；实际重新核�
 | suite_r2_v4_F1_020 | 10 | 668 | 73869229 | 182325802 | db1ea38b3b93322d6b3fd58f8486cc1e07f1379781491fc7d3965c08ad243be0 |
 
 每场唯一manifest在evidence/suite/scenes/<scene>/manifest.json，完整tar路径/root/3d/artifacts/beforestep-r2/<scene>-complete.tar.gz；日志B6-preserve-F0-001.log/B6-preserve-F1-001.log/B6-preserve-F1-020.log。下一提交推送此三套精简原件，完整原GLB tar不追加上传或重建任务。F1_003真实一眼108.0s到达、无collision、chain/review0；其全量CF仍在跑。B5 F2_003/F2_007进行中，当前新增105/360（96ok/9failed），case源仍cfffaf8。完整B7未生成，继续全组。
+
+F1_003全7份拒绝CF已完成、7arrived/0collision/allprefixpass，完整5策略+7CF共12variants/948文件保全exit0；public含清单74692429bytes<150MB，外包/root/3d/artifacts/beforestep-r2/suite_r2_v4_F1_003-complete.tar.gz，239257704bytes/SHAf7d76da30212151383ff4876ab9756140a41dc031a4132ae019f80f5f9e198fb，log B6-preserve-F1-003.log。首个新增普通场景真实1眼108.0s到达，对应乐观105.18s，额外0眼/+2.82s模拟终态时长，不把云队列/冷注册墙钟当速度收益。
+
+B7检查用六场预览exit0（含R1锚点和全部已完成的5新场景）：原frozen12不变、6余场未完成；完整CF63=13collision/27arrived/23stuck，0不能执行；主碰撞F1_020显著披露，拒绝多数有效无撞声明。没有把这份预览发布成总表或提前应用关口收缩；继续F2/F3。

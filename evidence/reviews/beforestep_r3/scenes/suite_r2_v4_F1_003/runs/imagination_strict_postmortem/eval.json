@@ -1,0 +1,110 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "f95286df2a8947789eeaea8552f27962",
+  "summary_sha256": "9d6ec30feda3573eeb52f7b5aa6c36ccc96e65392022ff437d09438c6450898f",
+  "scene": {
+    "id": "suite_r2_v4_F1_003",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.421985,
+        "x": 4.369772,
+        "y": -0.726405,
+        "yaw": 90.958422
+      },
+      "B": {
+        "rock": "moon_rock_05",
+        "height": 0.359955,
+        "x": 6.803644,
+        "y": 0.276002,
+        "yaw": -31.297326
+      },
+      "C": {
+        "rock": "moon_rock_04",
+        "height": 0.576196,
+        "x": 7.710423,
+        "y": 0.599223,
+        "yaw": -16.303792
+      },
+      "D": {
+        "rock": "stone_01",
+        "height": 0.557569,
+        "x": 1.3,
+        "y": 1.7,
+        "yaw": 87.22953
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      9.095304,
+      -0.071513
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 7.816513,
+      "azimuth_deg": 58.928476
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F1",
+      "seed": 3,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "compact",
+      "target_rocks": [
+        "A",
+        "B",
+        "C"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "stuck",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.9719497785203629,
+      "min_center_minus_half_width_m": 0.641949778520363,
+      "min_xy_rectangle_envelope_gap_m": 0.6403037680902027
+    },
+    "B": {
+      "min_center_distance_m": 1.1098090834834844,
+      "min_center_minus_half_width_m": 0.7798090834834843,
+      "min_xy_rectangle_envelope_gap_m": 0.7727472283146797
+    },
+    "C": {
+      "min_center_distance_m": 0.5545550370526728,
+      "min_center_minus_half_width_m": 0.22455503705267282,
+      "min_xy_rectangle_envelope_gap_m": 0.2019192449056949
+    },
+    "D": {
+      "min_center_distance_m": 1.640297702356504,
+      "min_center_minus_half_width_m": 1.310297702356504,
+      "min_xy_rectangle_envelope_gap_m": 1.3099533279759614
+    }
+  },
+  "first_departure_plan": null,
+  "first_departure_plan_by_rock": {},
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": []
+}

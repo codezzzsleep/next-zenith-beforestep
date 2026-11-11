@@ -1,0 +1,102 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "c504a985dee045099bb8d2cc3940dd1f",
+  "summary_sha256": "a409cda01887970c598206c4688eb198d384aba89ac0328315b905145078ed71",
+  "scene": {
+    "id": "suite_r2_v4_F2_003",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.558187,
+        "x": 4.667239,
+        "y": -0.667954,
+        "yaw": 89.137059
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.403294,
+        "x": 6.828958,
+        "y": 0.142096,
+        "yaw": -26.953166
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.730404,
+      0.01719
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": [
+        {
+          "center": [
+            6.365303,
+            1.071171
+          ],
+          "radius": 0.761878,
+          "depth": 0.530885
+        },
+        {
+          "center": [
+            5.07923,
+            -1.521669
+          ],
+          "radius": 0.786155,
+          "depth": 0.547345
+        }
+      ]
+    },
+    "sun": {
+      "elevation_deg": 10.426988,
+      "azimuth_deg": 31.509003
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F2",
+      "seed": 3,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "stuck",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.8887760734559024,
+      "min_center_minus_half_width_m": 0.5587760734559024,
+      "min_xy_rectangle_envelope_gap_m": 0.5377091832920591
+    },
+    "B": {
+      "min_center_distance_m": 1.6279616915168533,
+      "min_center_minus_half_width_m": 1.2979616915168533,
+      "min_xy_rectangle_envelope_gap_m": 1.1294683335602507
+    }
+  },
+  "first_departure_plan": null,
+  "first_departure_plan_by_rock": {},
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": []
+}

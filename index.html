@@ -1,20 +1,24 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · Next Zenith</title><link rel="stylesheet" href="style.css"></head>
+<head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · Next Zenith</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="award.css"></head>
 <body>
 <header><a class="brand" href="#">NEXT ZENITH <span>先见一步</span></a><nav><a href="#experience">实验</a><a href="#assets">候选</a><a href="#rehearsal-gallery">预演</a><a href="report.html">报告</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码 ↗</a></nav></header>
 <main>
-<section class="hero"><div class="eyebrow">AHOLO HACKATHON · SPATIAL INTELLIGENCE</div><h1>看不见的那一面，<br><em>先走一遍。</em></h1><p id="suite-hero-warning" class="hero-result-line">锚点场景中，想象车是三台车里唯一安全到达的；12 个预注册场景中，决定性 8 个：到达 3、安全停车 3、碰撞 2（原因已查明）。 <a href="#failure-analysis">查看原因 ↓</a></p>
-<p>轮腿机器人只能看见岩石的一部分，却要判断身边的路。让 Lux3D 提出几何假设，用实际观测自检，在想象中完整预演，再到独立物理世界执行。</p><a class="button" href="levels.html">开始第一关 →</a><div class="orbit" aria-hidden="true"><div class="planet"></div><div class="pathline"></div><span>OBSERVE → IMAGINE → REHEARSE → ACT</span></div></section>
-<section id="shadows"><div class="eyebrow">01 / TWO KINDS OF SHADOW</div><h2>一块岩石，留下两种未知。</h2><div class="story-grid"><article><h3>太阳的影子</h3><p>照不到的黑影里，相机没有可靠深度。换一个观察位置，也不能把那里照亮。</p></article><article><h3>视线的影子</h3><p>A 挡住身后的空间。移动相机能缩小遮挡，仍须检验背面的几何假设。</p></article></div><img class="comparison" src="media/r1-shadows.png" alt="实际第一眼机器人画面，以及显示太阳黑影与视线遮挡的观测地图"><p class="caption">第一眼实际 RGB-D 与观测地图。主线使用原 A+B、原太阳、原起终点；黑影保持未知。</p></section>
+<section class="hero"><div class="hero-copy"><div class="eyebrow">AHOLO HACKATHON · SPATIAL INTELLIGENCE</div><h1>看不见的那一面，<br><em>先走一遍。</em></h1><p id="suite-hero-warning" class="hero-result-line">锚点场景中，想象车是三台车里唯一安全到达的；12 个预注册场景中，决定性 8 个：到达 3、安全停车 3、碰撞 2（原因已查明）。 <a href="#failure-analysis">查看原因 ↓</a></p>
+<p>轮腿机器人只能看见岩石的一部分，却要判断身边的路。让 Lux3D 提出几何假设，用实际观测自检，在想象中完整预演，再到独立物理世界执行。</p><div class="hero-actions"><a class="button" href="levels.html">开始第一关 →</a><a href="#shadows">拖动两种影子 ↓</a><a class="award-language" href="en.html">English ↗</a></div><p id="r3-collision-warning" class="hero-result-line"><strong>赛后修订曾有碰撞：suite_r2_v4_F1_003（包括早期 v2）。</strong> <a href="#post-result-revision">查看各版结果与原因 ↓</a></p></div><figure class="hero-evidence"><div class="hero-shot" id="hero-real-image"><img src="media/award/first.png" alt="stress_v8 第一眼的真实机器人 RGB，A 与 B 标签来自原目标掩码" fetchpriority="high" width="1600" height="1200"><img class="dark-layer" src="media/award/dark-overlay.png" alt="原观测 DARK 像素标注"></div><figcaption>机器人实际第一眼 · A 在前，B 部分可见。琥珀色标出原 DARK 像素；A 后方的视线未知见下方原始地图。<a href="evidence/award/observations.json">原图、掩码与 SHA ↗</a></figcaption></figure></section><section id="award-choices"><div class="eyebrow">PLAY / SAME OBSERVATION</div><h2>如果你是这台车，怎么走？</h2><p>先点一种策略，再看它的真实终态。四栏共享同一窄道、传感器与规则控制器；黑影测深是传感器对照。</p><div class="award-choice-grid"><button class="award-choice" data-award-choice="conservative" aria-pressed="false"><h3>保守：先看清</h3><canvas width="260" height="110" aria-label="保守：先看清的实际轨迹缩略图"></canvas><p class="choice-outcome">点击揭晓终态 →</p></button><button class="award-choice" data-award-choice="see_dark" aria-pressed="false"><h3>对照：黑影测深</h3><canvas width="260" height="110" aria-label="对照：黑影测深的实际轨迹缩略图"></canvas><p class="choice-outcome">点击揭晓终态 →</p></button><button class="award-choice" data-award-choice="optimistic" aria-pressed="false"><h3>乐观：直接走</h3><canvas width="260" height="110" aria-label="乐观：直接走的实际轨迹缩略图"></canvas><p class="choice-outcome">点击揭晓终态 →</p></button><button class="award-choice" data-award-choice="imagination" aria-pressed="false"><h3>真实 Lux：先想象</h3><canvas width="260" height="110" aria-label="真实 Lux：先想象的实际轨迹缩略图"></canvas><p class="choice-outcome">点击揭晓终态 →</p></button></div><a class="button" href="levels.html">自己选一条路，再揭晓 →</a><a class="textlink" href="#experience">逐眼回放与全部原记录 ↓</a></section>
+<section id="shadows"><div class="eyebrow">01 / TWO KINDS OF SHADOW</div><h2>一块岩石，留下两种未知。</h2><div class="award-shadow-grid"><article class="shadow-card"><h3>太阳的影子：移动相机，太阳不动。</h3><div class="shadow-photo"><img src="media/award/first.png" alt="固定首眼太阳黑影参考"><img src="media/award/dark-overlay.png" alt="真实首眼 DARK 像素"></div><p>这一栏固定保留首眼画面与它的实际 DARK 掩码作参考。换位置不会照亮太阳照不到的地方；DARK 分类本身也包含暗岩面，不能等同于纯几何阴影。</p></article><article class="shadow-card"><h3>视线的影子：再看一个真实位置。</h3><div class="shadow-photo"><img src="media/award/first.png" alt="第一眼真实观测"><img id="shadow-second" class="second-view" src="media/award/second.png" alt="保守车真实第二眼观测"></div><p id="shadow-view" aria-live="polite">读取真实观测…</p><p>两张照片来自两个实际观察姿态。滑块切换已记录画面，没有虚构中间视角；下方地图同步切换为该眼的原始分类。</p></article></div><div class="shadow-controls"><label for="shadow-range">第一眼 ↔ 第二眼</label><input id="shadow-range" type="range" min="0" max="100" value="0" aria-label="切换真实第一眼和第二眼"><button id="shadow-toggle">再看一眼 →</button></div><div class="shadow-map-wrap"><canvas id="shadow-map" width="840" height="270" aria-label="真实观测地图，随第一眼和第二眼切换"></canvas><div><div class="shadow-key"><span class="dark">■ 太阳黑影分类 DARK</span><span class="hidden">■ 视线遮挡 HIDDEN</span><span>■ 未观测</span></div><p id="shadow-map-caption"></p><a class="textlink" href="evidence/award/observations.json">核对原始观测 ↗</a></div></div><details><summary>原始第一眼说明与完整对照图</summary><div class="story-grid"><article><h3>太阳的影子</h3><p>照不到的黑影里，相机没有可靠深度。换一个观察位置，也不能把那里照亮。</p></article><article><h3>视线的影子</h3><p>A 挡住身后的空间。移动相机能缩小遮挡，仍须检验背面的几何假设。</p></article></div><img class="comparison" src="media/r1-shadows.png" alt="实际第一眼机器人画面，以及显示太阳黑影与视线遮挡的观测地图"><p class="caption">第一眼实际 RGB-D 与观测地图。主线使用原 A+B、原太阳、原起终点；黑影保持未知。</p></details></section>
+<section id="levels"><div class="eyebrow">PLAY / CHOOSE YOUR ROUTE</div><h2>先做选择，再揭晓。</h2><p>看机器人实际第一眼，选择直接走、多看几眼或想一想，再回放实际轨迹、翻看背面并记分。</p><a class="button" href="levels.html">进入完整关卡 →</a><iframe title="真实月面实验关卡" src="levels.html?embedded=1" loading="lazy" style="width:100%;height:1600px;border:0;margin-top:2rem"></iframe></section>
 <section id="experience"><div class="sectiontop"><div><div class="eyebrow">02 / THE CORRIDOR</div><h2>同一条窄道，三个选择。</h2></div><span class="small" id="controller-label">同一场景 · 同一规则控制器</span></div><p>月溪不能进入，大石堆挡住右侧；A 在前，B 的后半截凸进车道。保持原终点 (10.5, 0)，让三种策略面对同一个问题。</p><div class="scene-choice"><label for="scene-select">选择实验</label><select id="scene-select" aria-label="选择 R1 主线或迭代附录"></select><span id="scene-title" class="pill">R1 极地窄道</span></div><div class="tabs" role="group" aria-label="选择机器人策略"><button data-policy="optimistic">直接走</button><button data-policy="conservative">看清再走</button><button class="active" data-policy="imagination">想一想再走</button></div><div id="audit-controls"><label for="audit-select">补充实验与全部反事实</label><select id="audit-select" aria-label="选择相机对照、真实形状检验、完整重放或反事实"><option value="">选择补充实验</option><option value="see_dark">对照：黑影也有深度</option><option value="truth">检验：真实形状替身</option><option value="replay">完整重放</option><option value="trust_A1">反事实：只信被拒 B/A1</option><option value="trust_B1">反事实：只信被拒 B/B1</option><option value="trust_C2">反事实：只信被拒 B/C2</option></select></div><div class="experiment"><div class="replay"><canvas id="route" width="1000" height="390" aria-label="真实运行轨迹回放"></canvas><div class="playback"><button id="play" aria-label="播放或暂停">▶ 播放</button><input id="scrub" type="range" min="0" max="1000" value="0" aria-label="回放进度"><span id="time">0.0 s</span></div><div class="legend"><span>● 已行驶轨迹</span><span>青色 / Lux3D 候选占据</span><span>◼ 扫描几何（仅复盘）</span><span>车形 / XY 包络</span></div></div><aside><span class="pill" id="run-status">加载真实结果…</span><h3 id="strategy">先生成，再自检。</h3><p id="description">同一规则控制器执行；候选需要满足观测约束，再完整预演。</p><dl><div><dt>观察次数</dt><dd id="looks">—</dd></div><div><dt>仿真总时长</dt><dd id="duration">—</dd></div><div><dt>完整预演</dt><dd id="rehearsals">—</dd></div></dl><p class="caption">这是已完成实验的实际轨迹回放。仿真行程不包含云端生成与配准计算。扫描形状只用于这里的复盘，生产规划器不读取隐藏真值。</p><a id="run-evidence" href="report.html">查看当前运行证据 ↗</a></aside></div><div class="table-wrap"><table><thead><tr><th>同场景实验</th><th>结果</th><th>眼数</th><th>仿真总时长</th></tr></thead><tbody id="main-result-rows"></tbody></table></div><div class="videowrap"><video controls preload="metadata" poster="media/demo-poster.jpg" src="media/demo.mp4">请下载视频观看。</video><div><div class="eyebrow">RECORDED SIMULATION</div><h3 id="video-title">R1 Demo 位置保留。</h3><p id="video-description">负责人将用本次完整数据制作新 Demo。这里现有视频为 v0.3 历史实验，保留供迭代比较。</p><a id="video-download" href="media/demo.mp4" download>下载历史 Demo ↓</a></div></div></section>
 <section id="decision-effect" hidden><div class="sectiontop"><div><div class="eyebrow">03 / WHY THIS ROUTE</div><h2>生成几何，怎样影响行动？</h2></div><span class="small">同一观测 · 同一规划器</span></div><p>橙线仅用可见观测与禁行先验，绿线加入真实 Lux3D 占据。R1 的乐观路线发生碰撞，想象路线完成预演后到达。</p><div class="decision-grid"><div class="replay"><canvas id="decision-map" width="1000" height="500" aria-label="同一观测下生成前后的路线对比"></canvas><div class="decision-legend"><span class="reference">— 去掉生成占据的路线</span><span class="generated">— Lux3D 选择的路线</span></div></div><aside><span class="pill" id="decision-status">检查路线差异</span><h3>先检验，再行动。</h3><dl><div><dt id="reference-label">乐观策略实际终态</dt><dd id="reference-check">—</dd></div><div><dt>执行路线预演</dt><dd id="execution-check">—</dd></div></dl><p id="decision-explanation"></p><p id="decision-margin" class="caption"></p><p class="caption">灰色岩石是实验复盘的扫描几何；路线余量与真实间隙在执行后计算，未提供给机器人规划。</p></aside></div></section>
-<section id="assets"><div class="sectiontop"><div><div class="eyebrow">04 / LUX3D AND SELF-CHECK</div><h2>想象，必须接受观测检验。</h2></div></div><div class="assetgrid"><div><img id="input" src="media/input.jpg" alt="生成岩石使用的真实输入预览"><span class="caption">实际上传输入的网页预览</span></div><div class="modelarea"><model-viewer id="model" src="media/candidate.glb" alt="真实 Lux3D 生成的岩石候选" camera-controls auto-rotate shadow-intensity=".5" exposure="1.1" environment-image="neutral"><div slot="poster" class="modelposter">正在加载真实 3D 资产…</div></model-viewer><div id="model-error" hidden>3D 查看器加载失败。<a id="model-download" href="media/candidate.glb" download>下载原始 GLB</a> 后可用 Blender 查看。</div><span class="caption">拖动旋转，滚动缩放 · 原始生成资产</span></div><div><span class="pill">全部任务与失败保留</span><h3>生成只是第一步。</h3><p>轮廓、自由空间侵入、可见表面接触与尺寸都须满足冻结门槛。准入表示符合当前观测，背面仍可能错误。</p><select id="candidate-select" aria-label="选择全部可用生成候选"></select><p id="candidate-info" class="caption"></p><a href="assets/manifest.json">查看完整资产清单 ↗</a></div></div><div id="r1-admission" class="table-wrap"><table><thead><tr><th>B 候选</th><th>任务</th><th>轮廓 IoU</th><th>尺度比</th><th>结果与原因</th></tr></thead><tbody id="admission-rows"></tbody></table></div><p id="generation-note" class="caption"></p><img class="comparison" src="media/r1-self-check.png" alt="B 第一眼五份可用候选的冻结轮廓检查，另外一份生成失败"></section>
+
+
+<section id="award-lux-pipeline"><div class="eyebrow">AHOLO / THE CORE WORKFLOW</div><h2>Lux3D 在哪一步，怎样影响行动？</h2><p>下面数字直接来自原结果和修订账本。生成与检查的原批以 R1/R2 为范围；修订单列，反事实按已知与留出分开。</p><div class="award-steps"><article><span>RGB-D</span><h3>真实观测</h3><p>机器人实际首眼与补看。太阳黑影与视线遮挡分别处理。</p></article><article><span>AHOLO / LUX3D</span><h3>多候选生成</h3><p>原 R1/R2 180 个唯一任务、166 份成功 GLB；R3 新增 120 个任务、113 份成功 GLB。</p></article><article><span>REGISTER / CHECK</span><h3>配准与冻结自检</h3><p>原批 64 份准入、102 份拒绝；只检验可见证据，不能保证背面。</p></article><article><span>OCCUPANCY</span><h3>候选进入占据</h3><p>原想象与赛后修订保持分开：修订只解释太阳黑影，视线未知仍阻塞。</p></article><article><span>PHYSICS</span><h3>逐候选完整预演</h3><p>每个采纳世界都以同一控制器走完整条路线，包含补看与最后转向。</p></article><article><span>INDEPENDENT ACT</span><h3>独立执行与复盘</h3><p>原想象有 2 场碰撞；最终 v3 已知场景碰撞 0、留出碰撞 0。oldv2 的碰撞保留。</p></article><article><span>COUNTERFACTUAL</span><h3>被拒候选也测试</h3><p>原批 17/102 碰撞；修订已知批 17 份、0 碰撞，留出批 112 份、13 碰撞。</p></article></div><a class="textlink" href="evidence/award/facts.json">每个数字的原始出处 ↗</a></section>
+<section id="assets"><div class="sectiontop"><div><div class="eyebrow">04 / LUX3D AND SELF-CHECK</div><h2>想象，必须接受观测检验。</h2></div></div><div class="assetgrid"><div><img id="input" src="media/input.jpg" alt="生成岩石使用的真实输入预览"><span class="caption">实际上传输入的网页预览</span></div><div class="modelarea"><model-viewer id="model" src="media/candidate.glb" alt="真实 Lux3D 生成的岩石候选" camera-controls auto-rotate shadow-intensity=".5" exposure="1.1" environment-image="neutral"><div slot="poster" class="modelposter">正在加载真实 3D 资产…</div></model-viewer><div id="model-error" hidden>3D 查看器加载失败。<a id="model-download" href="media/candidate.glb" download>下载原始 GLB</a> 后可用 Blender 查看。</div><span class="caption">拖动旋转，滚动缩放 · 原始生成资产</span></div><div><span class="pill">全部任务与失败保留</span><h3>生成只是第一步。</h3><p>轮廓、自由空间侵入、可见表面接触与尺寸都须满足冻结门槛。准入表示符合当前观测，背面仍可能错误。</p><select id="candidate-select" aria-label="选择全部可用生成候选"></select><button id="award-model-rotate" type="button">转到背面 →</button><p id="candidate-info" class="caption"></p><a href="assets/manifest.json">查看完整资产清单 ↗</a></div></div><div id="r1-admission" class="table-wrap"><table><thead><tr><th>B 候选</th><th>任务</th><th>轮廓 IoU</th><th>尺度比</th><th>结果与原因</th></tr></thead><tbody id="admission-rows"></tbody></table></div><p id="generation-note" class="caption"></p><img class="comparison" src="media/r1-self-check.png" alt="B 第一眼五份可用候选的冻结轮廓检查，另外一份生成失败"></section>
 <section id="observation-rule"><div class="eyebrow">05 / WHEN TO LOOK AGAIN</div><h2>第二眼，要让目标更清楚。</h2><p>需要补看时，朝向对准被拒目标，优先开得到、预计原图高度 ≥512 px 的位置。两眼都清楚才用两图，否则只用新视角；最多两批十二份，仍然零准入就停车。</p><img class="comparison" src="media/r1-observation.png" alt="主线真实首眼与独立替身第二眼的 B 输入预览"><p class="caption">本次真实B首眼251 px，native_ok=false，仍有A2、C1两份准入，一眼有路；第二眼、6b追加、§2.4替换均未真实触发。独立替身验证预计513.388 px、实际506 px，按单图分支完整到达。新第二眼规则与失败均有独立原始记录。</p></section>
 <section id="rehearsal-gallery"><div class="eyebrow">06 / IMAGINATION REHEARSALS</div><h2>在十二种想象里，完整走到终点。</h2><p>A 六份准入几何 × B 两份，共十二个物理预演。使用同一规则控制器，每格都完成且无碰撞，然后在独立扫描世界执行。</p><div id="pane-gallery" class="pane-grid"></div><p class="caption">画廊显示各格实际保存轨迹。点击查看完整轨迹文件；原世界坐标网格、配置与状态均在仓库。</p></section>
 <section id="truth-audit"><div class="eyebrow">07 / POST-RUN REVIEW</div><h2>执行之后，再与真值核对。</h2><div class="story-grid"><article><span class="metric" id="physical-gap">47.541 mm</span><h3>真实碰撞几何最小间隙</h3><p>从每个保存姿态重建原物理几何，最小有符号距离为正，实际执行没有接触。</p></article><article><span class="metric">0 mm</span><h3>二维包络最小间隙</h3><p>矩形包络与 B 的平面凸包相交。它是复盘近似，同时公开，不能当作实际三维接触。</p></article></div><img class="comparison" src="media/r1-clearance.png" alt="机器人与 A、B 实际可碰撞几何的最小距离"><p id="xy-center-note">二维中心距离减半车宽最小为 -0.062778 m；与二维包络间隙 0 同时报告。</p><p id="wall-note">原运行墙钟1223.6 s，含冷配准和预演、不含云端排队，不是端到端延迟。</p><p>完整重放再次完成十二格预演并到达，全部轨迹数组与原运行逐字节相同。采纳 B 的背面仍偏短，不把此次到达说成模型已经还原了真实背面。</p><a class="textlink" href="evidence/reviews/beforestep_r1/replay_validation.json">查看轨迹摘要与重放核验 ↗</a></section>
 <section id="counterfactual"><div class="eyebrow">08 / ALL COUNTERFACTUALS</div><h2>被拒的想象，这次也能走。</h2><p>按预注册逐一只信 B/A1、B/B1、B/C2，不挑选、不补看。三份都到达，碰撞数为 0/3；本批自检偏保守，未证明它挡住了碰撞。</p><div class="table-wrap"><table><thead><tr><th>只信的被拒 B</th><th>实际终态</th><th>仿真总时长</th></tr></thead><tbody id="counterfactual-rows"></tbody></table></div><p class="caption">可在上方“补充实验与全部反事实”中回放三次完整执行。生成失败的 B2 没有 GLB，单独保留，不冒充自检拒绝。</p></section>
-<section id="levels"><div class="eyebrow">PLAY / CHOOSE YOUR ROUTE</div><h2>先做选择，再揭晓。</h2><p>看机器人实际第一眼，选择直接走、多看几眼或想一想，再回放实际轨迹、翻看背面并记分。</p><a class="button" href="levels.html">进入完整关卡 →</a><iframe title="真实月面实验关卡" src="levels.html?embedded=1" loading="lazy" style="width:100%;height:1600px;border:0;margin-top:2rem"></iframe></section>
+
 <section id="suite-summary"><div class="eyebrow">PREREGISTERED / ALL OUTCOMES</div><h2>先看结论，再展开全部原记录。</h2><p>决定性：到达3、安全停车3、碰撞2；普通：到达3、停车1、碰撞0。全部拒绝反事实17/102碰撞；真实第二眼5次：1到达、4安全终止、0碰撞。</p><div id="suite-collision-alert" class="suite-warning"><div class="eyebrow">R2 / 实测安全边界</div><h2>想象策略实际发生碰撞。</h2><p><strong>suite_r2_v4_F1_020、suite_r2_v4_F3_004</strong></p><p>全部实际接触、复盘与失败原因在预注册结果总表中保留。</p><a href="#suite-summary">查看碰撞场景与原始运行身份 ↓</a></div><details id="suite-details"><summary>展开完整预注册结果与逐场身份</summary><p class="suite-warning"><strong>想象策略实际发生碰撞：suite_r2_v4_F1_020、suite_r2_v4_F3_004。</strong>全部失败与复盘原因在总表公开。</p><div class="table-wrap"><h2>预注册月面场景组</h2>
 <p>场景组在任何本轮 Lux3D 结果之前冻结。选择只依据保守、see-dark、乐观和真实形状检验四次非 Lux 运行；各类别按种子从小到大取决定性与普通场景，stress_v8 直接使用已完成的 R1 锚点。冻结后不换场景、不放宽门槛、不迭代控制器。</p>
 <p>原冻结 12 个场景，完成 12 个。未完成：无。</p>
@@ -672,7 +676,318 @@
 <p><img class="comparison" alt="原R1和R2全部准入候选的赛后背面误差分布" src="media/r3-back-error.png" /></p>
 <p>原 R1 + R2 共 <strong>64</strong> 份通过自检的候选，其中 <strong>23</strong> 份的背面比关联真值短 <strong>5 cm 以上</strong>。误差为每次观测时沿机器人前进轴的候选占地最远端减真值最远端；图中的负 <strong>5 cm</strong> 线是冻结余量。联合观测对关联真值并集统计，所有准入候选逐份入列，真值仅用于赛后诊断，不能证明阴影中的几何已经还原。</p>
 <p><a href="evidence/reviews/beforestep_r3/back-error/stats.json">原始统计与每份候选身份</a> · <a href="evidence/reviews/beforestep_r3/failure-facts.json">两次失败的原始数值</a> · <a href="evidence/video/index.json">给负责人渲染视频的数据索引</a></p></section>
+<section id="post-result-revision"><div class="eyebrow">POST-RESULT REVISION / SEPARATE EVIDENCE</div><h2>赛后修订：想象只解释太阳的影子</h2>
+<p><strong>想象只解释太阳的影子；视线的影子，再看一眼。</strong> <code>imagination_strict</code> 出现在看过 R2 结果之后，始终标为赛后修订，不替换原 <code>imagination</code> 或预注册主结果。</p>
+<p>同一 5 cm 栅格，以已知地形、所有实际观测可见高度、通过自检的世界网格逐格最高点预测 0.05–5.00 m 的太阳阴影；方向取同一个渲染太阳函数。只有被解释的 DARK 可以通行，HIDDEN/UNSEEN 继续阻塞。补看和目标路线统一用这个占据定义，移动与最后转向都先在全部采纳世界完整预演。新方法最多 5 眼，第一眼的观测和真实任务逐字节复用。</p>
+<p>锚点首眼的真实形状阴影诊断：与原 DARK 全地图 IoU <strong>0.09316194010071562</strong>，在已观测地面内为 <strong>0.1489637305699482</strong>。方向已按同一渲染函数与方块单测核对，保留低 IoU 与差异，不调参数；真值仅用于这次诊断，不输入修订规划器。<a href="evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json">完整太阳诊断</a>。</p>
+<h3>已知冻结场景复测：最终 v3</h3>
+<p>这 12 场是看过原结果后的修订复测，<strong>不是样本外证据</strong>。已完成 12 场：到达 3、停车 9、碰撞 0；未完成 0 场。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>保守</th>
+<th>see-dark</th>
+<th>乐观</th>
+<th>原想象</th>
+<th>修订想象（赛后）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stress_v8</td>
+<td>停车 · 5眼 · 142.2s</td>
+<td>到达 · 3眼 · 147.26s</td>
+<td>碰撞 · 1眼 · 80.87s</td>
+<td>到达 · 1眼 · 112.84s</td>
+<td>停车 · 3眼 · 87.74s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001</td>
+<td>停车 · 5眼 · 142.92s</td>
+<td>到达 · 3眼 · 145.24s</td>
+<td>碰撞 · 1眼 · 80.83s</td>
+<td>停车 · 2眼 · 54.58s</td>
+<td>停车 · 2眼 · 54.58s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005</td>
+<td>停车 · 5眼 · 143.98s</td>
+<td>到达 · 3眼 · 151.76s</td>
+<td>到达 · 1眼 · 102.42s</td>
+<td>停车 · 2眼 · 53.0s</td>
+<td>停车 · 2眼 · 53.0s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001</td>
+<td>停车 · 5眼 · 111.74s</td>
+<td>碰撞 · 4眼 · 91.03s</td>
+<td>碰撞 · 1眼 · 72.47s</td>
+<td>停车 · 2眼 · 42.7s</td>
+<td>停车 · 3眼 · 82.68s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020</td>
+<td>停车 · 5眼 · 129.12s</td>
+<td>未到达停车 · 4眼 · 121.09s</td>
+<td>碰撞 · 1眼 · 79.24s</td>
+<td>碰撞 · 1眼 · 61.46s</td>
+<td>停车 · 5眼 · 138.28s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td>碰撞 · 4眼 · 134.49s</td>
+<td>到达 · 5眼 · 129.45s</td>
+<td>到达 · 1眼 · 105.18s</td>
+<td>到达 · 1眼 · 108.0s</td>
+<td>停车 · 5眼 · 101.49s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003</td>
+<td>停车 · 5眼 · 83.06s</td>
+<td>到达 · 4眼 · 165.2s</td>
+<td>碰撞 · 1眼 · 82.79s</td>
+<td>停车 · 2眼 · 57.8s</td>
+<td>停车 · 5眼 · 83.48s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007</td>
+<td>停车 · 5眼 · 83.33s</td>
+<td>到达 · 4眼 · 157.28s</td>
+<td>碰撞 · 1眼 · 80.41s</td>
+<td>到达 · 2眼 · 128.4s</td>
+<td>停车 · 5眼 · 80.28s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001</td>
+<td>停车 · 5眼 · 83.43s</td>
+<td>到达 · 3眼 · 133.18s</td>
+<td>到达 · 1眼 · 102.5s</td>
+<td>到达 · 1眼 · 102.7s</td>
+<td>到达 · 4眼 · 118.57s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002</td>
+<td>停车 · 5眼 · 218.48s</td>
+<td>到达 · 5眼 · 119.05s</td>
+<td>碰撞 · 1眼 · 80.4s</td>
+<td>到达 · 1眼 · 107.6s</td>
+<td>到达 · 4眼 · 176.71s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004</td>
+<td>停车 · 1眼 · 18.1s</td>
+<td>未到达停车 · 4眼 · 129.63s</td>
+<td>碰撞 · 1眼 · 79.59s</td>
+<td>碰撞 · 1眼 · 82.14s</td>
+<td>停车 · 1眼 · 18.1s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001</td>
+<td>未到达停车 · 2眼 · 111.83s</td>
+<td>到达 · 3眼 · 125.97s</td>
+<td>到达 · 1眼 · 111.88s</td>
+<td>到达 · 1眼 · 112.5s</td>
+<td>到达 · 5眼 · 143.43s</td>
+</tr>
+</tbody>
+</table></div>
+<h3>指定留出场景</h3>
+<p>只有这一表提供本轮样本外证据。固定取 F0_002、F2_011、F3_005，预算剩余依次 F0_003、F3_006；F1 没有未使用的决定性场景。每场四个当前源码基线和两种真实想象都保留，不按基线或 Lux 结果筛选。已完成 5 场：到达 0、停车 5、碰撞 0；未完成 0 场。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>保守</th>
+<th>see-dark</th>
+<th>乐观</th>
+<th>原想象</th>
+<th>修订想象（赛后）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>suite_r2_v4_F0_002</td>
+<td>停车 · 5眼 · 143.2s</td>
+<td>停车 · 3眼 · 93.64s</td>
+<td>碰撞 · 1眼 · 80.93s</td>
+<td>停车 · 2眼 · 54.52s</td>
+<td>停车 · 2眼 · 54.52s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_011</td>
+<td>停车 · 5眼 · 82.26s</td>
+<td>停车 · 5眼 · 81.97s</td>
+<td>碰撞 · 1眼 · 81.91s</td>
+<td>停车 · 2眼 · 56.06s</td>
+<td>停车 · 2眼 · 56.06s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_005</td>
+<td>停车 · 5眼 · 95.38s</td>
+<td>到达 · 3眼 · 139.18s</td>
+<td>碰撞 · 1眼 · 82.34s</td>
+<td>到达 · 2眼 · 135.84s</td>
+<td>停车 · 5眼 · 92.17s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_003</td>
+<td>停车 · 5眼 · 154.3s</td>
+<td>到达 · 3眼 · 138.58s</td>
+<td>碰撞 · 1眼 · 81.57s</td>
+<td>碰撞 · 1眼 · 93.7s</td>
+<td>停车 · 3眼 · 87.74s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_006</td>
+<td>停车 · 5眼 · 156.67s</td>
+<td>到达 · 5眼 · 115.02s</td>
+<td>碰撞 · 1眼 · 80.21s</td>
+<td>碰撞 · 1眼 · 83.28s</td>
+<td>停车 · 5眼 · 87.81s</td>
+</tr>
+</tbody>
+</table></div>
+<h3>修订结果与黑影测深对照</h3>
+<p><strong>最终 v3 在已完成的 17 场中没有碰撞</strong>：到达 3、停车 14。早期 v2 曾在 F1_003 碰撞，不能将本句扩展到所有修订尝试。未完成场景不计入安全或到达数。</p>
+<p>see-dark 到达的 12 场中，修订想象到达 3 场。眼数和仿真时间一起比较；停车导致的较短时间不当作速度收益。它检验的是能否在这些场景替代黑影里缺失的深度，不能写成对任意场景有效。</p>
+<p>修订想象没有在全部黑影测深可到达的场景中替代缺失深度。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>see-dark眼数 / 仿真s</th>
+<th>修订想象结果 / 眼数 / 仿真s</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stress_v8</td>
+<td>3 / 147.26</td>
+<td>停车 / 3 / 87.74</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001</td>
+<td>3 / 145.24</td>
+<td>停车 / 2 / 54.58</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005</td>
+<td>3 / 151.76</td>
+<td>停车 / 2 / 53.0</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td>5 / 129.45</td>
+<td>停车 / 5 / 101.49</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003</td>
+<td>4 / 165.2</td>
+<td>停车 / 5 / 83.48</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007</td>
+<td>4 / 157.28</td>
+<td>停车 / 5 / 80.28</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001</td>
+<td>3 / 133.18</td>
+<td>到达 / 4 / 118.57</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002</td>
+<td>5 / 119.05</td>
+<td>到达 / 4 / 176.71</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001</td>
+<td>3 / 125.97</td>
+<td>到达 / 5 / 143.43</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_005</td>
+<td>3 / 139.18</td>
+<td>停车 / 5 / 92.17</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_003</td>
+<td>3 / 138.58</td>
+<td>停车 / 3 / 87.74</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_006</td>
+<td>5 / 115.02</td>
+<td>停车 / 5 / 87.81</td>
+</tr>
+</tbody>
+</table></div>
+<p>只对本轮新生成且被拒的候选逐份干预：已执行 129 份，其中 13 份碰撞；0 份未完成干预，不当作安全结果。每份都保留原观测、移动前缀及全部 5 个轨迹数组的核验。复用 R1/R2 的旧拒绝候选不再重复计数。统计单位是一次策略干预：共用首眼的同一新候选可能在原方法与修订方法下分别干预，不能把这些运行当作独立生成样本。 已知冻结场景的新增干预为 17 份、0 份碰撞；指定留出的新增干预为 112 份、13 份碰撞，只有后者提供本轮样本外的反事实证据。</p>
+<p>本轮新增真实任务 <strong>120</strong>，R2 与 R3 累计 <strong>288/360</strong>，R3 上限 170。原输入、全部成功与失败任务、候选自检、预演和独立执行都有保留；每场唯一 SHA 清单在 <code>evidence/reviews/beforestep_r3/scenes/&lt;scene&gt;/manifest.json</code>，完整外包位置也写在清单中。视频指定三个修订运行的全部渲染数据均在公开仓库可取。</p>
+<p>锚点在修订方法下：<strong>停车 · 3眼 · 87.74s</strong>。视频仍使用 R1 原一眼到达运行。早期 v2 整合失败也保留：F1_003 去第 5 眼途中在 134.486s 接触 C，轨迹全部 5 个数组与原保守车相同；它是原观察路线的风险，不是一次新的模型生成失败。</p>
+<h3>早期 v2 真实复用尝试：全部保留</h3>
+<p>这批是策略整合修复之前对同一冻结 12 场的真实任务复用，新增付费为 0，<strong>不是另一组样本外场景</strong>。已完成 8 场：到达 0、停车 7、碰撞 1；未完成 4 场。修复后统一对全部 12 场重跑为上面的最终 v3，没有删掉碰撞或换场景；两版的原轨迹、事件与请求都进入每场完整清单。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>早期 v2 真实任务复用尝试</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stress_v8</td>
+<td>停车 · 5眼 · 142.2s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_001</td>
+<td>未完成</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F0_005</td>
+<td>未完成</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_001</td>
+<td>未完成</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_020</td>
+<td>停车 · 5眼 · 129.12s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F1_003</td>
+<td>碰撞 · 4眼 · 134.49s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_003</td>
+<td>停车 · 5眼 · 83.06s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_007</td>
+<td>未完成</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F2_001</td>
+<td>停车 · 5眼 · 83.43s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_002</td>
+<td>停车 · 5眼 · 218.48s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_004</td>
+<td>停车 · 1眼 · 18.1s</td>
+</tr>
+<tr>
+<td>suite_r2_v4_F3_001</td>
+<td>未到达停车 · 2眼 · 111.83s</td>
+</tr>
+</tbody>
+</table></div>
+<p>原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 <a href="evidence/reviews/beforestep_r3/summary.json">R3 数据</a>，执行与失败判断见 <a href="docs/reviews/RESULT_BEFORESTEP_R3.md">R3 执行记录</a>。</p></section>
 <section id="sandbox"><div class="eyebrow">SANDBOX / YOUR MOONSCAPE</div><h2>石头，由你来放。</h2><p>拖动扫描岩石，旋转、调整太阳与月坑，查看三种策略的轻量路线，再导出到本地完整物理验证。</p><a class="button" href="sandbox.html">打开月面沙盒 →</a><p class="caption">不做物理仿真，不实时调用 Lux3D。一致性 8/12；所有不一致在<a href="evidence/suite/presentation/sandbox/consistency.json">原始检查</a>中列出。</p></section>
-<section id="evolution"><div class="eyebrow">APPENDICES / ITERATIONS AND LEARNING</div><h2>每一步，都留下证据。</h2><div class="milestones"><article><span>V6 / V7</span><h3>观测约束与阴影未知</h3><p>保留生成原型、融合几何、冻结门槛及拒绝资产。</p></article><article><span>V8</span><h3>窄道里的真实约束</h3><p>A+B、月溪与大石堆，让保守与乐观失败有具体物理原因。</p></article><article><span>TRAINED MODELS</span><h3>网络学会了运动</h3><p>真实示教、权重、独立任务评估和主动观察实测保留为附录。</p><a class="textlink" href="learning.html">查看训练模型 ↗</a></article><article><span>R1</span><h3>同一窄道验证想象</h3><p>原场景真实 Lux 到达与完整重放；自检偏保守和真值差异也公开。</p></article></div><p>旧关口、改终点与训练控制实验的对照同样能到达，没有证明 Lux3D 的必要性；它们作为工程迭代完整保留。</p><img class="comparison" src="media/version-comparison.jpg" alt="保留的核心技术版本和资产比较"><a class="textlink" href="docs/milestones.md">源码快照与版本证据 ↗</a> · <a class="textlink" href="docs/related-work.md">相关研究与贡献定位 ↗</a></section>
-</main><script type="module" src="app.js"></script><script type="module" src="vendor/model-viewer.min.js"></script>
-<script>addEventListener("message",function(e){if(e.origin!==location.origin||!Number.isFinite(e.data?.beforestepLevelHeight))return;var f=document.querySelector("#levels iframe");if(f&&e.source===f.contentWindow)f.style.height=Math.max(700,e.data.beforestepLevelHeight)+"px";});</script></body></html>
+<section id="award-asset-comparison" class="asset-iterations"><div class="eyebrow">REAL ASSETS / SIX VERSIONS</div><h2>关键资产迭代：每一步都能核对。</h2><img src="media/award/asset-iterations.png" alt="V6、V7、V8与v0.1、v0.2、v0.3真实模型和输入的浏览器渲染截图"><p>v0.1 显示真实两图重试，v0.3 示例是实际被拒候选。不同版本并非同一输入的质量排行榜。原模型、全部输入 SHA 与冻结配置逐项公开。</p><a class="button" href="award-assets.html">旋转六个真实资产 →</a><a class="textlink" href="evidence/award/asset-iterations/manifest.json">模型、输入与配置 SHA ↗</a></section><section id="evolution"><div class="eyebrow">APPENDICES / ITERATIONS AND LEARNING</div><h2>每一步，都留下证据。</h2><div class="milestones"><article><span>V6 / V7</span><h3>观测约束与阴影未知</h3><p>保留生成原型、融合几何、冻结门槛及拒绝资产。</p></article><article><span>V8</span><h3>窄道里的真实约束</h3><p>A+B、月溪与大石堆，让保守与乐观失败有具体物理原因。</p></article><article><span>TRAINED MODELS</span><h3>网络学会了运动</h3><p>真实示教、权重、独立任务评估和主动观察实测保留为附录。</p><a class="textlink" href="learning.html">查看训练模型 ↗</a></article><article><span>R1</span><h3>同一窄道验证想象</h3><p>原场景真实 Lux 到达与完整重放；自检偏保守和真值差异也公开。</p></article></div><p>旧关口、改终点与训练控制实验的对照同样能到达，没有证明 Lux3D 的必要性；它们作为工程迭代完整保留。</p><img class="comparison" src="media/version-comparison.jpg" alt="保留的核心技术版本和资产比较"><a class="textlink" href="docs/milestones.md">源码快照与版本证据 ↗</a> · <a class="textlink" href="docs/related-work.md">相关研究与贡献定位 ↗</a></section>
+<footer><p id="award-footer-warning" class="award-warning">原 R2 想象在 F1_020、F3_004 碰撞；赛后修订早期 oldv2 在 F1_003 碰撞。最终 v3 的结论只限该版与已完成场景。</p><a href="en.html">English summary ↗</a></footer></main><script type="module" src="app.js"></script><script type="module" src="vendor/model-viewer.min.js"></script>
+<script>addEventListener("message",function(e){if(e.origin!==location.origin||!Number.isFinite(e.data?.beforestepLevelHeight))return;var f=document.querySelector("#levels iframe");if(f&&e.source===f.contentWindow)f.style.height=Math.max(700,e.data.beforestepLevelHeight)+"px";});</script><script type="module" src="award.js"></script></body></html>

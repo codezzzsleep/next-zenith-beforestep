@@ -1,0 +1,85 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "f4f137935b14427c8d0320dc7c2bd185",
+  "summary_sha256": "1cc0b8323f3a2b8d3a8118545d0727ab3cdfe207c570f9edf7bc8d643be5adc9",
+  "scene": {
+    "id": "suite_r2_v4_F0_005",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.562232,
+        "x": 4.501938,
+        "y": -0.709905,
+        "yaw": 88.20363
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.414708,
+        "x": 6.768768,
+        "y": 0.238765,
+        "yaw": -23.514075
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.305374,
+      0.008717
+    ],
+    "terrain": {
+      "type": "corridor",
+      "right_wall": true,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 10.527016,
+      "azimuth_deg": 32.519602
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F0",
+      "seed": 5,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "stuck",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 1.304830951110502,
+      "min_center_minus_half_width_m": 0.974830951110502,
+      "min_xy_rectangle_envelope_gap_m": 0.8393517866102103
+    },
+    "B": {
+      "min_center_distance_m": 2.8032489113910937,
+      "min_center_minus_half_width_m": 2.4732489113910936,
+      "min_xy_rectangle_envelope_gap_m": 2.3000568134525463
+    }
+  },
+  "first_departure_plan": null,
+  "first_departure_plan_by_rock": {},
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": []
+}

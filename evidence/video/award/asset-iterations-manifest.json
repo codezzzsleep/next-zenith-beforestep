@@ -1,0 +1,175 @@
+{
+  "schema": "beforestep-award-asset-iterations/v1",
+  "scope": "Real asset renders, not redrawn shapes. v0.1 shows the actual two-image M4 retry; both original uploaded JPEG SHA values are retained.",
+  "v6_source": "Historical observation copied byte-for-byte; parent and fused STL remain in assets/geometry/reference_v6.",
+  "versions": [
+    {
+      "version": "V6",
+      "model": {
+        "path": "assets/geometry/reference_v6/observation_fused.stl",
+        "sha256": "57d2dcf764f6176ece51a5ae9ffbc13f447dc39297fdb9586a54d28de3fa1b35"
+      },
+      "viewer": {
+        "path": "site/media/award/v6-observation-fused.glb",
+        "sha256": "6e31504d68edd70ae293bbb9a492a40085b44927334097e0a3ad19d01e3d1beb"
+      },
+      "input": {
+        "path": "evidence/award/asset-iterations/v6-input/crop_white.png",
+        "sha256": "e55c137494e7a810f75534a5d757ebec1da23c9ca560d5b5a6f0a20e37d75252"
+      },
+      "frozen_config": [
+        {
+          "path": "evidence/milestones/v6/config/unseen_v6_1_fusion.json",
+          "sha256": "81cf221c3f51117887ec74488e91f5cd440ad7c7367e48b0331c70a4e0658a7e"
+        },
+        {
+          "path": "evidence/milestones/v6/config/unseen_v6_protocol.json",
+          "sha256": "7c84cd5237b72c4732693128f62a8df8b3466d26e00444768fae882f560bd4c0"
+        }
+      ],
+      "note": "真实融合结果；可见区域受观测约束，未知背面没有被证明。"
+    },
+    {
+      "version": "V7",
+      "model": {
+        "path": "assets/candidates/reference_v7/A_naive1.glb",
+        "sha256": "d7391040771181d4dab3d6b2c309655e29d9a979ed9d323ed329bdc6b55be521"
+      },
+      "viewer": {
+        "path": "assets/candidates/reference_v7/A_naive1.glb",
+        "sha256": "d7391040771181d4dab3d6b2c309655e29d9a979ed9d323ed329bdc6b55be521"
+      },
+      "input": {
+        "path": "assets/inputs/reference_v7/A_naive1.png",
+        "sha256": "b52c8d2b0ec4d95b29d36e379bb0e0c8f8ec48eaf678b6f4d66a6f74c74b0276"
+      },
+      "frozen_config": [
+        {
+          "path": "evidence/milestones/v7/config/v5_admission.json",
+          "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
+        },
+        {
+          "path": "evidence/milestones/v7/config/unseen_v7_protocol.json",
+          "sha256": "c8581424acdc8192c730fb31e1a39d85e06008bd8d86fd290cde547ad2204c6e"
+        }
+      ],
+      "note": "原真实候选；阴影深度与多视角比较仍有失败。"
+    },
+    {
+      "version": "V8",
+      "model": {
+        "path": "assets/candidates/reference_v8/look1/T1/B2.glb",
+        "sha256": "0052ee34c0f2cbbdcfe248dba237ec063d8fa5d0f189724f0607d838127f16ff"
+      },
+      "viewer": {
+        "path": "assets/candidates/reference_v8/look1/T1/B2.glb",
+        "sha256": "0052ee34c0f2cbbdcfe248dba237ec063d8fa5d0f189724f0607d838127f16ff"
+      },
+      "input": {
+        "path": "assets/observations/reference_v8/looks/look1/T1/gen/variants/B2.png",
+        "sha256": "5161562b0ff08802501a4c2c29a2fe42e4a0018af3c6112673ae6af0fe4c135a"
+      },
+      "frozen_config": [
+        {
+          "path": "evidence/milestones/v8/config/v5_admission.json",
+          "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
+        },
+        {
+          "path": "evidence/milestones/v8/config/v5_protocol.json",
+          "sha256": "8fbedb6a03a9504f984ce5b68c152c91778c04f19c40ad68fd698d3ccaa35ca0"
+        }
+      ],
+      "note": "原窄道第一块采纳候选；第二块全拒，原任务停车。"
+    },
+    {
+      "version": "v0.1",
+      "model": {
+        "path": "assets/candidates/4979742/tex_mesh.glb",
+        "sha256": "7afa5eaf6df3a8f7186fe43615f7aa7da28d2278d87b88c4c32c15f7472a968c"
+      },
+      "viewer": {
+        "path": "assets/candidates/4979742/tex_mesh.glb",
+        "sha256": "7afa5eaf6df3a8f7186fe43615f7aa7da28d2278d87b88c4c32c15f7472a968c"
+      },
+      "input": {
+        "path": "assets/inputs/polar_retry_001/look1_T2.jpg",
+        "sha256": "ab211250eb52f1ede4958d4452bcb4ebfcccb6af6eac58f5b115786bdb49f73c"
+      },
+      "frozen_config": [
+        {
+          "path": "config/admission.json",
+          "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
+        },
+        {
+          "path": "config/protocol.json",
+          "sha256": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee"
+        }
+      ],
+      "note": "真实两图重试任务 4979742 / M4，仍被拒；工程重构不能替代几何证据。",
+      "additional_inputs": [
+        {
+          "path": "assets/inputs/polar_retry_001/look2_T2.jpg",
+          "sha256": "2cf5200405bddabefe4f87c4f838e8e326fc0363248c42f3a37b6898a146dba6"
+        }
+      ],
+      "task_id": 4979742,
+      "source_result": "experiments/polar_retry_001/lux_result.json"
+    },
+    {
+      "version": "v0.2",
+      "model": {
+        "path": "assets/candidates/5027323/tex_mesh.glb",
+        "sha256": "008a1e778f62f9d6a783bb92eafe4f4c9203891834dcf82ff405c7ceaae358df"
+      },
+      "viewer": {
+        "path": "assets/candidates/5027323/tex_mesh.glb",
+        "sha256": "008a1e778f62f9d6a783bb92eafe4f4c9203891834dcf82ff405c7ceaae358df"
+      },
+      "input": {
+        "path": "assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+        "sha256": "99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c"
+      },
+      "frozen_config": [
+        {
+          "path": "config/admission.json",
+          "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
+        },
+        {
+          "path": "config/protocol.json",
+          "sha256": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee"
+        }
+      ],
+      "note": "实际关口任务 5027323；通过原自检，参与完整预演与执行。",
+      "task_id": 5027323,
+      "source_result": "experiments/gate_passage_001/lux_result.json"
+    },
+    {
+      "version": "v0.3",
+      "model": {
+        "path": "assets/candidates/5125347/tex_mesh.glb",
+        "sha256": "884fab2e3e911c0897361d91667938cbfeebc705d9894733240d9798f4a43cf4"
+      },
+      "viewer": {
+        "path": "assets/candidates/5125347/tex_mesh.glb",
+        "sha256": "884fab2e3e911c0897361d91667938cbfeebc705d9894733240d9798f4a43cf4"
+      },
+      "input": {
+        "path": "assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg",
+        "sha256": "ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2"
+      },
+      "frozen_config": [
+        {
+          "path": "config/admission.json",
+          "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
+        },
+        {
+          "path": "config/protocol.json",
+          "sha256": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee"
+        }
+      ],
+      "note": "实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。",
+      "task_id": 5125347,
+      "source_result": "experiments/trained_live_gate_001/result.json"
+    }
+  ]
+}

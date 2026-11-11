@@ -1,0 +1,166 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "7b193aa172544849a688fbfefa3b4bb0",
+  "summary_sha256": "2fe7417bb6b25f599e6bd46826ad229919c84d8d576c68ba4163c8a72801a6f1",
+  "scene": {
+    "id": "suite_r2_v4_F0_002",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.545652,
+        "x": 4.618642,
+        "y": -0.767473,
+        "yaw": 90.175933
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.432086,
+        "x": 6.997926,
+        "y": 0.217562,
+        "yaw": -28.264249
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.301463,
+      -0.045753
+    ],
+    "terrain": {
+      "type": "corridor",
+      "right_wall": true,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 9.176212,
+      "azimuth_deg": 32.583648
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F0",
+      "seed": 2,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.48376292958216593,
+      "min_center_minus_half_width_m": 0.15376292958216592,
+      "min_xy_rectangle_envelope_gap_m": 0.15367155928408888
+    },
+    "B": {
+      "min_center_distance_m": 0.43062539122146437,
+      "min_center_minus_half_width_m": 0.10062539122146436,
+      "min_xy_rectangle_envelope_gap_m": 0.10041262641009416
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 1,
+    "path": [
+      [
+        4.6,
+        0.5
+      ],
+      [
+        6.6,
+        -0.8
+      ],
+      [
+        8.0,
+        -0.8
+      ],
+      [
+        10.301,
+        -0.046
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": {
+      "drive_margin_m": 0.12,
+      "turn_margin_m": 0.1
+    }
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.47789896587105196,
+      "center_minus_half_width_m": 0.14789896587105195,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.42941511631717066,
+      "center_minus_half_width_m": 0.09941511631717065,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 1,
+      "role": "execution",
+      "path": [
+        [
+          4.599999999999999,
+          0.500000000000002
+        ],
+        [
+          6.599999999999999,
+          -0.7999999999999992
+        ],
+        [
+          7.999999999999998,
+          -0.7999999999999992
+        ],
+        [
+          10.301463,
+          -0.045753
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/baselines/truth/truth_standin/A.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/baselines/truth/truth_standin/B.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008429662438385787,
+            0.010008575485743982,
+            0.008577036265208648,
+            0.008331139242546302
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

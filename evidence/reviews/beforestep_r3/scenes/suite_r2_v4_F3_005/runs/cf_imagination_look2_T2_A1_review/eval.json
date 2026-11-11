@@ -1,0 +1,168 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "c83ca2000edd44809c9a4897a5f0a84f",
+  "summary_sha256": "5b7c234028a12c7a1cb03c189383b2abe87f1f85f0734753fcbce97a191ba227",
+  "scene": {
+    "id": "suite_r2_v4_F3_005",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.544941,
+        "x": 4.482543,
+        "y": -0.746217,
+        "yaw": 89.842188
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.422612,
+        "x": 6.772429,
+        "y": 0.164653,
+        "yaw": -25.209595
+      },
+      "C": {
+        "rock": "moon_rock_07",
+        "height": 0.435165,
+        "x": 8.060808,
+        "y": 1.064868,
+        "yaw": -18.020274
+      },
+      "D": {
+        "rock": "moon_rock_07",
+        "height": 0.422166,
+        "x": 1.3,
+        "y": 1.7,
+        "yaw": 37.851793
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      11.330212,
+      0.045812
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": [
+        {
+          "center": [
+            6.804644,
+            1.505343
+          ],
+          "radius": 0.794775,
+          "depth": 0.629295
+        },
+        {
+          "center": [
+            5.195208,
+            -1.658469
+          ],
+          "radius": 0.745218,
+          "depth": 0.66276
+        }
+      ]
+    },
+    "sun": {
+      "elevation_deg": 9.901541,
+      "azimuth_deg": 34.604361
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F3",
+      "seed": 5,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B",
+        "C"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5291850660480176,
+      "min_center_minus_half_width_m": 0.1991850660480176,
+      "min_xy_rectangle_envelope_gap_m": 0.19849393242449512
+    },
+    "B": {
+      "min_center_distance_m": 0.3896611718821192,
+      "min_center_minus_half_width_m": 0.05966117188211917,
+      "min_xy_rectangle_envelope_gap_m": 0.059303540122494246
+    },
+    "C": {
+      "min_center_distance_m": 1.378422512216094,
+      "min_center_minus_half_width_m": 1.048422512216094,
+      "min_xy_rectangle_envelope_gap_m": 1.0477036531981931
+    },
+    "D": {
+      "min_center_distance_m": 1.8679850798045088,
+      "min_center_minus_half_width_m": 1.5379850798045087,
+      "min_xy_rectangle_envelope_gap_m": 1.5375600555274331
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 2,
+    "path": [
+      [
+        4.8,
+        0.4
+      ],
+      [
+        6.7,
+        -0.9
+      ],
+      [
+        11.33,
+        0.046
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.5319619019570719,
+      "center_minus_half_width_m": 0.20196190195707192,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.3961853414050147,
+      "center_minus_half_width_m": 0.0661853414050147,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "C": {
+      "min_center_distance_m": 1.3817950051326588,
+      "center_minus_half_width_m": 1.0517950051326588,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "D": {
+      "min_center_distance_m": 2.8131520701037065,
+      "center_minus_half_width_m": 2.4831520701037064,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": []
+}

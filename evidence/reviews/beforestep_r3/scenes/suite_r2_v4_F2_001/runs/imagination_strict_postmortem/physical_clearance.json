@@ -1,0 +1,127 @@
+{
+  "schema": "beforestep-r1-physical-clearance/v1",
+  "scope": "Post-run reconstruction at every saved qpos, original MuJoCo collision geoms and masks; no simulation advance or planning input.",
+  "run_id": "4e8125f3734444a4a82fa7be0fbac9d5",
+  "trajectory_sha256": "fbaac0370528fca8de8b418b2a8977c4c131095b0b300d78fd084830e9fac867",
+  "distance_function": "mujoco.mj_geomDistance; signed, negative means geometric penetration",
+  "sample_count": 10675,
+  "scene": {
+    "id": "suite_r2_v4_F2_001",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.546332,
+        "x": 4.616494,
+        "y": -0.697634,
+        "yaw": 87.454548
+      },
+      "B": {
+        "rock": "moon_rock_02",
+        "height": 0.426799,
+        "x": 6.89132,
+        "y": 0.402874,
+        "yaw": -23.794467
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.640641,
+      -0.049459
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": [
+        {
+          "center": [
+            6.433388,
+            1.165785
+          ],
+          "radius": 0.733109,
+          "depth": 0.566619
+        },
+        {
+          "center": [
+            5.076765,
+            -1.546143
+          ],
+          "radius": 0.687499,
+          "depth": 0.720089
+        }
+      ]
+    },
+    "sun": {
+      "elevation_deg": 9.800697,
+      "azimuth_deg": 30.571416
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F2",
+      "seed": 1,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "compact",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "physical_contact_record": null,
+  "rocks": {
+    "A": {
+      "minimum_signed_collision_geometry_distance_m": 0.40361932741184775,
+      "witness": {
+        "trajectory_index": 3787,
+        "time_s": 76.94000000000183,
+        "robot_geom": 51,
+        "obstacle_geom": 53,
+        "nearest_points_xyz_m": [
+          [
+            5.1818426539693885,
+            -0.004370393073733447,
+            0.153606280919263
+          ],
+          [
+            4.84610772042916,
+            -0.22094855926817109,
+            0.21091695871131882
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "B": {
+      "minimum_signed_collision_geometry_distance_m": 0.9738612971891574,
+      "witness": {
+        "trajectory_index": 3787,
+        "time_s": 76.94000000000183,
+        "robot_geom": 18,
+        "obstacle_geom": 54,
+        "nearest_points_xyz_m": [
+          [
+            5.796557753541895,
+            -0.14322145544526135,
+            0.10036267616740578
+          ],
+          [
+            6.6157944428574025,
+            0.38331378842252223,
+            0.10457100213007028
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    }
+  }
+}

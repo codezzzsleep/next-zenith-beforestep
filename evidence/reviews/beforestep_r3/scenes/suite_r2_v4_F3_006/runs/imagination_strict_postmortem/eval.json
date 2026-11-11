@@ -1,0 +1,307 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "9d8fb710b33d45ad85c66c2323df4482",
+  "summary_sha256": "32d801d71e16e1b936f91aa5f899148687c295eac030c019bf130bd20ad20264",
+  "scene": {
+    "id": "suite_r2_v4_F3_006",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.557076,
+        "x": 4.523543,
+        "y": -0.708602,
+        "yaw": 89.55956
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.416486,
+        "x": 6.768204,
+        "y": 0.167028,
+        "yaw": -23.859677
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      11.061803,
+      -0.030256
+    ],
+    "terrain": {
+      "type": "plain",
+      "right_wall": false,
+      "craters": [
+        {
+          "center": [
+            6.712811,
+            1.659105
+          ],
+          "radius": 0.766052,
+          "depth": 0.694277
+        }
+      ]
+    },
+    "sun": {
+      "elevation_deg": 9.259824,
+      "azimuth_deg": 34.688857
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F3",
+      "seed": 6,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "stuck",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.7257793341225567,
+      "min_center_minus_half_width_m": 0.39577933412255667,
+      "min_xy_rectangle_envelope_gap_m": 0.3927753868220798
+    },
+    "B": {
+      "min_center_distance_m": 0.6465241906606802,
+      "min_center_minus_half_width_m": 0.3165241906606802,
+      "min_xy_rectangle_envelope_gap_m": 0.3138031512567511
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination_strict",
+    "look": 5,
+    "path": [
+      [
+        9.1,
+        -1.7
+      ],
+      [
+        11.062,
+        -0.03
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": null
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 2.061177414831401,
+      "center_minus_half_width_m": 1.731177414831401,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 1.2439503167373085,
+      "center_minus_half_width_m": 0.9139503167373084,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 5,
+      "role": "execution",
+      "path": [
+        [
+          9.099999999999998,
+          -1.7
+        ],
+        [
+          11.061803,
+          -0.030256
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 1,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_A1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A2.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 2,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_A2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 3,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_A2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A2.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 4,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_B1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 5,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_B1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A2.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 6,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_B2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 7,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_B2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A2.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 8,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_C1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 9,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_C1.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A2.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 10,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_C2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A1.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        },
+        {
+          "pane": 11,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T1/decide/world_C2.obj",
+            "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/looks/look1/T2/decide/world_A2.obj"
+          ],
+          "collided": false,
+          "completed": false,
+          "reason": "waypoint_not_reached",
+          "waypoint_errors_m": [
+            0.7514125879078632
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

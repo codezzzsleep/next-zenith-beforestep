@@ -4960,3 +4960,184 @@ F2_011完整保全实际完成：6863files/fulltar402819985bytes、唯一公开�
   "collision": null
 }
 ```
+
+### E2 suite_r2_v4_F3_005 imagination_strict summary原文
+
+strict五眼后停车、0coll，92.17sim_s；同场see-dark三眼139.18s到达、原想象两眼135.84s到达。严格策略本场未替代黑影里的缺失深度，停车短不当速度收益。first5byte原观测共享通过，96新增任务均终态后按预算余继续固定F0_003，不挑换。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_005",
+  "goal": [
+    11.330212,
+    0.045812
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 90.97,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.257,
+    2.003,
+    -27.62
+  ],
+  "sim_time_s": 92.17,
+  "wall_s": 809.6,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F0_003 optimistic summary原文
+
+固定预算可选第四场的当前源码baseline，exit0，真实两方法继续。
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_003",
+  "goal": [
+    10.475129,
+    0.013346
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 80.37,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.875,
+    -0.516,
+    8.12
+  ],
+  "sim_time_s": 81.57,
+  "wall_s": 65.4,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      7.112,
+      -0.263,
+      0.115
+    ],
+    "t": 81.568
+  }
+}
+```
+
+### E2 suite_r2_v4_F0_003 see_dark summary原文
+
+固定预算可选第四场的当前源码baseline，exit0，真实两方法继续。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "see_dark",
+  "see_dark": true,
+  "imagine": null,
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_003",
+  "goal": [
+    10.475129,
+    0.013346
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 137.38,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    10.467,
+    0.012,
+    18.69
+  ],
+  "sim_time_s": 138.58,
+  "wall_s": 101.0,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F0_003 conservative summary原文
+
+固定预算可选第四场的当前源码baseline，exit0，真实两方法继续。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_003",
+  "goal": [
+    10.475129,
+    0.013346
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 153.1,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    6.265,
+    -0.591,
+    19.39
+  ],
+  "sim_time_s": 154.3,
+  "wall_s": 113.0,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F0_003 truth summary原文
+
+固定预算可选第四场的当前源码baseline，exit0，真实两方法继续。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "truth",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F0_003",
+  "goal": [
+    10.475129,
+    0.013346
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 113.48,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.467,
+    0.014,
+    15.56
+  ],
+  "sim_time_s": 114.68,
+  "wall_s": 77.6,
+  "collision": null
+}
+```
+
+F2_011完整scene保全已952e5df push；398新增LFS100829272bytes已从origin独立storage下载，全部pointer SHA/size通过。[远端实际核验](../../evidence/reviews/beforestep_r3/final-verification/F2-011-publication-audit.json)。本场六栏、34新CF、全复盘、22原GLB与完整tar/唯一manifest全部实际完成并公开精简证据。

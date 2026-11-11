@@ -645,3 +645,15 @@ scene chain/review均exit0，run_id eaf899ee66a24fee84de39ee19697eaa；完整原
 B6另有F0_001全部20拒绝CF终态，4collision/14arrived/2stuck，全部prefix验证通过；碰撞发生在首眼B/A1,A2,C1,C2，与真实B在81.092s接触，主真实F0_001保持2眼54.58s安全停车。下一为此第二完整scene一次manifest/外包，不用局部CF分母代替全组结果。
 
 首场bundle1063597已实际push0/远端同，LFS全新缓存远端代表对象5,966,676bytes下载0且SHA/字节同本地，证明本批上传/读取可用，余额仍未知。B7额外真实来源检查在R1/R2实际数据通过、保留offline stand-in正确被拒；普通提前停车的较短仿真时长不写成更快完成任务。compile0/0新增物理或付费。
+
+### B6另三场完整保全实际完成
+
+F0_001/F1_001/F1_020全CF结束，三个preserve退出码均0；实际重新核对总目录尺寸（包含manifest）与字段相同，均<150MB。原输入、成功GLB、failed task记录、全部注册/占地/预演/独立轨迹/CF、物理世界配置/命令/退出码/日志在各单scene外包/精简集中保留；无私有client/upload账本或密钥。F0_001 CF4/20撞、14到达/2停车；F1_0014/8撞、4停车；F1_0205/5撞，全部prefix验证通过。
+
+| 场景 | 运行份数 | 文件数 | 精简bytes | 外包bytes | 外包SHA256 |
+| --- | ---: | ---: | ---: | ---: | --- |
+| suite_r2_v4_F0_001 | 25 | 3707 | 102888378 | 439387012 | 0d16efa5470d2cfde607a403279648aada98680ea4d011f94a9fd936e188aceb |
+| suite_r2_v4_F1_001 | 13 | 1022 | 81919784 | 229097124 | 8e024ae34fcb3456731f0456329f7a7fd174d668bf3c7722b59490676b3ac068 |
+| suite_r2_v4_F1_020 | 10 | 668 | 73869229 | 182325802 | db1ea38b3b93322d6b3fd58f8486cc1e07f1379781491fc7d3965c08ad243be0 |
+
+每场唯一manifest在evidence/suite/scenes/<scene>/manifest.json，完整tar路径/root/3d/artifacts/beforestep-r2/<scene>-complete.tar.gz；日志B6-preserve-F0-001.log/B6-preserve-F1-001.log/B6-preserve-F1-020.log。下一提交推送此三套精简原件，完整原GLB tar不追加上传或重建任务。F1_003真实一眼108.0s到达、无collision、chain/review0；其全量CF仍在跑。B5 F2_003/F2_007进行中，当前新增105/360（96ok/9failed），case源仍cfffaf8。完整B7未生成，继续全组。

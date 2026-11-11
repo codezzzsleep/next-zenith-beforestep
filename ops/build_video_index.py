@@ -20,7 +20,9 @@ def main():
     suite = json.loads((ROOT / 'evidence/suite/summary.json').read_text())
     tracked = set(subprocess.check_output(['git', 'ls-files'], cwd=ROOT, text=True).splitlines())
     objects = {}
-    for manifest in (ROOT / 'evidence/suite/scenes').glob('*/manifest.json'):
+    manifests = list((ROOT / 'evidence/suite/scenes').glob('*/manifest.json'))
+    manifests.extend((ROOT / 'evidence/reviews/beforestep_r3/scenes').glob('*/manifest.json'))
+    for manifest in manifests:
         for item in json.loads(manifest.read_text())['files']:
             if item.get('public_object'):
                 objects.setdefault(item['sha256'], item['public_object'])

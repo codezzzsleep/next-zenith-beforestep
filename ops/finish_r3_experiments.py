@@ -79,7 +79,7 @@ def main():
                     continue
                 step('cf-' + scene + '-' + policy,
                      ['ops/run_r3_counterfactuals.py', '--real-run', run,
-                      '--out', f'outputs/r3/v3/counterfactuals/{scene}/{policy}', '--workers', '3'])
+                      '--out', f'outputs/r3/v3/counterfactuals/{scene}/{policy}', '--workers', '1'])
         # Review only saved physics. CF labels remain simulator contacts.
         previous = json.loads((ROOT / 'outputs/r3/frozen/processes.json').read_text())['jobs']
         for scene, variants in selected.items():

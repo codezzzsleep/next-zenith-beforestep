@@ -12,7 +12,7 @@
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
 | E1 | 原12冻结场景赛后修订复测 | 完成 | f971519数据；12原summary/17CF/全复盘/完整tar+publicmanifest/独立远端下载通过，frozen-complete.json阶段证明 |
 | E2 | 指定留出场景六栏运行 | 进行中 | E1 proof454951a已远端确认；F0_002六栏已完成；F2_011同身份中断恢复配准，固定其余场继续 |
-| V1 | 加入三个修订想象视频记录 | 进行中 | 22运行/1544公开byte对象本地SHA通过；新增对象准备推送与独立下载 |
+| V1 | 加入三个修订想象视频记录 | 完成 | b00edc0已push；22run/1544byte本地pass；306LFS/407763387bytes从origin独立下载SHA/size全部pass |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
 
 ## 身份、预算与保护
@@ -2040,3 +2040,5 @@ E1数据f971519已实际push：1137末场新LFS对象46MB上传成功；再次�
 2026-11-11 16:26 UTC 实核旧 supervisor 与 F2_011 子进程已不在进程表，退出原因未确定；原未完成目录及 ledger 已保留为该场 `interrupted-20261111T162616Z/`。从同场同来源和已知任务恢复，未重建首眼、未重付费。新监督进程独立于会话，后续反事实单 worker，以降低并发物理内存峰值；`src/` 不变。恢复时本轮60任务全部终态55成功/5服务商失败。
 
 V1已加入锚点、F1_020、F3_004三份最终v3修订原运行，索引现22运行、1544独立公开byte对象。`ops/build_video_index.py` 同时复用已公开R3 scene清单，`ops/check_video_index.py` 实際 exit0；所有指定观测、world网格、候选指标、预演、复盘与渲染资产均存在且原SHA相同。105份新公开路径共139830523bytes待推送验证；完整数据仍保留。这里只生成数据索引，没有渲染视频。日志 `outputs/qa/r3/video-index-early.log` 与 `video-index-early-check.log`。
+
+V1远端实际确认：`b00edc0c97f29cc790da279b547707e11a2e8a19`已push，独立storage下载video/assets公开namespace的306份LFS共407763387bytes，每个Git pointer SHA及size通过。R3场景复用对象的独立下载验证仍见E1公开保全audit。证据 [video-publication-audit.json](../../evidence/reviews/beforestep_r3/final-verification/video-publication-audit.json)；V1现在完成，E2/D继续。

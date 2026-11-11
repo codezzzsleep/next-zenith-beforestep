@@ -10,7 +10,7 @@
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
-| E1 | 原12冻结场景赛后修订复测 | 进行中 | 正式12已完成（3到达/9停车/0碰撞）；反事实/保全与公开阶段记录尚在完成 |
+| E1 | 原12冻结场景赛后修订复测 | 进行中 | 全12与17新CF/本地完整保全已完成；末场远端对象核对与公开proof待完成 |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
 | D | 修订结果/对照/报告/相关工作/最终验收发布 | 未开始 | — |
@@ -803,6 +803,1016 @@ F1_020 第4眼三份新拒绝候选都已实际执行并停车、无碰撞。初
 
 ops预检查发现一批请求逐项创建，预算可能在中途用满：旧catch会直接结束，留下已知ID尚未查询；仅有look1_state也不足以证明首眼生成完整。R3-only收尾现在只查询已创建ID并下载原结果，缺失样本不创建，写独立lux_result.partial.json供完整scene包保存原GLB与输入；首眼generation仍pending时，strict明确未完成，不绕过首眼复用限制。src、170上限、截止时间、控制和观测规则均不变，正常完整请求原行为不变。
 
-三条真正边界测试实际通过（3/0.065s/exit0）：169→170后一批第二份不创建，第一份原ID仅查询一次并留partial；已有观测但首眼生成未完不复用，后眼未完仍可复用完整首眼；无完整lux_result时已返回模型仍在完整tar内且SHA/原字节一致。[原日志](../../evidence/reviews/beforestep_r3/final-verification/partial-generation-tests.log)。此前全82已过，最终D全85一次尚待执行，不宣称全85已通过。
+三条真正边界测试实际通过（3/0.065s/exit0）：169→170后一批第二份不创建，第一份原ID仅查询一次并留partial；已有观测但首眼生成未完不复用，后眼未完仍可复用完整首眼；无完整lux_result时已返回模型仍在完整tar内且SHA/原字节一致。[原日志](../../evidence/reviews/beforestep_r3/final-verification/partial-generation-tests.log)。此前全82已过；新增三条后，全85已实际通过（18.976s/exit0），[全套原日志](../../evidence/reviews/beforestep_r3/final-verification/final-unit-tests.log)。最终展示/公网验收仍待实验全部完成。
 
 11场数据提交b754f16，947个LFS对象384MB实际上传完成；独立存储从origin下载947对象383711275bytes并逐Git pointer SHA/size核对全部通过。[远端回执](../../evidence/reviews/beforestep_r3/final-verification/early-publication-audit.json)。最后F1_001反事实仍在运行，E1阶段未完成。
+
+原323项资产当前SHA再次实际核对通过：[回执](../../evidence/reviews/beforestep_r3/final-verification/core-assets.json)。新增报告整合前的本地文档链接检查通过，最终整合新增链接后再验收最终文档。
+
+## E1完整本地收尾与阶段记录
+
+正式12场3到达/9停车/0碰撞；新拒绝CF17/17全部实际执行，12到达/5停车/0碰撞，17前缀五数组/五观测/精确传感器pose全部相同。新CF结果只描述这批修订，原R2的17/102碰撞结论保持原字节。see-dark到达的9场中修订到达3场，已知场景复测没有全面替代黑影缺深度；停车更短不当作速度优势。
+
+12份完整scene包与≤150MB唯一manifest全部实际完成，原22成功GLB均按SDK SHA保留，2服务端失败无GLB不当作自检拒绝；末场F1_001 10816文件/公开50.04MB/完整420.82MB。[完整保全回执](../../evidence/reviews/beforestep_r3/frozen-custody-audit.json)合并前11场与末场的实际tar逐文件SHA/大小、全部公开gzip字节核对，共2989去重publicobjects；[新增GLB保管回执](../../evidence/reviews/beforestep_r3/final-verification/e1-generated-assets.json)。source冻结4d53214、85单测已过，3995原R1R2受保护条目及全部原主结果不改。
+
+当前新增24/170（22ok/2failed），累计192/360，全终态；E2尚未创建，监督等待公开阶段proof。先提交并核对末场新LFS可取，再发布frozen-complete.json，随后直接进入预先指定的留出顺序，不根据这批结果挑选新场景。最终报告、V1与D仍待完成，不作最终R3完成声明。
+
+<!-- R3-RETAINED-SUMMARIES-START -->
+## 其余保留运行 summary 原文
+
+### suite_r2_v4_F1_001 CF look2_T2_B2
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 47.7,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    5.092,
+    -1.642,
+    21.25
+  ],
+  "sim_time_s": 48.9,
+  "wall_s": 131.3,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look2_T2_B1
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 47.7,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    5.092,
+    -1.642,
+    21.25
+  ],
+  "sim_time_s": 48.9,
+  "wall_s": 133.1,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_A1
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 1025.3,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_A2
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 964.8,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_B1
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 137.52,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.013,
+    151.85
+  ],
+  "sim_time_s": 138.72,
+  "wall_s": 969.2,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_B2
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 137.82,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.786,
+    0.016,
+    163.11
+  ],
+  "sim_time_s": 139.02,
+  "wall_s": 1093.6,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_C1
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 1095.6,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_C2
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 1107.7,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_A1b
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 990.1,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_A2b
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 973.4,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_B1b
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 996.7,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_B2b
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 137.52,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.013,
+    151.85
+  ],
+  "sim_time_s": 138.72,
+  "wall_s": 953.0,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_C1b
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 980.7,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_001 CF look3_T3_C2b
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_001",
+  "goal": [
+    8.777473,
+    0.01785
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 150.88,
+  "sensor_mode": "live",
+  "looks": 3,
+  "final_pose": [
+    8.785,
+    0.017,
+    163.39
+  ],
+  "sim_time_s": 152.08,
+  "wall_s": 943.3,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_020 CF look4_T3_B1
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 102.96,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    3.475,
+    -1.402,
+    -7.35
+  ],
+  "sim_time_s": 104.16,
+  "wall_s": 451.0,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_020 CF look4_T3_A2
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 102.96,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    3.475,
+    -1.402,
+    -7.35
+  ],
+  "sim_time_s": 104.16,
+  "wall_s": 451.9,
+  "collision": null
+}
+```
+
+### suite_r2_v4_F1_020 CF look4_T3_B2
+
+实际退出码0；干预与精确前缀验证通过。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "trusted",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 102.96,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    3.475,
+    -1.402,
+    -7.35
+  ],
+  "sim_time_s": 104.16,
+  "wall_s": 453.4,
+  "collision": null
+}
+```
+
+### 早期v2 stress_v8
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 141.0,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.033,
+    0.382,
+    -7.39
+  ],
+  "sim_time_s": 142.2,
+  "wall_s": 325.3,
+  "collision": null
+}
+```
+
+### 早期v2 suite_r2_v4_F1_020
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 127.92,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    1.668,
+    -0.789,
+    4.69
+  ],
+  "sim_time_s": 129.12,
+  "wall_s": 236.8,
+  "collision": null
+}
+```
+
+### 早期v2 suite_r2_v4_F1_003
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_003",
+  "goal": [
+    9.095304,
+    -0.071513
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 133.29,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    8.093,
+    1.515,
+    -71.87
+  ],
+  "sim_time_s": 134.49,
+  "wall_s": 188.1,
+  "collision": {
+    "body": "obstacle2",
+    "robot_geom": null,
+    "pos": [
+      7.979,
+      1.186,
+      0.086
+    ],
+    "t": 134.486
+  }
+}
+```
+
+### 早期v2 suite_r2_v4_F2_003
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_003",
+  "goal": [
+    10.730404,
+    0.01719
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 81.86,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.258,
+    1.997,
+    25.02
+  ],
+  "sim_time_s": 83.06,
+  "wall_s": 282.4,
+  "collision": null
+}
+```
+
+### 早期v2 suite_r2_v4_F2_001
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_001",
+  "goal": [
+    10.640641,
+    -0.049459
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 82.23,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.267,
+    1.997,
+    38.67
+  ],
+  "sim_time_s": 83.43,
+  "wall_s": 241.9,
+  "collision": null
+}
+```
+
+### 早期v2 suite_r2_v4_F3_004
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_004",
+  "goal": [
+    10.771229,
+    0.025802
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.9,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    -0.03
+  ],
+  "sim_time_s": 18.1,
+  "wall_s": 87.4,
+  "collision": null
+}
+```
+
+### 早期v2 suite_r2_v4_F3_001
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stopped_short",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_001",
+  "goal": [
+    11.478607,
+    -0.046403
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 110.63,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    9.332,
+    -0.06,
+    98.68
+  ],
+  "sim_time_s": 111.83,
+  "wall_s": 94.3,
+  "collision": null
+}
+```
+
+### 早期v2 suite_r2_v4_F3_002
+
+早期真实任务复用，新增付费0；保持原失败/停车，不计样本外场景。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_002",
+  "goal": [
+    11.178607,
+    -0.032265
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 217.28,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    8.259,
+    1.205,
+    -110.84
+  ],
+  "sim_time_s": 218.48,
+  "wall_s": 257.7,
+  "collision": null
+}
+```
+
+### v1离线替身 stress_v8 truth
+
+离线替身，新增付费0；原预期未通过，保留原件与诊断。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 115.48,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    3.871,
+    0.182,
+    -3.23
+  ],
+  "sim_time_s": 116.68,
+  "wall_s": 60.2,
+  "collision": null
+}
+```
+
+### v1离线替身 stress_v8 registered
+
+离线替身，新增付费0；原预期未通过，保留原件与诊断。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "stress_v8",
+  "goal": [
+    10.5,
+    0.0
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 111.34,
+  "sensor_mode": "live",
+  "looks": 4,
+  "final_pose": [
+    3.654,
+    0.333,
+    -11.28
+  ],
+  "sim_time_s": 112.54,
+  "wall_s": 211.6,
+  "collision": null
+}
+```
+
+### v1离线替身 suite_r2_v4_F1_020 truth
+
+离线替身，新增付费0；原预期未通过，保留原件与诊断。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 16.9,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    2.292,
+    -0.5,
+    0.04
+  ],
+  "sim_time_s": 18.1,
+  "wall_s": 24.1,
+  "collision": null
+}
+```
+
+### v1离线替身 suite_r2_v4_F1_020 registered
+
+离线替身，新增付费0；原预期未通过，保留原件与诊断。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F1_020",
+  "goal": [
+    10.000132,
+    -0.030448
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 47.64,
+  "sensor_mode": "live",
+  "looks": 2,
+  "final_pose": [
+    2.283,
+    0.184,
+    7.16
+  ],
+  "sim_time_s": 48.84,
+  "wall_s": 159.3,
+  "collision": null
+}
+```
+
+<!-- R3-RETAINED-SUMMARIES-END -->

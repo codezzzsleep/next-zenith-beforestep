@@ -1,0 +1,28 @@
+{
+  "schema": "beforestep-r3-sun-diagnostic/v1",
+  "post_run_truth_only": true,
+  "rendered_light_propagation": [
+    0.8067072841115989,
+    -0.5648625214636235,
+    -0.17364817766693036
+  ],
+  "toward_sun_xy": [
+    -0.8191520442889918,
+    0.573576436351046
+  ],
+  "tan_elevation": 0.17632698070846498,
+  "raw_whole_map_iou": 0.09316194010071562,
+  "observed_ground_iou": 0.1489637305699482,
+  "opposite_direction_observed_ground_iou": 0.05043512658227848,
+  "original_map_dark_domain_cells": 424,
+  "dark_on_nearer_surface_cells": 416,
+  "depth_consistent_ground_iou": 0.04,
+  "direction_check": "Shared scene.sun_dir(), negated toward the sun; fixed-height block unit test confirms length and direction. Opposite-direction diagnostic is also retained.",
+  "map_projection_note": "The frozen map projects z=0 floor cells into RGB. DARK is assigned without the depth-occlusion test used for HIDDEN, so dark foreground rock faces label floor cells behind them. Luminance DARK also includes terrain/texture effects. The raster shadow predicts physical heightfield occlusion, not that complete luminance classification. No camera, sensor, sun or map threshold changed.",
+  "fixed_ray_distances_m": [
+    0.05,
+    5.0
+  ],
+  "resolution_m": 0.05,
+  "scope": "Fixed 5cm, 5m ray test from the rendered light function. Raw and observed-ground comparisons both reported; no fitted threshold."
+}

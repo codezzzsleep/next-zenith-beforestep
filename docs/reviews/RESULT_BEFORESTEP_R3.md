@@ -8,8 +8,8 @@
 | P0.2 | 全部准入候选背面误差统计/数字核验 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | V0 | 指定原运行的全部公开视频数据索引 | 完成 | c4b18f3；Pages e08f20d/public browser0 |
 | P0.3 | 本地/公网验收与PDF/Pages | 完成 | c4b18f3；Pages e08f20d/public browser0 |
-| S1 | imagination_strict与预测阴影 | 未开始 | — |
-| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 未开始 | — |
+| S1 | imagination_strict与预测阴影 | 进行中 | 独立strict_pipeline；原pipeline.py未改，72项单测通过 |
+| S2 | 单测/太阳诊断/全部R1回归/两个替身 | 进行中 | outputs/qa/r3/S2；现有作业继续，不重开 |
 | E1 | 原12冻结场景赛后修订复测 | 未开始 | — |
 | E2 | 指定留出场景六栏运行 | 未开始 | — |
 | V1 | 加入三个修订想象视频记录 | 未开始 | — |
@@ -34,3 +34,15 @@ P0只使用既有真实数据。背面统计预先定义：以每次实际观测
 V0指定19run（锚点9+两失败场各5）/1193独立公开byte对象全部本地SHA验证，含RGB/depth/dark/state/zmax、原轨迹/事件/场景/summary、全部75候选记录的world OBJ/自检指标、每预演轨迹及eval/physical、岩石/纹理/height/robot assets。缺失原postmortem只在新sidecar复算原每qpos，无推进sim或改原结果；vendor alias字节公开在assets对象不靠旧目录取文件。索引逐条path/encoding/sourceSHA可从repo/LFS取，gzip注明解压恢复原字节，不需要仓库外tar。还需实际push/LFS远端检验/P0 Pages公网验收。当前R3新增paid0/170、原168全部不重create。
 
 P0公网已实际完成：Pages e08f20d393e1e49a0dd7b840677c1ddc55c4f552 built/error null，r3-P0-public browser exit0/9回放11GLB12预演3历史20learning/全部图和视频索引链接/390/0pageHTTP，PDF源SHA同本地。原R1/R2 protected tracked文件与dae2b58 diff空。接续§3；没有新增paid。
+
+## S1 实现与 S2 当前检查
+
+新策略放在独立 `src/beforestep/strict_pipeline.py`，原 `pipeline.py` 与 cfffaf8 原件逐字节相同；`navigation/map.py` 只新增 strict 分支，原 imagination 占据在 R1 地图逐格相同。严格方法最多五眼，只有预测阴影解释的 DARK 可以通行，HIDDEN/UNSEEN 保守。阴影采用固定 5cm 栅格、0.05–5.00m 光线，由同一个 `scene.sun_dir()` 取得指向太阳的反向；高度取已知物理高度场、观测 zmax、准入世界网格的逐格最大值。没有新增可调门槛。
+
+`python3 -m unittest discover -s tests -v` 已实际通过74项（3.083s），含方块阴影长度/方向、三角形格内最高点、strict未知占据、原R1想象逐格回归及170预算/uncertain/旧身份不重建。日志 `outputs/qa/r3/S2/unit-tests-with-budget.log`。全五R1回归已启动于 `outputs/qa/r3/S2/R1-regression`；四基线已通过，完整真实重放仍在执行，未在它通过之前做新实验或付费。
+
+太阳诊断 [diagnostic.json](../../evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json)、[差异图](../../evidence/reviews/beforestep_r3/sun-diagnostic/difference.png) 保留原全图 IoU0.0931619401、可观测非禁行地面域0.1489637306，反向0.0504351266。方向已按渲染函数与方块单测核对。低IoU的进一步只读诊断：该地面域424个DARK格里，416个像素命中比投影地面更近的表面（沿用原HIDDEN的0.10m深度条件）；原地图投影z=0地面，而DARK不像HIDDEN做遮挡判别，会把前景暗岩面赋给后方地面格。亮度DARK也并非纯几何阴影。深度一致地面域IoU0.04同样保留，不调参数去拟合，也不改相机/传感器/地图。真值只进入诊断和明确的truth替身。
+
+替身预期在运行前登记：`stress_v8 --policy imagination_strict --imagine truth` 应到达；`suite_r2_v4_F1_020` 同命令应不会撞C。还用相同两场的离线扫描候选走生产注册、自检、所有预演和独立执行，明确标为替身、0付费。全部回归完成后才启动。
+
+真实运行器 `ops/run_r3_chain.py` 只复制/复用首眼，后面几眼用新策略实际位置的观测，不复用旧方法不同位置的第二眼。首眼五文件SHA与目标输入一致性必须通过；不一致退出并调查，绝不新建首眼任务。`ops/r3_lux_budget.py` 在创建前锁定身份，新增170硬上限，旧R1/R2身份快照不计为新增、且记录丢失时拒绝重建。known/uncertain只查询，预算包含reserved/uncertain。

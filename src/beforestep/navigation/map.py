@@ -133,7 +133,7 @@ def swept(xy, r=0.42):
     return m
 
 
-def occupancy(state, policy, imagined=None, known_free=None):
+def occupancy(state, policy, imagined=None, known_free=None, *, predicted_shadow=None):
     """返回 True = 不可通行。imagined: 想象石块所占格子；known_free: 车身开过的格子。"""
     occ = (state == ROCK) | (state == NOGO) | prior_nogo()
     unknown = (state == DARK) | (state == HIDDEN) | (state == UNSEEN)
@@ -144,6 +144,12 @@ def occupancy(state, policy, imagined=None, known_free=None):
     elif policy == 'imagination':
         if imagined is not None:
             occ |= imagined
+    elif policy == 'imagination_strict':
+        imagined = np.zeros_like(unknown) if imagined is None else imagined
+        shadow = np.zeros_like(unknown) if predicted_shadow is None else predicted_shadow
+        occ |= imagined
+        explained_dark = (state == DARK) & shadow & ~imagined
+        occ |= unknown & ~explained_dark
     elif policy != 'optimistic':
         raise ValueError(policy)
     return occ

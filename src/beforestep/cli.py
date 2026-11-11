@@ -14,7 +14,13 @@ def main():
     parser.add_argument('command', choices=['run', 'evaluate', 'evaluate-controller', 'learning-artifacts', 'admit', 'check', 'resources', 'generate', 'build', 'serve', 'train'])
     args, remaining = parser.parse_known_args()
     if args.command == 'run':
-        from . import pipeline
+        strict = ('--policy=imagination_strict' in remaining or
+                  any(left == '--policy' and right == 'imagination_strict'
+                      for left, right in zip(remaining, remaining[1:])))
+        if strict:
+            from . import strict_pipeline as pipeline
+        else:
+            from . import pipeline
         sys.argv = ['beforestep run', *remaining]
         pipeline.main()
     elif args.command == 'evaluate':

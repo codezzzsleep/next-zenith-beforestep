@@ -126,7 +126,8 @@ def main():
         notice = '<p id="r3-collision-warning" class="hero-result-line"><strong>赛后修订曾有碰撞：' + names + '（包括早期 v2）。</strong> <a href="#post-result-revision">查看各版结果与原因 ↓</a></p>'
         content = content.replace('</section>', notice + '</section>', 1)
     page.write_text(content)
-    (ROOT / 'docs/reviews/R3-method-tables.md').write_text(text)
+    review_text = text.replace('(../evidence/', '(../../evidence/').replace('(reviews/RESULT_BEFORESTEP_R3.md)', '(RESULT_BEFORESTEP_R3.md)')
+    (ROOT / 'docs/reviews/R3-method-tables.md').write_text(review_text)
     related = ROOT / 'docs/related-work.md'
     contribution = f"""<!-- R3-CONTRIBUTION-START -->
 ## 项目贡献：赛后修订与指定留出验证

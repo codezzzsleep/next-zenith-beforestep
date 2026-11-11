@@ -1,6 +1,6 @@
 {
   "schema": "beforestep-award-asset-iterations/v1",
-  "scope": "Real asset renders, not redrawn shapes; V8 and v0.1 share the historical asset. v0.1 input is an existing JPEG preview; other PNG inputs are original bytes.",
+  "scope": "Real asset renders, not redrawn shapes. v0.1 shows the actual two-image M4 retry; both original uploaded JPEG SHA values are retained.",
   "v6_source": "Historical observation copied byte-for-byte; parent and fused STL remain in assets/geometry/reference_v6.",
   "versions": [
     {
@@ -84,28 +84,34 @@
     {
       "version": "v0.1",
       "model": {
-        "path": "site/media/look1_T1_B2.glb",
-        "sha256": "0052ee34c0f2cbbdcfe248dba237ec063d8fa5d0f189724f0607d838127f16ff"
+        "path": "assets/candidates/4979742/tex_mesh.glb",
+        "sha256": "7afa5eaf6df3a8f7186fe43615f7aa7da28d2278d87b88c4c32c15f7472a968c"
       },
       "viewer": {
-        "path": "site/media/look1_T1_B2.glb",
-        "sha256": "0052ee34c0f2cbbdcfe248dba237ec063d8fa5d0f189724f0607d838127f16ff"
+        "path": "assets/candidates/4979742/tex_mesh.glb",
+        "sha256": "7afa5eaf6df3a8f7186fe43615f7aa7da28d2278d87b88c4c32c15f7472a968c"
       },
       "input": {
-        "path": "site/media/look1_T1_B2.jpg",
-        "sha256": "062aab5e50d1860ee0d80a63665382679da68128809a104e395713c4faf0d781"
+        "path": "assets/inputs/polar_retry_001/look1_T2.jpg",
+        "sha256": "ab211250eb52f1ede4958d4452bcb4ebfcccb6af6eac58f5b115786bdb49f73c"
       },
       "frozen_config": [
         {
-          "path": "evidence/milestones/v8/config/v5_admission.json",
+          "path": "config/admission.json",
           "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
         },
         {
-          "path": "evidence/milestones/v8/config/v5_protocol.json",
-          "sha256": "8fbedb6a03a9504f984ce5b68c152c91778c04f19c40ad68fd698d3ccaa35ca0"
+          "path": "config/protocol.json",
+          "sha256": "71bdc50d6a082cd374d32137daf25e40b0580cb3d7b940edd1dea6883cc815ee"
         }
       ],
-      "note": "复用 V8 真实资产，重构工程与完整停止规则；不是一份新增生成。"
+      "note": "真实两图重试任务 4979742 / M4，仍被拒；工程重构不能替代几何证据。",
+      "additional_inputs": [
+        {
+          "path": "assets/inputs/polar_retry_001/look2_T2.jpg",
+          "sha256": "2cf5200405bddabefe4f87c4f838e8e326fc0363248c42f3a37b6898a146dba6"
+        }
+      ]
     },
     {
       "version": "v0.2",

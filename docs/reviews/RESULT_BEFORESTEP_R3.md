@@ -11,9 +11,9 @@
 | S1 | imagination_strict与预测阴影 | 完成 | 4d53214；80单测pass；原pipeline.py原样 |
 | S2 | 单测/太阳诊断/全部R1回归/两个替身 | 完成 | v3五R1pass/四standin all_passed=true |
 | E1 | 原12冻结场景赛后修订复测 | 完成 | f971519数据；12原summary/17CF/全复盘/完整tar+publicmanifest/独立远端下载通过，frozen-complete.json阶段证明 |
-| E2 | 指定留出场景六栏运行 | 进行中 | E1 proof454951a已远端确认；F0_002/F2_011六栏与保全已完成；F3_005原方法2眼到达、strict第三眼继续 |
+| E2 | 指定留出场景六栏运行 | 实验与保全完成，末场公网核验中 | 五场六栏终态；strict五场停车；orig另两碰撞。112新CF/13coll全前缀验证；17场完整tar本地全SHA通过。 |
 | V1 | 加入三个修订想象视频记录 | 完成 | b00edc0已push；22run/1544byte本地pass；306LFS/407763387bytes从origin独立下载SHA/size全部pass |
-| D | 修订结果/对照/报告/相关工作/最终验收发布 | 进行中 | 恢复与V1改动后85单测pass；最终统计/页面/PDF/公网待E2终态 |
+| D | 修订结果/对照/报告/相关工作/最终验收发布 | 本地完成，公网核验中 | 88单测pass；R1五数组与3995保护不变；R3数字与原12场数字/轨迹审计pass；21页PDF；本地原R1/R3/award浏览器通过。 |
 
 ## 身份、预算与保护
 
@@ -5708,5 +5708,40 @@ F2_011完整scene保全已952e5df push；398新增LFS100829272bytes已从origin�
     ],
     "t": 83.28
   }
+}
+```
+
+<!-- E2-AWARD-RECOVERY-suite_r2_v4_F3_006-imagination_strict -->
+### E2 suite_r2_v4_F3_006 imagination_strict 原始终态
+
+来源：`outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/summary.json`。
+
+```json
+{
+  "policy": "imagination_strict",
+  "tag": "imagination_strict",
+  "see_dark": false,
+  "imagine": "lux",
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F3_006",
+  "goal": [
+    11.061803,
+    -0.030256
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 86.61,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    6.879,
+    -1.602,
+    35.56
+  ],
+  "sim_time_s": 87.81,
+  "wall_s": 459.6,
+  "collision": null
 }
 ```

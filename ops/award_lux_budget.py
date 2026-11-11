@@ -73,4 +73,3 @@ class AwardBudget:
         with self.locked() as data:
             data['tasks'][identity].update(status=record['status'], task_id=record.get('task_id'),
                 client_ledger=str((C.LEDGER / 'tasks' / (identity + '.json')).relative_to(C.ROOT)))
-

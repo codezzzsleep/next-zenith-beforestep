@@ -16,8 +16,25 @@ def main():
     assets = read('evidence/award/asset-iterations/manifest.json')
     tasks = {task for row in original['scenes'] for target in row['targets'].values()
              for view in target['views'] for task in view['task_ids']}
-    generated = sum(target['succeeded'] for row in original['scenes'] for target in row['targets'].values())
-    admitted = sum(target['admitted'] for row in original['scenes'] for target in row['targets'].values())
+    task_rows, admitted_ids = {}, set()
+    # One observed target can be associated with several rocks. Count actual
+    # task identities and decisions rather than adding per-rock display rows.
+    for row in original['scenes']:
+        run = ROOT / row['runs']['imagination']['run']
+        for path in run.glob('looks/look*/T*/lux_result.json'):
+            rows = json.loads(path.read_text())['tasks']
+            retry = path.parent / 'retry/lux_result.json'
+            if retry.exists():
+                rows += json.loads(retry.read_text())['tasks']
+            for task in rows:
+                old = task_rows.setdefault(task['task_id'], task['status'])
+                assert old == task['status']
+            decision = json.loads((path.parent / 'decide/target_decision.json').read_text())
+            by_sample = {task['id']: task for task in rows}
+            admitted_ids |= {by_sample[c['id']]['task_id'] for c in decision['candidates'] if c['admitted']}
+    assert set(task_rows) == tasks
+    generated = sum(status == 'ok' for status in task_rows.values())
+    admitted = len(admitted_ids)
     facts = {'schema': 'beforestep-award-facts/v1', 'original_unique_tasks': len(tasks),
              'original_generated_glb': generated, 'original_admitted': admitted,
              'original_rejected': generated - admitted, 'original_collision_scenes': original['imagination_collision_scenes'],
@@ -47,7 +64,7 @@ def main():
     text = re.sub(r'<section id="award-lux-pipeline">[\s\S]*?</section>', '', page.read_text())
     text = text.replace('<section id="assets">', diagram + '\n<section id="assets">', 1)
     if 'id="award-asset-comparison"' not in text:
-        section = '<section id="award-asset-comparison" class="asset-iterations"><div class="eyebrow">REAL ASSETS / SIX VERSIONS</div><h2>关键资产迭代：每一步都能核对。</h2><img src="media/award/asset-iterations.png" alt="V6、V7、V8与v0.1、v0.2、v0.3真实模型和输入的浏览器渲染截图"><p>V8 与 v0.1 复用同一历史资产；v0.3 示例是实际被拒候选。不同版本并非同一输入的质量排行榜。原模型、输入 SHA 与冻结配置逐项公开。</p><a class="button" href="award-assets.html">旋转六个真实资产 →</a><a class="textlink" href="evidence/award/asset-iterations/manifest.json">模型、输入与配置 SHA ↗</a></section>'
+        section = '<section id="award-asset-comparison" class="asset-iterations"><div class="eyebrow">REAL ASSETS / SIX VERSIONS</div><h2>关键资产迭代：每一步都能核对。</h2><img src="media/award/asset-iterations.png" alt="V6、V7、V8与v0.1、v0.2、v0.3真实模型和输入的浏览器渲染截图"><p>v0.1 显示真实两图重试，v0.3 示例是实际被拒候选。不同版本并非同一输入的质量排行榜。原模型、全部输入 SHA 与冻结配置逐项公开。</p><a class="button" href="award-assets.html">旋转六个真实资产 →</a><a class="textlink" href="evidence/award/asset-iterations/manifest.json">模型、输入与配置 SHA ↗</a></section>'
         text = text.replace('<section id="evolution">', section + '<section id="evolution">', 1)
     page.write_text(text)
     pipeline_md = '## Lux3D 在完整工程链中的位置\n\n'
@@ -55,12 +72,14 @@ def main():
         pipeline_md += f'**{title}（{eyebrow}）** → {description}\n\n'
     pipeline_md += '[数字与原始来源](../evidence/award/facts.json)。仿真行程不包含云端生成与配准墙钟。\n\n'
     asset_md = '## 关键资产迭代对比\n\n![六个版本真实模型与输入，浏览器实际渲染截图](../site/media/award/asset-iterations.png)\n\n'
-    asset_md += '图片由本仓库的真实 STL/GLB 在本地查看器加载后截取，没有重绘。V6 的 STL 仅做坐标轴转换后导出查看用 GLB；原件不改。V8 与 v0.1 复用同一历史资产，v0.3 示例为被拒候选；这不是控制变量相同的模型质量排名。\n\n'
+    asset_md += '图片由本仓库的真实 STL/GLB 在本地查看器加载后截取，没有重绘。V6 的 STL 仅做坐标轴转换后导出查看用 GLB；原件不改。v0.1 展示真实两图重试 M4，v0.3 示例为被拒候选；这不是控制变量相同的模型质量排名。\n\n'
     asset_md += '| 版本 | 真实模型与输入 | 原输入 SHA-256 | 冻结配置 |\n| --- | --- | --- | --- |\n'
     for row in assets['versions']:
         configs = '<br>'.join(f"[{Path(p['path']).name}](../{p['path']})" for p in row['frozen_config'])
-        asset_md += f"| {row['version']} | [模型](../{row['model']['path']}) · [输入](../{row['input']['path']})<br>{row['note']} | `{row['input']['sha256']}` | {configs} |\n"
-    asset_md += '\n[所有模型、输入与配置的完整 SHA 表](../evidence/award/asset-iterations/manifest.json) · [可旋转对照](../site/award-assets.html)。V6 原观测与深度从历史证据逐字节保全在本仓库；v0.1 的原 JPEG 预览明确标为历史预览。\n\n'
+        input_links = f"[输入](../{row['input']['path']})" + ''.join(f" · [另一输入](../{p['path']})" for p in row.get('additional_inputs', []))
+        input_shas = '<br>'.join('`'+p['sha256']+'`' for p in [row['input'], *row.get('additional_inputs', [])])
+        asset_md += f"| {row['version']} | [模型](../{row['model']['path']}) · {input_links}<br>{row['note']} | {input_shas} | {configs} |\n"
+    asset_md += '\n[所有模型、输入与配置的完整 SHA 表](../evidence/award/asset-iterations/manifest.json) · [可旋转对照](../site/award-assets.html)。V6 原观测与深度从历史证据逐字节保全在本仓库；v0.1 原上传的两张 JPEG 都有独立 SHA。\n\n'
     report = ROOT / 'docs/report.md'
     body = re.sub(r'<!-- AWARD-REPORT-START -->[\s\S]*?<!-- AWARD-REPORT-END -->\n?', '', report.read_text())
     addition = '<!-- AWARD-REPORT-START -->\n' + pipeline_md + asset_md + '<!-- AWARD-REPORT-END -->\n\n'

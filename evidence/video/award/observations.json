@@ -1,0 +1,47 @@
+{
+  "schema": "beforestep-award-observations/v1",
+  "scene": "stress_v8",
+  "sources": [
+    {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1_rgb.png",
+      "sha256": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d",
+      "published_path": "site/media/award/first.png",
+      "published_sha256": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d"
+    },
+    {
+      "path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/looks/look2_rgb.png",
+      "sha256": "8250e1279f9984fbaaedbdd9a277364e9d7a7699ed57b60f9d680ab20d2666b9",
+      "published_path": "site/media/award/second.png",
+      "published_sha256": "8250e1279f9984fbaaedbdd9a277364e9d7a7699ed57b60f9d680ab20d2666b9"
+    }
+  ],
+  "labels": [
+    {
+      "label": "A",
+      "x_percent": 56.984309542850006,
+      "y_percent": 22.895530847169134,
+      "source": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/mask.png"
+    },
+    {
+      "label": "B",
+      "x_percent": 36.05925106772422,
+      "y_percent": 21.699420378279434,
+      "source": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/mask.png"
+    }
+  ],
+  "dark_mask_source": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1_dark.npy",
+  "dark_mask_sha256": "6dc04ecf513f39836beee9097a02f8ddd3ff7c20be55053559967cb7aeb6cdb4",
+  "display_mask_rule": "Original DARK mask minus pixels at the recorded maximum depth (far-plane sky); annotation only.",
+  "map_sources": [
+    {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1_state.npy",
+      "sha256": "f973b3fd40afc0da221cfee93ecd2f7ad07e3a00530001c0544ea04314c5caaa"
+    },
+    {
+      "path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/looks/look2_state.npy",
+      "sha256": "7b5fdeafe636ede15a1af4721ff95c75e04acb660b0669f04dc91f77dff27a75"
+    }
+  ],
+  "hidden_to_observed_cells": 2738,
+  "scope": "Two actual recorded viewpoints, not interpolated camera motion. The solar panel keeps the first RGB and its recorded DARK mask as a fixed reference. The map switches to the actual second-view classification; DARK is not a perfect physical shadow label."
+}

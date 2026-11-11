@@ -1,0 +1,235 @@
+{
+  "schema": "beforestep-award-facts/v1",
+  "original_unique_tasks": 180,
+  "original_generated_glb": 166,
+  "original_admitted": 64,
+  "original_rejected": 102,
+  "original_collision_scenes": [
+    "suite_r2_v4_F1_020",
+    "suite_r2_v4_F3_004"
+  ],
+  "original_counterfactuals": {
+    "collisions": 17,
+    "executed": 102,
+    "outcomes": {
+      "arrived": 44,
+      "stuck": 41,
+      "stopped_short": 0,
+      "collision": 17
+    },
+    "unexecutable": 0,
+    "collision_ratio": 0.16666666666666666
+  },
+  "frozen_revision": {
+    "completed": 12,
+    "incomplete": [],
+    "arrived": 3,
+    "safe_stop": 9,
+    "collisions": 0,
+    "collision_scenes": [],
+    "see_dark_arrived_scenes": 9,
+    "strict_arrived_among_see_dark_arrived": 3,
+    "see_dark_pairwise_looks_and_sim_time": [
+      {
+        "scene": "stress_v8",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 147.26
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 3,
+          "sim_time_s": 87.74
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 145.24
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 2,
+          "sim_time_s": 54.58
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_005",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 151.76
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 2,
+          "sim_time_s": 53.0
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F1_003",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 129.45
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 101.49
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_003",
+        "see_dark": {
+          "looks": 4,
+          "sim_time_s": 165.2
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 83.48
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_007",
+        "see_dark": {
+          "looks": 4,
+          "sim_time_s": 157.28
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 80.28
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F2_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 133.18
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 4,
+          "sim_time_s": 118.57
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_002",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 119.05
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 4,
+          "sim_time_s": 176.71
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_001",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 125.97
+        },
+        "imagination_strict": {
+          "result": "arrived",
+          "looks": 5,
+          "sim_time_s": 143.43
+        }
+      }
+    ]
+  },
+  "heldout_revision": {
+    "completed": 5,
+    "incomplete": [],
+    "arrived": 0,
+    "safe_stop": 5,
+    "collisions": 0,
+    "collision_scenes": [],
+    "see_dark_arrived_scenes": 3,
+    "strict_arrived_among_see_dark_arrived": 0,
+    "see_dark_pairwise_looks_and_sim_time": [
+      {
+        "scene": "suite_r2_v4_F3_005",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 139.18
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 92.17
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F0_003",
+        "see_dark": {
+          "looks": 3,
+          "sim_time_s": 138.58
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 3,
+          "sim_time_s": 87.74
+        }
+      },
+      {
+        "scene": "suite_r2_v4_F3_006",
+        "see_dark": {
+          "looks": 5,
+          "sim_time_s": 115.02
+        },
+        "imagination_strict": {
+          "result": "stuck",
+          "looks": 5,
+          "sim_time_s": 87.81
+        }
+      }
+    ]
+  },
+  "earlier_v2": {
+    "completed": 8,
+    "incomplete": [
+      "suite_r2_v4_F0_001",
+      "suite_r2_v4_F0_005",
+      "suite_r2_v4_F1_001",
+      "suite_r2_v4_F2_007"
+    ],
+    "arrived": 0,
+    "safe_stop": 7,
+    "collisions": 1,
+    "collision_scenes": [
+      "suite_r2_v4_F1_003"
+    ],
+    "see_dark_arrived_scenes": 0,
+    "strict_arrived_among_see_dark_arrived": 0,
+    "see_dark_pairwise_looks_and_sim_time": []
+  },
+  "revision_paid_tasks": {
+    "new_r3": 120,
+    "r2": 168,
+    "cumulative_r2_r3": 288,
+    "r3_limit": 170,
+    "original_limit": 360
+  },
+  "revision_new_counterfactuals_by_scope": {
+    "known_frozen": {
+      "executed": 17,
+      "collisions": 0,
+      "noncollisions": 17,
+      "unexecutable": 0
+    },
+    "designated_holdout": {
+      "executed": 112,
+      "collisions": 13,
+      "noncollisions": 99,
+      "unexecutable": 0
+    }
+  },
+  "sources": [
+    "evidence/suite/summary.json",
+    "evidence/reviews/beforestep_r3/summary.json",
+    "evidence/award/asset-iterations/manifest.json"
+  ]
+}

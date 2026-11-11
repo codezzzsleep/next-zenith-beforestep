@@ -44,6 +44,14 @@ def main():
     # Unlinked duplicate media meshes add transport cost; the complete assets
     # stay in main. Keep every candidate referenced by the current/historical UI.
     used_glbs = {candidate['glb'] for candidate in candidates} | {'media/candidate.glb'}
+    award_manifest = ROOT / 'evidence/award/asset-iterations/manifest.json'
+    curated_paths = []
+    if award_manifest.exists():
+        for row in json.loads(award_manifest.read_text())['versions']:
+            curated_paths.extend(item['path'] for item in
+                [row['model'], row['viewer'], row['input'], *row.get('additional_inputs', []), *row['frozen_config']])
+            if row['viewer']['path'].startswith('site/'):
+                used_glbs.add(row['viewer']['path'].removeprefix('site/'))
     for path in (output/'media').rglob('*.glb'):
         if str(path.relative_to(output)) not in used_glbs:path.unlink()
     for candidate in candidates:
@@ -54,6 +62,15 @@ def main():
             raise ValueError('Invalid candidate asset: '+str(relative))
         target=output/relative;target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copy2(source,target)
+    for relative in set(curated_paths):
+        source = (ROOT / relative).resolve()
+        if not source.is_relative_to(ROOT) or not source.is_file():
+            raise ValueError('Invalid curated award artifact: ' + relative)
+        if relative.startswith('site/'):
+            continue
+        target = output / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(source, target)
     (output/'.nojekyll').touch()
     print(output)
 

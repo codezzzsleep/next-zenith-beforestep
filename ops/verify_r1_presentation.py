@@ -233,6 +233,27 @@ def check():
                         for index, child in enumerate(value): centimeters(child, source+'/'+str(index))
                     elif isinstance(value, (int, float)) and not isinstance(value, bool): fact(value, source, 100)
                 centimeters(read(ROOT / path), path + '#')
+        award = ROOT / 'evidence/award/facts.json'
+        if award.exists():
+            values = read(award)
+            primary = read(ROOT / 'evidence/suite/summary.json')
+            task_ids = {task for row in primary['scenes'] for target in row['targets'].values()
+                        for view in target['views'] for task in view['task_ids']}
+            assert values['original_unique_tasks'] == len(task_ids)
+            assert values['original_generated_glb'] == suite_audit['candidate_footprints']
+            assert values['original_admitted'] == read(ROOT / 'evidence/reviews/beforestep_r3/back-error/stats.json')['candidate_count']
+            assert values['original_rejected'] == primary['counterfactuals']['executed']
+            suite_facts(values, 'evidence/award/facts.json#')
+            # Selected asset task IDs come from the original asset manifest,
+            # rather than being admitted just because they appear in captions.
+            asset_rows = read(ROOT / 'assets/manifest.json')['entries']
+            selected = read(ROOT / 'evidence/award/asset-iterations/manifest.json')['versions']
+            for version in selected:
+                model = version['model']
+                assert sha(ROOT / model['path']) == model['sha256']
+                for index, entry in enumerate(asset_rows):
+                    if entry['path'] == model['path'] and entry.get('task_id'):
+                        fact(entry['task_id'], f'assets/manifest.json#/entries/{index}/task_id')
     for name, html in [('site/index.html', (ROOT / 'site/index.html').read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
         tokens = re.findall(r'(?<![A-Za-z0-9_.])[-+]?\d+(?:\.\d+)?(?![A-Za-z0-9_])', visible(html))
         inventory[name] = {}

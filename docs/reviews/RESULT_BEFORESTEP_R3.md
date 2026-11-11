@@ -2042,3 +2042,148 @@ E1数据f971519已实际push：1137末场新LFS对象46MB上传成功；再次�
 V1已加入锚点、F1_020、F3_004三份最终v3修订原运行，索引现22运行、1544独立公开byte对象。`ops/build_video_index.py` 同时复用已公开R3 scene清单，`ops/check_video_index.py` 实際 exit0；所有指定观测、world网格、候选指标、预演、复盘与渲染资产均存在且原SHA相同。105份新公开路径共139830523bytes待推送验证；完整数据仍保留。这里只生成数据索引，没有渲染视频。日志 `outputs/qa/r3/video-index-early.log` 与 `video-index-early-check.log`。
 
 V1远端实际确认：`b00edc0c97f29cc790da279b547707e11a2e8a19`已push，独立storage下载video/assets公开namespace的306份LFS共407763387bytes，每个Git pointer SHA及size通过。R3场景复用对象的独立下载验证仍见E1公开保全audit。证据 [video-publication-audit.json](../../evidence/reviews/beforestep_r3/final-verification/video-publication-audit.json)；V1现在完成，E2/D继续。
+
+### E2 suite_r2_v4_F2_011 optimistic summary原文
+
+原运行 `outputs/r3/v3/holdouts/suite_r2_v4_F2_011/baselines/optimistic`；exit0，当前源码与冻结来源一致。
+
+```json
+{
+  "policy": "optimistic",
+  "tag": "optimistic",
+  "see_dark": false,
+  "imagine": null,
+  "result": "collision",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_011",
+  "goal": [
+    10.564532,
+    -0.007639
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 80.71,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    6.901,
+    -0.342,
+    4.35
+  ],
+  "sim_time_s": 81.91,
+  "wall_s": 38.9,
+  "collision": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      7.151,
+      -0.106,
+      0.12
+    ],
+    "t": 81.908
+  }
+}
+```
+
+### E2 suite_r2_v4_F2_011 conservative summary原文
+
+原运行 `outputs/r3/v3/holdouts/suite_r2_v4_F2_011/baselines/conservative`；exit0，当前源码与冻结来源一致。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "conservative",
+  "see_dark": false,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_011",
+  "goal": [
+    10.564532,
+    -0.007639
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 81.06,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.26,
+    1.993,
+    28.04
+  ],
+  "sim_time_s": 82.26,
+  "wall_s": 53.1,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F2_011 see_dark summary原文
+
+原运行 `outputs/r3/v3/holdouts/suite_r2_v4_F2_011/baselines/see_dark`；exit0，当前源码与冻结来源一致。
+
+```json
+{
+  "policy": "conservative",
+  "tag": "see_dark",
+  "see_dark": true,
+  "imagine": null,
+  "result": "stuck",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_011",
+  "goal": [
+    10.564532,
+    -0.007639
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 80.77,
+  "sensor_mode": "live",
+  "looks": 5,
+  "final_pose": [
+    4.265,
+    1.995,
+    29.93
+  ],
+  "sim_time_s": 81.97,
+  "wall_s": 55.7,
+  "collision": null
+}
+```
+
+### E2 suite_r2_v4_F2_011 truth summary原文
+
+原运行 `outputs/r3/v3/holdouts/suite_r2_v4_F2_011/baselines/truth`；exit0，当前源码与冻结来源一致。
+
+```json
+{
+  "policy": "imagination",
+  "tag": "truth",
+  "see_dark": false,
+  "imagine": "truth",
+  "result": "arrived",
+  "controller": "rules",
+  "controller_sha256": null,
+  "pose_controller_sha256": null,
+  "scene_id": "suite_r2_v4_F2_011",
+  "goal": [
+    10.564532,
+    -0.007639
+  ],
+  "start_mode": "scene_start",
+  "execution_elapsed_s": 114.22,
+  "sensor_mode": "live",
+  "looks": 1,
+  "final_pose": [
+    10.557,
+    -0.007,
+    13.33
+  ],
+  "sim_time_s": 115.42,
+  "wall_s": 56.8,
+  "collision": null
+}
+```

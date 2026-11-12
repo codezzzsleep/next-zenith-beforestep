@@ -262,6 +262,31 @@ def check():
                             assert task['glb_sha256'] == model['sha256']
                             assert task['task_id'] == version['task_id']
                             fact(task['task_id'], version['source_result'] + f'#/tasks/{index}/task_id')
+        demo_result = ROOT / 'evidence/award/demo/result.json'
+        if demo_result.exists():
+            from award_lux_budget import AwardBudget
+            demo = read(ROOT / 'site/data/award-demo.json')
+            result = read(demo_result)
+            generation = read(ROOT / 'evidence/award/demo/generation.json')
+            budget = read(ROOT / 'outputs/generation/award-budget.json')
+            plan = read(ROOT / 'evidence/award/demo/plan.json')
+            usage = AwardBudget.usage(budget)
+            assert demo['scene'] == result['scene'] == plan['scene']
+            assert demo['label'] == result['label'] == plan['label']
+            assert generation['new_tasks'] == demo['paid_tasks'] == usage <= budget['limit']
+            assert demo['cumulative_tasks'] == budget['prior_r2_tasks'] + budget['prior_r3_tasks'] + usage
+            assert demo['cumulative_tasks'] <= demo['cumulative_limit'] == budget['cumulative_limit']
+            assert demo['all_project_tasks'] == len(budget['prior_identities']) + usage <= 360
+            assert {row['identity'] for row in generation['tasks']} == set(budget['tasks'])
+            for policy, row in demo['runs'].items():
+                assert row['summary'] == result['runs'].get(policy, {}).get('summary')
+            for policy, stats in demo['counterfactual_stats'].items():
+                original = read(ROOT / f'outputs/award/demo/counterfactuals/{demo["scene"]}/{policy}/counterfactuals.json')
+                assert stats == {key: original.get(key) for key in stats}
+                assert original['completed'] and original['all_executed_prefixes_verified']
+            for relative, value in [('site/data/award-demo.json', demo),
+                                    ('evidence/award/demo/generation.json', generation)]:
+                suite_facts(value, relative + '#')
     page_name = 'site/report.html' if transferred else 'site/index.html'
     for name, html in [(page_name, (ROOT / page_name).read_text()), ('docs/report.md', markdown.markdown(report, extensions=['tables', 'fenced_code']))]:
         tokens = re.findall(r'(?<![A-Za-z0-9_.])[-+]?\d+(?:\.\d+)?(?![A-Za-z0-9_])', visible(html))

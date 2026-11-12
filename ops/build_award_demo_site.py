@@ -38,10 +38,14 @@ def main():
             'image': 'media/award/demo/first.png', 'image_source': str(first.relative_to(ROOT)),
             'image_source_sha256': hashlib.sha256(first.read_bytes()).hexdigest(),
             'map': {'shape': list(state.shape), 'origin': [N.X0, N.Y0], 'resolution': N.RES, 'values': state.ravel().tolist()},
-            'runs': {}, 'candidates': [], 'rehearsals': [], 'counterfactuals': [],
+            'runs': {}, 'candidates': [], 'rehearsals': [], 'counterfactuals': [], 'counterfactual_stats': {},
             'manifest': f'evidence/award/demo/scenes/{scene}/manifest.json',
             'paid_tasks': AwardBudget.usage(budget),
-            'cumulative_tasks': budget['prior_r2_tasks'] + budget['prior_r3_tasks'] + AwardBudget.usage(budget)}
+            'cumulative_tasks': budget['prior_r2_tasks'] + budget['prior_r3_tasks'] + AwardBudget.usage(budget),
+            'cumulative_limit': budget['cumulative_limit'],
+            'all_project_tasks': len(budget['prior_identities']) + AwardBudget.usage(budget),
+            'platform_limit': 360}
+    assert data['cumulative_tasks'] <= data['cumulative_limit'] and data['all_project_tasks'] <= data['platform_limit']
     for policy in plan['policies']:
         row = result['runs'].get(policy, {})
         if row.get('summary'):
@@ -60,6 +64,7 @@ def main():
         for candidate in json.loads(path.read_text())['candidates']:
             task = tasks[candidate['id']]
             candidates.append({'task_id': task['task_id'], 'sample': candidate['id'], 'admitted': candidate['admitted'],
+                               'look': int(path.parent.parent.parent.name.removeprefix('look')), 'target': path.parent.parent.name,
                                'contour_iou': candidate.get('contour_iou'), 'source_glb': task['glb'],
                                'source_decision': str(path.relative_to(ROOT))})
     selected = []
@@ -73,20 +78,33 @@ def main():
                              'glb_sha256': hashlib.sha256(glb.read_bytes()).hexdigest()})
     data['candidates'] = selected
     data['all_candidate_checks'] = candidates
-    events = [json.loads(line) for line in (main_run / 'events.jsonl').read_text().splitlines()]
-    for event in events:
-        if event['kind'] != 'rehearsal':
+    for policy in ('imagination', 'imagination_strict'):
+        row = result['runs'].get(policy, {})
+        if not row.get('summary'):
             continue
-        for pane in event['panes']:
-            run = main_run / 'rehearsal' / f"look{event['look']}" / ('pane' + str(pane['pane']))
-            if (run / 'traj.npz').exists():
-                data['rehearsals'].append({'label': f"look{event['look']} / pane{pane['pane']}",
+        original = ROOT / row['run']
+        events = [json.loads(line) for line in (original / 'events.jsonl').read_text().splitlines()]
+        for event in events:
+            if event['kind'] != 'rehearsal':
+                continue
+            role = event.get('role')
+            folder = f"look{event['look']}" + ('_' + role if role else '')
+            for pane in event['panes']:
+                run = original / 'rehearsal' / folder / ('pane' + str(pane['pane']))
+                assert (run / 'traj.npz').is_file(), 'Missing recorded rehearsal: ' + str(run)
+                title = ('原想象' if policy == 'imagination' else '修订想象') + ' / ' + ('补充观察' if role else '目标路线')
+                data['rehearsals'].append({'label': f"{title} / look{event['look']} / pane{pane['pane']}",
+                    'policy': policy, 'role': role or 'goal', 'source': str(run.relative_to(ROOT)),
                     'completed': pane['completed'], 'collided': pane['collided'], 'trajectory': track(run / 'traj.npz')})
     cf_root = ROOT / 'outputs/award/demo/counterfactuals' / scene
     for path in cf_root.glob('*/counterfactuals.json'):
         cf = json.loads(path.read_text())
+        data['counterfactual_stats'][path.parent.name] = {key: cf.get(key) for key in
+            ('completed', 'attempted', 'executed', 'collisions', 'noncollisions', 'unexecutable',
+             'all_executed_prefixes_verified')}
         for key, row in cf['runs'].items():
-            if row.get('summary'):
+            if row.get('executed') and row.get('summary'):
+                assert row['prefix_verification']['passed'], 'Unverified intervention prefix: ' + key
                 data['counterfactuals'].append({'label': path.parent.name + ' / ' + key, 'summary': row['summary'],
                     'trajectory': track(ROOT / row['run'] / 'traj.npz'), 'prefix_verified': (row.get('prefix_verification') or {}).get('passed'),
                     'source': row['run']})
@@ -97,7 +115,16 @@ def main():
     for policy, row in data['runs'].items():
         s = row['summary']
         rows += f"| {names[policy]} | {s['result'] if s else '未完成'} | {s['looks'] if s else '—'} | {str(s['sim_time_s'])+'s' if s else '—'} |\n"
-    chapter = f'## 赛后补充演示：{scene}\n\n**{LABEL}。** 按运行前固定计划选择种子 {plan["seed"]}，不看结果换场景。新增任务 {data["paid_tasks"]}，R2/R3/补充演示累计 {data["cumulative_tasks"]}/360，最新累计上限316。\n\n' + rows + f'\n[逐步可点的真实记录流程](../site/award-demo.html) · [预期与选择规则](../evidence/award/demo/plan.json) · [原始结果](../evidence/award/demo/result.json) · [完整保全清单](../{data["manifest"]})。\n\n'
+    review = '\n'
+    for policy, stats in data['counterfactual_stats'].items():
+        review += f"被拒候选反事实（{names[policy]}）：尝试 {stats['attempted']}，可执行 {stats['executed']}，碰撞 {stats['collisions']}，不能执行 {stats['unexecutable']}；已执行干预的原观察前缀逐字节核验 {stats['all_executed_prefixes_verified']}。\n\n"
+    manifest = json.loads((ROOT / data['manifest']).read_text())
+    for policy, row in data['runs'].items():
+        variant = policy + '_postmortem'
+        if variant in manifest['runs']:
+            review += f"[{names[policy]}的独立复盘](../evidence/award/demo/scenes/{scene}/runs/{variant}/eval.json) · "
+    review += '\n\n'
+    chapter = f'## 赛后补充演示：{scene}\n\n**{LABEL}。** 按运行前固定计划选择种子 {plan["seed"]}，不看结果换场景。新增任务 {data["paid_tasks"]}，R2/R3/补充演示累计 {data["cumulative_tasks"]}/{data["cumulative_limit"]}；含更早历史的全部项目任务 {data["all_project_tasks"]}/{data["platform_limit"]}。\n\n' + rows + review + f'\n[逐步可点的真实记录流程](../site/award-demo.html) · [预期与选择规则](../evidence/award/demo/plan.json) · [原始结果](../evidence/award/demo/result.json) · [完整保全清单](../{data["manifest"]})。\n\n'
     report = ROOT / 'docs/report.md'
     body = re.sub(r'<!-- AWARD-DEMO-START -->[\s\S]*?<!-- AWARD-DEMO-END -->\n?', '', report.read_text())
     body = body.replace('## 沙盒\n', '<!-- AWARD-DEMO-START -->\n'+chapter+'<!-- AWARD-DEMO-END -->\n\n## 沙盒\n', 1)
@@ -109,6 +136,18 @@ def main():
     content = re.sub(r'<section id="award-demonstration">[\s\S]*?</section>', '', page.read_text())
     content = content.replace('<section id="sandbox">', '<section id="award-demonstration">'+html+'</section><section id="sandbox">', 1)
     page.write_text(content)
+    # Use the supplied homepage chrome for this new interior page too. Keep
+    # its recorded-workflow controls and links separate from the homepage.
+    home = (ROOT / 'site/index.html').read_text()
+    header = re.search(r'<header[\s\S]*?</header>', home)[0].replace('href="#', 'href="index.html#')
+    footer = re.search(r'<footer[\s\S]*?</footer>', home)[0]
+    demo = ROOT / 'site/award-demo.html'
+    content = re.sub(r'<header[\s\S]*?</header>', lambda _: header, demo.read_text(), count=1)
+    if 'site-theme.css' not in content:
+        content = content.replace('</head>', '<link rel="stylesheet" href="site-theme.css"><link rel="stylesheet" href="award-demo.css"></head>')
+    content = re.sub(r'<!-- DEMO-FOOTER-START -->[\s\S]*?<!-- DEMO-FOOTER-END -->', '', content)
+    content = content.replace('</main>', '</main><!-- DEMO-FOOTER-START -->' + footer + '<!-- DEMO-FOOTER-END -->', 1)
+    demo.write_text(content)
     print(json.dumps({'scene': scene, 'new_tasks': data['paid_tasks'], 'columns': len(data['runs']),
                       'rehearsals': len(data['rehearsals']), 'counterfactuals': len(data['counterfactuals']), 'label': LABEL}))
 

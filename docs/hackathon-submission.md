@@ -4,7 +4,7 @@
 
 | 项目 | 必交/加分 | 链接或明确状态 | 完成者 | 当前核验时间 |
 | --- | --- | --- | --- | --- |
-| 项目报告书 | 必交 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；过程截图与关键资产迭代已纳入 | Agent准备与核验；负责人提交 | 2026-11-11T21:52:16.132644+00:00 |
+| 项目报告书 | 必交 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF（23页）](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；过程截图与关键资产迭代已纳入 | Agent准备与核验；负责人提交 | 2026-11-11T21:52:16.132644+00:00 |
 | 完整 Demo 可体验入口 | 必交 | [作品](https://codezzzsleep.github.io/next-zenith-beforestep/) · [真实关卡回放](https://codezzzsleep.github.io/next-zenith-beforestep/levels.html) · [轻量沙盒](https://codezzzsleep.github.io/next-zenith-beforestep/sandbox.html) | Agent已集成负责人交付首页并完成本地/公网验收，回放与沙盒已核验 | 2026-11-11T21:52:16.132644+00:00 |
 | 含真实运行画面的视频 | 必交 | 新视频由负责人录屏/渲染/剪辑，待负责人填写最终链接；[完整数据与两版分镜](../evidence/video/award/index.json)已交付。[旧视频](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo.mp4)仅作明确标注的历史参考 | 负责人制作与提交 | 2026-11-11T21:52:16.132644+00:00（素材核验，非新视频完成时间） |
 | 项目源代码 | 加分/交付 | [公开仓库](https://github.com/codezzzsleep/next-zenith-beforestep) | Agent维护与核验；负责人提交链接 | 2026-11-11T21:52:16.132644+00:00 |
@@ -18,3 +18,5 @@
 网页素材已完整公开：[可直接供首页制作的包](https://codezzzsleep.github.io/next-zenith-beforestep/evidence/web-assets/index.json)。负责人交付首页已原样集成，首屏真实照片与可旋转模型、本地/公网1440与390、11份GLB与全部切换均通过；真人首屏测试由负责人安排。
 
 第二版新增入口：[想象陈列室](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html) · [真假石头叠合](https://codezzzsleep.github.io/next-zenith-beforestep/overlays.html) · [代码导览](code-tour.md) · [逐项执行记录](reviews/RESULT_HACKATHON_AWARD.md)。
+
+固定补充演示：[实际流程](https://codezzzsleep.github.io/next-zenith-beforestep/award-demo.html) · [原始终态与完整保全](../evidence/award/demo/result.json) · [单独视频源](../evidence/video/award/demo/index.json)。赛后补充演示运行，不参与结论、不作为泛化证据；新成片仍待负责人制作。

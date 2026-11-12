@@ -1149,6 +1149,63 @@
 <p>原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 <a href="evidence/reviews/beforestep_r3/summary.json">R3 数据</a>，执行与失败判断见 <a href="docs/reviews/RESULT_BEFORESTEP_R3.md">R3 执行记录</a>。</p>
 <!-- R3-METHOD-END -->
 
+<!-- AWARD-DEMO-START -->
+<h2>赛后补充演示：suite_r2_v4_F0_006</h2>
+<p><strong>赛后补充演示运行，不参与结论、不作为泛化证据。</strong> 按运行前固定计划选择种子 6，不看结果换场景。新增任务 24，R2/R3/补充演示累计 312/316；含更早历史的全部项目任务 354/360。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>真实终态</th>
+<th>眼数</th>
+<th>仿真总时长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保守</td>
+<td>stuck</td>
+<td>5</td>
+<td>141.08s</td>
+</tr>
+<tr>
+<td>黑影测深对照</td>
+<td>arrived</td>
+<td>3</td>
+<td>137.06s</td>
+</tr>
+<tr>
+<td>乐观</td>
+<td>collision</td>
+<td>1</td>
+<td>80.01s</td>
+</tr>
+<tr>
+<td>真实形状检验</td>
+<td>arrived</td>
+<td>1</td>
+<td>114.3s</td>
+</tr>
+<tr>
+<td>原想象</td>
+<td>stuck</td>
+<td>2</td>
+<td>57.2s</td>
+</tr>
+<tr>
+<td>修订想象</td>
+<td>stuck</td>
+<td>2</td>
+<td>57.2s</td>
+</tr>
+</tbody>
+</table>
+<p>被拒候选反事实（修订想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
+<p>被拒候选反事实（原想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
+<p><a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/conservative_postmortem/eval.json">保守的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/see_dark_postmortem/eval.json">黑影测深对照的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/optimistic_postmortem/eval.json">乐观的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/truth_postmortem/eval.json">真实形状检验的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_postmortem/eval.json">原想象的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_strict_postmortem/eval.json">修订想象的独立复盘</a> · </p>
+<p><a href="award-demo.html">逐步可点的真实记录流程</a> · <a href="evidence/award/demo/plan.json">预期与选择规则</a> · <a href="evidence/award/demo/result.json">原始结果</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json">完整保全清单</a>。</p>
+<!-- AWARD-DEMO-END -->
+
 <h2>沙盒</h2>
 <p><a href="sandbox.html">自由摆石头</a>是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。</p>
 <!-- AWARD-REPORT-START -->

@@ -364,6 +364,31 @@ see-dark 到达的 12 场中，修订想象到达 3 场。眼数和仿真时间�
 
 <!-- R3-METHOD-END -->
 
+<!-- AWARD-DEMO-START -->
+## 赛后补充演示：suite_r2_v4_F0_006
+
+**赛后补充演示运行，不参与结论、不作为泛化证据。** 按运行前固定计划选择种子 6，不看结果换场景。新增任务 24，R2/R3/补充演示累计 312/316；含更早历史的全部项目任务 354/360。
+
+| 方法 | 真实终态 | 眼数 | 仿真总时长 |
+| --- | --- | --- | --- |
+| 保守 | stuck | 5 | 141.08s |
+| 黑影测深对照 | arrived | 3 | 137.06s |
+| 乐观 | collision | 1 | 80.01s |
+| 真实形状检验 | arrived | 1 | 114.3s |
+| 原想象 | stuck | 2 | 57.2s |
+| 修订想象 | stuck | 2 | 57.2s |
+
+被拒候选反事实（修订想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。
+
+被拒候选反事实（原想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。
+
+[保守的独立复盘](../evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/conservative_postmortem/eval.json) · [黑影测深对照的独立复盘](../evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/see_dark_postmortem/eval.json) · [乐观的独立复盘](../evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/optimistic_postmortem/eval.json) · [真实形状检验的独立复盘](../evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/truth_postmortem/eval.json) · [原想象的独立复盘](../evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_postmortem/eval.json) · [修订想象的独立复盘](../evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_strict_postmortem/eval.json) · 
+
+
+[逐步可点的真实记录流程](../site/award-demo.html) · [预期与选择规则](../evidence/award/demo/plan.json) · [原始结果](../evidence/award/demo/result.json) · [完整保全清单](../evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json)。
+
+<!-- AWARD-DEMO-END -->
+
 ## 沙盒
 
 [自由摆石头](../site/sandbox.html)是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。

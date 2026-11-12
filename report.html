@@ -1002,7 +1002,60 @@
 </tbody>
 </table></div>
 <p>原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 <a href="evidence/reviews/beforestep_r3/summary.json">R3 数据</a>，执行与失败判断见 <a href="docs/reviews/RESULT_BEFORESTEP_R3.md">R3 执行记录</a>。</p></section>
-<section id="sandbox"><div class="eyebrow">SANDBOX / YOUR MOONSCAPE</div><h2>石头，由你来放。</h2><p>拖动扫描岩石，旋转、调整太阳与月坑，查看三种策略的轻量路线，再导出到本地完整物理验证。</p><a class="button" href="sandbox.html">打开月面沙盒 →</a><p class="caption">不做物理仿真，不实时调用 Lux3D。一致性 8/12；所有不一致在<a href="evidence/suite/presentation/sandbox/consistency.json">原始检查</a>中列出。</p></section>
+<section id="award-demonstration"><h2>赛后补充演示：suite_r2_v4_F0_006</h2>
+<p><strong>赛后补充演示运行，不参与结论、不作为泛化证据。</strong> 按运行前固定计划选择种子 6，不看结果换场景。新增任务 24，R2/R3/补充演示累计 312/316；含更早历史的全部项目任务 354/360。</p>
+<div class="table-wrap"><table>
+<thead>
+<tr>
+<th>方法</th>
+<th>真实终态</th>
+<th>眼数</th>
+<th>仿真总时长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保守</td>
+<td>stuck</td>
+<td>5</td>
+<td>141.08s</td>
+</tr>
+<tr>
+<td>黑影测深对照</td>
+<td>arrived</td>
+<td>3</td>
+<td>137.06s</td>
+</tr>
+<tr>
+<td>乐观</td>
+<td>collision</td>
+<td>1</td>
+<td>80.01s</td>
+</tr>
+<tr>
+<td>真实形状检验</td>
+<td>arrived</td>
+<td>1</td>
+<td>114.3s</td>
+</tr>
+<tr>
+<td>原想象</td>
+<td>stuck</td>
+<td>2</td>
+<td>57.2s</td>
+</tr>
+<tr>
+<td>修订想象</td>
+<td>stuck</td>
+<td>2</td>
+<td>57.2s</td>
+</tr>
+</tbody>
+</table></div>
+<p>被拒候选反事实（修订想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
+<p>被拒候选反事实（原想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
+<p><a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/conservative_postmortem/eval.json">保守的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/see_dark_postmortem/eval.json">黑影测深对照的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/optimistic_postmortem/eval.json">乐观的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/truth_postmortem/eval.json">真实形状检验的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_postmortem/eval.json">原想象的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_strict_postmortem/eval.json">修订想象的独立复盘</a> · </p>
+<p><a href="award-demo.html">逐步可点的真实记录流程</a> · <a href="evidence/award/demo/plan.json">预期与选择规则</a> · <a href="evidence/award/demo/result.json">原始结果</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json">完整保全清单</a>。</p></section><section id="sandbox"><div class="eyebrow">SANDBOX / YOUR MOONSCAPE</div><h2>石头，由你来放。</h2><p>拖动扫描岩石，旋转、调整太阳与月坑，查看三种策略的轻量路线，再导出到本地完整物理验证。</p><a class="button" href="sandbox.html">打开月面沙盒 →</a><p class="caption">不做物理仿真，不实时调用 Lux3D。一致性 8/12；所有不一致在<a href="evidence/suite/presentation/sandbox/consistency.json">原始检查</a>中列出。</p></section>
 <section id="award-asset-comparison" class="asset-iterations"><div class="eyebrow">REAL ASSETS / SIX VERSIONS</div><h2>关键资产迭代：每一步都能核对。</h2><img src="media/award/asset-iterations.png" alt="V6、V7、V8与v0.1、v0.2、v0.3真实模型和输入的浏览器渲染截图"><p>v0.1 显示真实两图重试，v0.3 示例是实际被拒候选。不同版本并非同一输入的质量排行榜。原模型、全部输入 SHA 与冻结配置逐项公开。</p><a class="button" href="award-assets.html">旋转六个真实资产 →</a><a class="textlink" href="evidence/award/asset-iterations/manifest.json">模型、输入与配置 SHA ↗</a></section><section id="evolution"><div class="eyebrow">APPENDICES / ITERATIONS AND LEARNING</div><h2>每一步，都留下证据。</h2><div class="milestones"><article><span>V6 / V7</span><h3>观测约束与阴影未知</h3><p>保留生成原型、融合几何、冻结门槛及拒绝资产。</p></article><article><span>V8</span><h3>窄道里的真实约束</h3><p>A+B、月溪与大石堆，让保守与乐观失败有具体物理原因。</p></article><article><span>TRAINED MODELS</span><h3>网络学会了运动</h3><p>真实示教、权重、独立任务评估和主动观察实测保留为附录。</p><a class="textlink" href="learning.html">查看训练模型 ↗</a></article><article><span>R1</span><h3>同一窄道验证想象</h3><p>原场景真实 Lux 到达与完整重放；自检偏保守和真值差异也公开。</p></article></div><p>旧关口、改终点与训练控制实验的对照同样能到达，没有证明 Lux3D 的必要性；它们作为工程迭代完整保留。</p><img class="comparison" src="media/version-comparison.jpg" alt="保留的核心技术版本和资产比较"><a class="textlink" href="docs/milestones.md">源码快照与版本证据 ↗</a> · <a class="textlink" href="docs/related-work.md">相关研究与贡献定位 ↗</a></section>
 <!-- HOME-FOOTER-START --><footer class="foot">
   <p>Next Zenith 的 Aholo Lux3D 黑客松作品。页面上的照片、模型、轨迹和数字，全部来自真实运行记录。</p>

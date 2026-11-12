@@ -1,4 +1,12 @@
-<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title><style>@page{size:A4;margin:16mm}body{max-width:860px;margin:35px auto;padding:0 16px;overflow-wrap:anywhere;color:#1d2730;font:14px/1.8 "WenQuanYi Zen Hei",sans-serif}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:7px;overflow-wrap:anywhere}table{font-size:12px}code{font-size:11px;overflow-wrap:anywhere}</style></head><body><h1>先见一步：看不见的那一面，先走一遍</h1>
+<!doctype html><html lang="zh-CN"><head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>先见一步 · 报告</title><style>@page{size:A4;margin:16mm}body{max-width:860px;margin:35px auto;padding:0 16px;overflow-wrap:anywhere;color:#1d2730;font:14px/1.8 "WenQuanYi Zen Hei",sans-serif}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}img{width:100%;height:auto;break-inside:avoid}a{color:#27644e}table{border-collapse:collapse;width:100%;break-inside:avoid}td,th{border:1px solid #bbb;padding:7px;overflow-wrap:anywhere}table{font-size:12px}code{font-size:11px;overflow-wrap:anywhere}</style></head><body><h1>先见一步：一张照片，变成一整块石头</h1>
+<!-- PHOTO-STORY-REPORT-START -->
+<p>机器人只拍到石头的一面。Aholo Lux3D 把这张平面照片变成包含未知背面的完整三维石头；机器人先对照可见观测检查，再在每个采纳的想象世界里走完路线，最后在独立仿真里执行。月面和低角度阳光提供实验背景，核心是从照片生成的几何改变行动判断。</p>
+<p>锚点真实 Lux 分支1眼、112.84秒到达（仿真行程，不含云端生成墙钟），首眼12个真实任务返回11个模型、1个供应商失败。陈列室保留全部306份既有真实生成模型。</p>
+<p>原8个已知决定性场景：3到达/3停车/2碰撞；5个指定留出：原想象1到达/2停车/2碰撞，最终v3赛后修订0到达/5停车/0碰撞。首页的13场/4到达/4碰撞是两个分层的算术相加，技术结论分别报告；全12个已知复测为3到达/9停车/0碰撞。</p>
+<p>四次原方法碰撞均保留：suite_r2_v4_F1_020、suite_r2_v4_F3_004、suite_r2_v4_F0_003、suite_r2_v4_F3_006。F1_020碰到从未形成观测目标的C；另外三场低估B背面，正面自检与所有预演通过后仍实际接触。early oldv2 F1_003碰撞另列。原拒绝反事实17/102碰撞，R3已知0/17、留出13/112，合计231次干预、30次碰撞；干预次数不等于独立生成资产份数。</p>
+<p><a href="index.html">作品首页</a> · <a href="gallery.html">全部想象</a> · <a href="overlays.html">真假叠合</a> · <a href="evidence/award/acceptance/home-numbers.json">数字审计</a>。</p>
+<!-- PHOTO-STORY-REPORT-END -->
+
 <p>Next Zenith · Aholo Lux3D。报告保留R1原窄道锚点与R2预注册场景组；R1主实验源码 <code>2147b2f</code>，R2源码身份逐场保存在原运行记录。完整结果见<a href="docs/reviews/RESULT_BEFORESTEP_R1.md">R1执行记录</a>与<a href="docs/reviews/RESULT_BEFORESTEP_R2.md">R2执行记录</a>。</p>
 <p>锚点场景中，想象车是三台车里唯一安全到达的；12 个预注册场景中，决定性 8 个：到达 3、安全停车 3、碰撞 2（原因已查明）。</p>
 <h2>两种影子，一个行动问题</h2>
@@ -1140,6 +1148,63 @@
 </table>
 <p>原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 <a href="evidence/reviews/beforestep_r3/summary.json">R3 数据</a>，执行与失败判断见 <a href="docs/reviews/RESULT_BEFORESTEP_R3.md">R3 执行记录</a>。</p>
 <!-- R3-METHOD-END -->
+
+<!-- AWARD-DEMO-START -->
+<h2>赛后补充演示：suite_r2_v4_F0_006</h2>
+<p><strong>赛后补充演示运行，不参与结论、不作为泛化证据。</strong> 按运行前固定计划选择种子 6，不看结果换场景。新增任务 24，R2/R3/补充演示累计 312/316；含更早历史的全部项目任务 354/360。</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>真实终态</th>
+<th>眼数</th>
+<th>仿真总时长</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>保守</td>
+<td>stuck</td>
+<td>5</td>
+<td>141.08s</td>
+</tr>
+<tr>
+<td>黑影测深对照</td>
+<td>arrived</td>
+<td>3</td>
+<td>137.06s</td>
+</tr>
+<tr>
+<td>乐观</td>
+<td>collision</td>
+<td>1</td>
+<td>80.01s</td>
+</tr>
+<tr>
+<td>真实形状检验</td>
+<td>arrived</td>
+<td>1</td>
+<td>114.3s</td>
+</tr>
+<tr>
+<td>原想象</td>
+<td>stuck</td>
+<td>2</td>
+<td>57.2s</td>
+</tr>
+<tr>
+<td>修订想象</td>
+<td>stuck</td>
+<td>2</td>
+<td>57.2s</td>
+</tr>
+</tbody>
+</table>
+<p>被拒候选反事实（修订想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
+<p>被拒候选反事实（原想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
+<p><a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/conservative_postmortem/eval.json">保守的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/see_dark_postmortem/eval.json">黑影测深对照的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/optimistic_postmortem/eval.json">乐观的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/truth_postmortem/eval.json">真实形状检验的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_postmortem/eval.json">原想象的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_strict_postmortem/eval.json">修订想象的独立复盘</a> · </p>
+<p><a href="award-demo.html">逐步可点的真实记录流程</a> · <a href="evidence/award/demo/plan.json">预期与选择规则</a> · <a href="evidence/award/demo/result.json">原始结果</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json">完整保全清单</a>。</p>
+<!-- AWARD-DEMO-END -->
 
 <h2>沙盒</h2>
 <p><a href="sandbox.html">自由摆石头</a>是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。</p>

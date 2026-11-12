@@ -1,0 +1,119 @@
+{
+  "schema": "beforestep-r1-physical-clearance/v1",
+  "scope": "Post-run reconstruction at every saved qpos, original MuJoCo collision geoms and masks; no simulation advance or planning input.",
+  "run_id": "e967cd8dcc0744c8987ac626cb52c2a5",
+  "trajectory_sha256": "329a35b9a982df1a33a1e9a8e5501fe659b7ad852ac1e52a3294059f317afa34",
+  "distance_function": "mujoco.mj_geomDistance; signed, negative means geometric penetration",
+  "sample_count": 3942,
+  "scene": {
+    "id": "suite_r2_v4_F0_006",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.549973,
+        "x": 4.571952,
+        "y": -0.717035,
+        "yaw": 92.5231
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.409062,
+        "x": 6.895452,
+        "y": 0.244163,
+        "yaw": -29.088591
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.336125,
+      -0.02905
+    ],
+    "terrain": {
+      "type": "corridor",
+      "right_wall": true,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 9.638331,
+      "azimuth_deg": 32.651266
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F0",
+      "seed": 6,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "physical_contact_record": {
+    "body": "obstacle1",
+    "robot_geom": null,
+    "pos": [
+      6.934,
+      -0.234,
+      0.107
+    ],
+    "t": 80.014
+  },
+  "rocks": {
+    "A": {
+      "minimum_signed_collision_geometry_distance_m": 0.2379500955091834,
+      "witness": {
+        "trajectory_index": 2819,
+        "time_s": 57.5800000000034,
+        "robot_geom": 51,
+        "obstacle_geom": 53,
+        "nearest_points_xyz_m": [
+          [
+            4.791634018130669,
+            0.07193000142392625,
+            0.1660164297477168
+          ],
+          [
+            4.6769695598856424,
+            -0.12359168536931686,
+            0.2384289974533925
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    },
+    "B": {
+      "minimum_signed_collision_geometry_distance_m": 0.0008656022316236994,
+      "witness": {
+        "trajectory_index": 3941,
+        "time_s": 80.01400000000122,
+        "robot_geom": 18,
+        "obstacle_geom": 54,
+        "nearest_points_xyz_m": [
+          [
+            6.934280008401474,
+            -0.23488542976507054,
+            0.10528730044490765
+          ],
+          [
+            6.934535046989723,
+            -0.23406022158184137,
+            0.10534434425462796
+          ]
+        ]
+      },
+      "tested_geom_pairs": 27
+    }
+  }
+}

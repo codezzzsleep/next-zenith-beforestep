@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/root/3d/next-zenith-beforestep/ops/verify_r1_presentation.py", line 281, in <module>
+    print(json.dumps(check(), ensure_ascii=False, indent=2))
+                     ^^^^^^^
+  File "/root/3d/next-zenith-beforestep/ops/verify_r1_presentation.py", line 272, in check
+    assert token in numbers, (name, 'untraceable literal', token)
+           ^^^^^^^^^^^^^^^^
+AssertionError: ('site/report.html', 'untraceable literal', '312')

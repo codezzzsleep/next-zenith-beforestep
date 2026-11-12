@@ -23,6 +23,12 @@ git lfs pull --include="assets/runtime-*.tar.gz,assets/candidates/595*/tex_mesh.
 
 Ubuntu/Debian 需先具备 Python 3.12 和 `venv`（缺少时：`sudo apt-get install python3.12-venv`）。
 
+<!-- FRESH-TIMING-START -->
+全新 GitHub 克隆实测：环境安装与启动 103.71 秒，完整零付费链另耗时 1287.87 秒；12 个世界完整预演、独立执行与五组轨迹数组核对均通过，新增任务 0。[原始实测记录](evidence/award/acceptance/C5-fresh.json)。网页在链完成后用同一全新环境独立启动并验收。
+
+Fresh-clone verification: setup/start 103.71 s, followed by 1287.87 s for the full zero-paid chain. All 12 rehearsals and five trajectory-array comparisons passed. The local showcase was served independently after completion in the same environment.
+<!-- FRESH-TIMING-END -->
+
 打开 <http://127.0.0.1:8080>。全部其余历史证据可以另用 `git lfs pull --include="" --exclude=""` 下载。六步源文件、独立命令与输出见[代码导览](docs/code-tour.md)。
 
 当前主线以 [负责人R1复核](docs/reviews/REVIEW_BEFORESTEP_R1.md) 为准：stress_v8 A+B、规则控制器与原终点(10.5,0)。[R1执行结果](docs/reviews/RESULT_BEFORESTEP_R1.md)逐项保留预期、原始结果与未完成项；以下v0.3与训练模型材料保留为历史交付和迭代附录。

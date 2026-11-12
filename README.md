@@ -9,10 +9,13 @@ Clone, fetch the LFS assets below, and install the frozen dependencies. The sing
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/codezzzsleep/next-zenith-beforestep.git
 cd next-zenith-beforestep
+git lfs install --local
 git lfs pull --include="assets/runtime-*.tar.gz,assets/candidates/595*/tex_mesh.glb,evidence/reviews/beforestep_r1/lux/original_b/**,site/**,evidence/web-assets/**" --exclude=""
 ./setup.sh
 .venv/bin/python ops/quickstart.py --reuse-lux --serve
 ```
+
+Ubuntu/Debian 需先具备 Python 3.12 和 `venv`（缺少时：`sudo apt-get install python3.12-venv`）。
 
 打开 <http://127.0.0.1:8080>。全部其余历史证据可以另用 `git lfs pull --include="" --exclude=""` 下载。六步源文件、独立命令与输出见[代码导览](docs/code-tour.md)。
 

@@ -1,0 +1,43 @@
+{
+  "status": "failed",
+  "pid": 3826416,
+  "directory": "/tmp/beforestep-award-fresh-20261112",
+  "started_at": "2026-11-12T00:39:29.376111+00:00",
+  "steps": {
+    "clone": {
+      "command": [
+        "git",
+        "clone",
+        "--depth",
+        "1",
+        "https://github.com/codezzzsleep/next-zenith-beforestep.git",
+        "/tmp/beforestep-award-fresh-20261112"
+      ],
+      "exit_code": 0,
+      "wall_s": 8.224044138973113
+    },
+    "lfs": {
+      "command": [
+        "git",
+        "lfs",
+        "pull",
+        "--include=assets/runtime-*.tar.gz,assets/candidates/595*/tex_mesh.glb,evidence/reviews/beforestep_r1/lux/original_b/**,site/**,evidence/web-assets/**",
+        "--exclude="
+      ],
+      "exit_code": 0,
+      "wall_s": 68.99614161200589
+    },
+    "setup": {
+      "command": [
+        "./setup.sh"
+      ],
+      "exit_code": 1,
+      "wall_s": 0.070381527999416
+    }
+  },
+  "new_paid_tasks": 0,
+  "stage": "setup",
+  "source_commit": "f3af6f45e27cf6444540fe63fa3ea006e8d18aca",
+  "error": "setup failed; retain fresh directory and log",
+  "total_wall_s": 77.29402783099795
+}

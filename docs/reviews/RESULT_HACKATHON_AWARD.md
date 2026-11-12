@@ -2,13 +2,13 @@
 
 执行规格：[SPEC_HACKATHON_AWARD.md](SPEC_HACKATHON_AWARD.md)。以负责人执行中更新的原件为准；此前执行记录保留在[历史记录](history/RESULT_HACKATHON_AWARD-before-owner-homepage.md)。R1/R2预注册主结果与冻结证据不变，R3永远标为赛后修订。
 
-负责人最新说明：首页还在制作，先完成其他工作；真人首屏测试由负责人安排，Agent不再跟进。Codex保留既有 `site/award*`，不再设计首页，也不发布未交付草稿。
+最新第二版 SPEC 已交付 `/root/3d/homepage/`，按 C1–C8 顺序执行。首页设计与文案原样集成，真人测试仍由负责人安排。此前 P1–P6 工作和核验继续保留。
 
 | 项目 | 当前状态 | 已实施、实核结果与证据 |
 | --- | --- | --- |
 | 前置：磁盘/会话/后台恢复 | 完成 | 已按授权删除 `/root/rush`；原会话与实验终态已恢复，不重建已知任务。无在跑实验。 |
 | R3实验与完整保全 | 完成；最新技术报告公网核验继续 | 最终v3已知12场：3到达/9停车/0碰撞；留出5场：0到达/5停车/0碰撞。新增拒绝干预：已知17/0碰撞、留出112/13碰撞。完整tar/公开清单与独立origin核验已保全。 |
-| P1网页素材包与技术报告搬迁 | 素材公开/本地搬迁完成；首页待负责人交付 | 306真实网页版模型、526索引文件、521配准上下文；最大GLB 1999920字节。锚点12请求/11返回模型/8准入/3拒绝/1供应商失败、四完整轨迹、十二完整预演、每眼RGB/depth/DARK、真值与矩阵齐全。逐SHA、原几何、矩阵及轨迹实核通过；main `7cb3096` 已实际push，独立origin下载500对象/691547326字节，全部pointer SHA与size通过。[远端核验](../../evidence/award/acceptance/web-assets-origin.json)。[index](../../evidence/web-assets/index.json) · [核验](../../evidence/award/acceptance/web-assets.json)。原首页按原字节与路径接通搬到 `site/report.html`，PDF源另存 `site/project-report.html`。 |
+| P1网页素材包与技术报告搬迁 | 素材公开/本地搬迁完成；首页待负责人交付 | 306真实网页版模型、526索引文件、521配准上下文；最大GLB 1999920字节。锚点12请求/11返回模型/8准入/3拒绝/1供应商失败、四完整轨迹、十二完整预演、每眼RGB/depth/DARK、真值与矩阵齐全。逐SHA、原几何、矩阵及轨迹实核通过；main `7cb3096` 已实际push，独立origin下载500对象/691547326字节，全部pointer SHA与size通过。[远端核验](../../evidence/award/acceptance/web-assets-origin.json)。全部526索引文件实际Pages下载/757640298字节全部SHA与size匹配。[Pages素材实核](../../evidence/award/acceptance/web-assets-pages.json)。[index](../../evidence/web-assets/index.json) · [核验](../../evidence/award/acceptance/web-assets.json)。原首页按原字节与路径接通搬到 `site/report.html`，PDF源另存 `site/project-report.html`。 |
 | P1首页集成 | 等待制作方交付 | 已实现 `ops/integrate_owner_homepage.py`，仅接通 `assets/`→`home-assets/`，model-viewer与仓库vendored字节相同；尚未替换正式首页。交付后做1440/390全页截图、模型/拖动/首屏时间/数字/公网验收。真人测试按负责人最新指令不由Agent跟进。 |
 | P2结果、回放、技术流程 | 技术报告/结果/关卡/沙盒公网通过；新增失败章发布继续 | 十二已知五栏与五指定留出单表、眼数/仿真时间并列、oldv2碰撞与最终v3范围、十二逐关修订回放、Lux核心工程链数字均齐全。R1/R2与R3数字审计、本地技术页/修订页通过。新版首页交付后原样接通相应入口。 |
 | P3补充演示 | 未开始；执行前置条件未满足 | 固定原提交 `f00a08f` 的 `suite_r2_v4_F0_006` 不更换；[原计划](../../evidence/award/demo/plan.json)与[新版28次上限修订](../../evidence/award/demo/budget-amendment.json)均保留。累计R2+R3=288，本项最多新增28/累计316，平台360；当前新增0。P1/P2在11/15 12:00北京时间前完成才执行，不提前伪造完成marker，也不提前写时间跳过。单列“赛后补充演示运行，不参与结论、不作为泛化证据”。 |
@@ -27,3 +27,9 @@
 ## 下一具体步骤
 
 main `7cb3096`、全部素材LFS与独立origin核验已通过；Pages `2508c35` 已built，技术报告/修订五栏/关卡全部候选/沙盒公网通过。新增留出失败章与22页PDF发布继续；首页成品交付后只接通资产路径并验收。P1/P2正式完成且满足时间条件后，按既有固定计划运行唯一P3演示并完整公开六栏/反事实/保全。
+
+## 第二版 C1–C8 执行记录
+
+| 项目 | 状态与实际验收 | 证据 |
+| --- | --- | --- |
+| C1 本地集成、数据管线、数字审计 | 原样仅映射路径，11 模型均实际加载；1440/390全页、真实指针拖背面、拒绝文案、三车/两想象切换通过，0溢出/0console/0HTTP。首屏3.6094383979798295秒。7293数据字段相同，14组数字无未解释项。公网发布待验。 | [本地验收](../../evidence/award/acceptance/home-C1-local.json) · [数字审计](../../evidence/award/acceptance/home-numbers.json) · `ops/build_home_data.py` |

@@ -15,6 +15,9 @@ def main():
     if output.is_relative_to(ROOT):
         parser.error('Choose a separate export directory')
     output.mkdir(parents=True,exist_ok=True)
+    if (ROOT / 'site/homepage-integration.json').exists():
+        from integrate_owner_homepage import rebuild_data
+        rebuild_data(ROOT / 'site')
     demo_pending = not (ROOT / 'site/data/award-demo.json').exists()
     ignore = ['video-scene', '__pycache__'] + (['award-demo.html', 'award-demo.js'] if demo_pending else [])
     shutil.copytree(ROOT/'site',output,dirs_exist_ok=True, ignore=shutil.ignore_patterns(*ignore))

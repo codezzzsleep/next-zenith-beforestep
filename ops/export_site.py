@@ -70,7 +70,17 @@ def main():
                 used_glbs.add(row['viewer']['path'].removeprefix('site/'))
     demo_data = ROOT / 'site/data/award-demo.json'
     if demo_data.exists():
-        used_glbs.update(row['glb'] for row in json.loads(demo_data.read_text())['candidates'])
+        demo = json.loads(demo_data.read_text())
+        used_glbs.update(row['glb'] for row in demo['candidates'])
+        # Keep the exact bounded review objects reachable from its public
+        # manifest, including immutable objects shared with earlier runs.
+        manifest = json.loads((ROOT / demo['manifest']).read_text())
+        for relative in {row['public_object'] for row in manifest['files'] if row.get('public_object')}:
+            source = (ROOT / relative).resolve()
+            assert source.is_relative_to(ROOT / 'evidence') and source.is_file(), relative
+            target = output / relative
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, target)
     for path in (output/'media').rglob('*.glb'):
         if str(path.relative_to(output)) not in used_glbs:path.unlink()
     for candidate in candidates:

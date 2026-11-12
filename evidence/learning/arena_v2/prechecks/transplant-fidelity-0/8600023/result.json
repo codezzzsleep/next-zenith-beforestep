@@ -1,0 +1,264 @@
+{
+  "seed": 8600023,
+  "capsule_id": "C034",
+  "world": {
+    "schema": "beforestep-arena-world/v2",
+    "seed": 8600023,
+    "split": "fidelity",
+    "family": "dense",
+    "definition": {
+      "id": "arena_fidelity_8600023",
+      "rocks": {
+        "capsule_B": {
+          "rock": "moon_rock_04",
+          "height": 0.507419,
+          "x": 6.239627030509654,
+          "y": 0.6892326135939533,
+          "yaw": -11.355892216524648
+        },
+        "capsule_C": {
+          "rock": "moon_rock_04",
+          "height": 0.359793,
+          "x": 7.277290699640416,
+          "y": 0.7082984357656921,
+          "yaw": 2.605611783475352
+        },
+        "background_A": {
+          "rock": "boulder_01",
+          "height": 0.523537,
+          "x": 4.284618824520251,
+          "y": -0.3025606703231647,
+          "yaw": 94.12301078347535
+        },
+        "unimagined_0": {
+          "rock": "moon_rock_07",
+          "height": 0.37558545860539294,
+          "x": 6.354139323855325,
+          "y": 1.3939851654173385,
+          "yaw": 94.12766946993844
+        },
+        "unimagined_1": {
+          "rock": "rock_07",
+          "height": 0.5752781577057478,
+          "x": 6.190357651488063,
+          "y": -0.021201599524579784,
+          "yaw": -132.60897210108075
+        },
+        "unimagined_2": {
+          "rock": "moon_rock_05",
+          "height": 0.3512296270636025,
+          "x": 4.3744781728523865,
+          "y": 1.3028048741490104,
+          "yaw": 155.49010655908467
+        },
+        "unimagined_3": {
+          "rock": "moon_rock_05",
+          "height": 0.5549095851400987,
+          "x": 5.585270522284189,
+          "y": 1.6974412834016122,
+          "yaw": -9.118234142012653
+        },
+        "unimagined_4": {
+          "rock": "moon_rock_01",
+          "height": 0.47762922868231583,
+          "x": 5.574002104913136,
+          "y": 1.2731989525259968,
+          "yaw": -149.30474453051306
+        }
+      },
+      "start": [
+        1.975845677189879,
+        -0.32005946132588803
+      ],
+      "first_stop": [
+        1.975845677189879,
+        -0.32005946132588803
+      ],
+      "goal": [
+        11.661204084276333,
+        -0.42150513746896023
+      ],
+      "terrain": {
+        "type": "plain",
+        "right_wall": false,
+        "craters": []
+      },
+      "sun": {
+        "elevation_deg": 10.776456,
+        "azimuth_deg": 27.85137921652465
+      },
+      "asset_cache_precision": "exact",
+      "rehearse_reference": false
+    },
+    "capsule_id": "C034",
+    "capsule_scene": "suite_r2_v4_F1_001",
+    "transplant": [
+      [
+        0.9976454244301992,
+        -0.06858284853728173,
+        0.0,
+        -0.3448021954308156
+      ],
+      [
+        0.06858284853728173,
+        0.9976454244301992,
+        0.0,
+        0.02162677288403489
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "deviations": {
+      "camera_distance_ratio": 1.0,
+      "view_azimuth_deviation_deg": 0.0,
+      "sun_relative_azimuth_deviation_deg": 0.0
+    },
+    "unimagined_rocks": 5,
+    "real_task_ids": [
+      6346938,
+      6346941,
+      6346963,
+      6346973
+    ]
+  },
+  "candidates": [
+    {
+      "task_id": 6346938,
+      "before_metrics": {
+        "scale_ratio": 1.0488,
+        "hidden_frac": 0.7222,
+        "shell_contact": 0.4554,
+        "free_intrusion_frac": 0.2158,
+        "contour_iou": 0.6277
+      },
+      "after_metrics": {
+        "scale_ratio": 1.0488,
+        "hidden_frac": 0.8162,
+        "shell_contact": 0.2291,
+        "free_intrusion_frac": 0.17288,
+        "intrusion_depth_p95_mm": 74.26,
+        "voxels": 273745,
+        "contour_iou": 0.4128
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 0.09400000000000008,
+        "shell_contact": -0.22630000000000003,
+        "free_intrusion_frac": -0.042919999999999986,
+        "contour_iou": -0.21490000000000004
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "1cd1a328ab5df085685c3515c016d18a402e613d7ab6be4b9b3274d09dc0af59",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6346941,
+      "before_metrics": {
+        "scale_ratio": 1.0488,
+        "hidden_frac": 0.7345,
+        "shell_contact": 0.4426,
+        "free_intrusion_frac": 0.20499,
+        "contour_iou": 0.6388
+      },
+      "after_metrics": {
+        "scale_ratio": 1.0488,
+        "hidden_frac": 0.8202,
+        "shell_contact": 0.2367,
+        "free_intrusion_frac": 0.168,
+        "intrusion_depth_p95_mm": 74.51,
+        "voxels": 270979,
+        "contour_iou": 0.417
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 0.0857,
+        "shell_contact": -0.2059,
+        "free_intrusion_frac": -0.036989999999999995,
+        "contour_iou": -0.22180000000000005
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "98c4d71d291acf020663ec51f160aa256b1d09f229f2ee2326ae36a093224c54",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6346963,
+      "before_metrics": {
+        "scale_ratio": 0.6707,
+        "hidden_frac": 0.8647,
+        "shell_contact": 0.4556,
+        "free_intrusion_frac": 0.06683,
+        "contour_iou": 0.5876
+      },
+      "after_metrics": {
+        "scale_ratio": 0.6707,
+        "hidden_frac": 0.9401,
+        "shell_contact": 0.3622,
+        "free_intrusion_frac": 0.0274,
+        "intrusion_depth_p95_mm": 30.42,
+        "voxels": 246623,
+        "contour_iou": 0.4382
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 0.07540000000000002,
+        "shell_contact": -0.09339999999999998,
+        "free_intrusion_frac": -0.03943,
+        "contour_iou": -0.14940000000000003
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "2f86edb8d3bf08750a969e733650f92e089cc7986ab09f44990b2b72685735c4",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6346973,
+      "before_metrics": {
+        "scale_ratio": 0.8415,
+        "hidden_frac": 0.721,
+        "shell_contact": 0.3993,
+        "free_intrusion_frac": 0.21937,
+        "contour_iou": 0.605
+      },
+      "after_metrics": {
+        "scale_ratio": 0.8415,
+        "hidden_frac": 0.8311,
+        "shell_contact": 0.2234,
+        "free_intrusion_frac": 0.15819,
+        "intrusion_depth_p95_mm": 55.09,
+        "voxels": 247015,
+        "contour_iou": 0.3728
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 0.11009999999999998,
+        "shell_contact": -0.1759,
+        "free_intrusion_frac": -0.06118000000000001,
+        "contour_iou": -0.23219999999999996
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "305da1cfdbb53c5c0d256221006664c71e8882f4a4f0aa2482c098f9971244da",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    }
+  ],
+  "flips": 0,
+  "candidate_count": 4,
+  "observation_state_sha256": "26436928ba0c17ceec9d788a5b802c177f0027c9c5eebc62ccaf8b8907174044",
+  "sensor": "Frozen production N.observe, 4040x3030 RGB-D downsampled to 1600x1200; no new Lux task"
+}

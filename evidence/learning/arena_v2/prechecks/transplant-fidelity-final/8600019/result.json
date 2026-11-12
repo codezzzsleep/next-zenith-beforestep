@@ -1,0 +1,302 @@
+{
+  "seed": 8600019,
+  "capsule_id": "C030",
+  "world": {
+    "schema": "beforestep-arena-world/v2",
+    "seed": 8600019,
+    "split": "fidelity",
+    "family": "triple",
+    "definition": {
+      "id": "arena_fidelity_8600019",
+      "rocks": {
+        "capsule_B": {
+          "rock": "moon_rock_04",
+          "height": 0.414708,
+          "x": 7.352716906629278,
+          "y": 0.09736103955685353,
+          "yaw": -25.518260971350507
+        },
+        "background_A": {
+          "rock": "rock_07",
+          "height": 0.562232,
+          "x": 5.0540962119571615,
+          "y": -0.7714518976310502,
+          "yaw": 86.1994440286495
+        },
+        "unimagined_0": {
+          "rock": "moon_rock_01",
+          "height": 0.52106976850839,
+          "x": 9.556727312024748,
+          "y": -1.2773730786998332,
+          "yaw": 65.61225979416713
+        },
+        "unimagined_1": {
+          "rock": "moon_rock_07",
+          "height": 0.4481564577090852,
+          "x": 9.556727312024748,
+          "y": 0.9080117739207962,
+          "yaw": 129.77286145791686
+        }
+      },
+      "start": [
+        2.8525538729877695,
+        -0.484579628923097
+      ],
+      "first_stop": [
+        2.8525538729877695,
+        -0.484579628923097
+      ],
+      "goal": [
+        10.356727312024748,
+        -0.3298864787990172
+      ],
+      "terrain": {
+        "type": "corridor",
+        "right_wall": true,
+        "craters": []
+      },
+      "sun": {
+        "elevation_deg": 10.527016,
+        "azimuth_deg": 34.52378797135051
+      },
+      "asset_cache_precision": "exact",
+      "rehearse_reference": false
+    },
+    "capsule_id": "C030",
+    "capsule_scene": "suite_r2_v4_F0_005",
+    "transplant": [
+      [
+        0.9993882746301989,
+        0.034972511086198366,
+        0.0,
+        0.5797393221276808
+      ],
+      [
+        -0.034972511086198366,
+        0.9993882746301989,
+        0.0,
+        0.09546291208467883
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "deviations": {
+      "camera_distance_ratio": 1.0,
+      "view_azimuth_deviation_deg": 0.0,
+      "sun_relative_azimuth_deviation_deg": 0.0
+    },
+    "unimagined_rocks": 2,
+    "real_task_ids": [
+      6339569,
+      6339579,
+      6339705,
+      6339572,
+      6339850,
+      6339740
+    ],
+    "known_launch_radius_m": 1.0,
+    "launch_clear": true
+  },
+  "candidates": [
+    {
+      "task_id": 6339569,
+      "before_metrics": {
+        "scale_ratio": 1.284,
+        "hidden_frac": 0.935,
+        "shell_contact": 0.5037,
+        "free_intrusion_frac": 0.03316,
+        "contour_iou": 0.5888
+      },
+      "after_metrics": {
+        "scale_ratio": 1.284,
+        "hidden_frac": 0.9344,
+        "shell_contact": 0.5036,
+        "free_intrusion_frac": 0.03345,
+        "intrusion_depth_p95_mm": 27.21,
+        "voxels": 665650,
+        "contour_iou": 0.589
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.0006000000000000449,
+        "shell_contact": -9.999999999998899e-05,
+        "free_intrusion_frac": 0.0002899999999999986,
+        "contour_iou": 0.00019999999999997797
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "00a62d905bd5f3f51853acda907323e21f60b74bfc3a2ceb2f4ea0744614e422",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339579,
+      "before_metrics": {
+        "scale_ratio": 0.9506,
+        "hidden_frac": 0.6565,
+        "shell_contact": 0.4665,
+        "free_intrusion_frac": 0.28305,
+        "contour_iou": 0.5181
+      },
+      "after_metrics": {
+        "scale_ratio": 0.9506,
+        "hidden_frac": 0.6437,
+        "shell_contact": 0.4668,
+        "free_intrusion_frac": 0.29559,
+        "intrusion_depth_p95_mm": 57.64,
+        "voxels": 252608,
+        "contour_iou": 0.4949
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.012799999999999923,
+        "shell_contact": 0.00029999999999996696,
+        "free_intrusion_frac": 0.012539999999999996,
+        "contour_iou": -0.0232
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "39754614f5aadd555cd8bdb174ec23a8f2c5b89c953b8d9b3298ad72d1f9c509",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339705,
+      "before_metrics": {
+        "scale_ratio": 0.963,
+        "hidden_frac": 0.6512,
+        "shell_contact": 0.4765,
+        "free_intrusion_frac": 0.28984,
+        "contour_iou": 0.5177
+      },
+      "after_metrics": {
+        "scale_ratio": 0.963,
+        "hidden_frac": 0.6408,
+        "shell_contact": 0.477,
+        "free_intrusion_frac": 0.29996,
+        "intrusion_depth_p95_mm": 58.37,
+        "voxels": 259641,
+        "contour_iou": 0.4971
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.010399999999999965,
+        "shell_contact": 0.0005000000000000004,
+        "free_intrusion_frac": 0.010120000000000018,
+        "contour_iou": -0.020600000000000063
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "a21f8854ab154a263acb93c42b08cc34f7bfb0f03aef7c92e238185f66870fc4",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339572,
+      "before_metrics": {
+        "scale_ratio": 1.358,
+        "hidden_frac": 0.9257,
+        "shell_contact": 0.4824,
+        "free_intrusion_frac": 0.04457,
+        "contour_iou": 0.5932
+      },
+      "after_metrics": {
+        "scale_ratio": 1.358,
+        "hidden_frac": 0.925,
+        "shell_contact": 0.4821,
+        "free_intrusion_frac": 0.04497,
+        "intrusion_depth_p95_mm": 27.98,
+        "voxels": 664472,
+        "contour_iou": 0.5924
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.0006999999999999229,
+        "shell_contact": -0.00030000000000002247,
+        "free_intrusion_frac": 0.0004000000000000045,
+        "contour_iou": -0.0007999999999999119
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "0592092d8c75ada39b7fa21ab1fe47b37c22b4c29ecd79b5f17ccd845007b7a3",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339850,
+      "before_metrics": {
+        "scale_ratio": 0.5309,
+        "hidden_frac": 0.6885,
+        "shell_contact": 0.2441,
+        "free_intrusion_frac": 0.16989,
+        "contour_iou": 0.3428
+      },
+      "after_metrics": {
+        "scale_ratio": 0.5309,
+        "hidden_frac": 0.6877,
+        "shell_contact": 0.245,
+        "free_intrusion_frac": 0.17065,
+        "intrusion_depth_p95_mm": 33.8,
+        "voxels": 82731,
+        "contour_iou": 0.3431
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.0008000000000000229,
+        "shell_contact": 0.0008999999999999841,
+        "free_intrusion_frac": 0.0007599999999999829,
+        "contour_iou": 0.00030000000000002247
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "756da12d554c00ed64b9646bda4b6fe26ab0c7e90195c1b20b9344a83f3fbddf",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339740,
+      "before_metrics": {
+        "scale_ratio": 0.5802,
+        "hidden_frac": 0.7278,
+        "shell_contact": 0.271,
+        "free_intrusion_frac": 0.13673,
+        "contour_iou": 0.3748
+      },
+      "after_metrics": {
+        "scale_ratio": 0.5802,
+        "hidden_frac": 0.7273,
+        "shell_contact": 0.2712,
+        "free_intrusion_frac": 0.13757,
+        "intrusion_depth_p95_mm": 34.42,
+        "voxels": 94944,
+        "contour_iou": 0.3754
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.000500000000000056,
+        "shell_contact": 0.00019999999999997797,
+        "free_intrusion_frac": 0.0008400000000000074,
+        "contour_iou": 0.0005999999999999894
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "407b6b70a56c7b695e5e15f5ffda6248cfac606f0f8747bfcc6327a5723e5c75",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    }
+  ],
+  "flips": 0,
+  "candidate_count": 6,
+  "observation_state_sha256": "7b28357fea9c8f9bc8c25954cf73571b82b5bf97bcde96723a11f1503559e887",
+  "sensor": "Frozen production N.observe, 4040x3030 RGB-D downsampled to 1600x1200; no new Lux task"
+}

@@ -1,0 +1,217 @@
+{
+  "seed": 8600006,
+  "capsule_id": "C007",
+  "world": {
+    "schema": "beforestep-arena-world/v2",
+    "seed": 8600006,
+    "split": "fidelity",
+    "family": "single",
+    "definition": {
+      "id": "arena_fidelity_8600006",
+      "rocks": {
+        "capsule_A": {
+          "rock": "rock_07",
+          "height": 0.55,
+          "x": 4.457942998476477,
+          "y": -0.46350205605762684,
+          "yaw": 91.53575345988335
+        }
+      },
+      "start": [
+        2.1941711733539946,
+        -0.2893119396460204
+      ],
+      "first_stop": [
+        2.1941711733539946,
+        -0.2893119396460204
+      ],
+      "goal": [
+        8.572846927187792,
+        0.1529980186075648
+      ],
+      "terrain": {
+        "type": "corridor",
+        "right_wall": true,
+        "craters": []
+      },
+      "sun": {
+        "elevation_deg": 10.0,
+        "azimuth_deg": 33.46424654011664
+      },
+      "asset_cache_precision": "exact",
+      "rehearse_reference": false
+    },
+    "capsule_id": "C007",
+    "capsule_scene": "stress_v8_history",
+    "transplant": [
+      [
+        0.9996407955216651,
+        -0.026800744930182047,
+        0.0,
+        -0.11012116867078231
+      ],
+      [
+        0.026800744930182047,
+        0.9996407955216651,
+        0.0,
+        0.14929053921846866
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "deviations": {
+      "camera_distance_ratio": 1.0,
+      "view_azimuth_deviation_deg": 0.0,
+      "sun_relative_azimuth_deviation_deg": 0.0
+    },
+    "unimagined_rocks": 0,
+    "real_task_ids": [
+      5027323,
+      5027395,
+      5027332,
+      5027440
+    ],
+    "known_launch_radius_m": 1.0,
+    "launch_clear": true
+  },
+  "candidates": [
+    {
+      "task_id": 5027323,
+      "before_metrics": {
+        "scale_ratio": 1.0337,
+        "hidden_frac": 0.8322,
+        "shell_contact": 0.8694,
+        "free_intrusion_frac": 0.12611,
+        "contour_iou": 0.8174
+      },
+      "after_metrics": {
+        "scale_ratio": 1.0337,
+        "hidden_frac": 0.8318,
+        "shell_contact": 0.8694,
+        "free_intrusion_frac": 0.12651,
+        "intrusion_depth_p95_mm": 48.67,
+        "voxels": 1205031,
+        "contour_iou": 0.8158
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": -0.00040000000000006697,
+        "shell_contact": 0.0,
+        "free_intrusion_frac": 0.00040000000000001146,
+        "contour_iou": -0.0016000000000000458
+      },
+      "before_admitted": true,
+      "after_admitted": true,
+      "flipped": false,
+      "glb_sha256": "008a1e778f62f9d6a783bb92eafe4f4c9203891834dcf82ff405c7ceaae358df",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 5027395,
+      "before_metrics": {
+        "scale_ratio": 0.9438,
+        "hidden_frac": 0.8694,
+        "shell_contact": 0.8424,
+        "free_intrusion_frac": 0.08874,
+        "contour_iou": 0.8162
+      },
+      "after_metrics": {
+        "scale_ratio": 0.9438,
+        "hidden_frac": 0.8695,
+        "shell_contact": 0.8425,
+        "free_intrusion_frac": 0.08867,
+        "intrusion_depth_p95_mm": 47.91,
+        "voxels": 1197147,
+        "contour_iou": 0.8164
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 0.00010000000000010001,
+        "shell_contact": 9.999999999998899e-05,
+        "free_intrusion_frac": -7.000000000000062e-05,
+        "contour_iou": 0.00019999999999997797
+      },
+      "before_admitted": true,
+      "after_admitted": true,
+      "flipped": false,
+      "glb_sha256": "c75352086f6a261b251a0a60e7896c1ec81f8643ec10e75e26112ea5afbe02b1",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 5027332,
+      "before_metrics": {
+        "scale_ratio": 1.0562,
+        "hidden_frac": 0.66,
+        "shell_contact": 0.8029,
+        "free_intrusion_frac": 0.27837,
+        "contour_iou": 0.6699
+      },
+      "after_metrics": {
+        "scale_ratio": 1.0562,
+        "hidden_frac": 0.6634,
+        "shell_contact": 0.8029,
+        "free_intrusion_frac": 0.27485,
+        "intrusion_depth_p95_mm": 60.23,
+        "voxels": 693863,
+        "contour_iou": 0.6754
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 0.0033999999999999586,
+        "shell_contact": 0.0,
+        "free_intrusion_frac": -0.003520000000000023,
+        "contour_iou": 0.005499999999999949
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "3e6f19dc5d74280b92075f8eb6983e9950c03323fcdbecbb45cd480212064672",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 5027440,
+      "before_metrics": {
+        "scale_ratio": 0.9326,
+        "hidden_frac": 0.8752,
+        "shell_contact": 0.8262,
+        "free_intrusion_frac": 0.08273,
+        "contour_iou": 0.7947
+      },
+      "after_metrics": {
+        "scale_ratio": 0.9326,
+        "hidden_frac": 0.8753,
+        "shell_contact": 0.8262,
+        "free_intrusion_frac": 0.08266,
+        "intrusion_depth_p95_mm": 47.91,
+        "voxels": 1168942,
+        "contour_iou": 0.7948
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0,
+        "hidden_frac": 9.999999999998899e-05,
+        "shell_contact": 0.0,
+        "free_intrusion_frac": -7.000000000000062e-05,
+        "contour_iou": 9.999999999998899e-05
+      },
+      "before_admitted": true,
+      "after_admitted": true,
+      "flipped": false,
+      "glb_sha256": "2abc529aacbfe394144df9423f711e79c10eb54b15b6b51777019122f7f22728",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    }
+  ],
+  "flips": 0,
+  "candidate_count": 4,
+  "observation_state_sha256": "e5462786f8f584136239e7d684e3482f7ffdb407ecf2a42c13c18b7b4bb4152e",
+  "sensor": "Frozen production N.observe, 4040x3030 RGB-D downsampled to 1600x1200; no new Lux task"
+}

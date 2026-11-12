@@ -1,0 +1,10 @@
+{
+  "utc": "2026-11-12T14:04:28.209251+00:00",
+  "scope": "Development-only diagnosis, never heldout/test",
+  "cause": "Original viewpoint_need ignores unknown cells closer than 1m. Two reachable runs stopped while 4/6 looks remained, even though legal local viewpoints exist. Add common fallback for measurable unknown cells within 2m, same frozen occupancy/safe planner and shared look budget. Permanent DARK remains excluded.",
+  "seeds": [
+    8100004,
+    8100038
+  ],
+  "parameter_change": false
+}

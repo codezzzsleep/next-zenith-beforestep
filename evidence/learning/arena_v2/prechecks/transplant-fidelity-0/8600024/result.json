@@ -1,0 +1,293 @@
+{
+  "seed": 8600024,
+  "capsule_id": "C029",
+  "world": {
+    "schema": "beforestep-arena-world/v2",
+    "seed": 8600024,
+    "split": "fidelity",
+    "family": "staggered",
+    "definition": {
+      "id": "arena_fidelity_8600024",
+      "rocks": {
+        "capsule_A": {
+          "rock": "rock_07",
+          "height": 0.562232,
+          "x": 4.130776807967651,
+          "y": -0.7574055208738399,
+          "yaw": 89.41494696332484
+        },
+        "background_B": {
+          "rock": "moon_rock_04",
+          "height": 0.414708,
+          "x": 6.377045450068983,
+          "y": 0.23897302431480413,
+          "yaw": -22.302758036675158
+        },
+        "unimagined_0": {
+          "rock": "moon_rock_06",
+          "height": 0.4180761000533746,
+          "x": 8.486090563327117,
+          "y": 1.3426685521051038,
+          "yaw": 87.52758384287745
+        }
+      },
+      "start": [
+        1.9166093840182186,
+        -0.5944730577193139
+      ],
+      "first_stop": [
+        1.9166093840182186,
+        -0.5944730577193139
+      ],
+      "goal": [
+        10.5233597590269,
+        0.39582519389763793
+      ],
+      "terrain": {
+        "type": "corridor",
+        "right_wall": true,
+        "craters": []
+      },
+      "sun": {
+        "elevation_deg": 10.527016,
+        "azimuth_deg": 31.30828503667516
+      },
+      "asset_cache_precision": "exact",
+      "rehearse_reference": false
+    },
+    "capsule_id": "C029",
+    "capsule_scene": "suite_r2_v4_F0_005",
+    "transplant": [
+      [
+        0.9997765274618436,
+        -0.021139894425879706,
+        0.0,
+        -0.3851624492732706
+      ],
+      [
+        0.021139894425879706,
+        0.9997765274618436,
+        0.0,
+        -0.1428296591778959
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "deviations": {
+      "camera_distance_ratio": 1.0,
+      "view_azimuth_deviation_deg": 0.0,
+      "sun_relative_azimuth_deviation_deg": 0.0
+    },
+    "unimagined_rocks": 1,
+    "real_task_ids": [
+      6338921,
+      6338923,
+      6338981,
+      6339181,
+      6339243,
+      6339248
+    ]
+  },
+  "candidates": [
+    {
+      "task_id": 6338921,
+      "before_metrics": {
+        "scale_ratio": 1.038,
+        "hidden_frac": 0.7017,
+        "shell_contact": 0.8134,
+        "free_intrusion_frac": 0.23555,
+        "contour_iou": 0.6605
+      },
+      "after_metrics": {
+        "scale_ratio": 1.044,
+        "hidden_frac": 0.7047,
+        "shell_contact": 0.8126,
+        "free_intrusion_frac": 0.2405,
+        "intrusion_depth_p95_mm": 65.81,
+        "voxels": 810187,
+        "contour_iou": 0.66
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.006000000000000005,
+        "hidden_frac": 0.0030000000000000027,
+        "shell_contact": -0.0008000000000000229,
+        "free_intrusion_frac": 0.004949999999999982,
+        "contour_iou": -0.0004999999999999449
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "8e46eaad4ad555200bfa2bc5cb730c188e28581dd6ab37e660abe348cdc9c73a",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6338923,
+      "before_metrics": {
+        "scale_ratio": 1.0253,
+        "hidden_frac": 0.7085,
+        "shell_contact": 0.7907,
+        "free_intrusion_frac": 0.2301,
+        "contour_iou": 0.6724
+      },
+      "after_metrics": {
+        "scale_ratio": 1.033,
+        "hidden_frac": 0.7121,
+        "shell_contact": 0.7831,
+        "free_intrusion_frac": 0.23465,
+        "intrusion_depth_p95_mm": 63.81,
+        "voxels": 794567,
+        "contour_iou": 0.6727
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.007699999999999818,
+        "hidden_frac": 0.0035999999999999366,
+        "shell_contact": -0.00759999999999994,
+        "free_intrusion_frac": 0.0045499999999999985,
+        "contour_iou": 0.00029999999999996696
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "803d57de69d42e3df73157eedd82cc5d94532d88bbf950005501b8a2f283515e",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6338981,
+      "before_metrics": {
+        "scale_ratio": 0.962,
+        "hidden_frac": 0.805,
+        "shell_contact": 0.6518,
+        "free_intrusion_frac": 0.16669,
+        "contour_iou": 0.5475
+      },
+      "after_metrics": {
+        "scale_ratio": 0.967,
+        "hidden_frac": 0.8185,
+        "shell_contact": 0.6443,
+        "free_intrusion_frac": 0.15657,
+        "intrusion_depth_p95_mm": 56.09,
+        "voxels": 1336377,
+        "contour_iou": 0.5481
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0050000000000000044,
+        "hidden_frac": 0.013499999999999956,
+        "shell_contact": -0.007500000000000062,
+        "free_intrusion_frac": -0.010120000000000018,
+        "contour_iou": 0.0006000000000000449
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "ccc401d92d03bf4678cc88b1e92c5cfc64ad8f63c54a084b983b31b4d342a65f",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339181,
+      "before_metrics": {
+        "scale_ratio": 1.2152,
+        "hidden_frac": 0.7352,
+        "shell_contact": 0.771,
+        "free_intrusion_frac": 0.24058,
+        "contour_iou": 0.46
+      },
+      "after_metrics": {
+        "scale_ratio": 1.2088,
+        "hidden_frac": 0.7444,
+        "shell_contact": 0.7655,
+        "free_intrusion_frac": 0.23435,
+        "intrusion_depth_p95_mm": 61.14,
+        "voxels": 1695692,
+        "contour_iou": 0.4634
+      },
+      "metric_deltas": {
+        "scale_ratio": -0.006399999999999961,
+        "hidden_frac": 0.009199999999999986,
+        "shell_contact": -0.00550000000000006,
+        "free_intrusion_frac": -0.0062299999999999855,
+        "contour_iou": 0.0033999999999999586
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "d2b086fb50642bc72bfe0d5b2088a0c128a801b971fe9ce542618ea2291f6d3a",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339243,
+      "before_metrics": {
+        "scale_ratio": 0.8228,
+        "hidden_frac": 0.8698,
+        "shell_contact": 0.5177,
+        "free_intrusion_frac": 0.10956,
+        "contour_iou": 0.4989
+      },
+      "after_metrics": {
+        "scale_ratio": 0.8242,
+        "hidden_frac": 0.8823,
+        "shell_contact": 0.5208,
+        "free_intrusion_frac": 0.09874,
+        "intrusion_depth_p95_mm": 65.53,
+        "voxels": 1554525,
+        "contour_iou": 0.503
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0014000000000000679,
+        "hidden_frac": 0.012499999999999956,
+        "shell_contact": 0.0030999999999999917,
+        "free_intrusion_frac": -0.01082000000000001,
+        "contour_iou": 0.0040999999999999925
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "e165c90d4800d95f4a512aa639f260dbec64592966e14a830a630a71f784ab20",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    },
+    {
+      "task_id": 6339248,
+      "before_metrics": {
+        "scale_ratio": 0.8101,
+        "hidden_frac": 0.8561,
+        "shell_contact": 0.5711,
+        "free_intrusion_frac": 0.1262,
+        "contour_iou": 0.5014
+      },
+      "after_metrics": {
+        "scale_ratio": 0.8132,
+        "hidden_frac": 0.8733,
+        "shell_contact": 0.5699,
+        "free_intrusion_frac": 0.11024,
+        "intrusion_depth_p95_mm": 73.51,
+        "voxels": 1875345,
+        "contour_iou": 0.5077
+      },
+      "metric_deltas": {
+        "scale_ratio": 0.0030999999999999917,
+        "hidden_frac": 0.017199999999999993,
+        "shell_contact": -0.0012000000000000899,
+        "free_intrusion_frac": -0.015960000000000002,
+        "contour_iou": 0.006300000000000083
+      },
+      "before_admitted": false,
+      "after_admitted": false,
+      "flipped": false,
+      "glb_sha256": "ad85dfea456e2bd6da7ef0983a345cd599e03b78d3b149d3bb21e3428cac0ec4",
+      "registration": "frozen source M, unchanged in jointly transformed observer frame"
+    }
+  ],
+  "flips": 0,
+  "candidate_count": 6,
+  "observation_state_sha256": "549e53a742087f6442eafd93fcccaa21fc38f6d5014b84e87065887ad86469d6",
+  "sensor": "Frozen production N.observe, 4040x3030 RGB-D downsampled to 1600x1200; no new Lux task"
+}

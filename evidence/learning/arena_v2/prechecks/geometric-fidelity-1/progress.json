@@ -1,0 +1,29 @@
+[
+  {
+    "scene": "stress_v8",
+    "state_agreement": 0.8106385926028535,
+    "methods": [
+      {
+        "method": "conservative",
+        "geometric_result": "stopped",
+        "recorded_result": "stuck",
+        "agree": true,
+        "reference": "outputs/qa/r3/S2-v3/R1-regression/conservative/summary.json"
+      },
+      {
+        "method": "optimistic",
+        "geometric_result": "collision",
+        "recorded_result": "collision",
+        "agree": true,
+        "reference": "outputs/qa/r3/S2-v3/R1-regression/optimistic/summary.json"
+      },
+      {
+        "method": "see_dark",
+        "geometric_result": "stopped",
+        "recorded_result": "arrived",
+        "agree": false,
+        "reference": "outputs/qa/r3/S2-v3/R1-regression/see_dark/summary.json"
+      }
+    ]
+  }
+]

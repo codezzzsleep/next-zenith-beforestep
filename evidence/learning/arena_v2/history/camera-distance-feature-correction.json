@@ -1,0 +1,9 @@
+{
+  "scope": "Pre-registration CNN feature audit; no weights or training/validation/test data exist.",
+  "changed_file": "experimental/arena/model.py",
+  "precheck_recorded_sha256": "9725cd406689f069087f3e60fb7d2834a9a9aeaf3951947972f1cf48b8ff2bb0",
+  "training_source_sha256": "1785e4c6c139e6af8f857a06c06e2692199b1eebd06332de90bba35a7c06c4ff",
+  "reason": "The distance channel must use the calibrated camera mount, not the robot body origin. Apply 0.42m mount offset with yaw before distance.",
+  "development_gate_affected": false,
+  "evidence": "development precheck executes only optimistic/conservative/see_dark; none calls features or infer. Rule policy/planning/sensor/generator sources remain unchanged from running identity."
+}

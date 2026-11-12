@@ -1,0 +1,55 @@
+{
+  "schema": "beforestep-arena-jobs/v2",
+  "new_lux_tasks": 0,
+  "updated_at": "2026-11-12T16:31:34.063451+00:00",
+  "last_event": "final prechecks passed",
+  "jobs": {
+    "development-production-5": {
+      "status": "complete",
+      "pid": 1371911,
+      "worker_pids": [
+        1373631,
+        1373637
+      ],
+      "identity": "evidence/learning/arena_v2/prechecks/development-production-5/identity.json",
+      "log": "/root/3d/.memory/live/arena-development-production-5.log",
+      "adopted_existing": true
+    },
+    "transplant-fidelity-final": {
+      "status": "complete",
+      "identity": "evidence/learning/arena_v2/prechecks/transplant-fidelity-final/identity.json",
+      "summary": "evidence/learning/arena_v2/prechecks/transplant-fidelity-final/summary.json",
+      "adopted_existing": true
+    },
+    "unit-final-development": {
+      "status": "complete",
+      "tests": 9,
+      "wall_seconds": 5.121,
+      "log": "/root/3d/.memory/live/arena-unit-final-development.log",
+      "adopted_existing": true
+    },
+    "development-production-6": {
+      "status": "complete",
+      "pid": 2800920,
+      "command": [
+        "/tmp/beforestep-nav-venv/bin/python",
+        "-m",
+        "experimental.arena.prechecks",
+        "development",
+        "--out",
+        "/root/3d/next-zenith-beforestep/evidence/learning/arena_v2/prechecks/development-production-6",
+        "--workers",
+        "2"
+      ],
+      "log": "evidence/learning/arena_v2/logs/development-production-6.log",
+      "identity": "evidence/learning/arena_v2/prechecks/development-production-6/identity.json",
+      "exit_code": 0
+    }
+  },
+  "coordinator": {
+    "status": "running",
+    "pid": 2777539,
+    "tool_session": 64935,
+    "log": "/root/3d/.memory/live/arena-takeover-coordinator.log"
+  }
+}

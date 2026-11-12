@@ -1,0 +1,464 @@
+{
+  "manifest": {
+    "schema": "beforestep-arena-world/v2",
+    "seed": 8100035,
+    "split": "development",
+    "family": "crater",
+    "definition": {
+      "id": "arena_development_8100035",
+      "rocks": {
+        "capsule_A": {
+          "rock": "rock_07",
+          "height": 0.562232,
+          "x": 4.994865767400474,
+          "y": -0.43823095689987257,
+          "yaw": 93.32173804022068
+        },
+        "background_B": {
+          "rock": "moon_rock_04",
+          "height": 0.414708,
+          "x": 7.168027753530535,
+          "y": 0.708878453679278,
+          "yaw": -18.395966959779315
+        },
+        "unimagined_0": {
+          "rock": "moon_rock_01",
+          "height": 0.5481528494381568,
+          "x": 4.480527369077558,
+          "y": 1.3452308579446541,
+          "yaw": 27.038547773431617
+        },
+        "unimagined_1": {
+          "rock": "stone_01",
+          "height": 0.48673012687007944,
+          "x": 6.539920032219924,
+          "y": -0.4952446320382612,
+          "yaw": -131.80127551222614
+        }
+      },
+      "start": [
+        3.6747374162193296,
+        0.7102175857027561
+      ],
+      "first_stop": [
+        3.6747374162193296,
+        0.7102175857027561
+      ],
+      "goal": [
+        10.070567864313873,
+        0.0015076729099183783
+      ],
+      "terrain": {
+        "type": "corridor",
+        "right_wall": true,
+        "craters": [
+          {
+            "center": [
+              6.304953105391765,
+              1.7
+            ],
+            "radius": 0.7228919845680604,
+            "depth": 0.6968622656079885
+          }
+        ]
+      },
+      "sun": {
+        "elevation_deg": 10.527016,
+        "azimuth_deg": 27.401493959779316
+      },
+      "asset_cache_precision": "exact",
+      "rehearse_reference": false
+    },
+    "capsule_id": "C031",
+    "capsule_scene": "suite_r2_v4_F0_005",
+    "transplant": [
+      [
+        0.9960129210755565,
+        -0.08920908614338192,
+        0.0,
+        0.4475473732208073
+      ],
+      [
+        0.08920908614338192,
+        0.9960129210755565,
+        0.0,
+        -0.13277017901789415
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        0.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "deviations": {
+      "camera_distance_ratio": 1.0,
+      "view_azimuth_deviation_deg": 0.0,
+      "sun_relative_azimuth_deviation_deg": 0.0
+    },
+    "unimagined_rocks": 2,
+    "real_task_ids": [
+      6344891,
+      6344928,
+      6344933
+    ]
+  },
+  "rows": [
+    {
+      "seed": 8100035,
+      "split": "development",
+      "capsule_id": "C031",
+      "method": "optimistic",
+      "reachable": false,
+      "status": "collision",
+      "collision": {
+        "kind": "drive",
+        "position": [
+          3.7000698186374965,
+          0.7074515648382461
+        ]
+      },
+      "looks": 1,
+      "elapsed_seconds": 1.169886430521995,
+      "wall_seconds": 0.5950688349548727,
+      "path_length_m": 0.02548296457829924,
+      "trace": [
+        [
+          3.6747374162193296,
+          0.7102175857027561
+        ],
+        [
+          3.7000698186374965,
+          0.7074515648382461
+        ]
+      ],
+      "observations": [
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -0.6761595020167808,
+          "action": {
+            "kind": "go",
+            "path": [
+              [
+                5.599999999999999,
+                0.500000000000002
+              ],
+              [
+                7.6999999999999975,
+                -0.599999999999999
+              ],
+              [
+                10.070567864313873,
+                0.0015076729099183783
+              ]
+            ],
+            "risk": null
+          },
+          "state_counts": [
+            2681,
+            23,
+            3458,
+            3162,
+            15876,
+            0
+          ]
+        }
+      ],
+      "goal_error_m": 6.409493125709508,
+      "sensor": "5cm geometric height-ray sensor; only explicit looks, no observations in motion"
+    },
+    {
+      "seed": 8100035,
+      "split": "development",
+      "capsule_id": "C031",
+      "method": "conservative",
+      "reachable": false,
+      "status": "stopped",
+      "collision": null,
+      "looks": 5,
+      "elapsed_seconds": 5.0,
+      "wall_seconds": 0.6822028500027955,
+      "path_length_m": 0.0,
+      "trace": [
+        [
+          3.6747374162193296,
+          0.7102175857027561
+        ]
+      ],
+      "observations": [
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -0.6761595020167808,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -2.2469558288116773,
+            "expected_new_cells": 32,
+            "path": []
+          },
+          "state_counts": [
+            2681,
+            23,
+            3458,
+            3162,
+            15876,
+            0
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -2.2469558288116773,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -3.817752155606574,
+            "expected_new_cells": 28,
+            "path": []
+          },
+          "state_counts": [
+            5666,
+            23,
+            3458,
+            3162,
+            12891,
+            0
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -3.817752155606574,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -5.38854848240147,
+            "expected_new_cells": 37,
+            "path": []
+          },
+          "state_counts": [
+            6399,
+            23,
+            3460,
+            4406,
+            10564,
+            348
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -5.38854848240147,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -3.8177521556065734,
+            "expected_new_cells": 19,
+            "path": []
+          },
+          "state_counts": [
+            6399,
+            23,
+            5149,
+            4406,
+            8875,
+            348
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -3.8177521556065734,
+          "action": {
+            "kind": "stop",
+            "path": []
+          },
+          "state_counts": [
+            6399,
+            23,
+            5149,
+            4406,
+            8875,
+            348
+          ]
+        }
+      ],
+      "goal_error_m": 6.434976057551736,
+      "sensor": "5cm geometric height-ray sensor; only explicit looks, no observations in motion"
+    },
+    {
+      "seed": 8100035,
+      "split": "development",
+      "capsule_id": "C031",
+      "method": "see_dark",
+      "reachable": false,
+      "status": "stopped",
+      "collision": null,
+      "looks": 5,
+      "elapsed_seconds": 5.0,
+      "wall_seconds": 0.6945813489728607,
+      "path_length_m": 0.0,
+      "trace": [
+        [
+          3.6747374162193296,
+          0.7102175857027561
+        ]
+      ],
+      "observations": [
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -0.6761595020167808,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -2.2469558288116773,
+            "expected_new_cells": 28,
+            "path": []
+          },
+          "state_counts": [
+            3403,
+            339,
+            0,
+            5582,
+            15876,
+            0
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -2.2469558288116773,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -3.817752155606574,
+            "expected_new_cells": 25,
+            "path": []
+          },
+          "state_counts": [
+            6388,
+            339,
+            0,
+            5582,
+            12891,
+            0
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -3.817752155606574,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -5.38854848240147,
+            "expected_new_cells": 24,
+            "path": []
+          },
+          "state_counts": [
+            7123,
+            339,
+            0,
+            6826,
+            10564,
+            348
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -5.38854848240147,
+          "action": {
+            "kind": "look",
+            "position": [
+              3.6747374162193296,
+              0.7102175857027561
+            ],
+            "yaw": -3.8177521556065734,
+            "expected_new_cells": 23,
+            "path": []
+          },
+          "state_counts": [
+            7123,
+            343,
+            0,
+            8511,
+            8875,
+            348
+          ]
+        },
+        {
+          "position": [
+            3.6747374162193296,
+            0.7102175857027561
+          ],
+          "yaw": -3.8177521556065734,
+          "action": {
+            "kind": "stop",
+            "path": []
+          },
+          "state_counts": [
+            7123,
+            343,
+            0,
+            8511,
+            8875,
+            348
+          ]
+        }
+      ],
+      "goal_error_m": 6.434976057551736,
+      "sensor": "5cm geometric height-ray sensor; only explicit looks, no observations in motion"
+    }
+  ]
+}

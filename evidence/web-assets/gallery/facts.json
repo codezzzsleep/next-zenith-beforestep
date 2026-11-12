@@ -1,0 +1,37 @@
+{
+  "schema": "beforestep-gallery-facts/v1",
+  "scope": "Entire 306-model web catalog, including historical experiments; admissions are unique task IDs. Intervention counts are separate.",
+  "stats": {
+    "real_tasks": 330,
+    "returned_models": 306,
+    "admitted": 110,
+    "rejected": 196,
+    "rejected_would_collide": 30,
+    "counterfactual_interventions": 231,
+    "counterfactual_collision_interventions": 30,
+    "decision_contexts": 597
+  },
+  "original_scope_facts": "evidence/web-assets/facts.json",
+  "sources": [
+    {
+      "path": "evidence/web-assets/models.json",
+      "sha256": "f6e3dbc845b664252cff8c8e8be298badc135674e028b28a48f5f02ba1237044"
+    },
+    {
+      "path": "evidence/web-assets/registrations.json",
+      "sha256": "8e36da8cc5a9e4e65120413775186101ffa83522c5bc6de8753217eb34fd8120"
+    },
+    {
+      "path": "evidence/web-assets/gallery/tasks.json",
+      "sha256": "403d777796c86eea7a08d8debfd622b9fadda83a9db22f5897be998690401e96"
+    },
+    {
+      "path": "evidence/web-assets/gallery/historical.json",
+      "sha256": "1c8ac073bee2ccbf0386870754ebc52452b7344616c62825cf2e2e7bb66930c8"
+    },
+    {
+      "path": "evidence/web-assets/gallery/counterfactuals.json",
+      "sha256": "15d2fee0021659b5a03120f0273ef8a7b49a109b9fd26c6002dd0f53c0c7246a"
+    }
+  ]
+}

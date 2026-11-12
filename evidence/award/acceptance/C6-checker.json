@@ -1,0 +1,1118 @@
+{
+  "passed": true,
+  "candidates": [
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T1",
+      "sample": "A1",
+      "look": 1,
+      "task_id": 5958685,
+      "metrics": {
+        "scale_ratio": 0.9888,
+        "hidden_frac": 0.894,
+        "shell_contact": 0.7474,
+        "free_intrusion_frac": 0.06814,
+        "intrusion_depth_p95_mm": 37.5,
+        "voxels": 1158676,
+        "contour_iou": 0.7998,
+        "scale_ratio_v5": 1.0602,
+        "eval": {
+          "mask_iou": 0.7998,
+          "mask_iou_all_pixels": 0.771,
+          "outside_lit_px": 10648,
+          "in_dark_px": 5455,
+          "occluded_px": 38,
+          "depth_median_mm": 11.308,
+          "depth_p95_mm": 137.47,
+          "visible_median_mm": 12.906,
+          "visible_p95_mm": 114.904,
+          "n_candidate_pixels": 133600,
+          "n_mask_pixels": 136301
+        },
+        "footprint_cells": 268,
+        "footprint_x": [
+          4.2250000000000005,
+          4.875
+        ],
+        "footprint_y": [
+          -1.325,
+          -0.2749999999999999
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9888,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.894,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.7474,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.06814,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.7998,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "source_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T1",
+      "sample": "A2",
+      "look": 1,
+      "task_id": 5958690,
+      "metrics": {
+        "scale_ratio": 0.9888,
+        "hidden_frac": 0.8956,
+        "shell_contact": 0.7782,
+        "free_intrusion_frac": 0.065,
+        "intrusion_depth_p95_mm": 41.26,
+        "voxels": 1154033,
+        "contour_iou": 0.828,
+        "scale_ratio_v5": 1.0602,
+        "eval": {
+          "mask_iou": 0.828,
+          "mask_iou_all_pixels": 0.8031,
+          "outside_lit_px": 8621,
+          "in_dark_px": 4479,
+          "occluded_px": 16,
+          "depth_median_mm": 10.488,
+          "depth_p95_mm": 129.257,
+          "visible_median_mm": 11.768,
+          "visible_p95_mm": 100.319,
+          "n_candidate_pixels": 133077,
+          "n_mask_pixels": 136301
+        },
+        "footprint_cells": 272,
+        "footprint_x": [
+          4.2250000000000005,
+          4.875
+        ],
+        "footprint_y": [
+          -1.325,
+          -0.22499999999999987
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9888,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.8956,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.7782,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.065,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.828,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "source_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T1",
+      "sample": "B1",
+      "look": 1,
+      "task_id": 5958877,
+      "metrics": {
+        "scale_ratio": 0.9326,
+        "hidden_frac": 0.9347,
+        "shell_contact": 0.6837,
+        "free_intrusion_frac": 0.03888,
+        "intrusion_depth_p95_mm": 43.45,
+        "voxels": 1533278,
+        "contour_iou": 0.7991,
+        "scale_ratio_v5": 1.0,
+        "eval": {
+          "mask_iou": 0.7991,
+          "mask_iou_all_pixels": 0.7734,
+          "outside_lit_px": 8916,
+          "in_dark_px": 4455,
+          "occluded_px": 348,
+          "depth_median_mm": 17.425,
+          "depth_p95_mm": 149.856,
+          "visible_median_mm": 17.978,
+          "visible_p95_mm": 138.297,
+          "n_candidate_pixels": 129129,
+          "n_mask_pixels": 136301
+        },
+        "footprint_cells": 412,
+        "footprint_x": [
+          4.2250000000000005,
+          5.2250000000000005
+        ],
+        "footprint_y": [
+          -1.375,
+          -0.2749999999999999
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9326,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.9347,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.6837,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.03888,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.7991,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "source_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T1",
+      "sample": "B2",
+      "look": 1,
+      "task_id": 5958911,
+      "metrics": {
+        "scale_ratio": 0.9326,
+        "hidden_frac": 0.9368,
+        "shell_contact": 0.6728,
+        "free_intrusion_frac": 0.03723,
+        "intrusion_depth_p95_mm": 43.45,
+        "voxels": 1530113,
+        "contour_iou": 0.7953,
+        "scale_ratio_v5": 1.0,
+        "eval": {
+          "mask_iou": 0.7953,
+          "mask_iou_all_pixels": 0.7693,
+          "outside_lit_px": 9228,
+          "in_dark_px": 4345,
+          "occluded_px": 568,
+          "depth_median_mm": 17.071,
+          "depth_p95_mm": 151.602,
+          "visible_median_mm": 17.631,
+          "visible_p95_mm": 141.633,
+          "n_candidate_pixels": 128867,
+          "n_mask_pixels": 136301
+        },
+        "footprint_cells": 415,
+        "footprint_x": [
+          4.2250000000000005,
+          5.2250000000000005
+        ],
+        "footprint_y": [
+          -1.375,
+          -0.2749999999999999
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9326,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.9368,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.6728,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.03723,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.7953,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "source_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T1",
+      "sample": "C1",
+      "look": 1,
+      "task_id": 5958948,
+      "metrics": {
+        "scale_ratio": 0.9663,
+        "hidden_frac": 0.8987,
+        "shell_contact": 0.7822,
+        "free_intrusion_frac": 0.06368,
+        "intrusion_depth_p95_mm": 44.71,
+        "voxels": 1230489,
+        "contour_iou": 0.8362,
+        "scale_ratio_v5": 1.0361,
+        "eval": {
+          "mask_iou": 0.8362,
+          "mask_iou_all_pixels": 0.8198,
+          "outside_lit_px": 4990,
+          "in_dark_px": 2610,
+          "occluded_px": 214,
+          "depth_median_mm": 11.491,
+          "depth_p95_mm": 102.464,
+          "visible_median_mm": 12.442,
+          "visible_p95_mm": 86.922,
+          "n_candidate_pixels": 125564,
+          "n_mask_pixels": 136301
+        },
+        "footprint_cells": 297,
+        "footprint_x": [
+          4.2250000000000005,
+          4.9750000000000005
+        ],
+        "footprint_y": [
+          -1.275,
+          -0.22499999999999987
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9663,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.8987,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.7822,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.06368,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.8362,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "source_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T1",
+      "sample": "C2",
+      "look": 1,
+      "task_id": 5959025,
+      "metrics": {
+        "scale_ratio": 0.9663,
+        "hidden_frac": 0.9066,
+        "shell_contact": 0.7662,
+        "free_intrusion_frac": 0.05647,
+        "intrusion_depth_p95_mm": 41.26,
+        "voxels": 1213685,
+        "contour_iou": 0.8227,
+        "scale_ratio_v5": 1.0361,
+        "eval": {
+          "mask_iou": 0.8227,
+          "mask_iou_all_pixels": 0.8039,
+          "outside_lit_px": 6555,
+          "in_dark_px": 3218,
+          "occluded_px": 136,
+          "depth_median_mm": 11.577,
+          "depth_p95_mm": 118.167,
+          "visible_median_mm": 12.534,
+          "visible_p95_mm": 104.497,
+          "n_candidate_pixels": 127195,
+          "n_mask_pixels": 136301
+        },
+        "footprint_cells": 294,
+        "footprint_x": [
+          4.2250000000000005,
+          4.9750000000000005
+        ],
+        "footprint_y": [
+          -1.275,
+          -0.2749999999999999
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9663,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.9066,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.7662,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.05647,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.8227,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "source_sha256": "8fbcf4d4dc04cb78fa96580e65e8e689d68d0741c98d5198567b9822592d708e"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T2",
+      "sample": "A1",
+      "look": 1,
+      "task_id": 5958642,
+      "metrics": {
+        "scale_ratio": 1.0676,
+        "hidden_frac": 0.8564,
+        "shell_contact": 0.312,
+        "free_intrusion_frac": 0.1118,
+        "intrusion_depth_p95_mm": 52.1,
+        "voxels": 242036,
+        "contour_iou": 0.4325,
+        "scale_ratio_v5": 1.1791,
+        "eval": {
+          "mask_iou": 0.4325,
+          "mask_iou_all_pixels": 0.306,
+          "outside_lit_px": 3438,
+          "in_dark_px": 713,
+          "occluded_px": 2897,
+          "depth_median_mm": 18.537,
+          "depth_p95_mm": 340.283,
+          "visible_median_mm": 47.719,
+          "visible_p95_mm": 189.352,
+          "n_candidate_pixels": 7929,
+          "n_mask_pixels": 8195
+        },
+        "footprint_cells": 85,
+        "footprint_x": [
+          6.2250000000000005,
+          6.7250000000000005
+        ],
+        "footprint_y": [
+          0.07500000000000018,
+          0.5250000000000004
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 1.0676,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.8564,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.312,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.1118,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.4325,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": false
+        }
+      ],
+      "admitted": false,
+      "production_admitted": false,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+      "source_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T2",
+      "sample": "A2",
+      "look": 1,
+      "task_id": 5958654,
+      "metrics": {
+        "scale_ratio": 1.0,
+        "hidden_frac": 0.815,
+        "shell_contact": 0.428,
+        "free_intrusion_frac": 0.13168,
+        "intrusion_depth_p95_mm": 58.43,
+        "voxels": 255394,
+        "contour_iou": 0.8459,
+        "scale_ratio_v5": 1.1045,
+        "eval": {
+          "mask_iou": 0.8459,
+          "mask_iou_all_pixels": 0.6369,
+          "outside_lit_px": 2129,
+          "in_dark_px": 860,
+          "occluded_px": 1903,
+          "depth_median_mm": 35.658,
+          "depth_p95_mm": 230.381,
+          "visible_median_mm": 18.266,
+          "visible_p95_mm": 84.476,
+          "n_candidate_pixels": 10112,
+          "n_mask_pixels": 8195
+        },
+        "footprint_cells": 102,
+        "footprint_x": [
+          6.175000000000001,
+          6.7250000000000005
+        ],
+        "footprint_y": [
+          0.125,
+          0.6750000000000003
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 1.0,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.815,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.428,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.13168,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.8459,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+      "source_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T2",
+      "sample": "B1",
+      "look": 1,
+      "task_id": 5958703,
+      "metrics": {
+        "scale_ratio": 0.9324,
+        "hidden_frac": 0.7396,
+        "shell_contact": 0.5611,
+        "free_intrusion_frac": 0.19994,
+        "intrusion_depth_p95_mm": 61.92,
+        "voxels": 234586,
+        "contour_iou": 0.2715,
+        "scale_ratio_v5": 1.0299,
+        "eval": {
+          "mask_iou": 0.2715,
+          "mask_iou_all_pixels": 0.2555,
+          "outside_lit_px": 1004,
+          "in_dark_px": 380,
+          "occluded_px": 187,
+          "depth_median_mm": 38.479,
+          "depth_p95_mm": 214.25,
+          "visible_median_mm": 72.141,
+          "visible_p95_mm": 224.689,
+          "n_candidate_pixels": 3831,
+          "n_mask_pixels": 8195
+        },
+        "footprint_cells": 78,
+        "footprint_x": [
+          6.125,
+          6.625
+        ],
+        "footprint_y": [
+          0.125,
+          0.5750000000000002
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9324,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.7396,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.5611,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.19994,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.2715,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": false
+        }
+      ],
+      "admitted": false,
+      "production_admitted": false,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+      "source_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T2",
+      "sample": "C1",
+      "look": 1,
+      "task_id": 5958934,
+      "metrics": {
+        "scale_ratio": 0.9459,
+        "hidden_frac": 0.9195,
+        "shell_contact": 0.7027,
+        "free_intrusion_frac": 0.03174,
+        "intrusion_depth_p95_mm": 26.97,
+        "voxels": 416305,
+        "contour_iou": 0.7108,
+        "scale_ratio_v5": 1.0448,
+        "eval": {
+          "mask_iou": 0.7108,
+          "mask_iou_all_pixels": 0.3383,
+          "outside_lit_px": 9546,
+          "in_dark_px": 872,
+          "occluded_px": 8883,
+          "depth_median_mm": 15.319,
+          "depth_p95_mm": 89.652,
+          "visible_median_mm": 10.054,
+          "visible_p95_mm": 149.826,
+          "n_candidate_pixels": 16714,
+          "n_mask_pixels": 8195
+        },
+        "footprint_cells": 147,
+        "footprint_x": [
+          6.175000000000001,
+          6.825
+        ],
+        "footprint_y": [
+          -0.17499999999999982,
+          0.5750000000000002
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9459,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.9195,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.7027,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.03174,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.7108,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": true
+        }
+      ],
+      "admitted": true,
+      "production_admitted": true,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+      "source_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab"
+    },
+    {
+      "schema": "beforestep-readonly-candidate-check/v1",
+      "run": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b",
+      "target": "T2",
+      "sample": "C2",
+      "look": 1,
+      "task_id": 5958937,
+      "metrics": {
+        "scale_ratio": 0.9054,
+        "hidden_frac": 0.8832,
+        "shell_contact": 0.4432,
+        "free_intrusion_frac": 0.06061,
+        "intrusion_depth_p95_mm": 43.94,
+        "voxels": 264286,
+        "contour_iou": 0.63,
+        "scale_ratio_v5": 1.0,
+        "eval": {
+          "mask_iou": 0.63,
+          "mask_iou_all_pixels": 0.2523,
+          "outside_lit_px": 13253,
+          "in_dark_px": 847,
+          "occluded_px": 12518,
+          "depth_median_mm": 18.444,
+          "depth_p95_mm": 165.268,
+          "visible_median_mm": 26.678,
+          "visible_p95_mm": 230.342,
+          "n_candidate_pixels": 19726,
+          "n_mask_pixels": 8195
+        },
+        "footprint_cells": 102,
+        "footprint_x": [
+          6.175000000000001,
+          6.675000000000001
+        ],
+        "footprint_y": [
+          -0.2749999999999999,
+          0.5250000000000004
+        ]
+      },
+      "thresholds": {
+        "schema": "v5-admission/v1",
+        "calibrated_from": "truth_v2 KA set",
+        "scale_ratio": {
+          "min": 0.889,
+          "max": 1.09
+        },
+        "hidden_frac_min": 0.3578,
+        "shell_contact_min": 0.0486,
+        "free_intrusion_max": 0.2864,
+        "contour_iou_min": 0.7068,
+        "notes": "calibrated before candidates; column_fill_top; truth prior intrusion is not 2%"
+      },
+      "checks": [
+        {
+          "metric": "scale_ratio",
+          "value": 0.9054,
+          "finite": true,
+          "min_inclusive": 0.889,
+          "max_inclusive": 1.09,
+          "passed": true
+        },
+        {
+          "metric": "hidden_frac",
+          "value": 0.8832,
+          "finite": true,
+          "min_inclusive": 0.3578,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "shell_contact",
+          "value": 0.4432,
+          "finite": true,
+          "min_inclusive": 0.0486,
+          "max_inclusive": null,
+          "passed": true
+        },
+        {
+          "metric": "free_intrusion_frac",
+          "value": 0.06061,
+          "finite": true,
+          "min_inclusive": null,
+          "max_inclusive": 0.2864,
+          "passed": true
+        },
+        {
+          "metric": "contour_iou",
+          "value": 0.63,
+          "finite": true,
+          "min_inclusive": 0.7068,
+          "max_inclusive": null,
+          "passed": false
+        }
+      ],
+      "admitted": false,
+      "production_admitted": false,
+      "production_exact": true,
+      "scope": "Recomputed frozen gates from unchanged recorded metrics; no new geometric measurement",
+      "source_decision": "/root/3d/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+      "source_sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab"
+    }
+  ],
+  "returned": 11,
+  "admitted": 8
+}

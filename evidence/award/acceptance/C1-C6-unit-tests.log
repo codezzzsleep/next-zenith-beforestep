@@ -1,0 +1,16 @@
+........................................................usage: beforestep run [-h] --policy {conservative,optimistic,imagination}
+                      [--scene SCENE] [--controller-model CONTROLLER_MODEL]
+                      [--pose-model POSE_MODEL] --out OUT
+                      [--imagine {lux,truth}] [--see-dark]
+                      [--max-looks MAX_LOOKS] [--reuse-lux REUSE_LUX]
+                      [--recorded-observations RECORDED_OBSERVATIONS]
+                      [--start-at-recorded-look] [--goal X Y] [--tag TAG]
+                      [--trust TRUST] [--trust-look {1,2}]
+beforestep run: error: 完整运行结果已存在：/tmp/tmp9gkjlhgk/imagination；请使用新的 --out 或 --tag 保留独立试验。
+..........{"scene": "unit_scene", "files": 4, "public_bytes": 2249, "archive_bytes": 479}
+{"tasks": 1, "ok": 1, "reused_frozen_result": true, "created_tasks": 0}
+.................................
+----------------------------------------------------------------------
+Ran 99 tests in 10.490s
+
+OK

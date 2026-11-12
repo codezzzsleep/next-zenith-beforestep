@@ -9,18 +9,18 @@ function geometry(){const m=scene.observation.map,scale=Math.min((canvas.width-5
 function projection(x,y){const m=scene.observation.map,g=geometry();return[g.x+(x-m.origin[0])*g.scale,g.y+(m.origin[1]+m.shape[1]*m.resolution-y)*g.scale]}
 function polygon(points,fill,stroke){ctx.beginPath();points.forEach((v,i)=>{const p=projection(...v);i?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.closePath();ctx.fillStyle=fill;ctx.fill();if(stroke){ctx.strokeStyle=stroke;ctx.lineWidth=1;ctx.stroke()}}
 function draw(){
- if(!scene)return;ctx.fillStyle='#101720';ctx.fillRect(0,0,canvas.width,canvas.height);
- const m=scene.observation.map,[nx,ny]=m.shape,g=geometry(),dx=g.scale*m.resolution,dy=dx,colors=['#17362d','#a1aaa7','#987246','#685088','#152029','#344c5c'];
+ if(!scene)return;ctx.fillStyle='#14171a';ctx.fillRect(0,0,canvas.width,canvas.height);
+ const m=scene.observation.map,[nx,ny]=m.shape,g=geometry(),dx=g.scale*m.resolution,dy=dx,colors=['#262b30','#a1aaa7','#987246','#685088','#152029','#344c5c'];
  for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){ctx.fillStyle=scene.observation.nogo[i*ny+j]?'#344c5c':colors[m.values[i*ny+j]];ctx.fillRect(g.x+i*dx,g.y+(ny-j-1)*dy,dx+.3,dy+.3)}
  if(phase==='reveal'||phase==='score'){
   for(const rock of scene.truth.rocks)polygon(rock.polygon,'#bbc2c17d','#e5ece8');
-  for(const candidate of scene.candidates){if(candidate.admitted&&!$('level-show-admitted').checked||!candidate.admitted&&!$('level-show-rejected').checked)continue;ctx.fillStyle=candidate.admitted?'#70dbb254':'#ff957554';for(const v of candidate.footprint||[]){const p=projection(...v);ctx.fillRect(p[0]-dx/2,p[1]-dy/2,dx,dy)}}
+  for(const candidate of scene.candidates){if(candidate.admitted&&!$('level-show-admitted').checked||!candidate.admitted&&!$('level-show-rejected').checked)continue;ctx.fillStyle=candidate.admitted?'#8fa3b854':'#e5533c54';for(const v of candidate.footprint||[]){const p=projection(...v);ctx.fillRect(p[0]-dx/2,p[1]-dy/2,dx,dy)}}
  }
  const run=choice&&scene.runs[choice];let pose=scene.observation.pose;
  if(run?.trajectory.length&&(phase==='walk'||phase==='reveal'||phase==='score')){
-  const t=run.trajectory,limit=Math.floor(progress*(t.length-1));ctx.strokeStyle=choice==='optimistic'?'#ff997c':'#70dbb2';ctx.lineWidth=3;ctx.beginPath();for(let i=0;i<=limit;i++){const p=projection(t[i][1],t[i][2]);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();pose=t[limit].slice(1);$('level-time').textContent=(t[limit][0]-t[0][0]).toFixed(1)+' s';
+  const t=run.trajectory,limit=Math.floor(progress*(t.length-1));ctx.strokeStyle=choice==='optimistic'?'#e5533c':'#8fa3b8';ctx.lineWidth=3;ctx.beginPath();for(let i=0;i<=limit;i++){const p=projection(t[i][1],t[i][2]);i?ctx.lineTo(...p):ctx.moveTo(...p)}ctx.stroke();pose=t[limit].slice(1);$('level-time').textContent=(t[limit][0]-t[0][0]).toFixed(1)+' s';
  }
- const p=projection(pose[0],pose[1]),scale=geometry().scale;ctx.save();ctx.translate(...p);ctx.rotate(-pose[2]);ctx.fillStyle='#e7eff1';ctx.fillRect(-scene.robot.half_len*scale,-scene.robot.half_wid*scale,2*scene.robot.half_len*scale,2*scene.robot.half_wid*scale);ctx.fillStyle='#eaa363';ctx.fillRect(scene.robot.half_len*scale*.5,-scene.robot.half_wid*scale*.7,scene.robot.half_len*scale*.4,scene.robot.half_wid*scale*1.4);ctx.restore();const goalPoint=projection(...scene.goal);ctx.strokeStyle='#83e2ba';ctx.strokeRect(goalPoint[0]-9,goalPoint[1]-9,18,18);
+ const p=projection(pose[0],pose[1]),scale=geometry().scale;ctx.save();ctx.translate(...p);ctx.rotate(-pose[2]);ctx.fillStyle='#e7eff1';ctx.fillRect(-scene.robot.half_len*scale,-scene.robot.half_wid*scale,2*scene.robot.half_len*scale,2*scene.robot.half_wid*scale);ctx.fillStyle='#eaa363';ctx.fillRect(scene.robot.half_len*scale*.5,-scene.robot.half_wid*scale*.7,scene.robot.half_len*scale*.4,scene.robot.half_wid*scale*1.4);ctx.restore();const goalPoint=projection(...scene.goal);ctx.strokeStyle='#f2a63b';ctx.strokeRect(goalPoint[0]-9,goalPoint[1]-9,18,18);
 }
 function setPhase(next){phase=next;for(const step of document.querySelectorAll('[data-step]')){if(step.dataset.step===next)step.setAttribute('aria-current','step');else step.removeAttribute('aria-current')}$('level-watch-controls').hidden=next!=='watch';$('level-choice-controls').hidden=next!=='choose';$('level-walk-controls').hidden=next!=='walk';$('level-reveal-panel').hidden=next!=='reveal';$('level-score-panel').hidden=next!=='score';draw()}
 function terminal(){progress=1;playing=false;$('level-play').textContent='↻ 重放';$('level-run-status').textContent=results[runResult(scene.runs[choice])]||runResult(scene.runs[choice]);$('level-reveal').hidden=false;draw()}

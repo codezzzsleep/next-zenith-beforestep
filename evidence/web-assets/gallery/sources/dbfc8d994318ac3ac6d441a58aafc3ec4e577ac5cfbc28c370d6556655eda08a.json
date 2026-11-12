@@ -1,0 +1,3002 @@
+{
+  "schema": "beforestep-r3-new-rejected-counterfactuals/v1",
+  "post_result_revision": true,
+  "scene": "suite_r2_v4_F0_002",
+  "policy": "imagination_strict",
+  "source_sha256": {
+    "src/beforestep/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/__main__.py": "6d8b7d7846a845059d7a3107143f11131f63c5511d669b44085b15ec5e3d2279",
+    "src/beforestep/cli.py": "d938e72187283c2d9504ad8c778aae16b8d9f8f5cef732d7c1c7d5ea978c5b76",
+    "src/beforestep/delivery/__init__.py": "144a5db8e36a1f5951b251d41fbcba5c943ad79fef45511430c88b0f2c85c523",
+    "src/beforestep/delivery/artifacts.py": "25725e113aa775aa9f81bdc334d8c2ecc3a325de163e7c37c84271313fd07d94",
+    "src/beforestep/delivery/learning.py": "0a597af61c757c19261e7f4826584a239402f33d4d6340c0f060d943e9d56240",
+    "src/beforestep/delivery/server.py": "511a193e35be258d53f0966edd09d9d1083b8fa25c422fe1d4b957f3c96839ab",
+    "src/beforestep/delivery/video.py": "6bd3693ba83413eec422bda993a1594c947442cf07d3bd67f4e3c32951f70513",
+    "src/beforestep/evaluation.py": "2a1a086f27e3790ab034db7eed2622fa6982ae3de60f0fd61d67f36bf61a9135",
+    "src/beforestep/generation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/generation/client.py": "0774684a7e12bcc8eaffa29a4593a13aab5775758a0b135684f290961671f36e",
+    "src/beforestep/generation/evaluate.py": "2a66e8e84a97d031890f59262b95a428766be3c198864cf5cba00b311260d89a",
+    "src/beforestep/generation/records.py": "8f73f34348d63d9650336e86d9bc179f42088d3eec7306816af04a32f922e9f6",
+    "src/beforestep/geometry/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/geometry/admission.py": "bd5fe1397da31ca2d1ed264039ffe0c82f5939006f3e185e3e1e0d7d92d34ecf",
+    "src/beforestep/geometry/camera.py": "ee098cfb78e4536d63e21a50c0f5f8ab4ed6b6bd92f63220e006d2fecd692910",
+    "src/beforestep/geometry/imagination.py": "d7ced1d1f56a03fa9c9cc64ef34cba42c8ce01f1346185d72f0b6c174d9821af",
+    "src/beforestep/geometry/metrics.py": "32ca63a31666f274a8d2b62e7cd14019d397d2960eb8a41792a04ce73239642e",
+    "src/beforestep/geometry/registration.py": "6f00b28d5aabfc62769615055ea4036df3bbf91287eeb4b7072ca0b57982986d",
+    "src/beforestep/geometry/solid.py": "663a3f7e8a3011614f7951a7e1239b58897d79ddb521508992510f436ba5830d",
+    "src/beforestep/geometry/volume.py": "e26ab39219ebb5be58fac2b48db7326f5e99c09140a080b7613503985fde2239",
+    "src/beforestep/learning/__init__.py": "2d4b42443926bf506ac7cbc6fc09f1d17df868e256377669dcf80624c8110a2f",
+    "src/beforestep/learning/checkpoints.py": "0be9fefd265a58b078c67705dd6c82b7b3bcbb3dbdb81ec4c233fdf3d3b01df2",
+    "src/beforestep/learning/evaluate.py": "13ebf5529282182ac16cce5825bb50fefc784f77f30bb2be0ce52dbf2fe7ed8c",
+    "src/beforestep/learning/policy.py": "b101549135a21ee8a2d44a8514e7738ae31582521171d65fecc8464c1f00f44f",
+    "src/beforestep/learning/pose.py": "6035e2b6247fd830300405d488feef00ec961a17c3c37cc85c076a144df0a03b",
+    "src/beforestep/learning/pose_train.py": "49a63337d31ebf7c35c7950e58536f5d21456e19497725f0ae761124f349ef0f",
+    "src/beforestep/learning/ppo.py": "6982815993f697477eae61b18e6766cb2ce60bc0d1153094e75c08407d82520d",
+    "src/beforestep/learning/train.py": "3df3464cbc8056f36e4ae1e6e8a59186992405629c9c1707fa17aaa127db9a23",
+    "src/beforestep/navigation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/navigation/controller.py": "ef333b95469e29b797d6ebfb65e46b8920b832c595ad1ea0c787d802eec14083",
+    "src/beforestep/navigation/map.py": "52f3754be73b0bc68b02dfc0228533b57969093ebed04d9e892205fdfe97a4b0",
+    "src/beforestep/navigation/shadows.py": "d5c6e8964b52f95845725e4b98dab9272fc2c3c41a3d601a664f338af00c2783",
+    "src/beforestep/observation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/observation/capture.py": "ed7a90ca2699171dd2421414b01173ff2ffe8fb056def92f0598375cbbd7507c",
+    "src/beforestep/observation/images.py": "52b89796e11f1f07fc701aa476c9ad52c04385b8ee5155bd577608fe97ea5ef2",
+    "src/beforestep/paths.py": "110127bef27f53aa10c262ba0a36282a5e5a6638c8304ee4214c9a827c6fcdf1",
+    "src/beforestep/pipeline.py": "76eb2520c5a070a1764e62e90611fcc5a7e3bb201c0a00c6df0dd35124f296fb",
+    "src/beforestep/resources.py": "79d96bbad62ebb9b2ce88f6b04eff4bd6b02e4d38620be2a0f2e7e62b6c2618c",
+    "src/beforestep/scene.py": "7203849439a30fe32651e7cbbf2b32e1883df65fe10baf93e80ffc77d1853704",
+    "src/beforestep/simulation/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/simulation/assets.py": "3b49f7c1373290137cc1aa8d7b141144ffba78524c1e4e61e8ec6bbb6c687db3",
+    "src/beforestep/simulation/environment.py": "7d9fe894461e14a5f6e5485c0e1bfcce4fe24a3b91d6d9e62773cf3a21a6e1b3",
+    "src/beforestep/simulation/robot.py": "123635fb0b22e2a5d36f8560c2438772dd186c3045a2edf249e24e08bd501942",
+    "src/beforestep/simulation/robot_model.py": "6b1187699d644e082f32ff55fbd6a00daec1b60aee5296baec7e9519c7476b0c",
+    "src/beforestep/simulation/soil.py": "ffc028f8c1e2f47b86132fce9411b98cf57e52a902e2b4bc338534b9a752533d",
+    "src/beforestep/simulation/soil_profiles.py": "2bd5ea2d5872ae8db5fdafcaab712da76ff4d3774be39ecc54172e5a17359e73",
+    "src/beforestep/simulation/terrain.py": "ad476d86a758213515d718b4e0e825311e91119d7c68c4a73398e730eb55b62e",
+    "src/beforestep/strict_pipeline.py": "1d9ad235ce142ce63b5ba64817f44e98a563f2575496feb222c70e022f87e3ae",
+    "src/beforestep/visualization/__init__.py": "0eaab6e8144f1c3ebe5aba6e0e5321961a0a4025c7240aaa1c42c600faeff0c7",
+    "src/beforestep/visualization/camera.py": "a816ff4e9b173b99d1ac5e54722659bfe4b2dbb132990f9781fab3bd0980fb81",
+    "src/beforestep/visualization/model.py": "1ea8ebbbf3f58f79b9f577c13090b78d746e497e1b44c80b79fccc4e5d365569",
+    "src/beforestep/visualization/scene.py": "fbb020b8bf1e0ae26369d1eca3b561a4564d1d8ef89e1e83a5adfff6893fe332",
+    "src/beforestep/visualization/textures.py": "7082f632f880469a39850fd6baa740d1435718162cd842bf601c91e9e66ec734"
+  },
+  "original_run": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+  "candidates": [
+    {
+      "look": 1,
+      "target": "T1",
+      "candidate": "C1",
+      "task_id": 6465279,
+      "original_rejection": {
+        "scale_ratio": 1.3483,
+        "hidden_frac": 0.7096,
+        "shell_contact": 0.6496,
+        "free_intrusion_frac": 0.26153,
+        "intrusion_depth_p95_mm": 81.4,
+        "voxels": 1429504,
+        "contour_iou": 0.5444,
+        "scale_ratio_v5": 1.4458,
+        "id": "C1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465279/tex_mesh.glb",
+        "M": [
+          [
+            -0.19293448806193148,
+            0.3503719291479531,
+            0.05158694741609332,
+            2.1944646402120287
+          ],
+          [
+            -0.2956680597193038,
+            -0.1270204934051669,
+            -0.24308766171737123,
+            -0.12276605374600001
+          ],
+          [
+            -0.19494127408117445,
+            -0.1541126992902867,
+            0.3176359459182152,
+            0.7437088600720332
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.5444,
+          "mask_iou_all_pixels": 0.426,
+          "outside_lit_px": 54397,
+          "in_dark_px": 49768,
+          "occluded_px": 0,
+          "depth_median_mm": 37.816,
+          "depth_p95_mm": 110.819,
+          "visible_median_mm": 32.283,
+          "visible_p95_mm": 175.402,
+          "n_candidate_pixels": 201642,
+          "n_mask_pixels": 124645
+        },
+        "footprint_cells": 233,
+        "footprint_x": [
+          4.2250000000000005,
+          4.925000000000001
+        ],
+        "footprint_y": [
+          -1.475,
+          -0.17499999999999982
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T1/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T1",
+      "candidate": "C2",
+      "task_id": 6465288,
+      "original_rejection": {
+        "scale_ratio": 1.3483,
+        "hidden_frac": 0.4363,
+        "shell_contact": 0.7765,
+        "free_intrusion_frac": 0.50569,
+        "intrusion_depth_p95_mm": 102.17,
+        "voxels": 750679,
+        "contour_iou": 0.4134,
+        "scale_ratio_v5": 1.4458,
+        "id": "C2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465288/tex_mesh.glb",
+        "M": [
+          [
+            -0.0984794509295548,
+            0.3919777660218133,
+            0.0013579501191291021,
+            1.9936708827239702
+          ],
+          [
+            -0.3606379264796529,
+            -0.09005601677739461,
+            -0.15867203649669698,
+            -0.23016627594609976
+          ],
+          [
+            -0.15358612915375175,
+            -0.039874304082983716,
+            0.3717095050504203,
+            0.7786628810262853
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.4134,
+          "mask_iou_all_pixels": 0.3387,
+          "outside_lit_px": 64382,
+          "in_dark_px": 41650,
+          "occluded_px": 0,
+          "depth_median_mm": 31.406,
+          "depth_p95_mm": 138.393,
+          "visible_median_mm": 35.98,
+          "visible_p95_mm": 286.062,
+          "n_candidate_pixels": 184169,
+          "n_mask_pixels": 124645
+        },
+        "footprint_cells": 142,
+        "footprint_x": [
+          4.2250000000000005,
+          4.575
+        ],
+        "footprint_y": [
+          -1.525,
+          -0.125
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T1/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T2",
+      "candidate": "A1",
+      "task_id": 6465677,
+      "original_rejection": {
+        "scale_ratio": 0.4937,
+        "hidden_frac": 0.7052,
+        "shell_contact": 0.2232,
+        "free_intrusion_frac": 0.09355,
+        "intrusion_depth_p95_mm": 14.96,
+        "voxels": 58951,
+        "contour_iou": 0.2839,
+        "scale_ratio_v5": 0.5417,
+        "id": "A1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465677/tex_mesh.glb",
+        "M": [
+          [
+            0.3301556897538823,
+            1.0921489485416191,
+            0.6774761344519072,
+            4.166228080845329
+          ],
+          [
+            -1.2816697830763624,
+            0.22791048504573108,
+            0.25718747244866397,
+            0.8102297356599804
+          ],
+          [
+            0.09531949276749394,
+            -0.7183547195049091,
+            1.1115964687299507,
+            -0.0757316270905956
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2839,
+          "mask_iou_all_pixels": 0.1744,
+          "outside_lit_px": 7149,
+          "in_dark_px": 807,
+          "occluded_px": 6054,
+          "depth_median_mm": 12.175,
+          "depth_p95_mm": 76.649,
+          "visible_median_mm": 87.828,
+          "visible_p95_mm": 413.856,
+          "n_candidate_pixels": 11057,
+          "n_mask_pixels": 9829
+        },
+        "footprint_cells": 44,
+        "footprint_x": [
+          6.325,
+          6.7250000000000005
+        ],
+        "footprint_y": [
+          0.07500000000000018,
+          0.4750000000000001
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T2/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T2",
+      "candidate": "A2",
+      "task_id": 6465684,
+      "original_rejection": {
+        "scale_ratio": 0.481,
+        "hidden_frac": 0.781,
+        "shell_contact": 0.1749,
+        "free_intrusion_frac": 0.05732,
+        "intrusion_depth_p95_mm": 11.83,
+        "voxels": 55560,
+        "contour_iou": 0.2461,
+        "scale_ratio_v5": 0.5278,
+        "id": "A2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465684/tex_mesh.glb",
+        "M": [
+          [
+            0.46336734800789137,
+            1.2648135365833846,
+            0.18112704066890448,
+            4.219701510708574
+          ],
+          [
+            -1.2547406553884366,
+            0.4140658779586602,
+            0.3185041959089847,
+            0.8094256645511717
+          ],
+          [
+            0.2412181064958429,
+            -0.2758002044445635,
+            1.3088230051129182,
+            -0.08139075850546507
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2461,
+          "mask_iou_all_pixels": 0.1368,
+          "outside_lit_px": 8661,
+          "in_dark_px": 812,
+          "occluded_px": 7762,
+          "depth_median_mm": 12.201,
+          "depth_p95_mm": 56.386,
+          "visible_median_mm": 109.715,
+          "visible_p95_mm": 350.276,
+          "n_candidate_pixels": 12113,
+          "n_mask_pixels": 9829
+        },
+        "footprint_cells": 44,
+        "footprint_x": [
+          6.325,
+          6.825
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T2/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T2",
+      "candidate": "B1",
+      "task_id": 6465709,
+      "original_rejection": {
+        "scale_ratio": 0.8734,
+        "hidden_frac": 0.9283,
+        "shell_contact": 0.6098,
+        "free_intrusion_frac": 0.01999,
+        "intrusion_depth_p95_mm": 15.87,
+        "voxels": 508191,
+        "contour_iou": 0.71,
+        "scale_ratio_v5": 0.9583,
+        "id": "B1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465709/tex_mesh.glb",
+        "M": [
+          [
+            1.7200458701388883,
+            0.9545355828686974,
+            -5.134554199173381,
+            4.365496897120878
+          ],
+          [
+            -5.209587817512027,
+            0.6938920915733475,
+            -1.6161841898358904,
+            0.9276489988950705
+          ],
+          [
+            0.3673959374322016,
+            5.370355517550287,
+            1.1214475640300146,
+            0.19825028379419105
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.71,
+          "mask_iou_all_pixels": 0.6543,
+          "outside_lit_px": 774,
+          "in_dark_px": 222,
+          "occluded_px": 627,
+          "depth_median_mm": 11.42,
+          "depth_p95_mm": 52.381,
+          "visible_median_mm": 7.969,
+          "visible_p95_mm": 62.133,
+          "n_candidate_pixels": 8079,
+          "n_mask_pixels": 9829
+        },
+        "footprint_cells": 168,
+        "footprint_x": [
+          6.275,
+          7.075000000000001
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.6750000000000003
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T2/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T2",
+      "candidate": "B2",
+      "task_id": 6465716,
+      "original_rejection": {
+        "scale_ratio": 0.8734,
+        "hidden_frac": 0.73,
+        "shell_contact": 0.5181,
+        "free_intrusion_frac": 0.21036,
+        "intrusion_depth_p95_mm": 53.95,
+        "voxels": 284497,
+        "contour_iou": 0.2636,
+        "scale_ratio_v5": 0.9583,
+        "id": "B2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465716/tex_mesh.glb",
+        "M": [
+          [
+            -3.4858390067983254,
+            -0.5214905305730945,
+            0.39783464514090455,
+            4.246779738015716
+          ],
+          [
+            -0.5712435534418652,
+            1.3564013627029938,
+            -3.2272518503483867,
+            0.9030481956199491
+          ],
+          [
+            0.3223438862502454,
+            -3.2356639704160535,
+            -1.4169938070496415,
+            0.23625327098731078
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2636,
+          "mask_iou_all_pixels": 0.252,
+          "outside_lit_px": 1186,
+          "in_dark_px": 510,
+          "occluded_px": 0,
+          "depth_median_mm": 49.729,
+          "depth_p95_mm": 232.02,
+          "visible_median_mm": 74.162,
+          "visible_p95_mm": 221.724,
+          "n_candidate_pixels": 4600,
+          "n_mask_pixels": 9829
+        },
+        "footprint_cells": 88,
+        "footprint_x": [
+          6.275,
+          6.775
+        ],
+        "footprint_y": [
+          0.125,
+          0.625
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T2/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T2",
+      "candidate": "C1",
+      "task_id": 6465754,
+      "original_rejection": {
+        "scale_ratio": 0.9114,
+        "hidden_frac": 0.6994,
+        "shell_contact": 0.2699,
+        "free_intrusion_frac": 0.21654,
+        "intrusion_depth_p95_mm": 50.19,
+        "voxels": 124003,
+        "contour_iou": 0.4991,
+        "scale_ratio_v5": 1.0,
+        "id": "C1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6465754/tex_mesh.glb",
+        "M": [
+          [
+            0.0016700788667868653,
+            0.06749218236793818,
+            0.06756819091603451,
+            4.1519997838430385
+          ],
+          [
+            -0.09447180213643679,
+            0.011067373062477529,
+            -0.008719869406353992,
+            0.8505318039250161
+          ],
+          [
+            -0.013990486251257815,
+            -0.06667655390452423,
+            0.06694735037135106,
+            0.09710130828909636
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.4991,
+          "mask_iou_all_pixels": 0.3548,
+          "outside_lit_px": 5229,
+          "in_dark_px": 1421,
+          "occluded_px": 3345,
+          "depth_median_mm": 41.751,
+          "depth_p95_mm": 263.981,
+          "visible_median_mm": 52.554,
+          "visible_p95_mm": 354.984,
+          "n_candidate_pixels": 12496,
+          "n_mask_pixels": 9829
+        },
+        "footprint_cells": 61,
+        "footprint_x": [
+          6.275,
+          6.7250000000000005
+        ],
+        "footprint_y": [
+          0.07500000000000018,
+          0.5750000000000002
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T2/decide/target_decision.json"
+    },
+    {
+      "look": 1,
+      "target": "T2",
+      "candidate": "C2",
+      "task_id": 6466070,
+      "original_rejection": {
+        "scale_ratio": 1.1266,
+        "hidden_frac": 0.5002,
+        "shell_contact": 0.512,
+        "free_intrusion_frac": 0.41833,
+        "intrusion_depth_p95_mm": 64.44,
+        "voxels": 211959,
+        "contour_iou": 0.7206,
+        "scale_ratio_v5": 1.2361,
+        "id": "C2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6466070/tex_mesh.glb",
+        "M": [
+          [
+            -0.013351808856124959,
+            0.04532389989245197,
+            0.07091093581288781,
+            4.166434006293202
+          ],
+          [
+            -0.07590524934752549,
+            -0.037493072849308154,
+            0.009672131557078231,
+            0.8990757681498489
+          ],
+          [
+            0.03634569906894715,
+            -0.06165144853048018,
+            0.046249071042931036,
+            0.18554818463188474
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.7206,
+          "mask_iou_all_pixels": 0.6687,
+          "outside_lit_px": 860,
+          "in_dark_px": 829,
+          "occluded_px": 1,
+          "depth_median_mm": 53.135,
+          "depth_p95_mm": 370.743,
+          "visible_median_mm": 30.622,
+          "visible_p95_mm": 291.019,
+          "n_candidate_pixels": 9391,
+          "n_mask_pixels": 9829
+        },
+        "footprint_cells": 79,
+        "footprint_x": [
+          6.275,
+          6.675000000000001
+        ],
+        "footprint_y": [
+          0.125,
+          0.6750000000000003
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look1/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "A1",
+      "task_id": 6470999,
+      "original_rejection": {
+        "scale_ratio": 0.5714,
+        "hidden_frac": 0.8442,
+        "shell_contact": 0.1662,
+        "free_intrusion_frac": 0.0751,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 111380,
+        "contour_iou": 0.2623,
+        "scale_ratio_v5": 0.625,
+        "id": "A1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6470999/tex_mesh.glb",
+        "M": [
+          [
+            -0.012404806202382278,
+            -0.06068313189281129,
+            0.35716564504288095,
+            2.3016797012821724
+          ],
+          [
+            0.35847477960749946,
+            -0.05374417271643575,
+            0.003319035479766883,
+            -0.1429329651770362
+          ],
+          [
+            0.052398214478847654,
+            0.35331677162971187,
+            0.06184905590809819,
+            0.15458517336539923
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2623,
+          "mask_iou_all_pixels": 0.2546,
+          "outside_lit_px": 969,
+          "in_dark_px": 1677,
+          "occluded_px": 0,
+          "depth_median_mm": 20.772,
+          "depth_p95_mm": 121.283,
+          "visible_median_mm": 100.615,
+          "visible_p95_mm": 361.596,
+          "n_candidate_pixels": 17237,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 72,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "A2",
+      "task_id": 6471004,
+      "original_rejection": {
+        "scale_ratio": 0.6571,
+        "hidden_frac": 0.8308,
+        "shell_contact": 0.1886,
+        "free_intrusion_frac": 0.09451,
+        "intrusion_depth_p95_mm": 25.08,
+        "voxels": 118174,
+        "contour_iou": 0.294,
+        "scale_ratio_v5": 0.7187,
+        "id": "A2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6471004/tex_mesh.glb",
+        "M": [
+          [
+            0.357580274838108,
+            -0.015622778455434949,
+            0.04917627370675553,
+            2.3045044706729114
+          ],
+          [
+            0.039127405655051295,
+            -0.1423642085785634,
+            -0.3297385453630664,
+            -0.14418007452833
+          ],
+          [
+            0.03363663522194782,
+            0.331684173521708,
+            -0.1392128437386938,
+            0.1683526148030618
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.294,
+          "mask_iou_all_pixels": 0.2862,
+          "outside_lit_px": 776,
+          "in_dark_px": 1510,
+          "occluded_px": 0,
+          "depth_median_mm": 24.601,
+          "depth_p95_mm": 141.64,
+          "visible_median_mm": 89.95,
+          "visible_p95_mm": 351.781,
+          "n_candidate_pixels": 18583,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 70,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "B1",
+      "task_id": 6471017,
+      "original_rejection": {
+        "scale_ratio": 0.6571,
+        "hidden_frac": 0.8691,
+        "shell_contact": 0.2627,
+        "free_intrusion_frac": 0.04651,
+        "intrusion_depth_p95_mm": 20.18,
+        "voxels": 125898,
+        "contour_iou": 0.3528,
+        "scale_ratio_v5": 0.7187,
+        "id": "B1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6471017/tex_mesh.glb",
+        "M": [
+          [
+            0.07930812195586338,
+            0.35989627046129685,
+            0.8941809198619065,
+            2.3313389941181057
+          ],
+          [
+            -0.9606042979635683,
+            0.10353398398508264,
+            0.04352835902380883,
+            -0.11891320136494209
+          ],
+          [
+            -0.07952500028898633,
+            -0.8917006279090699,
+            0.36595134329690904,
+            0.12512107040678005
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.3528,
+          "mask_iou_all_pixels": 0.3456,
+          "outside_lit_px": 0,
+          "in_dark_px": 1140,
+          "occluded_px": 0,
+          "depth_median_mm": 12.92,
+          "depth_p95_mm": 115.098,
+          "visible_median_mm": 76.609,
+          "visible_p95_mm": 333.479,
+          "n_candidate_pixels": 20426,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 69,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "B2",
+      "task_id": 6471023,
+      "original_rejection": {
+        "scale_ratio": 0.8429,
+        "hidden_frac": 0.8931,
+        "shell_contact": 0.4825,
+        "free_intrusion_frac": 0.06768,
+        "intrusion_depth_p95_mm": 30.42,
+        "voxels": 495944,
+        "contour_iou": 0.7054,
+        "scale_ratio_v5": 0.9219,
+        "id": "B2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6471023/tex_mesh.glb",
+        "M": [
+          [
+            0.9993482385141546,
+            0.6510382964748819,
+            1.694652131577489,
+            2.5666618268002592
+          ],
+          [
+            1.8079961521767527,
+            -0.1823283640068218,
+            -0.9961425067484195,
+            -0.04876094225216461
+          ],
+          [
+            -0.16384939502815055,
+            1.9589025286011714,
+            -0.655932825483857,
+            0.13888047946435053
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.7054,
+          "mask_iou_all_pixels": 0.6081,
+          "outside_lit_px": 9019,
+          "in_dark_px": 4143,
+          "occluded_px": 5213,
+          "depth_median_mm": 36.236,
+          "depth_p95_mm": 221.586,
+          "visible_median_mm": 21.208,
+          "visible_p95_mm": 138.569,
+          "n_candidate_pixels": 54405,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 253,
+        "footprint_x": [
+          6.325,
+          7.225
+        ],
+        "footprint_y": [
+          -0.07499999999999996,
+          0.7750000000000004
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "C1",
+      "task_id": 6471034,
+      "original_rejection": {
+        "scale_ratio": 0.5429,
+        "hidden_frac": 0.8415,
+        "shell_contact": 0.1567,
+        "free_intrusion_frac": 0.07142,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 100679,
+        "contour_iou": 0.2303,
+        "scale_ratio_v5": 0.5937,
+        "id": "C1",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6471034/tex_mesh.glb",
+        "M": [
+          [
+            -0.012015538429706967,
+            -0.00843776243579012,
+            0.35988315611008176,
+            2.3062894129214007
+          ],
+          [
+            0.3569599920736536,
+            -0.04683964328195472,
+            0.010819747059369503,
+            -0.13975606921970163
+          ],
+          [
+            0.04654724423049942,
+            0.3570242387187865,
+            0.009924821018530431,
+            0.14055757854913467
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2303,
+          "mask_iou_all_pixels": 0.2252,
+          "outside_lit_px": 492,
+          "in_dark_px": 1240,
+          "occluded_px": 0,
+          "depth_median_mm": 17.362,
+          "depth_p95_mm": 89.838,
+          "visible_median_mm": 113.656,
+          "visible_p95_mm": 379.569,
+          "n_candidate_pixels": 14432,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 71,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "C2",
+      "task_id": 6471133,
+      "original_rejection": {
+        "scale_ratio": 0.5286,
+        "hidden_frac": 0.8297,
+        "shell_contact": 0.1506,
+        "free_intrusion_frac": 0.07651,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 92953,
+        "contour_iou": 0.2129,
+        "scale_ratio_v5": 0.5781,
+        "id": "C2",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6471133/tex_mesh.glb",
+        "M": [
+          [
+            -0.0037905589494870006,
+            0.022654414462570084,
+            0.3613406658854732,
+            2.3062920367853197
+          ],
+          [
+            0.35866843989279734,
+            -0.04903949652996257,
+            0.00683707973500798,
+            -0.1443730225883857
+          ],
+          [
+            0.04936850759406755,
+            0.35801755954114145,
+            -0.021928182151938456,
+            0.126920790271996
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2129,
+          "mask_iou_all_pixels": 0.2085,
+          "outside_lit_px": 670,
+          "in_dark_px": 1170,
+          "occluded_px": 0,
+          "depth_median_mm": 15.682,
+          "depth_p95_mm": 77.498,
+          "visible_median_mm": 123.083,
+          "visible_p95_mm": 398.056,
+          "n_candidate_pixels": 13621,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 71,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "A1b",
+      "task_id": 6473955,
+      "original_rejection": {
+        "scale_ratio": 0.5571,
+        "hidden_frac": 0.8416,
+        "shell_contact": 0.1585,
+        "free_intrusion_frac": 0.07465,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 105982,
+        "contour_iou": 0.2453,
+        "scale_ratio_v5": 0.6094,
+        "id": "A1b",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6473955/tex_mesh.glb",
+        "M": [
+          [
+            -0.012734467648718852,
+            -0.04209032149884212,
+            0.3606810143333977,
+            2.3036053835477217
+          ],
+          [
+            0.35796366138964486,
+            -0.06210889062885762,
+            0.005390617785834093,
+            -0.14720557484496943
+          ],
+          [
+            0.061027914833820474,
+            0.3555213727354767,
+            0.043642904005796505,
+            0.14551591620037563
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2453,
+          "mask_iou_all_pixels": 0.2389,
+          "outside_lit_px": 1179,
+          "in_dark_px": 1500,
+          "occluded_px": 0,
+          "depth_median_mm": 20.371,
+          "depth_p95_mm": 105.09,
+          "visible_median_mm": 106.37,
+          "visible_p95_mm": 369.519,
+          "n_candidate_pixels": 16376,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 72,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "A2b",
+      "task_id": 6473967,
+      "original_rejection": {
+        "scale_ratio": 0.5714,
+        "hidden_frac": 0.8445,
+        "shell_contact": 0.1622,
+        "free_intrusion_frac": 0.07421,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 109872,
+        "contour_iou": 0.2565,
+        "scale_ratio_v5": 0.625,
+        "id": "A2b",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6473967/tex_mesh.glb",
+        "M": [
+          [
+            -0.005091879039147497,
+            -0.056489269351386276,
+            0.35889430212894113,
+            2.3025455649622284
+          ],
+          [
+            0.35883670899868386,
+            -0.05695000352022575,
+            -0.0038727585340427736,
+            -0.14632314244502315
+          ],
+          [
+            0.05685397019969131,
+            0.354383611968464,
+            0.05658592161783515,
+            0.1514750843194673
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2565,
+          "mask_iou_all_pixels": 0.249,
+          "outside_lit_px": 1127,
+          "in_dark_px": 1685,
+          "occluded_px": 0,
+          "depth_median_mm": 20.223,
+          "depth_p95_mm": 118.736,
+          "visible_median_mm": 102.179,
+          "visible_p95_mm": 362.624,
+          "n_candidate_pixels": 17122,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 73,
+        "footprint_x": [
+          6.375,
+          6.825
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "B1b",
+      "task_id": 6473981,
+      "original_rejection": {
+        "scale_ratio": 0.5,
+        "hidden_frac": 0.81,
+        "shell_contact": 0.1425,
+        "free_intrusion_frac": 0.08595,
+        "intrusion_depth_p95_mm": 25.81,
+        "voxels": 76407,
+        "contour_iou": 0.2225,
+        "scale_ratio_v5": 0.5469,
+        "id": "B1b",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6473981/tex_mesh.glb",
+        "M": [
+          [
+            -0.5046114653207002,
+            0.318808534544799,
+            0.7589486529508492,
+            2.2990166669906205
+          ],
+          [
+            0.7196732211419147,
+            -0.26131595290642085,
+            0.5882678794354188,
+            -0.06286399932832741
+          ],
+          [
+            0.3996403311550659,
+            0.8731264292790728,
+            -0.10105698717190098,
+            0.10968100777500557
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2225,
+          "mask_iou_all_pixels": 0.2159,
+          "outside_lit_px": 2230,
+          "in_dark_px": 684,
+          "occluded_px": 1024,
+          "depth_median_mm": 28.81,
+          "depth_p95_mm": 234.921,
+          "visible_median_mm": 102.885,
+          "visible_p95_mm": 454.737,
+          "n_candidate_pixels": 15344,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 60,
+        "footprint_x": [
+          6.375,
+          6.7250000000000005
+        ],
+        "footprint_y": [
+          0.125,
+          0.5250000000000004
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "C1b",
+      "task_id": 6473995,
+      "original_rejection": {
+        "scale_ratio": 0.5286,
+        "hidden_frac": 0.8331,
+        "shell_contact": 0.1482,
+        "free_intrusion_frac": 0.07442,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 93323,
+        "contour_iou": 0.2136,
+        "scale_ratio_v5": 0.5781,
+        "id": "C1b",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6473995/tex_mesh.glb",
+        "M": [
+          [
+            -0.0048120513009616925,
+            0.01994929470061192,
+            0.3617382430859173,
+            2.3070709910199403
+          ],
+          [
+            0.3584974991453036,
+            -0.051932342757136395,
+            0.0076329280082588595,
+            -0.14446050597604765
+          ],
+          [
+            0.0522692450347322,
+            0.35802338488479296,
+            -0.019049110393813583,
+            0.12742497484191337
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2136,
+          "mask_iou_all_pixels": 0.2092,
+          "outside_lit_px": 700,
+          "in_dark_px": 1163,
+          "occluded_px": 0,
+          "depth_median_mm": 15.893,
+          "depth_p95_mm": 77.598,
+          "visible_median_mm": 122.407,
+          "visible_p95_mm": 395.799,
+          "n_candidate_pixels": 13689,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 71,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    },
+    {
+      "look": 2,
+      "target": "T2",
+      "candidate": "C2b",
+      "task_id": 6474106,
+      "original_rejection": {
+        "scale_ratio": 0.5286,
+        "hidden_frac": 0.8321,
+        "shell_contact": 0.1462,
+        "free_intrusion_frac": 0.07475,
+        "intrusion_depth_p95_mm": 24.34,
+        "voxels": 92132,
+        "contour_iou": 0.2116,
+        "scale_ratio_v5": 0.5781,
+        "id": "C2b",
+        "glb": "/root/3d/next-zenith-beforestep/assets/candidates/6474106/tex_mesh.glb",
+        "M": [
+          [
+            -0.0027352181706181045,
+            0.019789012575648583,
+            0.36069043750489255,
+            2.3058448738908837
+          ],
+          [
+            0.357011004835337,
+            -0.054837475123612735,
+            0.0057159332713008154,
+            -0.144992366538733
+          ],
+          [
+            0.05506667915040683,
+            0.3565079584637336,
+            -0.01914195768457666,
+            0.12671346844677966
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.2116,
+          "mask_iou_all_pixels": 0.2074,
+          "outside_lit_px": 750,
+          "in_dark_px": 1143,
+          "occluded_px": 0,
+          "depth_median_mm": 15.987,
+          "depth_p95_mm": 76.632,
+          "visible_median_mm": 122.989,
+          "visible_p95_mm": 397.31,
+          "n_candidate_pixels": 13621,
+          "n_mask_pixels": 54664
+        },
+        "footprint_cells": 71,
+        "footprint_x": [
+          6.375,
+          6.775
+        ],
+        "footprint_y": [
+          0.02499999999999991,
+          0.42500000000000027
+        ]
+      },
+      "source_decision": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/looks/look2/T2/decide/target_decision.json"
+    }
+  ],
+  "runs": {
+    "look1_T1_C1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T1_C1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T1=C1",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 46.9,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 95,
+        "identical_byte_copies_shared": 121131532,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T1_C1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T1_C2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T1_C2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T1=C2",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 54.1,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 95,
+        "identical_byte_copies_shared": 121131532,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T1_C2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T2_A1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_A1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=A1",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 54.0,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 96,
+        "identical_byte_copies_shared": 127217112,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_A1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T2_A2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_A2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=A2",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 54.0,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 96,
+        "identical_byte_copies_shared": 127217112,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_A2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T2_B1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_B1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=B1",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 53.1,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 96,
+        "identical_byte_copies_shared": 127217112,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_B1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T2_B2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_B2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=B2",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 53.5,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 96,
+        "identical_byte_copies_shared": 127217112,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_B2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T2_C1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_C1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=C1",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 57.9,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 96,
+        "identical_byte_copies_shared": 127217112,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_C1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look1_T2_C2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_C2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=C2",
+        "--trust-look",
+        "1"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 16.88,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          2.292,
+          -0.5,
+          0.04
+        ],
+        "sim_time_s": 18.08,
+        "wall_s": 49.9,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 16.079999999999746,
+        "display_look_time_s": 16.08,
+        "prefix_sample_count": 745,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 96,
+        "identical_byte_copies_shared": 127217112,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look1_T2_C2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_A1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=A1",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 100.6,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_A2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=A2",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 100.0,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_B1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=B1",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 99.3,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_B2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=B2",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 101.8,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_C1": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C1",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=C1",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 100.3,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C1/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_C2": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C2",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=C2",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 99.5,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C2/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_A1b": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A1b",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=A1b",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 103.5,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A1b/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_A2b": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A2b",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=A2b",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 100.3,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_A2b/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_B1b": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B1b",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=B1b",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 100.4,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_B1b/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_C1b": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C1b",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=C1b",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 93.3,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C1b/trusted",
+      "executed": true,
+      "collision": false
+    },
+    "look2_T2_C2b": {
+      "command": [
+        "/usr/bin/python3",
+        "-m",
+        "beforestep",
+        "run",
+        "--scene",
+        "suite_r2_v4_F0_002",
+        "--controller-model",
+        "rules",
+        "--policy",
+        "imagination_strict",
+        "--imagine",
+        "lux",
+        "--out",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C2b",
+        "--tag",
+        "trusted",
+        "--reuse-lux",
+        "/root/3d/next-zenith-beforestep/outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict",
+        "--trust",
+        "T2=C2b",
+        "--trust-look",
+        "2"
+      ],
+      "exit_code": 0,
+      "summary": {
+        "policy": "imagination_strict",
+        "tag": "trusted",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F0_002",
+        "goal": [
+          10.301463,
+          -0.045753
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.32,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.276,
+          0.398,
+          -1.17
+        ],
+        "sim_time_s": 54.52,
+        "wall_s": 103.2,
+        "collision": null
+      },
+      "intervention_verified": true,
+      "prefix_verification": {
+        "passed": true,
+        "look_time_and_pose_equal": true,
+        "sensor_qpos_exact": true,
+        "arrays_equal": {
+          "control_sources": true,
+          "phase": true,
+          "control_actions": true,
+          "t": true,
+          "qpos": true
+        },
+        "observation_bytes_equal": {
+          "rgb.png": true,
+          "depth.npy": true,
+          "dark.npy": true,
+          "state.npy": true,
+          "zmax.npy": true
+        },
+        "through_sim_time_s": 52.52000000000261,
+        "display_look_time_s": 52.52,
+        "prefix_sample_count": 2567,
+        "boundary": "All samples through exact sensor capture, inclusive"
+      },
+      "immutable_observation_storage": {
+        "files": 104,
+        "identical_byte_copies_shared": 129028274,
+        "all_original_paths_and_bytes_preserved": true
+      },
+      "run": "outputs/r3/v3/counterfactuals/suite_r2_v4_F0_002/imagination_strict/look2_T2_C2b/trusted",
+      "executed": true,
+      "collision": false
+    }
+  },
+  "paid_tasks": 0,
+  "completed": true,
+  "rejected_candidates": 19,
+  "attempted": 19,
+  "executed": 19,
+  "collisions": 0,
+  "noncollisions": 19,
+  "unexecutable": 0,
+  "all_executed_prefixes_verified": true
+}

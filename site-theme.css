@@ -1,0 +1,57 @@
+:root {
+  --night: #0a0b0c;
+  --soil: #14171a;
+  --soil-2: #1e2225;
+  --rule: #2c3135;
+  --dust: #d8d2c6;
+  --ink: #1b1c1d;
+  --text: #ece8e0;
+  --muted: #9c9d99;
+  --lamp: #f2a63b;
+  --ghost: #8fa3b8;
+  --crash: #e5533c;
+  --page: 1180px;
+  --gutter: clamp(20px, 4vw, 40px);
+  font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Source Han Sans SC",
+    "Microsoft YaHei", system-ui, sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+body {
+  margin: 0;
+  background: var(--night);
+  color: var(--text);
+  font-size: 17px;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+img, canvas, model-viewer { display: block; max-width: 100%; }
+img, model-viewer { height: auto; }
+model-viewer::part(default-progress-bar) { display: none; }
+a { color: inherit; }
+h1, h2, h3, p, ul, ol, dl, figure { margin: 0; }
+h1, h2 { text-wrap: balance; }
+ul, ol { padding: 0; list-style: none; }
+:focus-visible { outline: 2px solid var(--lamp); outline-offset: 3px; }
+
+/* ---------- top bar ---------- */
+.bar {
+  position: sticky; top: 0; z-index: 20;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  padding: 14px var(--gutter);
+  background: rgba(10, 11, 12, .86);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
+.brand { font-weight: 700; font-size: 17px; text-decoration: none; letter-spacing: .04em; }
+.brand span { margin-left: 10px; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.bar nav { display: flex; gap: clamp(14px, 2.4vw, 30px); font-size: 14px; }
+.bar nav a { color: var(--muted); text-decoration: none; white-space: nowrap; }
+.bar nav a:hover { color: var(--text); }
+
+
+body {font-family: "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", system-ui, sans-serif;background:var(--night);color:var(--text)}
+main {max-width:1260px;padding:0 var(--gutter)}main section {scroll-margin-top:96px}h1 {font-size:clamp(36px,5.6vw,72px);line-height:1.18;letter-spacing:-.045em;font-weight:700}h2 {font-size:clamp(27px,3.6vw,44px);line-height:1.25;letter-spacing:-.035em}h1 em,.eyebrow {color:var(--lamp)}p,.caption,.small {color:var(--muted)}.button {background:var(--lamp);color:var(--night);border:0;border-radius:0}.tabs button,.pill {border-radius:0}.tabs .active {color:var(--ghost);border-color:var(--ghost);background:var(--soil)}button,select,input {accent-color:var(--lamp)}a {text-underline-offset:4px}button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible {outline-color:var(--lamp)}.site-local-nav {max-width:1260px;margin:auto;padding:20px var(--gutter) 0}.site-local-nav nav {flex-wrap:wrap}.site-retained-footer {margin-top:22px}.replay,aside,.story-grid article,.pane-card,.learning-evaluation,.learning-actions,.table-wrap,.level-model-grid,.level-result-grid>div {background:var(--soil);border-color:var(--rule);border-radius:0;box-shadow:none}.suite-warning,.award-warning {border-color:var(--crash);color:var(--text);background:#291714}.level-steps li[aria-current=step] {color:var(--lamp);border-color:var(--lamp)}.table-wrap {max-width:100%}.bar nav a:nth-child(3) {display:inline}.brand span {display:inline}.foot {max-width:1180px;margin:0 auto;padding:50px var(--gutter);border-top:1px solid var(--rule);color:var(--muted);font-size:14px}.foot p {margin:0 0 12px}.foot a {color:var(--muted);margin-right:24px}.bar {max-width:none}.site-retained-footer p {overflow-wrap:anywhere}code {overflow-wrap:anywhere}model-viewer {max-width:100%}@media(max-width:700px){.bar {flex-wrap:wrap;gap:8px;padding:12px 20px}.bar nav {width:100%;gap:18px;font-size:12px}.brand span {display:inline}main {padding:0 20px}.foot {padding:36px 20px}.site-local-nav {padding:12px 20px}.site-local-nav nav {gap:16px}.experiment,.decision-grid,.videowrap {grid-template-columns:minmax(0,1fr)}.playback {flex-wrap:wrap}.playback input {min-width:0}.level-toolbar {flex-wrap:wrap}}
+@media(max-width:700px){.experiment aside dl {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.experiment aside dl>div {min-width:0}.experiment aside dd {overflow-wrap:anywhere}#learning-source {font-size:16px}}

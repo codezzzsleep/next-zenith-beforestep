@@ -1,12 +1,24 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>机器人训练与执行 · BeforeStep</title><link rel="stylesheet" href="style.css"></head>
+<head><link rel="icon" href="favicon.svg"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>机器人训练与执行 · BeforeStep</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="site-theme.css"></head>
 <body>
-<header><a class="brand" href="index.html">NEXT ZENITH <span>先见一步</span></a><nav><a href="#evaluation">独立评估</a><a href="#motion">实际执行</a><a href="docs/training.md">训练记录 ↗</a></nav></header>
+<header class="bar">
+  <a class="brand" href="index.html#top">先见一步<span>BeforeStep</span></a>
+  <nav>
+    <a href="index.html#how">Lux3D 做了什么</a>
+    <a href="index.html#result">结果</a>
+    <a href="report.html">技术报告</a>
+    <a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码</a>
+  </nav>
+</header>
+<div class="site-local-nav"><nav><a href="#evaluation">独立评估</a><a href="#motion">实际执行</a><a href="docs/training.md">训练记录 ↗</a></nav></div>
 <main>
 <section class="hero"><div class="eyebrow">LEARNED ROBOT CONTROL</div><h1>学会移动，<br><em>再走进盲区。</em></h1><p>神经网络根据机器人状态和目标点控制轮速、转向与腿部姿态残差。用真实月面重力动力学训练，再把同一模型放进候选预演和独立环境执行。</p><a class="button" href="#motion">查看模型实际执行 ↓</a></section>
 <section id="evaluation"><div class="sectiontop"><div><div class="eyebrow">01 / HELD-OUT TASKS</div><h2>训练后，能完成多少任务？</h2></div></div><p>每组对照使用相同目标、初始姿态和时限。测试种子与训练、模型选择验证分开；成功同时要求到达、指定朝向和停稳。</p><div id="evaluation-results" class="learning-evaluations">正在加载真实评估记录…</div><p class="caption">任务结果用于检验模型能力；网页回放已完成实验。图规划和生成几何准入仍是独立系统模块，底层动作由训练权重产生。</p></section>
 <section id="motion"><div class="sectiontop"><div><div class="eyebrow">02 / REAL PHYSICS EXECUTION</div><h2>模型怎样控制机器人？</h2></div><span class="small">月面重力 1.62 m/s²</span></div><div class="scene-choice"><label for="learning-run">选择实际任务</label><select id="learning-run"></select></div><div class="experiment"><div class="replay"><canvas id="learning-route" width="1000" height="390" aria-label="训练模型真实执行轨迹"></canvas><div class="playback"><button id="learning-play">▶ 播放</button><input id="learning-scrub" type="range" min="0" max="1000" value="0" aria-label="模型运行回放进度"><span id="learning-time">0.0 s</span></div></div><aside><span class="pill" id="learning-status">加载结果…</span><h3 id="learning-title">模型实际运行</h3><p id="learning-note"></p><dl><div><dt>执行时长</dt><dd id="learning-duration">—</dd></div><div><dt>候选预演</dt><dd id="learning-panes">—</dd></div><div><dt>动作来源</dt><dd id="learning-source">—</dd></div></dl><a id="learning-evidence" href="docs/training.md">查看原始证据 ↗</a></aside></div><div class="learning-actions"><h3>神经网络的四个动作输出</h3><canvas id="learning-actions" width="1000" height="240" aria-label="实际轮速、转向与腿部残差动作"></canvas><p class="caption">绿色：前进轮速；橙色：差速转向；蓝色和紫色：前、后腿姿态残差。曲线显示归一化网络输出；停稳制动标为 brake。</p></div><div class="videowrap"><video controls preload="metadata" poster="media/learning-demo-poster.jpg" src="media/learning-demo.mp4"></video><div><div class="eyebrow">REAL MUJOCO FOOTAGE</div><h3>从训练权重到真实仿真运动。</h3><p>运行中按网络输出推进关节与轮子；视频由保存的真实物理轨迹渲染。记录观测任务从保存的传感器状态开始，单独标明。</p><a href="media/learning-demo.mp4" download>下载训练模型 Demo ↓</a></div></div></section>
 <section><div class="eyebrow">03 / EVIDENCE</div><h2>成功、失败和改进都有记录。</h2><p>第一版在关口碰撞；第二版完成关口与双岩石任务，但大角度短距离目标仍会失败。后续训练根据这些问题扩展真实示教，保留每版权重、来源、曲线和独立结果。</p><img class="comparison" src="media/controller-evaluation.png" alt="实际控制模型的独立任务评估"><a class="textlink" href="docs/training.md">训练方法、模型版本与复现命令 ↗</a></section>
-<footer><a href="index.html">返回 Lux3D 盲区实验 ↗</a><a href="assets/models/goal_controller_v4/behavior_cloning.npz" download>下载实际部署的 v4 模型</a></footer>
+<!-- HOME-FOOTER-START --><footer class="foot">
+  <p>Next Zenith 的 Aholo Lux3D 黑客松作品。页面上的照片、模型、轨迹和数字，全部来自真实运行记录。</p>
+  <p><a href="report.html">技术报告</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码与证据</a></p>
+<div class="site-retained-footer"><a href="index.html">返回 Lux3D 盲区实验 ↗</a><a href="assets/models/goal_controller_v4/behavior_cloning.npz" download>下载实际部署的 v4 模型</a></div></footer><!-- HOME-FOOTER-END -->
 </main><script type="module" src="learning.js"></script></body></html>

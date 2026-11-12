@@ -15,8 +15,9 @@ ROOT = C.ROOT
 def main():
     plan_path = ROOT / 'evidence/award/demo/plan.json'
     plan = json.loads(plan_path.read_text())
-    gate = json.loads((ROOT / 'evidence/award/P1-P2-complete.json').read_text())
-    assert gate['passed'] and datetime.fromisoformat(gate['completed_at']) < datetime(2026, 11, 15, 4, tzinfo=timezone.utc)
+    gate = json.loads((ROOT / 'evidence/award/C1-C3-complete.json').read_text())
+    assert gate['passed'] and gate['C1_published'] and gate['C2_complete'] and gate['C3_complete']
+    assert gate['scene'] == plan['scene'] == 'suite_r2_v4_F0_006'
     assert json.loads((ROOT / 'outputs/r3/v3/completion.json').read_text())['status'] == 'complete'
     assert sources() == plan['source_sha256']
     assert C.sha(ROOT / plan['scene_config']) == plan['scene_config_sha256']

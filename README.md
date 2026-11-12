@@ -1,5 +1,21 @@
 # 先见一步 · BeforeStep
 
+## 三分钟跑起来 · Start in three minutes
+
+克隆后拉取首页和完整锚点运行所需的 LFS 资产，再安装冻结依赖。以下一条零付费命令复用真实 Lux3D 资产，运行观测、自检、全部物理预演与独立执行，完成后打开本地作品页。三分钟是安装与启动目标；完整仿真耗时随设备变化，实际新目录用时见[执行记录](docs/reviews/RESULT_HACKATHON_AWARD.md)。不需要密钥。
+
+Clone, fetch the LFS assets below, and install the frozen dependencies. The single zero-paid command reuses real Lux3D outputs, runs the full observation, checking, rehearsal and independent execution chain, then serves the local showcase. Three minutes is the setup/start target; full simulation timing is recorded in the [execution result](docs/reviews/RESULT_HACKATHON_AWARD.md). No API key is needed.
+
+```bash
+GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/codezzzsleep/next-zenith-beforestep.git
+cd next-zenith-beforestep
+git lfs pull --include="assets/runtime-*.tar.gz,assets/candidates/595*/tex_mesh.glb,evidence/reviews/beforestep_r1/lux/original_b/**,site/**,evidence/web-assets/**" --exclude=""
+./setup.sh
+.venv/bin/python ops/quickstart.py --reuse-lux --serve
+```
+
+打开 <http://127.0.0.1:8080>。全部其余历史证据可以另用 `git lfs pull --include="" --exclude=""` 下载。六步源文件、独立命令与输出见[代码导览](docs/code-tour.md)。
+
 当前主线以 [负责人R1复核](docs/reviews/REVIEW_BEFORESTEP_R1.md) 为准：stress_v8 A+B、规则控制器与原终点(10.5,0)。[R1执行结果](docs/reviews/RESULT_BEFORESTEP_R1.md)逐项保留预期、原始结果与未完成项；以下v0.3与训练模型材料保留为历史交付和迭代附录。
 
 面向轮腿机器人导航实验的盲区推演系统：用 **Aholo Lux3D** 生成受实际观测约束的候选几何，在物理仿真中检验路线，再决定前进、补充观察或停下。当前任务是在月球南极的岩壁、月溪和遮挡岩石之间完成通行。

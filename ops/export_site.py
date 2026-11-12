@@ -18,6 +18,12 @@ def main():
     if (ROOT / 'site/homepage-integration.json').exists():
         from integrate_owner_homepage import rebuild_data
         rebuild_data(ROOT / 'site')
+    if (ROOT / 'site/data/gallery.json').exists():
+        from build_gallery_data import main as build_gallery
+        build_gallery()
+    if (ROOT / 'site/site-theme.css').exists():
+        from apply_home_theme import main as apply_theme
+        apply_theme()
     demo_pending = not (ROOT / 'site/data/award-demo.json').exists()
     ignore = ['video-scene', '__pycache__'] + (['award-demo.html', 'award-demo.js'] if demo_pending else [])
     shutil.copytree(ROOT/'site',output,dirs_exist_ok=True, ignore=shutil.ignore_patterns(*ignore))

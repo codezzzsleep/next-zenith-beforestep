@@ -1,0 +1,741 @@
+{
+  "schema": "beforestep-batch-admission/v1",
+  "cache_identity": "dc100fdc0adff7e880f9f2e94417bbeccf13670cb32c23de0191f55a9309b320",
+  "source_result": "experiments/polar_retry_001/lux_result.json",
+  "observation": "assets/observations/reference_v8/looks/look2/T2",
+  "candidates": [
+    {
+      "scale_ratio": 1.0513,
+      "hidden_frac": 0.6069,
+      "shell_contact": 0.4484,
+      "free_intrusion_frac": 0.33343,
+      "intrusion_depth_p95_mm": 52.37,
+      "voxels": 306451,
+      "contour_iou": 0.6349,
+      "scale_ratio_v5": 1.1549,
+      "id": "M4",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979742/tex_mesh.glb",
+      "M": [
+        [
+          0.8699339654845725,
+          -0.41179275097922496,
+          -0.7147165884187473,
+          2.4736458332890905
+        ],
+        [
+          -0.6134265397996842,
+          -1.0174195886628843,
+          -0.16044761356314172,
+          0.2618694078946792
+        ],
+        [
+          -0.5514534901415998,
+          0.4821434295618719,
+          -0.9490073431563325,
+          0.2304423730798408
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.6349,
+        "mask_iou_all_pixels": 0.5467,
+        "outside_lit_px": 6500,
+        "in_dark_px": 4971,
+        "occluded_px": 2031,
+        "depth_median_mm": 93.357,
+        "depth_p95_mm": 354.428,
+        "visible_median_mm": 48.203,
+        "visible_p95_mm": 296.905,
+        "n_candidate_pixels": 39027,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 90,
+      "footprint_x": [
+        6.125,
+        6.675000000000001
+      ],
+      "footprint_y": [
+        -0.02499999999999991,
+        0.5250000000000004
+      ]
+    },
+    {
+      "scale_ratio": 0.8718,
+      "hidden_frac": 0.7709,
+      "shell_contact": 0.3733,
+      "free_intrusion_frac": 0.17419,
+      "intrusion_depth_p95_mm": 40.29,
+      "voxels": 294626,
+      "contour_iou": 0.5624,
+      "scale_ratio_v5": 0.9577,
+      "id": "M5",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979747/tex_mesh.glb",
+      "M": [
+        [
+          1.100324986744586,
+          0.07769941915025076,
+          0.48595127191621645,
+          2.5501579703471506
+        ],
+        [
+          0.4548119428846781,
+          -0.6151712888415024,
+          -0.9314565458797867,
+          0.2580252886255666
+        ],
+        [
+          0.1879679095556995,
+          1.0336479093562545,
+          -0.5908815273203752,
+          0.24199977159756744
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.5624,
+        "mask_iou_all_pixels": 0.518,
+        "outside_lit_px": 1183,
+        "in_dark_px": 3105,
+        "occluded_px": 307,
+        "depth_median_mm": 49.019,
+        "depth_p95_mm": 301.3,
+        "visible_median_mm": 33.62,
+        "visible_p95_mm": 263.411,
+        "n_candidate_pixels": 26678,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 98,
+      "footprint_x": [
+        6.175000000000001,
+        6.7250000000000005
+      ],
+      "footprint_y": [
+        0.02499999999999991,
+        0.5750000000000002
+      ]
+    },
+    {
+      "scale_ratio": 0.7051,
+      "hidden_frac": 0.8415,
+      "shell_contact": 0.4185,
+      "free_intrusion_frac": 0.07299,
+      "intrusion_depth_p95_mm": 38.87,
+      "voxels": 235832,
+      "contour_iou": 0.4874,
+      "scale_ratio_v5": 0.7746,
+      "id": "M6",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979751/tex_mesh.glb",
+      "M": [
+        [
+          0.9538049261702062,
+          0.3705025929792515,
+          -0.6347024691410099,
+          2.5863069685917557
+        ],
+        [
+          0.5764293523046191,
+          0.26794186613592524,
+          1.022643433019485,
+          0.367722116473908
+        ],
+        [
+          0.45590415389610567,
+          -1.113911225319076,
+          0.03487717725143209,
+          0.032345959630315065
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.4874,
+        "mask_iou_all_pixels": 0.3948,
+        "outside_lit_px": 8992,
+        "in_dark_px": 2339,
+        "occluded_px": 7217,
+        "depth_median_mm": 24.159,
+        "depth_p95_mm": 169.613,
+        "visible_median_mm": 21.99,
+        "visible_p95_mm": 279.92,
+        "n_candidate_pixels": 31173,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 90,
+      "footprint_x": [
+        6.175000000000001,
+        6.7250000000000005
+      ],
+      "footprint_y": [
+        0.02499999999999991,
+        0.5750000000000002
+      ]
+    },
+    {
+      "scale_ratio": 1.0,
+      "hidden_frac": 0.7684,
+      "shell_contact": 0.2321,
+      "free_intrusion_frac": 0.13336,
+      "intrusion_depth_p95_mm": 31.74,
+      "voxels": 144591,
+      "contour_iou": 0.4455,
+      "scale_ratio_v5": 1.0986,
+      "id": "M7",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979755/tex_mesh.glb",
+      "M": [
+        [
+          1.0556707341819105,
+          0.5631191285231024,
+          -0.10958598734458955,
+          2.5650382574987747
+        ],
+        [
+          0.27255823047168753,
+          -0.29036428771496947,
+          1.13355790851681,
+          0.2788317344749618
+        ],
+        [
+          0.5048012010019893,
+          -1.0208517855449164,
+          -0.3828711532040364,
+          0.10065095213918852
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.4455,
+        "mask_iou_all_pixels": 0.4108,
+        "outside_lit_px": 2820,
+        "in_dark_px": 2604,
+        "occluded_px": 850,
+        "depth_median_mm": 31.787,
+        "depth_p95_mm": 192.445,
+        "visible_median_mm": 47.753,
+        "visible_p95_mm": 313.449,
+        "n_candidate_pixels": 23647,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 77,
+      "footprint_x": [
+        6.2250000000000005,
+        6.625
+      ],
+      "footprint_y": [
+        0.02499999999999991,
+        0.5250000000000004
+      ]
+    },
+    {
+      "scale_ratio": 1.0,
+      "hidden_frac": 0.698,
+      "shell_contact": 0.2523,
+      "free_intrusion_frac": 0.23593,
+      "intrusion_depth_p95_mm": 45.51,
+      "voxels": 179127,
+      "contour_iou": 0.4649,
+      "scale_ratio_v5": 1.0986,
+      "id": "M8",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979760/tex_mesh.glb",
+      "M": [
+        [
+          0.6497435493189047,
+          -0.5154438719758375,
+          -0.8749834547658545,
+          2.4759482252434233
+        ],
+        [
+          -0.989126826383565,
+          -0.5564938294938993,
+          -0.40667905062413956,
+          0.28319196017481435
+        ],
+        [
+          -0.23001424434109938,
+          0.9370578123737796,
+          -0.7228147859738489,
+          0.1969947305771292
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.4649,
+        "mask_iou_all_pixels": 0.4129,
+        "outside_lit_px": 7673,
+        "in_dark_px": 2682,
+        "occluded_px": 2831,
+        "depth_median_mm": 58.877,
+        "depth_p95_mm": 280.228,
+        "visible_median_mm": 55.332,
+        "visible_p95_mm": 303.328,
+        "n_candidate_pixels": 30708,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 67,
+      "footprint_x": [
+        6.175000000000001,
+        6.625
+      ],
+      "footprint_y": [
+        0.07500000000000018,
+        0.5750000000000002
+      ]
+    },
+    {
+      "scale_ratio": 0.7821,
+      "hidden_frac": 0.8674,
+      "shell_contact": 0.3533,
+      "free_intrusion_frac": 0.06265,
+      "intrusion_depth_p95_mm": 29.92,
+      "voxels": 268676,
+      "contour_iou": 0.5104,
+      "scale_ratio_v5": 0.8592,
+      "id": "M9",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979934/tex_mesh.glb",
+      "M": [
+        [
+          -0.7295160723897032,
+          -0.3908067243347717,
+          0.8712594071895066,
+          2.5476523519870975
+        ],
+        [
+          0.7006302456935272,
+          -0.9640266688234468,
+          0.15422837252911717,
+          0.28292324395204055
+        ],
+        [
+          0.6487989744296068,
+          0.6016138597873854,
+          0.8131034403857812,
+          0.18273544968043534
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.5104,
+        "mask_iou_all_pixels": 0.4229,
+        "outside_lit_px": 7258,
+        "in_dark_px": 3147,
+        "occluded_px": 5313,
+        "depth_median_mm": 33.926,
+        "depth_p95_mm": 345.773,
+        "visible_median_mm": 33.414,
+        "visible_p95_mm": 286.455,
+        "n_candidate_pixels": 31269,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 102,
+      "footprint_x": [
+        6.175000000000001,
+        6.775
+      ],
+      "footprint_y": [
+        -0.02499999999999991,
+        0.5750000000000002
+      ]
+    },
+    {
+      "scale_ratio": 0.6282,
+      "hidden_frac": 0.6687,
+      "shell_contact": 0.2274,
+      "free_intrusion_frac": 0.18499,
+      "intrusion_depth_p95_mm": 26.97,
+      "voxels": 118403,
+      "contour_iou": 0.3514,
+      "scale_ratio_v5": 0.6901,
+      "id": "M10",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979936/tex_mesh.glb",
+      "M": [
+        [
+          0.7696242881422936,
+          0.9048101646359582,
+          -0.1764824817363972,
+          2.5676769729932007
+        ],
+        [
+          0.25321778649859356,
+          -0.4285493515890544,
+          -1.0928747646186499,
+          0.28121272911752765
+        ],
+        [
+          -0.8864018575054647,
+          0.6631840351749804,
+          -0.4654328391796302,
+          0.05654556393871207
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.3514,
+        "mask_iou_all_pixels": 0.269,
+        "outside_lit_px": 14806,
+        "in_dark_px": 2416,
+        "occluded_px": 10747,
+        "depth_median_mm": 34.678,
+        "depth_p95_mm": 210.006,
+        "visible_median_mm": 63.157,
+        "visible_p95_mm": 439.177,
+        "n_candidate_pixels": 32329,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 72,
+      "footprint_x": [
+        6.125,
+        6.525
+      ],
+      "footprint_y": [
+        -0.02499999999999991,
+        0.5250000000000004
+      ]
+    },
+    {
+      "scale_ratio": 0.9103,
+      "hidden_frac": 0.8669,
+      "shell_contact": 0.1929,
+      "free_intrusion_frac": 0.06846,
+      "intrusion_depth_p95_mm": 40.63,
+      "voxels": 190092,
+      "contour_iou": 0.3918,
+      "scale_ratio_v5": 1.0,
+      "id": "M11",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979939/tex_mesh.glb",
+      "M": [
+        [
+          1.0791023074481667,
+          0.07136133244939338,
+          0.5277349107712961,
+          2.5743015013612602
+        ],
+        [
+          0.5278580744864122,
+          0.01441325469388959,
+          -1.0813031383679281,
+          0.3109685565622695
+        ],
+        [
+          -0.07044451018525169,
+          1.2011486935745648,
+          -0.01837804844328752,
+          0.18158462691938088
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.3918,
+        "mask_iou_all_pixels": 0.3715,
+        "outside_lit_px": 5015,
+        "in_dark_px": 2263,
+        "occluded_px": 139,
+        "depth_median_mm": 27.799,
+        "depth_p95_mm": 175.66,
+        "visible_median_mm": 52.847,
+        "visible_p95_mm": 281.662,
+        "n_candidate_pixels": 24444,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 88,
+      "footprint_x": [
+        6.175000000000001,
+        6.7250000000000005
+      ],
+      "footprint_y": [
+        0.07500000000000018,
+        0.5750000000000002
+      ]
+    },
+    {
+      "scale_ratio": 1.2821,
+      "hidden_frac": 0.654,
+      "shell_contact": 0.3787,
+      "free_intrusion_frac": 0.29999,
+      "intrusion_depth_p95_mm": 54.46,
+      "voxels": 300033,
+      "contour_iou": 0.5016,
+      "scale_ratio_v5": 1.4085,
+      "id": "M12",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4979955/tex_mesh.glb",
+      "M": [
+        [
+          -1.0648646484134925,
+          -0.21317688429589424,
+          -0.5164620226614748,
+          2.5348399588508026
+        ],
+        [
+          -0.25722514364108695,
+          -0.7997270551623847,
+          0.8604568478492143,
+          0.17707402914844492
+        ],
+        [
+          -0.4959966031421081,
+          0.8724141089721542,
+          0.6625670656079218,
+          0.2268767583521065
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.5016,
+        "mask_iou_all_pixels": 0.4464,
+        "outside_lit_px": 8271,
+        "in_dark_px": 3734,
+        "occluded_px": 1870,
+        "depth_median_mm": 105.917,
+        "depth_p95_mm": 463.931,
+        "visible_median_mm": 57.614,
+        "visible_p95_mm": 309.429,
+        "n_candidate_pixels": 34744,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 84,
+      "footprint_x": [
+        6.175000000000001,
+        6.7250000000000005
+      ],
+      "footprint_y": [
+        0.02499999999999991,
+        0.4750000000000001
+      ]
+    },
+    {
+      "scale_ratio": 0.6667,
+      "hidden_frac": 0.8258,
+      "shell_contact": 0.2758,
+      "free_intrusion_frac": 0.0846,
+      "intrusion_depth_p95_mm": 28.58,
+      "voxels": 195662,
+      "contour_iou": 0.3956,
+      "scale_ratio_v5": 0.7324,
+      "id": "M13",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4980050/tex_mesh.glb",
+      "M": [
+        [
+          -0.1766867504992354,
+          0.3431627903968964,
+          1.138750972329336,
+          2.5618010169163767
+        ],
+        [
+          1.091915071570014,
+          -0.40951888682241894,
+          0.2928283512741713,
+          0.2698852846914867
+        ],
+        [
+          0.4714190854985039,
+          1.0771565652767086,
+          -0.2514566865386847,
+          0.16626032462932824
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.3956,
+        "mask_iou_all_pixels": 0.3713,
+        "outside_lit_px": 1652,
+        "in_dark_px": 1700,
+        "occluded_px": 902,
+        "depth_median_mm": 23.197,
+        "depth_p95_mm": 170.116,
+        "visible_median_mm": 44.183,
+        "visible_p95_mm": 301.033,
+        "n_candidate_pixels": 19052,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 92,
+      "footprint_x": [
+        6.175000000000001,
+        6.7250000000000005
+      ],
+      "footprint_y": [
+        0.02499999999999991,
+        0.5250000000000004
+      ]
+    },
+    {
+      "scale_ratio": 0.7179,
+      "hidden_frac": 0.8129,
+      "shell_contact": 0.3628,
+      "free_intrusion_frac": 0.11167,
+      "intrusion_depth_p95_mm": 35.49,
+      "voxels": 259754,
+      "contour_iou": 0.4537,
+      "scale_ratio_v5": 0.7887,
+      "id": "M14",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4980197/tex_mesh.glb",
+      "M": [
+        [
+          -1.1440593812991193,
+          0.2707798762435637,
+          -0.2591352733543246,
+          2.554305943924335
+        ],
+        [
+          -0.3622729440828726,
+          -0.585552496878529,
+          0.9875379924834679,
+          0.26021765824094023
+        ],
+        [
+          0.09607884918351266,
+          1.016440471072588,
+          0.6379359863800813,
+          0.20349334340670389
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.4537,
+        "mask_iou_all_pixels": 0.4309,
+        "outside_lit_px": 141,
+        "in_dark_px": 2042,
+        "occluded_px": 31,
+        "depth_median_mm": 33.509,
+        "depth_p95_mm": 207.15,
+        "visible_median_mm": 34.281,
+        "visible_p95_mm": 282.579,
+        "n_candidate_pixels": 19898,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 98,
+      "footprint_x": [
+        6.175000000000001,
+        6.675000000000001
+      ],
+      "footprint_y": [
+        0.02499999999999991,
+        0.5250000000000004
+      ]
+    },
+    {
+      "scale_ratio": 0.5513,
+      "hidden_frac": 0.7715,
+      "shell_contact": 0.2573,
+      "free_intrusion_frac": 0.1462,
+      "intrusion_depth_p95_mm": 48.19,
+      "voxels": 195910,
+      "contour_iou": 0.3676,
+      "scale_ratio_v5": 0.6056,
+      "id": "M15",
+      "glb": "/root/3d/next-zenith-beforestep/assets/candidates/4980205/tex_mesh.glb",
+      "M": [
+        [
+          1.131048632835547,
+          -0.03497472257872172,
+          0.41035882436459936,
+          2.520959417600464
+        ],
+        [
+          0.2508572334288205,
+          -0.8926882526839255,
+          -0.7675069626713966,
+          0.2805905106241769
+        ],
+        [
+          0.3266316647078058,
+          0.8067050626425831,
+          -0.8315210780909562,
+          0.15113349521899327
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "admitted": false,
+      "eval": {
+        "mask_iou": 0.3676,
+        "mask_iou_all_pixels": 0.3058,
+        "outside_lit_px": 7891,
+        "in_dark_px": 3298,
+        "occluded_px": 5128,
+        "depth_median_mm": 59.099,
+        "depth_p95_mm": 236.983,
+        "visible_median_mm": 50.417,
+        "visible_p95_mm": 397.383,
+        "n_candidate_pixels": 26518,
+        "n_mask_pixels": 38933
+      },
+      "footprint_cells": 89,
+      "footprint_x": [
+        6.175000000000001,
+        6.625
+      ],
+      "footprint_y": [
+        -0.02499999999999991,
+        0.5750000000000002
+      ]
+    }
+  ],
+  "admitted_ids": []
+}

@@ -6,7 +6,7 @@ const canvas=$('route'),ctx=canvas.getContext('2d');
 const r1=()=>data?.review_id==='R1';
 function project(x,y){return r1()?[50+(x+1)*64,35+(2.5-y)*64]:[65+(x+1)*74,canvas.height*.5-y*65]}
 function paintBackground(){
- ctx.fillStyle='#101720';ctx.fillRect(0,0,canvas.width,canvas.height);
+ ctx.fillStyle='#14171a';ctx.fillRect(0,0,canvas.width,canvas.height);
  if(r1()){
   const cells=data.decision?.observed_cells;
   if(cells){const [nx,ny]=cells.shape;for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){const v=cells.values[i*ny+j];if(v!==2&&v!==3)continue;const p=project(cells.origin[0]+(i+.5)*cells.resolution,cells.origin[1]+(j+.5)*cells.resolution);ctx.fillStyle=v===2?'#6f4eb02b':'#bd825125';ctx.fillRect(p[0]-1.6,p[1]-1.6,3.5,3.5)}}
@@ -14,16 +14,16 @@ function paintBackground(){
  }else{ctx.fillStyle='#1a2530';ctx.fillRect(0,canvas.height*.5+90,1000,200);ctx.fillStyle='#1b2834';ctx.fillRect(0,0,1000,canvas.height*.5-90)}
  ctx.strokeStyle='#273641';ctx.lineWidth=1;for(let x=0;x<13;x++){const [xx]=project(x,0);ctx.beginPath();ctx.moveTo(xx,25);ctx.lineTo(xx,365);ctx.stroke()}
  for(const rock of data?.rocks||[]){ctx.fillStyle=r1()?'#8a92917a':'#7e8588';ctx.strokeStyle='#939c9b';ctx.beginPath();rock.polygon.forEach((point,index)=>{const p=project(...point);index?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.closePath();ctx.fill();ctx.stroke();if(r1()){const p=project(rock.x,rock.y);ctx.fillStyle='#e5e9e8';ctx.font='12px sans-serif';ctx.fillText(rock.id,p[0]-4,p[1]+4)}}
- if(policy==='imagination'||policy==='replay'){ctx.fillStyle='#70dbb24d';for(const point of data?.imagined_footprint||[]){const p=project(...point);ctx.fillRect(p[0]-1.6,p[1]-1.6,3.2,3.2)}}
+ if(policy==='imagination'||policy==='replay'){ctx.fillStyle='#8fa3b84d';for(const point of data?.imagined_footprint||[]){const p=project(...point);ctx.fillRect(p[0]-1.6,p[1]-1.6,3.2,3.2)}}
  ctx.fillStyle='#91a5b2';ctx.font='12px sans-serif';ctx.fillText('月溪 · 禁行',70,45);ctx.fillText('大石堆 · 禁行',70,350);
- const [gx,gy]=project(...(data?.goal||[8.5,0]));ctx.strokeStyle='#70dbb2';ctx.setLineDash([4,4]);ctx.strokeRect(gx-12,gy-12,24,24);ctx.setLineDash([]);ctx.fillStyle='#70dbb2';ctx.fillText('终点',gx-14,gy+32);
+ const [gx,gy]=project(...(data?.goal||[8.5,0]));ctx.strokeStyle='#8fa3b8';ctx.setLineDash([4,4]);ctx.strokeRect(gx-12,gy-12,24,24);ctx.setLineDash([]);ctx.fillStyle='#8fa3b8';ctx.fillText('终点',gx-14,gy+32);
  background=document.createElement('canvas');background.width=canvas.width;background.height=canvas.height;background.getContext('2d').drawImage(canvas,0,0);backgroundData=data;backgroundPolicy=policy;
 }
 function draw(){
  if(!background||backgroundData!==data||backgroundPolicy!==policy)paintBackground();else ctx.drawImage(background,0,0);
  const run=data?.runs[policy];if(!run?.trajectory?.length){ctx.fillStyle='#93a4b5';ctx.fillText('正在加载真实运行数据…',340,195);return}
  const limit=Math.floor(progress*(run.trajectory.length-1)),track=run.trajectory;
- ctx.lineWidth=3;ctx.strokeStyle=policy==='optimistic'?'#ff997c':'#70dbb2';ctx.beginPath();track.slice(0,limit+1).forEach((v,i)=>{const p=project(v[1],v[2]);i?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.stroke();
+ ctx.lineWidth=3;ctx.strokeStyle=policy==='optimistic'?'#e5533c':'#8fa3b8';ctx.beginPath();track.slice(0,limit+1).forEach((v,i)=>{const p=project(v[1],v[2]);i?ctx.lineTo(...p):ctx.moveTo(...p)});ctx.stroke();
  const pose=track[limit],p=project(pose[1],pose[2]);ctx.save();ctx.translate(...p);ctx.rotate(-pose[3]);ctx.fillStyle='#e3edf0';const l=r1()?data.robot_envelope.half_len*64:20,w=r1()?data.robot_envelope.half_wid*64:12;ctx.fillRect(-l,-w,2*l,2*w);ctx.fillStyle='#ee9c57';ctx.fillRect(l*.5,-w*.75,l*.4,w*1.5);ctx.restore();$('time').textContent=`${pose[0].toFixed(1)} s`;
 }
 function select(key){
@@ -42,11 +42,11 @@ function drawDecision(){
  $('reference-label').textContent=r1()?'乐观策略实际终态':'参照路线预演';$('reference-check').textContent=r1()?results[data.runs.optimistic.result]:ref.length?`${passed(ref)}/${ref.length}`:'未重复预演';
  $('decision-explanation').textContent=r1()?'相同窄道、相同传感器链和规则控制器：乐观碰撞，真实 Lux 路线完整预演后到达。':ref.some(p=>p.collided||!p.completed)?'参照路线没有通过全部候选检验；另一条路线完成检验。':d.path_changed?'候选占据改变了规划路线，保留实际预演和执行结果。':'候选支持原路线，执行前仍完成物理预演。';
  $('decision-margin').textContent=r1()?`赛后复盘：乐观原计划压入 B ${(data.audit.optimistic_intrusion_m*1000).toFixed(3)} mm；Lux 实际三维间隙 ${(data.audit.physical_clearance_B_m*1000).toFixed(3)} mm。`:'扫描余量作为赛后诊断，完整数值见原运行证据。';
- const c=$('decision-map'),g=c.getContext('2d');g.fillStyle='#101720';g.fillRect(0,0,c.width,c.height);const center=data.rocks[0]?.x||4.55,xmin=r1()?2:center-2,xmax=r1()?10.8:center+2.5,ymin=-1.55,ymax=1.5;const q=(x,y)=>[(x-xmin)/(xmax-xmin)*c.width,(ymax-y)/(ymax-ymin)*c.height];
+ const c=$('decision-map'),g=c.getContext('2d');g.fillStyle='#14171a';g.fillRect(0,0,c.width,c.height);const center=data.rocks[0]?.x||4.55,xmin=r1()?2:center-2,xmax=r1()?10.8:center+2.5,ymin=-1.55,ymax=1.5;const q=(x,y)=>[(x-xmin)/(xmax-xmin)*c.width,(ymax-y)/(ymax-ymin)*c.height];
  const cells=d.observed_cells,colors=['#152d28','#707a7b','#302344','#473326','#111923','#243945'];if(cells){const [nx,ny]=cells.shape,r=cells.resolution,[ox,oy]=cells.origin;for(let i=0;i<nx;i++)for(let j=0;j<ny;j++){const x=ox+(i+.5)*r,y=oy+(j+.5)*r;if(x<xmin||x>xmax||y<ymin||y>ymax)continue;const [px,py]=q(x,y);g.fillStyle=colors[cells.values[i*ny+j]];g.fillRect(px-r*c.width/(xmax-xmin)/2,py-r*c.height/(ymax-ymin)/2,r*c.width/(xmax-xmin)+1,r*c.height/(ymax-ymin)+1)}}
  for(const rock of data.rocks){g.strokeStyle='#bec6cb';g.lineWidth=1.5;g.beginPath();rock.polygon.forEach((p,i)=>{const v=q(...p);i?g.lineTo(...v):g.moveTo(...v)});g.closePath();g.stroke()}
- g.fillStyle='#70dbb24d';for(const p of data.imagined_footprint||[]){const [x,y]=q(...p);g.fillRect(x-3,y-3,6,6)}
- for(const [path,color,dash] of [[d.reference_path,'#ff997c',[10,6]],[d.selected_path,'#70dbb2',[]]]){if(!path)continue;g.strokeStyle=color;g.lineWidth=4;g.setLineDash(dash);g.beginPath();[d.start,...path].forEach((p,i)=>{const v=q(...p);i?g.lineTo(...v):g.moveTo(...v)});g.stroke();g.setLineDash([])}g.font='16px sans-serif';g.fillStyle='#a8b8c1';g.fillText('第一眼观测 / 生成占据 / 扫描轮廓（复盘）',24,30);
+ g.fillStyle='#8fa3b84d';for(const p of data.imagined_footprint||[]){const [x,y]=q(...p);g.fillRect(x-3,y-3,6,6)}
+ for(const [path,color,dash] of [[d.reference_path,'#e5533c',[10,6]],[d.selected_path,'#8fa3b8',[]]]){if(!path)continue;g.strokeStyle=color;g.lineWidth=4;g.setLineDash(dash);g.beginPath();[d.start,...path].forEach((p,i)=>{const v=q(...p);i?g.lineTo(...v):g.moveTo(...v)});g.stroke();g.setLineDash([])}g.font='16px sans-serif';g.fillStyle='#a8b8c1';g.fillText('第一眼观测 / 生成占据 / 扫描轮廓（复盘）',24,30);
 }
 function renderDetails(){
  for(const id of ['audit-controls','r1-admission','observation-rule','rehearsal-gallery','truth-audit','counterfactual'])$(id).hidden=!r1();
@@ -61,7 +61,7 @@ function renderDetails(){
  $('xy-center-note').textContent=`二维中心距离减半车宽最小为 ${data.audit.xy_center_minus_half_width_B_m.toFixed(6)} m；与二维包络间隙 ${data.audit.xy_envelope_clearance_B_m} 同时报告。`;
  $('wall-note').textContent=`原运行墙钟${data.audit.cold_wall_s} s，含冷配准和预演、不含云端排队，不是端到端延迟。`;
  $('physical-gap').textContent=(data.audit.physical_clearance_B_m*1000).toFixed(3)+' mm';
- for(const pane of data.gallery){const card=document.createElement('a');card.className='pane-card';card.href=pane.evidence;card.target='_blank';card.rel='noopener';const title=document.createElement('h3');title.textContent=`${String(pane.pane+1).padStart(2,'0')} / ${pane.label}`;const badge=document.createElement('span');badge.className='pill';badge.textContent=pane.completed&&!pane.collided?'完整完成 · 无碰撞':'未通过';const c=document.createElement('canvas');c.width=320;c.height=130;c.setAttribute('aria-label',pane.label+' 的实际预演轨迹');const g=c.getContext('2d');g.fillStyle='#101820';g.fillRect(0,0,320,130);g.strokeStyle='#70dbb2';g.lineWidth=2;g.beginPath();pane.trajectory.forEach((v,i)=>{const p=[12+(v[1]+1)*24,65-v[2]*25];i?g.lineTo(...p):g.moveTo(...p)});g.stroke();card.append(title,badge,c);$('pane-gallery').append(card)}
+ for(const pane of data.gallery){const card=document.createElement('a');card.className='pane-card';card.href=pane.evidence;card.target='_blank';card.rel='noopener';const title=document.createElement('h3');title.textContent=`${String(pane.pane+1).padStart(2,'0')} / ${pane.label}`;const badge=document.createElement('span');badge.className='pill';badge.textContent=pane.completed&&!pane.collided?'完整完成 · 无碰撞':'未通过';const c=document.createElement('canvas');c.width=320;c.height=130;c.setAttribute('aria-label',pane.label+' 的实际预演轨迹');const g=c.getContext('2d');g.fillStyle='#101820';g.fillRect(0,0,320,130);g.strokeStyle='#8fa3b8';g.lineWidth=2;g.beginPath();pane.trajectory.forEach((v,i)=>{const p=[12+(v[1]+1)*24,65-v[2]*25];i?g.lineTo(...p):g.moveTo(...p)});g.stroke();card.append(title,badge,c);$('pane-gallery').append(card)}
 }
 function choose(){const c=data?.candidates.find(c=>c.id===$('candidate-select').value);if(!c)return;$('model-error').hidden=true;$('model').src=c.glb;$('input').src=c.input;$('model-download').href=c.glb;$('candidate-info').textContent=`真实任务 ${c.task_id} · ${c.verdict}`}
 async function loadScene(path){

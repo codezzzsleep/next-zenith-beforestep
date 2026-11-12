@@ -1,5 +1,11 @@
 # 先见一步 · BeforeStep
 
+<!-- PHOTO-STORY-README-START -->
+机器人只拍到石头的一面。Aholo Lux3D 把这张平面照片变成包含未知背面的完整三维石头；机器人先对照可见观测检查，再在每个采纳的想象世界里走完路线，最后在独立仿真里执行。月面和低角度阳光提供实验背景，核心是从照片生成的几何改变行动判断。
+
+[转着看真实生成的石头](https://codezzzsleep.github.io/next-zenith-beforestep/) · [想象陈列室](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html)。
+<!-- PHOTO-STORY-README-END -->
+
 ## 三分钟跑起来 · Start in three minutes
 
 克隆后拉取首页和完整锚点运行所需的 LFS 资产，再安装冻结依赖。以下一条零付费命令复用真实 Lux3D 资产，运行观测、自检、全部物理预演与独立执行，完成后打开本地作品页。三分钟是安装与启动目标；完整仿真耗时随设备变化，实际新目录用时见[执行记录](docs/reviews/RESULT_HACKATHON_AWARD.md)。不需要密钥。

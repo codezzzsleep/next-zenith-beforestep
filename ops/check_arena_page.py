@@ -51,8 +51,9 @@ def run(base,out):
             page.locator('#arena-scrub').press('Home');before=page.locator('#arena-map').evaluate('(c)=>c.toDataURL()')
             page.click('#arena-play');page.wait_for_timeout(800)
             assert page.locator('#arena-play').inner_text()=='Ⅱ 暂停'
-            after=page.locator('#arena-map').evaluate('(c)=>c.toDataURL()');assert after!=before
+            assert int(page.locator('#arena-scrub').input_value())>0,'Playback clock did not advance'
             page.click('#arena-play');page.locator('#arena-scrub').press('End')
+            assert page.locator('#arena-map').evaluate('(c)=>c.toDataURL()')!=before,'Saved trajectory did not change the canvas'
             before=page.locator('#arena-map').evaluate('(c)=>c.toDataURL()');page.check('#arena-truth')
             assert page.locator('#arena-map').evaluate('(c)=>c.toDataURL()')!=before
             page.uncheck('#arena-truth');page.select_option('#arena-method','learned')

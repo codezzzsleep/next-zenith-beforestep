@@ -15,8 +15,9 @@ function imageData(p,entry,eye){
 function draw(canvas,entry){
   if(!payload||!entry){canvas.getContext('2d').clearRect(0,0,canvas.width,canvas.height);return;}
   const ctx=canvas.getContext('2d'),[nx,ny]=payload.shape,[x0,x1,y0,y1]=payload.bounds;
-  const trace=entry.trace,stop=Math.max(0,Math.floor(progress*(trace.length-1)));
-  let eye=0;for(let k=0;k<entry.eye_indices.length;k++)if(entry.eye_indices[k]<=stop)eye=k;
+  const trace=entry.trace,time=progress*entry.duration_seconds;
+  let stop=0;for(let k=1;k<entry.trace_times.length;k++){if(entry.trace_times[k]>time)break;stop=k;}
+  let eye=0;for(let k=0;k<entry.eye_times.length;k++)if(entry.eye_times[k]<=time)eye=k;
   const key=[eye,$('#arena-risk').checked,$('#arena-truth').checked,$('#arena-hypotheses').checked].join('-');
   let cached=tiles.get(entry);if(!cached){cached=new Map();tiles.set(entry,cached);}
   let tile=cached.get(key);

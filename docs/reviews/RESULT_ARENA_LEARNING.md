@@ -64,3 +64,15 @@
 恢复协调器与两个数据worker实核仍运行，851份完成样本SHA全部通过；无重复启动、无Arena LLM请求、无CNN完成权重或测试结果。冻结完整性和全部预注册科学文件SHA再次通过，见`acceptance/integrity-after-resume.json`。
 
 交付辅助层先取两方法共同种子再调用冻结聚类统计，保证LLM子集的按胶囊分母也成对。两成对世界和一个同胶囊未成对碰撞的针对性检查通过，总体差与聚类CI不变、组内双方分母相同、重复row拒绝。见`acceptance/paired-report-groups.json`；首次fixture字段错误保留在acceptance/history。此为报表修正，新增实验episode为0。
+
+## 报告分母与验证安全状态的辅助验收
+
+`acceptance/report-format.json`六项通过：冻结汇总原数字不变，全体/可达世界分母、LLM子集的组分母和成对区间分母正确；验证无安全工作点时明确说明最低碰撞备选点。仅合成格式检查，新增训练、导航episode与LLM请求均为0。`acceptance/integrity-report-format.json`再次通过生产源码、原证据、v1、原网站与PDF完整性。
+
+最终报告将显式列出按真实想象组的逐方法结果与聚类置信区间。4000样本SHA、训练best/latest、optimizer/RNG与15轮曲线的终态核验已接入交付脚本，尚未对真实完成权重执行。独立种子9210000的命令验收也已接入现有发布入口，等待权重和所有科学阶段完成后运行；它不会计入封存/OOD评分。当前仍为数据生成阶段，无Arena性能结论。
+
+## 原地补看的回放时间轴与命令恢复验收
+
+冻结策略允许在同一位置转向补看。交付回放现在根据保存的路径距离、冻结速度和每眼预算生成独立观测时间，避免把同一轨迹点的后眼提前显示。`acceptance/replay-timing.json`五项合成检查通过，覆盖同位置三眼、停车、碰撞预算及错误预算拒绝；原观测和实验episode均未改动。
+
+`acceptance/cli-recovery-format.json`五项通过：仅缺图时从保存数组恢复，保留碰撞原结果SHA，终态不再启动导航子进程，并拒绝已完成文件被篡改。首次fixture误拦截预注册的只读Git调用，修正fixture后通过，首次失败保留在acceptance/history。实际独立新种子命令验收仍须等固定权重生成。

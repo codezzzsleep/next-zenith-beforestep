@@ -57,6 +57,7 @@ def main():
     # Build only after all experiment identities are terminal. This preserves
     # heldout records and does not launch or rerun experiments.
     call([sys.executable,str(ROOT/'ops/build_arena_delivery.py')])
+    call([sys.executable,str(ROOT/'ops/check_arena_cli.py')])
     sys.path.insert(0,str(ROOT/'ops'))
     from check_arena_integrity import BANNER
     nav=ROOT/'site/navigation.html';text=nav.read_text()

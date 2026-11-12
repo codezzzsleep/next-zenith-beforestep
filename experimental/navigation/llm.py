@@ -9,6 +9,7 @@ import os
 import time
 import urllib.error
 import urllib.request
+import urllib.parse
 from pathlib import Path
 from .world import write
 
@@ -31,26 +32,34 @@ class NoRedirect(urllib.request.HTTPRedirectHandler):
 
 
 class Advisor:
-    def __init__(self,env_file,ledger_dir,max_calls=32):
+    def __init__(self,env_file,ledger_dir,max_calls=32,prior_ledger_dirs=()):
         values={}
         if env_file:
             for line in Path(env_file).read_text().splitlines():
                 if '=' in line and not line.lstrip().startswith('#'):
                     key,value=line.split('=',1);values[key.strip()]=value.strip().strip('"').strip("'")
-        self.key=values.get('NAV_LLM_API_KEY') or os.environ.get('NAV_LLM_API_KEY')
-        self.base=values.get('NAV_LLM_BASE_URL') or os.environ.get('NAV_LLM_BASE_URL')
-        self.model=values.get('NAV_LLM_MODEL') or os.environ.get('NAV_LLM_MODEL')
-        self.directory=Path(ledger_dir);self.max_calls=max_calls;self.calls=0
+        self.key=values.get('NAV_LLM_API_KEY') or values.get('AI_API_key') or os.environ.get('NAV_LLM_API_KEY')
+        self.base=values.get('NAV_LLM_BASE_URL') or values.get('base_URL') or os.environ.get('NAV_LLM_BASE_URL')
+        self.model=values.get('NAV_LLM_MODEL') or values.get('model') or os.environ.get('NAV_LLM_MODEL')
+        self.directory=Path(ledger_dir);self.max_calls=max_calls
+        self.ledgers=[Path(p) for p in prior_ledger_dirs]+[self.directory]
+        self.calls=sum(len(list(p.glob('*.json'))) for p in self.ledgers)
+        self.initial_calls=self.calls;self.disabled_status=None
         if not all((self.key,self.base,self.model)):
             raise ValueError('Set NAV_LLM_API_KEY, NAV_LLM_BASE_URL and NAV_LLM_MODEL in a private environment file')
+        if not urllib.parse.urlparse(self.base).path.strip('/'):
+            self.base=self.base.rstrip('/')+'/v1'
 
     def choose(self,context):
         if set(context)-ALLOWED_CONTEXT:raise ValueError('Undeclared prompt fields; truth is prohibited')
+        if self.disabled_status:return {'status':self.disabled_status}
         if self.calls>=self.max_calls:return {'status':'budget_exhausted'}
         snapshot=json.dumps(context,sort_keys=True,separators=(',',':'))
         identity=hashlib.sha256((self.model+snapshot).encode()).hexdigest()
         path=self.directory/(identity+'.json')
-        if path.exists():return json.loads(path.read_text())
+        for directory in self.ledgers:
+            existing=directory/path.name
+            if existing.exists():return json.loads(existing.read_text())
         self.calls+=1
         record={'id':identity,'status':'created','model':self.model,'context':context,'created_at_unix':time.time()}
         write(path,record)  # Durable identity precedes the external call.
@@ -62,7 +71,8 @@ class Advisor:
                  'max_tokens':512,'temperature':0.}
         request=urllib.request.Request(self.base.rstrip('/')+'/chat/completions',
                                        data=json.dumps(payload).encode(),
-                                       headers={'Authorization':'Bearer '+self.key,'Content-Type':'application/json'})
+                                       headers={'Authorization':'Bearer '+self.key,'Content-Type':'application/json',
+                                                'User-Agent':'Mozilla/5.0'})
         started=time.monotonic()
         try:
             opener=urllib.request.build_opener(NoRedirect)
@@ -70,6 +80,8 @@ class Advisor:
             text=body['choices'][0]['message']['content'];start=text.find('{');end=text.rfind('}')+1
             answer=validate(json.loads(text[start:end]),context['candidates'])
             record.update(status='ok',answer=answer,usage=body.get('usage'))
-        except urllib.error.HTTPError as exc:record.update(status='failed',error=f'HTTP {exc.code}')
+        except urllib.error.HTTPError as exc:
+            record.update(status='failed',error=f'HTTP {exc.code}')
+            if exc.code in (401,403):self.disabled_status='service_denied'
         except Exception as exc:record.update(status='failed',error=type(exc).__name__)
         record['wall_seconds']=time.monotonic()-started;write(path,record);return record

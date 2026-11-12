@@ -38,8 +38,13 @@ def scene_spec(world,out):
                         'yaw_deg':0.,'height_m':rock['height_m']})
     # Border boxes are physical obstacles too, so leaving the map cannot pass unnoticed.
     width,height=np.array(world.shape)*world.res
-    for i,(x,y,sx,sy) in enumerate([(width/2,0.,width/2,.15),(width/2,height-.3,width/2,.15),
-                                  (0.,height/2,.15,height/2),(width-.3,height/2,.15,height/2)]):
+    # The grid boundary is a conservative robot-centre constraint. Physical
+    # walls sit one grid cell outside it so the rectangular wheel-leg body can
+    # occupy the declared initial/terminal pose without touching a wall.
+    for i,(x,y,sx,sy) in enumerate([(width/2,-world.res,width/2+.6,.15),
+                                  (width/2,height,width/2+.6,.15),
+                                  (-world.res,height/2,.15,height/2+.6),
+                                  (width,height/2,.15,height/2+.6)]):
         vertices=np.array([[dx*sx,dy*sy,dz*.8] for dx in [-1,1] for dy in [-1,1] for dz in [0,1]])
         hull=ConvexHull(vertices)
         mesh=Path(out)/'meshes'/f'border-{i}.obj'
@@ -65,17 +70,21 @@ def run(world,method,model,out):
     ctrl=GoalPolicy(ROOT/world.cfg['physical_control_model'])
     watch=contact_watch(env,[f'obstacle{i}' for i in range(len(spec['objects']))])
     trace=[];controls=[];decisions=[];known=None;looks=0;collision=None;status='time_limit'
-    visits=np.zeros(world.shape,np.int32);last_cell=None;t0=env.t;started=time.monotonic()
+    visits=np.zeros(world.shape,np.int32);t0=env.t;started=time.monotonic();planning_wall=0.
     goal=world.goal*world.res
     for step in range(world.cfg['max_decisions']):
         actual=env.data.qpos[:2].copy();cell=np.rint(actual/world.res).astype(int)
         if not ((cell>=0).all() and (cell<world.shape).all()):status='out_of_map';break
         if np.linalg.norm(actual-goal)<.075 and completed(env,goal):status='arrived';break
         features,known=world.observe(cell,yaw_of(env.data.qpos),known)
+        planning_started=time.monotonic()
         a,info=decision(method,features,cell,world.goal,world.cfg,model,visits)
+        planning_wall+=time.monotonic()-planning_started
         if a is None and looks<world.cfg['max_panorama_looks']:
             features,known=world.observe(cell,yaw_of(env.data.qpos),known,panorama=True);looks+=1
+            planning_started=time.monotonic()
             a,info=decision(method,features,cell,world.goal,world.cfg,model,visits)
+            planning_wall+=time.monotonic()-planning_started
         if a is None:status='stopped';break
         guard=known_blocked(features,world.cfg)
         waypoint_cell=cell.copy()
@@ -85,7 +94,9 @@ def run(world,method,model,out):
             if not safe_transition(guard,waypoint_cell,a):break
             waypoint_cell+=DIRECTIONS[a]
             if np.array_equal(waypoint_cell,world.goal):break
+            planning_started=time.monotonic()
             next_a,_=decision(method,features,waypoint_cell,world.goal,world.cfg,model,visits)
+            planning_wall+=time.monotonic()-planning_started
             if next_a != a:break
         target=waypoint_cell*world.res
         if np.linalg.norm(actual-goal)<.5:target=goal
@@ -115,7 +126,7 @@ def run(world,method,model,out):
             'sim_seconds':env.t-t0,'wall_seconds':time.monotonic()-started,'physics_steps':env.n_physics,
             'goal_error_m':float(np.linalg.norm(env.data.qpos[:2]-goal)),'collision':collision,
             'panorama_looks':looks,'passive_observations':len(decisions),
-            'planning_wall_seconds':0.,'path_length_m':float(np.linalg.norm(np.diff(np.asarray(trace)[:,1:3],axis=0),axis=1).sum()) if len(trace)>1 else 0.,
+            'planning_wall_seconds':planning_wall,'path_length_m':float(np.linalg.norm(np.diff(np.asarray(trace)[:,1:3],axis=0),axis=1).sum()) if len(trace)>1 else 0.,
             'motor_controller':'learned_v4','motor_model_sha256':sha(ROOT/world.cfg['physical_control_model']),
             'sensor':'planar simulated visibility, not production RGB-D',
             'geometry':'convex extrusions of scan footprints, not original scan triangles',
@@ -123,19 +134,35 @@ def run(world,method,model,out):
     write(out/'result.json',result);return result
 
 
-def evaluate_physics(cfg_path,library_path,training,out):
+def evaluate_physics(cfg_path,library_path,training,out,resume=False):
     cfg,library=read(cfg_path),read(library_path);out=Path(out)
-    if out.exists() and any(out.iterdir()):raise ValueError('Preserve existing physical runs')
-    out.mkdir(parents=True);torch.set_num_threads(1)
+    if out.exists() and any(out.iterdir()) and not resume:raise ValueError('Preserve existing physical runs; use --resume')
+    out.mkdir(parents=True,exist_ok=True);torch.set_num_threads(1)
     model=load_model(Path(training)/'best.pt',cfg['value_iterations'])
-    write(out/'identity.json',{'stage':'running','model_sha256':sha(Path(training)/'best.pt'),
+    identity={'stage':'running','model_sha256':sha(Path(training)/'best.pt'),
                              'config_sha256':sha(cfg_path),'physics':'MuJoCo 3.17.0, gravity 1.62m/s2',
-                             'sensor':'planar simulated visibility','new_paid_tasks':0})
+                             'physical_source_sha256':sha(__file__),
+                             'navigation_sources':{p.name:sha(p) for p in sorted(Path(__file__).parent.glob('*.py'))},
+                             'library_sha256':sha(library_path),
+                             'motor_model_sha256':sha(ROOT/cfg['physical_control_model']),
+                             'sensor':'planar simulated visibility','new_paid_tasks':0}
+    if resume:
+        previous=read(out/'identity.json')
+        for field in ['model_sha256','config_sha256','physical_source_sha256','navigation_sources','library_sha256','motor_model_sha256']:
+            if previous[field]!=identity[field]:raise ValueError('Physical resume identity changed: '+field)
+    write(out/'identity.json',identity)
     results=[];p=cfg['physical']
     for seed in range(p['seed_start'],p['seed_start']+p['count']):
         world=World(cfg,library,'physical',seed);write(out/'scenes'/f'{seed}.json',world.manifest())
         for method in ['rules_cached_prior','learned']:
-            row=run(world,method,model,out/f'{seed}-{method}');results.append(row)
+            folder=out/f'{seed}-{method}'
+            if resume and (folder/'result.json').exists():row=read(folder/'result.json')
+            else:
+                if folder.exists():
+                    # Preserve interrupted physical bytes before rerunning the unfinished episode.
+                    folder.rename(folder.with_name(folder.name+'-interrupted-'+str(time.time_ns())))
+                row=run(world,method,model,folder)
+            results.append(row)
             write(out/'results.json',results);print({k:row[k] for k in ['seed','method','status','goal_error_m','sim_seconds']},flush=True)
     write(out/'summary.json',summary(results))
     identity=read(out/'identity.json');identity.update(stage='complete',episodes=len(results));write(out/'identity.json',identity)

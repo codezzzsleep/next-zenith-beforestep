@@ -1,0 +1,82 @@
+{
+  "id": "8db3997b839b28c8881a596103b1196ee9016ea3d2666f9bd9b574a4d279c7c7",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      2,
+      7
+    ],
+    "goal": [
+      37,
+      10
+    ],
+    "known_fraction": 0.30416667461395264,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 10.239628899525608,
+        "estimated_remaining_steps": 35.24264068711928,
+        "observed_fraction_near_target": 0.9200000166893005,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 10.21763181955584,
+        "estimated_remaining_steps": 34.828427124746185,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 10.517128885774863,
+        "estimated_remaining_steps": 35.828427124746185,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 10.56834897228512,
+        "estimated_remaining_steps": 36.65685424949237,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 7,
+        "delta": [
+          1,
+          -1
+        ],
+        "goal_distance_m": 10.270345661174213,
+        "estimated_remaining_steps": 35.656854249492376,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794475436.1606867,
+  "error": "HTTP 403",
+  "wall_seconds": 0.03260727698216215
+}

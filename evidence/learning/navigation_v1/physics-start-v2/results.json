@@ -1,0 +1,3710 @@
+[
+  {
+    "seed": 5200000,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 88.43999999999943,
+    "wall_seconds": 19.26420594303636,
+    "physics_steps": 44820,
+    "goal_error_m": 0.06153341449245775,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 13,
+    "planning_wall_seconds": 0.7503385738818906,
+    "path_length_m": 12.043699198181528,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999158678210696,
+          1.8000333058071956
+        ],
+        "waypoint_m": [
+          1.5,
+          2.6999999999999997
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 288
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4655522076736007,
+          2.6599086541029355
+        ],
+        "waypoint_m": [
+          2.4,
+          3.5999999999999996
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 393
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.3515812975316255,
+          3.5648851702143496
+        ],
+        "waypoint_m": [
+          3.3,
+          4.5
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 440
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2605627631028327,
+          4.463548087459824
+        ],
+        "waypoint_m": [
+          3.9,
+          5.1
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 471
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.8571253434054746,
+          5.063724987630355
+        ],
+        "waypoint_m": [
+          4.8,
+          5.1
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 489
+      },
+      {
+        "step": 5,
+        "position_m": [
+          4.740105637812469,
+          5.118611290381087
+        ],
+        "waypoint_m": [
+          5.7,
+          5.1
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 529
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.641539979014664,
+          5.089276454288275
+        ],
+        "waypoint_m": [
+          6.6,
+          5.1
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 569
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.539826411598574,
+          5.10998651351585
+        ],
+        "waypoint_m": [
+          7.5,
+          5.1
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 644
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.446318066644147,
+          5.095183974806008
+        ],
+        "waypoint_m": [
+          8.4,
+          5.1
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 697
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.342829360576726,
+          5.1059062825140735
+        ],
+        "waypoint_m": [
+          8.7,
+          5.1
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 714
+      },
+      {
+        "step": 10,
+        "position_m": [
+          8.643878439724404,
+          5.095087076318972
+        ],
+        "waypoint_m": [
+          9.299999999999999,
+          4.5
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 718
+      },
+      {
+        "step": 11,
+        "position_m": [
+          9.26804270865019,
+          4.5552863840027715
+        ],
+        "waypoint_m": [
+          10.2,
+          4.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 757
+      },
+      {
+        "step": 12,
+        "position_m": [
+          10.138433905656834,
+          4.485988393363808
+        ],
+        "waypoint_m": [
+          11.1,
+          4.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 757
+      }
+    ],
+    "trajectory_sha256": "9c3549539f12b8ff3a925066ac45482584c10ab4b6e3a7d7a286ba79e9090095"
+  },
+  {
+    "seed": 5200000,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 95.93999999999794,
+    "wall_seconds": 20.902111714996863,
+    "physics_steps": 48570,
+    "goal_error_m": 0.057442004146645076,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 15,
+    "planning_wall_seconds": 0.32156404096167535,
+    "path_length_m": 12.446194346830934,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999158678210696,
+          1.8000333058071956
+        ],
+        "waypoint_m": [
+          1.5,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 288
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4459180134217497,
+          1.8027675125044624
+        ],
+        "waypoint_m": [
+          2.4,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 320
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.3466956630570626,
+          1.800066274875324
+        ],
+        "waypoint_m": [
+          3.3,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 352
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2459353677351803,
+          1.8023831473110505
+        ],
+        "waypoint_m": [
+          3.9,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 377
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.846497080182328,
+          1.7988271034203298
+        ],
+        "waypoint_m": [
+          3.9,
+          1.5
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 394
+      },
+      {
+        "step": 5,
+        "position_m": [
+          3.9093787923327676,
+          1.5615633349509106
+        ],
+        "waypoint_m": [
+          4.8,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 396
+      },
+      {
+        "step": 6,
+        "position_m": [
+          4.737386510207309,
+          1.486379078772662
+        ],
+        "waypoint_m": [
+          5.7,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 440
+      },
+      {
+        "step": 7,
+        "position_m": [
+          5.639380350513332,
+          1.5100024830951049
+        ],
+        "waypoint_m": [
+          6.6,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 478
+      },
+      {
+        "step": 8,
+        "position_m": [
+          6.546731638334461,
+          1.4954405572013256
+        ],
+        "waypoint_m": [
+          7.5,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 520
+      },
+      {
+        "step": 9,
+        "position_m": [
+          7.4422398287143965,
+          1.5058120494527196
+        ],
+        "waypoint_m": [
+          8.4,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 554
+      },
+      {
+        "step": 10,
+        "position_m": [
+          8.347275892654391,
+          1.4978772800547946
+        ],
+        "waypoint_m": [
+          9.0,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 616
+      },
+      {
+        "step": 11,
+        "position_m": [
+          8.944245935635683,
+          1.5036566021847173
+        ],
+        "waypoint_m": [
+          9.9,
+          2.4
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 622
+      },
+      {
+        "step": 12,
+        "position_m": [
+          9.863685076590542,
+          2.3609913274236116
+        ],
+        "waypoint_m": [
+          10.799999999999999,
+          3.3
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 669
+      },
+      {
+        "step": 13,
+        "position_m": [
+          10.753993156934355,
+          3.2641800073688723
+        ],
+        "waypoint_m": [
+          11.1,
+          3.5999999999999996
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 675
+      },
+      {
+        "step": 14,
+        "position_m": [
+          11.06450171088443,
+          3.557419886020876
+        ],
+        "waypoint_m": [
+          11.1,
+          4.5
+        ],
+        "action": 2,
+        "source": "neural_value_iteration",
+        "known_cells": 675
+      }
+    ],
+    "trajectory_sha256": "0a49ff88675b77e550394c99f72ecfb719b22e6fcf3e4517bea94ed91a5046a8"
+  },
+  {
+    "seed": 5200001,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 75.76000000000195,
+    "wall_seconds": 16.967511220020242,
+    "physics_steps": 38480,
+    "goal_error_m": 0.053480852003846856,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 12,
+    "planning_wall_seconds": 0.7453679159516469,
+    "path_length_m": 11.20075551533219,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999160588661809,
+          1.5000333273872584
+        ],
+        "waypoint_m": [
+          1.5,
+          2.4
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 307
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.465424432982694,
+          2.3601683914890046
+        ],
+        "waypoint_m": [
+          2.4,
+          3.3
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 411
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.3511596100427443,
+          3.2644581154487318
+        ],
+        "waypoint_m": [
+          3.3,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 453
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2395370434180784,
+          3.3187442494099995
+        ],
+        "waypoint_m": [
+          4.2,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 504
+      },
+      {
+        "step": 4,
+        "position_m": [
+          4.1409822481962495,
+          3.2891220091971842
+        ],
+        "waypoint_m": [
+          5.1,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 569
+      },
+      {
+        "step": 5,
+        "position_m": [
+          5.039711219725526,
+          3.310808721678131
+        ],
+        "waypoint_m": [
+          6.0,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 642
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.945825658874908,
+          3.2947489320640013
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 682
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.841533219276487,
+          3.3071986138580174
+        ],
+        "waypoint_m": [
+          7.8,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 750
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.746755323359633,
+          3.2968425728156414
+        ],
+        "waypoint_m": [
+          8.7,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 805
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.643981822001138,
+          3.304678383020862
+        ],
+        "waypoint_m": [
+          9.6,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 821
+      },
+      {
+        "step": 10,
+        "position_m": [
+          9.546860336939679,
+          3.2990565074679585
+        ],
+        "waypoint_m": [
+          10.5,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 830
+      },
+      {
+        "step": 11,
+        "position_m": [
+          10.444741143170852,
+          3.3034754118419394
+        ],
+        "waypoint_m": [
+          11.1,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 830
+      }
+    ],
+    "trajectory_sha256": "673387df4db429966d4acc11f6d68b2ccb6c23ca5b0f2e98c2b852b9fc6933a8"
+  },
+  {
+    "seed": 5200001,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 80.0600000000011,
+    "wall_seconds": 17.291293660004158,
+    "physics_steps": 40630,
+    "goal_error_m": 0.05710581895728997,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 13,
+    "planning_wall_seconds": 0.2894923450658098,
+    "path_length_m": 11.157534267350707,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999160588661809,
+          1.5000333273872584
+        ],
+        "waypoint_m": [
+          1.5,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 307
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.446504226501932,
+          1.502625785232482
+        ],
+        "waypoint_m": [
+          2.4,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 341
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.3468301308464135,
+          1.4999110826701818
+        ],
+        "waypoint_m": [
+          3.3,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 370
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.246407108921039,
+          1.5010990220609097
+        ],
+        "waypoint_m": [
+          4.2,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 413
+      },
+      {
+        "step": 4,
+        "position_m": [
+          4.146847850726678,
+          1.500944368588478
+        ],
+        "waypoint_m": [
+          5.1,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 461
+      },
+      {
+        "step": 5,
+        "position_m": [
+          5.0463608630907375,
+          1.5008732845788868
+        ],
+        "waypoint_m": [
+          6.0,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 498
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.946361602583616,
+          1.500970587666479
+        ],
+        "waypoint_m": [
+          6.6,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 524
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.546590889672576,
+          1.5006935740703575
+        ],
+        "waypoint_m": [
+          7.199999999999999,
+          2.1
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 540
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.166276307005714,
+          2.0477479870246675
+        ],
+        "waypoint_m": [
+          8.1,
+          2.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 626
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.040513787794717,
+          2.117580646908785
+        ],
+        "waypoint_m": [
+          9.0,
+          2.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 680
+      },
+      {
+        "step": 10,
+        "position_m": [
+          8.941361461872017,
+          2.0898705532011346
+        ],
+        "waypoint_m": [
+          9.9,
+          2.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 691
+      },
+      {
+        "step": 11,
+        "position_m": [
+          9.839975250743654,
+          2.109871404013136
+        ],
+        "waypoint_m": [
+          10.799999999999999,
+          3.0
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 691
+      },
+      {
+        "step": 12,
+        "position_m": [
+          10.763586684268324,
+          2.961543023334674
+        ],
+        "waypoint_m": [
+          11.1,
+          3.3
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 715
+      }
+    ],
+    "trajectory_sha256": "50780b2b9ce566e628dab7eb57d7761892799693efb3ed48bb7a127dbe126adc"
+  },
+  {
+    "seed": 5200002,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "collision",
+    "sim_seconds": 117.77999999999359,
+    "wall_seconds": 25.940532358014025,
+    "physics_steps": 59490,
+    "goal_error_m": 3.895742112943944,
+    "collision": {
+      "body": "obstacle7",
+      "robot_geom": null,
+      "pos": [
+        7.661,
+        1.397,
+        0.034
+      ],
+      "t": 118.38
+    },
+    "panorama_looks": 0,
+    "passive_observations": 15,
+    "planning_wall_seconds": 0.8144809960504062,
+    "path_length_m": 11.731007817046333,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999496631451244,
+          5.70002831125771
+        ],
+        "waypoint_m": [
+          1.5,
+          4.8
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 252
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4654915553314964,
+          4.846482123320397
+        ],
+        "waypoint_m": [
+          1.5,
+          4.5
+        ],
+        "action": 6,
+        "source": "graph_search",
+        "known_cells": 387
+      },
+      {
+        "step": 2,
+        "position_m": [
+          1.5140246636704557,
+          4.560555587422685
+        ],
+        "waypoint_m": [
+          2.4,
+          3.5999999999999996
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 410
+      },
+      {
+        "step": 3,
+        "position_m": [
+          2.35280506945933,
+          3.6339089384702685
+        ],
+        "waypoint_m": [
+          2.6999999999999997,
+          3.3
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 465
+      },
+      {
+        "step": 4,
+        "position_m": [
+          2.6636587649350623,
+          3.3500452078719234
+        ],
+        "waypoint_m": [
+          3.5999999999999996,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 482
+      },
+      {
+        "step": 5,
+        "position_m": [
+          3.538061554758252,
+          3.285673540285118
+        ],
+        "waypoint_m": [
+          4.5,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 575
+      },
+      {
+        "step": 6,
+        "position_m": [
+          4.438751128137252,
+          3.31143965969845
+        ],
+        "waypoint_m": [
+          5.3999999999999995,
+          2.4
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 616
+      },
+      {
+        "step": 7,
+        "position_m": [
+          5.36432982815638,
+          2.4449669148154687
+        ],
+        "waypoint_m": [
+          6.3,
+          2.4
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 637
+      },
+      {
+        "step": 8,
+        "position_m": [
+          6.237967046076095,
+          2.3855413227513558
+        ],
+        "waypoint_m": [
+          7.199999999999999,
+          2.4
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 653
+      },
+      {
+        "step": 9,
+        "position_m": [
+          7.1389442023986875,
+          2.4114961878736896
+        ],
+        "waypoint_m": [
+          8.1,
+          2.4
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 666
+      },
+      {
+        "step": 10,
+        "position_m": [
+          8.045912449222715,
+          2.3946179635909903
+        ],
+        "waypoint_m": [
+          7.199999999999999,
+          2.4
+        ],
+        "action": 4,
+        "source": "graph_search",
+        "known_cells": 698
+      },
+      {
+        "step": 11,
+        "position_m": [
+          7.262875342212531,
+          2.417324928046669
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          2.4
+        ],
+        "action": 4,
+        "source": "graph_search",
+        "known_cells": 709
+      },
+      {
+        "step": 12,
+        "position_m": [
+          6.960857693908891,
+          2.3862674583294132
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          1.5
+        ],
+        "action": 6,
+        "source": "graph_search",
+        "known_cells": 710
+      },
+      {
+        "step": 13,
+        "position_m": [
+          6.879428334810852,
+          1.5583924794023756
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          1.2
+        ],
+        "action": 6,
+        "source": "graph_search",
+        "known_cells": 712
+      },
+      {
+        "step": 14,
+        "position_m": [
+          6.912659088228957,
+          1.2614688218459682
+        ],
+        "waypoint_m": [
+          7.8,
+          1.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 714
+      }
+    ],
+    "trajectory_sha256": "69f03368401a2ebcd07d0364db79da84b53ff5f7f27a60b9224f5ba327b80121"
+  },
+  {
+    "seed": 5200002,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "time_limit",
+    "sim_seconds": 159.40200000000806,
+    "wall_seconds": 33.94468452798901,
+    "physics_steps": 80301,
+    "goal_error_m": 0.2588026328563223,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 19,
+    "planning_wall_seconds": 0.38801850512390956,
+    "path_length_m": 14.32626256502579,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999496631451244,
+          5.70002831125771
+        ],
+        "waypoint_m": [
+          1.5,
+          5.7
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 252
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4458714388292822,
+          5.702836933763054
+        ],
+        "waypoint_m": [
+          1.5,
+          5.1
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 274
+      },
+      {
+        "step": 2,
+        "position_m": [
+          1.5169550595395502,
+          5.160243876147923
+        ],
+        "waypoint_m": [
+          1.5,
+          5.3999999999999995
+        ],
+        "action": 2,
+        "source": "neural_value_iteration",
+        "known_cells": 365
+      },
+      {
+        "step": 3,
+        "position_m": [
+          1.4764725839284558,
+          5.342721455004398
+        ],
+        "waypoint_m": [
+          1.2,
+          5.3999999999999995
+        ],
+        "action": 4,
+        "source": "neural_value_iteration",
+        "known_cells": 369
+      },
+      {
+        "step": 4,
+        "position_m": [
+          1.2722262117479994,
+          5.406763288785293
+        ],
+        "waypoint_m": [
+          1.5,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 370
+      },
+      {
+        "step": 5,
+        "position_m": [
+          1.4384057869835047,
+          5.3846040536061786
+        ],
+        "waypoint_m": [
+          1.2,
+          5.7
+        ],
+        "action": 3,
+        "source": "neural_value_iteration",
+        "known_cells": 370
+      },
+      {
+        "step": 6,
+        "position_m": [
+          1.2531454746537096,
+          5.658989290275171
+        ],
+        "waypoint_m": [
+          1.5,
+          6.0
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 370
+      },
+      {
+        "step": 7,
+        "position_m": [
+          1.4411695849330735,
+          5.9760224825799035
+        ],
+        "waypoint_m": [
+          2.4,
+          6.0
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 381
+      },
+      {
+        "step": 8,
+        "position_m": [
+          2.3396844317924455,
+          6.019190104950508
+        ],
+        "waypoint_m": [
+          3.3,
+          6.0
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 440
+      },
+      {
+        "step": 9,
+        "position_m": [
+          3.2411614732163794,
+          5.9890508136642255
+        ],
+        "waypoint_m": [
+          4.2,
+          6.0
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 485
+      },
+      {
+        "step": 10,
+        "position_m": [
+          4.139489314335302,
+          6.010197864011015
+        ],
+        "waypoint_m": [
+          5.1,
+          6.0
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 532
+      },
+      {
+        "step": 11,
+        "position_m": [
+          5.045559907698132,
+          5.994722473462114
+        ],
+        "waypoint_m": [
+          6.0,
+          5.1
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 568
+      },
+      {
+        "step": 12,
+        "position_m": [
+          5.964372176053861,
+          5.1450295259111245
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 642
+      },
+      {
+        "step": 13,
+        "position_m": [
+          6.838387706073615,
+          5.085694518839338
+        ],
+        "waypoint_m": [
+          7.8,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 672
+      },
+      {
+        "step": 14,
+        "position_m": [
+          7.739450348389867,
+          5.1117166477917975
+        ],
+        "waypoint_m": [
+          8.7,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 697
+      },
+      {
+        "step": 15,
+        "position_m": [
+          8.64558925118549,
+          5.09431211006968
+        ],
+        "waypoint_m": [
+          9.299999999999999,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 734
+      },
+      {
+        "step": 16,
+        "position_m": [
+          9.240074947779922,
+          5.10789208546225
+        ],
+        "waypoint_m": [
+          10.2,
+          4.2
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 743
+      },
+      {
+        "step": 17,
+        "position_m": [
+          10.164320027955023,
+          4.245153852532697
+        ],
+        "waypoint_m": [
+          11.1,
+          3.3
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 781
+      },
+      {
+        "step": 18,
+        "position_m": [
+          11.059584701354856,
+          3.3344447502383168
+        ],
+        "waypoint_m": [
+          11.1,
+          2.4
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 781
+      }
+    ],
+    "trajectory_sha256": "199411dd24b6bc3452cd90d6ebe50623553ba5aa9f3760d4b93d47bdcf4a3ff6"
+  },
+  {
+    "seed": 5200003,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 110.15999999999511,
+    "wall_seconds": 24.51788498996757,
+    "physics_steps": 55680,
+    "goal_error_m": 0.06327029034991904,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 15,
+    "planning_wall_seconds": 0.7966848030919209,
+    "path_length_m": 13.02835759495364,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999496786012839,
+          1.2000283410474921
+        ],
+        "waypoint_m": [
+          1.5,
+          1.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 259
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.445258268028379,
+          1.2029879900258758
+        ],
+        "waypoint_m": [
+          2.4,
+          1.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 285
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.34733061511137,
+          1.199569185655816
+        ],
+        "waypoint_m": [
+          3.3,
+          1.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 316
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2460353404043905,
+          1.2019032734691695
+        ],
+        "waypoint_m": [
+          3.5999999999999996,
+          1.5
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 344
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.5671839755531467,
+          1.4441528070349652
+        ],
+        "waypoint_m": [
+          4.5,
+          1.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 375
+      },
+      {
+        "step": 5,
+        "position_m": [
+          4.439750502150431,
+          1.5177844205326938
+        ],
+        "waypoint_m": [
+          5.3999999999999995,
+          1.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 399
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.3406423617667,
+          1.4893127520517637
+        ],
+        "waypoint_m": [
+          6.0,
+          1.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 444
+      },
+      {
+        "step": 7,
+        "position_m": [
+          5.938385912738566,
+          1.5130813644295873
+        ],
+        "waypoint_m": [
+          6.6,
+          2.1
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 470
+      },
+      {
+        "step": 8,
+        "position_m": [
+          6.565180434807427,
+          2.0494920727847603
+        ],
+        "waypoint_m": [
+          6.6,
+          3.0
+        ],
+        "action": 2,
+        "source": "graph_search",
+        "known_cells": 517
+      },
+      {
+        "step": 9,
+        "position_m": [
+          6.608120278425866,
+          2.9425785073040704
+        ],
+        "waypoint_m": [
+          6.6,
+          3.5999999999999996
+        ],
+        "action": 2,
+        "source": "graph_search",
+        "known_cells": 572
+      },
+      {
+        "step": 10,
+        "position_m": [
+          6.5840061778737144,
+          3.538250133794536
+        ],
+        "waypoint_m": [
+          7.5,
+          4.5
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 603
+      },
+      {
+        "step": 11,
+        "position_m": [
+          7.447077497913675,
+          4.468095936096292
+        ],
+        "waypoint_m": [
+          8.4,
+          4.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 678
+      },
+      {
+        "step": 12,
+        "position_m": [
+          8.340308799157825,
+          4.518696174792322
+        ],
+        "waypoint_m": [
+          9.299999999999999,
+          4.5
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 698
+      },
+      {
+        "step": 13,
+        "position_m": [
+          9.240563261434803,
+          4.4888193598839905
+        ],
+        "waypoint_m": [
+          10.2,
+          5.3999999999999995
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 703
+      },
+      {
+        "step": 14,
+        "position_m": [
+          10.163895388459336,
+          5.361278831832113
+        ],
+        "waypoint_m": [
+          11.1,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 703
+      }
+    ],
+    "trajectory_sha256": "3970114fd94d650b20f30b1f001b838540681c108cb34408ad1b1e33610f85d5"
+  },
+  {
+    "seed": 5200003,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 86.97999999999972,
+    "wall_seconds": 18.906114329001866,
+    "physics_steps": 44090,
+    "goal_error_m": 0.062356987796925285,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 14,
+    "planning_wall_seconds": 0.32269097794778645,
+    "path_length_m": 13.221520013046902,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999496786012839,
+          1.2000283410474921
+        ],
+        "waypoint_m": [
+          1.5,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 259
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.445258268028379,
+          1.2029879900258758
+        ],
+        "waypoint_m": [
+          2.4,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 285
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.34733061511137,
+          1.199569185655816
+        ],
+        "waypoint_m": [
+          3.3,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 316
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2460353404043905,
+          1.2019032734691695
+        ],
+        "waypoint_m": [
+          4.2,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 344
+      },
+      {
+        "step": 4,
+        "position_m": [
+          4.14661517050131,
+          1.2013613529466833
+        ],
+        "waypoint_m": [
+          5.1,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 364
+      },
+      {
+        "step": 5,
+        "position_m": [
+          5.046230051417837,
+          1.2013125296598135
+        ],
+        "waypoint_m": [
+          6.0,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 401
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.94654116962807,
+          1.2017835750224575
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 435
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.846272633595399,
+          1.200979749764262
+        ],
+        "waypoint_m": [
+          7.8,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 468
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.7458763409188744,
+          1.2024092205306203
+        ],
+        "waypoint_m": [
+          8.7,
+          1.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 502
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.646771301650633,
+          1.2002915640150815
+        ],
+        "waypoint_m": [
+          9.6,
+          2.1
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 526
+      },
+      {
+        "step": 10,
+        "position_m": [
+          9.563341381218036,
+          2.0611957941570993
+        ],
+        "waypoint_m": [
+          10.5,
+          3.0
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 588
+      },
+      {
+        "step": 11,
+        "position_m": [
+          10.453656803599525,
+          2.963809123232683
+        ],
+        "waypoint_m": [
+          11.1,
+          3.5999999999999996
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 604
+      },
+      {
+        "step": 12,
+        "position_m": [
+          11.062840791233041,
+          3.5621167909722358
+        ],
+        "waypoint_m": [
+          11.1,
+          4.5
+        ],
+        "action": 2,
+        "source": "neural_value_iteration",
+        "known_cells": 604
+      },
+      {
+        "step": 13,
+        "position_m": [
+          11.108404071776134,
+          4.442735595369004
+        ],
+        "waypoint_m": [
+          11.1,
+          5.3999999999999995
+        ],
+        "action": 2,
+        "source": "neural_value_iteration",
+        "known_cells": 613
+      }
+    ],
+    "trajectory_sha256": "680e47ac2dbe9313e8b0bb14f416312444ae0a9fe7fa3d28e061722dbd51e543"
+  },
+  {
+    "seed": 5200004,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 114.75999999999419,
+    "wall_seconds": 26.293238588958047,
+    "physics_steps": 57980,
+    "goal_error_m": 0.05994211853055244,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 16,
+    "planning_wall_seconds": 0.7160701847751625,
+    "path_length_m": 11.258198942929942,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999498979704967,
+          2.7000282371715096
+        ],
+        "waypoint_m": [
+          0.8999999999999999,
+          3.0
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 189
+      },
+      {
+        "step": 1,
+        "position_m": [
+          0.8682493775925921,
+          2.942153289654272
+        ],
+        "waypoint_m": [
+          1.7999999999999998,
+          3.0
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 234
+      },
+      {
+        "step": 2,
+        "position_m": [
+          1.7403730340757086,
+          3.0173946721106706
+        ],
+        "waypoint_m": [
+          2.4,
+          3.0
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 318
+      },
+      {
+        "step": 3,
+        "position_m": [
+          2.3383596106300706,
+          2.984223943281817
+        ],
+        "waypoint_m": [
+          2.6999999999999997,
+          3.3
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 348
+      },
+      {
+        "step": 4,
+        "position_m": [
+          2.667539573637522,
+          3.2430683019982407
+        ],
+        "waypoint_m": [
+          3.5999999999999996,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 364
+      },
+      {
+        "step": 5,
+        "position_m": [
+          3.540207879861159,
+          3.3177126569739115
+        ],
+        "waypoint_m": [
+          3.9,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 394
+      },
+      {
+        "step": 6,
+        "position_m": [
+          3.8375117359275546,
+          3.2851694463146828
+        ],
+        "waypoint_m": [
+          4.5,
+          3.9
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 398
+      },
+      {
+        "step": 7,
+        "position_m": [
+          4.466237673607476,
+          3.848655889545221
+        ],
+        "waypoint_m": [
+          5.3999999999999995,
+          3.9
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 409
+      },
+      {
+        "step": 8,
+        "position_m": [
+          5.338737813944583,
+          3.917557005623159
+        ],
+        "waypoint_m": [
+          6.3,
+          3.9
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 483
+      },
+      {
+        "step": 9,
+        "position_m": [
+          6.241820405732414,
+          3.8901857737528958
+        ],
+        "waypoint_m": [
+          6.6,
+          4.2
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 563
+      },
+      {
+        "step": 10,
+        "position_m": [
+          6.56600295493325,
+          4.141312684529191
+        ],
+        "waypoint_m": [
+          7.5,
+          4.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 584
+      },
+      {
+        "step": 11,
+        "position_m": [
+          7.439248786806723,
+          4.21761605567491
+        ],
+        "waypoint_m": [
+          8.4,
+          4.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 658
+      },
+      {
+        "step": 12,
+        "position_m": [
+          8.341992615115224,
+          4.190520037329937
+        ],
+        "waypoint_m": [
+          8.7,
+          4.2
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 684
+      },
+      {
+        "step": 13,
+        "position_m": [
+          8.638434263786946,
+          4.210589965436553
+        ],
+        "waypoint_m": [
+          9.299999999999999,
+          4.8
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 690
+      },
+      {
+        "step": 14,
+        "position_m": [
+          9.265101055152758,
+          4.748070610455269
+        ],
+        "waypoint_m": [
+          10.2,
+          4.8
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 690
+      },
+      {
+        "step": 15,
+        "position_m": [
+          10.139667088708281,
+          4.8180657510579366
+        ],
+        "waypoint_m": [
+          11.1,
+          4.8
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 691
+      }
+    ],
+    "trajectory_sha256": "e2e4b6b25decb77e0a893022fb4609c27d3c522b75bd5006c3d485d02d0a76bb"
+  },
+  {
+    "seed": 5200004,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 80.24000000000106,
+    "wall_seconds": 17.525758571049664,
+    "physics_steps": 40720,
+    "goal_error_m": 0.061617124349210496,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 13,
+    "planning_wall_seconds": 0.30161164683522657,
+    "path_length_m": 11.299166572504642,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999498979704967,
+          2.7000282371715096
+        ],
+        "waypoint_m": [
+          1.5,
+          2.6999999999999997
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 189
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.445170620223453,
+          2.702996290176746
+        ],
+        "waypoint_m": [
+          2.4,
+          2.6999999999999997
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 258
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.347271533184039,
+          2.6994756306093772
+        ],
+        "waypoint_m": [
+          3.3,
+          2.6999999999999997
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 310
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2458934678451623,
+          2.7020871423553743
+        ],
+        "waypoint_m": [
+          3.9,
+          2.6999999999999997
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 329
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.8465924023719533,
+          2.6991481190483553
+        ],
+        "waypoint_m": [
+          4.8,
+          3.5999999999999996
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 335
+      },
+      {
+        "step": 5,
+        "position_m": [
+          4.763795366321214,
+          3.5610108120591457
+        ],
+        "waypoint_m": [
+          5.3999999999999995,
+          4.2
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 356
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.352390979562914,
+          4.164418257455005
+        ],
+        "waypoint_m": [
+          6.3,
+          4.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 382
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.240199275309087,
+          4.218422672584044
+        ],
+        "waypoint_m": [
+          7.199999999999999,
+          4.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 489
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.141659661736774,
+          4.189765216785575
+        ],
+        "waypoint_m": [
+          8.1,
+          4.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 562
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.03973252842806,
+          4.210209551281655
+        ],
+        "waypoint_m": [
+          9.0,
+          4.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 607
+      },
+      {
+        "step": 10,
+        "position_m": [
+          8.946540117024655,
+          4.194818452801645
+        ],
+        "waypoint_m": [
+          9.9,
+          4.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 619
+      },
+      {
+        "step": 11,
+        "position_m": [
+          9.841999175342249,
+          4.206299467783688
+        ],
+        "waypoint_m": [
+          10.5,
+          4.2
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 621
+      },
+      {
+        "step": 12,
+        "position_m": [
+          10.445104708440256,
+          4.194775818174853
+        ],
+        "waypoint_m": [
+          11.1,
+          4.8
+        ],
+        "action": 1,
+        "source": "neural_value_iteration",
+        "known_cells": 621
+      }
+    ],
+    "trajectory_sha256": "1e2d7f589600ec25f2ddb70ced6842f95bc614ef7a908449a672a773ec758f67"
+  },
+  {
+    "seed": 5200005,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 115.63999999999402,
+    "wall_seconds": 25.967276096052956,
+    "physics_steps": 58420,
+    "goal_error_m": 0.05423390565912764,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 16,
+    "planning_wall_seconds": 0.7173436059965752,
+    "path_length_m": 12.723096857649882,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999160588661809,
+          1.5000333273872584
+        ],
+        "waypoint_m": [
+          0.8999999999999999,
+          1.7999999999999998
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 202
+      },
+      {
+        "step": 1,
+        "position_m": [
+          0.8690446444602482,
+          1.7433389050674244
+        ],
+        "waypoint_m": [
+          1.7999999999999998,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 238
+      },
+      {
+        "step": 2,
+        "position_m": [
+          1.7397128086573157,
+          1.8180790144144017
+        ],
+        "waypoint_m": [
+          2.4,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 256
+      },
+      {
+        "step": 3,
+        "position_m": [
+          2.337221929900502,
+          1.7836952682518834
+        ],
+        "waypoint_m": [
+          3.0,
+          2.4
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 263
+      },
+      {
+        "step": 4,
+        "position_m": [
+          2.9659423518349195,
+          2.348291494279681
+        ],
+        "waypoint_m": [
+          3.0,
+          3.3
+        ],
+        "action": 2,
+        "source": "graph_search",
+        "known_cells": 307
+      },
+      {
+        "step": 5,
+        "position_m": [
+          3.008305407771903,
+          3.2426470993343526
+        ],
+        "waypoint_m": [
+          3.9,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 341
+      },
+      {
+        "step": 6,
+        "position_m": [
+          3.839807266277726,
+          3.317644124186547
+        ],
+        "waypoint_m": [
+          4.2,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 479
+      },
+      {
+        "step": 7,
+        "position_m": [
+          4.1374729157415215,
+          3.2865937401959737
+        ],
+        "waypoint_m": [
+          5.1,
+          4.2
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 498
+      },
+      {
+        "step": 8,
+        "position_m": [
+          5.064200850465889,
+          4.161319259289777
+        ],
+        "waypoint_m": [
+          5.1,
+          4.5
+        ],
+        "action": 2,
+        "source": "graph_search",
+        "known_cells": 556
+      },
+      {
+        "step": 9,
+        "position_m": [
+          5.109756687693187,
+          4.436008802445217
+        ],
+        "waypoint_m": [
+          6.0,
+          5.3999999999999995
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 580
+      },
+      {
+        "step": 10,
+        "position_m": [
+          5.946570491065906,
+          5.367334661660092
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 633
+      },
+      {
+        "step": 11,
+        "position_m": [
+          6.839849398808106,
+          5.418539168825129
+        ],
+        "waypoint_m": [
+          7.8,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 691
+      },
+      {
+        "step": 12,
+        "position_m": [
+          7.741420692499828,
+          5.389366019342312
+        ],
+        "waypoint_m": [
+          8.7,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 732
+      },
+      {
+        "step": 13,
+        "position_m": [
+          8.639765579066387,
+          5.4098734097496015
+        ],
+        "waypoint_m": [
+          9.6,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 746
+      },
+      {
+        "step": 14,
+        "position_m": [
+          9.545671572576175,
+          5.395002991001669
+        ],
+        "waypoint_m": [
+          10.5,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 749
+      },
+      {
+        "step": 15,
+        "position_m": [
+          10.442912936930707,
+          5.405651972997951
+        ],
+        "waypoint_m": [
+          11.1,
+          5.3999999999999995
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 749
+      }
+    ],
+    "trajectory_sha256": "8dde9c6f29cc739a26d65e54dab4583b2de268cd3083226893afbd515f6ce348"
+  },
+  {
+    "seed": 5200005,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "time_limit",
+    "sim_seconds": 159.40200000000806,
+    "wall_seconds": 30.473211511969566,
+    "physics_steps": 80301,
+    "goal_error_m": 9.877449648703374,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 16,
+    "planning_wall_seconds": 0.2304652911843732,
+    "path_length_m": 6.668348626187976,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5999160588661809,
+          1.5000333273872584
+        ],
+        "waypoint_m": [
+          1.5,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 202
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.446504226501932,
+          1.502625785232482
+        ],
+        "waypoint_m": [
+          2.4,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 217
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.3468301308464135,
+          1.4999110826701818
+        ],
+        "waypoint_m": [
+          3.0,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 224
+      },
+      {
+        "step": 3,
+        "position_m": [
+          2.9467625454277346,
+          1.50065254701327
+        ],
+        "waypoint_m": [
+          3.3,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 231
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.246870203405609,
+          1.4999288030085824
+        ],
+        "waypoint_m": [
+          3.0,
+          1.5
+        ],
+        "action": 4,
+        "source": "neural_value_iteration",
+        "known_cells": 239
+      },
+      {
+        "step": 5,
+        "position_m": [
+          3.0616349266813114,
+          1.5161485272168747
+        ],
+        "waypoint_m": [
+          3.3,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 258
+      },
+      {
+        "step": 6,
+        "position_m": [
+          3.238782458626155,
+          1.4885269196884374
+        ],
+        "waypoint_m": [
+          3.0,
+          1.5
+        ],
+        "action": 4,
+        "source": "neural_value_iteration",
+        "known_cells": 258
+      },
+      {
+        "step": 7,
+        "position_m": [
+          3.0710080847809675,
+          1.5125880293468228
+        ],
+        "waypoint_m": [
+          3.0,
+          0.6
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 264
+      },
+      {
+        "step": 8,
+        "position_m": [
+          2.9792382877584185,
+          0.6586942740755104
+        ],
+        "waypoint_m": [
+          3.0,
+          1.2
+        ],
+        "action": 2,
+        "source": "neural_value_iteration",
+        "known_cells": 265
+      },
+      {
+        "step": 9,
+        "position_m": [
+          3.0158087068801986,
+          1.1358519163619087
+        ],
+        "waypoint_m": [
+          3.0,
+          0.8999999999999999
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 286
+      },
+      {
+        "step": 10,
+        "position_m": [
+          2.979463846529618,
+          0.9591466183384659
+        ],
+        "waypoint_m": [
+          2.6999999999999997,
+          0.8999999999999999
+        ],
+        "action": 4,
+        "source": "neural_value_iteration",
+        "known_cells": 286
+      },
+      {
+        "step": 11,
+        "position_m": [
+          2.7627662775000585,
+          0.8861854986045852
+        ],
+        "waypoint_m": [
+          3.0,
+          0.8999999999999999
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 290
+      },
+      {
+        "step": 12,
+        "position_m": [
+          2.937676173796217,
+          0.9173575718765399
+        ],
+        "waypoint_m": [
+          2.6999999999999997,
+          0.6
+        ],
+        "action": 5,
+        "source": "neural_value_iteration",
+        "known_cells": 291
+      },
+      {
+        "step": 13,
+        "position_m": [
+          2.7583657247542708,
+          0.6420365360574635
+        ],
+        "waypoint_m": [
+          3.0,
+          0.6
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 291
+      },
+      {
+        "step": 14,
+        "position_m": [
+          2.936214257228152,
+          0.5891923902164592
+        ],
+        "waypoint_m": [
+          2.4,
+          0.6
+        ],
+        "action": 4,
+        "source": "neural_value_iteration",
+        "known_cells": 295
+      },
+      {
+        "step": 15,
+        "position_m": [
+          2.4589670494189435,
+          0.6217574619509448
+        ],
+        "waypoint_m": [
+          2.6999999999999997,
+          0.6
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 295
+      }
+    ],
+    "trajectory_sha256": "551d21acdac1c2cc740247975ba521148fd1a58bc8d780ad14cf845dffbb8454"
+  },
+  {
+    "seed": 5200006,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 106.35999999999586,
+    "wall_seconds": 21.157545703987125,
+    "physics_steps": 53780,
+    "goal_error_m": 0.06382319889536474,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 14,
+    "planning_wall_seconds": 0.6781764174811542,
+    "path_length_m": 14.175632568193098,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.599915723048005,
+          2.4000333905038054
+        ],
+        "waypoint_m": [
+          1.5,
+          3.3
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 297
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4653836639114177,
+          3.2599786693485444
+        ],
+        "waypoint_m": [
+          2.4,
+          4.2
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 376
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.352148402218172,
+          4.164828780165644
+        ],
+        "waypoint_m": [
+          3.3,
+          5.1
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 393
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.2604246416753266,
+          5.063322795706678
+        ],
+        "waypoint_m": [
+          3.9,
+          5.7
+        ],
+        "action": 1,
+        "source": "graph_search",
+        "known_cells": 415
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.856424320249586,
+          5.663404705854072
+        ],
+        "waypoint_m": [
+          4.8,
+          5.7
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 445
+      },
+      {
+        "step": 5,
+        "position_m": [
+          4.740402469254911,
+          5.718513779790282
+        ],
+        "waypoint_m": [
+          5.7,
+          5.7
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 510
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.641080011849505,
+          5.688643667404154
+        ],
+        "waypoint_m": [
+          6.6,
+          4.8
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 562
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.56353928536449,
+          4.84591578231447
+        ],
+        "waypoint_m": [
+          7.5,
+          3.9
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 689
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.459014018663245,
+          3.9351518775497145
+        ],
+        "waypoint_m": [
+          8.1,
+          3.3
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 761
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.063390869353245,
+          3.340543153089965
+        ],
+        "waypoint_m": [
+          9.0,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 763
+      },
+      {
+        "step": 10,
+        "position_m": [
+          8.938602353128909,
+          3.285692643602886
+        ],
+        "waypoint_m": [
+          9.9,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 798
+      },
+      {
+        "step": 11,
+        "position_m": [
+          9.839163751828679,
+          3.3119904018665265
+        ],
+        "waypoint_m": [
+          10.799999999999999,
+          2.4
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 813
+      },
+      {
+        "step": 12,
+        "position_m": [
+          10.764389188777175,
+          2.444555924794978
+        ],
+        "waypoint_m": [
+          11.1,
+          2.1
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 819
+      },
+      {
+        "step": 13,
+        "position_m": [
+          11.049438954965845,
+          2.135183623234335
+        ],
+        "waypoint_m": [
+          11.1,
+          1.2
+        ],
+        "action": 6,
+        "source": "graph_search",
+        "known_cells": 819
+      }
+    ],
+    "trajectory_sha256": "ff51a984caf410270de355353916b0761b8ec8af3353968f241aca161fd795e5"
+  },
+  {
+    "seed": 5200006,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "collision",
+    "sim_seconds": 61.20000000000406,
+    "wall_seconds": 11.744174188002944,
+    "physics_steps": 31200,
+    "goal_error_m": 8.087370856763947,
+    "collision": {
+      "body": "obstacle4",
+      "robot_geom": null,
+      "pos": [
+        3.348,
+        0.996,
+        0.066
+      ],
+      "t": 61.8
+    },
+    "panorama_looks": 0,
+    "passive_observations": 8,
+    "planning_wall_seconds": 0.12773510691476986,
+    "path_length_m": 3.6933290700631747,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.599915723048005,
+          2.4000333905038054
+        ],
+        "waypoint_m": [
+          1.5,
+          2.4
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 297
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4458826305664363,
+          2.4028434753928867
+        ],
+        "waypoint_m": [
+          2.1,
+          2.4
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 313
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.046756399629061,
+          2.397927424240644
+        ],
+        "waypoint_m": [
+          2.1,
+          1.7999999999999998
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 319
+      },
+      {
+        "step": 3,
+        "position_m": [
+          2.116783078843127,
+          1.8602846001719056
+        ],
+        "waypoint_m": [
+          2.4,
+          1.7999999999999998
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 334
+      },
+      {
+        "step": 4,
+        "position_m": [
+          2.3376503495696666,
+          1.7925036621572168
+        ],
+        "waypoint_m": [
+          2.4,
+          1.5
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 335
+      },
+      {
+        "step": 5,
+        "position_m": [
+          2.4083316083279405,
+          1.5617645842497172
+        ],
+        "waypoint_m": [
+          3.0,
+          1.5
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 335
+      },
+      {
+        "step": 6,
+        "position_m": [
+          2.930775311386138,
+          1.4796735441036586
+        ],
+        "waypoint_m": [
+          3.0,
+          0.8999999999999999
+        ],
+        "action": 6,
+        "source": "neural_value_iteration",
+        "known_cells": 336
+      },
+      {
+        "step": 7,
+        "position_m": [
+          3.0155649290581037,
+          0.9600563309945166
+        ],
+        "waypoint_m": [
+          3.0,
+          1.2
+        ],
+        "action": 2,
+        "source": "neural_value_iteration",
+        "known_cells": 336
+      }
+    ],
+    "trajectory_sha256": "cee252eb0242858db64f8d4ddc659083331b39417edba5a3ab8a2bc3b8c4e9f9"
+  },
+  {
+    "seed": 5200007,
+    "method": "rules_cached_prior",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 75.28000000000205,
+    "wall_seconds": 15.245326446020044,
+    "physics_steps": 38240,
+    "goal_error_m": 0.0535501348403248,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 12,
+    "planning_wall_seconds": 0.6981505009462126,
+    "path_length_m": 11.202060424259168,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5998923801128796,
+          5.100029996951948
+        ],
+        "waypoint_m": [
+          1.5,
+          4.2
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 315
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.465295837206211,
+          4.246672339102071
+        ],
+        "waypoint_m": [
+          2.4,
+          3.3
+        ],
+        "action": 7,
+        "source": "graph_search",
+        "known_cells": 444
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.358089574874542,
+          3.3340104230268928
+        ],
+        "waypoint_m": [
+          3.3,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 512
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.238796698890006,
+          3.2856148196951853
+        ],
+        "waypoint_m": [
+          4.2,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 575
+      },
+      {
+        "step": 4,
+        "position_m": [
+          4.138934218120056,
+          3.3119434438927047
+        ],
+        "waypoint_m": [
+          5.1,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 634
+      },
+      {
+        "step": 5,
+        "position_m": [
+          5.045365031518968,
+          3.2942607962393438
+        ],
+        "waypoint_m": [
+          6.0,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 697
+      },
+      {
+        "step": 6,
+        "position_m": [
+          5.941638075851554,
+          3.3072601206187864
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 753
+      },
+      {
+        "step": 7,
+        "position_m": [
+          6.847239457838721,
+          3.2968119270174228
+        ],
+        "waypoint_m": [
+          7.8,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 811
+      },
+      {
+        "step": 8,
+        "position_m": [
+          7.744193430986728,
+          3.3043095916922445
+        ],
+        "waypoint_m": [
+          8.7,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 853
+      },
+      {
+        "step": 9,
+        "position_m": [
+          8.647444358726078,
+          3.2988695247575808
+        ],
+        "waypoint_m": [
+          9.6,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 873
+      },
+      {
+        "step": 10,
+        "position_m": [
+          9.54597750373497,
+          3.302529895127178
+        ],
+        "waypoint_m": [
+          10.5,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 882
+      },
+      {
+        "step": 11,
+        "position_m": [
+          10.4465622520009,
+          3.30022592635039
+        ],
+        "waypoint_m": [
+          11.1,
+          3.3
+        ],
+        "action": 0,
+        "source": "graph_search",
+        "known_cells": 882
+      }
+    ],
+    "trajectory_sha256": "0c05188298271e52d271ac9f22a66224b57b450cef6f9843c16c622fb455f88e"
+  },
+  {
+    "seed": 5200007,
+    "method": "learned",
+    "oracle_reachable": true,
+    "status": "arrived",
+    "sim_seconds": 103.61999999999641,
+    "wall_seconds": 20.48796127102105,
+    "physics_steps": 52410,
+    "goal_error_m": 0.06353554339808988,
+    "collision": null,
+    "panorama_looks": 0,
+    "passive_observations": 16,
+    "planning_wall_seconds": 0.2772691239370033,
+    "path_length_m": 11.153717768009013,
+    "motor_controller": "learned_v4",
+    "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+    "initialization": "world start set before WheelLegEnv construction and reset",
+    "mujoco_warning_counts": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "sensor": "planar simulated visibility, not production RGB-D",
+    "geometry": "convex extrusions of scan footprints, not original scan triangles",
+    "decisions": [
+      {
+        "step": 0,
+        "position_m": [
+          0.5998923801128796,
+          5.100029996951948
+        ],
+        "waypoint_m": [
+          1.5,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 315
+      },
+      {
+        "step": 1,
+        "position_m": [
+          1.4460770051058138,
+          5.102219422551447
+        ],
+        "waypoint_m": [
+          2.4,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 366
+      },
+      {
+        "step": 2,
+        "position_m": [
+          2.3466885539960503,
+          5.100517823890896
+        ],
+        "waypoint_m": [
+          3.3,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 412
+      },
+      {
+        "step": 3,
+        "position_m": [
+          3.24597895108451,
+          5.102280363023368
+        ],
+        "waypoint_m": [
+          3.5999999999999996,
+          5.1
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 453
+      },
+      {
+        "step": 4,
+        "position_m": [
+          3.5466894064328787,
+          5.098623254335811
+        ],
+        "waypoint_m": [
+          3.9,
+          4.8
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 467
+      },
+      {
+        "step": 5,
+        "position_m": [
+          3.872731885362077,
+          4.856087979923708
+        ],
+        "waypoint_m": [
+          4.8,
+          4.8
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 515
+      },
+      {
+        "step": 6,
+        "position_m": [
+          4.737924252868897,
+          4.785592082853588
+        ],
+        "waypoint_m": [
+          5.7,
+          4.8
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 564
+      },
+      {
+        "step": 7,
+        "position_m": [
+          5.638617116548992,
+          4.811093063615257
+        ],
+        "waypoint_m": [
+          6.6,
+          4.8
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 629
+      },
+      {
+        "step": 8,
+        "position_m": [
+          6.545929060688585,
+          4.7944562945935765
+        ],
+        "waypoint_m": [
+          6.8999999999999995,
+          4.8
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 683
+      },
+      {
+        "step": 9,
+        "position_m": [
+          6.840762650183136,
+          4.805736157785704
+        ],
+        "waypoint_m": [
+          7.8,
+          3.9
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 702
+      },
+      {
+        "step": 10,
+        "position_m": [
+          7.764200210726801,
+          3.944640640611606
+        ],
+        "waypoint_m": [
+          8.1,
+          3.9
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 792
+      },
+      {
+        "step": 11,
+        "position_m": [
+          8.0289260495821,
+          3.8851386865701776
+        ],
+        "waypoint_m": [
+          8.4,
+          3.5999999999999996
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 801
+      },
+      {
+        "step": 12,
+        "position_m": [
+          8.371025664863511,
+          3.6554584926938594
+        ],
+        "waypoint_m": [
+          9.299999999999999,
+          3.5999999999999996
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 808
+      },
+      {
+        "step": 13,
+        "position_m": [
+          9.238186033258941,
+          3.5859999200684722
+        ],
+        "waypoint_m": [
+          10.2,
+          3.5999999999999996
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 826
+      },
+      {
+        "step": 14,
+        "position_m": [
+          10.139781300408247,
+          3.6109112073440173
+        ],
+        "waypoint_m": [
+          10.799999999999999,
+          3.5999999999999996
+        ],
+        "action": 0,
+        "source": "neural_value_iteration",
+        "known_cells": 826
+      },
+      {
+        "step": 15,
+        "position_m": [
+          10.740723788096341,
+          3.5904627729848495
+        ],
+        "waypoint_m": [
+          11.1,
+          3.3
+        ],
+        "action": 7,
+        "source": "neural_value_iteration",
+        "known_cells": 826
+      }
+    ],
+    "trajectory_sha256": "ebfa8b6ea7ee35c59afdf76172f38f1f42ef5c6c5a8c992f42d9d8a208e28a93"
+  }
+]

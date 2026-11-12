@@ -1,0 +1,84 @@
+{
+  "learned": {
+    "episodes": 128,
+    "statuses": {
+      "arrived": 122,
+      "loop": 6
+    },
+    "reachable_episodes": 128,
+    "reachable_arrivals": 122,
+    "reachable_success_rate": 0.953125,
+    "mean_planning_wall_seconds": 0.21884151121685136,
+    "mean_path_length_m": 12.382417474541757,
+    "mean_panorama_looks": 0.0,
+    "mean_passive_observations": 38.4140625
+  },
+  "learned_no_prior": {
+    "episodes": 128,
+    "statuses": {
+      "loop": 12,
+      "arrived": 116
+    },
+    "reachable_episodes": 128,
+    "reachable_arrivals": 116,
+    "reachable_success_rate": 0.90625,
+    "mean_planning_wall_seconds": 0.2210370242250974,
+    "mean_path_length_m": 12.14637682270116,
+    "mean_panorama_looks": 0.0,
+    "mean_passive_observations": 37.7890625
+  },
+  "rules_cached_prior": {
+    "episodes": 128,
+    "statuses": {
+      "arrived": 128
+    },
+    "reachable_episodes": 128,
+    "reachable_arrivals": 128,
+    "reachable_success_rate": 1.0,
+    "mean_planning_wall_seconds": 0.5154192528111707,
+    "mean_path_length_m": 11.805279351229377,
+    "mean_panorama_looks": 0.0,
+    "mean_passive_observations": 35.7265625
+  },
+  "rules_conservative": {
+    "episodes": 128,
+    "statuses": {
+      "stopped": 128
+    },
+    "reachable_episodes": 128,
+    "reachable_arrivals": 0,
+    "reachable_success_rate": 0.0,
+    "mean_planning_wall_seconds": 0.0003599218121053127,
+    "mean_path_length_m": 0.0,
+    "mean_panorama_looks": 1.0,
+    "mean_passive_observations": 0.0
+  },
+  "rules_optimistic": {
+    "episodes": 128,
+    "statuses": {
+      "arrived": 128
+    },
+    "reachable_episodes": 128,
+    "reachable_arrivals": 128,
+    "reachable_success_rate": 1.0,
+    "mean_planning_wall_seconds": 0.5423688742139348,
+    "mean_path_length_m": 11.861391364112864,
+    "mean_panorama_looks": 0.0,
+    "mean_passive_observations": 35.8359375
+  },
+  "untrained": {
+    "episodes": 128,
+    "statuses": {
+      "loop": 2,
+      "time_limit": 74,
+      "arrived": 52
+    },
+    "reachable_episodes": 128,
+    "reachable_arrivals": 52,
+    "reachable_success_rate": 0.40625,
+    "mean_planning_wall_seconds": 0.7708710579513536,
+    "mean_path_length_m": 40.57240885383446,
+    "mean_panorama_looks": 0.0,
+    "mean_passive_observations": 134.9921875
+  }
+}

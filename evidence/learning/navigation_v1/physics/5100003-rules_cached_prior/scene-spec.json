@@ -1,0 +1,128 @@
+{
+  "name": "navigation_5100003",
+  "seed": 5100003,
+  "split": "train",
+  "start": [
+    0.0,
+    0.0
+  ],
+  "goal_x": 11.1,
+  "terrain": {
+    "kind": "flat",
+    "slope_deg": 0.0,
+    "span": 16.0,
+    "roughness": 0.0,
+    "pits": 0,
+    "pit_depth": 0.0,
+    "field_x_max": 12.0
+  },
+  "objects": [
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-0.obj",
+      "x": 9.589219103595369,
+      "y": 2.9172083210569344,
+      "yaw_deg": 0.0,
+      "height_m": 0.4145860954151027
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-1.obj",
+      "x": 2.775517923103566,
+      "y": 6.043053821843946,
+      "yaw_deg": 0.0,
+      "height_m": 0.41460044845539384
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-2.obj",
+      "x": 5.32853529717004,
+      "y": 2.7621952456441945,
+      "yaw_deg": 0.0,
+      "height_m": 0.41795596374586563
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-3.obj",
+      "x": 3.897198569428218,
+      "y": 4.347362743721982,
+      "yaw_deg": 0.0,
+      "height_m": 0.4267562062029674
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-4.obj",
+      "x": 8.194513354145519,
+      "y": 1.3033397498000043,
+      "yaw_deg": 0.0,
+      "height_m": 0.4327404418921916
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-5.obj",
+      "x": 7.978455113422191,
+      "y": 3.1935656918227333,
+      "yaw_deg": 0.0,
+      "height_m": 0.4826463752638954
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-6.obj",
+      "x": 9.58447696527831,
+      "y": 4.8138619793987445,
+      "yaw_deg": 0.0,
+      "height_m": 0.4508385720664801
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/rock-7.obj",
+      "x": 8.212469093312025,
+      "y": 2.0176024127966112,
+      "yaw_deg": 0.0,
+      "height_m": 0.377410531253124
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/border-0.obj",
+      "x": 6.0,
+      "y": -0.3,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/border-1.obj",
+      "x": 6.0,
+      "y": 7.199999999999999,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/border-2.obj",
+      "x": -0.3,
+      "y": 3.5999999999999996,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics/5100003-rules_cached_prior/meshes/border-3.obj",
+      "x": 12.0,
+      "y": 3.5999999999999996,
+      "yaw_deg": 0.0
+    }
+  ],
+  "provenance": {
+    "generator": "src/beforestep/simulation/terrain.py",
+    "terrain_representation": "heightfield",
+    "units": "meters",
+    "note": "地形高度为真实米制；物体静态刚性"
+  },
+  "channel": {
+    "center_y": 3.5999999999999996,
+    "half_width": 3.5999999999999996
+  },
+  "soil": {
+    "mode": "soil",
+    "label": "nominal",
+    "params": {
+      "n": 1.0,
+      "kc": 1400.0,
+      "kphi": 820000.0,
+      "cohesion_pa": 170.0,
+      "phi_deg": 35.0,
+      "k_shear": 0.018
+    },
+    "params_sha": "55848f80956792b4704ff3ec83678bf7"
+  },
+  "init_perturbation": {
+    "lateral_m": 0.0,
+    "yaw_rad": 0.0
+  }
+}

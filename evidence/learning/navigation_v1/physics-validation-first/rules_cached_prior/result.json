@@ -1,0 +1,45 @@
+{
+  "seed": 2100063,
+  "method": "rules_cached_prior",
+  "oracle_reachable": true,
+  "status": "collision",
+  "sim_seconds": 0.040000000000000036,
+  "wall_seconds": 0.05383145000087097,
+  "physics_steps": 620,
+  "goal_error_m": 10.57542687386806,
+  "collision": {
+    "body": "obstacle11",
+    "robot_geom": null,
+    "pos": [
+      0.15,
+      2.928,
+      0.284
+    ],
+    "t": 0.64
+  },
+  "panorama_looks": 0,
+  "passive_observations": 1,
+  "planning_wall_seconds": 0.0,
+  "path_length_m": 0.0,
+  "motor_controller": "learned_v4",
+  "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+  "sensor": "planar simulated visibility, not production RGB-D",
+  "geometry": "convex extrusions of scan footprints, not original scan triangles",
+  "decisions": [
+    {
+      "step": 0,
+      "position_m": [
+        0.5461288622296976,
+        3.00324035715726
+      ],
+      "waypoint_m": [
+        1.2,
+        2.4
+      ],
+      "action": 7,
+      "source": "graph_search",
+      "known_cells": 304
+    }
+  ],
+  "trajectory_sha256": "d7ea9733422ba2e82fcd697d2bffd662a3672518812bea6726c1b9dedc92ef5c"
+}

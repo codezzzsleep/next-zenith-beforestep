@@ -1,0 +1,256 @@
+{
+  "seed": 5200005,
+  "method": "rules_cached_prior",
+  "oracle_reachable": true,
+  "status": "arrived",
+  "sim_seconds": 115.63999999999402,
+  "wall_seconds": 25.967276096052956,
+  "physics_steps": 58420,
+  "goal_error_m": 0.05423390565912764,
+  "collision": null,
+  "panorama_looks": 0,
+  "passive_observations": 16,
+  "planning_wall_seconds": 0.7173436059965752,
+  "path_length_m": 12.723096857649882,
+  "motor_controller": "learned_v4",
+  "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+  "initialization": "world start set before WheelLegEnv construction and reset",
+  "mujoco_warning_counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "sensor": "planar simulated visibility, not production RGB-D",
+  "geometry": "convex extrusions of scan footprints, not original scan triangles",
+  "decisions": [
+    {
+      "step": 0,
+      "position_m": [
+        0.5999160588661809,
+        1.5000333273872584
+      ],
+      "waypoint_m": [
+        0.8999999999999999,
+        1.7999999999999998
+      ],
+      "action": 1,
+      "source": "graph_search",
+      "known_cells": 202
+    },
+    {
+      "step": 1,
+      "position_m": [
+        0.8690446444602482,
+        1.7433389050674244
+      ],
+      "waypoint_m": [
+        1.7999999999999998,
+        1.7999999999999998
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 238
+    },
+    {
+      "step": 2,
+      "position_m": [
+        1.7397128086573157,
+        1.8180790144144017
+      ],
+      "waypoint_m": [
+        2.4,
+        1.7999999999999998
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 256
+    },
+    {
+      "step": 3,
+      "position_m": [
+        2.337221929900502,
+        1.7836952682518834
+      ],
+      "waypoint_m": [
+        3.0,
+        2.4
+      ],
+      "action": 1,
+      "source": "graph_search",
+      "known_cells": 263
+    },
+    {
+      "step": 4,
+      "position_m": [
+        2.9659423518349195,
+        2.348291494279681
+      ],
+      "waypoint_m": [
+        3.0,
+        3.3
+      ],
+      "action": 2,
+      "source": "graph_search",
+      "known_cells": 307
+    },
+    {
+      "step": 5,
+      "position_m": [
+        3.008305407771903,
+        3.2426470993343526
+      ],
+      "waypoint_m": [
+        3.9,
+        3.3
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 341
+    },
+    {
+      "step": 6,
+      "position_m": [
+        3.839807266277726,
+        3.317644124186547
+      ],
+      "waypoint_m": [
+        4.2,
+        3.3
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 479
+    },
+    {
+      "step": 7,
+      "position_m": [
+        4.1374729157415215,
+        3.2865937401959737
+      ],
+      "waypoint_m": [
+        5.1,
+        4.2
+      ],
+      "action": 1,
+      "source": "graph_search",
+      "known_cells": 498
+    },
+    {
+      "step": 8,
+      "position_m": [
+        5.064200850465889,
+        4.161319259289777
+      ],
+      "waypoint_m": [
+        5.1,
+        4.5
+      ],
+      "action": 2,
+      "source": "graph_search",
+      "known_cells": 556
+    },
+    {
+      "step": 9,
+      "position_m": [
+        5.109756687693187,
+        4.436008802445217
+      ],
+      "waypoint_m": [
+        6.0,
+        5.3999999999999995
+      ],
+      "action": 1,
+      "source": "graph_search",
+      "known_cells": 580
+    },
+    {
+      "step": 10,
+      "position_m": [
+        5.946570491065906,
+        5.367334661660092
+      ],
+      "waypoint_m": [
+        6.8999999999999995,
+        5.3999999999999995
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 633
+    },
+    {
+      "step": 11,
+      "position_m": [
+        6.839849398808106,
+        5.418539168825129
+      ],
+      "waypoint_m": [
+        7.8,
+        5.3999999999999995
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 691
+    },
+    {
+      "step": 12,
+      "position_m": [
+        7.741420692499828,
+        5.389366019342312
+      ],
+      "waypoint_m": [
+        8.7,
+        5.3999999999999995
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 732
+    },
+    {
+      "step": 13,
+      "position_m": [
+        8.639765579066387,
+        5.4098734097496015
+      ],
+      "waypoint_m": [
+        9.6,
+        5.3999999999999995
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 746
+    },
+    {
+      "step": 14,
+      "position_m": [
+        9.545671572576175,
+        5.395002991001669
+      ],
+      "waypoint_m": [
+        10.5,
+        5.3999999999999995
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 749
+    },
+    {
+      "step": 15,
+      "position_m": [
+        10.442912936930707,
+        5.405651972997951
+      ],
+      "waypoint_m": [
+        11.1,
+        5.3999999999999995
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 749
+    }
+  ],
+  "trajectory_sha256": "8dde9c6f29cc739a26d65e54dab4583b2de268cd3083226893afbd515f6ce348"
+}

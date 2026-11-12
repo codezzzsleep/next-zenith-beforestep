@@ -1,0 +1,82 @@
+{
+  "id": "271773ff8248f8e486b1eb838cb9f4237489d0b2e610e77b9045e960182e9c09",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      14,
+      7
+    ],
+    "goal": [
+      37,
+      6
+    ],
+    "known_fraction": 0.559374988079071,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 6.606814663663571,
+        "estimated_remaining_steps": 22.414213562373096,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 4,
+        "delta": [
+          -1,
+          0
+        ],
+        "goal_distance_m": 7.206247289678588,
+        "estimated_remaining_steps": 24.414213562373096,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 1
+      },
+      {
+        "id": 5,
+        "delta": [
+          -1,
+          -1
+        ],
+        "goal_distance_m": 7.199999999999999,
+        "estimated_remaining_steps": 24.82842712474619,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 6.8999999999999995,
+        "estimated_remaining_steps": 23.82842712474619,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 7,
+        "delta": [
+          1,
+          -1
+        ],
+        "goal_distance_m": 6.6,
+        "estimated_remaining_steps": 22.82842712474619,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794476133.0085852,
+  "error": "JSONDecodeError",
+  "wall_seconds": 6.742408104997594
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "beforestep-navigation-implementation-check/v1",
+  "tests": {
+    "command": "/tmp/beforestep-nav-venv/bin/python -m unittest discover -s tests -v",
+    "exit_code": 0,
+    "summary": "----------------------------------------------------------------------\nRan 106 tests in 12.891s\n\nOK\n"
+  },
+  "benchmark": {
+    "command": "CPU forward/backward on a 32 x 4 x 40 x 24 batch, 48 neural value iterations",
+    "exit_code": 0,
+    "output": "{'reachable': True, 'rocks': 6, 'blocked_fraction': 0.371875}\n{'batch_wall_s': 0.26259467395721003, 'shapes': [[32, 8, 40, 24], [32, 40, 24]], 'gradients_finite': True}\n"
+  },
+  "frozen_src_changed": false
+}

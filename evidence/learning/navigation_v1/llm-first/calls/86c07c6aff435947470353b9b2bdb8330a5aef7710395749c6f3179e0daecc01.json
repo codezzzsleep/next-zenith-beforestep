@@ -1,0 +1,82 @@
+{
+  "id": "86c07c6aff435947470353b9b2bdb8330a5aef7710395749c6f3179e0daecc01",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      2,
+      15
+    ],
+    "goal": [
+      37,
+      15
+    ],
+    "known_fraction": 0.2562499940395355,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 10.2,
+        "estimated_remaining_steps": 34.0,
+        "observed_fraction_near_target": 0.9200000166893005,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 10.20441081101697,
+        "estimated_remaining_steps": 34.41421356237309,
+        "observed_fraction_near_target": 0.800000011920929,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 10.504284840006958,
+        "estimated_remaining_steps": 35.41421356237309,
+        "observed_fraction_near_target": 0.800000011920929,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 10.504284840006958,
+        "estimated_remaining_steps": 35.41421356237309,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 7,
+        "delta": [
+          1,
+          -1
+        ],
+        "goal_distance_m": 10.20441081101697,
+        "estimated_remaining_steps": 34.41421356237309,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794475431.9728682,
+  "error": "HTTP 403",
+  "wall_seconds": 0.02989768097177148
+}

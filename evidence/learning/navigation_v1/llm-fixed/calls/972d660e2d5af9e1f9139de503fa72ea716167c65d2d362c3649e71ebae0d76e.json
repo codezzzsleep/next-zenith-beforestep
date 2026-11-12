@@ -1,0 +1,82 @@
+{
+  "id": "972d660e2d5af9e1f9139de503fa72ea716167c65d2d362c3649e71ebae0d76e",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      2,
+      12
+    ],
+    "goal": [
+      37,
+      6
+    ],
+    "known_fraction": 0.3395833373069763,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 10.357605900979241,
+        "estimated_remaining_steps": 36.48528137423856,
+        "observed_fraction_near_target": 0.9200000166893005,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 10.413932974625869,
+        "estimated_remaining_steps": 36.89949493661166,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 10.70794097854485,
+        "estimated_remaining_steps": 37.89949493661165,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 10.606601717798213,
+        "estimated_remaining_steps": 37.07106781186547,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 7,
+        "delta": [
+          1,
+          -1
+        ],
+        "goal_distance_m": 10.309704166463748,
+        "estimated_remaining_steps": 36.07106781186547,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794476125.3429575,
+  "error": "JSONDecodeError",
+  "wall_seconds": 7.296751046029385
+}

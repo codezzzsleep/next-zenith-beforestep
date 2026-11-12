@@ -1,0 +1,595 @@
+{
+  "schema": "beforestep-learned-navigation-result/v1",
+  "model_sha256": "de1dcec57a7debae25e611c5e46a45becb1634b1042ee22bed751917c70fa413",
+  "training": {
+    "schema": "beforestep-navigation-training/v1",
+    "config_sha256": "be63eb1736ed2fe4dcc449189ebf296c3fa5e88d52012747b1238cc755ab82fa",
+    "library_sha256": "661e13bb4794dc48e4f6de45ba0d36047f6e3fe440130178d597cd5ff1697917",
+    "source": {
+      "experimental/navigation/train.py": "c462bfeb16587cf39bbc80f0cd11a3ed1ceb36e2c2536f3e9cc76345f41b74bf",
+      "experimental/navigation/model.py": "65bd882edd08b02b546fde883c34cfef3e884b99a3258223c1ba723372f0f5a2",
+      "experimental/navigation/world.py": "12cdbb60b58396c00659c9cb1881295186e8b3de9f0d4acdefb02601c1188606"
+    },
+    "seed": 20261112,
+    "new_paid_tasks": 0,
+    "torch_version": "2.5.1+cpu",
+    "pid": 1496857,
+    "stage": "complete",
+    "started_at_unix": 1794474925.114126,
+    "samples": 2048,
+    "validation_samples": 128,
+    "data_sha256": "3291add8478f36b9568bc8428b526bb43a26f198d7a66658c3cbfb3a26d6351d",
+    "completed_at_unix": 1794475140.6813347,
+    "epochs": 20,
+    "best_sha256": "de1dcec57a7debae25e611c5e46a45becb1634b1042ee22bed751917c70fa413",
+    "best_validation_loss": 0.24063404649496078
+  },
+  "results": {
+    "validation": {
+      "learned": {
+        "episodes": 64,
+        "arrived": 58,
+        "success_rate": 0.90625,
+        "success_wilson_95": [
+          0.810171204003544,
+          0.9563217474148016
+        ],
+        "statuses": {
+          "arrived": 58,
+          "loop": 6
+        },
+        "reachable": 63,
+        "reachable_arrived": 58,
+        "mean_path_length_m": 12.278166933744048,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 38.3125,
+        "mean_planning_wall_seconds": 0.1979430407172913
+      },
+      "learned_no_prior": {
+        "episodes": 64,
+        "arrived": 56,
+        "success_rate": 0.875,
+        "success_wilson_95": [
+          0.7722543817887005,
+          0.9352775733666955
+        ],
+        "statuses": {
+          "arrived": 56,
+          "loop": 8
+        },
+        "reachable": 63,
+        "reachable_arrived": 56,
+        "mean_path_length_m": 11.96277191227157,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 37.390625,
+        "mean_planning_wall_seconds": 0.19820707163034967
+      },
+      "rules_cached_prior": {
+        "episodes": 64,
+        "arrived": 63,
+        "success_rate": 0.984375,
+        "success_wilson_95": [
+          0.9166589839990573,
+          0.9972364580766624
+        ],
+        "statuses": {
+          "arrived": 63,
+          "stopped": 1
+        },
+        "reachable": 63,
+        "reachable_arrived": 63,
+        "mean_path_length_m": 11.744881962272267,
+        "mean_panorama_looks": 0.015625,
+        "mean_passive_observations": 35.609375,
+        "mean_planning_wall_seconds": 0.48555272563771723
+      },
+      "rules_conservative": {
+        "episodes": 64,
+        "arrived": 0,
+        "success_rate": 0.0,
+        "success_wilson_95": [
+          0.0,
+          0.05662405979280534
+        ],
+        "statuses": {
+          "stopped": 64
+        },
+        "reachable": 63,
+        "reachable_arrived": 0,
+        "mean_path_length_m": 0.0,
+        "mean_panorama_looks": 1.0,
+        "mean_passive_observations": 0.0,
+        "mean_planning_wall_seconds": 0.000328719409480982
+      },
+      "rules_optimistic": {
+        "episodes": 64,
+        "arrived": 63,
+        "success_rate": 0.984375,
+        "success_wilson_95": [
+          0.9166589839990573,
+          0.9972364580766624
+        ],
+        "statuses": {
+          "arrived": 63,
+          "stopped": 1
+        },
+        "reachable": 63,
+        "reachable_arrived": 63,
+        "mean_path_length_m": 11.839574197241532,
+        "mean_panorama_looks": 0.015625,
+        "mean_passive_observations": 36.015625,
+        "mean_planning_wall_seconds": 0.5202522017279989
+      },
+      "untrained": {
+        "episodes": 64,
+        "arrived": 29,
+        "success_rate": 0.453125,
+        "success_wilson_95": [
+          0.3372944778061167,
+          0.5742640277994588
+        ],
+        "statuses": {
+          "arrived": 29,
+          "time_limit": 35
+        },
+        "reachable": 63,
+        "reachable_arrived": 29,
+        "mean_path_length_m": 39.620748782208665,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 131.875,
+        "mean_planning_wall_seconds": 0.688277689449933
+      }
+    },
+    "test": {
+      "learned": {
+        "episodes": 128,
+        "arrived": 122,
+        "success_rate": 0.953125,
+        "success_wilson_95": [
+          0.9015024775490568,
+          0.9783421558280763
+        ],
+        "statuses": {
+          "arrived": 122,
+          "loop": 6
+        },
+        "reachable": 128,
+        "reachable_arrived": 122,
+        "mean_path_length_m": 12.382417474541757,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 38.4140625,
+        "mean_planning_wall_seconds": 0.21884151121685136
+      },
+      "learned_no_prior": {
+        "episodes": 128,
+        "arrived": 116,
+        "success_rate": 0.90625,
+        "success_wilson_95": [
+          0.8432700274269215,
+          0.945556195600853
+        ],
+        "statuses": {
+          "loop": 12,
+          "arrived": 116
+        },
+        "reachable": 128,
+        "reachable_arrived": 116,
+        "mean_path_length_m": 12.14637682270116,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 37.7890625,
+        "mean_planning_wall_seconds": 0.2210370242250974
+      },
+      "rules_cached_prior": {
+        "episodes": 128,
+        "arrived": 128,
+        "success_rate": 1.0,
+        "success_wilson_95": [
+          0.9708630437264916,
+          1.0
+        ],
+        "statuses": {
+          "arrived": 128
+        },
+        "reachable": 128,
+        "reachable_arrived": 128,
+        "mean_path_length_m": 11.805279351229377,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 35.7265625,
+        "mean_planning_wall_seconds": 0.5154192528111707
+      },
+      "rules_conservative": {
+        "episodes": 128,
+        "arrived": 0,
+        "success_rate": 0.0,
+        "success_wilson_95": [
+          0.0,
+          0.029136956273508416
+        ],
+        "statuses": {
+          "stopped": 128
+        },
+        "reachable": 128,
+        "reachable_arrived": 0,
+        "mean_path_length_m": 0.0,
+        "mean_panorama_looks": 1.0,
+        "mean_passive_observations": 0.0,
+        "mean_planning_wall_seconds": 0.0003599218121053127
+      },
+      "rules_optimistic": {
+        "episodes": 128,
+        "arrived": 128,
+        "success_rate": 1.0,
+        "success_wilson_95": [
+          0.9708630437264916,
+          1.0
+        ],
+        "statuses": {
+          "arrived": 128
+        },
+        "reachable": 128,
+        "reachable_arrived": 128,
+        "mean_path_length_m": 11.861391364112864,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 35.8359375,
+        "mean_planning_wall_seconds": 0.5423688742139348
+      },
+      "untrained": {
+        "episodes": 128,
+        "arrived": 52,
+        "success_rate": 0.40625,
+        "success_wilson_95": [
+          0.3251030219432171,
+          0.4928601573580657
+        ],
+        "statuses": {
+          "loop": 2,
+          "time_limit": 74,
+          "arrived": 52
+        },
+        "reachable": 128,
+        "reachable_arrived": 52,
+        "mean_path_length_m": 40.57240885383446,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 134.9921875,
+        "mean_planning_wall_seconds": 0.7708710579513536
+      }
+    },
+    "ood": {
+      "learned": {
+        "episodes": 128,
+        "arrived": 63,
+        "success_rate": 0.4921875,
+        "success_wilson_95": [
+          0.4070774941965585,
+          0.5777527707452151
+        ],
+        "statuses": {
+          "loop": 65,
+          "arrived": 63
+        },
+        "reachable": 83,
+        "reachable_arrived": 63,
+        "mean_path_length_m": 18.086208058284427,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 56.921875,
+        "mean_planning_wall_seconds": 0.32739854749615915
+      },
+      "learned_no_prior": {
+        "episodes": 128,
+        "arrived": 58,
+        "success_rate": 0.453125,
+        "success_wilson_95": [
+          0.36950795637281275,
+          0.5394736332778287
+        ],
+        "statuses": {
+          "loop": 70,
+          "arrived": 58
+        },
+        "reachable": 83,
+        "reachable_arrived": 58,
+        "mean_path_length_m": 17.21668864570759,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 54.25,
+        "mean_planning_wall_seconds": 0.31445153698814465
+      },
+      "rules_cached_prior": {
+        "episodes": 128,
+        "arrived": 77,
+        "success_rate": 0.6015625,
+        "success_wilson_95": [
+          0.5149824068759288,
+          0.6822241488810148
+        ],
+        "statuses": {
+          "stopped": 51,
+          "arrived": 77
+        },
+        "reachable": 83,
+        "reachable_arrived": 77,
+        "mean_path_length_m": 10.413022857671121,
+        "mean_panorama_looks": 0.3984375,
+        "mean_passive_observations": 31.046875,
+        "mean_planning_wall_seconds": 0.39280206277453544
+      },
+      "rules_conservative": {
+        "episodes": 128,
+        "arrived": 0,
+        "success_rate": 0.0,
+        "success_wilson_95": [
+          0.0,
+          0.029136956273508416
+        ],
+        "statuses": {
+          "stopped": 128
+        },
+        "reachable": 83,
+        "reachable_arrived": 0,
+        "mean_path_length_m": 0.0,
+        "mean_panorama_looks": 1.0,
+        "mean_passive_observations": 0.0,
+        "mean_planning_wall_seconds": 0.00036679512186310603
+      },
+      "rules_optimistic": {
+        "episodes": 128,
+        "arrived": 83,
+        "success_rate": 0.6484375,
+        "success_wilson_95": [
+          0.5624978389203745,
+          0.7257271271859276
+        ],
+        "statuses": {
+          "stopped": 45,
+          "arrived": 83
+        },
+        "reachable": 83,
+        "reachable_arrived": 83,
+        "mean_path_length_m": 12.425711743714357,
+        "mean_panorama_looks": 0.3515625,
+        "mean_passive_observations": 37.3125,
+        "mean_planning_wall_seconds": 0.5175845830426624
+      },
+      "untrained": {
+        "episodes": 128,
+        "arrived": 26,
+        "success_rate": 0.203125,
+        "success_wilson_95": [
+          0.1425573819359227,
+          0.2809926858514729
+        ],
+        "statuses": {
+          "time_limit": 96,
+          "arrived": 26,
+          "loop": 6
+        },
+        "reachable": 83,
+        "reachable_arrived": 26,
+        "mean_path_length_m": 44.158553334509214,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 147.0625,
+        "mean_planning_wall_seconds": 0.8420961743372573
+      }
+    },
+    "physical": {
+      "learned": {
+        "episodes": 8,
+        "arrived": 4,
+        "success_rate": 0.5,
+        "success_wilson_95": [
+          0.21521606221387757,
+          0.7847839377861224
+        ],
+        "statuses": {
+          "time_limit": 1,
+          "arrived": 4,
+          "tipped": 3
+        },
+        "reachable": 8,
+        "reachable_arrived": 4,
+        "mean_path_length_m": 7.1474196301113775,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 10.0,
+        "mean_planning_wall_seconds": 0.20546622215624666
+      },
+      "rules_cached_prior": {
+        "episodes": 8,
+        "arrived": 5,
+        "success_rate": 0.625,
+        "success_wilson_95": [
+          0.30574239460262737,
+          0.8631557141764026
+        ],
+        "statuses": {
+          "arrived": 5,
+          "tipped": 3
+        },
+        "reachable": 8,
+        "reachable_arrived": 5,
+        "mean_path_length_m": 7.485461922242081,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 9.375,
+        "mean_planning_wall_seconds": 0.47803040698636323
+      }
+    },
+    "physical_start_v2": {
+      "learned": {
+        "episodes": 8,
+        "arrived": 5,
+        "success_rate": 0.625,
+        "success_wilson_95": [
+          0.30574239460262737,
+          0.8631557141764026
+        ],
+        "statuses": {
+          "arrived": 5,
+          "time_limit": 2,
+          "collision": 1
+        },
+        "reachable": 8,
+        "reachable_arrived": 5,
+        "mean_path_length_m": 10.495759153627393,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 14.25,
+        "mean_planning_wall_seconds": 0.28235587974631926
+      },
+      "rules_cached_prior": {
+        "episodes": 8,
+        "arrived": 7,
+        "success_rate": 0.875,
+        "success_wilson_95": [
+          0.5291118177871464,
+          0.9775825085499433
+        ],
+        "statuses": {
+          "arrived": 7,
+          "collision": 1
+        },
+        "reachable": 8,
+        "reachable_arrived": 7,
+        "mean_path_length_m": 12.170351114818223,
+        "mean_panorama_looks": 0.0,
+        "mean_passive_observations": 14.125,
+        "mean_planning_wall_seconds": 0.7395766247718711
+      }
+    }
+  },
+  "paired_arrivals": {
+    "validation": {
+      "both_arrive": 58,
+      "rules_only": 5,
+      "neither_arrives": 1
+    },
+    "test": {
+      "both_arrive": 122,
+      "rules_only": 6
+    },
+    "ood": {
+      "neither_arrives": 47,
+      "both_arrive": 59,
+      "rules_only": 18,
+      "learned_only": 4
+    },
+    "physical": {
+      "rules_only": 1,
+      "both_arrive": 4,
+      "neither_arrives": 3
+    },
+    "physical_start_v2": {
+      "both_arrive": 5,
+      "neither_arrives": 1,
+      "rules_only": 2
+    }
+  },
+  "llm": {
+    "llm-first": {
+      "requests": 25,
+      "call_statuses": {
+        "failed": 25
+      },
+      "errors": {
+        "HTTP 403": 25
+      },
+      "model": "deepseek-v4-1-flash-261017",
+      "outcomes": {
+        "rules_cached_prior": {
+          "episodes": 8,
+          "arrived": 8,
+          "success_rate": 1.0,
+          "success_wilson_95": [
+            0.6755924351161198,
+            1.0
+          ],
+          "statuses": {
+            "arrived": 8
+          },
+          "reachable": 8,
+          "reachable_arrived": 8,
+          "mean_path_length_m": 11.870673695708279,
+          "mean_panorama_looks": 0.0,
+          "mean_passive_observations": 35.375,
+          "mean_planning_wall_seconds": 0.4851088699870161
+        },
+        "rules_llm": {
+          "episodes": 8,
+          "arrived": 8,
+          "success_rate": 1.0,
+          "success_wilson_95": [
+            0.6755924351161198,
+            1.0
+          ],
+          "statuses": {
+            "arrived": 8
+          },
+          "reachable": 8,
+          "reachable_arrived": 8,
+          "mean_path_length_m": 11.870673695708279,
+          "mean_panorama_looks": 0.0,
+          "mean_passive_observations": 35.375,
+          "mean_planning_wall_seconds": 0.5814154197141761
+        }
+      },
+      "decision_sources": {
+        "graph_search_llm_unavailable": 25,
+        "graph_search_between_llm_consults": 258
+      }
+    },
+    "llm-fixed": {
+      "requests": 6,
+      "call_statuses": {
+        "failed": 3,
+        "ok": 3
+      },
+      "errors": {
+        "JSONDecodeError": 3
+      },
+      "model": "deepseek-v4-1-flash-261017",
+      "outcomes": {
+        "rules_cached_prior": {
+          "episodes": 2,
+          "arrived": 2,
+          "success_rate": 1.0,
+          "success_wilson_95": [
+            0.34238022750665303,
+            1.0
+          ],
+          "statuses": {
+            "arrived": 2
+          },
+          "reachable": 2,
+          "reachable_arrived": 2,
+          "mean_path_length_m": 11.768376618407359,
+          "mean_panorama_looks": 0.0,
+          "mean_passive_observations": 35.5,
+          "mean_planning_wall_seconds": 0.7844623883720487
+        },
+        "rules_llm": {
+          "episodes": 2,
+          "arrived": 2,
+          "success_rate": 1.0,
+          "success_wilson_95": [
+            0.34238022750665303,
+            1.0
+          ],
+          "statuses": {
+            "arrived": 2
+          },
+          "reachable": 2,
+          "reachable_arrived": 2,
+          "mean_path_length_m": 11.768376618407359,
+          "mean_panorama_looks": 0.0,
+          "mean_passive_observations": 35.5,
+          "mean_planning_wall_seconds": 14.580045868438901
+        }
+      },
+      "decision_sources": {
+        "graph_search_llm_unavailable": 3,
+        "graph_search_between_llm_consults": 65,
+        "llm": 3
+      }
+    }
+  },
+  "total_llm_requests": 31,
+  "new_lux_tasks": 0,
+  "seed_disjointness_verified": true,
+  "scope": "Cached 27 scan/Lux shape pairs in new layouts; 0.30m planar sensing. Physical runs use convex footprint extrusions and learned_v4 motor control."
+}

@@ -100,6 +100,12 @@ def main():
         target = output / relative
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(source, target)
+    # The report and run inspector retain repository-relative source links.
+    # Export those original bytes at the linked paths as well as the viewer data.
+    for relative in ('README.md', 'evidence/reviews/beforestep_r1/README.md', 'site/data/demo.json'):
+        target = output / relative
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / relative, target)
     (output/'.nojekyll').touch()
     print(output)
 

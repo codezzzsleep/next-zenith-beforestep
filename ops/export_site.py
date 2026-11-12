@@ -3,6 +3,8 @@ import argparse
 import json
 from pathlib import Path
 import shutil
+import gzip
+import hashlib
 
 ROOT=Path(__file__).resolve().parents[1]
 
@@ -10,18 +12,19 @@ ROOT=Path(__file__).resolve().parents[1]
 def main():
     parser=argparse.ArgumentParser()
     parser.add_argument('--out',required=True)
+    parser.add_argument('--skip-builders',action='store_true',help='Copy the verified existing site without regenerating owner pages or frozen presentation data')
     args=parser.parse_args()
     output=Path(args.out).resolve()
     if output.is_relative_to(ROOT):
         parser.error('Choose a separate export directory')
     output.mkdir(parents=True,exist_ok=True)
-    if (ROOT / 'site/homepage-integration.json').exists():
+    if not args.skip_builders and (ROOT / 'site/homepage-integration.json').exists():
         from integrate_owner_homepage import rebuild_data
         rebuild_data(ROOT / 'site')
-    if (ROOT / 'site/data/gallery.json').exists():
+    if not args.skip_builders and (ROOT / 'site/data/gallery.json').exists():
         from build_gallery_data import main as build_gallery
         build_gallery()
-    if (ROOT / 'site/site-theme.css').exists():
+    if not args.skip_builders and (ROOT / 'site/site-theme.css').exists():
         from apply_home_theme import main as apply_theme
         apply_theme()
     demo_pending = not (ROOT / 'site/data/award-demo.json').exists()
@@ -40,16 +43,30 @@ def main():
         award_media = ('award' in path.parts and path.suffix in ('.png', '.jpg', '.md', '.srt'))
         web_asset = 'web-assets' in path.parts
         learned_navigation = ('learning' in path.parts and 'navigation_v1' in path.parts)
-        return (path.suffix in ('.json','.jsonl','.log') or award_media or web_asset or learned_navigation) and 'source_snapshot' not in path.parts
+        arena = ('learning' in path.parts and 'arena_v2' in path.parts)
+        return (path.suffix in ('.json','.jsonl','.log') or award_media or web_asset or learned_navigation or arena) and 'source_snapshot' not in path.parts
     evidence=output/'evidence'
     if evidence.exists():
         for path in evidence.rglob('*'):
             if path.is_file() and not linked_evidence(path):path.unlink()
+    arena_compressed=[]
     for path in (ROOT/'evidence').rglob('*'):
         if not path.is_file() or not linked_evidence(path):continue
         target=evidence/path.relative_to(ROOT/'evidence')
+        if 'arena_v2' in path.parts and 'geometry' in path.parts:
+            # Runtime height caches are reconstructible from the original scans
+            # and published world definitions; main retains the originals.
+            continue
         target.parent.mkdir(parents=True,exist_ok=True)
+        if 'arena_v2' in path.parts and path.suffix=='.json' and path.stat().st_size>90_000_000:
+            raw=path.read_bytes();encoded=gzip.compress(raw,mtime=0)
+            compressed=target.with_suffix('.json.gz');compressed.write_bytes(encoded)
+            if target.exists():target.unlink()
+            arena_compressed.append({'source':str(path.relative_to(ROOT)),'public':str(compressed.relative_to(output)),'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest(),'encoded_bytes':len(encoded),'encoded_sha256':hashlib.sha256(encoded).hexdigest()})
+            continue
         shutil.copy2(path,target)
+    if arena_compressed:
+        (output/'evidence/learning/arena_v2/public-compressed.json').write_text(json.dumps(arena_compressed,indent=2)+'\n')
     assets=output/'assets';assets.mkdir(exist_ok=True)
     shutil.copy2(ROOT/'assets/manifest.json',assets/'manifest.json')
     shutil.copytree(ROOT/'assets/models',assets/'models',dirs_exist_ok=True)

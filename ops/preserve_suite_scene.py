@@ -99,7 +99,11 @@ def preserve(args):
     extras = json.loads((ROOT / args.extras).read_text()) if args.extras else []
     for relative_root in extras:
         directory = (ROOT / relative_root).resolve()
-        assert directory.is_relative_to(ROOT / 'outputs') and directory.name == args.scene
+        # Award runs also retain the complete raw download directories. Keep
+        # the scope narrow: this scene's output trees or one numeric task folder.
+        scene_tree = directory.is_relative_to(ROOT / 'outputs') and directory.name == args.scene
+        candidate_tree = directory.parent == ROOT / 'assets/candidates' and directory.name.isdecimal()
+        assert scene_tree or candidate_tree, 'Invalid supplementary evidence tree: ' + relative_root
         for path in directory.rglob('*'):
             if not path.is_file() or 'lux_cache' in path.parts:
                 continue

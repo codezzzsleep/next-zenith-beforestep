@@ -30,6 +30,15 @@ def main():
    assert page.locator('#back-flag').is_visible();assert hero.evaluate('(e)=>e.getCameraOrbit().theta')!=start_theta
    assert page.locator('#back-flag').inner_text()=='这一面，相机从没见过'
    result['actual_pointer_drag_reveals_back']=True
+   if page.locator('.turns button').count():
+    assert page.locator('.turns button').count()==2
+    page.locator('.turns button').first.click()
+    page.wait_for_function('Math.abs(document.querySelector("#hero-rock").getCameraOrbit().theta*180/Math.PI-15)<1')
+    page.wait_for_function('document.querySelector("#back-flag").hidden===true')
+    page.locator('.turns button').last.click()
+    page.wait_for_function('Math.abs(document.querySelector("#hero-rock").getCameraOrbit().theta*180/Math.PI-195)<1')
+    page.wait_for_function('document.querySelector("#back-flag").hidden===false')
+    result['front_and_back_buttons_actual_orbits']=True
    page.locator('.hero').screenshot(path=str(out/(a.name+'-hero-back.png')))
    for button in page.locator('#problem [data-run]').all():
     button.click();assert button.get_attribute('aria-selected')=='true'
@@ -58,6 +67,13 @@ def main():
    page.wait_for_function('Array.from(document.images).every(e=>e.complete&&e.naturalWidth>0)')
    page.evaluate('scrollTo(0,0)');assert page.evaluate('document.documentElement.scrollWidth-innerWidth')==0
    page.screenshot(path=str(out/(a.name+'-mobile-390.png')),full_page=True)
+   if page.locator('.turns button').count():
+    page.emulate_media(reduced_motion='no-preference');page.goto(a.url,wait_until='networkidle')
+    page.wait_for_function('document.querySelector("#hero-rock").loaded===true')
+    page.wait_for_function('getComputedStyle(document.querySelector(".rock model-viewer")).opacity==="1"')
+    assert page.locator('.rock model-viewer').evaluate('(e)=>getComputedStyle(e).animationName')=='emerge'
+    page.screenshot(path=str(out/(a.name+'-opening-motion-390.png')))
+    result['opening_animation_and_reduced_motion_verified']=True
    assert not errors,errors;assert not http,http
    result.update(passed=True,mobile_390_overflow_px=0,desktop_1440_overflow_px=0,three_vehicle_switches=True,two_imagination_switches=True,rejected_model_label=True,fullpage_screenshots=True)
   except Exception as e:

@@ -201,6 +201,12 @@ const hero = $('#hero-rock');
 const flag = $('#back-flag');
 const FRONT_DEG = 15; // orbit angle at which the generated rock shows the photographed face
 if (calm) hero.removeAttribute('auto-rotate');
+document.querySelectorAll('.turns button').forEach((button) => {
+  button.addEventListener('click', () => {
+    hero.removeAttribute('auto-rotate');
+    hero.cameraOrbit = button.dataset.orbit;
+  });
+});
 hero.addEventListener('camera-change', () => {
   const degrees = ((hero.getCameraOrbit().theta * 180) / Math.PI - FRONT_DEG) % 360;
   const away = Math.abs(((degrees + 540) % 360) - 180);

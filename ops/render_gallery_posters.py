@@ -5,6 +5,10 @@ from datetime import datetime,timezone
 import hashlib
 import json
 import os
+from functools import partial
+from http.server import ThreadingHTTPServer
+from threading import Thread
+from beforestep.delivery.server import ShowcaseHandler
 from pathlib import Path
 from urllib.parse import urljoin
 from playwright.async_api import async_playwright
@@ -21,6 +25,8 @@ async def run(a):
  job={'status':'running','pid':os.getpid(),'started_at':datetime.now(timezone.utc).isoformat(),'models_total':len(data['models']),'completed':len(records),'paid_tasks':0,'index':str(index.relative_to(ROOT))};ledger=Path(a.ledger)
  def save():write(index,{'schema':'beforestep-gallery-model-viewer-covers/v1','settings':SETTINGS,'models':sorted(records.values(),key=lambda r:r['task_id'])});job['completed']=len(records);write(ledger,job)
  save()
+ if jobs.empty():
+  job.update(status='complete',completed_at=datetime.now(timezone.utc).isoformat());save();print(json.dumps({'passed':True,'models':len(records),'all_source_sha_verified':True,'cached':True}));return
  async with async_playwright() as pw:
   browser=await pw.chromium.launch(executable_path='/root/.cache/ms-playwright/chromium-1228/chrome-linux64/chrome',headless=True,args=['--no-sandbox','--enable-webgl','--use-gl=angle','--use-angle=swiftshader','--enable-unsafe-swiftshader','--disable-dev-shm-usage'])
   async def worker():
@@ -46,5 +52,17 @@ async def run(a):
   finally:await browser.close()
  job.update(status='complete',completed_at=datetime.now(timezone.utc).isoformat());save();print(json.dumps({'passed':True,'models':len(records),'settings':SETTINGS}))
 def main():
- p=argparse.ArgumentParser();p.add_argument('--url',default='http://127.0.0.1:8101/');p.add_argument('--workers',type=int,default=3);p.add_argument('--ledger',default=str(ROOT/'outputs/qa/award/gallery-posters-job.json'));a=p.parse_args();asyncio.run(run(a))
+ p=argparse.ArgumentParser();p.add_argument('--url',help='Optional existing local export, with gallery-render-shell.html; normally an ephemeral server is created automatically');p.add_argument('--workers',type=int,default=3);p.add_argument('--ledger',default=str(ROOT/'outputs/qa/award/gallery-posters-job.json'));a=p.parse_args()
+ server=None
+ if not a.url:
+  class RenderHandler(ShowcaseHandler):
+   def do_GET(self):
+    if self.path=='/gallery-render-shell.html':
+     raw=b'<!doctype html><html><head><meta charset="utf-8"><link rel="icon" href="data:,"></head><body></body></html>';self.send_response(200);self.send_header('Content-Type','text/html');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
+    else:super().do_GET()
+   def log_message(self,*args):pass
+  server=ThreadingHTTPServer(('127.0.0.1',0),partial(RenderHandler,directory=str(ROOT/'site')));Thread(target=server.serve_forever,daemon=True).start();a.url=f'http://127.0.0.1:{server.server_port}/'
+ try:asyncio.run(run(a))
+ finally:
+  if server:server.shutdown();server.server_close()
 if __name__=='__main__':main()

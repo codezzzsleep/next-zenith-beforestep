@@ -62,10 +62,20 @@ def main():
         log=OUT/'logs'/f'{name}.log';log.parent.mkdir(parents=True,exist_ok=True)
         with log.open('a') as f:
             p=subprocess.Popen(command,cwd=ROOT,env={**os.environ,'MUJOCO_GL':'egl','OPENBLAS_NUM_THREADS':'1'},stdout=f,stderr=subprocess.STDOUT)
-            jobs['jobs'][name]={'status':'running','pid':p.pid,'command':command,'log':str(log.relative_to(ROOT))};checkpoint('started '+name)
+            attempts=list(previous.get('attempts',[])) if previous else []
+            if previous:
+                attempts.append({k:v for k,v in previous.items() if k!='attempts'})
+            jobs['jobs'][name]={'status':'running','pid':p.pid,'command':command,'log':str(log.relative_to(ROOT)),'attempts':attempts};checkpoint('started '+name)
             code=p.wait()
         jobs['jobs'][name]['status']='complete' if code==0 else 'failed';jobs['jobs'][name]['exit_code']=code;checkpoint('finished '+name)
         if code:raise RuntimeError(f'{name} failed ({code}); retain identity and inspect log')
+    previous=jobs.get('coordinator',{})
+    if previous.get('pid') and previous['pid']!=os.getpid() and Path(f"/proc/{previous['pid']}").exists():
+        raise RuntimeError('Existing live coordinator; do not duplicate')
+    attempts=list(previous.get('attempts',[]))
+    if previous:attempts.append({k:v for k,v in previous.items() if k!='attempts'})
+    jobs['coordinator']={'status':'running','pid':os.getpid(),'log':os.environ.get('ARENA_COORDINATOR_LOG'),'attempts':attempts}
+    checkpoint('resumed coordinator; completed stages and dataset entries retained')
     checks=[OUT/'prechecks'/a.development_check/'summary.json',OUT/'prechecks/transplant-fidelity-final/summary.json']
     checkpoint('waiting for final prechecks')
     while not all(p.exists() for p in checks):time.sleep(10)
@@ -116,6 +126,18 @@ def main():
     execute('sealed-physics',[py,'-m','experimental.arena.physical_suite','--out',str(OUT/'physical'),'--model',str(lux),'--workers','2'])
     checkpoint('All training, calibration, paired LLM, one-time sealed/OOD and physical/real episodes complete')
     subprocess.run([py,str(ROOT/'ops/publish_arena.py')],cwd=ROOT,check=True)
+    jobs=read(ledger)
+    jobs['coordinator']['status']='complete'
+    checkpoint('All arena experiments and publication complete')
 
 
-if __name__=='__main__':main()
+if __name__=='__main__':
+    try:main()
+    except BaseException as error:
+        ledger=OUT/'jobs.json'
+        if ledger.exists():
+            jobs=read(ledger)
+            if jobs.get('coordinator',{}).get('pid')==os.getpid():
+                jobs['coordinator'].update(status='failed',error=type(error).__name__,updated_at=datetime.now(timezone.utc).isoformat())
+                write(ledger,jobs)
+        raise

@@ -24,6 +24,17 @@ def percent(value):return f'{100*value:.2f}%'
 def status(value):return {'arrived':'到达','collision':'碰撞','stopped':'停车','stuck':'停车','stopped_short':'停车','controller_failed':'控制未完成','execution_error':'执行错误'}.get(value,value)
 
 
+def paired_comparison(rows,a,b):
+    """Keep both overall and per-capsule summaries on the same paired worlds."""
+    sides={method:[r for r in rows if r['method']==method] for method in [a,b]}
+    for method,group in sides.items():
+        assert len(group)==len({r['seed'] for r in group}),f'Duplicate paired row: {method}'
+    common=set(r['seed'] for r in sides[a]) & set(r['seed'] for r in sides[b])
+    assert common,f'No paired worlds: {a}/{b}'
+    paired=[r for method in [a,b] for r in sides[method] if r['seed'] in common]
+    return clustered_comparison(paired,a,b)
+
+
 def final_report(result):
     """The same seven answers are used for RESULT and the final handoff."""
     summary=result['summary'];criteria=result['criteria'];llm=result['llm'];effect=result['lux_effect']
@@ -132,11 +143,11 @@ def main():
         summary[method]['all']['stop_rate']=summary[method]['all']['stopped']/summary[method]['all']['worlds']
         summary[method]['all']['mean_wall_seconds']=float(np.mean([r['wall_seconds'] for r in rows if r['method']==method]))
     learned=summary['learned']['all'];strict=summary['strict']['all'];no=summary['learned_no_lux']['all']
-    comparisons={m:clustered_comparison(rows,'learned',m) for m in ['conservative','optimistic','imagination','strict','strict_llm','learned_no_lux']}
+    comparisons={m:paired_comparison(rows,'learned',m) for m in ['conservative','optimistic','imagination','strict','strict_llm','learned_no_lux']}
     dominated=[m for m in ['conservative','optimistic','imagination','strict','strict_llm'] if comparisons[m]['arrival_delta']<0 and comparisons[m]['collision_delta']>0]
     verdict={'safety':learned['collision_rate']<=min(.03,strict['collision_rate']+.01)+1e-12,'arrival':learned['arrival_rate']>=strict['arrival_rate']+.10-1e-12,'nondominated':not dominated,'dominating_rules':dominated}
     effects={'arrival_delta_lux_minus_no_lux':learned['arrival_rate']-no['arrival_rate'],'lux_collision_rate':learned['collision_rate'],'no_lux_collision_rate':no['collision_rate'],'validation_collision_limit':read(OUT/'validation/workpoint.json')['collision_limit']}
-    llm=read(OUT/'llm/sealed/summary.json');llm_rows=[r for r in rows if r['method']=='strict_llm'];paired=clustered_comparison(rows,'strict_llm','strict')
+    llm=read(OUT/'llm/sealed/summary.json');llm_rows=[r for r in rows if r['method']=='strict_llm'];paired=paired_comparison(rows,'strict_llm','strict')
     requests=[read(p) for p in (OUT/'llm/calls').glob('*-*.json')]
     llm_info={**llm,'paired_comparison':paired,'all_v2_requests':len(requests),'successful_requests':sum(r['status']=='ok' for r in requests),'parse_or_service_failures':sum(r['status']!='ok' for r in requests),'mean_extra_wait_per_world':llm['wait_seconds']/len(llm_rows)}
     real=real_comparison();worlds=[];folder=ROOT/'site/data/arena/worlds';folder.mkdir(parents=True,exist_ok=True)
@@ -151,9 +162,9 @@ def main():
     workpoint=read(OUT/'validation/workpoint.json')['chosen']
     selected_validation=[r for r in read(OUT/'validation/results.json') if not r['method'].startswith('learned') or r['threshold']==workpoint[r['method']]]
     validation_llm=read(OUT/'llm/validation/results.json')
-    llm_info['validation_vs_strict']=clustered_comparison(selected_validation+validation_llm,'strict_llm','strict')
-    llm_info['validation_vs_learned']=clustered_comparison(selected_validation+validation_llm,'strict_llm','learned')
-    llm_info['sealed_vs_learned']=clustered_comparison(rows,'strict_llm','learned')
+    llm_info['validation_vs_strict']=paired_comparison(selected_validation+validation_llm,'strict_llm','strict')
+    llm_info['validation_vs_learned']=paired_comparison(selected_validation+validation_llm,'strict_llm','learned')
+    llm_info['sealed_vs_learned']=paired_comparison(rows,'strict_llm','learned')
     final_gate=read(OUT/'prechecks/final.json');development=read(ROOT/final_gate['development'])
     fidelity=read(ROOT/final_gate['fidelity']);ood=read(OUT/'ood/summary.json')
     for seed in sorted({r['seed'] for r in rows}):

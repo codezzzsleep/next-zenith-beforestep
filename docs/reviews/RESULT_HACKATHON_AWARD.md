@@ -50,4 +50,7 @@ main `7cb3096`、全部素材LFS与独立origin核验已通过；Pages `2508c35`
 | C1 负责人交付的小更新 | 原样接入前/背视角按钮和开场动画；本地实际按钮角度、指针拖动、11份模型与全部切换、1440/390通过，首屏2.7224330010358244秒、0溢出/报错。完整首页第二版仍待负责人交付，本项仅是现交付目录的小更新。公网复验继续。 | [本地复验](../../evidence/award/acceptance/home-owner-update-local.json) · [旧集成记录](../../evidence/award/acceptance/history/home-C1-integration-before-owner-buttons.json) |
 | C7 完整归档入口修复与回归 | 保全脚本接受固定场景输出及数字任务原始目录，其他目录仍拒绝；新增实际tar/逐SHA/中断输出保留测试通过。全101单测16.286秒通过，3995原保护项diff空、54冻结源码逐项相同。 | [完整回归](../../evidence/award/acceptance/C1-C7-unit.log) · [不变性](../../evidence/award/acceptance/C1-C7-integrity.json) |
 
+| C1 小更新公网复验 | main `24888a0` 已实际push，Pages `4b2b6e2` built/error null。公网1440/390、11模型、前/背按钮实际角度、指针与全部切换/动画/减动通过；首屏5.629045836976729秒，0溢出/0console/HTTP。 | [公网复验](../../evidence/award/acceptance/home-owner-update-public.json) |
+| C8 报告摘要与 HTML 同步 | 首次一致性检查发现摘要已更新、报告源HTML仍旧；已修复生成器同步HTML，保留首次失败。R1/R3原数字、轨迹与冻结身份再次核验通过；本步没有生成最终PDF。 | [首次差异](../../evidence/award/acceptance/C8-report-HTML-first-failure.log) · [R1复核](../../evidence/award/acceptance/current-R1-presentation.json) · [R3复核](../../evidence/award/acceptance/current-R3-presentation.json) |
+
 下一具体步骤：同一全新克隆完成 C5 零付费物理链并核对五轨迹数组；C7 复用已知任务继续固定六栏/反事实/复盘与完整归档。两个旧进程均已退出，原中断文件保留后已恢复。新演示页面的数据尚未终态，暂不公开成已完成结果；之后生成最终 PDF、推送与公网复验。

@@ -1,0 +1,97 @@
+{
+  "id": "b5202cd1b02add6a44779aa3416442076f653f594fb140c4db48d7b472845d9f",
+  "status": "ok",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      26,
+      7
+    ],
+    "goal": [
+      37,
+      6
+    ],
+    "known_fraction": 0.796875,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 3.014962686336267,
+        "estimated_remaining_steps": 10.414213562373096,
+        "observed_fraction_near_target": 0.9599999785423279,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 3.0594117081556704,
+        "estimated_remaining_steps": 10.82842712474619,
+        "observed_fraction_near_target": 0.800000011920929,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 3.3541019662496847,
+        "estimated_remaining_steps": 11.82842712474619,
+        "observed_fraction_near_target": 0.800000011920929,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 3,
+        "delta": [
+          -1,
+          1
+        ],
+        "goal_distance_m": 3.6496575181789312,
+        "estimated_remaining_steps": 12.82842712474619,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 4,
+        "delta": [
+          -1,
+          0
+        ],
+        "goal_distance_m": 3.6124783736376886,
+        "estimated_remaining_steps": 12.414213562373096,
+        "observed_fraction_near_target": 0.9599999785423279,
+        "cached_prior_blocked": false,
+        "visits": 1
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794476140.1299922,
+  "answer": {
+    "action": "move",
+    "candidate_id": 0,
+    "reason": "Lowest estimated remaining steps and shortest goal distance, with high observed coverage near the target."
+  },
+  "usage": {
+    "completion_tokens": 277,
+    "prompt_tokens": 470,
+    "total_tokens": 747,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 244
+    }
+  },
+  "wall_seconds": 2.8463788520311937
+}

@@ -39,7 +39,8 @@ def main():
     def linked_evidence(path):
         award_media = ('award' in path.parts and path.suffix in ('.png', '.jpg', '.md', '.srt'))
         web_asset = 'web-assets' in path.parts
-        return (path.suffix in ('.json','.jsonl','.log') or award_media or web_asset) and 'source_snapshot' not in path.parts
+        learned_navigation = ('learning' in path.parts and 'navigation_v1' in path.parts)
+        return (path.suffix in ('.json','.jsonl','.log') or award_media or web_asset or learned_navigation) and 'source_snapshot' not in path.parts
     evidence=output/'evidence'
     if evidence.exists():
         for path in evidence.rglob('*'):

@@ -1,0 +1,122 @@
+{
+  "name": "navigation_5200004",
+  "seed": 5200004,
+  "split": "train",
+  "start": [
+    0.6,
+    2.6999999999999997
+  ],
+  "goal_x": 11.1,
+  "terrain": {
+    "kind": "flat",
+    "slope_deg": 0.0,
+    "span": 16.0,
+    "roughness": 0.0,
+    "pits": 0,
+    "pit_depth": 0.0,
+    "field_x_max": 12.0
+  },
+  "objects": [
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-0.obj",
+      "x": 6.307998505818556,
+      "y": 1.2656768198431367,
+      "yaw_deg": 0.0,
+      "height_m": 0.4717041476721176
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-1.obj",
+      "x": 5.625236169895269,
+      "y": 2.500616803735692,
+      "yaw_deg": 0.0,
+      "height_m": 0.498526426689843
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-2.obj",
+      "x": 6.276265804742066,
+      "y": 5.0743483147476915,
+      "yaw_deg": 0.0,
+      "height_m": 0.36615224838981175
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-3.obj",
+      "x": 3.1629494976680297,
+      "y": 4.323171371426295,
+      "yaw_deg": 0.0,
+      "height_m": 0.36209660955990824
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-4.obj",
+      "x": 1.4757698951275684,
+      "y": 1.5860271165047664,
+      "yaw_deg": 0.0,
+      "height_m": 0.3947404139215704
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-5.obj",
+      "x": 1.6630577895643142,
+      "y": 3.8243220706619514,
+      "yaw_deg": 0.0,
+      "height_m": 0.4011707254738584
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/rock-6.obj",
+      "x": 5.639959559258582,
+      "y": 5.546344935235244,
+      "yaw_deg": 0.0,
+      "height_m": 0.2781310917482797
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/border-0.obj",
+      "x": 6.0,
+      "y": -0.3,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/border-1.obj",
+      "x": 6.0,
+      "y": 7.199999999999999,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/border-2.obj",
+      "x": -0.3,
+      "y": 3.5999999999999996,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/meshes/border-3.obj",
+      "x": 12.0,
+      "y": 3.5999999999999996,
+      "yaw_deg": 0.0
+    }
+  ],
+  "provenance": {
+    "generator": "src/beforestep/simulation/terrain.py",
+    "terrain_representation": "heightfield",
+    "units": "meters",
+    "note": "地形高度为真实米制；物体静态刚性"
+  },
+  "_hfield_dir": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200004-rules_cached_prior/heightfield",
+  "channel": {
+    "center_y": 3.5999999999999996,
+    "half_width": 3.5999999999999996
+  },
+  "soil": {
+    "mode": "soil",
+    "label": "nominal",
+    "params": {
+      "n": 1.0,
+      "kc": 1400.0,
+      "kphi": 820000.0,
+      "cohesion_pa": 170.0,
+      "phi_deg": 35.0,
+      "k_shear": 0.018
+    },
+    "params_sha": "55848f80956792b4704ff3ec83678bf7"
+  },
+  "init_perturbation": {
+    "lateral_m": 0.0,
+    "yaw_rad": 0.0
+  }
+}

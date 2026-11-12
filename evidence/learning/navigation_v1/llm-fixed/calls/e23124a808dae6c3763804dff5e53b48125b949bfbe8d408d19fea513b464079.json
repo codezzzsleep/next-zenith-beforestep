@@ -1,0 +1,97 @@
+{
+  "id": "e23124a808dae6c3763804dff5e53b48125b949bfbe8d408d19fea513b464079",
+  "status": "ok",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      26,
+      5
+    ],
+    "goal": [
+      37,
+      7
+    ],
+    "known_fraction": 0.5249999761581421,
+    "candidates": [
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 3.3136083051561784,
+        "estimated_remaining_steps": 14.242640687119284,
+        "observed_fraction_near_target": 0.8799999952316284,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 3,
+        "delta": [
+          -1,
+          1
+        ],
+        "goal_distance_m": 3.6124783736376886,
+        "estimated_remaining_steps": 14.65685424949238,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 1
+      },
+      {
+        "id": 4,
+        "delta": [
+          -1,
+          0
+        ],
+        "goal_distance_m": 3.6496575181789312,
+        "estimated_remaining_steps": 13.65685424949238,
+        "observed_fraction_near_target": 0.8799999952316284,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 5,
+        "delta": [
+          -1,
+          -1
+        ],
+        "goal_distance_m": 3.710795063055894,
+        "estimated_remaining_steps": 13.242640687119284,
+        "observed_fraction_near_target": 0.9200000166893005,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 3.4205262752974135,
+        "estimated_remaining_steps": 12.242640687119284,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794476121.3633995,
+  "answer": {
+    "action": "move",
+    "candidate_id": 6,
+    "reason": "Lowest estimated remaining steps and fully observed near target, with no cached prior blockage."
+  },
+  "usage": {
+    "completion_tokens": 203,
+    "prompt_tokens": 472,
+    "total_tokens": 675,
+    "prompt_tokens_details": {
+      "cached_tokens": 0
+    },
+    "completion_tokens_details": {
+      "reasoning_tokens": 171
+    }
+  },
+  "wall_seconds": 2.5538701879559085
+}

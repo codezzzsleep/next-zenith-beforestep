@@ -1,0 +1,232 @@
+{
+  "seed": 5100000,
+  "method": "rules_cached_prior",
+  "oracle_reachable": true,
+  "status": "arrived",
+  "sim_seconds": 111.13999999999491,
+  "wall_seconds": 25.297144782962278,
+  "physics_steps": 56170,
+  "goal_error_m": 0.0624852050127171,
+  "collision": null,
+  "panorama_looks": 0,
+  "passive_observations": 15,
+  "planning_wall_seconds": 0.6911669801338576,
+  "path_length_m": 11.987582283931836,
+  "motor_controller": "learned_v4",
+  "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+  "sensor": "planar simulated visibility, not production RGB-D",
+  "geometry": "convex extrusions of scan footprints, not original scan triangles",
+  "decisions": [
+    {
+      "step": 0,
+      "position_m": [
+        0.5845010219182968,
+        3.0163067392325336
+      ],
+      "waypoint_m": [
+        1.5,
+        3.9
+      ],
+      "action": 1,
+      "source": "graph_search",
+      "known_cells": 252
+    },
+    {
+      "step": 1,
+      "position_m": [
+        1.4620927952049976,
+        3.8630032081148533
+      ],
+      "waypoint_m": [
+        1.7999999999999998,
+        4.2
+      ],
+      "action": 1,
+      "source": "graph_search",
+      "known_cells": 324
+    },
+    {
+      "step": 2,
+      "position_m": [
+        1.7640996826420692,
+        4.1604164123189324
+      ],
+      "waypoint_m": [
+        1.7999999999999998,
+        4.5
+      ],
+      "action": 2,
+      "source": "graph_search",
+      "known_cells": 355
+    },
+    {
+      "step": 3,
+      "position_m": [
+        1.8093416883404805,
+        4.433090924109855
+      ],
+      "waypoint_m": [
+        2.6999999999999997,
+        4.5
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 368
+    },
+    {
+      "step": 4,
+      "position_m": [
+        2.63964715264184,
+        4.517625938831225
+      ],
+      "waypoint_m": [
+        3.5999999999999996,
+        4.5
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 444
+    },
+    {
+      "step": 5,
+      "position_m": [
+        3.542346394854832,
+        4.490634588516135
+      ],
+      "waypoint_m": [
+        4.2,
+        3.9
+      ],
+      "action": 7,
+      "source": "graph_search",
+      "known_cells": 493
+    },
+    {
+      "step": 6,
+      "position_m": [
+        4.167834263240314,
+        3.9545339558091004
+      ],
+      "waypoint_m": [
+        5.1,
+        3.9
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 542
+    },
+    {
+      "step": 7,
+      "position_m": [
+        5.038604610716806,
+        3.8857926715102886
+      ],
+      "waypoint_m": [
+        5.3999999999999995,
+        3.5999999999999996
+      ],
+      "action": 7,
+      "source": "graph_search",
+      "known_cells": 591
+    },
+    {
+      "step": 8,
+      "position_m": [
+        5.3709360422870045,
+        3.6554677264165174
+      ],
+      "waypoint_m": [
+        6.3,
+        3.5999999999999996
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 612
+    },
+    {
+      "step": 9,
+      "position_m": [
+        6.238392168313316,
+        3.5863141175099105
+      ],
+      "waypoint_m": [
+        7.199999999999999,
+        3.5999999999999996
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 665
+    },
+    {
+      "step": 10,
+      "position_m": [
+        7.139721570718769,
+        3.6104888905836923
+      ],
+      "waypoint_m": [
+        8.1,
+        3.5999999999999996
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 714
+    },
+    {
+      "step": 11,
+      "position_m": [
+        8.045308941555795,
+        3.594916068495557
+      ],
+      "waypoint_m": [
+        9.0,
+        3.5999999999999996
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 749
+    },
+    {
+      "step": 12,
+      "position_m": [
+        8.942615487719408,
+        3.6060578383840687
+      ],
+      "waypoint_m": [
+        9.299999999999999,
+        3.5999999999999996
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 773
+    },
+    {
+      "step": 13,
+      "position_m": [
+        9.24332882433364,
+        3.5946464519904433
+      ],
+      "waypoint_m": [
+        10.2,
+        2.6999999999999997
+      ],
+      "action": 7,
+      "source": "graph_search",
+      "known_cells": 774
+    },
+    {
+      "step": 14,
+      "position_m": [
+        10.16403672919903,
+        2.7449565752921625
+      ],
+      "waypoint_m": [
+        11.1,
+        2.6999999999999997
+      ],
+      "action": 0,
+      "source": "graph_search",
+      "known_cells": 777
+    }
+  ],
+  "trajectory_sha256": "69a2592fe2bcc24291a65d893afcb52416fabc9c0f0adc44bc4a898b3d3976ae"
+}

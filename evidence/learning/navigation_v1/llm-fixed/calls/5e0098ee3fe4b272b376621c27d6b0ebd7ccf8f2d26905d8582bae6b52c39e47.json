@@ -1,0 +1,82 @@
+{
+  "id": "5e0098ee3fe4b272b376621c27d6b0ebd7ccf8f2d26905d8582bae6b52c39e47",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      2,
+      4
+    ],
+    "goal": [
+      37,
+      7
+    ],
+    "known_fraction": 0.24270834028720856,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 10.239628899525608,
+        "estimated_remaining_steps": 36.071067811865476,
+        "observed_fraction_near_target": 0.9200000166893005,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 10.21763181955584,
+        "estimated_remaining_steps": 36.48528137423857,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 10.517128885774863,
+        "estimated_remaining_steps": 37.48528137423857,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 10.56834897228512,
+        "estimated_remaining_steps": 36.65685424949238,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 7,
+        "delta": [
+          1,
+          -1
+        ],
+        "goal_distance_m": 10.270345661174213,
+        "estimated_remaining_steps": 35.65685424949238,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794476112.60244,
+  "error": "JSONDecodeError",
+  "wall_seconds": 4.94174842099892
+}

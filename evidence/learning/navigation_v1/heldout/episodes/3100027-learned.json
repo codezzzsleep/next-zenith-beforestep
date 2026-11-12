@@ -1,0 +1,607 @@
+{
+  "seed": 3100027,
+  "method": "learned",
+  "oracle_reachable": true,
+  "status": "arrived",
+  "path_length_m": 13.718376618407353,
+  "panorama_looks": 0,
+  "passive_observations": 42,
+  "planning_wall_seconds": 0.21691786107840016,
+  "goal_error_m": 0.0,
+  "trace_cells": [
+    [
+      2,
+      15
+    ],
+    [
+      3,
+      15
+    ],
+    [
+      4,
+      15
+    ],
+    [
+      5,
+      15
+    ],
+    [
+      6,
+      15
+    ],
+    [
+      6,
+      14
+    ],
+    [
+      6,
+      13
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      7,
+      12
+    ],
+    [
+      7,
+      11
+    ],
+    [
+      8,
+      11
+    ],
+    [
+      9,
+      11
+    ],
+    [
+      9,
+      10
+    ],
+    [
+      9,
+      9
+    ],
+    [
+      10,
+      9
+    ],
+    [
+      10,
+      8
+    ],
+    [
+      11,
+      8
+    ],
+    [
+      12,
+      8
+    ],
+    [
+      13,
+      8
+    ],
+    [
+      14,
+      8
+    ],
+    [
+      15,
+      8
+    ],
+    [
+      16,
+      8
+    ],
+    [
+      17,
+      8
+    ],
+    [
+      18,
+      8
+    ],
+    [
+      19,
+      8
+    ],
+    [
+      20,
+      9
+    ],
+    [
+      21,
+      9
+    ],
+    [
+      22,
+      9
+    ],
+    [
+      23,
+      9
+    ],
+    [
+      24,
+      9
+    ],
+    [
+      25,
+      9
+    ],
+    [
+      26,
+      9
+    ],
+    [
+      27,
+      9
+    ],
+    [
+      28,
+      9
+    ],
+    [
+      29,
+      9
+    ],
+    [
+      30,
+      10
+    ],
+    [
+      31,
+      11
+    ],
+    [
+      32,
+      12
+    ],
+    [
+      33,
+      13
+    ],
+    [
+      34,
+      14
+    ],
+    [
+      35,
+      15
+    ],
+    [
+      36,
+      16
+    ],
+    [
+      37,
+      17
+    ]
+  ],
+  "decisions": [
+    {
+      "step": 0,
+      "position": [
+        2,
+        15
+      ],
+      "action": 0,
+      "known_cells": 273,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 1,
+      "position": [
+        3,
+        15
+      ],
+      "action": 0,
+      "known_cells": 276,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 2,
+      "position": [
+        4,
+        15
+      ],
+      "action": 0,
+      "known_cells": 278,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 3,
+      "position": [
+        5,
+        15
+      ],
+      "action": 0,
+      "known_cells": 279,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 4,
+      "position": [
+        6,
+        15
+      ],
+      "action": 6,
+      "known_cells": 280,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 5,
+      "position": [
+        6,
+        14
+      ],
+      "action": 6,
+      "known_cells": 341,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 6,
+      "position": [
+        6,
+        13
+      ],
+      "action": 6,
+      "known_cells": 346,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 7,
+      "position": [
+        6,
+        12
+      ],
+      "action": 0,
+      "known_cells": 351,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 8,
+      "position": [
+        7,
+        12
+      ],
+      "action": 6,
+      "known_cells": 361,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 9,
+      "position": [
+        7,
+        11
+      ],
+      "action": 0,
+      "known_cells": 367,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 10,
+      "position": [
+        8,
+        11
+      ],
+      "action": 0,
+      "known_cells": 399,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 11,
+      "position": [
+        9,
+        11
+      ],
+      "action": 6,
+      "known_cells": 411,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 12,
+      "position": [
+        9,
+        10
+      ],
+      "action": 6,
+      "known_cells": 417,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 13,
+      "position": [
+        9,
+        9
+      ],
+      "action": 0,
+      "known_cells": 419,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 14,
+      "position": [
+        10,
+        9
+      ],
+      "action": 6,
+      "known_cells": 455,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 15,
+      "position": [
+        10,
+        8
+      ],
+      "action": 0,
+      "known_cells": 457,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 16,
+      "position": [
+        11,
+        8
+      ],
+      "action": 0,
+      "known_cells": 477,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 17,
+      "position": [
+        12,
+        8
+      ],
+      "action": 0,
+      "known_cells": 497,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 18,
+      "position": [
+        13,
+        8
+      ],
+      "action": 0,
+      "known_cells": 524,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 19,
+      "position": [
+        14,
+        8
+      ],
+      "action": 0,
+      "known_cells": 557,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 20,
+      "position": [
+        15,
+        8
+      ],
+      "action": 0,
+      "known_cells": 569,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 21,
+      "position": [
+        16,
+        8
+      ],
+      "action": 0,
+      "known_cells": 580,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 22,
+      "position": [
+        17,
+        8
+      ],
+      "action": 0,
+      "known_cells": 591,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 23,
+      "position": [
+        18,
+        8
+      ],
+      "action": 0,
+      "known_cells": 601,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 24,
+      "position": [
+        19,
+        8
+      ],
+      "action": 1,
+      "known_cells": 611,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 25,
+      "position": [
+        20,
+        9
+      ],
+      "action": 0,
+      "known_cells": 635,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 26,
+      "position": [
+        21,
+        9
+      ],
+      "action": 0,
+      "known_cells": 655,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 27,
+      "position": [
+        22,
+        9
+      ],
+      "action": 0,
+      "known_cells": 685,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 28,
+      "position": [
+        23,
+        9
+      ],
+      "action": 0,
+      "known_cells": 729,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 29,
+      "position": [
+        24,
+        9
+      ],
+      "action": 0,
+      "known_cells": 759,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 30,
+      "position": [
+        25,
+        9
+      ],
+      "action": 0,
+      "known_cells": 786,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 31,
+      "position": [
+        26,
+        9
+      ],
+      "action": 0,
+      "known_cells": 798,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 32,
+      "position": [
+        27,
+        9
+      ],
+      "action": 0,
+      "known_cells": 806,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 33,
+      "position": [
+        28,
+        9
+      ],
+      "action": 0,
+      "known_cells": 811,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 34,
+      "position": [
+        29,
+        9
+      ],
+      "action": 1,
+      "known_cells": 815,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 35,
+      "position": [
+        30,
+        10
+      ],
+      "action": 1,
+      "known_cells": 828,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 36,
+      "position": [
+        31,
+        11
+      ],
+      "action": 1,
+      "known_cells": 830,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 37,
+      "position": [
+        32,
+        12
+      ],
+      "action": 1,
+      "known_cells": 830,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 38,
+      "position": [
+        33,
+        13
+      ],
+      "action": 1,
+      "known_cells": 830,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 39,
+      "position": [
+        34,
+        14
+      ],
+      "action": 1,
+      "known_cells": 830,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 40,
+      "position": [
+        35,
+        15
+      ],
+      "action": 1,
+      "known_cells": 830,
+      "source": "neural_value_iteration"
+    },
+    {
+      "step": 41,
+      "position": [
+        36,
+        16
+      ],
+      "action": 1,
+      "known_cells": 830,
+      "source": "neural_value_iteration"
+    }
+  ]
+}

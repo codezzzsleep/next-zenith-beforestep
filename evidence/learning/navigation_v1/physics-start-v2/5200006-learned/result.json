@@ -1,0 +1,153 @@
+{
+  "seed": 5200006,
+  "method": "learned",
+  "oracle_reachable": true,
+  "status": "collision",
+  "sim_seconds": 61.20000000000406,
+  "wall_seconds": 11.744174188002944,
+  "physics_steps": 31200,
+  "goal_error_m": 8.087370856763947,
+  "collision": {
+    "body": "obstacle4",
+    "robot_geom": null,
+    "pos": [
+      3.348,
+      0.996,
+      0.066
+    ],
+    "t": 61.8
+  },
+  "panorama_looks": 0,
+  "passive_observations": 8,
+  "planning_wall_seconds": 0.12773510691476986,
+  "path_length_m": 3.6933290700631747,
+  "motor_controller": "learned_v4",
+  "motor_model_sha256": "bd6ca91b73c400ebbfdaed4258f6e2eb20d769468b0d01eba910d16a36f4f970",
+  "initialization": "world start set before WheelLegEnv construction and reset",
+  "mujoco_warning_counts": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "sensor": "planar simulated visibility, not production RGB-D",
+  "geometry": "convex extrusions of scan footprints, not original scan triangles",
+  "decisions": [
+    {
+      "step": 0,
+      "position_m": [
+        0.599915723048005,
+        2.4000333905038054
+      ],
+      "waypoint_m": [
+        1.5,
+        2.4
+      ],
+      "action": 0,
+      "source": "neural_value_iteration",
+      "known_cells": 297
+    },
+    {
+      "step": 1,
+      "position_m": [
+        1.4458826305664363,
+        2.4028434753928867
+      ],
+      "waypoint_m": [
+        2.1,
+        2.4
+      ],
+      "action": 0,
+      "source": "neural_value_iteration",
+      "known_cells": 313
+    },
+    {
+      "step": 2,
+      "position_m": [
+        2.046756399629061,
+        2.397927424240644
+      ],
+      "waypoint_m": [
+        2.1,
+        1.7999999999999998
+      ],
+      "action": 6,
+      "source": "neural_value_iteration",
+      "known_cells": 319
+    },
+    {
+      "step": 3,
+      "position_m": [
+        2.116783078843127,
+        1.8602846001719056
+      ],
+      "waypoint_m": [
+        2.4,
+        1.7999999999999998
+      ],
+      "action": 0,
+      "source": "neural_value_iteration",
+      "known_cells": 334
+    },
+    {
+      "step": 4,
+      "position_m": [
+        2.3376503495696666,
+        1.7925036621572168
+      ],
+      "waypoint_m": [
+        2.4,
+        1.5
+      ],
+      "action": 6,
+      "source": "neural_value_iteration",
+      "known_cells": 335
+    },
+    {
+      "step": 5,
+      "position_m": [
+        2.4083316083279405,
+        1.5617645842497172
+      ],
+      "waypoint_m": [
+        3.0,
+        1.5
+      ],
+      "action": 0,
+      "source": "neural_value_iteration",
+      "known_cells": 335
+    },
+    {
+      "step": 6,
+      "position_m": [
+        2.930775311386138,
+        1.4796735441036586
+      ],
+      "waypoint_m": [
+        3.0,
+        0.8999999999999999
+      ],
+      "action": 6,
+      "source": "neural_value_iteration",
+      "known_cells": 336
+    },
+    {
+      "step": 7,
+      "position_m": [
+        3.0155649290581037,
+        0.9600563309945166
+      ],
+      "waypoint_m": [
+        3.0,
+        1.2
+      ],
+      "action": 2,
+      "source": "neural_value_iteration",
+      "known_cells": 336
+    }
+  ],
+  "trajectory_sha256": "cee252eb0242858db64f8d4ddc659083331b39417edba5a3ab8a2bc3b8c4e9f9"
+}

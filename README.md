@@ -44,6 +44,7 @@ Lux3D 是核心流程：真实观察图 → 原始生成 GLB → 配准与冻结
 - [历史 v0.3 Demo（R1新版由负责人制作）](site/media/demo.mp4) · [完整资产清单](assets/manifest.json)
 - [交付结果与证据](evidence/delivery/)
 - [训练模型与实际执行](site/learning.html) · [训练方法、权重和独立评估](docs/training.md)
+- [随机环境中的新学习导航](site/navigation.html) · [首次留出结果、权重与复现](docs/learned-navigation.md)
 - [主动观察控制的新训练与四眼通行](docs/observation-control.md) · [真实同观测对照视频](evidence/learning/observation_pose_v2/demo.mp4)
 
 <!-- SUITE-README-START -->
@@ -83,7 +84,7 @@ Release 中的完整源码 ZIP 含实体资产，解压后可直接 `./setup.sh`
 .venv/bin/python ops/verify_r1_presentation.py
 ```
 
-以下运行是保留的历史训练控制附录。主线统一rules、不带pose-model，不再训练或新建Lux任务。
+以下运行是保留的历史训练控制附录。冻结R1/R2/R3复现统一rules、不带pose-model，不触发新训练或新建Lux任务。2026-11-12新增的独立随机环境学习导航见[首次完整结果](docs/learned-navigation.md)。
 
 ## 历史复现实验
 

@@ -1,0 +1,82 @@
+{
+  "id": "d68d8e0c5aa5f042f857ae1bd1b1d986ee2f724b7ef93ecb69eeeb20f7e3fea8",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      14,
+      11
+    ],
+    "goal": [
+      37,
+      5
+    ],
+    "known_fraction": 0.5604166388511658,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 6.841052550594827,
+        "estimated_remaining_steps": 24.48528137423857,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 6.926037828369117,
+        "estimated_remaining_steps": 24.899494936611667,
+        "observed_fraction_near_target": 1.0,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 7.212489168102784,
+        "estimated_remaining_steps": 25.899494936611667,
+        "observed_fraction_near_target": 0.9599999785423279,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 3,
+        "delta": [
+          -1,
+          1
+        ],
+        "goal_distance_m": 7.5,
+        "estimated_remaining_steps": 26.899494936611667,
+        "observed_fraction_near_target": 0.9599999785423279,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 4,
+        "delta": [
+          -1,
+          0
+        ],
+        "goal_distance_m": 7.421590126111788,
+        "estimated_remaining_steps": 26.48528137423857,
+        "observed_fraction_near_target": 0.9599999785423279,
+        "cached_prior_blocked": false,
+        "visits": 1
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794475437.862593,
+  "error": "HTTP 403",
+  "wall_seconds": 0.037896463996730745
+}

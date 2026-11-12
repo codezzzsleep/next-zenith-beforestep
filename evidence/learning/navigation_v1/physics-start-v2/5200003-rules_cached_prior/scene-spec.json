@@ -1,0 +1,136 @@
+{
+  "name": "navigation_5200003",
+  "seed": 5200003,
+  "split": "train",
+  "start": [
+    0.6,
+    1.2
+  ],
+  "goal_x": 11.1,
+  "terrain": {
+    "kind": "flat",
+    "slope_deg": 0.0,
+    "span": 16.0,
+    "roughness": 0.0,
+    "pits": 0,
+    "pit_depth": 0.0,
+    "field_x_max": 12.0
+  },
+  "objects": [
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-0.obj",
+      "x": 7.543200998116322,
+      "y": 2.9339532777568706,
+      "yaw_deg": 0.0,
+      "height_m": 0.45965459134787534
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-1.obj",
+      "x": 8.794992282416851,
+      "y": 3.0478962139219306,
+      "yaw_deg": 0.0,
+      "height_m": 0.560295128777318
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-2.obj",
+      "x": 8.075741109645165,
+      "y": 6.037372951475861,
+      "yaw_deg": 0.0,
+      "height_m": 0.3136304725800045
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-3.obj",
+      "x": 2.5115772975170243,
+      "y": 1.9716967387118256,
+      "yaw_deg": 0.0,
+      "height_m": 0.3829568407187624
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-4.obj",
+      "x": 5.60233353313639,
+      "y": 2.4169200887268043,
+      "yaw_deg": 0.0,
+      "height_m": 0.44754401041209446
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-5.obj",
+      "x": 4.302521122530617,
+      "y": 3.220838821268541,
+      "yaw_deg": 0.0,
+      "height_m": 0.48986827844238234
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-6.obj",
+      "x": 5.2072927153280375,
+      "y": 4.052222353417664,
+      "yaw_deg": 0.0,
+      "height_m": 0.4107486624953037
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-7.obj",
+      "x": 6.361451381198644,
+      "y": 4.953238294249188,
+      "yaw_deg": 0.0,
+      "height_m": 0.2905667324658881
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/rock-8.obj",
+      "x": 1.791643124397971,
+      "y": 6.150281090562768,
+      "yaw_deg": 0.0,
+      "height_m": 0.4250668983527524
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/border-0.obj",
+      "x": 6.0,
+      "y": -0.3,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/border-1.obj",
+      "x": 6.0,
+      "y": 7.199999999999999,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/border-2.obj",
+      "x": -0.3,
+      "y": 3.5999999999999996,
+      "yaw_deg": 0.0
+    },
+    {
+      "mesh_file": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/meshes/border-3.obj",
+      "x": 12.0,
+      "y": 3.5999999999999996,
+      "yaw_deg": 0.0
+    }
+  ],
+  "provenance": {
+    "generator": "src/beforestep/simulation/terrain.py",
+    "terrain_representation": "heightfield",
+    "units": "meters",
+    "note": "地形高度为真实米制；物体静态刚性"
+  },
+  "_hfield_dir": "/root/3d/next-zenith-beforestep/outputs/learning/navigation_v1-physics-start-v2/5200003-rules_cached_prior/heightfield",
+  "channel": {
+    "center_y": 3.5999999999999996,
+    "half_width": 3.5999999999999996
+  },
+  "soil": {
+    "mode": "soil",
+    "label": "nominal",
+    "params": {
+      "n": 1.0,
+      "kc": 1400.0,
+      "kphi": 820000.0,
+      "cohesion_pa": 170.0,
+      "phi_deg": 35.0,
+      "k_shear": 0.018
+    },
+    "params_sha": "55848f80956792b4704ff3ec83678bf7"
+  },
+  "init_perturbation": {
+    "lateral_m": 0.0,
+    "yaw_rad": 0.0
+  }
+}

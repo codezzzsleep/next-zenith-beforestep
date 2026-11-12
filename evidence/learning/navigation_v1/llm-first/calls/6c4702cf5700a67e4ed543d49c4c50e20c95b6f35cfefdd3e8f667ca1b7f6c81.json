@@ -1,0 +1,82 @@
+{
+  "id": "6c4702cf5700a67e4ed543d49c4c50e20c95b6f35cfefdd3e8f667ca1b7f6c81",
+  "status": "failed",
+  "model": "deepseek-v4-1-flash-261017",
+  "context": {
+    "position": [
+      2,
+      7
+    ],
+    "goal": [
+      37,
+      8
+    ],
+    "known_fraction": 0.2874999940395355,
+    "candidates": [
+      {
+        "id": 0,
+        "delta": [
+          1,
+          0
+        ],
+        "goal_distance_m": 10.20441081101697,
+        "estimated_remaining_steps": 36.07106781186547,
+        "observed_fraction_near_target": 0.800000011920929,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 1,
+        "delta": [
+          1,
+          1
+        ],
+        "goal_distance_m": 10.2,
+        "estimated_remaining_steps": 35.656854249492376,
+        "observed_fraction_near_target": 0.800000011920929,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 2,
+        "delta": [
+          0,
+          1
+        ],
+        "goal_distance_m": 10.5,
+        "estimated_remaining_steps": 36.656854249492376,
+        "observed_fraction_near_target": 0.8399999737739563,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 6,
+        "delta": [
+          0,
+          -1
+        ],
+        "goal_distance_m": 10.517128885774863,
+        "estimated_remaining_steps": 37.48528137423856,
+        "observed_fraction_near_target": 0.7599999904632568,
+        "cached_prior_blocked": false,
+        "visits": 0
+      },
+      {
+        "id": 7,
+        "delta": [
+          1,
+          -1
+        ],
+        "goal_distance_m": 10.21763181955584,
+        "estimated_remaining_steps": 37.07106781186547,
+        "observed_fraction_near_target": 0.6399999856948853,
+        "cached_prior_blocked": false,
+        "visits": 0
+      }
+    ],
+    "looks_remaining": 6
+  },
+  "created_at_unix": 1794475427.5760517,
+  "error": "HTTP 403",
+  "wall_seconds": 0.03643084899522364
+}

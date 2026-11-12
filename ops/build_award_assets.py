@@ -3,7 +3,6 @@ import hashlib
 import html
 import json
 from pathlib import Path
-import shutil
 
 import trimesh
 from PIL import Image
@@ -16,12 +15,10 @@ def main():
     out.mkdir(parents=True, exist_ok=True)
     media = ROOT / 'site/media/award'
     media.mkdir(parents=True, exist_ok=True)
-    old = Path('/root/3d/lunar-wheelleg-testbench/runs/unseen/recovery_r3/obs_R03')
     for name in ['rgb.png', 'crop_white.png', 'mask.png', 'depth.npy', 'visible_points.npy', 'observation.json']:
         target = out / 'v6-input' / name
-        target.parent.mkdir(parents=True, exist_ok=True)
-        if not target.exists():
-            shutil.copy2(old / name, target)
+        if not target.is_file():
+            raise FileNotFoundError(f'Missing retained V6 observation: {target}. Restore this tracked file from the repository checkout.')
     v6 = ROOT / 'assets/geometry/reference_v6/observation_fused.stl'
     derived = media / 'v6-observation-fused.glb'
     if not derived.exists():

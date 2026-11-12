@@ -185,3 +185,12 @@ R3明确授权imagination_strict五眼。为保持原imagination代码原样，�
 构造前声明原随机起点，在验证后预注册另一组8个新种子，分别报告，不替换原8场。
 真实LLM先25次HTTP403，再6次请求3有效/3解析失败，规则回退不算模型动作。
 所有首次结果与能力边界见[学习导航报告](learned-navigation.md)。
+
+## 2026-11-12 关键资产比较直接使用交付库原件
+
+六版本资产比较从本库读取 V6 的六份原观测，位于
+`evidence/award/asset-iterations/v6-input/`，不再依赖历史开发 checkout。
+V6、V7、V8、v0.1、v0.2、v0.3 的模型、输入与冻结配置仍按
+[资产迭代清单](../evidence/award/asset-iterations/manifest.json) 的 SHA 核对；
+323 份核心资产清单、版本源码快照与失败对比继续保留。
+构建器遇到缺失原观测时报告具体路径，要求恢复对应的受版本控制文件。

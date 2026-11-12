@@ -8,7 +8,8 @@
 
 已知决定性 8 场，原想象 3 到达、3 停车、2 碰撞。样本外 5 场，原想象 1 到达、2 停车、2 碰撞；最终 v3 修订 0 到达、5 停车、0 碰撞。Lux3D 让车走到没有想象就走不到的地方，错误的背面也会让车撞上；修订消掉碰撞，同时消掉留出中的到达收益。有效，但不绝对。锚点三维间隙 47.541 mm，二维包络间隙 0 mm，成功不稳健。 oldv2 F1_003 碰撞保留。
 
-可体验： https://codezzzsleep.github.io/next-zenith-beforestep/levels.html
+可体验： https://codezzzsleep.github.io/next-zenith-beforestep/
+全部真实生成： https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html
 源码： https://github.com/codezzzsleep/next-zenith-beforestep
 报告： https://codezzzsleep.github.io/next-zenith-beforestep/report.html
 
@@ -42,9 +43,9 @@
 
 ## 魔搭社区模型页与 Notebook 文本
 
-项目名：BeforeStep / 先见一步。核心是 Aholo Lux3D 真实几何候选、观测自检、全部采纳世界完整预演与独立执行。模型页同时列出规则导航主实验、历史学习控制权重以及失败证据，历史权重不冒充 R3 的控制器。
+项目名：BeforeStep / 先见一步。一张真实照片变成包含未知背面的完整三维石头。核心是 Aholo Lux3D 真实几何候选、观测自检、全部采纳世界完整预演与独立执行。模型页同时列出规则导航主实验、历史学习控制权重以及失败证据，历史权重不冒充 R3 的控制器。
 
-Notebook 从公开源码安装，使用已有观测与 Lux 结果复现，不要求读者提供生成密钥。入口依次为环境检查、数据 SHA 核验、已记录场景复用、真实轨迹回放和原失败说明。云端新生成是单独可选流程，需要读者自己的额度；默认复现不创建任务。
+Notebook 从公开源码安装，按 README 执行 `git lfs install --local`、LFS拉取和依赖安装，再运行 `.venv/bin/python ops/quickstart.py --reuse-lux`，使用已有观测与 Lux 结果复现，不要求读者提供生成密钥。入口依次为环境检查、数据 SHA 核验、已记录场景复用、真实轨迹回放和原失败说明。云端新生成是单独可选流程，需要读者自己的额度；默认复现不创建任务。
 
 仓库：https://github.com/codezzzsleep/next-zenith-beforestep
 Demo：https://codezzzsleep.github.io/next-zenith-beforestep/

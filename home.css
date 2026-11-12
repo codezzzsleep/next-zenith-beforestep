@@ -98,6 +98,13 @@ figcaption { margin-top: 12px; font-size: 14px; line-height: 1.6; color: var(--m
   padding: 6px 12px; background: var(--ghost); color: var(--night);
   font-size: 14px; font-weight: 700;
 }
+.turns { display: flex; gap: 8px; margin-top: 12px; }
+.turns button {
+  padding: 7px 12px; background: none; border: 1px solid #3a4045; color: var(--text);
+  font: inherit; font-size: 13.5px; cursor: pointer;
+}
+.turns button:hover { border-color: var(--ghost); color: var(--ghost); }
+.rock figcaption { margin-top: 10px; }
 .lead { margin-top: clamp(26px, 4vh, 44px); max-width: 38em; font-size: clamp(16px, 1.5vw, 19px); color: #cfccc5; }
 .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 26px; }
 .go {
@@ -274,4 +281,18 @@ h3 { font-size: 19px; line-height: 1.5; font-weight: 700; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
+}
+
+/* One opening moment: the photo is there, the line is drawn, the rock appears. */
+@media (prefers-reduced-motion: no-preference) {
+  .shot img { animation: arrive .6s ease-out both; }
+  .hinge { transform-origin: left center; animation: draw .55s .5s ease-out both; }
+  .rock model-viewer { animation: emerge 1s .95s ease-out both; }
+}
+@keyframes arrive { from { opacity: 0; } to { opacity: 1; } }
+@keyframes draw { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes emerge { from { opacity: 0; filter: blur(10px); } to { opacity: 1; filter: none; } }
+@media (max-width: 560px) {
+  .turns { gap: 6px; }
+  .turns button { padding: 6px 8px; font-size: 12.5px; white-space: nowrap; }
 }

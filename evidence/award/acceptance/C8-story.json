@@ -1,0 +1,80 @@
+{
+  "schema": "beforestep-award-photo-story-alignment/v1",
+  "source_data": "evidence/award/home-contract/assets/data/site.json",
+  "source_sha256": "32b94fdbdfa9b67d829c712afbb3e5889ef590f32a566adb81e50073313d0778",
+  "homepage_arithmetic_total_scope": "known decisive plus designated holdouts; no pooled generalization claim",
+  "gallery": {
+    "real_tasks": 330,
+    "returned_models": 306,
+    "admitted": 110,
+    "rejected": 196,
+    "rejected_would_collide": 30,
+    "counterfactual_interventions": 231,
+    "counterfactual_collision_interventions": 30,
+    "decision_contexts": 597
+  },
+  "known_decisive": {
+    "arrived": 3,
+    "stuck": 3,
+    "collision": 2,
+    "stopped_short": 0
+  },
+  "holdout_original": {
+    "arrived": 1,
+    "stuck": 2,
+    "collision": 2,
+    "stopped_short": 0
+  },
+  "holdout_revision": {
+    "arrived": 0,
+    "stuck": 5,
+    "collision": 0,
+    "stopped_short": 0
+  },
+  "all_known_revision": {
+    "arrived": 3,
+    "stuck": 9,
+    "collision": 0,
+    "stopped_short": 0
+  },
+  "collision_scenes": [
+    "suite_r2_v4_F1_020",
+    "suite_r2_v4_F3_004",
+    "suite_r2_v4_F0_003",
+    "suite_r2_v4_F3_006"
+  ],
+  "counterfactuals_by_scope": {
+    "r2": {
+      "collisions": 17,
+      "executed": 102,
+      "outcomes": {
+        "arrived": 44,
+        "stuck": 41,
+        "stopped_short": 0,
+        "collision": 17
+      },
+      "unexecutable": 0,
+      "collision_ratio": 0.16666666666666666
+    },
+    "r3": {
+      "known_frozen": {
+        "executed": 17,
+        "collisions": 0,
+        "noncollisions": 17,
+        "unexecutable": 0
+      },
+      "designated_holdout": {
+        "executed": 112,
+        "collisions": 13,
+        "noncollisions": 99,
+        "unexecutable": 0
+      }
+    }
+  },
+  "prose_files": [
+    "docs/report.md",
+    "README.md",
+    "docs/award-promotion.md"
+  ],
+  "homepage_design_changed": false
+}

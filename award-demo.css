@@ -1,0 +1,11 @@
+#demo-steps { flex-wrap: wrap; }
+#demo-generation model-viewer { height: 440px; background: var(--soil); }
+#demo-candidate, #demo-run { max-width: 100%; margin: 18px 0; }
+#demo-route { width: 100%; height: auto; }
+#demo-scope, #demo-check, #demo-result { overflow-wrap: anywhere; }
+#demo-custody { display: inline-block; margin-top: 26px; }
+@media (max-width: 700px) {
+  #demo-candidate, #demo-run { width: 100%; }
+  #demo-generation model-viewer { height: 320px; }
+  #demo-steps button { white-space: normal; }
+}

@@ -2,7 +2,9 @@
 
 执行规格：[SPEC_HACKATHON_AWARD.md](SPEC_HACKATHON_AWARD.md)。以负责人执行中更新的原件为准；此前执行记录保留在[历史记录](history/RESULT_HACKATHON_AWARD-before-owner-homepage.md)。R1/R2预注册主结果与冻结证据不变，R3永远标为赛后修订。
 
-最新第二版 SPEC 已交付 `/root/3d/homepage/`，按 C1–C8 顺序执行。首页设计与文案原样集成，真人测试仍由负责人安排。此前 P1–P6 工作和核验继续保留。
+最新第二版 SPEC 的执行记录在文末 C1–C8 表中。负责人首页已原样集成并发布；当前继续 C5 新目录完整链与 C7 固定补充演示。真人测试按负责人指令不由 Agent 跟进。以下 P1–P6 表保留第一版的历史检查点，不代表当前状态。
+
+<details><summary>第一版历史检查点（已由第二版记录取代）</summary>
 
 | 项目 | 当前状态 | 已实施、实核结果与证据 |
 | --- | --- | --- |
@@ -28,6 +30,8 @@
 
 main `7cb3096`、全部素材LFS与独立origin核验已通过；Pages `2508c35` 已built，技术报告/修订五栏/关卡全部候选/沙盒公网通过。新增留出失败章与22页PDF发布继续；首页成品交付后只接通资产路径并验收。P1/P2正式完成且满足时间条件后，按既有固定计划运行唯一P3演示并完整公开六栏/反事实/保全。
 
+</details>
+
 ## 第二版 C1–C8 执行记录
 
 | 项目 | 状态与实际验收 | 证据 |
@@ -39,3 +43,11 @@ main `7cb3096`、全部素材LFS与独立origin核验已通过；Pages `2508c35`
 | C4 真假叠合 | 27GLB均≤2000000字节，原配准/世界坐标、琥珀0.35与灰蓝；在与back-error相同冻结5cm投影上，全部误差差≤5cm。连续顶点投影有3例超5cm（stress B/A2、F3_006 T1/B1/B2），原因是原候选映射到5cm格中心，而真值用凸包包含格中心，两端离散误差合计；原连续值保留，不移动模型或修改实验数字。连续几何的“全部≤5cm”没有通过，不冒充通过。 | [27份叠合/两种投影](../../evidence/web-assets/overlays/index.json) · [原连续验收](../../evidence/web-assets/overlays/history/continuous-first-check.json) |
 | C6 单份检查器 | 只读原测量并重算五个冻结门卫，11份锚点与生产逐项一致（8准入）；11项单测实际通过。不是重新测量几何，不改src或原证据。 | [逐份复核](../../evidence/award/acceptance/C6-checker.json) · [单测](../../evidence/award/acceptance/C6-checker-tests.log) · `ops/check_candidate.py` |
 | C3 最终四页外观验收 | 训练页行动来源栏初检出现36px移动溢出，已用CSS移动网格与文本折行修复；四页1440/390全页、实际颜色/字体/顶栏/页脚全部通过，0HTTP/console，真实C1-C3 marker在最终检查后更新。 | [四页最终验收](../../evidence/award/acceptance/C3-theme-local.json) |
+| C2/C3/C4 公网发布 | Pages `ca2e829` built。公网陈列室306可查/四筛选/20场景/指针旋转/搜索/390/0error，四统一页面1440/390实际字体、令牌、顶栏页脚通过；新333个素材从Pages独立读取29349845字节，全部SHA与size匹配。 | [陈列室公网](../../evidence/award/acceptance/C2-gallery-public.json) · [外观公网](../../evidence/award/acceptance/C3-theme-public.json) · [公网素材](../../evidence/award/acceptance/C2-C4-public-assets.json) |
+| C5 新目录实测 | 全新GitHub克隆与LFS后发现系统缺venv/未安装本地LFS过滤器，保留首次失败并补齐README前置。环境恢复后安装与启动103.7096203789697秒；完整零付费物理链正在运行，尚不标完成。 | [首次失败](../../evidence/award/acceptance/C5-fresh-first-attempt.json) · `ops/quickstart.py --reuse-lux` |
+| C7 补充演示 | C1已发布、C2/C3最终完成，按第二版更新的真实marker启动固定 `suite_r2_v4_F0_006`；六栏、反事实与完整保全继续，最多28新增/累计316，结果单列不参与结论。 | [原固定计划](../../evidence/award/demo/plan.json) · [新条件记录](../../evidence/award/demo/C7-amendment.json) · [前置验收](../../evidence/award/C1-C3-complete.json) |
+| C4 可旋转叠合入口 | 新 `overlays.html` 实际加载与旋转27份叠合GLB，1440/390无溢出、0console/HTTP。两种投影测量并列，连续3例差异始终显示。 | [27份浏览器复验](../../evidence/award/acceptance/C4-overlays-local.json) · [旋转入口](../../site/overlays.html) |
+| C1 负责人交付的小更新 | 原样接入前/背视角按钮和开场动画；本地实际按钮角度、指针拖动、11份模型与全部切换、1440/390通过，首屏2.7224330010358244秒、0溢出/报错。完整首页第二版仍待负责人交付，本项仅是现交付目录的小更新。公网复验继续。 | [本地复验](../../evidence/award/acceptance/home-owner-update-local.json) · [旧集成记录](../../evidence/award/acceptance/history/home-C1-integration-before-owner-buttons.json) |
+| C7 完整归档入口修复与回归 | 保全脚本接受固定场景输出及数字任务原始目录，其他目录仍拒绝；新增实际tar/逐SHA/中断输出保留测试通过。全101单测16.286秒通过，3995原保护项diff空、54冻结源码逐项相同。 | [完整回归](../../evidence/award/acceptance/C1-C7-unit.log) · [不变性](../../evidence/award/acceptance/C1-C7-integrity.json) |
+
+下一具体步骤：同一全新克隆完成 C5 零付费物理链并核对五轨迹数组；C7 复用已知任务继续固定六栏/反事实/复盘与完整归档。两个旧进程均已退出，原中断文件保留后已恢复。新演示页面的数据尚未终态，暂不公开成已完成结果；之后生成最终 PDF、推送与公网复验。

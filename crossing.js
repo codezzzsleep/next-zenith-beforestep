@@ -1,0 +1,12 @@
+const data=await fetch('evidence/crossing/calibration/baseline.json').then(r=>{if(!r.ok)throw Error('实测数据加载失败');return r.json()});
+const names={fixed:'固定常规姿态',high:'固定高姿态'};
+const outcomes={clean_pass:'干净通过',wheel_contact_pass:'带轮触石通过',body_collision:'机身触石',unstable:'失稳',stuck:'卡住'};
+const method=document.querySelector('#crossing-method');
+const cm=x=>Number((x*100).toFixed(2));
+document.querySelector('#crossing-summary').textContent=`${data.trial_count} 次物理试验已完成。常规姿态最高 ${cm(data.maximum.fixed.any_pass_height_m)} 厘米有过一次通过，三个角度全通过最高 ${cm(data.maximum.fixed.three_of_three_height_m)} 厘米；高姿态最高 ${cm(data.maximum.high.three_of_three_height_m)} 厘米三个角度全通过。新增 Lux3D 任务 ${data.new_lux_tasks}。`;
+function detail(g){
+ const box=document.querySelector('#crossing-detail');box.replaceChildren();let p=document.createElement('p');p.textContent=`${names[g.method]} · 高 ${cm(g.height_m)} 厘米，深 ${cm(g.depth_m)} 厘米 · ${g.passed} 场通过 / 3 场`;box.append(p);
+ for(const r of g.trials){p=document.createElement('p');p.textContent=`接近角 ${r.angle_deg}°：${outcomes[r.status]}；${r.sim_seconds.toFixed(2)} 秒，轮触石 ${r.contact.steps_with_wheel_stone} 个物理步，最大倾角 ${r.contact.max_tilt_deg.toFixed(2)}°。${r.contact.failure?`失败原因：${r.contact.failure.reason}，${r.contact.failure.t.toFixed(3)} 秒。`:''}`;box.append(p);}
+}
+function render(){const t=document.createElement('table');t.innerHTML='<caption>通过场次 / 三个接近角</caption><thead><tr><th scope="col">高度</th>'+data.depths_m.map(d=>`<th scope="col">深 ${cm(d)} cm</th>`).join('')+'</tr></thead>';const b=document.createElement('tbody');for(const h of data.heights_m){const row=document.createElement('tr');row.innerHTML=`<th scope="row">${cm(h)} cm</th>`;for(const d of data.depths_m){const g=data.groups.find(x=>x.method===method.value&&x.height_m===h&&x.depth_m===d);const td=document.createElement('td'),button=document.createElement('button');button.textContent=`${g.passed} / 3`;button.className=g.passed===3?'all':g.passed?'some':'';button.setAttribute('aria-pressed','false');button.setAttribute('aria-label',`高${cm(h)}厘米深${cm(d)}厘米，${g.passed}场通过，查看记录`);button.onclick=()=>{document.querySelectorAll('#crossing-table button').forEach(x=>x.setAttribute('aria-pressed','false'));button.setAttribute('aria-pressed','true');detail(g);};td.append(button);row.append(td);}b.append(row);}t.append(b);document.querySelector('#crossing-table').replaceChildren(t);detail(data.groups.find(x=>x.method===method.value&&x.height_m===.12&&x.depth_m===.2));}
+method.onchange=render;render();

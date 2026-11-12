@@ -2,7 +2,7 @@
 
 执行规格：[SPEC_HACKATHON_AWARD.md](SPEC_HACKATHON_AWARD.md)。以负责人执行中更新的原件为准；此前执行记录保留在[历史记录](history/RESULT_HACKATHON_AWARD-before-owner-homepage.md)。R1/R2预注册主结果与冻结证据不变，R3永远标为赛后修订。
 
-最新第二版 SPEC 的执行记录在文末 C1–C8 表中。负责人首页已原样集成并发布；C5 新目录完整链和 C7 固定演示均已真实完成，正在完成 C8 最终材料的远端核验与发布。真人测试按负责人指令不由 Agent 跟进。以下 P1–P6 表保留第一版的历史检查点，不代表当前状态。
+第二版当前交付已发布并完成最终公网验收：C1/C2/C3/C5/C6/C7以及当前交付首页对应的C8完成；C4已交付，但连续几何投影仍有三例超过容差，原值与原因保留。完整首页第二版尚未交付，到件后按SPEC原样集成并重复§3.6。最终状态与七项交付记录见文末；以下P1–P6与C1–C8阶段表保留实际过程，早期“待验”由末项结果取代。真人测试按负责人指令不由Agent跟进。
 
 <details><summary>第一版历史检查点（已由第二版记录取代）</summary>
 
@@ -49,14 +49,22 @@ main `7cb3096`、全部素材LFS与独立origin核验已通过；Pages `2508c35`
 | C4 可旋转叠合入口 | 新 `overlays.html` 实际加载与旋转27份叠合GLB，1440/390无溢出、0console/HTTP。两种投影测量并列，连续3例差异始终显示。 | [27份浏览器复验](../../evidence/award/acceptance/C4-overlays-local.json) · [旋转入口](../../site/overlays.html) |
 | C1 负责人交付的小更新 | 原样接入前/背视角按钮和开场动画；本地实际按钮角度、指针拖动、11份模型与全部切换、1440/390通过，首屏2.7224330010358244秒、0溢出/报错。完整首页第二版仍待负责人交付，本项仅是现交付目录的小更新。公网复验继续。 | [本地复验](../../evidence/award/acceptance/home-owner-update-local.json) · [旧集成记录](../../evidence/award/acceptance/history/home-C1-integration-before-owner-buttons.json) |
 | C7 完整归档入口修复与回归 | 保全脚本接受固定场景输出及数字任务原始目录，其他目录仍拒绝；新增实际tar/逐SHA/中断输出保留测试通过。全101单测16.286秒通过，3995原保护项diff空、54冻结源码逐项相同。 | [完整回归](../../evidence/award/acceptance/C1-C7-unit.log) · [不变性](../../evidence/award/acceptance/C1-C7-integrity.json) |
-
 | C1 小更新公网复验 | main `24888a0` 已实际push，Pages `4b2b6e2` built/error null。公网1440/390、11模型、前/背按钮实际角度、指针与全部切换/动画/减动通过；首屏5.629045836976729秒，0溢出/0console/HTTP。 | [公网复验](../../evidence/award/acceptance/home-owner-update-public.json) |
 | C8 报告摘要与 HTML 同步 | 首次一致性检查发现摘要已更新、报告源HTML仍旧；已修复生成器同步HTML，保留首次失败。R1/R3原数字、轨迹与冻结身份再次核验通过；本步没有生成最终PDF。 | [首次差异](../../evidence/award/acceptance/C8-report-HTML-first-failure.log) · [R1复核](../../evidence/award/acceptance/current-R1-presentation.json) · [R3复核](../../evidence/award/acceptance/current-R3-presentation.json) |
-
-下一具体步骤：推送C7/C8源码与LFS，独立origin核验所有新素材；最终PDF与新演示Pages发布，重复公网首页/技术报告/新演示/数字/链接/素材验收。负责人完整首页第二版、视频与社交/比赛发布仍由负责人交付，当前不伪称完成。
-
 | C7 六栏、反事实、复盘与完整保全 | 固定场景六种方法完整终态；原/修订想象均2眼、57.2仿真秒后停车，无碰撞。两组各18被拒候选干预均可执行、0碰撞，五轨迹数组与五观察字节前缀全部核验；新付费24，R2/R3/C7 312/316，全历史354/360。7487文件完整tar逐成员SHA/size通过，原始23模型目录每文件确认后仅本机exclude，实体保留；公开102981614字节。 | [原始结果](../../evidence/award/demo/result.json) · [生成来源](../../evidence/award/demo/generation.json) · [完整清单](../../evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json) · [全tar核验](../../evidence/award/acceptance/C7-custody.json) |
 | C7 实际记录页面 | 六终态/5修订补看世界/36已验证干预逐项slider和播放、原图SHA、2模型实际load事件/原SHA/指针旋转、1440/390/0overflow与报错全部通过。补看预演与目标路线区分；首次测试宽bar选择器误匹配模型ShadowDOM已保留并纠正。 | [浏览器实核](../../evidence/award/acceptance/C7-demo-local.json) · [流程页面](../../site/award-demo.html) · [独立视频源，不覆盖旧包](../../evidence/video/award/demo/index.json) |
 | C8 最终 PDF 一次生成 | 报告摘要/README/两版文案/魔搭主线已对齐当前负责人交付页。最终PDF 23页/2213158字节，七原输入SHA与四碰撞、47.541、补充演示LABEL实际提取全通过。旧PDF证据与源Git历史保留。 | [PDF实核](../../evidence/award/acceptance/pdf.json) · [原输入与叙事来源](../../evidence/award/acceptance/C8-story.json) |
 | C7/C8 整体数字与保护核验 | 新C7数量经实际paid账本、六原summary与两组CF逐项比对后登记到数值审计；R1旧9轨迹/11模型/12预演及原数字全通过，报告源HTML逐字可见文本等于Markdown。3995原保护项diff空、54源码同4d53214，101unit既有证据不因只改网页而重复昂贵回归。 | [最终数字审计](../../evidence/award/acceptance/final-R1-presentation.json) · [原始未登记数字检查](../../evidence/award/acceptance/history/C7-first-number-audit.log) · [不变性](../../evidence/award/acceptance/C1-C8-final-integrity.json) |
 | C7/C8 LFS与独立origin、导出复核 | 首推78200ba保留；新目录补精确LFS规则后0eb7841实际上传411对象。独立origin存储重新下载117671150字节，所有pointer SHA/size通过。导出器精确携带manifest引用的412个新/共享gzip，99460464字节逐原SHA通过，最终23页PDF字节相同。公网发布继续。 | [独立origin](../../evidence/award/acceptance/C7-origin.json) · [导出复核](../../evidence/award/acceptance/C7-C8-export.json) |
+| 最终公网与冻结复验 | main `059b44e` 已push；Pages `77f5e11` built/error null。首页11模型与1440/390全验通过，首屏2.8774573630071245秒。R1 9回放/11GLB/12预演/3历史/20学习，R3 17场分层结果，27叠合逐份load/旋转全通过。3995保护项无差异/54源码精确相同。两次R1截图30秒超时原log保留，最终只扩展截图等待并禁CSS动画，原检查器不改、完整截图实在。 | [R1](../../evidence/award/acceptance/C1-C8-final-R1-public.json) · [R3](../../evidence/award/acceptance/C1-C8-final-R3-public.json) · [叠合](../../evidence/award/acceptance/C4-overlays-final-public.json) · [保护](../../evidence/award/acceptance/C1-C8-final-delivery-integrity.json) |
+| C7/C8 最终公网链接与文件 | 10页369链接/144本站目标/34锚点全通过；首次3个404按原字节补导出，失败记录保留。从真实Pages独立下载421文件/125786667字节，含412个清单引用gzip，编码与解码原SHA/size全部exact。新Demo六栏/47轨迹/36干预/2原GLB与原图SHA全通过；最终PDF 23页/2213158字节与一次生成结果相同，没有重取。 | [所有链接](../../evidence/award/acceptance/C1-C8-final-public-links.json) · [首次404](../../evidence/award/acceptance/history/C1-C8-first-public-links.json) · [公开文件](../../evidence/award/acceptance/C7-C8-public-assets.json) · [演示](../../evidence/award/acceptance/C7-demo-public.json) · [首页](../../evidence/award/acceptance/home-final-public.json) · [完成索引](../../evidence/award/acceptance/C1-C8-completion.json) |
+
+## 最后七项交付记录（R2 §8）
+
+1. **完成并验证**：当前负责人交付首页对应的C1/C2/C3/C5/C6/C7/C8，交付代码与导出修复远端`main`为`059b44e8d3a858fc620df5a546fbaacf58cdd901`，Pages为`77f5e1145e6037ff4732ceb9f48d9b74bac809f1`且built。C5新目录安装/启动103.7096203789697秒、完整零付费CLI 1287.8724570279592秒。最近完整单测101项通过，日志[单测](../../evidence/award/acceptance/C1-C7-unit.log)。最终命令包括`check_r1_browser.py --entry report.html`（原检查器，截图等待120000ms）、`check_r3_browser.py --entry report.html`、`check_overlays_browser.py`，公网均通过；[全部验证与来源](../../evidence/award/acceptance/C1-C8-completion.json)。
+2. **已做但未验证**：Agent当前交付范围无此类新增项；尚未交付的完整首页第二版没有冒充已集成。
+3. **未完成或失败**：C4连续顶点测量3例超过0.05米容差，见[原始连续验收](../../evidence/web-assets/overlays/history/continuous-first-check.json)；按冻结生产网格的测量全部通过，两者均公开。负责人完整首页第二版、新视频成片、社交/魔搭发布与赛事提交尚待负责人；现有素材与历史视频不等于新成片。公网首次3个404与两次截图超时原log均保留，最终复验已通过。
+4. **规则判断**：保留3995项冻结内容、54个源码与四次原想象碰撞；不放宽门槛、不换固定演示场景。C7只因C1发布且C2/C3完成启动，独立单列“赛后补充演示运行，不参与结论、不作为泛化证据”。两组各18次干预共用候选，不写成36份独立模型，不并入既有231/30；C4连续偏差不凑成通过。
+5. **Lux任务数**：C7新增24（23成功/1服务失败），R2/R3/C7累计312/316，全历史354/360；均未超限。C5新增0，没有重复create已知任务。
+6. **Git与作业**：所有付费、仿真和浏览器验收作业均已终态，自有临时预览服务已关闭。新增验收记录随本提交提交；交付消息以`git status --short`与远端`main`实核报告最终工作树状态与提交身份。
+7. **下一具体动作**：负责人完整首页第二版到件后，原样集成并重复SPEC §3.6全部本地/公网验收。负责人继续制作新视频与发布/提交；11/17后只做打包、自检，截止2026-11-19 19:00北京时间。

@@ -25,3 +25,7 @@ evidence/web-assets/**/*.npy filter=lfs diff=lfs merge=lfs -text
 evidence/web-assets/**/*.npz filter=lfs diff=lfs merge=lfs -text
 evidence/web-assets/**/*.png filter=lfs diff=lfs merge=lfs -text
 evidence/web-assets/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+
+evidence/award/demo/scenes/**/objects/*.gz filter=lfs diff=lfs merge=lfs -text
+site/media/award/demo/*.glb filter=lfs diff=lfs merge=lfs -text
+site/media/award/demo/*.png filter=lfs diff=lfs merge=lfs -text

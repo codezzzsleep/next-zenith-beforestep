@@ -47,7 +47,11 @@ def check(url,out):
             page.wait_for_function("document.querySelectorAll('#crossing-lux-table table').length===2")
             lux=json.loads((ROOT/'evidence/crossing/development-lux-first.json').read_text())
             assert page.locator('#crossing-lux-table table').first.locator('tbody tr').count()==lux['glb_successes']
-            assert '按规范 §12.4' in page.locator('.checkpoint').inner_text()
+            assert 'SPEC 尚未全部完成' in page.locator('.checkpoint').inner_text()
+            resumption=json.loads((ROOT/'evidence/crossing/development-resumption.json').read_text())
+            page.wait_for_function("document.querySelector('#crossing-resumption-table tbody tr')!==null")
+            assert page.locator('#crossing-resumption-table tbody tr').count()==resumption['candidate_count']
+            assert str(resumption['cumulative_lux_created']) in page.locator('#crossing-resumption-summary').inner_text()
             overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth');assert not overflow;assert not errors,errors;assert not http,http
             page.screenshot(path=str(out/f'{width}.png'),full_page=True)
             rows.append({'viewport':[width,height],'cells':cells,'three_method_switch':True,'actual_cell_details':True,'three_rock_comparisons':True,'development_failures_visible':True,'verified_fact_links':True,'horizontal_overflow':overflow,'console_errors':errors,'http_errors':http})

@@ -49,7 +49,7 @@ class CrossingBudget:
             raise PhysicalGatePending('The measured physical gate has not passed; no HTTP create allowed')
         with self.locked() as data:
             if data.get('stop', {}).get('new_creation_stopped'):
-                raise CrossingStopped('SPEC §12.4 provider rejection recorded; collect known tasks only')
+                raise CrossingStopped('A SPEC stopping condition is recorded; collect known tasks only')
             old = next((row for row in data['tasks'] if row['identity'] == identity), None)
             if old:
                 return old

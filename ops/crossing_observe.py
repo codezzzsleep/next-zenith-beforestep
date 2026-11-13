@@ -26,7 +26,7 @@ def observe(seed, revision=None):
         'stage':'zero-paid RGB-D blind-region measurement'}
     write(out/'identity.json',identity)
     e=WheelLegEnv(scene['spec'],control_hz=50,max_seconds=240,nav_base=False,tip_deg=60)
-    q=e.data.qpos.copy();q[:2]=scene['observation_stop'];e.data.qpos[:]=q;e.data.qvel[:]=0;mujoco.mj_forward(e.model,e.data)
+    q=e.data.qpos.copy();q[:2]=scene['observation_stop'];yaw=np.deg2rad(scene.get('observation_yaw_deg',0.));q[3:7]=[np.cos(yaw/2),0.,0.,np.sin(yaw/2)];e.data.qpos[:]=q;e.data.qvel[:]=0;mujoco.mj_forward(e.model,e.data)
     rec=Record(e);rec.frame('initial');assert transition(rec,stance_array(STANCE),2.,'park-and-observe')
     rec.save(out/'parking');write(out/'parking/result.json',{'contact':rec.summary(),'scene':scene,'phase':'parking'})
     vm=VZ.video_model(e,scene['rock_bodies'],width=1600,height=1200,off=(4040,3030));vm.hi_sensor=True;vm.sync(e.data.qpos)
@@ -54,9 +54,9 @@ def observe(seed, revision=None):
             pts,yy,xx=camera_io.unproject_depth(blk,dict(snap_hi,intrinsics=dict(snap_hi['intrinsics'],cy=snap_hi['intrinsics']['cy']-y0)))
             zmask=np.zeros(blk.shape,bool);zmask[yy,xx]=pts[:,2]>=.04
             mask_hi[y0:y0+192]&=zmask
-        x0,y0=map(float,e.data.qpos[:2]);local=points-np.array([x0,y0,0.])
-        sl=dict(snap);sl['world_pos']=(np.array(snap['world_pos'])-np.array([x0,y0,0.])).tolist()
-        sl['frame']='local';sl['local_frame']={'x0':x0,'y0':y0,'yaw0':0.}
+        x0,y0=map(float,e.data.qpos[:2]);w,x,y,z=e.data.qpos[3:7];yaw=float(np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z)));c,ss=np.cos(-yaw),np.sin(-yaw);Rl=np.array([[c,-ss,0],[ss,c,0],[0,0,1.]]);tl=-Rl@np.array([x0,y0,0.]);local=points@Rl.T+tl
+        sl=dict(snap);sl['world_pos']=(Rl@np.array(snap['world_pos'])+tl).tolist();sl['R_world_from_camera']=(Rl@np.array(snap['R_world_from_camera'])).tolist()
+        sl['frame']='local';sl['local_frame']={'x0':x0,'y0':y0,'yaw0':yaw}
         Image.fromarray(rgb).save(out/'rgb.png');Image.fromarray(hi).save(out/'rgb_gen.png')
         Image.fromarray(mask.astype(np.uint8)*255).save(out/'mask.png');Image.fromarray(dark.astype(np.uint8)*255).save(out/'dark.png')
         np.save(out/'depth.npy',depth_valid);np.save(out/'visible_points.npy',local);np.save(out/'visible_points_world.npy',points)
@@ -65,10 +65,10 @@ def observe(seed, revision=None):
         st={'schema':'v8-target-state/v1','target':'T','look':'look1','visible':{
             'x_front':float(local[:,0].min()),'y_center':float((local[:,1].min()+local[:,1].max())/2),
             'W_vis':float(np.ptp(local[:,1])),'H_vis':float(local[:,2].max())},
-            'local_frame':{'x0':x0,'y0':y0,'yaw0':0.},'robot_qpos_world':e.data.qpos.tolist(),'t_sim':e.t,
+            'local_frame':{'x0':x0,'y0':y0,'yaw0':yaw},'robot_qpos_world':e.data.qpos.tolist(),'t_sim':e.t,
             'crop_native_px':native,'native_ok':variants['native_ok'],'crops':variants['variants'],
             'observation_sha256':{name:sha(out/name) for name in ['rgb.png','depth.npy','mask.png','dark.png']}}
-        write(out/'state.json',st);write(out/'camera_world.json',snap)
+        write(out/'state.json',st);write(out/'camera_world.json',snap);np.savez_compressed(out/'physical-state.npz',qpos=e.data.qpos,qvel=e.data.qvel,t=e.t)
         write(out/'observation.json',{'schema':'observation/v8','label':f'crossing_{scene["revision"]}_{seed}',
             'camera':sl,'intrinsics':sl['intrinsics'],'image':'rgb.png','target':'T','mask_px':int(mask.sum()),
             'mask_source':'ideal simulated target segmentation from visible RGB-D pixels only; lit and >=4cm; no hidden geometry passed to admission',
@@ -84,7 +84,7 @@ def observe(seed, revision=None):
             'camera_world':snap,'camera_to_near_m':float(min(scene['truth_geometry']['near'])-snap['world_pos'][0]),
             'leg_stance':'STANCE; reached through env.step_command, 50Hz control/500Hz physics',
             'sun':scene['sun'],'tracks':tracks,'crop_native_height_px':native,
-            'native_ok':variants['native_ok'],'visible_points':len(points),'new_lux_tasks':0,
+            'native_ok':variants['native_ok'],'upload_ok':variants['upload_ok'],'visible_points':len(points),'new_lux_tasks':0,
             'source_identity':identity,'input_sha256':st['observation_sha256'],
             'limitations':['Ideal target segmentation; passive-dark depth suppressed.',
                 'True far edges include the low >=4mm rear skirt; observed stone filter is >=4cm, as in the frozen pipeline.']}
@@ -98,4 +98,4 @@ if __name__=='__main__':
     for seed in [args.seed] if args.seed else DEVELOPMENT_SEEDS:
         row=observe(seed,args.revision);rows.append(row)
         print(json.dumps({k:row[k] for k in ['seed','camera_to_near_m','tracks','crop_native_height_px','native_ok']}),flush=True)
-    write(ROOT/'evidence/crossing/development-blindness.json',{'stage':'zero-paid development; excluded from statistics','scenes':rows})
+    write(ROOT/'evidence/crossing'/('development-blindness-'+rows[0]['revision']+'.json'),{'stage':'zero-paid development; excluded from statistics','scenes':rows})

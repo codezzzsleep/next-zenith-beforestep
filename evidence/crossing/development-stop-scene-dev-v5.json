@@ -1,0 +1,23 @@
+{
+  "schema": "beforestep-crossing-development-stop/v1",
+  "observed_at": "2026-11-13T14:18:41.748321+00:00",
+  "criterion": "SPEC_WHEELLEG_CROSSING.md §12.2: no generated threshold candidate admitted after input-side development",
+  "code": "NO_ADMITTED_CANDIDATES",
+  "revision": "scene-dev-v5",
+  "seed": 11002,
+  "new_creation_stopped": true,
+  "generated_in_current_input": 6,
+  "admitted": 0,
+  "cumulative_created": 11,
+  "all_known_tasks_terminal": true,
+  "new_task_ids": [
+    7116060,
+    7116281,
+    7116654,
+    7116978,
+    7117234,
+    7117519
+  ],
+  "reason": "All six fail the frozen multi-metric admission; C1 contour passes but scale and other metrics fail.",
+  "limits": "One new observed valid seed tested; remaining valid development chains and formal tests were not completed."
+}

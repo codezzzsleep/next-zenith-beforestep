@@ -7,15 +7,15 @@ import numpy as np
 import trimesh
 from .runtime import ROOT, OUT, write, sha
 
-DEVELOPMENT_SEEDS = [11001, 11002, 11003, 11004]
+DEVELOPMENT_SEEDS = [11001, 11002, 11005, 11006]
 SOURCE_ROCKS = ['rock_07', 'moon_rock_03', 'moon_rock_04']
-GENERATOR = {'revision': 'scene-dev-v3', 'height_m': [.135, .15],
-             'shallow_depth_m': [.11, .17], 'deep_depth_m': [.24, .34],
-             'width_m': [2.9, 3.1], 'yaw_deg': [-8., 8.], 'lateral_m': [-.035, .035],
-             'gap_m': [.9, 1.1], 'sun_azimuth_deg': [15., 65.],
-             'camera_to_near_m': [.32, .40], 'sun_elevation_deg': 10.,
-             'shallow_probability': .8, 'ridge_floor_target_m': .10, 'wheel_time_limit_s': 240.,
-             'speed_cap_m_s': .15, 'observation_stance': 'STANCE'}
+GENERATOR = {'revision': 'scene-dev-v5', 'height_m': [.14, .15],
+             'shallow_depth_m': [.11, .15], 'deep_depth_m': [.22, .30],
+             'width_m': [1.4, 1.6], 'yaw_deg': [-8., 8.], 'lateral_m': [-.035, .035],
+             'gap_m': [.9, 1.1], 'sun_azimuth_deg': [-8., 8.],
+             'camera_to_near_m': [.58, .62], 'threshold_pitch_deg': 90., 'observation_yaw_deg': -45., 'sun_elevation_deg': 10.,
+             'shallow_probability': .65, 'ridge_floor_target_m': .10, 'wheel_time_limit_s': 240.,
+             'speed_cap_m_s': .15, 'observation_stance': 'STANCE', 'goal_x_m': 4.0, 'goal_lateral_tolerance_m': .4}
 
 
 def source_mesh(name):
@@ -31,10 +31,12 @@ def source_mesh(name):
         'rock': name, 'url': info['source_url'], 'license': info['license'], 'authors': info['authors']}
 
 
-def transformed(name, height, depth, width, near, lateral, yaw):
+def transformed(name, height, depth, width, near, lateral, yaw, pitch=0.):
     mesh, origin = source_mesh(name)
     th = np.deg2rad(yaw); rot = np.eye(4)
     rot[:2, :2] = [[np.cos(th), -np.sin(th)], [np.sin(th), np.cos(th)]]
+    pr=np.deg2rad(pitch); tilted=np.eye(4);tilted[:3,:3]=[[np.cos(pr),0,np.sin(pr)],[0,1,0],[-np.sin(pr),0,np.cos(pr)]]
+    rot=rot@tilted
     mesh.apply_transform(rot); lo, hi = mesh.bounds
     scale = np.array([depth, width, height]) / (hi - lo)
     affine = np.eye(4); affine[:3, :3] = np.diag(scale)
@@ -91,7 +93,7 @@ def generate(seed, revision=None):
     depth = float(rng.uniform(*depth_range)); width = float(rng.uniform(*GENERATOR['width_m']))
     yaw = float(rng.uniform(*GENERATOR['yaw_deg'])); lateral = float(rng.uniform(*GENERATOR['lateral_m']))
     gap = float(rng.uniform(*GENERATOR['gap_m'])); near = 3.
-    mesh, provenance = transformed(name,h,depth,width,near,lateral,yaw)
+    mesh, provenance = transformed(name,h,depth,width,near,lateral,yaw,GENERATOR['threshold_pitch_deg'])
     objects = [save_mesh(folder/'threshold',mesh,provenance)]
     bodies = {'obstacle0': name}
     for index, side in enumerate((-1,1), start=1):
@@ -99,9 +101,10 @@ def generate(seed, revision=None):
                                    near-.3,side*(gap/2+1.75),0.)
         objects.append(save_mesh(folder/f'gate-{index}',gate,origin)); bodies[f'obstacle{index}']=origin['rock']
     distance = float(rng.uniform(*GENERATOR['camera_to_near_m']))
-    stop = [near-distance-.42,0.]
+    obsyaw=np.deg2rad(GENERATOR['observation_yaw_deg'])
+    stop = [near-distance-.42*np.cos(obsyaw),distance-.42*np.sin(obsyaw)]
     az = float(rng.uniform(*GENERATOR['sun_azimuth_deg']))
-    spec = {'name': f'crossing-{revision}-{seed}', 'seed': seed, 'start': stop, 'goal_x': near+depth+.35,
+    spec = {'name': f'crossing-{revision}-{seed}', 'seed': seed, 'start': stop, 'goal_x': GENERATOR['goal_x_m'],
         'front_cam': {'pos': [.42,0.,-.00125], 'pitch_deg': -24.83, 'fovy': 70.},
         'terrain': {'kind': 'flat', 'span': 16, 'field_x_max': 15.95},
         '_hfield_dir': str(OUT/'runtime/heightfields'), 'objects': objects,
@@ -111,7 +114,7 @@ def generate(seed, revision=None):
     scene = {'schema': 'beforestep-crossing-scene/v1', 'seed': seed, 'revision': revision, 'generator': GENERATOR,
         'dimensions_m': {'height': h, 'depth': depth, 'width': width}, 'gap_m': gap,
         'lateral_m': lateral, 'yaw_deg': yaw, 'sun': {'elevation_deg':10.,'azimuth_deg':az},
-        'camera_nominal_distance_m': distance, 'observation_stop': stop, 'goal':[near+depth+.35,0.],
+        'camera_nominal_distance_m': distance, 'observation_stop': stop, 'observation_yaw_deg': GENERATOR['observation_yaw_deg'], 'threshold_pitch_deg': GENERATOR['threshold_pitch_deg'], 'goal':[GENERATOR['goal_x_m'],0.],
         'ridge_min_high_m': min(ridge), 'ridge_meets_target': min(ridge)>=.10,
         'spec':spec,'rock_bodies':bodies,'truth_geometry':track_geometry(mesh),
         'truth_mesh':str(folder/'threshold/truth.obj'), 'development_excluded_from_statistics': True}

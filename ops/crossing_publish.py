@@ -12,7 +12,7 @@ def checkpoint(state,event):
     with Path('/root/3d/MEMORY.md').open('a') as f:f.write('\n- Crossing publication: '+event+'；私有账本 '+str(path)+'。\n')
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--stage',default='capability-v72');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--stage',default='capability-v72');ap.add_argument('--message',default='Publish complete crossing calibration and preserve failed support constraints');a=ap.parse_args()
     state={'stage':a.stage,'status':'running'};checkpoint(state,'Publishing complete calibration records; physical gate remains pending')
     run(['git','fetch','origin','main'])
     remote=readcmd(['git','rev-parse','origin/main'])
@@ -22,7 +22,7 @@ if __name__=='__main__':
     if line not in text:attributes.write_text(text+'\n'+line)
     paths=['.gitattributes','experimental/crossing',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_*.py')],'docs/crossing.md','docs/reviews/SPEC_WHEELLEG_CROSSING.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.css','site/crossing.js']
     run(['git','add',*paths])
-    if readcmd(['git','diff','--cached','--name-only']):run(['git','commit','-m','Publish complete crossing calibration and preserve failed support constraints'])
+    if readcmd(['git','diff','--cached','--name-only']):run(['git','commit','-m',a.message])
     state['main']=readcmd(['git','rev-parse','HEAD']);checkpoint(state,'Source and measured baseline evidence committed '+state['main'])
     run(['git','push','origin','main'])
     assert readcmd(['git','ls-remote','origin','refs/heads/main']).split()[0]==state['main'];checkpoint(state,'Main pushed and verified '+state['main'])
@@ -33,7 +33,7 @@ if __name__=='__main__':
         if not source.is_file() or source.suffix not in ['.json','.png','.jpg']:continue
         relative=str(source.relative_to(ROOT));target=PAGES/relative;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target);copied.append(relative)
     run(['git','add',*copied],PAGES)
-    if readcmd(['git','diff','--cached','--name-only'],PAGES):run(['git','commit','-m','Publish complete wheel-leg calibration and support audit results'],PAGES)
+    if readcmd(['git','diff','--cached','--name-only'],PAGES):run(['git','commit','-m',a.message],PAGES)
     state['pages']=readcmd(['git','rev-parse','HEAD'],PAGES);checkpoint(state,'Pages commit prepared '+state['pages'])
     run(['git','push','origin','HEAD:gh-pages'],PAGES);checkpoint(state,'Pages pushed '+state['pages'])
     start=time.monotonic()
@@ -46,7 +46,7 @@ if __name__=='__main__':
     run([sys.executable,str(ROOT/'ops/crossing_check.py'),'--url',PUBLIC,'--out',str(PRIVATE/(a.stage+'-public'))])
     import urllib.request
     verified=[]
-    for relative in ['crossing.html','crossing.css','crossing.js','docs/crossing.md','evidence/crossing/calibration/capability.json','evidence/crossing/calibration/capability-v72.json','evidence/crossing/calibration/capability-v72-manifest.json','evidence/crossing/references.json']:
+    for relative in ['crossing.html','crossing.css','crossing.js','docs/crossing.md','evidence/crossing/calibration/capability.json','evidence/crossing/calibration/capability-v72.json','evidence/crossing/calibration/capability-v72-manifest.json','evidence/crossing/references.json','evidence/crossing/development.json']:
         with urllib.request.urlopen(PUBLIC+relative,timeout=90) as response:raw=response.read();assert response.status==200
         expected=(PAGES/relative).read_bytes();assert raw==expected,relative
         verified.append({'path':relative,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})

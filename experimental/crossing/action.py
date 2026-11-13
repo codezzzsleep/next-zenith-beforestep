@@ -24,7 +24,7 @@ class Script:
     """Scripted foot paths, analytic swing IK, and virtual-model stance forces."""
     def __init__(self,rec,base,feet,yaw=0):
         self.rec=rec;self.base=np.array(base,float);self.feet=np.array(feet,float)
-        self.yaw=yaw;self.stages=[];self.swing_leg=None;self.near=0.;self.far=0.;self.high=0.;self.unload_fraction=1.;self.unload_loads=None;self.unloading=False;self.unload_initial_targets=None;self.cached_support_points=wheel_positions(rec.e).copy();self.cached_support_valid=np.zeros(4,bool)
+        self.yaw=yaw;self.stages=[];self.swing_leg=None;self.near=0.;self.far=0.;self.high=0.;self.unload_fraction=1.;self.unload_loads=None;self.unloading=False;self.unload_initial_targets=None
         base_id=mujoco.mj_name2id(rec.e.model,mujoco.mjtObj.mjOBJ_BODY,'base_link')
         self.robot_mass=float(rec.e.model.body_subtreemass[base_id]);self.ground_adjust=np.zeros(4)
     def rotation(self):
@@ -39,13 +39,7 @@ class Script:
                     force=np.zeros(6);mujoco.mj_contactForce(e.model,e.data,k,force)
                     j=LEG.index(self.rec.wheel_leg[wheel]);f=max(0,float(force[0]));sums[j]+=f;totals[j]+=f*c.pos
         for j in range(4):
-            if sums[j]>1e-6:
-                measured=totals[j]/sums[j]
-                points[j]=.6*self.cached_support_points[j]+.4*measured if self.cached_support_valid[j] else measured
-                self.cached_support_points[j]=points[j];self.cached_support_valid[j]=True
-            else:
-                points[j]=self.cached_support_points[j]
-                if j==self.swing_leg:self.cached_support_valid[j]=False
+            if sums[j]>1e-6:points[j]=totals[j]/sums[j]
         return points,sums
     def inverse_forces(self,required):
         """Closed-form floating-base force balance; no trajectory optimizer."""
@@ -114,7 +108,11 @@ class Script:
             ref_velocity=np.zeros((4,3)) if previous is None else np.clip((reference-previous)/dt,-2,2);previous=reference.copy()
             # Position IK supplies posture stiffness; static force balance
             # supplies only gravity compensation through the same joint PD API.
-            tau=self.inverse_forces(e.data.qfrc_bias)
+            required=e.data.qfrc_bias.copy()
+            heading=np.arctan2(rotation[1,0],rotation[0,0]);yaw_rate=(rotation@e.data.qvel[3:6])[2]
+            yaw_moment=float(np.clip(-6.*(heading-self.yaw)-2.*yaw_rate,-.8,.8))
+            required[3:6]+=rotation.T@np.array([0.,0.,yaw_moment])
+            tau=self.inverse_forces(required)
             target=reference.copy();velocity_targets=np.zeros((4,3))
             for j,leg in enumerate(LEG):
                 for k,part in enumerate(['hip','thigh','calf']):
@@ -126,7 +124,7 @@ class Script:
             for j,leg in enumerate(LEG):
                 turn=sum(e.data.qvel[e.J[leg+'_'+part+'_joint']['vadr']] for part in ['thigh','calf'])+e.data.qvel[4]
                 value=-turn
-                if j!=self.swing_leg or self.unloading:value+=fv[j,0]/WHEEL_R+3*(f[j,0]-anchors[j,0])/WHEEL_R
+                if j!=self.swing_leg or self.unloading:value+=fv[j,0]/WHEEL_R+8*(f[j,0]-anchors[j,0])/WHEEL_R
                 omega.append(np.clip(value,-.15/WHEEL_R,.15/WHEEL_R))
             if not self.rec.command(target,np.array(omega),phase=phase,velocity_targets=velocity_targets):return False
         self.base=newbase;self.feet=newfeet
@@ -167,8 +165,8 @@ class Script:
         if phase=='front-right':b[0]-=.06*(target[0]-self.feet[j,0]);b[2]-=.005
         if not self.move(base=b,feet=f,seconds=max(2.,np.linalg.norm(f[j,:2]-self.feet[j,:2])/.08),phase=phase+'-swing'):return False
         if phase=='front-right':
-            b=self.base.copy();b[0]+=.020
-            if not self.move(base=b,seconds=2.,phase='align-before-first-landing'):return False
+            b=self.base.copy();b[0]+=.018
+            if not self.move(base=b,seconds=4.,phase='align-before-first-landing'):return False
         if phase=='front-left':
             b=self.base.copy();b[0]=self.near;b[1]=self.lateral-.025;b[2]=max(.38,self.high+.26);other=f.copy();other[0,0]=self.far+.25;other[2:,0]=self.near-.24
             if not self.move(base=b,feet=other,seconds=8.,phase='centre-before-front-left-landing'):return False
@@ -190,26 +188,38 @@ class Script:
 
 def crossing(rec,geometry,settings=None):
     cfg={'lift_margin_m':.035,'landing_margin_m':.055,'rear_landing_margin_m':.025,'body_height_m':.38,'near_margin_m':.040,'support_narrow_y_m':-.015}
-    cfg.update(settings or {});rec.leg_kd=8.
+    cfg.update(settings or {});rec.leg_kd=5.
     near=min(geometry['near']);far=max(geometry['far']);height=max(geometry['high']);lateral=geometry.get('lateral',0.)
     # Approach is driven with normal stance; stop based on front wheel centre.
     e=rec.e;pose=stance_array(STANCE)
     if not transition(rec,pose,1.,'settle'):return False,[]
     front_line=near-WHEEL_R-cfg['near_margin_m']
     t0=e.t
-    while max(wheel_anchors(e)[:2,0])<front_line and e.t-t0<15:
+    while min(wheel_anchors(e)[:2,0])<front_line and e.t-t0<15:
         if not rec.command(pose,np.full(4,.07/WHEEL_R),phase='approach'):return False,[]
+    # Physically align on four grounded wheels. Integral feedback overcomes
+    # static wheel/skid friction without changing the common wheel speed cap.
+    align_start=e.t;integral=0.
+    while e.t-align_start<30.:
+        w,x,y,z=e.data.qpos[3:7];yaw=np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z))
+        if abs(yaw)<.001:break
+        integral=np.clip(integral+yaw/e.control_hz,-.5,.5)
+        speed=float(np.clip(-1.5*yaw-.5*integral,-.15,.15))
+        omega=np.array([(1 if leg in ['FR','RR'] else -1)*speed/WHEEL_R for leg in LEG])
+        if not rec.command(pose,omega,phase='align-heading-on-four-wheels'):return False,[]
+    for _ in range(int(.5*e.control_hz)):
+        if not rec.command(pose,phase='seat-after-heading-alignment'):return False,[]
     feet=wheel_anchors(e);base=e.data.qpos[:3].copy();sc=Script(rec,base,feet);sc.near=near;sc.far=far;sc.high=height;sc.lateral=lateral
     # Narrow the supporting front-left wheel before the threshold. This makes
     # a support triangle near the crossing line rather than straddling its edge.
     shifted=base.copy();shifted[0]-=.04;shifted[1]=lateral-.055;shifted[2]=.32
     if not sc.move(base=shifted,seconds=3.,phase='prepare-left-support'):return False,sc.stages
-    target=feet[1].copy();target[0]=near-.095;target[1]=lateral+cfg['support_narrow_y_m'];target[2]=WHEEL_R+.001
+    target=feet[1].copy();target[0]=near-.10;target[1]=lateral+cfg['support_narrow_y_m'];target[2]=WHEEL_R+.001
     if not sc.swing(1,target,WHEEL_R+.06,'narrow-left'):return False,sc.stages
     shifted=np.array([near-.33,lateral+.02,max(cfg['body_height_m'],height+.27)])
-    rolled=sc.feet.copy();rolled[2:,0]=near-.43;rolled[2:,1]=[lateral-.142,lateral+.142]
+    rolled=sc.feet.copy();rolled[2:,0]=near-.43
     if not sc.move(base=shifted,feet=rolled,seconds=5.,phase='raise-and-centre'):return False,sc.stages
-    shifted[0]=near-.12;rolled[2:,0]=near-.33;rolled[0,0]=front_line;rolled[0,1]=lateral-.142
+    shifted[0]=near-.12;rolled[2:,0]=near-.33
     if not sc.move(base=shifted,feet=rolled,seconds=8.,phase='support-for-front-right'):return False,sc.stages
     landing=far+WHEEL_R+cfg['landing_margin_m'];lift=height+WHEEL_R+cfg['lift_margin_m']
     target=np.array([landing,lateral-.10,WHEEL_R+.001])

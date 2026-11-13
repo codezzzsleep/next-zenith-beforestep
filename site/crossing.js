@@ -17,3 +17,17 @@ function render(){const t=document.createElement('table');t.innerHTML='<caption>
 const rocks=document.querySelector('#crossing-rocks'),table=document.createElement('table');table.innerHTML='<caption>同尺寸真石素材的独立物理结果</caption><thead><tr><th>素材</th><th>固定常规</th><th>高姿态</th><th>逐轮</th></tr></thead>';const body=document.createElement('tbody');for(const rock of [...new Set(data.rocks.map(r=>r.rock))]){const tr=document.createElement('tr'),label=document.createElement('th');label.textContent=rock;tr.append(label);for(const m of ['fixed','high','gait']){const r=data.rocks.find(r=>r.rock===rock&&r.method===m),td=document.createElement('td');td.textContent=outcomes[r.status]+(m==='gait'?`；三支撑${r.support_compliant?'符合':'未符合'}`:'');tr.append(td);}body.append(tr);}table.append(body);rocks.append(table);
 const example=data.groups.find(g=>g.method==='gait'&&g.height_m===.15&&g.depth_m===.15);document.querySelector('#crossing-profile-dimensions').textContent=`同一试验坎示意：高 ${cm(example.height_m)} cm、深 ${cm(example.depth_m)} cm。图示来自标定尺寸，尚不是 Lux3D 场景的二维规划验证。`;
 method.onchange=render;render();
+
+const [development,references]=await Promise.all([
+ fetch('evidence/crossing/development.json').then(r=>{if(!r.ok)throw Error('开发记录加载失败');return r.json()}),
+ fetch('evidence/crossing/references.json').then(r=>{if(!r.ok)throw Error('出处加载失败');return r.json()})
+]);
+document.querySelector('#crossing-development-summary').textContent=`保留 ${development.attempt_count} 个开发身份、${development.trial_count} 份已结束记录。这里也包含早期几何诊断；它们没有能力通过结论。`;
+const attemptSelect=document.querySelector('#crossing-development-attempt');
+for(const attempt of development.attempts){const option=document.createElement('option');option.value=attempt.attempt;option.textContent=attempt.attempt;attemptSelect.append(option);}
+function renderDevelopment(){
+ const attempt=development.attempts.find(a=>a.attempt===attemptSelect.value),box=document.querySelector('#crossing-development-detail');box.replaceChildren();
+ for(const r of attempt.trials){const p=document.createElement('p');const failure=r.contact?.failure;const physical=r.audits['support-physical-audit.json'];p.textContent=`${r.id}：${r.legacy_diagnostic?'早期开发诊断（不作能力结论）':outcomes[r.status]??r.status}${r.sim_seconds!==null?`，${r.sim_seconds.toFixed(2)} 秒`:''}${failure?`；${failure.reason}，发生在 ${failure.t.toFixed(3)} 秒`:''}${physical!==undefined?`；指令轮不承重时，三支撑缺失 ${physical} 个子步`:''}${r.last_script_event?.phase==='joint_limit'?`；${r.last_script_event.leg} 的 ${r.last_script_event.part} 目标超出关节范围`:''}${r.last_script_event?.phase==='unreachable'?'；抬轮目标不可达':''}。`;box.append(p);}
+}
+attemptSelect.value=development.attempts.at(-1).attempt;attemptSelect.onchange=renderDevelopment;renderDevelopment();
+for(const reference of references.verified){const p=document.createElement('p'),link=document.createElement('a');p.append(reference.verified_claim+' ');link.href=reference.url;link.textContent='原文';p.append(link);document.querySelector('#crossing-references').append(p);}

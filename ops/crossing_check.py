@@ -36,9 +36,15 @@ def check(url,out):
             page.locator(f'#crossing-table button[aria-label="高10厘米深15厘米，{group["support_compliant_passed"]}场通过，查看记录"]').click()
             assert '实际指令轮不承重时' in page.locator('#crossing-detail').inner_text()
             assert page.locator('#crossing-rocks tbody tr').count()==3
+            development=json.loads((ROOT/'evidence/crossing/development.json').read_text())
+            assert page.locator('#crossing-development-attempt option').count()==development['attempt_count']
+            page.select_option('#crossing-development-attempt','gait-v89')
+            assert '机身触石' in page.locator('#crossing-development-detail').inner_text()
+            references=json.loads((ROOT/'evidence/crossing/references.json').read_text())
+            assert page.locator('#crossing-references a').count()==len(references['verified'])
             overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth');assert not overflow;assert not errors,errors;assert not http,http
             page.screenshot(path=str(out/f'{width}.png'),full_page=True)
-            rows.append({'viewport':[width,height],'cells':cells,'three_method_switch':True,'actual_cell_details':True,'three_rock_comparisons':True,'horizontal_overflow':overflow,'console_errors':errors,'http_errors':http})
+            rows.append({'viewport':[width,height],'cells':cells,'three_method_switch':True,'actual_cell_details':True,'three_rock_comparisons':True,'development_failures_visible':True,'verified_fact_links':True,'horizontal_overflow':overflow,'console_errors':errors,'http_errors':http})
             page.close()
         browser.close()
     result={'passed':True,'url':url,'checks':rows};(out/'result.json').write_text(json.dumps(result,ensure_ascii=False,indent=2)+'\n');print(json.dumps(result))

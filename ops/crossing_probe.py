@@ -26,12 +26,12 @@ def event(attempt, **fields):
         write(path, ledger)
 
 
-def trial(attempt, case):
+def trial(attempt, case, variant='default'):
     h, d, angle = case
     folder = OUT / 'calibration' / attempt / f'gait-h{h:.3f}-d{d:.3f}-a{angle:+.1f}'
     folder.mkdir(parents=True, exist_ok=True)
     command = [sys.executable, str(ROOT / 'ops/crossing_gait.py'), '--attempt', attempt,
-               '--height', str(h), '--depth', str(d), '--angle', str(angle)]
+               '--height', str(h), '--depth', str(d), '--angle', str(angle), '--variant', variant]
     if not (folder / 'result.json').exists():
         with (folder / 'run.log').open('a') as log:
             process = subprocess.Popen(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
@@ -61,6 +61,7 @@ def main():
     parser.add_argument('--attempt', required=True)
     parser.add_argument('--case', action='append', required=True, help='height,depth,angle in m,m,deg')
     parser.add_argument('--workers', type=int, default=2)
+    parser.add_argument('--variant', choices=['default','force','fullframe','heading'], default='default')
     args = parser.parse_args()
     cases = [tuple(map(float, case.split(','))) for case in args.case]
     assert all(len(case) == 3 for case in cases)
@@ -69,10 +70,12 @@ def main():
     folder.mkdir(parents=True, exist_ok=True)
     with (folder / '.coordinator.lock').open('a') as lock:
         fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        action_path=ROOT/'experimental/crossing'/('action.py' if args.variant=='default' else 'action_'+args.variant+'.py')
         identity = {str(path.relative_to(ROOT)): sha(path) for path in [
-            ROOT / 'experimental/crossing/action.py', ROOT / 'experimental/crossing/runtime.py',
+            action_path, ROOT / 'experimental/crossing/runtime.py',
             ROOT / 'ops/crossing_gait.py']}
         registration = {'attempt': args.attempt, 'cases': cases, 'source_sha256': identity,
+                        'variant': args.variant,
                         'kind': 'development calibration, excluded from registered test statistics'}
         if (folder / 'identity.json').exists():
             assert json.loads((folder / 'identity.json').read_text()) == json.loads(json.dumps(registration))
@@ -83,7 +86,7 @@ def main():
         started = time.monotonic()
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
-            tasks = [pool.submit(trial, args.attempt, case) for case in cases]
+            tasks = [pool.submit(trial, args.attempt, case, args.variant) for case in cases]
             for task in concurrent.futures.as_completed(tasks):
                 result = task.result()
                 results.append(result)

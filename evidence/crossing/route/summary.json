@@ -969,6 +969,54 @@
     {
       "schema": "beforestep-crossing-route-vehicle/v1",
       "scene": "stress_v8_gate",
+      "vehicle": "A",
+      "legs": false,
+      "policy": "imagination",
+      "imagine": "lux",
+      "first_segment": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.68,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.075,
+          0.397,
+          -0.69
+        ],
+        "sim_time_s": 54.88,
+        "wall_s": 1898.5,
+        "collision": null
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 53.68,
+      "looks": 2,
+      "reason": "imagined_blocked",
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/stress_v8_gate/A"
+    },
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "stress_v8_gate",
       "vehicle": "B",
       "legs": true,
       "policy": "optimistic",
@@ -1087,12 +1135,60 @@
       "high_rock_inputs_live": true,
       "threshold_lux_tasks": 0,
       "source": "outputs/crossing/route/stress_v8_gate/C"
+    },
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "stress_v8_gate",
+      "vehicle": "D",
+      "legs": true,
+      "policy": "imagination",
+      "imagine": "lux",
+      "first_segment": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.68,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.075,
+          0.397,
+          -0.69
+        ],
+        "sim_time_s": 54.88,
+        "wall_s": 138.6,
+        "collision": null
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 53.68,
+      "looks": 2,
+      "reason": "imagined_blocked",
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/stress_v8_gate/D"
     }
   ],
-  "all_terminal": false,
+  "all_terminal": true,
   "prechecks_passed": true,
-  "legs_necessity": "四种车尚未全部终态，腿的必要性待核对。",
-  "imagination_necessity": "四种车尚未全部终态，想象的必要性待核对。",
+  "legs_necessity": "D 尚未到达终点，这一场不能证明腿的必要性。",
+  "imagination_necessity": "D 尚未到达终点，这一场不能证明想象的必要性。",
   "threshold_closed_created": 53,
   "route_new_created": 24,
   "cumulative_created": 77,
@@ -1100,7 +1196,7 @@
   "additional_scenes": [
     {
       "scene": "suite_r2_v4_F1_003_gate",
-      "status": "未开始",
+      "status": "运行中",
       "result": null,
       "near_x_m": 9.0,
       "threshold_seed": 22001
@@ -1120,7 +1216,7 @@
       "threshold_seed": 22001
     }
   ],
-  "state": "四项预检查和首场运行正在进行",
+  "state": "首场四种车全部终态",
   "freeze_verification": {
     "action_sha256": "488401d8a5ad8ebed4f1906266efa6a4f377cd70cb1b80e7484753756b31368d",
     "base_scene_sha256": "a2ac80257e427ce6db44bfb94b506505eeac97ec5debeabb8c1743b1d79fbe36",

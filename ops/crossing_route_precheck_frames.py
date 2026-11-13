@@ -31,6 +31,8 @@ def specification(scene,clip):
         edge=trimesh.load(ROOT/scene['mesh_paths'][0],force='mesh',process=False).bounds[1,0]
         passed=np.flatnonzero(np.min(data['wheel_centres'][:,:,0]-.084,axis=1)>edge)
         end=float(data['t'][passed[passed>lifted[0]][0]])
+        seated=np.flatnonzero(phases=='RL-seat')
+        if len(seated):end=max(end,float(data['t'][seated[-1]]))
         return [leg],data,begin,end,1,None
     first=pre/'detour/segment1/full-record/trajectory.npz'
     second=base/'connection-precheck/observed-leg-segment/trajectory.npz'
@@ -52,7 +54,7 @@ def render(clip,preview=False):
         'source':'recorded zero-paid precheck; real physics, true scanned sill geometry',
         'formal_vehicle_run':False,'scene':scene['name'],'scene_sha256':sha(EVIDENCE/'scene-stress_v8_gate.json'),
         'threshold_sha256':sha(ROOT/scene['mesh_paths'][0]),'physics_advanced':False,
-        'time_range_s':[begin,end],'playback_speed':speed,'first_wheel_contact_s':contact,'cameras':{},'frames':[]}
+        'time_range_s':[begin,end],'last_landing_included':clip in ('leg-cross','sill-close'),'playback_speed':speed,'first_wheel_contact_s':contact,'cameras':{},'frames':[]}
     write(index,record)
     e,rb,_,_=make(scene);vm=VZ.video_model(e,rb,width=1280,height=720,off=(1280,720))
     vm.m.vis.quality.shadowsize=2048

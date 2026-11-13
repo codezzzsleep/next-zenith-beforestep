@@ -37,7 +37,7 @@ Fresh-clone verification: setup/start 103.71 s, followed by 1287.87 s for the fu
 
 ## 轮腿与想象
 
-四项预检查和首场运行正在进行。原门槛石开发已收尾，四项物理闸门通过；同路两种石头的四车结果按原件公开，结论以 [结果表](docs/crossing.md#一条路上两种石头) 为准。
+首场四种车全部终态。原门槛石开发已收尾，四项物理闸门通过；同路两种石头的四车结果按原件公开，结论以 [结果表](docs/crossing.md#一条路上两种石头) 为准。
 
 [交互页面](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) · [实验规范](docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md) · [故事](docs/story.md)。
 

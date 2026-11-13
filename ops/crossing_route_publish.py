@@ -1,5 +1,5 @@
 """Publish each completed Addendum 2 block and validate its public page."""
-import argparse,hashlib,json,shutil,subprocess,sys,time,urllib.request
+import argparse,fcntl,hashlib,json,shutil,subprocess,sys,time,urllib.request
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 PAGES=Path('/tmp/beforestep-pages-r3-P0-worktree')
@@ -13,11 +13,16 @@ def save(state):
     (PRIVATE/(state['stage']+'.json')).write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n')
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');ap.add_argument('--homepage',action='store_true');ap.add_argument('--video',action='store_true');a=ap.parse_args()
+    PRIVATE.mkdir(parents=True,exist_ok=True)
+    publication_lock=(PRIVATE/'publication.lock').open('a');fcntl.flock(publication_lock,fcntl.LOCK_EX)
     state={'stage':a.stage,'status':'running'};save(state)
     paths=['experimental/crossing/route',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_route_*.py')],
         'README.md','docs/story.md','docs/history/README-before-addendum2.md','docs/crossing.md','docs/report.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md',
         'docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.js','site/crossing.css']
+    paths+=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md']
+    if a.homepage:paths+=['site/index.html','site/home.css','site/home.js','site/home-assets','site/homepage-integration.json']
+    if a.video:paths+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
     budget=json.loads((ROOT/'outputs/generation/crossing-budget.json').read_text())
     paths += ['assets/candidates/'+str(r['task_id']) for r in budget['tasks'] if r.get('task_id') and r['status']=='ok']
     run(['git','diff','--check']);run(['git','add',*paths])
@@ -27,6 +32,13 @@ if __name__=='__main__':
     assert value(['git','ls-remote','origin','refs/heads/main']).split()[0]==state['main']
     state['main_verified']=True;save(state)
     copied=[]
+    extra=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md']
+    if a.homepage:
+        extra+=['site/index.html','site/home.css','site/home.js','site/homepage-integration.json']
+        extra+=[str(p.relative_to(ROOT)) for p in (ROOT/'site/home-assets').rglob('*') if p.is_file()]
+    if a.video:extra+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
+    for relative in extra:
+        destination=relative.removeprefix('site/');target=PAGES/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/relative,target);copied.append(destination)
     for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','README.md','docs/history/README-before-addendum2.md','docs/report.md','docs/story.md','docs/crossing.md',
         'docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md']:
         destination=relative.removeprefix('site/');target=PAGES/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/relative,target);copied.append(destination)
@@ -48,9 +60,11 @@ if __name__=='__main__':
         if build.get('commit')==state['pages'] and build.get('status')=='errored':raise RuntimeError(build.get('error'))
         time.sleep(15)
     else:raise RuntimeError('Build pending; resume read-only verification without republishing')
-    if not a.skip_page_check:run([sys.executable,'ops/crossing_route_check.py','--url',PUBLIC,'--out',str(PRIVATE/(a.stage+'-public'))])
+    if not a.skip_page_check:
+        checker='ops/crossing_route_homepage.py' if a.homepage else 'ops/crossing_route_check.py'
+        run([sys.executable,checker,'--url',PUBLIC,'--out',str(PRIVATE/(a.stage+'-public'))])
     verified=[]
-    for relative in ['crossing.html','crossing.js','crossing.css','docs/story.md','docs/crossing.md','evidence/crossing/route/summary.json','evidence/crossing/route/low-stone.json','evidence/crossing/route/threshold-closure.json']:
+    for relative in ['crossing.html','crossing.js','crossing.css','docs/story.md','docs/crossing.md','docs/video.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','evidence/crossing/route/summary.json','evidence/crossing/route/low-stone.json','evidence/crossing/route/threshold-closure.json']+(['index.html','home.css','home.js','homepage-integration.json'] if a.homepage else []):
         with urllib.request.urlopen(PUBLIC+relative,timeout=90) as response:raw=response.read()
         assert raw==(PAGES/relative).read_bytes(),relative
         verified.append({'path':relative,'sha256':hashlib.sha256(raw).hexdigest(),'bytes':len(raw)})

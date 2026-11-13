@@ -14,7 +14,7 @@ if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--near',type=float,default=9.);ap.add_argument('--seed',type=int,default=22001)
     ap.add_argument('--check',choices=['contour','wheel','leg','detour'],required=True)
     ap.add_argument('--stance',choices=['fixed','high'],default='fixed');ap.add_argument('--position',choices=['center','left','right'],default='center')
-    a=ap.parse_args();scene=build(a.near,a.seed)
+    ap.add_argument('--base',default='stress_v8');a=ap.parse_args();scene=build(a.near,a.seed,a.base)
     tag=a.check+(f'-{a.stance}-{a.position}' if a.check=='wheel' else '')
     folder=ROUTE/scene['name']/'prechecks'/scene['attempt']/tag
     if (folder/'result.json').exists():print('Terminal identity exists; skipped');sys.exit(0)

@@ -296,3 +296,98 @@ h3 { font-size: 19px; line-height: 1.5; font-weight: 700; }
   .turns { gap: 6px; }
   .turns button { padding: 6px 8px; font-size: 12.5px; white-space: nowrap; }
 }
+
+/* ---------- second version: the wall of every real call ---------- */
+.wall-block { margin-top: clamp(56px, 8vh, 88px); padding-top: clamp(40px, 6vh, 64px); border-top: 1px solid var(--rule); }
+.wall-block h3 { max-width: 24em; font-size: clamp(20px, 2.3vw, 28px); line-height: 1.45; text-wrap: balance; }
+.wall-block .intro b { color: var(--text); }
+.wall-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 26px; }
+.wall-filters button {
+  padding: 7px 12px; background: none; border: 1px solid #3a4045; color: var(--muted);
+  font: inherit; font-size: 14px; cursor: pointer;
+}
+.wall-filters button b { margin-left: 5px; color: var(--text); }
+.wall-filters button:hover { color: var(--text); }
+.wall-filters button[aria-pressed="true"] { border-color: var(--text); color: var(--text); }
+.wall { display: grid; grid-template-columns: repeat(30, 1fr); gap: 2px; margin-top: 18px; }
+.wall span {
+  aspect-ratio: 1 / 1; background-color: var(--soil); background-repeat: no-repeat;
+  cursor: pointer; transition: opacity .25s;
+}
+.wall.ready .p {
+  background-image: var(--sprite); background-size: 1800% 1700%; background-position: var(--x) var(--y);
+}
+.wall.ready .r, .wall.ready .n, .wall.ready .c {
+  background-image: linear-gradient(rgba(10, 11, 12, .62), rgba(10, 11, 12, .62)), var(--sprite);
+  background-size: auto, 1800% 1700%; background-position: 0 0, var(--x) var(--y);
+}
+.wall .r, .wall .n { filter: grayscale(1); }
+.wall .c { box-shadow: inset 0 0 0 2px var(--crash); }
+.wall .f { background: none; outline: 1px dashed #4a5055; outline-offset: -1px; }
+.wall span.on { outline: 2px solid var(--text); outline-offset: 1px; position: relative; z-index: 1; }
+/* A filter lights up what it selects, in full colour, and sinks the rest. */
+.wall[data-show="p"] span:not(.p),
+.wall[data-show="r"] span:not(.r):not(.n):not(.c),
+.wall[data-show="c"] span:not(.c),
+.wall[data-show="f"] span:not(.f) { opacity: .07; }
+.wall.ready[data-show="r"] :is(.r, .n, .c),
+.wall.ready[data-show="c"] .c {
+  background-image: var(--sprite); background-size: 1800% 1700%; background-position: var(--x) var(--y);
+  filter: none;
+}
+.wall-read { margin-top: 14px; min-height: 3.4em; font-size: 15px; color: #cfccc5; }
+.wall-read b { color: var(--text); margin-right: .9em; }
+.wall-read .bad { color: var(--crash); }
+.wall-read .good { color: var(--lamp); }
+.wall-block .fine { max-width: 44em; font-size: 13.5px; color: var(--muted); }
+.wall-block .fine a { text-decoration-color: var(--muted); text-underline-offset: 3px; }
+.wall-block .actions.more { margin-top: 26px; }
+
+/* ---------- second version: real rock and imagined rock in one place ---------- */
+.twin model-viewer {
+  width: 100%; aspect-ratio: 4 / 3;
+  background: radial-gradient(ellipse at 50% 58%, #1b2024 0%, var(--night) 70%);
+  --poster-color: transparent;
+}
+.twin .turns { flex-wrap: wrap; }
+.map.ruler { margin-top: 22px; }
+#reveal .proof { margin-top: 48px; }
+
+/* ---------- second version: results, split and shown ---------- */
+.tally { margin-top: 18px; max-width: 36em; font-size: 17px; line-height: 1.95; }
+.crashlab { margin-top: 52px; padding: clamp(20px, 3.2vw, 40px); background: var(--night); color: var(--text); }
+.crashlab h3 { font-size: clamp(19px, 2vw, 24px); }
+.crashlab .tabs { margin-top: 14px; }
+.crash-body { display: grid; grid-template-columns: 7fr 5fr; gap: clamp(22px, 4vw, 56px); align-items: center; margin-top: 22px; }
+.crash-body figure { min-width: 0; }
+.daylight .crashlab p { color: #cfccc5; }
+.daylight .crashlab b { color: var(--text); }
+.daylight .crashlab .crash-gap { font-size: clamp(22px, 2.8vw, 34px); line-height: 1.3; font-weight: 700; color: var(--text); }
+.daylight .crashlab .crash-gap b { color: var(--ghost); }
+#crash-text { margin-top: 14px; }
+.crash-key { display: flex; flex-wrap: wrap; gap: 4px 20px; margin-top: 18px; font-size: 14px; }
+.daylight .crashlab .crash-key { color: var(--muted); }
+.daylight .crashlab :focus-visible { outline-color: var(--lamp); }
+
+@media (max-width: 860px) {
+  .crash-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .wall { grid-template-columns: repeat(15, 1fr); }
+  .wall-filters button { padding: 6px 9px; font-size: 13px; }
+  .twin model-viewer { aspect-ratio: 1 / 1; }
+  .crashlab { margin-left: calc(-1 * var(--gutter)); margin-right: calc(-1 * var(--gutter)); }
+}
+
+/* legs: measured wheel-vs-leg capability */
+.duel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(24px, 5vw, 72px); margin-top: 44px; }
+.duel > div { border-top: 2px solid var(--rule); padding-top: 18px; }
+.duel .win { border-top-color: var(--lamp); }
+.duel .lose { border-top-color: var(--crash); }
+.duel .big { font-size: clamp(56px, 9vw, 112px); line-height: 1; font-weight: 700; letter-spacing: -0.02em; color: var(--text); }
+.duel .big span { font-size: 0.36em; font-weight: 400; color: var(--muted); letter-spacing: 0; }
+.duel .win .big { color: var(--lamp); }
+.duel p + p { margin-top: 14px; max-width: 26em; color: #cfccc5; }
+.legs-notes { margin-top: 48px; }
+#legs .plain { margin-top: 36px; max-width: 36em; color: var(--text) !important; }
+@media (max-width: 720px) { .duel { grid-template-columns: 1fr; } }

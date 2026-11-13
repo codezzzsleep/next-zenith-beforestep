@@ -1,0 +1,161 @@
+{
+  "schema": "beforestep-home-v2-added-claims/v1",
+  "passed": true,
+  "claims": [
+    {
+      "claim": "轮行0/90，两姿态，10到15厘米",
+      "measured": [
+        0,
+        90
+      ],
+      "matches": true,
+      "source": "evidence/crossing/calibration/gate.json",
+      "note": "离散高度10/12/15厘米；未验证连续高度区间"
+    },
+    {
+      "claim": "抬腿24/24",
+      "measured": [
+        24,
+        24
+      ],
+      "matches": true,
+      "source": "evidence/crossing/calibration/gate.json",
+      "note": ""
+    },
+    {
+      "claim": "3块真石都跨过",
+      "measured": 3,
+      "matches": true,
+      "source": "evidence/crossing/calibration/gate.json",
+      "note": ""
+    },
+    {
+      "claim": "轮行最高8厘米",
+      "measured": {
+        "fixed": {
+          "any_pass_height_m": 0.08,
+          "three_of_three_height_m": 0.06
+        },
+        "high": {
+          "any_pass_height_m": 0.08,
+          "three_of_three_height_m": 0.08
+        },
+        "gait": {
+          "any_pass_height_m": 0.15,
+          "three_of_three_height_m": null
+        }
+      },
+      "matches": true,
+      "source": "evidence/crossing/calibration/capability-v72.json",
+      "note": ""
+    },
+    {
+      "claim": "腿能跨最高15厘米",
+      "measured": 0.15,
+      "matches": true,
+      "source": "evidence/crossing/calibration/gate.json",
+      "note": "本轮冻结能力范围"
+    },
+    {
+      "claim": "相机离地38厘米",
+      "measured": [
+        0.38333306700582126,
+        0.3833605771025535,
+        0.3833938837441479,
+        0.3833187748660806,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.38333289801313675,
+        0.3833326718896696,
+        0.3833222525838295,
+        0.3833193471827169,
+        0.3833184381350045,
+        0.38331937222281404,
+        0.38333269005349924,
+        0.38333269005349924,
+        0.38333269005349924,
+        0.38333269005349924,
+        0.38333306700582126,
+        0.3833605771025535,
+        0.3833938837441479,
+        0.3833187748660806,
+        0.3833222525838295,
+        0.3833193471827169,
+        0.3833184381350045,
+        0.38331937222281404,
+        0.3833326718896696,
+        0.3833326718896696,
+        0.3833326718896696,
+        0.3833326718896696
+      ],
+      "matches": true,
+      "source": "evidence/crossing/development-blindness*.json",
+      "note": "冻结常规姿态的观测高度；不是所有腿姿态的固定高度"
+    },
+    {
+      "claim": "看不见部分1到8厘米",
+      "measured": [
+        0.027585093110382708,
+        0.0414108392703727,
+        0.02676931793153603,
+        0.040754854865704626,
+        0.024689798980456867,
+        0.040930379570873754,
+        0.07746611250402102,
+        0.02469367481156093
+      ],
+      "matches": true,
+      "source": "evidence/crossing/development-blindness-scene-dev-v9.json",
+      "note": "仅统计六轮行全不过的有效门槛；22002可轮行，排除"
+    },
+    {
+      "claim": "191秒干净跨过",
+      "measured": {
+        "status": "clean_pass",
+        "sim_seconds": 191.3600000000241,
+        "trajectory": {
+          "path": "evidence/crossing/route/low-stone/B-trajectory.json",
+          "sha256": "f7ebb7e4cf6c573678b3a8e2cba5c44b4bd7888ded240c2752c4c40df286a39f",
+          "samples": 4785,
+          "nominal_hz": 25
+        },
+        "result": "outputs/crossing/development/scene-dev-v9/seed-22001/method-B-v1/result.json"
+      },
+      "matches": true,
+      "source": "evidence/crossing/route/low-stone.json",
+      "note": ""
+    },
+    {
+      "claim": "用想象的车停下；4份准入",
+      "measured": [
+        "stopped",
+        4
+      ],
+      "matches": true,
+      "source": "evidence/crossing/route/low-stone.json",
+      "note": ""
+    },
+    {
+      "claim": "想长约5厘米",
+      "measured": [
+        0.058200619311805646,
+        0.04726298902880499,
+        0.05620551769988191,
+        0.04548970109132133,
+        0.05969792726785261,
+        0.05101419056121603,
+        0.05912236828720774,
+        0.05022803168237422
+      ],
+      "matches": true,
+      "source": "evidence/crossing/route/low-stone.json; docs/story.md §2",
+      "note": "四份模型沿两条轮迹的远边额外约4.5到6.0厘米"
+    }
+  ],
+  "design_and_copy_unchanged": true
+}

@@ -17,9 +17,9 @@ def run_one(scene,check,stance=None,position=None):
             except ProcessLookupError:pass
             else:raise RuntimeError(f'Precheck {tag} still running as PID {old["pid"]}; do not duplicate')
     command=[sys.executable,'ops/crossing_route_precheck.py','--near',str(scene['near_x_m']),
-        '--seed',str(scene['threshold_seed']),'--check',check]
+        '--seed',str(scene['threshold_seed']),'--base',scene['base_scene'],'--check',check]
     if stance:command+=['--stance',stance,'--position',position]
-    log=Path('/root/3d/.memory/live')/f'route-{scene["attempt"]}-{tag}.log'
+    log=Path('/root/3d/.memory/live')/f'route-{scene["name"]}-{scene["attempt"]}-{tag}.log'
     with log.open('a') as stream:
         child=subprocess.Popen(command,cwd=ROOT,stdout=stream,stderr=subprocess.STDOUT)
         code=child.wait()
@@ -41,7 +41,7 @@ def aggregate(scene):
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--near',type=float,default=9.);ap.add_argument('--seed',type=int,default=22001);ap.add_argument('--aggregate-only',action='store_true')
-    a=ap.parse_args();scene=build(a.near,a.seed)
+    ap.add_argument('--base',default='stress_v8');a=ap.parse_args();scene=build(a.near,a.seed,a.base)
     if not a.aggregate_only:
         tasks=[('wheel',s,p) for s in ['fixed','high'] for p in ['center','left','right']]+[('leg',None,None)]
         with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:

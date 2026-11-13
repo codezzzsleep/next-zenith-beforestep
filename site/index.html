@@ -15,6 +15,7 @@
   <a class="brand" href="#top">先见一步<span>BeforeStep</span></a>
   <nav>
     <a href="#how">Lux3D 做了什么</a>
+    <a href="#legs">腿</a>
     <a href="#result">结果</a>
     <a href="report.html">技术报告</a>
     <a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码</a>
@@ -50,7 +51,7 @@
     </figure>
   </div>
 
-  <p class="lead">月球南极的阳光几乎贴着地面，石头背光的那一面全黑，相机什么都测不到。我们让 Lux3D 把看不见的那一面想出来，机器人先在想象里走一遍，全部安全，再真的走。</p>
+  <p class="lead">月球南极的阳光几乎贴着地面，石头背光的那一面全黑，相机什么都测不到。我们让 Lux3D 把看不见的那一面想出来，机器人先在想象里走一遍，全部安全，再真的走。矮到相机看得全的石头，它抬腿跨过去。</p>
 
   <p class="actions">
     <a class="go" href="#how">看 Lux3D 做了什么</a>
@@ -128,7 +129,21 @@
     </div>
   </div>
 
-  <p class="actions more"><a class="go quiet" href="gallery.html">看每个场景里的全部生成结果</a></p>
+  <div class="wall-block" id="wall">
+    <h3>上面这十一份不是挑出来的。实验里的每一次调用，都在这面墙上</h3>
+    <p class="intro">做实验的全过程里，我们一共向 Lux3D 提交了 <b id="w-calls">330</b> 次，拿回 <b id="w-models">306</b> 份模型。按提交的先后排开，一份不少，一份不藏。</p>
+    <div class="wall-filters" role="group" aria-label="按检查结论筛选">
+      <button type="button" data-show="all" aria-pressed="true">全部</button>
+      <button type="button" data-show="p" aria-pressed="false">通过检查 <b id="w-passed">110</b></button>
+      <button type="button" data-show="r" aria-pressed="false">被拒 <b id="w-rejected">196</b></button>
+      <button type="button" data-show="c" aria-pressed="false">被拒，信了会撞 <b id="w-crash">30</b></button>
+      <button type="button" data-show="f" aria-pressed="false">没有返回模型 <b id="w-failed">24</b></button>
+    </div>
+    <div class="wall" id="wall-grid" data-show="all" role="img" aria-label="330 次真实 Lux3D 调用排成的格子墙：306 份返回了模型，其中 110 份通过检查、196 份被拒；24 次没有返回模型"></div>
+    <p class="wall-read" id="wall-read" aria-live="polite">把指针移到任意一格上，或者点它一下。</p>
+    <p class="fine">结论定稿之后，我们为一段补充演示又提交过 24 次。那一批单独放在<a href="award-demo.html">补充演示页</a>，不在这面墙上，也不计入任何结论。</p>
+    <p class="actions more"><a class="go quiet" href="gallery.html">进陈列室，把每一份都转起来看</a></p>
+  </div>
 
   <details class="proof">
     <summary>怎么做到的</summary>
@@ -178,9 +193,18 @@
 
 <section class="band" id="reveal">
   <div class="split flip">
-    <figure class="view">
-      <canvas class="map square" id="reveal-map" width="720" height="620" role="img" aria-label="石头 B 的真实占地与 Lux3D 想象出的占地俯视对比"></canvas>
-      <figcaption><i class="key real"></i>真实的石头 B　<i class="key imagined"></i>Lux3D 想出来的石头 B</figcaption>
+    <figure class="view twin">
+      <model-viewer id="twin-rock" src="home-assets/glb/overlay/stress_v8-T2-A2.glb"
+        alt="真实的石头 B 与 Lux3D 想象出的石头 B 叠在同一个位置上，可以拖动旋转"
+        camera-controls disable-zoom disable-pan touch-action="pan-y" interaction-prompt="none"
+        camera-orbit="270deg 66deg 105%" exposure="1" shadow-intensity="0"
+        loading="lazy"></model-viewer>
+      <p class="turns" id="twin-views">
+        <button type="button" data-orbit="270deg 66deg 105%">机器人看过去的方向</button>
+        <button type="button" data-orbit="90deg 66deg 105%">绕到背面</button>
+        <button type="button" data-orbit="0deg 0deg 105%">从正上方</button>
+      </p>
+      <figcaption><i class="key real"></i>真实的石头 B，半透明　<i class="key imagined"></i>Lux3D 想出来的石头 B。两块叠在同一个位置，大小和位置都没有动过。拖着转</figcaption>
     </figure>
     <div class="copy">
       <h2>背面想得对不对？<br>量给你看</h2>
@@ -191,9 +215,51 @@
         <button role="tab" type="button" data-sample="A2" aria-selected="true">想象 A2</button>
         <button role="tab" type="button" data-sample="C1" aria-selected="false">想象 C1</button>
       </div>
+      <canvas class="map ruler" id="reveal-map" width="720" height="620" role="img" aria-label="石头 B 的真实占地与 Lux3D 想象出的占地俯视对比，标出背面短了多少"></canvas>
     </div>
   </div>
+
+  <details class="proof">
+    <summary>怎么量的</summary>
+    <ul>
+      <li>上面的 <span id="grid-a">0.70</span> 米和 <span id="grid-c">0.60</span> 米是在 5 厘米网格上量的，和实验里用的量法相同，也是技术报告公布的数字。</li>
+      <li>直接在三维模型的顶点上量，分别是 <span id="vert-a">0.77</span> 米和 <span id="vert-c">0.63</span> 米。第一份两种量法差了 <span id="vert-gap">6.8</span> 厘米，超过我们给自己定的 5 厘米容差，照实写在这里。</li>
+      <li>三维对照里没有移动、缩放过任何一块石头。真实的石头只在事后复盘时使用，机器人行驶时读不到它。</li>
+      <li><a href="overlays.html">全部 <span id="overlay-count">27</span> 份真实与想象的三维对照</a></li>
+    </ul>
+  </details>
 </section>
+
+<section class="band" id="legs">
+  <h2>矮的石头不用想象，<br>抬腿跨过去</h2>
+  <p class="intro">路上不只有高石头。十几厘米高的矮石头横在窄口里，绕不开，轮子也滚不上去。这台车的轮子装在腿上，可以一次抬一个轮子迈过去。我们先量了这件事到底成不成立。</p>
+
+  <div class="duel">
+    <div class="lose">
+      <p class="big">0 <span>/ 90</span></p>
+      <p>10 到 15 厘米高的坎，只靠轮子滚，两种车身姿态一共试了 90 次，一次也没过去。轮子最高只滚得过 8 厘米。</p>
+    </div>
+    <div class="win">
+      <p class="big">24 <span>/ 24</span></p>
+      <p>同样的高度，一次抬一个轮子跨，24 次全部干净通过。换成 3 块真实扫描的石头，也都跨过去了。</p>
+    </div>
+  </div>
+
+  <div class="lessons legs-notes">
+    <div>
+      <h3>这种石头，相机看得全</h3>
+      <p>相机离地 38 厘米，腿能跨的石头最高 15 厘米，相机是俯视它的。在轮子过不去的门槛石上，相机看不见的部分只有 1 到 8 厘米。只用看见的部分定动作，车 191 秒干净跨了过去。</p>
+    </div>
+    <div>
+      <h3>在这里加想象，反而更差</h3>
+      <p>我们也让 Lux3D 想象了同一块门槛石。通过检查的 4 份把石头想长了约 5 厘米，超出了腿能跨的范围，用想象的车停在了门前。它没有踩上任何一份错的想象，代价是在一块跨得过的石头前白停了一次。</p>
+    </div>
+  </div>
+
+  <p class="plain">所以两种石头各有各的办法：矮的，看得全，靠腿；高的，背面永远拍不到，靠想象，而且要先检验、先预演。</p>
+  <p class="actions"><a class="go quiet" href="crossing.html">看腿的全部实测</a></p>
+</section>
+
 
 <section class="daylight" id="result">
   <div class="inner">
@@ -202,22 +268,47 @@
 
     <div class="score" id="score"></div>
 
-    <p class="plain">谨慎的车和大胆的车，一次也没到过终点。会想象的车到过，也撞过：十三个场景，到达 <b id="n-arrive">4</b> 次，碰撞 <b id="n-crash">4</b> 次。</p>
+    <p class="plain">谨慎的车和大胆的车，一次也没到过终点。会想象的车到过，也撞过。</p>
+    <p class="tally">预先登记的 <b id="n-known">8</b> 个场景：到达 <b id="n-known-arrive">3</b> 次，碰撞 <b id="n-known-crash">2</b> 次。<br>方法定稿后才第一次跑的 <b id="n-hold">5</b> 个场景：到达 <b id="n-hold-arrive">1</b> 次，碰撞 <b id="n-hold-crash">2</b> 次。</p>
 
     <div class="lessons">
       <div>
         <h3>它错在哪</h3>
         <ul>
           <li><b>没东西可想，1 次。</b>一块石头完全藏在另一块后面，从头到尾没进过画面。车照着计划开过去，撞上了它。</li>
-          <li><b>背面想短了，3 次。</b>看得见的那一面完全吻合，检查通过，每一个想象世界里的预演也都安全，真车却在石头背面蹭上了。后两次里，想象出的背面比真实的短了 0.4 到 0.85 米。</li>
+          <li><b>背面想短了，3 次。</b>看得见的那一面完全吻合，检查通过，每一个想象世界里的预演也都安全，真车却在石头背面蹭上了。这三次都摆在下面，可以转着看。</li>
           <li>每一次的任务编号、路线和接触位置都在<a href="report.html">技术报告</a>里。</li>
         </ul>
       </div>
       <div>
         <h3>检查拦下了什么</h3>
-        <p>被检查拒掉的想象，我们事后一份一份强行信了它再跑：<b id="n-cf-total">231</b> 份里，有 <b id="n-cf-crash">30</b> 份会让车撞上。</p>
+        <p>被检查拒掉的想象里，有 <b id="n-cf-models">175</b> 份我们事后强行信了它，再跑一遍，一共跑了 <b id="n-cf-total">231</b> 次。其中 <b id="n-cf-crash">30</b> 份会让车撞上。</p>
         <h3>我们随后做了什么</h3>
-        <p>把规则收紧：被挡住的地方不再靠想象，必须再看一眼。碰撞从 4 次降到 0 次，到达也从 4 次降到 <b id="n-strict">1</b> 次。安全了，也保守了。怎样既安全又能到，是下一步。</p>
+        <p>把规则收紧：被挡住的地方不再靠想象，必须再看一眼。这十三个场景合起来算，碰撞从 <b id="n-crash">4</b> 次降到 0 次，到达也从 <b id="n-arrive">4</b> 次降到 <b id="n-strict">1</b> 次。安全了，也保守了。怎样既安全又能到，是下一步。</p>
+      </div>
+    </div>
+
+    <div class="crashlab" id="crashlab">
+      <h3>背面想短的那三次，转过来看</h3>
+      <div class="tabs" role="tablist" aria-label="三次碰撞" id="crash-tabs"></div>
+      <div class="crash-body">
+        <figure class="twin">
+          <model-viewer id="crash-rock"
+            alt="碰撞场景里真实的石头与 Lux3D 想象出的石头叠在同一个位置上，可以拖动旋转"
+            camera-controls disable-zoom disable-pan touch-action="pan-y" interaction-prompt="none"
+            camera-orbit="270deg 66deg 105%" exposure="1" shadow-intensity="0"
+            loading="lazy"></model-viewer>
+          <p class="turns" id="crash-views">
+            <button type="button" data-orbit="270deg 66deg 105%">机器人看过去的方向</button>
+            <button type="button" data-orbit="90deg 66deg 105%">绕到背面</button>
+            <button type="button" data-orbit="0deg 0deg 105%">从正上方</button>
+          </p>
+        </figure>
+        <div class="crash-copy">
+          <p class="crash-gap">背面短了 <b id="crash-gap">0.85</b> 米</p>
+          <p id="crash-text"></p>
+          <p class="crash-key"><span><i class="key real"></i>真实的石头，半透明</span><span><i class="key imagined"></i>Lux3D 想出来的石头</span></p>
+        </div>
       </div>
     </div>
 
@@ -227,6 +318,8 @@
         <li>前 8 个场景在第二轮实验前预先登记；后 5 个是修订方法定稿之后才第一次运行的留出场景。</li>
         <li>“黑影里能测距的车”只是对照：它多拿了一样真实机器人拿不到的东西，用来说明上限在哪。</li>
         <li>修订后的方法标为赛后修订，和原结果并列，不替换原结果。</li>
+        <li>收紧规则的第一个版本在场景 F1_003 里撞过一次，之后才改成现在的版本。那次碰撞留在技术报告里，没有被后来的结果盖掉。</li>
+        <li>强行信任的 231 次是运行次数：同一份被拒的想象，可能在两种规则下各跑一次，所以对应的是 175 份模型。另有 <span id="n-cf-never">21</span> 份被拒的想象没有做过这种运行。</li>
         <li><a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/evidence/suite/summary.json">预先登记场景的原始汇总</a>　<a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/evidence/reviews/beforestep_r3/summary.json">修订与留出场景汇总</a></li>
       </ul>
     </details>
@@ -247,7 +340,8 @@
 
 <footer class="foot">
   <p>Next Zenith 的 Aholo Lux3D 黑客松作品。页面上的照片、模型、轨迹和数字，全部来自真实运行记录。</p>
-  <p><a href="report.html">技术报告</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码与证据</a></p>
+  <p>收紧规则的第一个版本曾在场景 F1_003 里撞过一次，记录保留在技术报告里。</p>
+  <p><a href="report.html">技术报告</a><a href="gallery.html">全部生成结果</a><a href="overlays.html">真实与想象的三维对照</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码与证据</a></p>
 </footer>
 
 <script type="module" src="home.js"></script>

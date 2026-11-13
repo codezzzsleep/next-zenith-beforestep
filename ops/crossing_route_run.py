@@ -111,32 +111,60 @@ def compare_r1(probe):
     return report
 
 def generate_request(path,scene):
-    request=json.loads(path.read_text());budget=CrossingBudget();tasks=[]
-    for item in request['items']:
-        data=json.loads(budget.path.read_text())
-        scoped=[r for r in data['tasks'] if r['scene'].startswith('route/'+scene['name']+'/')]
-        name=f'crossing_route_{scene["name"]}_{path.parent.parent.name}_{path.parent.name}_{item["id"]}'
-        paid={**item,'id':name}
-        identity=C.request_identity(request,paid)
-        known=next((r for r in data['tasks'] if r['identity']==identity),None)
-        if known is None and len(scoped)>=24:raise RuntimeError('Scene reached its 24-task cap; do not create any further request')
-        try:
-            record=budget.submit(request,paid,scene=f'route/{scene["name"]}/{path.parent.parent.name}/{path.parent.name}',observation=str(path.parent.relative_to(ROOT)))
-        except C.ProviderRejected as error:
-            stopped={'criterion':'Addendum 2 §10.4','code':error.code,'scene':scene['name'],
-                'sample':name,'new_creation_stopped':True,'reason':'Lux3D provider rejected the request'}
-            with budget.locked() as data:data['stop']=stopped;data['status']='route_provider_rejected'
-            write(EVIDENCE/'generation-stop.json',stopped)
-            with Path('/root/3d/MEMORY.md').open('a') as f:f.write(f'\nroute新Lux被平台拒绝，补充2§10.4停因；scene {scene["name"]}/sample {name}/code {error.code}，budget stop已持久，既有和uncertain不重发。\n')
-            checkpoint('route-provider-rejected')
-            raise
-        with Path('/root/3d/MEMORY.md').open('a') as f:
-            f.write(f'\nroute真实Lux已落账：{record.get("task_id")}，identity {record["identity"]}，scene {scene["name"]}，request {path.relative_to(ROOT)}；独立budget/client ledger权威，known/uncertain禁止重建。\n')
-        checkpoint(f'route-task-{record.get("task_id")}-known')
-        record=budget.poll(record,timeout=3600)
-        if record['status'] not in ('ok','failed'):raise RuntimeError('Known cloud request is pending or uncertain; resume it, never submit it again')
-        tasks.append({**record,'id':item['id'],'crossing_budget_sample':name})
-    write(path.parent/'lux_result.json',{'schema':'beforestep-lux-result/v1','tasks':tasks})
+    """Create in order, collect up to four concurrently; retain all identities."""
+    from concurrent.futures import ThreadPoolExecutor, wait, FIRST_COMPLETED
+    import fcntl
+    request=json.loads(path.read_text());budget=CrossingBudget();tasks={};active={}
+    def collect_one():
+        completed,_=wait(active,return_when=FIRST_COMPLETED)
+        for future in completed:
+            item,name=active.pop(future);record=future.result()
+            if record['status'] not in ('ok','failed'):
+                raise RuntimeError('Known cloud task still pending or uncertain; resume, never recreate')
+            tasks[item['id']]={**record,'id':item['id'],'crossing_budget_sample':name}
+    lock_path=budget.path.parent/'crossing-route-generation.lock'
+    with lock_path.open('a') as generation_lock, ThreadPoolExecutor(max_workers=4) as pool:
+        fcntl.flock(generation_lock,fcntl.LOCK_EX)
+        for item in request['items']:
+            while len(active)>=4:collect_one()
+            name=f'crossing_route_{scene["name"]}_{path.parent.parent.name}_{path.parent.name}_{item["id"]}'
+            paid={**item,'id':name};identity=C.request_identity(request,paid)
+            while True:
+                with budget.locked() as data:
+                    scoped=[r for r in data['tasks'] if r['scene'].startswith('route/'+scene['name']+'/')]
+                    known=next((r for r in data['tasks'] if r['identity']==identity),None)
+                    if known is None and len(scoped)>=24:
+                        raise RuntimeError('Scene reached its 24-task cap; no new task allowed')
+                    if known and known['status']=='not_submitted' and known.get('rejection_code')=='GENERATION_CONCURRENCY_LIMIT_EXCEEDED' and not known.get('task_id'):
+                        known.setdefault('rejection_history',[]).append({'code':known['rejection_code'],'at':time.time(),'new_task_created':False})
+                        old=C.LEDGER/'tasks'/f'{identity}.json'
+                        if old.exists():
+                            archive=budget.path.parent/'concurrency-rejections';archive.mkdir(exist_ok=True)
+                            shutil.copy2(old,archive/f'{identity}-{time.time_ns()}.json')
+                        known['status']='reserved'
+                try:
+                    record=budget.submit(request,paid,scene=f'route/{scene["name"]}/{path.parent.parent.name}/{path.parent.name}',observation=str(path.parent.relative_to(ROOT)))
+                except C.ProviderRejected as error:
+                    if error.code=='GENERATION_CONCURRENCY_LIMIT_EXCEEDED':
+                        print(json.dumps({'sample':name,'status':'waiting_for_provider_slot','new_task_created':False}),flush=True)
+                        if active:collect_one()
+                        else:time.sleep(10)
+                        continue
+                    stopped={'criterion':'Addendum 3 §7 / Addendum 2 §10.4','code':error.code,'scene':scene['name'],
+                        'sample':name,'new_creation_stopped':True,'reason':'Lux3D provider rejected the request'}
+                    with budget.locked() as data:data['stop']=stopped;data['status']='route_provider_rejected'
+                    write(EVIDENCE/'generation-stop.json',stopped)
+                    checkpoint('route-provider-rejected');raise
+                break
+            if record['status']=='uncertain':
+                checkpoint('route-uncertain-identity');raise RuntimeError('Uncertain create identity preserved; never resubmit')
+            with Path('/root/3d/MEMORY.md').open('a') as f:
+                f.write(f'\nroute Lux task {record.get("task_id")} known; identity {record["identity"]}; request {path.relative_to(ROOT)}; budget/client ledger authoritative, never recreate.\n')
+            checkpoint(f'route-task-{record.get("task_id")}-known')
+            active[pool.submit(budget.poll,record,3600)]=(item,name)
+        while active:collect_one()
+    write(path.parent/'lux_result.json',{'schema':'beforestep-lux-result/v1','tasks':[tasks[item['id']] for item in request['items']],
+        'maximum_inflight':4,'authority':'docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md §1.5'})
 
 def preserve_attempt(folder,number):
     source=folder/'segment1';dest=folder/'attempt-history'/f'{number:03d}';dest.mkdir(parents=True,exist_ok=True)
@@ -156,7 +184,9 @@ if __name__=='__main__':
     folder=ROUTE/a.scene/('input-probe' if a.probe else a.vehicle)
     if (folder/'result.json').exists():print('Formal terminal identity exists; skipped');sys.exit(0)
     folder.mkdir(parents=True,exist_ok=True)
-    progress=ROOT/'outputs/crossing/route/progress.json';state=json.loads(progress.read_text())
+    progress=ROOT/'outputs/crossing/route/progress.json' if a.scene=='stress_v8_gate' else ROUTE/a.scene/'progress.json'
+    if not progress.exists():write(progress,{'schema':'beforestep-crossing-route-scene-progress/v1','scene':a.scene,'steps':{v:{'status':'未开始','output':str((ROUTE/a.scene/v).relative_to(ROOT))} for v in ['C','B','A','D']}})
+    state=json.loads(progress.read_text())
     if not a.probe:
         previous=state['steps'][a.vehicle]
         pid=previous.get('pid')

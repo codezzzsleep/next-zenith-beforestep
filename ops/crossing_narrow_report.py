@@ -14,6 +14,9 @@ if __name__=='__main__':
     luxfile=ROOT/'evidence/crossing/development-lux-scene-dev-v9-22001.json'
     lux=json.loads(luxfile.read_text()) if luxfile.exists() else None
     budget=load('outputs/generation/crossing-budget.json');rows=[]
+    stopfile=ROOT/'evidence/crossing/development-stop-scene-dev-v9.json'
+    stop=json.loads(stopfile.read_text()) if stopfile.exists() else None
+    lux_scenes=[json.loads(p.read_text()) for p in sorted((ROOT/'evidence/crossing').glob('development-lux-scene-dev-v9-*.json'))]
     for record in validity['scenes']:
         seed=record['seed'];obs=next((r for r in observations if r['seed']==seed),None)
         diagnostic=next((r for r in truth if r['seed']==seed),None)
@@ -28,7 +31,7 @@ if __name__=='__main__':
                      'E_diagnostic':{'status':diagnostic['status'],'sim_seconds':diagnostic['sim_seconds']} if diagnostic else None})
     summary={'schema':'beforestep-crossing-narrow-generator-summary/v1','revision':revision,
              'candidate_count':validity['candidate_count'],'invalid_wheel_passable':validity['wheel_passable_candidates'],
-             'valid_count':sum(r['valid'] for r in rows),'scenes':rows,'lux':lux,'formal_test_scenes':0,
+             'valid_count':sum(r['valid'] for r in rows),'scenes':rows,'lux':lux,'lux_scenes':lux_scenes,'stop':stop,'formal_test_scenes':0,
              'preregistered':False,'cumulative_created':budget['created'],'cumulative_glb_successes':sum(r['status']=='ok' for r in budget['tasks'])}
     (ROOT/'evidence/crossing/development-narrow-summary.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
     text='# 窄门槛生成器标定\n\n开发数据，不计入正式统计。动作仍为冻结的 v72，现有五项自检门槛不变。\n\n'
@@ -41,7 +44,10 @@ if __name__=='__main__':
     text+='\nE 是动作的真值诊断，不能当作 Lux3D 成绩。最高点差异和观察距离、腿姿、太阳方位见原始观察表。\n\n'
     if lux:
         text+=f'首个有效场景 {lux["seed"]} 的真实 Lux3D：创建 {lux["generated"]} 份，GLB 成功 {lux["glb_successes"]} 份，准入 {lux["admitted"]} 份。任务号：'+', '.join(map(str,lux['task_ids']))+'。\n\n'
-    text+='首场 D 依照所有准入模型的包络决定；完整横向位置、高度、进深限制及理由见汇总。尚无可跨位置时不进行物理预演或真实跨越。\n\n'
+    if stop:text+=f'当前停点：有效开发种子 {stop["seed"]} 的六份真实模型全部未准入，按 SPEC §12.2 停止新增任务；第四场真实 Lux/D、预注册、正式测试及锚点未完成。\n\n'
+    text+='|真实 Lux 场景|创建 / GLB|准入|\n|---|---|---|\n'
+    for r in lux_scenes:text+=f'|{r["seed"]}|{r["generated"]} / {r["glb_successes"]}|{r["admitted"]}|\n'
+    text+='\n首场 D 依照所有准入模型的包络决定；完整横向位置、高度、进深限制及理由见汇总。尚无可跨位置时不进行物理预演或真实跨越。\n\n'
     text+=f'本轮累计创建 {summary["cumulative_created"]} 个任务，GLB 成功 {summary["cumulative_glb_successes"]} 个。未预注册，正式测试 0 场，尚无 Lux3D 跨越锚点。\n\n'
     text+='[有效性原件](../../evidence/crossing/development-validity-scene-dev-v9.json) · [观察表](../../evidence/crossing/development-blindness-scene-dev-v9.json) · [完整汇总](../../evidence/crossing/development-narrow-summary.json)\n'
     (ROOT/'docs/reviews/RESULT_CROSSING_NARROW_GENERATOR.md').write_text(text)

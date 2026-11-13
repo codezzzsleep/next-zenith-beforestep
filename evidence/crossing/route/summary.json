@@ -965,14 +965,137 @@
       }
     ]
   },
-  "rows": [],
+  "rows": [
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "stress_v8_gate",
+      "vehicle": "B",
+      "legs": true,
+      "policy": "optimistic",
+      "imagine": null,
+      "first_segment": {
+        "policy": "optimistic",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": null,
+        "result": "collision",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 80.34,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          6.734,
+          -0.565,
+          21.23
+        ],
+        "sim_time_s": 81.54,
+        "wall_s": 41.0,
+        "collision": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            6.91,
+            -0.264,
+            0.106
+          ],
+          "t": 81.542
+        }
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 80.34,
+      "looks": 1,
+      "reason": {
+        "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+        "original_pipeline_result": "collision",
+        "contact": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            6.91,
+            -0.264,
+            0.106
+          ],
+          "t": 81.542
+        },
+        "body_stone_contacts": 0,
+        "wheel_stone_steps": 1,
+        "maximum_tilt_deg": 0.7602970110720764
+      },
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/stress_v8_gate/B",
+      "judgment_criterion": "Addendum 2 §3.6: non-wheel body stone contact or tilt greater than 60 degrees; frozen pipeline any-part contact stop preserved separately"
+    },
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "stress_v8_gate",
+      "vehicle": "C",
+      "legs": true,
+      "policy": "conservative",
+      "imagine": null,
+      "first_segment": {
+        "policy": "conservative",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": null,
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 140.18,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          3.987,
+          0.396,
+          -13.15
+        ],
+        "sim_time_s": 141.38,
+        "wall_s": 83.1,
+        "collision": null
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 140.18,
+      "looks": 5,
+      "reason": "no_path",
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/stress_v8_gate/C"
+    }
+  ],
   "all_terminal": false,
   "prechecks_passed": true,
   "legs_necessity": "四种车尚未全部终态，腿的必要性待核对。",
   "imagination_necessity": "四种车尚未全部终态，想象的必要性待核对。",
   "threshold_closed_created": 53,
-  "route_new_created": 0,
-  "cumulative_created": 53,
+  "route_new_created": 6,
+  "cumulative_created": 59,
   "first_scene_only": true,
   "additional_scenes": [],
   "state": "四项预检查和首场运行正在进行",

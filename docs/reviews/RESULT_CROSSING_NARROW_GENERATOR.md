@@ -8,7 +8,7 @@
 |---|---|---|---|---|---|
 |22001|有效|2.68 / 4.08|clean_pass，191.60 秒|clean_pass|stopped|
 |22002|作废|10.87 / 5.00|未执行|未执行|未执行|
-|22003|有效|2.47 / 4.09|clean_pass，194.14 秒|clean_pass|未执行|
+|22003|有效|2.47 / 4.09|clean_pass，194.14 秒|clean_pass|stopped|
 |22004|有效|7.75 / 2.47|clean_pass，194.06 秒|clean_pass|未执行|
 |22005|有效|2.76 / 4.14|clean_pass，194.16 秒|clean_pass|未执行|
 
@@ -18,6 +18,6 @@ E 是动作的真值诊断，不能当作 Lux3D 成绩。最高点差异和观�
 
 首场 D 依照所有准入模型的包络决定；完整横向位置、高度、进深限制及理由见汇总。尚无可跨位置时不进行物理预演或真实跨越。
 
-本轮累计创建 35 个任务，GLB 成功 35 个。未预注册，正式测试 0 场，尚无 Lux3D 跨越锚点。
+本轮累计创建 47 个任务，GLB 成功 46 个。未预注册，正式测试 0 场，尚无 Lux3D 跨越锚点。
 
 [有效性原件](../../evidence/crossing/development-validity-scene-dev-v9.json) · [观察表](../../evidence/crossing/development-blindness-scene-dev-v9.json) · [完整汇总](../../evidence/crossing/development-narrow-summary.json)

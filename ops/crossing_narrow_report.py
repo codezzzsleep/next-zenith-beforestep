@@ -49,7 +49,8 @@ if __name__=='__main__':
         path=ROOT/relative;existing=path.read_text();marker='\n## 窄门槛开发最新\n'
         if marker in existing:existing=existing.split(marker)[0]
         if relative=='docs/crossing.md':
-            existing=existing.split('\n## 最新续行开发\n')[0]
+            for heading in ['\n## 最新续行开发\n','\n## v5 续行记录（历史）\n','\n## 输入诊断与当前进展\n']:
+                existing=existing.split(heading)[0]
             existing=existing.replace('## 停因与未完成项','## 首轮停因与未完成项（历史）')
             old=(ROOT/'docs/reviews/RESULT_CROSSING_RESUMPTION.md').read_text().replace('../../','../').replace('当前停因：','v5 停因（历史）：').replace('[当前完整数据]','[v5 完整数据]')
             diagnostic=(ROOT/'docs/reviews/RESULT_CROSSING_DIAGNOSIS.md').read_text().replace('../../','../')

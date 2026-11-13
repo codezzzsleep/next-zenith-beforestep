@@ -1,0 +1,534 @@
+{
+  "schema": "beforestep-crossing-lux-development/v1",
+  "seed": 22003,
+  "revision": "scene-dev-v9",
+  "generated": 6,
+  "glb_successes": 6,
+  "admitted": 2,
+  "task_ids": [
+    7174924,
+    7175321,
+    7175655,
+    7176155,
+    7176545,
+    7176932
+  ],
+  "candidates": [
+    {
+      "id": "crossing_scene-dev-v9_22003_B1",
+      "task_id": 7174924,
+      "admitted": true,
+      "metrics": {
+        "scale_ratio": 0.9167,
+        "hidden_frac": 0.9313,
+        "shell_contact": 0.7969,
+        "free_intrusion_frac": 0.01283,
+        "intrusion_depth_p95_mm": 12.65,
+        "voxels": 346268,
+        "contour_iou": 0.7715,
+        "scale_ratio_v5": 1.2222,
+        "id": "crossing_scene-dev-v9_22003_B1",
+        "admitted": true,
+        "eval": {
+          "mask_iou": 0.7715,
+          "mask_iou_all_pixels": 0.7625,
+          "outside_lit_px": 31,
+          "in_dark_px": 1152,
+          "occluded_px": 0,
+          "depth_median_mm": 4.817,
+          "depth_p95_mm": 33.432,
+          "visible_median_mm": 4.929,
+          "visible_p95_mm": 17.469,
+          "n_candidate_pixels": 76882,
+          "n_mask_pixels": 98090
+        },
+        "footprint_cells": 106,
+        "footprint_x": [
+          2.975,
+          3.2250000000000005
+        ],
+        "footprint_y": [
+          -0.5249999999999999,
+          0.5250000000000004
+        ]
+      },
+      "world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22003/decision/world_crossing_scene-dev-v9_22003_B1.obj",
+      "geometry": {
+        "near": [
+          2.999032279546322,
+          3.002349479880215
+        ],
+        "far": [
+          3.2083084799780046,
+          3.208180418549958
+        ],
+        "high": [
+          0.13711154455187413,
+          0.1305295968830038
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.999032279546322,
+            "far": 3.2083084799780046,
+            "high": 0.13711154455187413,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.002349479880215,
+            "far": 3.208180418549958,
+            "high": 0.1305295968830038,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "far_error_m": [
+        0.0912649256045781,
+        0.07267613014558805
+      ],
+      "height_error_m": [
+        -0.010680114034828131,
+        -0.00898422321295908
+      ]
+    },
+    {
+      "id": "crossing_scene-dev-v9_22003_A1",
+      "task_id": 7175321,
+      "admitted": false,
+      "metrics": {
+        "scale_ratio": 1.0278,
+        "hidden_frac": 0.9215,
+        "shell_contact": 0.6414,
+        "free_intrusion_frac": 0.02442,
+        "intrusion_depth_p95_mm": 11.31,
+        "voxels": 273128,
+        "contour_iou": 0.694,
+        "scale_ratio_v5": 1.3704,
+        "id": "crossing_scene-dev-v9_22003_A1",
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.694,
+          "mask_iou_all_pixels": 0.6425,
+          "outside_lit_px": 261,
+          "in_dark_px": 7893,
+          "occluded_px": 0,
+          "depth_median_mm": 6.285,
+          "depth_p95_mm": 24.203,
+          "visible_median_mm": 7.289,
+          "visible_p95_mm": 93.596,
+          "n_candidate_pixels": 76411,
+          "n_mask_pixels": 98090
+        },
+        "footprint_cells": 79,
+        "footprint_x": [
+          2.975,
+          3.2250000000000005
+        ],
+        "footprint_y": [
+          -0.375,
+          0.42500000000000027
+        ]
+      },
+      "world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22003/decision/world_crossing_scene-dev-v9_22003_A1.obj",
+      "geometry": {
+        "near": [
+          2.98953682266025,
+          3.0039714231078194
+        ],
+        "far": [
+          3.1895823738725615,
+          3.2044594605458174
+        ],
+        "high": [
+          0.14273695834572014,
+          0.1518042544814258
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.98953682266025,
+            "far": 3.1895823738725615,
+            "high": 0.14273695834572014,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.0039714231078194,
+            "far": 3.2044594605458174,
+            "high": 0.1518042544814258,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "far_error_m": [
+        0.07253881949913499,
+        0.06895517214144764
+      ],
+      "height_error_m": [
+        -0.0050547002409821185,
+        0.0122904343854629
+      ]
+    },
+    {
+      "id": "crossing_scene-dev-v9_22003_A2",
+      "task_id": 7175655,
+      "admitted": false,
+      "metrics": {
+        "scale_ratio": 1.0,
+        "hidden_frac": 0.919,
+        "shell_contact": 0.6392,
+        "free_intrusion_frac": 0.02593,
+        "intrusion_depth_p95_mm": 12.0,
+        "voxels": 269172,
+        "contour_iou": 0.6872,
+        "scale_ratio_v5": 1.3333,
+        "id": "crossing_scene-dev-v9_22003_A2",
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.6872,
+          "mask_iou_all_pixels": 0.6401,
+          "outside_lit_px": 102,
+          "in_dark_px": 7229,
+          "occluded_px": 0,
+          "depth_median_mm": 6.278,
+          "depth_p95_mm": 24.071,
+          "visible_median_mm": 7.323,
+          "visible_p95_mm": 93.788,
+          "n_candidate_pixels": 74807,
+          "n_mask_pixels": 98090
+        },
+        "footprint_cells": 79,
+        "footprint_x": [
+          2.975,
+          3.2250000000000005
+        ],
+        "footprint_y": [
+          -0.375,
+          0.42500000000000027
+        ]
+      },
+      "world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22003/decision/world_crossing_scene-dev-v9_22003_A2.obj",
+      "geometry": {
+        "near": [
+          2.988731613775236,
+          3.004247522189402
+        ],
+        "far": [
+          3.1875938363085448,
+          3.2035798647181566
+        ],
+        "high": [
+          0.1405599500699038,
+          0.15011784139994253
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.988731613775236,
+            "far": 3.1875938363085448,
+            "high": 0.1405599500699038,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.004247522189402,
+            "far": 3.2035798647181566,
+            "high": 0.15011784139994253,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "far_error_m": [
+        0.07055028193511825,
+        0.0680755763137868
+      ],
+      "height_error_m": [
+        -0.0072317085167984685,
+        0.010604021303979638
+      ]
+    },
+    {
+      "id": "crossing_scene-dev-v9_22003_B2",
+      "task_id": 7176155,
+      "admitted": true,
+      "metrics": {
+        "scale_ratio": 0.9167,
+        "hidden_frac": 0.9301,
+        "shell_contact": 0.8136,
+        "free_intrusion_frac": 0.01381,
+        "intrusion_depth_p95_mm": 12.65,
+        "voxels": 353297,
+        "contour_iou": 0.7881,
+        "scale_ratio_v5": 1.2222,
+        "id": "crossing_scene-dev-v9_22003_B2",
+        "admitted": true,
+        "eval": {
+          "mask_iou": 0.7881,
+          "mask_iou_all_pixels": 0.7779,
+          "outside_lit_px": 39,
+          "in_dark_px": 1291,
+          "occluded_px": 0,
+          "depth_median_mm": 4.813,
+          "depth_p95_mm": 35.563,
+          "visible_median_mm": 4.852,
+          "visible_p95_mm": 16.885,
+          "n_candidate_pixels": 78665,
+          "n_mask_pixels": 98090
+        },
+        "footprint_cells": 108,
+        "footprint_x": [
+          2.975,
+          3.2250000000000005
+        ],
+        "footprint_y": [
+          -0.5249999999999999,
+          0.5250000000000004
+        ]
+      },
+      "world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22003/decision/world_crossing_scene-dev-v9_22003_B2.obj",
+      "geometry": {
+        "near": [
+          2.9987521344757835,
+          3.0024795440960044
+        ],
+        "far": [
+          3.208888863635695,
+          3.209028458876582
+        ],
+        "high": [
+          0.1375272391438736,
+          0.1307699093862218
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.9987521344757835,
+            "far": 3.208888863635695,
+            "high": 0.1375272391438736,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.0024795440960044,
+            "far": 3.209028458876582,
+            "high": 0.1307699093862218,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "far_error_m": [
+        0.09184530926226842,
+        0.07352417047221227
+      ],
+      "height_error_m": [
+        -0.01026441944282866,
+        -0.008743910709741093
+      ]
+    },
+    {
+      "id": "crossing_scene-dev-v9_22003_C1",
+      "task_id": 7176545,
+      "admitted": false,
+      "metrics": {
+        "scale_ratio": 1.0556,
+        "hidden_frac": 0.9043,
+        "shell_contact": 0.5082,
+        "free_intrusion_frac": 0.03933,
+        "intrusion_depth_p95_mm": 12.65,
+        "voxels": 202982,
+        "contour_iou": 0.5081,
+        "scale_ratio_v5": 1.4074,
+        "id": "crossing_scene-dev-v9_22003_C1",
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.5081,
+          "mask_iou_all_pixels": 0.491,
+          "outside_lit_px": 4394,
+          "in_dark_px": 2270,
+          "occluded_px": 1247,
+          "depth_median_mm": 10.023,
+          "depth_p95_mm": 64.19,
+          "visible_median_mm": 14.117,
+          "visible_p95_mm": 121.427,
+          "n_candidate_pixels": 58099,
+          "n_mask_pixels": 98090
+        },
+        "footprint_cells": 69,
+        "footprint_x": [
+          2.975,
+          3.175
+        ],
+        "footprint_y": [
+          -0.375,
+          0.375
+        ]
+      },
+      "world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22003/decision/world_crossing_scene-dev-v9_22003_C1.obj",
+      "geometry": {
+        "near": [
+          2.9888801496753796,
+          3.0038627550565637
+        ],
+        "far": [
+          3.1666154127022397,
+          3.1780113633119274
+        ],
+        "high": [
+          0.11506215814152891,
+          0.1412881110202753
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.9888801496753796,
+            "far": 3.1666154127022397,
+            "high": 0.11506215814152891,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.0038627550565637,
+            "far": 3.1780113633119274,
+            "high": 0.1412881110202753,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "far_error_m": [
+        0.04957185832881317,
+        0.04250707490755756
+      ],
+      "height_error_m": [
+        -0.03272950044517335,
+        0.001774290924312416
+      ]
+    },
+    {
+      "id": "crossing_scene-dev-v9_22003_C2",
+      "task_id": 7176932,
+      "admitted": false,
+      "metrics": {
+        "scale_ratio": 1.0,
+        "hidden_frac": 0.9052,
+        "shell_contact": 0.4657,
+        "free_intrusion_frac": 0.02569,
+        "intrusion_depth_p95_mm": 12.65,
+        "voxels": 147227,
+        "contour_iou": 0.4567,
+        "scale_ratio_v5": 1.3333,
+        "id": "crossing_scene-dev-v9_22003_C2",
+        "admitted": false,
+        "eval": {
+          "mask_iou": 0.4567,
+          "mask_iou_all_pixels": 0.4439,
+          "outside_lit_px": 22568,
+          "in_dark_px": 35,
+          "occluded_px": 3366,
+          "depth_median_mm": 5.579,
+          "depth_p95_mm": 28.888,
+          "visible_median_mm": 9.855,
+          "visible_p95_mm": 125.97,
+          "n_candidate_pixels": 76173,
+          "n_mask_pixels": 98090
+        },
+        "footprint_cells": 55,
+        "footprint_x": [
+          2.975,
+          3.125
+        ],
+        "footprint_y": [
+          -0.4249999999999998,
+          0.3250000000000002
+        ]
+      },
+      "world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22003/decision/world_crossing_scene-dev-v9_22003_C2.obj",
+      "geometry": {
+        "near": [
+          2.997429059472727,
+          2.995716319242381
+        ],
+        "far": [
+          3.163254087505596,
+          3.146352142761913
+        ],
+        "high": [
+          0.14348083105864254,
+          0.12126321047272784
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.997429059472727,
+            "far": 3.163254087505596,
+            "high": 0.14348083105864254,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 2.995716319242381,
+            "far": 3.146352142761913,
+            "high": 0.12126321047272784,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "far_error_m": [
+        0.046210533132169385,
+        0.01084785435754343
+      ],
+      "height_error_m": [
+        -0.004310827528059724,
+        -0.018250609623235048
+      ]
+    }
+  ],
+  "truth_geometry": {
+    "near": [
+      3.002892496361437,
+      3.0020771612510635
+    ],
+    "far": [
+      3.1170435543734265,
+      3.13550428840437
+    ],
+    "high": [
+      0.14779165858670226,
+      0.1395138200959629
+    ],
+    "lateral": 0.0,
+    "tracks": [
+      {
+        "near": 3.002892496361437,
+        "far": 3.1170435543734265,
+        "high": 0.14779165858670226,
+        "track_y_m": -0.192,
+        "band_halfwidth_m": 0.025
+      },
+      {
+        "near": 3.0020771612510635,
+        "far": 3.13550428840437,
+        "high": 0.1395138200959629,
+        "track_y_m": 0.192,
+        "band_halfwidth_m": 0.025
+      }
+    ],
+    "minimum_stone_z_m": 0.004
+  },
+  "observation": "outputs/crossing/development/scene-dev-v9/seed-22003/observation",
+  "request": "outputs/crossing/development/scene-dev-v9/seed-22003/observation/lux_request.json",
+  "budget_usage": 41,
+  "excluded_from_test_statistics": true
+}

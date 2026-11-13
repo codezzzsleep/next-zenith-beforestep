@@ -1,0 +1,62 @@
+{
+  "schema": "beforestep-crossing-route-precheck/v1",
+  "scene": "suite_r2_v4_F2_001_gate",
+  "attempt": "x9.00-seed22001",
+  "checks": {
+    "contour": {
+      "step_status": "终态",
+      "path": null,
+      "check": "gate_blocks",
+      "passed": true,
+      "has_path": false,
+      "start": [
+        8.15,
+        0.0
+      ],
+      "goal": [
+        10.5,
+        0.0
+      ],
+      "planner": "unchanged beforestep.navigation.map.plan",
+      "grid_resolution_m": 0.05,
+      "contour": "true MuJoCo convex collision footprints; no imagined shape",
+      "new_lux_tasks": 0
+    },
+    "leg": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/leg/result.json"
+    },
+    "detour": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/detour/result.json"
+    },
+    "wheel-fixed-center": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-center/result.json"
+    },
+    "wheel-fixed-left": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-left/result.json"
+    },
+    "wheel-fixed-right": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-right/result.json"
+    },
+    "wheel-high-center": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-center/result.json"
+    },
+    "wheel-high-left": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-left/result.json"
+    },
+    "wheel-high-right": {
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-right/result.json"
+    }
+  },
+  "all_terminal": false,
+  "all_four_passed": false,
+  "new_lux_tasks": 0,
+  "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F2_001_gate.json"
+}

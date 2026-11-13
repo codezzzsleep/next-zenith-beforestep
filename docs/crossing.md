@@ -30,8 +30,8 @@
 | 车 | 第一段结果 | 第二段结果 | 总结果 | 用时（仿真秒） | 看了几眼 | 出事位置或停下原因 |
 | --- | --- | --- | --- | --- | --- | --- |
 | A | 未完成 | 未运行 | 未完成 | — | — | 等待终态 |
-| B | 未完成 | 未运行 | 未完成 | — | — | 等待终态 |
-| C | 未完成 | 未运行 | 未完成 | — | — | 等待终态 |
+| B | 停下 | 未运行 | 停下 | 80.34 | 1 | {"reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock", "original_pipeline_result": "collision", "contact": {"body": "obstacle1", "robot_geom": null, "pos": [6.91, -0.264, 0.106], "t": 81.542}, "body_stone_contacts": 0, "wheel_stone_steps": 1, "maximum_tilt_deg": 0.7602970110720764}；没有用上腿 |
+| C | 停下 | 未运行 | 停下 | 140.18 | 5 | no_path；没有用上腿 |
 | D | 未完成 | 未运行 | 未完成 | — | — | 等待终态 |
 
 四种车尚未全部终态，腿的必要性待核对。 四种车尚未全部终态，想象的必要性待核对。

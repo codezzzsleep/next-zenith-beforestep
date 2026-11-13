@@ -16,6 +16,7 @@ def hashes(e):
     return {k:hashlib.sha256(np.asarray(getattr(e.data,k),dtype=np.float64).tobytes()).hexdigest() for k in ('qpos','qvel')}
 
 def save_physical(e, folder):
+    write(Path(folder)/'world-spec.json',e.spec)
     write(Path(folder)/'physical-state.json',e.save_state())
     np.savez_compressed(Path(folder)/'physical-state.npz',qpos=e.data.qpos.copy(),qvel=e.data.qvel.copy(),ctrl=e.data.ctrl.copy(),time=np.array(e.data.time))
 
@@ -25,6 +26,7 @@ def first_segment(scene, folder, policy, imagine='lux', reuse=None, max_looks=No
     register(scene)
     original_make=S.make_env
     original_rehearsal=IM.rehearsal_spec
+    original_recorder=P.Recorder
     live=[]
     captures=[]
     def make_env(spec):
@@ -43,6 +45,7 @@ def first_segment(scene, folder, policy, imagine='lux', reuse=None, max_looks=No
                 e.physics_monitor=old
                 record.frame('first-segment-control')
         e.step_command=step
+        e._route_capture=(record,original_step)
         captures.append((e,record,original_step))
         if not live:live.append((e,record,original_step))
         return e
@@ -53,7 +56,22 @@ def first_segment(scene, folder, policy, imagine='lux', reuse=None, max_looks=No
         result['objects'].extend(copy.deepcopy(scene['objects']))
         result.pop('route_threshold_index',None)
         return result
+    class Recorder(original_recorder):
+        def frame(self,env,kind,phase):
+            self.route_env=env
+            return super().frame(env,kind,phase)
+        def save(self,path):
+            super().save(path)
+            env=getattr(self,'route_env',None)
+            if env is not None and live and env is not live[0][0]:
+                record,original_step=env._route_capture
+                record.save(Path(path).parent/'full-record')
+                env.step_command=original_step
+                captures[:]=[r for r in captures if r[0] is not env]
+                del env._route_capture
+                del self.route_env
     S.make_env=make_env;IM.rehearsal_spec=rehearsal_spec
+    P.Recorder=Recorder
     argv=['beforestep run','--scene',scene['name'],'--controller-model','rules',
           '--policy',policy,'--imagine',imagine,'--out',str(folder),'--tag','segment1']
     if reuse:argv+=['--reuse-lux',str(reuse)]
@@ -63,7 +81,7 @@ def first_segment(scene, folder, policy, imagine='lux', reuse=None, max_looks=No
     try:P.main()
     except SystemExit as error:code=int(error.code or 0)
     finally:
-        S.make_env=original_make;IM.rehearsal_spec=original_rehearsal
+        S.make_env=original_make;IM.rehearsal_spec=original_rehearsal;P.Recorder=original_recorder
     if not live:raise RuntimeError('Pipeline did not create a live environment')
     e,record,original_step=live[0]
     e.step_command=original_step

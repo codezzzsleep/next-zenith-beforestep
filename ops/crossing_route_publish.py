@@ -16,7 +16,7 @@ if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');a=ap.parse_args()
     state={'stage':a.stage,'status':'running'};save(state)
     paths=['experimental/crossing/route',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_route_*.py')],
-        'README.md','docs/story.md','docs/crossing.md','docs/report.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md',
+        'README.md','docs/story.md','docs/history/README-before-addendum2.md','docs/crossing.md','docs/report.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md',
         'docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.js','site/crossing.css']
     budget=json.loads((ROOT/'outputs/generation/crossing-budget.json').read_text())
     paths += ['assets/candidates/'+str(r['task_id']) for r in budget['tasks'] if r.get('task_id') and r['status']=='ok']
@@ -27,7 +27,7 @@ if __name__=='__main__':
     assert value(['git','ls-remote','origin','refs/heads/main']).split()[0]==state['main']
     state['main_verified']=True;save(state)
     copied=[]
-    for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','README.md','docs/report.md','docs/story.md','docs/crossing.md',
+    for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','README.md','docs/history/README-before-addendum2.md','docs/report.md','docs/story.md','docs/crossing.md',
         'docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md']:
         destination=relative.removeprefix('site/');target=PAGES/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/relative,target);copied.append(destination)
     for source in (ROOT/'evidence/crossing/route').rglob('*'):

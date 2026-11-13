@@ -57,7 +57,7 @@ def select(scene):
     path=EVIDENCE/f'scene-{scene["name"]}.json'
     if path.exists():
         old=json.loads(path.read_text())
-        if old.get('formal_runs_started'):
+        if old.get('formal_runs_started') or any((ROUTE/scene['name']/v/'live-job.json').exists() for v in ['A','B','C','D']):
             assert old['attempt']==scene['attempt'],'Scene cannot change after a formal run'
     write(path,{**scene,'formal_runs_started':False})
     return path

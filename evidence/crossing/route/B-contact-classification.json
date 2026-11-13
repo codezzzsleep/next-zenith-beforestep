@@ -1,0 +1,38 @@
+{
+  "schema": "beforestep-route-contact-classification/v1",
+  "vehicle": "B",
+  "physical_runs": 1,
+  "original_pipeline_result": "collision",
+  "new_route_result": "stopped",
+  "physical_contact_summary": {
+    "physics_steps": 40771,
+    "contact_counts": {
+      "wheel_ground": 246728,
+      "wheel_threshold": 4,
+      "body_stone": 0,
+      "unstable": 0
+    },
+    "steps_with_wheel_stone": 1,
+    "max_tilt_deg": 0.7602970110720764,
+    "failure": null
+  },
+  "reason": {
+    "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+    "original_pipeline_result": "collision",
+    "contact": {
+      "body": "obstacle1",
+      "robot_geom": null,
+      "pos": [
+        6.91,
+        -0.264,
+        0.106
+      ],
+      "t": 81.542
+    },
+    "body_stone_contacts": 0,
+    "wheel_stone_steps": 1,
+    "maximum_tilt_deg": 0.7602970110720764
+  },
+  "raw_result_unchanged": true,
+  "rerun": false
+}

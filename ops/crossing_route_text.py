@@ -1,5 +1,5 @@
 """Write the story opening and four evidence-derived report sections."""
-import json,re,sys
+import json,re,sys,subprocess
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'src')]
 from ops.crossing_route_summary import build,labels
@@ -43,7 +43,16 @@ if __name__=='__main__':
     p=ROOT/'README.md';text=p.read_text();marker='<!-- PHOTO-STORY-README-START -->\n';head,tail=text.split(marker,1);_,tail=tail.split('\n\n',1)
     tail=tail.split('<!-- PHOTO-STORY-README-END -->',1)[1]
     links='[自检拦下了什么](docs/report.md#全部反事实本批自检偏保守)\n\n[高石头绕行 R1 到 R3](docs/reviews/RESULT_BEFORESTEP_R1.md)\n\n[腿与想象：同路两种石头](docs/crossing.md)'
-    p.write_text(head+marker+opening+'\n\n'+links+'\n<!-- PHOTO-STORY-README-END -->'+tail)
+    history=ROOT/'docs/history/README-before-addendum2.md'
+    if not history.exists():history.write_bytes(subprocess.check_output(['git','show','60644964:README.md'],cwd=ROOT))
+    quickstart=tail[tail.index('## 三分钟跑起来'):]
+    if '当前主线以' in quickstart:quickstart=quickstart.split('当前主线以')[0]
+    elif '## 轮腿与想象' in quickstart:quickstart=quickstart.split('## 轮腿与想象')[0]
+    body='\n\n## 轮腿与想象\n\n'+summary['state']+'。原门槛石开发已收尾，四项物理闸门通过；同路两种石头的四车结果按原件公开，结论以 [结果表](docs/crossing.md#一条路上两种石头) 为准。\n\n'
+    body+='[交互页面](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) · [实验规范](docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md) · [故事](docs/story.md)。\n\n'
+    body+='## 源码、资产与版本证据\n\n[代码导览](docs/code-tour.md)、[版本里程碑](docs/milestones.md)和[核心资产迭代](evidence/award/asset-iterations/manifest.json)保留各版本的源码、输入、原生成资产及失败对比；[原 README 与历史复现命令](docs/history/README-before-addendum2.md)原字节留档。\n\n'
+    body+='## 附录\n\n学习模型保留历史记录；Arena 停在 2747/4000，未完成，原数据与失败证据保留。\n'
+    p.write_text(head+marker+opening+'\n\n'+links+'\n<!-- PHOTO-STORY-README-END -->\n\n'+quickstart.strip()+body)
     p=ROOT/'docs/reviews/RESULT_WHEELLEG_CROSSING.md';text=p.read_text();mark='\n### 补充说明 2 当前结果（由证据生成）\n'
     if mark in text:text=text.split(mark)[0]
     cleanup=json.loads((ROOT/'evidence/crossing/route/cleanup.json').read_text());text+=mark+f'\n§0 已收尾：53 个已创建任务均有原 GLB，0 新创建；门槛后续队列、预注册与十二场测试取消。磁盘空余 {cleanup["free_before_bytes"]/2**30:.2f}→{cleanup["free_after_bytes"]/2**30:.2f} GiB，证据原件与依赖保留。STORY 和补充说明原字节已入库并同步私有恢复。\n\n'+table(summary)+'\n'+summary['legs_necessity']+' '+summary['imagination_necessity']+'\n'

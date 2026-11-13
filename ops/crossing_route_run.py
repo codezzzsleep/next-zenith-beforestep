@@ -17,8 +17,13 @@ def scene_for(name):return json.loads((EVIDENCE/f'scene-{name}.json').read_text(
 
 def outcome(summary,physical,events):
     if summary['result']=='arrived':return 'arrived',None
-    if summary.get('collision') or physical.get('failure',{} ) and physical['failure']['kind']=='body_collision':return 'collision',summary.get('collision') or physical['failure']
+    if physical.get('contact_counts',{}).get('body_stone',0)>0:return 'collision',physical.get('failure') or summary.get('collision')
     if physical.get('max_tilt_deg',0)>60:return 'collision',{'reason':'tilt_gt_60','tilt_deg':physical['max_tilt_deg']}
+    if summary.get('collision'):
+        return 'stopped',{'reason':'frozen_contact_watch_stopped_on_wheel_contact_to_high_rock',
+            'original_pipeline_result':summary['result'],'contact':summary['collision'],
+            'body_stone_contacts':physical.get('contact_counts',{}).get('body_stone',0),
+            'wheel_stone_steps':physical.get('steps_with_wheel_stone',0),'maximum_tilt_deg':physical.get('max_tilt_deg',0)}
     plans=[e for e in events if e['kind']=='plan']
     if plans and plans[-1]['path'] is None:return 'stopped',plans[-1].get('reason')
     return 'stuck',summary['result']
@@ -46,7 +51,8 @@ def child(scene,vehicle,reuse=None,probe=False):
         index=int(e.spec['route_threshold_index']);rb=e.spec['route_rock_bodies']
         if vehicle!='A':
             second=leg_segment(e,scene,rb,index,stage2)
-            total='arrived' if second['arrived'] else 'collision' if second['status'] in ('body_collision','unstable') else second['status']
+            accident=second['contact']['contact_counts'].get('body_stone',0)>0 or second['contact']['max_tilt_deg']>60
+            total='arrived' if second['arrived'] else 'collision' if accident else 'stopped' if second['status']=='stopped' else 'stuck'
             reason=None if second['arrived'] else second['contact'].get('failure') or second['last_phase']
         else:
             occ=N.prior_nogo().copy()
@@ -61,7 +67,7 @@ def child(scene,vehicle,reuse=None,probe=False):
             for stance in ('fixed','high'):
                 trials.append(wheel_trial(e,scene,index,stage2/stance,stance,0.))
             arrived=any(t['arrived'] for t in trials)
-            collision=next((t['contact']['failure'] for t in trials if t['status'] in ('body_collision','unstable')),None)
+            collision=next((t['contact']['failure'] for t in trials if t['contact']['contact_counts'].get('body_stone',0)>0 or t['contact']['max_tilt_deg']>60),None)
             second={'status':'arrived' if arrived else 'collision' if collision else 'stuck','arrived':arrived,
                 'sim_seconds':sum(t['sim_seconds'] for t in trials),'contour':contour,'wheel_trials':trials,
                 'second_trial_start':'Measured end state of first wheel-only attempt; no reset',
@@ -114,7 +120,16 @@ def generate_request(path,scene):
         identity=C.request_identity(request,paid)
         known=next((r for r in data['tasks'] if r['identity']==identity),None)
         if known is None and len(scoped)>=24:raise RuntimeError('Scene reached its 24-task cap; do not create any further request')
-        record=budget.submit(request,paid,scene=f'route/{scene["name"]}/{path.parent.parent.name}/{path.parent.name}',observation=str(path.parent.relative_to(ROOT)))
+        try:
+            record=budget.submit(request,paid,scene=f'route/{scene["name"]}/{path.parent.parent.name}/{path.parent.name}',observation=str(path.parent.relative_to(ROOT)))
+        except C.ProviderRejected as error:
+            stopped={'criterion':'Addendum 2 §10.4','code':error.code,'scene':scene['name'],
+                'sample':name,'new_creation_stopped':True,'reason':'Lux3D provider rejected the request'}
+            with budget.locked() as data:data['stop']=stopped;data['status']='route_provider_rejected'
+            write(EVIDENCE/'generation-stop.json',stopped)
+            with Path('/root/3d/MEMORY.md').open('a') as f:f.write(f'\nroute新Lux被平台拒绝，补充2§10.4停因；scene {scene["name"]}/sample {name}/code {error.code}，budget stop已持久，既有和uncertain不重发。\n')
+            checkpoint('route-provider-rejected')
+            raise
         with Path('/root/3d/MEMORY.md').open('a') as f:
             f.write(f'\nroute真实Lux已落账：{record.get("task_id")}，identity {record["identity"]}，scene {scene["name"]}，request {path.relative_to(ROOT)}；独立budget/client ledger权威，known/uncertain禁止重建。\n')
         checkpoint(f'route-task-{record.get("task_id")}-known')
@@ -144,7 +159,6 @@ if __name__=='__main__':
     progress=ROOT/'outputs/crossing/route/progress.json';state=json.loads(progress.read_text())
     if not a.probe:
         state['steps'][a.vehicle].update(status='运行中',pid=os.getpid(),output=str(folder.relative_to(ROOT)));write(progress,state)
-        selected=EVIDENCE/f'scene-{a.scene}.json';scene.update(formal_runs_started=True);write(selected,scene)
     for number in range(1,10):
         log=folder/f'attempt-{number:03d}.log'
         command=[sys.executable,str(Path(__file__)),'--scene',a.scene,'--vehicle',a.vehicle,'--child']

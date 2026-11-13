@@ -5,16 +5,16 @@ ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import numpy as np
 from experimental.crossing.runtime import *
 
-def run_fixed(h,d,angle,method,out):
+def run_fixed(h,d,angle,method,out,seconds=40.):
     out=Path(out)
     if (out/'result.json').exists():return json.loads((out/'result.json').read_text())
     obj=box_object(h,d);e=env_for([obj],angle=angle);rec=Record(e);rec.frame('start');t0=time.monotonic()
     pose=stance_array(STANCE if method=='fixed' else STANCE_HIGH)
     ok=transition(rec,pose,2,'raise' if method=='high' else 'settle')
-    if ok:ok=drive(rec,pose,d+.35,heading=np.deg2rad(angle),timeout=40.)
+    if ok:ok=drive(rec,pose,d+.35,heading=np.deg2rad(angle),timeout=seconds)
     status='clean_pass' if ok and not rec.summary()['steps_with_wheel_stone'] else 'wheel_contact_pass' if ok else 'body_collision' if rec.failure and rec.failure['kind']=='body_collision' else 'unstable' if rec.failure else 'stuck'
     rec.save(out)
-    result={'method':method,'h_m':h,'d_m':d,'angle_deg':angle,'status':status,'sim_seconds':e.t,'wall_seconds':time.monotonic()-t0,'final_base':e.data.qpos[:7].tolist(),'final_wheels':wheel_positions(e).tolist(),'contact':rec.summary(),'scene':e.spec,'trajectory_sha256':sha(out/'trajectory.npz'),'contacts_sha256':sha(out/'contacts.npz'),'new_lux_tasks':0}
+    result={'method':method,'h_m':h,'d_m':d,'angle_deg':angle,'status':status,'sim_seconds':e.t,'wall_seconds':time.monotonic()-t0,'final_base':e.data.qpos[:7].tolist(),'final_wheels':wheel_positions(e).tolist(),'contact':rec.summary(),'scene':e.spec,'trajectory_sha256':sha(out/'trajectory.npz'),'contacts_sha256':sha(out/'contacts.npz'),'new_lux_tasks':0,'drive_time_limit_s':seconds,'object_bounds':e.obj_bounds,'model_xml_sha256':__import__('hashlib').sha256(e._xml.encode()).hexdigest()}
     write(out/'result.json',result);return result
 
 if __name__=='__main__':

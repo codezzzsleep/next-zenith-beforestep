@@ -37,7 +37,7 @@ def box_object(h,d,width=3.0,near=0.0):
 
 class Record:
     def __init__(self,e,threshold_index=0):
-        self.e=e;self.leg_kd=5.;self.step_t=[];self.counts=[];self.contacts=[];self.q=[];self.t=[];self.phase=[];self.failure=None;self.max_tilt=0.;self.support=[]
+        self.e=e;self.qvel=[];self.commands=[];self.controls=[];self.leg_kd=5.;self.step_t=[];self.counts=[];self.contacts=[];self.q=[];self.t=[];self.phase=[];self.com=[];self.centres=[];self.normal_force=[];self.loaded_support=[];self.failure=None;self.max_tilt=0.;self.support=[]
         m=e.model
         self.robot={g for g in range(m.ngeom) if int(m.geom_bodyid[g]) in set(range(1,18))}
         # Identify by ancestry, not a hard-coded number of model bodies.
@@ -53,12 +53,12 @@ class Record:
         self.wheel_leg={g:leg for leg in LEG for g in e._body_geoms(leg+'_wheel_link')}
         e.physics_monitor=self.monitor
     def monitor(self,e):
-        counts=[0,0,0,0];supported=set();ts=float(e.data.time)
+        counts=[0,0,0,0];supported=set();loaded=set();ts=float(e.data.time)
         tilt=float(e._tilt());self.max_tilt=max(tilt,self.max_tilt)
         if tilt>e.tip_deg:
             counts[3]+=1
             if self.failure is None:self.failure={'kind':'unstable','reason':'tilt','t':ts,'tilt_deg':tilt}
-        for c in e.data.contact:
+        for ci,c in enumerate(e.data.contact):
             a,b=int(c.geom1),int(c.geom2)
             if a not in self.robot and b not in self.robot:continue
             r,other=(a,b) if a in self.robot else (b,a)
@@ -70,20 +70,24 @@ class Record:
             elif r in self.wheels and other in self.stones:kind=1
             if kind is not None:
                 counts[kind]+=1
+                force=np.zeros(6);mujoco.mj_contactForce(e.model,e.data,ci,force)
+                self.normal_force.append(float(force[0]))
+                if kind==0 and force[0]>1e-5:loaded.add(self.wheel_leg[r])
                 self.contacts.append([len(self.step_t),kind,a,b,*map(float,c.pos),float(c.dist)])
                 if kind>=2 and self.failure is None:self.failure={'kind':'body_collision' if kind==2 else 'unstable','reason':'contact','t':ts,'geom_ids':[a,b],'position':c.pos.tolist()}
-        self.step_t.append(ts);self.counts.append(counts);self.support.append([int(leg in supported) for leg in LEG])
+        self.step_t.append(ts);self.counts.append(counts);self.support.append([int(leg in supported) for leg in LEG]);self.loaded_support.append([int(leg in loaded) for leg in LEG])
         return self.failure is not None
     def frame(self,phase):
-        self.t.append(float(self.e.data.time));self.q.append(self.e.data.qpos.copy());self.phase.append(phase)
-    def command(self,targets,omega=None,phase='move',brake=None):
-        self.e.step_command(joint_targets_rad=targets,wheel_omega_rad_s=omega,wheel_brake=brake,wheel_mode='brake' if omega is None else None,kd=self.leg_kd)
+        self.qvel.append(self.e.data.qvel.copy());self.controls.append(self.e.data.ctrl.copy());self.commands.append(np.array(getattr(self.e,'_last_joint_targets',None) if getattr(self.e,'_last_joint_targets',None) is not None else joint_pose(self.e)))
+        self.t.append(float(self.e.data.time));self.q.append(self.e.data.qpos.copy());self.phase.append(phase);self.com.append(self.e.data.subtree_com[1].copy());self.centres.append(wheel_positions(self.e))
+    def command(self,targets,omega=None,phase='move',brake=None,velocity_targets=None):
+        self.e.step_command(joint_targets_rad=targets,joint_velocity_targets_rad_s=velocity_targets,wheel_omega_rad_s=omega,wheel_brake=brake,wheel_mode='brake' if omega is None else None,kd=self.leg_kd)
         self.frame(phase)
         return self.failure is None and not self.e.truncated and not (self.e.terminated and self.e.last_termination.get('reason')!='success')
     def save(self,folder):
         folder=Path(folder);folder.mkdir(parents=True,exist_ok=True)
-        np.savez_compressed(folder/'trajectory.npz',t=np.array(self.t),qpos=np.array(self.q),phase=np.array(self.phase))
-        np.savez_compressed(folder/'contacts.npz',t=np.array(self.step_t),counts=np.array(self.counts,dtype=np.uint8),contacts=np.array(self.contacts).reshape(-1,8),support=np.array(self.support,dtype=np.uint8))
+        np.savez_compressed(folder/'trajectory.npz',t=np.array(self.t),qpos=np.array(self.q),phase=np.array(self.phase),qvel=np.array(self.qvel),joint_targets=np.array(self.commands),ctrl=np.array(self.controls),com=np.array(self.com),wheel_centres=np.array(self.centres))
+        np.savez_compressed(folder/'contacts.npz',t=np.array(self.step_t),counts=np.array(self.counts,dtype=np.uint8),contacts=np.array(self.contacts).reshape(-1,8),support=np.array(self.support,dtype=np.uint8),loaded_support=np.array(self.loaded_support,dtype=np.uint8),normal_force=np.array(self.normal_force))
     def summary(self):
         a=np.array(self.counts)
         return {'physics_steps':len(a),'contact_counts':dict(zip(['wheel_ground','wheel_threshold','body_stone','unstable'],a.sum(0).astype(int).tolist())) if len(a) else {},'steps_with_wheel_stone':int((a[:,1]>0).sum()) if len(a) else 0,'max_tilt_deg':self.max_tilt,'failure':self.failure}
@@ -112,3 +116,8 @@ def drive(rec,pose,goal_x,speed=.12,phase='drive',heading=0.,timeout=40.):
         omega=np.array([(v+(-1 if leg in ['FL','RL'] else 1)*desired*.192)/WHEEL_R for leg in LEG]);omega=np.clip(omega,-.15/WHEEL_R,.15/WHEEL_R)
         if not rec.command(pose,omega,phase):return False
     return False
+
+
+def wheel_anchors(e):
+    """Wheel joint origins for analytic leg IK; these are not mesh centres."""
+    return np.array([e.data.xpos[mujoco.mj_name2id(e.model,mujoco.mjtObj.mjOBJ_BODY,leg+"_wheel_link")].copy() for leg in LEG])

@@ -1,0 +1,70 @@
+{
+  "schema": "beforestep-route-paused-checkpoint/v1",
+  "observed_at": "2026-11-13T20:45:29.259908+00:00",
+  "execution_paused_by_user": true,
+  "created": 71,
+  "high_rock_created": 18,
+  "high_rock_glb_successes": 16,
+  "high_rock_failed": 2,
+  "all_cloud_tasks_terminal": true,
+  "vehicles": [
+    {
+      "vehicle": "A",
+      "state": "paused_in_second_look_admission"
+    },
+    {
+      "vehicle": "B",
+      "first_segment_result": "stopped",
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 80.34,
+      "looks": 1,
+      "reason": {
+        "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+        "original_pipeline_result": "collision",
+        "contact": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            6.91,
+            -0.264,
+            0.106
+          ],
+          "t": 81.542
+        },
+        "body_stone_contacts": 0,
+        "wheel_stone_steps": 1,
+        "maximum_tilt_deg": 0.7602970110720764
+      }
+    },
+    {
+      "vehicle": "C",
+      "first_segment_result": "stopped",
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 140.18,
+      "looks": 5,
+      "reason": "no_path"
+    },
+    {
+      "vehicle": "D",
+      "state": "not_started"
+    }
+  ],
+  "first_look_admission": {
+    "high_A": {
+      "admitted": 6,
+      "successful_models": 6
+    },
+    "high_B": {
+      "admitted": 0,
+      "successful_models": 4
+    }
+  },
+  "second_look_high_B_successful_models": 6,
+  "second_look_admission_completed": false,
+  "scene": "evidence/crossing/route/scene-stress_v8_gate.json",
+  "B_jpg_frames": 1082,
+  "handoff_complete": false,
+  "final_pdf_generated": false
+}

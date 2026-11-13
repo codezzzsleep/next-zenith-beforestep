@@ -1,0 +1,28 @@
+{
+  "schema": "beforestep-route-provider-failures/v1",
+  "jobs": [
+    {
+      "task_id": 7210716,
+      "sample": "crossing_route_stress_v8_gate_look1_T2_B1",
+      "provider_status": 4,
+      "response_fields": [
+        "bizId",
+        "status",
+        "taskId"
+      ],
+      "diagnosis": "Service returned a terminal failed job; no cause inferred beyond the returned fields"
+    },
+    {
+      "task_id": 7210799,
+      "sample": "crossing_route_stress_v8_gate_look1_T2_B2",
+      "provider_status": 4,
+      "response_fields": [
+        "bizId",
+        "status",
+        "taskId"
+      ],
+      "diagnosis": "Service returned a terminal failed job; no cause inferred beyond the returned fields"
+    }
+  ],
+  "new_task_creates": 0
+}

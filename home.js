@@ -1,6 +1,7 @@
 // 先见一步 BeforeStep — homepage behaviour.
-// Every number and shape drawn here is read from home-assets/data/site.json,
-// which dev/build_data.py assembles from the project's audited evidence files.
+// Every number and shape drawn here is read from home-assets/data/site.json and
+// home-assets/data/exhibit.json, which dev/build_data.py and dev/build_exhibit.py
+// assemble from the project's audited evidence files.
 
 const C = {
   night: '#0a0b0c', soil: '#14171a', rule: '#2c3135', rock: '#5f5c56', rockEdge: '#8d897f',
@@ -9,7 +10,9 @@ const C = {
 const calm = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const $ = (selector, root = document) => root.querySelector(selector);
 
-const data = await fetch('home-assets/data/site.json').then((response) => response.json());
+const [data, exhibit] = await Promise.all(
+  ['home-assets/data/site.json', 'home-assets/data/exhibit.json'].map((path) => fetch(path).then((response) => response.json())),
+);
 
 /* ---------- drawing helpers ---------- */
 
@@ -201,7 +204,7 @@ const hero = $('#hero-rock');
 const flag = $('#back-flag');
 const FRONT_DEG = 15; // orbit angle at which the generated rock shows the photographed face
 if (calm) hero.removeAttribute('auto-rotate');
-document.querySelectorAll('.turns button').forEach((button) => {
+document.querySelectorAll('.hero .turns button').forEach((button) => {
   button.addEventListener('click', () => {
     hero.removeAttribute('auto-rotate');
     hero.cameraOrbit = button.dataset.orbit;
@@ -322,6 +325,73 @@ function choose(candidate, button) {
   });
 });
 
+/* ---------- wall: every real Lux3D call of the experiments, in the order it was made ---------- */
+
+{
+  const wall = exhibit.wall;
+  const grid = $('#wall-grid');
+  const read = $('#wall-read');
+  const WORD = {
+    p: ['good', '通过检查，机器人可以用它'],
+    r: ['', '被检查拒掉。事后强行信了它再跑，车没有撞'],
+    c: ['bad', '被检查拒掉。事后强行信了它再跑，车撞了'],
+    n: ['', '被检查拒掉。没有做过强行信任的运行'],
+    f: ['', 'Lux3D 没有返回模型'],
+  };
+  const stats = wall.stats;
+  $('#w-calls').textContent = stats.calls;
+  $('#w-models').textContent = stats.models;
+  $('#w-passed').textContent = stats.passed;
+  $('#w-rejected').textContent = stats.rejected;
+  $('#w-crash').textContent = stats.rejected_would_crash;
+  $('#w-failed').textContent = stats.failed;
+
+  const cols = wall.sprite_cols;
+  const rows = wall.sprite_rows;
+  const tiles = document.createDocumentFragment();
+  wall.tiles.forEach(([, state, position], index) => {
+    const tile = document.createElement('span');
+    tile.className = state;
+    tile.dataset.i = index;
+    if (position >= 0) {
+      tile.style.setProperty('--x', `${((position % cols) / (cols - 1)) * 100}%`);
+      tile.style.setProperty('--y', `${(Math.floor(position / cols) / (rows - 1)) * 100}%`);
+    }
+    tiles.append(tile);
+  });
+  grid.append(tiles);
+
+  // The sprite is one 370 KB image; fetch it only when the wall is about to be seen.
+  const sprite = new URL(wall.sprite, document.baseURI).href;
+  new IntersectionObserver((entries, observer) => {
+    if (!entries.some((entry) => entry.isIntersecting)) return;
+    grid.style.setProperty('--sprite', `url("${sprite}")`);
+    grid.classList.add('ready');
+    observer.disconnect();
+  }, { rootMargin: '900px 0px' }).observe(grid);
+
+  let chosen = null;
+  function tell(tile) {
+    if (!tile || tile === chosen) return;
+    if (chosen) chosen.classList.remove('on');
+    chosen = tile;
+    tile.classList.add('on');
+    const index = Number(tile.dataset.i);
+    const [taskId, state, , scene] = wall.tiles[index];
+    const [tone, words] = WORD[state];
+    read.innerHTML = `<b>第 ${index + 1} 次提交</b><b>任务 ${taskId}</b>${scene ? `<b>场景 ${scene}</b>` : ''}<br><span class="${tone}">${words}</span>`;
+  }
+  grid.addEventListener('pointerover', (event) => tell(event.target.closest('.wall span')));
+  grid.addEventListener('click', (event) => tell(event.target.closest('.wall span')));
+
+  document.querySelectorAll('.wall-filters button').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.wall-filters button').forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+      grid.dataset.show = button.dataset.show;
+    });
+  });
+}
+
 /* ---------- trust: twelve imagined worlds, then the real drive ---------- */
 
 const WORLD = { x0: 1.6, x1: 11.2, y0: -1.75, y1: 1.75 };
@@ -356,7 +426,16 @@ data.rehearsals.forEach((rehearsal) => {
 const REVEAL = { x0: 5.75, x1: 8.2, y0: -0.85, y1: 1.3 };
 const revealCanvas = $('#reveal-map');
 const rockB = data.scene.rocks.find((rock) => rock.id === 'B');
+const twin = $('#twin-rock');
+const twinOf = Object.fromEntries(exhibit.overlays.anchor.map((overlay) => [overlay.sample, overlay]));
+function wireViews(buttons, viewer) {
+  buttons.querySelectorAll('button').forEach((button) => {
+    button.addEventListener('click', () => { viewer.cameraOrbit = button.dataset.orbit; });
+  });
+}
+wireViews($('#twin-views'), twin);
 function showReveal(sample) {
+  if (!twin.src.endsWith(twinOf[sample].glb)) twin.src = twinOf[sample].glb;
   const view = fit(revealCanvas, REVEAL);
   const { ctx, w, h, px, py } = view;
   ctx.fillStyle = C.soil;
@@ -418,6 +497,16 @@ document.querySelectorAll('#reveal .tabs button').forEach((button) => {
 const shortBy = (sample) => Math.abs(data.back_error_anchor.find((item) => item.target === 'T2' && item.candidate === sample).back_error_m).toFixed(2);
 $('#short-a').textContent = shortBy('A2');
 $('#short-c').textContent = shortBy('C1');
+{
+  const metres = (value) => Math.abs(value).toFixed(2);
+  const { A2, C1 } = twinOf;
+  $('#grid-a').textContent = metres(A2.back_error_grid_m);
+  $('#grid-c').textContent = metres(C1.back_error_grid_m);
+  $('#vert-a').textContent = metres(A2.back_error_vertices_m);
+  $('#vert-c').textContent = metres(C1.back_error_vertices_m);
+  $('#vert-gap').textContent = (Math.abs(A2.back_error_vertices_m - A2.back_error_grid_m) * 100).toFixed(1);
+  $('#overlay-count').textContent = exhibit.overlays.all_overlays;
+}
 showReveal('A2');
 
 /* ---------- results ---------- */
@@ -458,4 +547,53 @@ const cf = data.counterfactuals;
 const cfRuns = cf.r2.executed + cf.r3.known_frozen.executed + cf.r3.designated_holdout.executed;
 const cfCrashes = cf.r2.collisions + cf.r3.known_frozen.collisions + cf.r3.designated_holdout.collisions;
 $('#n-cf-total').textContent = cfRuns;
-$('#n-cf-crash').textContent = cfCrashes;
+{
+  const { known_decisive: known, holdout } = data.stats;
+  $('#n-known').textContent = decisive.length;
+  $('#n-known-arrive').textContent = known.imagination.arrived;
+  $('#n-known-crash').textContent = known.imagination.collision;
+  $('#n-hold').textContent = data.holdouts.length;
+  $('#n-hold-arrive').textContent = holdout.imagination.arrived;
+  $('#n-hold-crash').textContent = holdout.imagination.collision;
+  const forced = exhibit.wall.stats;
+  if (forced.forced_runs !== cfRuns || forced.forced_run_crashes !== cfCrashes) {
+    console.error('forced-trust counts differ between site.json and exhibit.json');
+  }
+  $('#n-cf-models').textContent = forced.rejected_forced_models;
+  $('#n-cf-crash').textContent = forced.rejected_would_crash;
+  $('#n-cf-never').textContent = forced.rejected_never_forced;
+}
+
+/* ---------- results: the three runs where the imagined back was too short ---------- */
+
+{
+  const viewer = $('#crash-rock');
+  const tabs = $('#crash-tabs');
+  const scenes = Object.fromEntries([...data.known, ...data.holdouts].map((scene) => [scene.scene, scene]));
+  const heldOut = new Set(data.holdouts.map((scene) => scene.scene));
+  const metres = (value) => Math.abs(value).toFixed(2);
+  wireViews($('#crash-views'), viewer);
+  function showCrash(item, button) {
+    tabs.querySelectorAll('button').forEach((other) => other.setAttribute('aria-selected', String(other === button)));
+    viewer.src = item.glb;
+    const shorts = item.admitted_for_this_rock.map((sibling) => metres(sibling.back_error_grid_m));
+    const same = shorts.every((value) => value === shorts[0]);
+    const run = scenes[item.scene].runs.imagination;
+    $('#crash-gap').textContent = metres(item.back_error_grid_m);
+    $('#crash-text').textContent =
+      `${heldOut.has(item.scene) ? '方法定稿后才第一次跑的场景' : '预先登记的场景'} ${item.scene_short}。` +
+      `这块石头有 ${shorts.length} 份想象通过了检查，` +
+      (same ? `背面都比真实的短 ${shorts[0]} 米。` : `背面分别短了 ${shorts.join('、')} 米，这里放的是伸得最远的那一份。`) +
+      `机器人把它们叠在一起定路线，每一个想象世界里的预演都安全。真车开到第 ${run.sim_time_s.toFixed(1)} 秒，碰上了这块石头。`;
+  }
+  exhibit.overlays.crashes.forEach((item, index) => {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.setAttribute('role', 'tab');
+    button.setAttribute('aria-selected', 'false');
+    button.textContent = `场景 ${item.scene_short}`;
+    button.addEventListener('click', () => showCrash(item, button));
+    tabs.append(button);
+    if (index === 0) showCrash(item, button);
+  });
+}

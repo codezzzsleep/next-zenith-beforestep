@@ -1,9 +1,13 @@
 # 先见一步 · BeforeStep
 
 <!-- PHOTO-STORY-README-START -->
-对轮子来说，石头是障碍，知道轮廓就能绕开；对腿来说，石头是地形，必须知道整块的形状。可整块石头有一半，机器人永远拍不到。BeforeStep 让 Lux3D 把那一半想象出来，再让轮腿机器人在迈步之前，把每一份想象都检验一遍、预演一遍。
+机器人只拍到石头的一面。矮石头，相机看得到它的顶和背，轮腿抬腿跨过去；高石头，背面永远拍不到，Lux3D 把它想象出来，机器人检验、预演之后再绕。一条路上两种石头都有，少了腿或少了想象，都到不了。
 
-[转着看真实生成的石头](https://codezzzsleep.github.io/next-zenith-beforestep/) · [想象陈列室](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html)。
+[自检拦下了什么](docs/report.md#全部反事实本批自检偏保守)
+
+[高石头绕行 R1 到 R3](docs/reviews/RESULT_BEFORESTEP_R1.md)
+
+[腿与想象：同路两种石头](docs/crossing.md)
 <!-- PHOTO-STORY-README-END -->
 
 ## 三分钟跑起来 · Start in three minutes

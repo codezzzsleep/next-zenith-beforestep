@@ -1,28 +1,17 @@
 # 黑客松提交核对表
 
-提交截止：2026-11-19 19:00（北京时间）。视频渲染、社交发布与比赛网站提交由负责人完成；Agent 准备并核验可交付材料，不索取发布账号。
+按补充说明 3 执行：11/15 18:00（北京时间）前完成视频定版、PDF 与全部发布，11/16 留给看片、改字和填写提交表。官方必交为项目报告（PDF/PPT）加可运行 Demo 或含真实运行画面的视频；本项目同时交 Demo 与视频。不安排现场答辩。
 
-| 项目 | 必交/加分 | 链接或明确状态 | 完成者 | 当前核验时间 |
-| --- | --- | --- | --- | --- |
-| 项目报告书 | 必交 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF（23页）](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；过程截图与关键资产迭代已纳入 | Agent准备与核验；负责人提交 | 2026-11-12T08:32:19.920105+00:00 |
-| 完整 Demo 可体验入口 | 必交 | [作品](https://codezzzsleep.github.io/next-zenith-beforestep/) · [真实关卡回放](https://codezzzsleep.github.io/next-zenith-beforestep/levels.html) · [轻量沙盒](https://codezzzsleep.github.io/next-zenith-beforestep/sandbox.html) | Agent已集成负责人交付首页并完成本地/公网验收，回放与沙盒已核验 | 2026-11-12T08:32:19.920105+00:00 |
-| 含真实运行画面的视频 | 必交 | 新视频由负责人录屏/渲染/剪辑，待负责人填写最终链接；[完整数据与两版分镜](../evidence/video/award/index.json)已交付。[旧视频](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo.mp4)仅作明确标注的历史参考 | 负责人制作与提交 | 2026-11-12T08:32:19.920105+00:00（素材核验，非新视频完成时间） |
-| 项目源代码 | 加分/交付 | [公开仓库](https://github.com/codezzzsleep/next-zenith-beforestep) | Agent维护与核验；负责人提交链接 | 2026-11-12T08:32:19.920105+00:00 |
-| 小红书 | 加分 | 负责人待发布并填写链接；[两版文案与真实配图](award-promotion.md)齐备，带 `#Aholo黑客松`，结果公布前保持公开 | 负责人 | 2026-11-12T08:32:19.920105+00:00（材料核验） |
-| 魔搭模型页/Notebook | 社区奖励 | 负责人待发布并填写链接；[发布说明](award-promotion.md)齐备，核验后可获20小时GPU额度，未声称已领取 | 负责人 | 2026-11-12T08:32:19.920105+00:00（材料核验） |
-| 英文摘要 | 国际评委辅助 | [English](https://codezzzsleep.github.io/next-zenith-beforestep/en.html) · [源文本](report-en.md) | Agent准备与核验 | 2026-11-12T08:32:19.920105+00:00 |
-| 最终比赛网站提交 | 负责人步骤 | 新视频链接补齐后由负责人逐项核对并提交；不把准备好的素材误写成已提交 | 负责人 | 待提交 |
+| 项目 | 链接或明确状态 | 完成者 |
+| --- | --- | --- |
+| 项目报告 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；PDF 本轮唯一更新待 D 与追加场景终态，旧版留档 | Agent 准备与核验；负责人提交 |
+| 可运行 Demo | [作品首页](https://codezzzsleep.github.io/next-zenith-beforestep/) · [真实关卡回放](https://codezzzsleep.github.io/next-zenith-beforestep/levels.html) · [轻量沙盒](https://codezzzsleep.github.io/next-zenith-beforestep/sandbox.html) · [轮腿实测](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) | Agent 已集成并核验首页第二版 |
+| 新视频 | [demo-v2.mp4](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo-v2.mp4) 合成中；成片由 Agent 合成，待负责人看片。1080p/30fps/H.264，烧录字幕，无人声、无配乐；[分镜](video.md) | Agent 合成；负责人看片与提交 |
+| 视频来源边界 | 门槛轮行、腿跨越与两段接通使用已终态的真实物理预检查；石头是真实扫描几何，画面照实标注，不当作四车正式结果。[旧视频](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo.mp4)原处保留，明确为旧版 | Agent 留出处 |
+| 源代码与任务号 | [公开仓库](https://github.com/codezzzsleep/next-zenith-beforestep) · [真实任务逐项账本](../evidence/crossing/route/lux-usage.json) · [核心版本与资产比较](../evidence/award/asset-iterations/manifest.json) | Agent 维护与核验 |
+| 小红书及其他社区发布 | [已备文案与真实配图](award-promotion.md)；负责人自行发布并填写链接 | 负责人 |
+| 最终比赛网站提交 | 负责人看片与核对后填写提交表；当前未声称已提交 | 负责人 |
 
-所有必交项目都有材料链接或明确负责人状态；新视频实际文件仍须由负责人完成。不能用旧视频、空链接或素材索引冒充新 Demo 视频已完成。
+首页已原样集成，桌面 1440 与手机 390 无横向溢出、11 份原模型可加载，控制台无报错。新六份叠合资产也保留为原字节。正式首场及追加场景的结果，以 [四车结果表](../evidence/crossing/route/summary.json) 为准；未终态不会填成已完成。
 
-网页素材已完整公开：[可直接供首页制作的包](https://codezzzsleep.github.io/next-zenith-beforestep/evidence/web-assets/index.json)。负责人交付首页已原样集成，首屏真实照片与可旋转模型、本地/公网1440与390、11份GLB与全部切换均通过；真人首屏测试按负责人指令不由Agent跟进。
-
-第二版新增入口：[想象陈列室](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html) · [真假石头叠合](https://codezzzsleep.github.io/next-zenith-beforestep/overlays.html) · [代码导览](code-tour.md) · [逐项执行记录](reviews/RESULT_HACKATHON_AWARD.md)。
-
-固定补充演示：[实际流程](https://codezzzsleep.github.io/next-zenith-beforestep/award-demo.html) · [原始终态与完整保全](../evidence/award/demo/result.json) · [单独视频源](../evidence/video/award/demo/index.json)。赛后补充演示运行，不参与结论、不作为泛化证据；新成片仍待负责人制作。
-
-最终本次核验：2026-11-12T08:32:19.920105+00:00。最新版[完整验收索引](../evidence/award/acceptance/C1-C8-completion.json)包括首页、六栏演示、原R1/R3、叠合旋转、公开文件与本站链接；源码及导出修复远端main `059b44e8d3a858fc620df5a546fbaacf58cdd901`，Pages `77f5e1145e6037ff4732ceb9f48d9b74bac809f1` 已built。完整首页第二版待负责人交付，到件后重复SPEC §3.6；C4连续几何三例容差差异保留，不冒充全通过。
-
-## 轮腿跨越入口
-
-[轮腿能力与开发页面](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) · [报告](crossing.md)。本轮正式测试、锚点与新画面素材尚未完成，进度以最新跨越 RESULT 为准。
+[补充说明 3](reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md) · [过程记录](reviews/RESULT_WHEELLEG_CROSSING.md) · [旧核对表原文](history/hackathon-submission-before-addendum3.md)。

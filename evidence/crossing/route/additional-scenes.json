@@ -55,7 +55,7 @@
       "near_x_m": 9.5,
       "threshold_seed": 22001,
       "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F1_003_gate.json",
-      "status": "运行中",
+      "status": "终态",
       "placement_attempts": [
         {
           "near_x_m": 9.0,
@@ -74,11 +74,18 @@
           "seed": 22001,
           "precheck": "evidence/crossing/route/precheck-suite_r2_v4_F1_003_gate.json",
           "all_four_passed": false
+        },
+        {
+          "near_x_m": 9.5,
+          "seed": 22001,
+          "precheck": "evidence/crossing/route/precheck-suite_r2_v4_F1_003_gate.json",
+          "all_four_passed": false
         }
       ],
       "predeclared_commit": "1ea281c19566c96ed0898e3a723c9e495ec2341b",
       "started_at": "2026-11-13T21:32:55.931526+00:00",
-      "pid": 799527
+      "pid": 799527,
+      "result": "四项预检查未全通过，未跑正式车"
     },
     {
       "base_scene": "suite_r2_v4_F2_001",
@@ -90,9 +97,11 @@
       "near_x_m": 9.0,
       "threshold_seed": 22001,
       "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F2_001_gate.json",
-      "status": "未开始",
+      "status": "运行中",
       "placement_attempts": [],
-      "predeclared_commit": "348e71975da8d4cd9b9f450a3c51d84ce41c4b32"
+      "predeclared_commit": "348e71975da8d4cd9b9f450a3c51d84ce41c4b32",
+      "pid": 799527,
+      "started_at": "2026-11-13T21:49:06.898143+00:00"
     },
     {
       "base_scene": "suite_r2_v4_F2_007",

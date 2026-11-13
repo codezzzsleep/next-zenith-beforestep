@@ -48,6 +48,12 @@ if __name__=='__main__':
     for relative in ['docs/crossing.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md']:
         path=ROOT/relative;existing=path.read_text();marker='\n## 窄门槛开发最新\n'
         if marker in existing:existing=existing.split(marker)[0]
+        if relative=='docs/crossing.md':
+            existing=existing.split('\n## 最新续行开发\n')[0]
+            existing=existing.replace('## 停因与未完成项','## 首轮停因与未完成项（历史）')
+            old=(ROOT/'docs/reviews/RESULT_CROSSING_RESUMPTION.md').read_text().replace('../../','../').replace('当前停因：','v5 停因（历史）：').replace('[当前完整数据]','[v5 完整数据]')
+            diagnostic=(ROOT/'docs/reviews/RESULT_CROSSING_DIAGNOSIS.md').read_text().replace('../../','../')
+            existing+='\n## v5 续行记录（历史）\n\n'+old.replace('# 石门槛续行开发结果','### 石门槛续行开发结果',1)+'\n## 输入诊断与当前进展\n\n'+diagnostic.replace('# 轮腿输入与生成链路诊断','### 轮腿输入与生成链路诊断',1)
         update=f'\n窄门槛候选 {summary["candidate_count"]} 个，轮行可过而作废 {summary["invalid_wheel_passable"]} 个，有效 {summary["valid_count"]} 个。四有效 E/B 的逐场结果、首场真实 Lux 准入与 D 决定见窄门槛报告；本轮累计创建 {summary["cumulative_created"]}、GLB 成功 {summary["cumulative_glb_successes"]}，正式测试 0，未预注册。\n'
         link='[窄门槛标定](reviews/RESULT_CROSSING_NARROW_GENERATOR.md)' if relative=='docs/crossing.md' else '[窄门槛标定](RESULT_CROSSING_NARROW_GENERATOR.md)'
         path.write_text(existing+marker+update+link+'。\n')

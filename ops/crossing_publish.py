@@ -20,7 +20,7 @@ if __name__=='__main__':
         run(['git','merge-base','--is-ancestor',remote,'HEAD'])
     attributes=ROOT/'.gitattributes';text=attributes.read_text();line='evidence/crossing/**/*.tar.gz filter=lfs diff=lfs merge=lfs -text\n'
     if line not in text:attributes.write_text(text+'\n'+line)
-    paths=['.gitattributes','experimental/crossing',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_*.py')],'docs/crossing.md','docs/reviews/RESULT_CROSSING_RESUMPTION.md','docs/reviews/RESULT_CROSSING_DIAGNOSIS.md','docs/reviews/RESULT_CROSSING_NARROW_GENERATOR.md','docs/reviews/RESULT_ARENA_LEARNING.md','evidence/learning/arena_v2/closure.json','docs/reviews/SPEC_WHEELLEG_CROSSING.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM1.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.css','site/crossing.js']
+    paths=['.gitattributes','experimental/crossing',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_*.py')],'README.md','docs/report.md','docs/hackathon-submission.md','docs/crossing.md','docs/reviews/RESULT_CROSSING_RESUMPTION.md','docs/reviews/RESULT_CROSSING_DIAGNOSIS.md','docs/reviews/RESULT_CROSSING_NARROW_GENERATOR.md','docs/reviews/RESULT_ARENA_LEARNING.md','evidence/learning/arena_v2/closure.json','docs/reviews/SPEC_WHEELLEG_CROSSING.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM1.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.css','site/crossing.js']
     budget=json.loads((ROOT/'outputs/generation/crossing-budget.json').read_text())
     paths += ['assets/candidates/'+str(r['task_id']) for r in budget['tasks'] if r.get('task_id') and r['status']=='ok']
     run(['git','add',*paths])
@@ -29,7 +29,7 @@ if __name__=='__main__':
     run(['git','push','origin','main'])
     assert readcmd(['git','ls-remote','origin','refs/heads/main']).split()[0]==state['main'];checkpoint(state,'Main pushed and verified '+state['main'])
     copied=[]
-    for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','docs/crossing.md','docs/reviews/RESULT_CROSSING_RESUMPTION.md','docs/reviews/RESULT_CROSSING_DIAGNOSIS.md','docs/reviews/RESULT_CROSSING_NARROW_GENERATOR.md','docs/reviews/RESULT_ARENA_LEARNING.md','evidence/learning/arena_v2/closure.json','docs/reviews/SPEC_WHEELLEG_CROSSING.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM1.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md']:
+    for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','README.md','docs/report.md','docs/hackathon-submission.md','docs/crossing.md','docs/reviews/RESULT_CROSSING_RESUMPTION.md','docs/reviews/RESULT_CROSSING_DIAGNOSIS.md','docs/reviews/RESULT_CROSSING_NARROW_GENERATOR.md','docs/reviews/RESULT_ARENA_LEARNING.md','evidence/learning/arena_v2/closure.json','docs/reviews/SPEC_WHEELLEG_CROSSING.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM1.md','docs/reviews/RESULT_WHEELLEG_CROSSING.md']:
         destination=relative.removeprefix('site/');target=PAGES/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/relative,target);copied.append(destination)
     for source in (ROOT/'evidence/crossing').rglob('*'):
         if not source.is_file() or source.suffix not in ['.json','.png','.jpg']:continue
@@ -48,7 +48,7 @@ if __name__=='__main__':
     run([sys.executable,str(ROOT/'ops/crossing_check.py'),'--url',PUBLIC,'--out',str(PRIVATE/(a.stage+'-public'))])
     import urllib.request
     verified=[]
-    for relative in ['crossing.html','crossing.css','crossing.js','docs/crossing.md','docs/reviews/RESULT_CROSSING_RESUMPTION.md','evidence/crossing/development-resumption.json','evidence/crossing/calibration/capability.json','evidence/crossing/calibration/capability-v72.json','evidence/crossing/calibration/capability-v72-manifest.json','evidence/crossing/references.json','evidence/crossing/development.json','evidence/crossing/calibration/gate.json','evidence/crossing/development-blindness.json']:
+    for relative in ['crossing.html','crossing.css','crossing.js','README.md','docs/report.md','docs/hackathon-submission.md','docs/crossing.md','docs/reviews/RESULT_CROSSING_RESUMPTION.md','evidence/crossing/development-resumption.json','evidence/crossing/calibration/capability.json','evidence/crossing/calibration/capability-v72.json','evidence/crossing/calibration/capability-v72-manifest.json','evidence/crossing/references.json','evidence/crossing/development.json','evidence/crossing/calibration/gate.json','evidence/crossing/development-blindness.json']:
         with urllib.request.urlopen(PUBLIC+relative,timeout=90) as response:raw=response.read();assert response.status==200
         expected=(PAGES/relative).read_bytes();assert raw==expected,relative
         verified.append({'path':relative,'bytes':len(raw),'sha256':hashlib.sha256(raw).hexdigest()})

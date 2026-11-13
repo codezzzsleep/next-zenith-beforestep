@@ -15,11 +15,10 @@ if __name__=='__main__':
     budget=load('outputs/generation/crossing-budget.json')
     trials=[]
     for revision in ['scene-dev-v5','scene-dev-v6','scene-dev-v7','scene-dev-v8','scene-dev-v9']:
-        if revision=='scene-dev-v9' and not (ROOT/'evidence/crossing/development-lux-scene-dev-v9-22001.json').exists():continue
-        seed=22001 if revision=='scene-dev-v9' else 11002
-        r=load(f'evidence/crossing/development-lux-{revision}-{seed}.json')
-        trials.append({'revision':revision,'generated':r['generated'],'glbs':r['glb_successes'],'admitted':r['admitted'],
-                       'task_ids':r['task_ids'],'source':f'evidence/crossing/development-lux-{revision}-{seed}.json'})
+        for report in sorted((ROOT/'evidence/crossing').glob('development-lux-'+revision+'-*.json')):
+            r=json.loads(report.read_text())
+            trials.append({'revision':revision+'/'+str(r['seed']),'generated':r['generated'],'glbs':r['glb_successes'],
+                           'admitted':r['admitted'],'task_ids':r['task_ids'],'source':str(report.relative_to(ROOT))})
     result={'schema':'beforestep-crossing-diagnosis-summary/v1','status':'narrow_generator_has_admitted_models_four_development_chains_continue',
             'coordinate_checks':{k:audit[k] for k in ['world_local_max_error_m','reprojection_max_error_px','reprojection_depth_max_error_m']},
             'same_pipeline_truth_diagnostic':truth,'original_cached_pose_checks':sum(len(c['poses']) for c in poses['candidates']),

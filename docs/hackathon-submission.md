@@ -22,3 +22,7 @@
 固定补充演示：[实际流程](https://codezzzsleep.github.io/next-zenith-beforestep/award-demo.html) · [原始终态与完整保全](../evidence/award/demo/result.json) · [单独视频源](../evidence/video/award/demo/index.json)。赛后补充演示运行，不参与结论、不作为泛化证据；新成片仍待负责人制作。
 
 最终本次核验：2026-11-12T08:32:19.920105+00:00。最新版[完整验收索引](../evidence/award/acceptance/C1-C8-completion.json)包括首页、六栏演示、原R1/R3、叠合旋转、公开文件与本站链接；源码及导出修复远端main `059b44e8d3a858fc620df5a546fbaacf58cdd901`，Pages `77f5e1145e6037ff4732ceb9f48d9b74bac809f1` 已built。完整首页第二版待负责人交付，到件后重复SPEC §3.6；C4连续几何三例容差差异保留，不冒充全通过。
+
+## 轮腿跨越入口
+
+[轮腿能力与开发页面](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) · [报告](crossing.md)。本轮正式测试、锚点与新画面素材尚未完成，进度以最新跨越 RESULT 为准。

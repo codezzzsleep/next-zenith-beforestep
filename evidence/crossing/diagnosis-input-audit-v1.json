@@ -1,0 +1,330 @@
+{
+  "schema": "beforestep-crossing-input-audit/v1",
+  "new_lux_tasks": 0,
+  "diagnostic_only": true,
+  "world_local_max_error_m": 8.881784197001252e-16,
+  "reprojection_max_error_px": 1.2505552149377763e-12,
+  "reprojection_depth_max_error_m": 4.218847493575595e-15,
+  "all_reprojected_points_on_observation_mask": true,
+  "mask_bbox_px": [
+    0,
+    383,
+    1134,
+    831
+  ],
+  "target_pixels_on_image_border": 125,
+  "input_classes_have_unique_images": 2,
+  "inputs": [
+    {
+      "sample": "A1",
+      "class": "A",
+      "sha256": "b3dd4179a6d4a8ec64d30ccd4ba71cc81358b83f04384ba40d4bdad44249d581",
+      "crop_box": [
+        0,
+        0,
+        3030,
+        3030
+      ],
+      "observed_target_pixels_retained": 142406,
+      "observed_target_pixels_total": 142406,
+      "retained_fraction_low_resolution_mask": 1.0,
+      "path_bytes_match_state": true
+    },
+    {
+      "sample": "A2",
+      "class": "A",
+      "sha256": "b3dd4179a6d4a8ec64d30ccd4ba71cc81358b83f04384ba40d4bdad44249d581",
+      "crop_box": [
+        0,
+        0,
+        3030,
+        3030
+      ],
+      "observed_target_pixels_retained": 142406,
+      "observed_target_pixels_total": 142406,
+      "retained_fraction_low_resolution_mask": 1.0,
+      "path_bytes_match_state": true
+    },
+    {
+      "sample": "B1",
+      "class": "B",
+      "sha256": "401511220b9403c42d7dad9511859199ef76084279deef17a2ef8bd8f5005e4e",
+      "crop_box": [
+        0,
+        0,
+        3030,
+        3030
+      ],
+      "observed_target_pixels_retained": 142406,
+      "observed_target_pixels_total": 142406,
+      "retained_fraction_low_resolution_mask": 1.0,
+      "path_bytes_match_state": true
+    },
+    {
+      "sample": "B2",
+      "class": "B",
+      "sha256": "401511220b9403c42d7dad9511859199ef76084279deef17a2ef8bd8f5005e4e",
+      "crop_box": [
+        0,
+        0,
+        3030,
+        3030
+      ],
+      "observed_target_pixels_retained": 142406,
+      "observed_target_pixels_total": 142406,
+      "retained_fraction_low_resolution_mask": 1.0,
+      "path_bytes_match_state": true
+    },
+    {
+      "sample": "C1",
+      "class": "C",
+      "sha256": "b3dd4179a6d4a8ec64d30ccd4ba71cc81358b83f04384ba40d4bdad44249d581",
+      "crop_box": [
+        0,
+        0,
+        3030,
+        3030
+      ],
+      "observed_target_pixels_retained": 142406,
+      "observed_target_pixels_total": 142406,
+      "retained_fraction_low_resolution_mask": 1.0,
+      "path_bytes_match_state": true
+    },
+    {
+      "sample": "C2",
+      "class": "C",
+      "sha256": "b3dd4179a6d4a8ec64d30ccd4ba71cc81358b83f04384ba40d4bdad44249d581",
+      "crop_box": [
+        0,
+        0,
+        3030,
+        3030
+      ],
+      "observed_target_pixels_retained": 142406,
+      "observed_target_pixels_total": 142406,
+      "retained_fraction_low_resolution_mask": 1.0,
+      "path_bytes_match_state": true
+    }
+  ],
+  "observed_principal_extents_m": [
+    0.09197850792681858,
+    0.1353765144875341,
+    1.4274852576446908
+  ],
+  "candidates": [
+    {
+      "id": "crossing_scene-dev-v5_11002_A1",
+      "principal_extents_native": [
+        0.2325760554249265,
+        0.26624363996815836,
+        1.354474009033952
+      ],
+      "principal_long_short_ratio": 5.823789583838583,
+      "placed_bounds_local_m": [
+        [
+          0.8374875503277419,
+          -0.47807734008530706,
+          0.0009628899554717796
+        ],
+        [
+          1.6394811033985708,
+          0.4557891662587398,
+          0.264798712970836
+        ]
+      ],
+      "visible_top_m": 0.1460538061004054,
+      "matrix_singular_values": [
+        0.8838922355661709,
+        0.8838922355661708,
+        0.8838922355661706
+      ],
+      "matrix_uniform_scale_error": 3.3306690738754696e-16,
+      "frozen_metrics": {
+        "contour_iou": 0.6279,
+        "scale_ratio": 1.5556,
+        "hidden_frac": 0.264,
+        "shell_contact": 0.7327,
+        "free_intrusion_frac": 0.70968
+      }
+    },
+    {
+      "id": "crossing_scene-dev-v5_11002_A2",
+      "principal_extents_native": [
+        0.4850486071199469,
+        0.5548289869419942,
+        2.8243161069109703
+      ],
+      "principal_long_short_ratio": 5.8227486182896095,
+      "placed_bounds_local_m": [
+        [
+          0.8269555526760627,
+          -0.46747673982070775,
+          0.006809858566969557
+        ],
+        [
+          1.6544043791766474,
+          0.4444939819967132,
+          0.2751965283736676
+        ]
+      ],
+      "visible_top_m": 0.1460538061004054,
+      "matrix_singular_values": [
+        0.4246044379870612,
+        0.4246044379870608,
+        0.4246044379870601
+      ],
+      "matrix_uniform_scale_error": 1.1102230246251565e-15,
+      "frozen_metrics": {
+        "contour_iou": 0.623,
+        "scale_ratio": 1.6111,
+        "hidden_frac": 0.2754,
+        "shell_contact": 0.7386,
+        "free_intrusion_frac": 0.69802
+      }
+    },
+    {
+      "id": "crossing_scene-dev-v5_11002_B1",
+      "principal_extents_native": [
+        0.03994211871618647,
+        0.15426222451434612,
+        0.3345860042185733
+      ],
+      "principal_long_short_ratio": 8.37677156277098,
+      "placed_bounds_local_m": [
+        [
+          0.8740131510866613,
+          -0.23944255379458257,
+          0.035053099210351546
+        ],
+        [
+          1.8441949848333903,
+          0.5490234405154277,
+          0.5690048220681796
+        ]
+      ],
+      "visible_top_m": 0.1460538061004054,
+      "matrix_singular_values": [
+        3.562348239434605,
+        3.5623482394346047,
+        3.562348239434604
+      ],
+      "matrix_uniform_scale_error": 8.881784197001252e-16,
+      "frozen_metrics": {
+        "contour_iou": 0.3036,
+        "scale_ratio": 1.6111,
+        "hidden_frac": 0.794,
+        "shell_contact": 0.7192,
+        "free_intrusion_frac": 0.20237
+      }
+    },
+    {
+      "id": "crossing_scene-dev-v5_11002_B2",
+      "principal_extents_native": [
+        0.03973891278936877,
+        0.15382058604366136,
+        0.334788415222177
+      ],
+      "principal_long_short_ratio": 8.42469991558858,
+      "placed_bounds_local_m": [
+        [
+          0.8817939733445925,
+          -0.23231699746476098,
+          0.036064011501123705
+        ],
+        [
+          1.8462784414377442,
+          0.5593975881189752,
+          0.5606581839938245
+        ]
+      ],
+      "visible_top_m": 0.1460538061004054,
+      "matrix_singular_values": [
+        3.5451735017150985,
+        3.545173501715095,
+        3.5451735017150945
+      ],
+      "matrix_uniform_scale_error": 3.9968028886505635e-15,
+      "frozen_metrics": {
+        "contour_iou": 0.3094,
+        "scale_ratio": 1.6111,
+        "hidden_frac": 0.7946,
+        "shell_contact": 0.6813,
+        "free_intrusion_frac": 0.20443
+      }
+    },
+    {
+      "id": "crossing_scene-dev-v5_11002_C1",
+      "principal_extents_native": [
+        0.48545089292540977,
+        0.5564294338879849,
+        2.8244898721436065
+      ],
+      "principal_long_short_ratio": 5.818281340719654,
+      "placed_bounds_local_m": [
+        [
+          0.8349449357157387,
+          -0.4700882794775552,
+          0.02512008396571863
+        ],
+        [
+          1.643605714705368,
+          0.45625099627758003,
+          0.2917342154819933
+        ]
+      ],
+      "visible_top_m": 0.1460538061004054,
+      "matrix_singular_values": [
+        0.4239509928817592,
+        0.42395099288175897,
+        0.42395099288175875
+      ],
+      "matrix_uniform_scale_error": 4.440892098500626e-16,
+      "frozen_metrics": {
+        "contour_iou": 0.7166,
+        "scale_ratio": 1.6111,
+        "hidden_frac": 0.2969,
+        "shell_contact": 0.7725,
+        "free_intrusion_frac": 0.67519
+      }
+    },
+    {
+      "id": "crossing_scene-dev-v5_11002_C2",
+      "principal_extents_native": [
+        0.2328094194350055,
+        0.26678157538583097,
+        1.3556063830900853
+      ],
+      "principal_long_short_ratio": 5.822815873945068,
+      "placed_bounds_local_m": [
+        [
+          0.8336806830653944,
+          -0.4747258247169165,
+          0.003523971929680181
+        ],
+        [
+          1.6448966408427763,
+          0.45087248340043506,
+          0.27178057557899316
+        ]
+      ],
+      "visible_top_m": 0.1460538061004054,
+      "matrix_singular_values": [
+        0.8842366066219067,
+        0.8842366066219064,
+        0.8842366066219064
+      ],
+      "matrix_uniform_scale_error": 3.3306690738754696e-16,
+      "frozen_metrics": {
+        "contour_iou": 0.6263,
+        "scale_ratio": 1.6111,
+        "hidden_frac": 0.2665,
+        "shell_contact": 0.7351,
+        "free_intrusion_frac": 0.70734
+      }
+    }
+  ],
+  "limitations": [
+    "Crop retention is measured against the stored low-resolution observed target mask.",
+    "Principal extents are a shape diagnostic, not a proof that all placements are impossible."
+  ]
+}

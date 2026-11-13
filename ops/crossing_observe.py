@@ -16,7 +16,7 @@ def configure(scene):
     S.SUN_EL_DEG=10.; S.SUN_AZ_DEG=scene['sun']['azimuth_deg']
 
 
-def observe(seed, revision=None):
+def observe(seed, revision=None, context_pad=None, rectangular=False):
     scene=generate(seed,revision);folder=Path(scene['truth_mesh']).parents[1]
     out=folder/'observation'; result=out/'blindness.json'
     if result.exists(): return json.loads(result.read_text())
@@ -27,7 +27,11 @@ def observe(seed, revision=None):
     write(out/'identity.json',identity)
     e=WheelLegEnv(scene['spec'],control_hz=50,max_seconds=240,nav_base=False,tip_deg=60)
     q=e.data.qpos.copy();q[:2]=scene['observation_stop'];yaw=np.deg2rad(scene.get('observation_yaw_deg',0.));q[3:7]=[np.cos(yaw/2),0.,0.,np.sin(yaw/2)];e.data.qpos[:]=q;e.data.qvel[:]=0;mujoco.mj_forward(e.model,e.data)
-    rec=Record(e);rec.frame('initial');assert transition(rec,stance_array(STANCE),2.,'park-and-observe')
+    rec=Record(e);rec.frame('initial')
+    if not transition(rec,stance_array(STANCE),2.,'park-and-observe'):
+        rec.save(out/'parking')
+        write(out/'parking/result.json',{'contact':rec.summary(),'termination':e.last_termination,'scene':scene,'phase':'parking_failed'})
+        raise RuntimeError('Observation parking failed; original trajectory and termination retained')
     rec.save(out/'parking');write(out/'parking/result.json',{'contact':rec.summary(),'scene':scene,'phase':'parking'})
     vm=VZ.video_model(e,scene['rock_bodies'],width=1600,height=1200,off=(4040,3030));vm.hi_sensor=True;vm.sync(e.data.qpos)
     try:
@@ -61,13 +65,20 @@ def observe(seed, revision=None):
         Image.fromarray(mask.astype(np.uint8)*255).save(out/'mask.png');Image.fromarray(dark.astype(np.uint8)*255).save(out/'dark.png')
         np.save(out/'depth.npy',depth_valid);np.save(out/'visible_points.npy',local);np.save(out/'visible_points_world.npy',points)
         box=inputs._pixel_box(mask_hi);native=box[3]-box[1]+1
-        proto=json.loads((ROOT/'config/protocol.json').read_text());variants=inputs._variants(hi,mask_hi,box,out/'gen',native,proto)
+        proto=json.loads((ROOT/'config/protocol.json').read_text())
+        if context_pad is not None:proto['inputs']['context_pad_frac']=float(context_pad)
+        if rectangular:
+            from experimental.crossing.input_images import rectangular_variants
+            variants=rectangular_variants(hi,mask_hi,box,out/'gen',native,proto)
+        else:variants=inputs._variants(hi,mask_hi,box,out/'gen',native,proto)
         st={'schema':'v8-target-state/v1','target':'T','look':'look1','visible':{
             'x_front':float(local[:,0].min()),'y_center':float((local[:,1].min()+local[:,1].max())/2),
             'W_vis':float(np.ptp(local[:,1])),'H_vis':float(local[:,2].max())},
             'local_frame':{'x0':x0,'y0':y0,'yaw0':yaw},'robot_qpos_world':e.data.qpos.tolist(),'t_sim':e.t,
             'crop_native_px':native,'native_ok':variants['native_ok'],'crops':variants['variants'],
-            'observation_sha256':{name:sha(out/name) for name in ['rgb.png','depth.npy','mask.png','dark.png']}}
+            'observation_sha256':{name:sha(out/name) for name in ['rgb.png','depth.npy','mask.png','dark.png']},
+            'input_controls':{'context_pad_frac':proto['inputs']['context_pad_frac']}}
+        if rectangular:st['crossing_input_quality']=variants['crossing_quality']
         write(out/'state.json',st);write(out/'camera_world.json',snap);np.savez_compressed(out/'physical-state.npz',qpos=e.data.qpos,qvel=e.data.qvel,t=e.t)
         write(out/'observation.json',{'schema':'observation/v8','label':f'crossing_{scene["revision"]}_{seed}',
             'camera':sl,'intrinsics':sl['intrinsics'],'image':'rgb.png','target':'T','mask_px':int(mask.sum()),
@@ -88,6 +99,7 @@ def observe(seed, revision=None):
             'source_identity':identity,'input_sha256':st['observation_sha256'],
             'limitations':['Ideal target segmentation; passive-dark depth suppressed.',
                 'True far edges include the low >=4mm rear skirt; observed stone filter is >=4cm, as in the frozen pipeline.']}
+        if rectangular:report['crossing_input_quality']=variants['crossing_quality']
         write(result,report)
         return report
     finally:VZ.release(vm)

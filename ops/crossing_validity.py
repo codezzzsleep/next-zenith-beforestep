@@ -19,7 +19,7 @@ def run_case(seed, revision, method, position):
     goal=scene['goal'][0]
     arrived=False
     while ok and e.t<240.:
-        if min(wheel_positions(e)[:,0])>=goal:arrived=True;break
+        if e.data.qpos[0]>=goal-.06 and abs(e.data.qpos[1])<=.4 and min(wheel_positions(e)[:,0])>max(scene['truth_geometry']['far']):arrived=True;break
         w,x,y,z=e.data.qpos[3:7];yaw=np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z))
         turn=float(np.clip(-.8*yaw+.6*(lateral-e.data.qpos[1]),-.20,.20));v=min(.12,.03+e.t*.08)
         omega=np.array([(v+(-1 if leg in ['FL','RL'] else 1)*turn*.192)/WHEEL_R for leg in LEG])
@@ -36,9 +36,10 @@ def run_case(seed, revision, method, position):
 
 
 def main():
-    parser=argparse.ArgumentParser();parser.add_argument('--revision',default='scene-dev-v3');parser.add_argument('--workers',type=int,default=3);args=parser.parse_args()
+    parser=argparse.ArgumentParser();parser.add_argument('--revision',default='scene-dev-v6');parser.add_argument('--workers',type=int,default=3);parser.add_argument('--seed',type=int,nargs='+');args=parser.parse_args()
+    seeds=args.seed or DEVELOPMENT_SEEDS
     attempt='validity-'+args.revision;tasks=[]
-    for seed in DEVELOPMENT_SEEDS:
+    for seed in seeds:
         scene=generate(seed,args.revision);folder=Path(scene['truth_mesh']).parents[1];source=folder/'source';source.mkdir(exist_ok=True)
         for p in [ROOT/'experimental/crossing/scene.py',Path(__file__),ROOT/'experimental/crossing/runtime.py']:
             target=source/p.name
@@ -54,12 +55,12 @@ def main():
             r=future.result();rows.append(r);print(json.dumps({k:r[k] for k in ['seed','method','position','status','sim_seconds']}),flush=True)
             event(attempt,completed=len(rows))
     scenes=[]
-    for seed in DEVELOPMENT_SEEDS:
+    for seed in seeds:
         trials=[r for r in rows if r['seed']==seed];assert len(trials)==6
         record={'seed':seed,'valid':not any(r['status'] in ('clean_pass','wheel_contact_pass') for r in trials),
                 'trials':trials,'A_reference':next(r['raw_path'] for r in trials if r['method']=='fixed' and r['position']=='center')}
         write(OUT/'development'/args.revision/f'seed-{seed}'/'validity.json',record);scenes.append(record)
-    report={'schema':'beforestep-crossing-validity/v1','revision':args.revision,'candidate_count':4,
+    report={'schema':'beforestep-crossing-validity/v1','revision':args.revision,'candidate_count':len(seeds),
             'wheel_passable_candidates':sum(not s['valid'] for s in scenes),'time_limit_s':240.,'scenes':scenes}
-    write(ROOT/'evidence/crossing/development-validity.json',report);event(attempt,status='complete',results=report)
+    write(ROOT/'evidence/crossing'/('development-validity-'+args.revision+'.json'),report);event(attempt,status='complete',results=report)
 if __name__=='__main__':main()

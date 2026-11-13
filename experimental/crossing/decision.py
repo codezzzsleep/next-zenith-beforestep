@@ -10,8 +10,8 @@ from .execution import execute, geometry_for
 from .runtime import ROOT, sha, write
 
 
-SETTINGS = {'geometry_margin_m': .003, 'maximum_height_m': .15,
-            'maximum_depth_m': .15, 'positions': 5}
+SETTINGS = {'geometry_margin_m': 0., 'maximum_height_m': .15,
+            'body_clearance_m': .24, 'positions': 5}
 
 
 def decide(scene, observation, destination):
@@ -21,6 +21,8 @@ def decide(scene, observation, destination):
     observation = Path(observation)
     admission = json.loads((observation.parent / 'decision/target_decision.json').read_text())
     candidates = [c for c in admission['candidates'] if c['admitted']]
+    capability=json.loads((ROOT/'evidence/crossing/calibration/gate.json').read_text())
+    depth_limits=[r for r in capability['necessary_by_height'] if r['d_max_m'] is not None]
     result = {'schema': 'beforestep-crossing-development-decision/v1', 'seed': scene['seed'],
               'revision': scene['revision'], 'method': 'D', 'settings': SETTINGS,
               'admitted_ids': [c['id'] for c in candidates], 'positions': [], 'rehearsals': [],
@@ -44,12 +46,15 @@ def decide(scene, observation, destination):
             margin = SETTINGS['geometry_margin_m']
             near = min(v for row in rows for v in row['geometry']['near']) - margin
             far = max(v for row in rows for v in row['geometry']['far']) + margin
-            high = max(max(row['geometry']['high'] + [row['geometry']['body_high']])
-                       for row in rows) + margin
+            high = max(max(row['geometry']['high']) for row in rows) + margin
+            body_high=max(row['geometry']['body_high'] for row in rows)+margin
+            sampled=next((r for r in depth_limits if r['height_m']>=high),None)
+            maximum_depth=sampled['d_max_m'] if sampled else 0.
             clearance = min(SETTINGS['maximum_height_m'] - high,
-                            SETTINGS['maximum_depth_m'] - (far - near))
+                            maximum_depth - (far - near),SETTINGS['body_clearance_m']-body_high)
             item.update(envelope={'near': [near] * 2, 'far': [far] * 2,
-                                  'high': [high] * 2, 'lateral': float(lateral)},
+                                  'high': [high] * 2, 'body_high':body_high,'lateral': float(lateral)},
+                        depth_limit_m=maximum_depth,depth_limit_sampled_height_m=sampled['height_m'] if sampled else None,
                         clearance_m=clearance, within_capability=clearance >= 0)
         result['positions'].append(item)
     eligible = [p for p in result['positions'] if p['within_capability']]

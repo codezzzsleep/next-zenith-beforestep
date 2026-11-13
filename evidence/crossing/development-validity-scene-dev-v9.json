@@ -1,0 +1,973 @@
+{
+  "schema": "beforestep-crossing-validity/v1",
+  "revision": "scene-dev-v9",
+  "candidate_count": 4,
+  "wheel_passable_candidates": 1,
+  "time_limit_s": 240.0,
+  "scenes": [
+    {
+      "seed": 22001,
+      "valid": true,
+      "trials": [
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22001,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "right",
+          "lateral_m": -0.23135614706318836,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 70.97441570297815,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 614296,
+              "wheel_threshold": 419144,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 89480,
+            "max_tilt_deg": 21.976052455063726,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "24dd840daa2d9deed4940aae68f4a57be0d0b3dbd2b1792c67abcb7edfe3979a",
+          "contacts_sha256": "95cc526e9da3ba1c8e1f9585b2d2354b18566b9b7fcbbe1d50245010213fdf6c",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/fixed-right",
+          "final_base": [
+            3.108995979377412,
+            -0.24871175470779242,
+            0.3830526995376564,
+            0.9999658880448951,
+            1.491065932235611e-05,
+            -0.000988863210800119,
+            0.00820028498331913
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22001,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 79.84425657900283,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 601302,
+              "wheel_threshold": 512084,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 84617,
+            "max_tilt_deg": 22.5220003757254,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "99c0d41087e8854ea60d0de6294f2f4272f63c2f8915062701b1d21b6d3120ee",
+          "contacts_sha256": "5e9cccbfa2d98764676f3e1219ffb09b1af3460cef61633c345cb3de49f42e81",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/fixed-center",
+          "final_base": [
+            3.106971528598886,
+            0.04001359831964307,
+            0.383006275469348,
+            0.9999981496356241,
+            2.5240793137559734e-05,
+            -0.001169722280931161,
+            0.0015270356957098879
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22001,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "left",
+          "lateral_m": 0.23135614706318836,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 80.13037662097486,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 623846,
+              "wheel_threshold": 538486,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 90154,
+            "max_tilt_deg": 21.65575029838342,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "f2897c49bbe1ae56643c16c86ae4229756b2333d4a365148e6918ba5ed13ce92",
+          "contacts_sha256": "1ef258b5e78b972bde4eeaa8565c50722aa5b8fdd548a744d1e3d2d9724d10bb",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/fixed-left",
+          "final_base": [
+            3.119588613654329,
+            0.2329162642660043,
+            0.38295651685921833,
+            0.9992594471586405,
+            8.324183989051808e-05,
+            -0.0010461638825805968,
+            -0.038463695560034004
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22001,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 79.03254824801115,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 570500,
+              "wheel_threshold": 538144,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 72060,
+            "max_tilt_deg": 22.76462452922233,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "295e5f16332e52b5dc3a4ad66a2e1b1c48e89337bfc0bc4fea102d10cbfa39a2",
+          "contacts_sha256": "9f56b4dff5caed308bc571274c3897f918fa068a88bb7c962e15e4d0df48db59",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/high-center",
+          "final_base": [
+            3.115091684988389,
+            0.031816728284612045,
+            0.46589486734880126,
+            0.9999968940635812,
+            1.759532670752828e-05,
+            8.430953591859235e-05,
+            0.002490872436954816
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22001,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "left",
+          "lateral_m": 0.23135614706318836,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 79.67456421098905,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 561752,
+              "wheel_threshold": 520716,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 96472,
+            "max_tilt_deg": 21.87478124616354,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "c110609f3420f4d2c5c9e34adf496aa887d4b39fbc8ab106ddd7072aea549db7",
+          "contacts_sha256": "ec845f70a4fa57b2c48ea8eacf2216b5c131cdd66c0a7253f8d62d6e18b45d3c",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/high-left",
+          "final_base": [
+            3.124021084124254,
+            0.20836629354906755,
+            0.465865055035819,
+            0.9995804596643273,
+            0.00011694175304751672,
+            -4.9364396389147184e-05,
+            -0.028963572725676952
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22001,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "right",
+          "lateral_m": -0.23135614706318836,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 78.49847452901304,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 587906,
+              "wheel_threshold": 411480,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 72356,
+            "max_tilt_deg": 22.15671417144164,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "175e06fea4f0659c7365c4815ae2ea99d23a0dbe373c38a0de5456e63bfb431b",
+          "contacts_sha256": "7bb41f0804b8a09fdec57917c27cb48d34813fc2791999a8de0e526dbc6da6fc",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/high-right",
+          "final_base": [
+            3.117513606080338,
+            -0.26343072218880415,
+            0.46598112877930065,
+            0.9999673196506096,
+            -5.247012246070042e-06,
+            0.00020297023578229483,
+            0.008081980346934898
+          ],
+          "new_lux_tasks": 0
+        }
+      ],
+      "A_reference": "outputs/crossing/development/scene-dev-v9/seed-22001/validity/fixed-center"
+    },
+    {
+      "seed": 22002,
+      "valid": false,
+      "trials": [
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22002,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "wheel_contact_pass",
+          "sim_seconds": 29.259999999999465,
+          "wall_seconds": 7.330854661995545,
+          "contact": {
+            "physics_steps": 14630,
+            "contact_counts": {
+              "wheel_ground": 78828,
+              "wheel_threshold": 19632,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 5430,
+            "max_tilt_deg": 21.238897599138753,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22002/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "fd9f4920eb83f3912e315268c60b8b32b22ea25e08544eb4b819e3939e89866f",
+          "contacts_sha256": "d6fe1ef8d2e5b7ce1308077378279525727899235550b5ceb5b257ab25fa3c5a",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/fixed-center",
+          "final_base": [
+            3.9411796269196038,
+            -0.056693182636368376,
+            0.3837184978530445,
+            0.9999986760822446,
+            0.00036117588424618613,
+            -0.0005813635380092698,
+            0.0014762798437609453
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22002,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "left",
+          "lateral_m": 0.22327456883057978,
+          "status": "wheel_contact_pass",
+          "sim_seconds": 29.219999999999466,
+          "wall_seconds": 6.15018948703073,
+          "contact": {
+            "physics_steps": 14610,
+            "contact_counts": {
+              "wheel_ground": 77912,
+              "wheel_threshold": 17390,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 5289,
+            "max_tilt_deg": 21.292497855248765,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22002/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "e47662f68c9debacc9ff124423c0f959cc9dcd75a2965873523118a0479d4e2d",
+          "contacts_sha256": "1fafc7d43a59cb0341da8d4fe68ca7200e93e8a40bfe9aa463f230427257a7c7",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/fixed-left",
+          "final_base": [
+            3.941622485126458,
+            0.15023989648992778,
+            0.38375485123880587,
+            0.9999965478590918,
+            0.00037534925346845106,
+            -0.0005077696936934589,
+            0.0025505985128968754
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22002,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "wheel_contact_pass",
+          "sim_seconds": 29.359999999999463,
+          "wall_seconds": 9.054791408998426,
+          "contact": {
+            "physics_steps": 14680,
+            "contact_counts": {
+              "wheel_ground": 75798,
+              "wheel_threshold": 18298,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 5076,
+            "max_tilt_deg": 21.51313846512662,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22002/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "a21d801116ac2029ba10699d2478e411e18a54b78d6248dfa789dfe85d71ca89",
+          "contacts_sha256": "62c4014d7706b4418a190f0b383706864094db0b18f2525335bacd7e74e13cf8",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/high-center",
+          "final_base": [
+            3.9400034567003344,
+            -0.05065741861127063,
+            0.46639491386320386,
+            0.9999979278166911,
+            0.00017818355005655195,
+            -0.00037359024978597427,
+            0.001993249425266322
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22002,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "left",
+          "lateral_m": 0.22327456883057978,
+          "status": "wheel_contact_pass",
+          "sim_seconds": 29.07999999999947,
+          "wall_seconds": 6.798555556975771,
+          "contact": {
+            "physics_steps": 14540,
+            "contact_counts": {
+              "wheel_ground": 74806,
+              "wheel_threshold": 15086,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 4816,
+            "max_tilt_deg": 21.47500393882059,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22002/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "8e49ebcf75c78920a5a276bfceec76c10b2174e737d5cae24ab47abc481509f9",
+          "contacts_sha256": "b9704c907f3c4884669082903fea6f220ceb68ff1cfb29f0a68b6cbd4355e397",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/high-left",
+          "final_base": [
+            3.9408626720974884,
+            0.15472210389315189,
+            0.46644173844172115,
+            0.9999932556806027,
+            0.00027354719748724326,
+            -0.0002975506450299547,
+            0.003650373796306263
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22002,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "right",
+          "lateral_m": -0.22327456883057978,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 97.98117265000474,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 690112,
+              "wheel_threshold": 867856,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 111842,
+            "max_tilt_deg": 21.37373504875166,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22002/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "b8527670fcb27bf1810cfef1dc1ee775ed2fdf81ae8a0559d73f1b952105d28b",
+          "contacts_sha256": "44b61392893f9d484010517db372d3127ebf6c8ae53fbd7acfaf14e3f3f7f345",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/fixed-right",
+          "final_base": [
+            3.203450631640232,
+            -0.3597345923609488,
+            0.38560275976506525,
+            0.9738281245035718,
+            0.008389356142800003,
+            0.011359533728037685,
+            0.2268465640534305
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22002,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "right",
+          "lateral_m": -0.22327456883057978,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 87.47564560099272,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 595880,
+              "wheel_threshold": 659874,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 106713,
+            "max_tilt_deg": 21.598480696209712,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22002/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "f0cdf49c5e89d9a3eb4168c70b3bd62906de80beae2511e2347265082f5db6e0",
+          "contacts_sha256": "26443dc025dbc39516127c8b69ecc648e01525efe63987b60ac45a2e0781ea3a",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/high-right",
+          "final_base": [
+            3.2408681272328614,
+            -0.32687634918258357,
+            0.46908186222136466,
+            0.9547864078430701,
+            0.008643759800925794,
+            0.013153048636679633,
+            0.2968757284221644
+          ],
+          "new_lux_tasks": 0
+        }
+      ],
+      "A_reference": "outputs/crossing/development/scene-dev-v9/seed-22002/validity/fixed-center"
+    },
+    {
+      "seed": 22003,
+      "valid": true,
+      "trials": [
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22003,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 75.98064282198902,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 604104,
+              "wheel_threshold": 511976,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 84112,
+            "max_tilt_deg": 22.806435222146337,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22003/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "c942ef3ae2cf3ab4be68584b8a7e907d517bacda79dbb0d98a903b4a4000542a",
+          "contacts_sha256": "c84fe894fe223e46f59b348f3a23fc5706c2b709a4db9cf61c1e341e878954e2",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/fixed-center",
+          "final_base": [
+            3.1049149361149166,
+            0.03099740065600726,
+            0.3830884460588319,
+            0.9999940359832459,
+            0.00021175341778360328,
+            -0.0005297217824198873,
+            -0.003406252084446577
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22003,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "left",
+          "lateral_m": 0.21019405953771714,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 78.49842787795933,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 590230,
+              "wheel_threshold": 531074,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 94655,
+            "max_tilt_deg": 22.000345803635557,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22003/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "13e52d87e500e5f7b4d7f7c6101c4e807da34406c1a236f2a28166ded9526f9f",
+          "contacts_sha256": "c85c51c2cf2cc6db6591797a071f0e1fc7b77b7b44541eb86eb4cd8a08f1a561",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/fixed-left",
+          "final_base": [
+            3.1191155364515972,
+            0.22518385958909531,
+            0.38295975714397307,
+            0.9990871711069099,
+            0.0001029873741791533,
+            -0.0011665567177416747,
+            -0.04270190942590389
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22003,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "right",
+          "lateral_m": -0.21019405953771714,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 77.95435520797037,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 613830,
+              "wheel_threshold": 398812,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 90065,
+            "max_tilt_deg": 22.322498761424825,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22003/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "9db4a5d141309623f317ff060b2a03b5e88dd0f35495b64ebc4930785ad2385c",
+          "contacts_sha256": "320a0ebb9442cc452b6c625d7cce170bd99b4265964205acfe0d1edd7ae2a491",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/fixed-right",
+          "final_base": [
+            3.1033552199196954,
+            -0.2218141043895431,
+            0.38307864105741873,
+            0.9999977736189218,
+            1.7181251666325712e-05,
+            -0.0010353422980439054,
+            0.001838621312122357
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22003,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 79.62198497203644,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 571924,
+              "wheel_threshold": 531366,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 71692,
+            "max_tilt_deg": 23.06181164600356,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22003/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "61a7d03d51311a016b2268cba875e75d2d818e1fe09c8982b7aac685ac961121",
+          "contacts_sha256": "1162c758a217a1aba9f003fe7be4a7651fdb94d3fbeaabe350f6f0af20967d77",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/high-center",
+          "final_base": [
+            3.1129204065452343,
+            0.0288660300291421,
+            0.46592264945965284,
+            0.9999956289996068,
+            2.3053452915432522e-05,
+            0.00012631873124338796,
+            -0.002953894682788411
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22003,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "left",
+          "lateral_m": 0.21019405953771714,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 73.75448224303545,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 559778,
+              "wheel_threshold": 523666,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 97767,
+            "max_tilt_deg": 22.228798534919804,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22003/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "937dedd85bc7d36c4ad8e8b38521dcbaf1d02300975582a0e77f33f33d873503",
+          "contacts_sha256": "cf21c7bb2ae8bd07d81e5c18aab892e15796c14c14ecd5c8e56075dca8855c1b",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/high-left",
+          "final_base": [
+            3.1249615509376403,
+            0.21208857218303642,
+            0.4658076486069998,
+            0.9993019814089068,
+            -3.962558113020766e-05,
+            -0.00014990830214228287,
+            -0.03735673847578538
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22003,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "right",
+          "lateral_m": -0.21019405953771714,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 73.31567186798202,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 588660,
+              "wheel_threshold": 412726,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 73298,
+            "max_tilt_deg": 22.430624522390403,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22003/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "26c763dba291f9460dc87e1194cd7d331422806516f390941a4b49fddcabab3f",
+          "contacts_sha256": "1c31245ee6bd1e01448ec5d734a80d403db2bc64faa63beca1db79bb42e41ff8",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/high-right",
+          "final_base": [
+            3.1120061501537135,
+            -0.251821863116092,
+            0.46593929238309806,
+            0.9999986120489048,
+            -1.423606903648445e-06,
+            0.000419508351928378,
+            0.001612423945190324
+          ],
+          "new_lux_tasks": 0
+        }
+      ],
+      "A_reference": "outputs/crossing/development/scene-dev-v9/seed-22003/validity/fixed-center"
+    },
+    {
+      "seed": 22004,
+      "valid": true,
+      "trials": [
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22004,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 72.875434615009,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 614810,
+              "wheel_threshold": 395658,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 84512,
+            "max_tilt_deg": 22.595931186707883,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22004/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "6f2a994890e72d748ad71193d9dfee623b49f8c3577b2f34493ef37db2ac117b",
+          "contacts_sha256": "2d92dc30c1433320f4c851a8c0be8451cb1462d66cafb0e71e1a225690725a05",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/fixed-center",
+          "final_base": [
+            3.103496423906391,
+            0.005113941818750283,
+            0.3830794625009199,
+            0.9999982581511665,
+            3.714827543364791e-05,
+            -0.0008368927763496063,
+            -0.0016679104053238683
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22004,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "left",
+          "lateral_m": 0.226973436376197,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 76.5659853380057,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 597448,
+              "wheel_threshold": 464364,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 79372,
+            "max_tilt_deg": 22.43844054778933,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22004/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "4c3a1b17b6d8009761365300171fc5dfcf5573c9d2dfedabeded9acd46a59736",
+          "contacts_sha256": "eb1f03fd4c81c016c0ab9a1d3120d72fa7b3143d72b7ba93e2356db0fa6821d5",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/fixed-left",
+          "final_base": [
+            3.105741043287517,
+            0.20846106710433157,
+            0.3830655290905992,
+            0.9999786194374695,
+            8.101820122963742e-05,
+            -0.0008849299097515988,
+            -0.006478503147937412
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22004,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "center",
+          "lateral_m": 0.0,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 72.7015599180013,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 578372,
+              "wheel_threshold": 388450,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 70469,
+            "max_tilt_deg": 22.91095833551386,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22004/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "d6d5396005d2dfe5ccb51e54aefd3e308da9138872730845e102aa99e5041bc4",
+          "contacts_sha256": "3c2d82ea7d9cdfe2096003a8338afbdf7b1fc0595feee62edda3d2ef61c470d9",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/high-center",
+          "final_base": [
+            3.112280220625075,
+            0.020749393500654495,
+            0.465968129970253,
+            0.9999985470481103,
+            -1.0464282837099785e-05,
+            0.00024174509631493386,
+            -0.0016874096943998425
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22004,
+          "revision": "scene-dev-v9",
+          "method": "fixed",
+          "position": "right",
+          "lateral_m": -0.226973436376197,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 81.92356247402495,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 652462,
+              "wheel_threshold": 465558,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 102047,
+            "max_tilt_deg": 22.724109407605805,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22004/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "29082be9075de24de64e0a74c7aa181b231af5a399949881fe02e8b7c495a112",
+          "contacts_sha256": "677be6a76bf4981e330ebbb518512707024678f2fbbc3875a27a5fce8875a084",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/fixed-right",
+          "final_base": [
+            3.1134401063585893,
+            -0.3104121156770394,
+            0.3828396764422035,
+            0.999550866882723,
+            0.0001167830394687827,
+            -0.00184478422215896,
+            0.02991066109087411
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22004,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "left",
+          "lateral_m": 0.226973436376197,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 66.7896719769924,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 574728,
+              "wheel_threshold": 447568,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 76806,
+            "max_tilt_deg": 22.657152124324515,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22004/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "87cdebb10f05b112eefe41786c505a14da16bc1b857b5e45416102c1f2b1d561",
+          "contacts_sha256": "cd3803e575681bd06137a9c43345e5571bcb7eaeb07185309290b090245fda4f",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/high-left",
+          "final_base": [
+            3.1134642207113945,
+            0.1745456895129881,
+            0.4659185437330019,
+            0.9999863476092669,
+            0.000131156672420841,
+            0.00018195142610798382,
+            -0.005220563828243975
+          ],
+          "new_lux_tasks": 0
+        },
+        {
+          "schema": "beforestep-crossing-validity-trial/v1",
+          "seed": 22004,
+          "revision": "scene-dev-v9",
+          "method": "high",
+          "position": "right",
+          "lateral_m": -0.226973436376197,
+          "status": "stuck",
+          "sim_seconds": 240.00000000004897,
+          "wall_seconds": 66.45762621599715,
+          "contact": {
+            "physics_steps": 120000,
+            "contact_counts": {
+              "wheel_ground": 631748,
+              "wheel_threshold": 481738,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 104243,
+            "max_tilt_deg": 23.003705163281747,
+            "failure": null
+          },
+          "scene": "/root/3d/next-zenith-beforestep/outputs/crossing/development/scene-dev-v9/seed-22004/scene.json",
+          "time_limit_s": 240.0,
+          "speed_cap_m_s": 0.15,
+          "trajectory_sha256": "981d258d9f489849fd3c544c0f2fc1cd274f25317603be3691713aba174a39d5",
+          "contacts_sha256": "43fe12fbda93cfd0e611db0be0fc22f29e271d79eed931cc63aae86c66a20b58",
+          "raw_path": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/high-right",
+          "final_base": [
+            3.1216034667618935,
+            -0.31531595040605637,
+            0.4657122102732829,
+            0.9995092134726179,
+            0.00011013024404665863,
+            -0.0007751816591058093,
+            0.03131643574985983
+          ],
+          "new_lux_tasks": 0
+        }
+      ],
+      "A_reference": "outputs/crossing/development/scene-dev-v9/seed-22004/validity/fixed-center"
+    }
+  ]
+}

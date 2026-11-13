@@ -56,10 +56,14 @@ if __name__=='__main__':
         actual.visual=trimesh.visual.TextureVisuals(material=trimesh.visual.material.PBRMaterial(baseColorFactor=[215,161,68,100],alphaMode='BLEND',doubleSided=True))
         hypothesis.visual=trimesh.visual.TextureVisuals(material=trimesh.visual.material.PBRMaterial(baseColorFactor=[98,176,203,190],alphaMode='BLEND',doubleSided=True))
         overlay=trimesh.Scene();overlay.add_geometry(actual,node_name='true_scan_amber');overlay.add_geometry(hypothesis,node_name='admitted_hypothesis_blue')
+        world_to_gltf=np.array([[1,0,0,0],[0,0,1,0],[0,-1,0,0],[0,0,0,1]],dtype=float)
+        overlay.apply_transform(world_to_gltf)
         path=folder/f'overlay-{c["task_id"]}.glb';overlay.export(path)
         assert path.stat().st_size<=2_000_000
         models.append({'task_id':c['task_id'],'sample':c['id'],'path':str(path.relative_to(ROOT)),
             'bytes':path.stat().st_size,'sha256':sha(path),'admitted':True,'geometry':c['geometry'],
+            'gltf_coordinate_frame':'Y up; position [x,z,-y] from MuJoCo [x,y,z]',
+            'world_to_gltf':world_to_gltf.tolist(),
             'source_world_mesh':c['world_mesh'],'source_sha256':sha(ROOT/c['world_mesh'])})
         for mesh,color,label in [(true,'#ba821e','True scan'),(imagined,'#247f9e','Admitted hypothesis')]:
             from scipy.spatial import ConvexHull

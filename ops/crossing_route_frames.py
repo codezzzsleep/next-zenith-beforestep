@@ -29,6 +29,7 @@ if __name__=='__main__':
     folder=ROUTE/'handoff/frames'/f'{a.vehicle}-{a.kind}'
     index=folder/'index.json'
     if index.exists() and json.loads(index.read_text())['status']=='complete':print('Terminal frame artifact exists; skipped');sys.exit(0)
+    shadow_size=json.loads(index.read_text()).get('shadow_map_size',8192) if index.exists() else 2048
     folder.mkdir(parents=True,exist_ok=True)
     with np.load(source) as data:t=data['t'].copy();q=data['qpos'].copy();phase=data['phase'].copy()
     if a.kind=='closeup':
@@ -53,6 +54,7 @@ if __name__=='__main__':
         known_start=len(spec['objects']);spec['objects'].extend(scene['objects'])
         e=S.make_env(spec);rb={f'obstacle{known_start+i}':p['rock'] for i,p in enumerate(scene['provenance'])}
     vm=VZ.video_model(e,rb,width=1280,height=720,off=(1280,720))
+    vm.m.vis.quality.shadowsize=shadow_size
     if pane:
         for i in range(len(definition['objects'])):
             body=mujoco.mj_name2id(vm.m,mujoco.mjtObj.mjOBJ_BODY,f'obstacle{i}')
@@ -62,12 +64,13 @@ if __name__=='__main__':
     records={'schema':'beforestep-route-jpeg-frames/v1','status':'running','vehicle':a.vehicle,'kind':a.kind,
         'width':1280,'height':720,'fps':30,'time_range_s':[float(samples[0]),float(samples[-1])],
         'source':str(source.relative_to(ROOT)),'source_sha256':sha(source),'physics_advanced':False,'encoded_video':False,
-        'cameras':{},'frames':[]}
+        'shadow_map_size':shadow_size,'sensor_inputs_unchanged':True,'cameras':{},'frames':[]}
     write(index,records)
     try:
         for ci,name in enumerate(['side_follow','overhead']):
             target=folder/name;target.mkdir(exist_ok=True)
-            records['cameras'][name]={'azimuth_deg':25. if ci==0 else -90.,'elevation_deg':-25. if ci==0 else -89.,'distance_m':2.5 if ci==0 else 5.}
+            distance=(1.6 if ci==0 else 2.6) if a.kind=='closeup' else (2.5 if ci==0 else 5.)
+            records['cameras'][name]={'azimuth_deg':25. if ci==0 else -90.,'elevation_deg':-25. if ci==0 else -89.,'distance_m':distance}
             camera.azimuth=records['cameras'][name]['azimuth_deg'];camera.elevation=records['cameras'][name]['elevation_deg'];camera.distance=records['cameras'][name]['distance_m']
             for i,stamp in enumerate(samples[:1] if a.preview else samples):
                 path=target/f'{i:05d}.jpg'

@@ -5,6 +5,7 @@ import mujoco
 import numpy as np
 from PIL import Image
 from beforestep import scene as S, pipeline as P
+from beforestep.navigation import map as N
 from beforestep.geometry import imagination as IM, camera as Camera
 from beforestep.visualization import camera as VZ
 from experimental.crossing.runtime import *
@@ -33,12 +34,17 @@ def first_segment(scene, folder, policy, imagine='lux', reuse=None, max_looks=No
         e=original_make(spec)
         index=int(spec.get('route_threshold_index',0))
         record=Record(e,index)
+        known_watch=N.contact_watch(e,[f'obstacle{i}' for i in range(len(spec['objects'])-3,len(spec['objects']))]) if spec.get('route_known_objects') else None
         original_step=e.step_command
         def step(*args,**kwargs):
             old=e.physics_monitor
             def monitor(env):
                 record.monitor(env)  # Measurement only; the frozen watch decides.
-                return bool(old(env)) if old is not None and old!=record.monitor else False
+                hit=bool(old(env)) if old is not None and old!=record.monitor else False
+                # Appended terrain receives the original any-part contact rule,
+                # including in panes whose frozen watch enumerates only the
+                # original imagined rocks and known wall.
+                return hit or bool(known_watch(env)[0]) if known_watch else hit
             e.physics_monitor=monitor
             try:return original_step(*args,**kwargs)
             finally:
@@ -162,7 +168,7 @@ def leg_segment(e, scene, rb, index, folder, truth=False):
     arrived=bool(ok and np.linalg.norm(e.data.qpos[:2]-scene['goal'])<.3 and min(wheel_positions(e)[:,0])>max(scene['truth_geometry']['far']))
     status=('clean_pass' if arrived and not contact['steps_with_wheel_stone'] else 'wheel_contact_pass' if arrived else
         'body_collision' if rec.failure and rec.failure['kind']=='body_collision' else 'unstable' if rec.failure else
-        'stopped' if not decision['within_frozen_capability'] else 'stuck')
+        'stopped' if geometry is not None and not decision['within_frozen_capability'] else 'stuck')
     rec.save(folder);save_physical(e,folder)
     result={'schema':'beforestep-crossing-route-leg-segment/v1','status':status,'arrived':arrived,'sim_seconds':e.t-begin,
         'contact':contact,'geometry_decision':decision,'stages':stages,'final_base':e.data.qpos[:7].tolist(),

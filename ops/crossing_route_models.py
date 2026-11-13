@@ -40,8 +40,11 @@ if __name__=='__main__':
             a=i*len(ys)+j;b=a+len(ys);faces.extend([[a,b,a+1],[a+1,b,b+1]])
     terrain=trimesh.Trimesh(vertices,faces,process=False)
     display.add_geometry(material(terrain,[78,79,76,255]),node_name='terrain')
+    world_to_gltf=np.array([[1,0,0,0],[0,0,1,0],[0,-1,0,0],[0,0,0,1]],dtype=float)
+    display.apply_transform(world_to_gltf)
     path=output/'scene.glb';display.export(path);assert path.stat().st_size<=2_000_000
     record={'schema':'beforestep-route-model-handoff/v1','scene':name,'scene_model':{'path':str(path.relative_to(ROOT)),'bytes':path.stat().st_size,'sha256':sha(path)},
+        'world_to_gltf':world_to_gltf.tolist(),'gltf_coordinates':'Y up; [x,z,-y] from MuJoCo [x,y,z]',
         'parts':parts,'terrain':'Display sampling of unchanged analytic terrain; original full collision world remains authoritative',
         'stone_wall':'Exact collision hulls for the existing known wall','D_imagination_models':[],'total_scene_bytes':path.stat().st_size}
     # D uses A's verified shared high-rock observation and candidate registration.
@@ -58,6 +61,7 @@ if __name__=='__main__':
             imagined.add_geometry(material(mesh,[78,159,170,180]),node_name=decision_file.parent.parent.name+'-'+c['id'])
             admitted.append({'sample':c['id'],'source':str(p.relative_to(ROOT)),'sha256':sha(p),'metrics':{k:v for k,v in c.items() if k not in ['M','glb']}})
     if admitted:
+        imagined.apply_transform(world_to_gltf)
         p=output/'D-imagination.glb';imagined.export(p)
         if p.stat().st_size>2_000_000:
             # An exact convex collision representation preserves the shapes used

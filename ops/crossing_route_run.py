@@ -158,8 +158,16 @@ if __name__=='__main__':
     folder.mkdir(parents=True,exist_ok=True)
     progress=ROOT/'outputs/crossing/route/progress.json';state=json.loads(progress.read_text())
     if not a.probe:
+        previous=state['steps'][a.vehicle]
+        pid=previous.get('pid')
+        if previous.get('status')=='运行中' and pid and pid!=os.getpid():
+            process=Path(f'/proc/{pid}/cmdline')
+            if process.exists() and b'crossing_route_run.py' in process.read_bytes():
+                raise RuntimeError(f'Vehicle {a.vehicle} is still running as PID {pid}; do not start a duplicate')
         state['steps'][a.vehicle].update(status='运行中',pid=os.getpid(),output=str(folder.relative_to(ROOT)));write(progress,state)
-    for number in range(1,10):
+    previous_attempts=[int(p.stem.split('-')[-1]) for p in folder.glob('attempt-*.log')]
+    first_number=max(previous_attempts,default=0)+1
+    for number in range(first_number,first_number+10):
         log=folder/f'attempt-{number:03d}.log'
         command=[sys.executable,str(Path(__file__)),'--scene',a.scene,'--vehicle',a.vehicle,'--child']
         if a.probe:command+=['--probe']

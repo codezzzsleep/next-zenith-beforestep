@@ -28,7 +28,7 @@ if __name__=='__main__':
     for r in low['six_input_rounds']:chapter+=f'| {r["revision"]} | {r["created"]} | {r["glb_successes"]} | {r["admitted"]} | '+ '；'.join(f'{k} {v}' for k,v in r['main_rejections'].items())+' |\n'
     chapter+=f'\n累计 {low["threshold_created"]} 份包括补充说明 2 允许收尾的批次；STORY 原字节保留此前 35 份的检查点。全部为开发数据，原十二场正式门槛测试已取消。模型叠合和 B 轨迹见 [开发素材](../evidence/crossing/route/low-stone.json)。\n\n'
     chapter+='### 一条路上两种石头\n\n'+summary['state']+'。石门位置已运行前提交，四项检查和每条终态都有独立证据。\n\n'+table(summary)+'\n'+summary['legs_necessity']+' '+summary['imagination_necessity']+'\n\n'
-    chapter+='B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。\n\n'
+    chapter+='四组共用同一个物理车体；A 关闭逐轮跨越能力，只允许既有常规和高姿态轮行。B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。\n\n'
     chapter+='### 事实出处与边界\n\n'
     chapter+='事实出处保留原文核对记录：[来源](../evidence/crossing/references.json)。石门为简化任务，地形和几何限定在这一场；采用月面重力、被动暗区深度规则和理想目标分割，尚未验证实机。两极太阳约束及主动车灯方案的差异见原出处；仿真太阳是已冻结场景条件。\n\n'
     support=gate['support_diagnostic'];chapter+=f'动作按三轮支撑设计，单场两轮承重累计最长 {support["maximum_trial_total_two_loaded_wheels_s"]:.3f} 秒；最长连续片段 {support["longest_two_loaded_wheels_s"]:.3f} 秒。这是保留的支撑诊断，不增加闸门条件。结果不好看也不移动正式场景、不重跑终态、不改包络或准入阈值。原门槛预注册和十二场测试取消；同路两石的未完成项目由进度和结果表明确标出。\n\n'

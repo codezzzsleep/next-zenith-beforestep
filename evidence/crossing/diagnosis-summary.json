@@ -1,6 +1,6 @@
 {
   "schema": "beforestep-crossing-diagnosis-summary/v1",
-  "status": "input_corrections_verified_generator_range_calibration_continues",
+  "status": "narrow_generator_has_admitted_models_four_development_chains_continue",
   "coordinate_checks": {
     "world_local_max_error_m": 8.881784197001252e-16,
     "reprojection_max_error_px": 1.2505552149377763e-12,
@@ -99,10 +99,25 @@
         7154269
       ],
       "source": "evidence/crossing/development-lux-scene-dev-v8-11002.json"
+    },
+    {
+      "revision": "scene-dev-v9",
+      "generated": 6,
+      "glbs": 6,
+      "admitted": 4,
+      "task_ids": [
+        7168305,
+        7168545,
+        7168778,
+        7169115,
+        7169482,
+        7169801
+      ],
+      "source": "evidence/crossing/development-lux-scene-dev-v9-22001.json"
     }
   ],
-  "cumulative_created": 29,
-  "cumulative_glb_successes": 29,
+  "cumulative_created": 35,
+  "cumulative_glb_successes": 35,
   "formal_test_scenes": 0,
   "corrections": [
     "Separate image foreground envelope from reliable passive depth mask.",
@@ -113,5 +128,5 @@
     "Use v72 action margins and sampled depth capacity; separate belly clearance from wheel step height."
   ],
   "frozen_changed": false,
-  "next_step": "Zero-paid v9 range calibration, width1.10-1.20m/gap0.90-1.00m; screen every candidate before Lux."
+  "next_step": "Complete the remaining valid v9 development Lux chains; screen every candidate before Lux."
 }

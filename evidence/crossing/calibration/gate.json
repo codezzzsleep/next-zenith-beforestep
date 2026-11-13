@@ -1,0 +1,427 @@
+{
+  "schema": "beforestep-crossing-gate/v1",
+  "authority": "docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM1.md",
+  "frozen_capability": "evidence/crossing/calibration/capability-v72.json",
+  "frozen_capability_sha256": "d461bd1bc482e9528abf1629ff91eec8bcb12ce22410178c727fe71f6f8f519d",
+  "frozen_original_gate_value": false,
+  "action_version": "v72",
+  "action_sha256": "488401d8a5ad8ebed4f1906266efa6a4f377cd70cb1b80e7484753756b31368d",
+  "pass_definition": "SPEC 5.2 task outcomes, identical for all three abilities; support is diagnostic",
+  "conditions": [
+    {
+      "criterion": "sampled necessary span >= 0.05 m",
+      "measured_m": 0.04999999999999999,
+      "passed": true
+    },
+    {
+      "criterion": "d_max at each sampled band height >= 0.15 m",
+      "measured_m": 0.15,
+      "passed": true
+    },
+    {
+      "criterion": "at least two of three real rock fixtures cleanly passed",
+      "clean_rocks": [
+        "rock_07",
+        "moon_rock_04",
+        "moon_rock_03"
+      ],
+      "count": 3,
+      "passed": true
+    }
+  ],
+  "physical_gate_passed": true,
+  "necessary_by_height": [
+    {
+      "height_m": 0.04,
+      "d_max_m": null,
+      "verified_depths_m": []
+    },
+    {
+      "height_m": 0.06,
+      "d_max_m": null,
+      "verified_depths_m": []
+    },
+    {
+      "height_m": 0.08,
+      "d_max_m": 0.1,
+      "verified_depths_m": [
+        0.1
+      ]
+    },
+    {
+      "height_m": 0.1,
+      "d_max_m": 0.2,
+      "verified_depths_m": [
+        0.1,
+        0.15,
+        0.2
+      ]
+    },
+    {
+      "height_m": 0.12,
+      "d_max_m": 0.2,
+      "verified_depths_m": [
+        0.1,
+        0.15,
+        0.2
+      ]
+    },
+    {
+      "height_m": 0.15,
+      "d_max_m": 0.15,
+      "verified_depths_m": [
+        0.1,
+        0.15
+      ]
+    },
+    {
+      "height_m": 0.18,
+      "d_max_m": null,
+      "verified_depths_m": []
+    },
+    {
+      "height_m": 0.22,
+      "d_max_m": null,
+      "verified_depths_m": []
+    }
+  ],
+  "best_sampled_necessary_span": {
+    "low_m": 0.1,
+    "high_m": 0.15,
+    "width_m": 0.04999999999999999,
+    "sampled_heights_m": [
+      0.1,
+      0.12,
+      0.15
+    ],
+    "minimum_d_max_m": 0.15
+  },
+  "continuous_heights_between_samples_verified": false,
+  "band_gait_groups": 8,
+  "band_gait_trials": 24,
+  "band_gait_clean_trials": 24,
+  "wheel_trials_at_band_heights": 90,
+  "wheel_passes_at_band_heights": 0,
+  "gait_three_of_three_height_m": 0.15,
+  "support_diagnostic": {
+    "counted_in_gate_or_passes": false,
+    "load_threshold_n": 1e-05,
+    "maximum_trial_total_two_loaded_wheels_s": 0.424,
+    "longest_two_loaded_wheels_s": 0.09,
+    "maximum_tilt_deg": 4.754458282943832,
+    "trials": [
+      {
+        "height_m": 0.1,
+        "depth_m": 0.1,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.100-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "4ac37a723e24c5231cce137ade2a47e2140337fef51470f642e35e06976ba351",
+        "two_loaded_wheels_total_s": 0.094,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 2.375565937385758,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 47,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.1,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.100-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "d5225fe5a1af24732373e4b90216bece0347d4b08e31e38bc2b4776e7315e72c",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 3.7214265062867167,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.1,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.100-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "e1871da31ea127ff5f9a35a2f3378e0a9b4c78e7c11a248791de31e204aa901e",
+        "two_loaded_wheels_total_s": 0.114,
+        "two_loaded_wheels_longest_s": 0.002,
+        "max_tilt_deg": 4.689451833028597,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 57,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.15,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.150-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "34a486e12050cb10f2c486b29d6f58a70b1bdc441a37f28a8cafe9c3dbac68c7",
+        "two_loaded_wheels_total_s": 0.238,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 2.3802963821181393,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 119,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.15,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.150-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "5f26e8052e9d34c1732added9179ac0ab592fea6cf9586a4f7bb6392e2b6c75f",
+        "two_loaded_wheels_total_s": 0.002,
+        "two_loaded_wheels_longest_s": 0.002,
+        "max_tilt_deg": 3.839750836198456,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 1,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.15,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.150-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "6399509a19699fb985541f54ebbdf40e00801aa69e515d62b4600d7351a2f909",
+        "two_loaded_wheels_total_s": 0.15,
+        "two_loaded_wheels_longest_s": 0.002,
+        "max_tilt_deg": 4.689451833028597,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 75,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.2,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.200-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "0bbca116206813b4939ae3559dc090fb331a4fec46702a8003b0879abcd4f100",
+        "two_loaded_wheels_total_s": 0.42,
+        "two_loaded_wheels_longest_s": 0.006,
+        "max_tilt_deg": 2.3610266167454257,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 210,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.2,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.200-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "97ae3864a84ecede9458ea6e58e48620e99dd504506ceab26c2ac4a14d77ccbf",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 4.03534275283317,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.1,
+        "depth_m": 0.2,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.100-d0.200-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "4624dc6a6144f35c18b121ddf741a10fd08fbb2cb1a9b4e1a9ad72decb6c5efa",
+        "two_loaded_wheels_total_s": 0.188,
+        "two_loaded_wheels_longest_s": 0.002,
+        "max_tilt_deg": 4.689451833028597,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 94,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.1,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.100-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "df20ae99ed05debf3ce46c7a1020f3e948f7b52f86b966e22fd5876dd7745269",
+        "two_loaded_wheels_total_s": 0.092,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 2.4676022921943352,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 46,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.1,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.100-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "9f9e6c2401a37b8d5051cd13807e638f2a105dddb0fa212886f241b0dff7e5b7",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 3.3570658972936807,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.1,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.100-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "9ab9ec4ebc090f2aaa4daa2a5e80639d9647cd8534901c3bb75bff1d57903ba8",
+        "two_loaded_wheels_total_s": 0.134,
+        "two_loaded_wheels_longest_s": 0.002,
+        "max_tilt_deg": 4.754458282943832,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 67,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.15,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.150-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "d25d7f65302eef44ddb6870601e0ca70532f5f8dcbb1f8db76e8af03b7484f43",
+        "two_loaded_wheels_total_s": 0.204,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 2.382669202504853,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 102,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.15,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.150-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "6451b05ba88ca536d4d166f5dc5df0e6cdb3d19e2afc2dedad035482377d5623",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 3.3570658972936807,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.15,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.150-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "76d17e27cad11643ebd3b5c03b17f81d403f8a9a71853f8cc8de90a9408222f1",
+        "two_loaded_wheels_total_s": 0.152,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 4.754458282943832,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 76,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.2,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.200-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "2dbfa801ea7c24dfcee5f04c811122b2a74b993340d86ecdf69c47516893eb42",
+        "two_loaded_wheels_total_s": 0.424,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 2.382669202504853,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 212,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.2,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.200-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "00c77d845730302ce7067f446fe2bfd4ebce9ed2559333ba59c98d013448697a",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 3.4337485956623963,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.12,
+        "depth_m": 0.2,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.120-d0.200-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "8670b5b5800e4377fc2de1b99353071f10558c2a68a93f10107849d597ce05eb",
+        "two_loaded_wheels_total_s": 0.238,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 4.754458282943832,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 119,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.15,
+        "depth_m": 0.1,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.150-d0.100-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "22ff6970a0a8f9f7ab04c69e08cf51ce6c9a7230f1de85bcefcd912d302bcb1c",
+        "two_loaded_wheels_total_s": 0.276,
+        "two_loaded_wheels_longest_s": 0.09,
+        "max_tilt_deg": 3.5760535997736054,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 138,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.15,
+        "depth_m": 0.1,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.150-d0.100-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "ee3706143b0d87f6b2325e597bba9abd5f5071e734a0fd6d1e94b8a69741912d",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 3.911061960640121,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.15,
+        "depth_m": 0.1,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.150-d0.100-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "ccdad7a98d21cbd8a95b69ab50b2a557c041c6568c89ee6d251a59b8c01742fb",
+        "two_loaded_wheels_total_s": 0.156,
+        "two_loaded_wheels_longest_s": 0.006,
+        "max_tilt_deg": 4.667758234225358,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 78,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.15,
+        "depth_m": 0.15,
+        "angle_deg": -5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.150-d0.150-a-5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "2f28ea3385343f8c028ea5e78fdd56d728092afa41295229d3cc24c72ade373d",
+        "two_loaded_wheels_total_s": 0.254,
+        "two_loaded_wheels_longest_s": 0.004,
+        "max_tilt_deg": 3.5760535997736054,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 127,
+        "support_compliant": false
+      },
+      {
+        "height_m": 0.15,
+        "depth_m": 0.15,
+        "angle_deg": 0.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.150-d0.150-a+0.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "b5591adb90c139e2446f4d6520112c2d314e901fc52fad79bd766827b03bd039",
+        "two_loaded_wheels_total_s": 0.0,
+        "two_loaded_wheels_longest_s": 0.0,
+        "max_tilt_deg": 3.911061960640121,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 0,
+        "support_compliant": true
+      },
+      {
+        "height_m": 0.15,
+        "depth_m": 0.15,
+        "angle_deg": 5.0,
+        "raw_path": "outputs/crossing/calibration/gait-v72-capability-v1/gait-h0.150-d0.150-a+5.0",
+        "task_status": "clean_pass",
+        "contacts_sha256": "404983e8450acce3c84409d28dec25858a1ec775d29953581af2d584062b9329",
+        "two_loaded_wheels_total_s": 0.216,
+        "two_loaded_wheels_longest_s": 0.008,
+        "max_tilt_deg": 4.667758234225358,
+        "missing_stance_steps_when_commanded_wheel_unloaded": 108,
+        "support_compliant": false
+      }
+    ]
+  }
+}

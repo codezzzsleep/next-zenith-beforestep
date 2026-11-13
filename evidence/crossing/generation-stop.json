@@ -1,0 +1,19 @@
+{
+  "schema": "beforestep-crossing-generation-stop/v1",
+  "observed_at": "2026-11-13T11:27:55.282444+00:00",
+  "criterion": "SPEC_WHEELLEG_CROSSING.md §12.4: Lux3D platform refuses task creation",
+  "code": "GENERATION_CONCURRENCY_LIMIT_EXCEEDED",
+  "reason": "Provider reported its concurrent-generation limit for the sixth sample; no indication of insufficient credits.",
+  "sample": "crossing_scene-dev-v3_11002_C2",
+  "identity": "c498162dd22d4314e93d93b16b7925be88d156fab20b61360fa5bd423b5be4c2",
+  "created_task_ids": [
+    7083779,
+    7083787,
+    7083823,
+    7083826,
+    7083832
+  ],
+  "new_creation_stopped": true,
+  "known_tasks_collect_only": true,
+  "final_stage": "development, before preregistration; 0 formal test scenes"
+}

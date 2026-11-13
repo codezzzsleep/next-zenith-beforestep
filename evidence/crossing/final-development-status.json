@@ -1,0 +1,59 @@
+{
+  "schema": "beforestep-crossing-stopped-status/v1",
+  "physical_gate_passed": true,
+  "action_version": "v72",
+  "development_candidate_count": 4,
+  "wheel_passable_candidates_discarded": 2,
+  "valid_development_seeds": [
+    11002,
+    11003
+  ],
+  "invalid_development_seeds": [
+    11001,
+    11004
+  ],
+  "development_validity_trials": 24,
+  "formal_test_scenes": 0,
+  "oracle_E_tested_scenes": 0,
+  "formal_method_results": null,
+  "new_lux_tasks": 5,
+  "successful_glbs": 5,
+  "failed_created_generations": 0,
+  "admitted": 0,
+  "create_rejections": 1,
+  "stop": {
+    "schema": "beforestep-crossing-generation-stop/v1",
+    "observed_at": "2026-11-13T11:27:55.282444+00:00",
+    "criterion": "SPEC_WHEELLEG_CROSSING.md §12.4: Lux3D platform refuses task creation",
+    "code": "GENERATION_CONCURRENCY_LIMIT_EXCEEDED",
+    "reason": "Provider reported its concurrent-generation limit for the sixth sample; no indication of insufficient credits.",
+    "sample": "crossing_scene-dev-v3_11002_C2",
+    "identity": "c498162dd22d4314e93d93b16b7925be88d156fab20b61360fa5bd423b5be4c2",
+    "created_task_ids": [
+      7083779,
+      7083787,
+      7083823,
+      7083826,
+      7083832
+    ],
+    "new_creation_stopped": true,
+    "known_tasks_collect_only": true,
+    "final_stage": "development, before preregistration; 0 formal test scenes"
+  },
+  "uncompleted": [
+    "other three Lux development chains",
+    "crossing rehearsal and real execution",
+    "preregistration and formal tests",
+    "anchor and anchor asset package",
+    "720p30fps JPG frame sequences",
+    "final PDF regeneration"
+  ],
+  "arena_status": "incomplete",
+  "arena_completed_worlds": 2747,
+  "claim_7_4_status": [
+    "validity condition implemented in development; formal tests not reached",
+    "not reached: no formal D execution",
+    "not reached: no E-labelled formal scenes",
+    "not reached: no formal B/D comparisons"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "schema": "beforestep-crossing-blindness-matched-height/v1",
+  "minimum_stone_height_m": 0.04,
+  "purpose": "Diagnostic separates missing low skirt from unseen rear surface above the same observation filter",
+  "scenes": [
+    {
+      "seed": 11001,
+      "revision": "scene-dev-v3",
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "observed_far_m": 3.120055072964965,
+          "true_far_at_4mm_m": 3.239146626134386,
+          "true_far_at_4cm_m": 3.2391466271843465,
+          "unseen_far_above_4cm_m": 0.11909155421938156,
+          "low_skirt_far_difference_m": -1.0499605629377129e-09
+        },
+        {
+          "track_y_m": 0.192,
+          "observed_far_m": 3.1284233038715965,
+          "true_far_at_4mm_m": 3.266556157013861,
+          "true_far_at_4cm_m": 3.265656545540269,
+          "unseen_far_above_4cm_m": 0.13723324166867235,
+          "low_skirt_far_difference_m": 0.0008996114735921878
+        }
+      ]
+    },
+    {
+      "seed": 11002,
+      "revision": "scene-dev-v3",
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "observed_far_m": 3.1033032295967056,
+          "true_far_at_4mm_m": 3.121607300221599,
+          "true_far_at_4cm_m": 3.1191837474434605,
+          "unseen_far_above_4cm_m": 0.015880517846754927,
+          "low_skirt_far_difference_m": 0.00242355277813866
+        },
+        {
+          "track_y_m": 0.192,
+          "observed_far_m": 3.1075235856099352,
+          "true_far_at_4mm_m": 3.1190763799725376,
+          "true_far_at_4cm_m": 3.116885651473802,
+          "unseen_far_above_4cm_m": 0.009362065863866675,
+          "low_skirt_far_difference_m": 0.0021907284987356945
+        }
+      ]
+    },
+    {
+      "seed": 11003,
+      "revision": "scene-dev-v3",
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "observed_far_m": 3.0542302202667218,
+          "true_far_at_4mm_m": 3.1081845111585915,
+          "true_far_at_4cm_m": 3.108184512883316,
+          "unseen_far_above_4cm_m": 0.053954292616594124,
+          "low_skirt_far_difference_m": -1.724724363327823e-09
+        },
+        {
+          "track_y_m": 0.192,
+          "observed_far_m": 3.0575088084260598,
+          "true_far_at_4mm_m": 3.1202239303539656,
+          "true_far_at_4cm_m": 3.1198963753013684,
+          "unseen_far_above_4cm_m": 0.062387566875308664,
+          "low_skirt_far_difference_m": 0.00032755505259718376
+        }
+      ]
+    },
+    {
+      "seed": 11004,
+      "revision": "scene-dev-v3",
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "observed_far_m": 3.1099613111815407,
+          "true_far_at_4mm_m": 3.248380922136431,
+          "true_far_at_4cm_m": 3.248380922904402,
+          "unseen_far_above_4cm_m": 0.1384196117228611,
+          "low_skirt_far_difference_m": -7.679710201102807e-10
+        },
+        {
+          "track_y_m": 0.192,
+          "observed_far_m": 3.129942131823803,
+          "true_far_at_4mm_m": 3.25979025783241,
+          "true_far_at_4cm_m": 3.259790257922832,
+          "unseen_far_above_4cm_m": 0.12984812609902896,
+          "low_skirt_far_difference_m": -9.04223362852008e-11
+        }
+      ]
+    }
+  ]
+}

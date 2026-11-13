@@ -2,8 +2,8 @@
   "schema": "beforestep-crossing-development/v1",
   "scope": "Development calibration only; excluded from registered tests and Lux3D outcomes.",
   "task_outcomes_and_support_audits_are_separate": true,
-  "attempt_count": 93,
-  "trial_count": 363,
+  "attempt_count": 96,
+  "trial_count": 379,
   "attempts": [
     {
       "attempt": "gait-v1",
@@ -20447,14 +20447,14 @@
     },
     {
       "attempt": "gait-v91",
-      "job_status": "running",
+      "job_status": "complete",
       "source_sha256": {
         "experimental/crossing/action.py": "832b13618b56c69e07d4d170922a3fac4ff49eca2fa0db2ed050fcee7e6068fe",
         "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf",
         "ops/crossing_gait.py": "54585b79ceacb20ea25d774fd9a2d5693e813e66793b50246c815ca112245dce"
       },
       "counts": {
-        "clean_pass": 6
+        "clean_pass": 10
       },
       "trials": [
         {
@@ -20828,19 +20828,1056 @@
             "support-audit.json": 9,
             "support-physical-audit.json": 2
           }
+        },
+        {
+          "id": "gait-h0.120-d0.200-a+0.0",
+          "h_m": 0.12,
+          "d_m": 0.2,
+          "angle_deg": 0.0,
+          "status": "clean_pass",
+          "sim_seconds": 170.22999999999016,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85115,
+            "contact_counts": {
+              "wheel_ground": 689334,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 3.3564693342624614,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.5900000000000001,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.8,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.8,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.4,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.4,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v91/gait-h0.120-d0.200-a+0.0",
+          "result_sha256": "5df5c67b1cb27daf09d9aa577b208a30f3b74b632b946dc933376ab5325ab930",
+          "trajectory_sha256": "350662e2733e98a6b4cf011f6274aa84bdf8eb44c2eb4efa49d51d6fb3c45060",
+          "contacts_sha256": "0ea07d0fef4ce3b8b823c76bcae633d1ed1c8289806fc8432603c024b84aa314",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 10,
+            "support-physical-audit.json": 0
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a+0.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": 0.0,
+          "status": "clean_pass",
+          "sim_seconds": 167.7699999999924,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 83885,
+            "contact_counts": {
+              "wheel_ground": 644756,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 3.9173105958821925,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v91/gait-h0.150-d0.150-a+0.0",
+          "result_sha256": "8034819dbc6a0fb825cd91a1c31607f0de65ac4abd11ac7b523d46ef9c11e238",
+          "trajectory_sha256": "e3f6426cdff802ba592ca7980d202a1bed21b81a256b67bbf15a64514701847b",
+          "contacts_sha256": "dbf5335f766065f32c18592a894699256fcc66e1b63dbc3f555a3865f23d7554",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 23,
+            "support-physical-audit.json": 0
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a+5.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 171.01999999998944,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85510,
+            "contact_counts": {
+              "wheel_ground": 680534,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.006371938709088,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v91/gait-h0.150-d0.150-a+5.0",
+          "result_sha256": "59f60b435f68e262f7cb22a9ec8aa24549299e6ffadeb4efbb7cd9a5d2056a25",
+          "trajectory_sha256": "36bae95546b3a3c116e344a24fc70009ecf7038526bbd339509f756da611eb93",
+          "contacts_sha256": "0991fb0b431f572170628a55e8f7d402778a3f6aa9965fba4050e4487c9a26a9",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 19,
+            "support-physical-audit.json": 5
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a-5.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": -5.0,
+          "status": "clean_pass",
+          "sim_seconds": 168.4099999999918,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 84205,
+            "contact_counts": {
+              "wheel_ground": 685254,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 2.3250477706927444,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v91/gait-h0.150-d0.150-a-5.0",
+          "result_sha256": "898382b56f929fffb437a2c470b1fd068efe613cc8c17ac41ff2ffed398e5d92",
+          "trajectory_sha256": "9c5eead65f078eb924dede9f6d3702aea2922b9a58718da43985c349f98937d0",
+          "contacts_sha256": "fc2d07e8b1020c1fc3445a246631fd71adefc0078c8b96fa8faffd48e116d16c",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 13,
+            "support-physical-audit.json": 0
+          }
         }
       ]
     },
     {
       "attempt": "gait-v92-force",
-      "job_status": "running",
+      "job_status": "complete",
       "source_sha256": {
         "experimental/crossing/action_force.py": "ad892d855c206097c6b2590990203991278e879cb3ea1d7b61fec66235ab195f",
         "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf",
         "ops/crossing_gait.py": "54585b79ceacb20ea25d774fd9a2d5693e813e66793b50246c815ca112245dce"
       },
-      "counts": {},
-      "trials": []
+      "counts": {
+        "clean_pass": 3
+      },
+      "trials": [
+        {
+          "id": "gait-h0.100-d0.150-a+5.0",
+          "h_m": 0.1,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 170.7399999999897,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85370,
+            "contact_counts": {
+              "wheel_ground": 704328,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.415507037991153,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v92-force/gait-h0.100-d0.150-a+5.0",
+          "result_sha256": "577ea249eae3c2dad2be28b228a4a228551eab57ba2838c1ffb0dbb4b2e573c1",
+          "trajectory_sha256": "bb74d01a405e944a9bce7c68fd0c558013adbcb2238d28144439deec4404a873",
+          "contacts_sha256": "f27272d68896eb2f57c3f977f0cfcb5607becd765fa353fa280977dfc574b205",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 38,
+            "support-physical-audit.json": 18
+          }
+        },
+        {
+          "id": "gait-h0.120-d0.150-a+5.0",
+          "h_m": 0.12,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 168.26999999999194,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 84135,
+            "contact_counts": {
+              "wheel_ground": 643618,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.024444434821475,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v92-force/gait-h0.120-d0.150-a+5.0",
+          "result_sha256": "fd7df6bc6c9eb44d4d5d2cdd184258006023cbc58ce656826429ef218d9bfb01",
+          "trajectory_sha256": "ea173deb7d802f99b9a42db38a84da74246402c6fa8f63bce57f7b3a34d949dd",
+          "contacts_sha256": "dafc25174ec46b78a5e628a9f137d4b565876edb99e535a7e1af5d68fbffbdb6",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 76,
+            "support-physical-audit.json": 33
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a+5.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 170.76999999998966,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85385,
+            "contact_counts": {
+              "wheel_ground": 675830,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 3.960729627247588,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v92-force/gait-h0.150-d0.150-a+5.0",
+          "result_sha256": "9b22e0774b4d18decf7b537a6e7ba74064bbbdd3c00aa69a529ff212510f01bd",
+          "trajectory_sha256": "848fd48ff828b30a0ec441dad66ecbf431c1d54d99a8ec9b046eb6c2aac55e7d",
+          "contacts_sha256": "28489fc6b9ad9cba905971d9235dcac7f2717eff4119810eacfdef944368a4a7",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 35,
+            "support-physical-audit.json": 28
+          }
+        }
+      ]
+    },
+    {
+      "attempt": "gait-v93-substep",
+      "job_status": "complete",
+      "source_sha256": {
+        "experimental/crossing/action.py": "832b13618b56c69e07d4d170922a3fac4ff49eca2fa0db2ed050fcee7e6068fe",
+        "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf",
+        "ops/crossing_gait.py": "37dd0fd80213bde287ff72d1934d04acdfb21ddddb0b8dca04ca33d25cb8191e"
+      },
+      "counts": {
+        "clean_pass": 3
+      },
+      "trials": [
+        {
+          "id": "gait-h0.100-d0.150-a+5.0",
+          "h_m": 0.1,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 171.07400000008874,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85537,
+            "contact_counts": {
+              "wheel_ground": 681768,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 3.96009832912124,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v93-substep/gait-h0.100-d0.150-a+5.0",
+          "result_sha256": "014028e873c97c68ed5d26afb7b1240eef4edcc2407fb00bc21d066a1424372d",
+          "trajectory_sha256": "fb293b254838ed648c484fbdd27607c3bcf1b9a68f8f74c254bf409e7a237422",
+          "contacts_sha256": "1c339b363a02afe64900ecb4330072b4b6c76ec3d7f152690db6b397edb68328",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 71,
+            "support-physical-audit.json": 25
+          }
+        },
+        {
+          "id": "gait-h0.120-d0.150-a-5.0",
+          "h_m": 0.12,
+          "d_m": 0.15,
+          "angle_deg": -5.0,
+          "status": "clean_pass",
+          "sim_seconds": 168.6580000000772,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 84329,
+            "contact_counts": {
+              "wheel_ground": 672060,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 2.436104982276969,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v93-substep/gait-h0.120-d0.150-a-5.0",
+          "result_sha256": "1ec301006364d472ceefd8201ba9307e3a6d269ae7408cea267ffe542d0b8ef0",
+          "trajectory_sha256": "953181470d9b70535aa3266f0c0e7cfc9bc3e000be0c394d6611488baa6649d4",
+          "contacts_sha256": "2bbf68ca9a61aca55354c143edf24c46942132327c2176f0a2e801317ef01282",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 8,
+            "support-physical-audit.json": 0
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a+5.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 173.52400000010044,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 86762,
+            "contact_counts": {
+              "wheel_ground": 677962,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.0680111179823,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v93-substep/gait-h0.150-d0.150-a+5.0",
+          "result_sha256": "7c26468ebf851dc9c264f6152ddb3ed51994bf1d14c09898541bee81f9d3c71b",
+          "trajectory_sha256": "2ba2f3ab009611f097d765c8f8229cc0ea33abd5f3d908f31bdd6aecaa4e481c",
+          "contacts_sha256": "486c93db6ec6b306a981c67186482f2e1497751e38b45f95e1beeecbbfaab012",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 31,
+            "support-physical-audit.json": 7
+          }
+        }
+      ]
+    },
+    {
+      "attempt": "gait-v94-fullframe",
+      "job_status": "complete",
+      "source_sha256": {
+        "experimental/crossing/action_fullframe.py": "607b56864bbda4ed758c5f6f2fbb252b5ba59d07c6635e7225894d49519e3e23",
+        "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf",
+        "ops/crossing_gait.py": "37dd0fd80213bde287ff72d1934d04acdfb21ddddb0b8dca04ca33d25cb8191e"
+      },
+      "counts": {
+        "clean_pass": 3
+      },
+      "trials": [
+        {
+          "id": "gait-h0.100-d0.150-a+5.0",
+          "h_m": 0.1,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 170.78999999998965,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85395,
+            "contact_counts": {
+              "wheel_ground": 692832,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.3886604229559785,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v94-fullframe/gait-h0.100-d0.150-a+5.0",
+          "result_sha256": "ecd459fe393ee99cff88bfd328438855dbba3ff6e7d29a207da783a759388797",
+          "trajectory_sha256": "ed2b760d9a067e70599fe153eff4b1eaa67e899caa885b50a7ebec76cca97c3d",
+          "contacts_sha256": "ae91fe1fe094448580dcd8e0d5a7c0c4012d112bc32d4031e4c8a111332ab18b",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 97,
+            "support-physical-audit.json": 64
+          }
+        },
+        {
+          "id": "gait-h0.120-d0.150-a+5.0",
+          "h_m": 0.12,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 170.79999999998964,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85400,
+            "contact_counts": {
+              "wheel_ground": 667974,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.20717141642745,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v94-fullframe/gait-h0.120-d0.150-a+5.0",
+          "result_sha256": "effd332adf09d6e5ae254c1a2f27e1ad2ed3363feda61cf53f887330edb6a6ae",
+          "trajectory_sha256": "f647fd427929773fa09bb04901905221795f2e08ec58264a2284a1fb5b29fc47",
+          "contacts_sha256": "d77f9288347a59c799a44cd5ae5ff43383a45060143b236c8b8e121c867915ca",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 94,
+            "support-physical-audit.json": 78
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a+5.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 168.28999999999192,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 84145,
+            "contact_counts": {
+              "wheel_ground": 629628,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 3.932614846129684,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v94-fullframe/gait-h0.150-d0.150-a+5.0",
+          "result_sha256": "c8f39c92dde2513b5e7f89737e91812e267ed5a3da49d401567009b91980d033",
+          "trajectory_sha256": "162ceb7860cd191b90528f33c3c84aad865f1858b45ed277dc31c9a48c367c5f",
+          "contacts_sha256": "f81e11281fc5057e51961dc60c87125508e800f5c33ea360021361f4b4e94f71",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 36,
+            "support-physical-audit.json": 21
+          }
+        }
+      ]
+    },
+    {
+      "attempt": "gait-v95-force",
+      "job_status": "complete",
+      "source_sha256": {
+        "experimental/crossing/action_force.py": "4c4bbc33502d8fb1fce2db54e83f5e316e6b3725e98d9c274fbeec6066822564",
+        "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf",
+        "ops/crossing_gait.py": "37dd0fd80213bde287ff72d1934d04acdfb21ddddb0b8dca04ca33d25cb8191e"
+      },
+      "counts": {
+        "clean_pass": 3
+      },
+      "trials": [
+        {
+          "id": "gait-h0.100-d0.150-a+5.0",
+          "h_m": 0.1,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 168.2999999999919,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 84150,
+            "contact_counts": {
+              "wheel_ground": 722862,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.208948769683701,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v95-force/gait-h0.100-d0.150-a+5.0",
+          "result_sha256": "8ef0333419bb38b174ca893ca77a1279826b4ff5eb73719505c35ada4a44f9c2",
+          "trajectory_sha256": "15b09f04d7537846034a62eaa468f1ea21d485c4aeaae821429d55202caed4c2",
+          "contacts_sha256": "a4e52fc4bf9ab2d7b1a0e405f227adfae4fa3cf424f0a33b15f0a9fb77bab54f",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 83,
+            "support-physical-audit.json": 72
+          }
+        },
+        {
+          "id": "gait-h0.120-d0.150-a+5.0",
+          "h_m": 0.12,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 168.28999999999192,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 84145,
+            "contact_counts": {
+              "wheel_ground": 659530,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 3.985117398795565,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v95-force/gait-h0.120-d0.150-a+5.0",
+          "result_sha256": "405632bce72c1630664000b3b134f6d9b72cc759879a10162d50b5b2d83e24ef",
+          "trajectory_sha256": "ebaf436b5c30351effd1894f4d3580a7caa95aeaa6290354d7433f83fc364274",
+          "contacts_sha256": "2ffd4361bb8cf5b49bb20d67e04a7153fbfc13738305178bebaef215c43614e6",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 60,
+            "support-physical-audit.json": 31
+          }
+        },
+        {
+          "id": "gait-h0.150-d0.150-a+5.0",
+          "h_m": 0.15,
+          "d_m": 0.15,
+          "angle_deg": 5.0,
+          "status": "clean_pass",
+          "sim_seconds": 170.79999999998964,
+          "last_phase": "depart",
+          "contact": {
+            "physics_steps": 85400,
+            "contact_counts": {
+              "wheel_ground": 687614,
+              "wheel_threshold": 0,
+              "body_stone": 0,
+              "unstable": 0
+            },
+            "steps_with_wheel_stone": 0,
+            "max_tilt_deg": 4.004455974887453,
+            "failure": null
+          },
+          "last_script_event": {
+            "phase": "restore-wheelbase",
+            "base_target": [
+              0.54,
+              0.0,
+              0.46
+            ],
+            "wheel_anchor_targets": [
+              [
+                0.75,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.75,
+                0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                -0.142,
+                0.08399999999999999
+              ],
+              [
+                0.35,
+                0.142,
+                0.08399999999999999
+              ]
+            ],
+            "duration_s": 7.0,
+            "swing_leg": null
+          },
+          "raw_path": "outputs/crossing/calibration/gait-v95-force/gait-h0.150-d0.150-a+5.0",
+          "result_sha256": "811d52f06f10304d634693948fb4ebff068322e6aecd19f2827f632db354b5be",
+          "trajectory_sha256": "50f50fc6fe3c0ba7db386f32f460cbafc344e656e0dc73ec75edec837b9ca7e5",
+          "contacts_sha256": "e04b57f7661019d1ff41d5a1e0c17f3130dbf385f9ceaf7ddee8de72caf04963",
+          "legacy_diagnostic": false,
+          "audits": {
+            "support-audit.json": 47,
+            "support-physical-audit.json": 27
+          }
+        }
+      ]
     }
   ]
 }

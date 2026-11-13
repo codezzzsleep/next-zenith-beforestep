@@ -1,7 +1,7 @@
 # 先见一步 · BeforeStep
 
 <!-- PHOTO-STORY-README-START -->
-机器人只拍到石头的一面。Aholo Lux3D 把这张平面照片变成包含未知背面的完整三维石头；机器人先对照可见观测检查，再在每个采纳的想象世界里走完路线，最后在独立仿真里执行。月面和低角度阳光提供实验背景，核心是从照片生成的几何改变行动判断。
+对轮子来说，石头是障碍，知道轮廓就能绕开；对腿来说，石头是地形，必须知道整块的形状。可整块石头有一半，机器人永远拍不到。BeforeStep 让 Lux3D 把那一半想象出来，再让轮腿机器人在迈步之前，把每一份想象都检验一遍、预演一遍。
 
 [转着看真实生成的石头](https://codezzzsleep.github.io/next-zenith-beforestep/) · [想象陈列室](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html)。
 <!-- PHOTO-STORY-README-END -->

@@ -1,6 +1,6 @@
 {
   "schema": "beforestep-crossing-diagnosis-summary/v1",
-  "status": "narrow_generator_has_admitted_models_four_development_chains_continue",
+  "status": "stopped_spec12_2",
   "coordinate_checks": {
     "world_local_max_error_m": 8.881784197001252e-16,
     "reprojection_max_error_px": 1.2505552149377763e-12,
@@ -41,7 +41,7 @@
   "observed_initialization_admitted": 0,
   "lux_trials": [
     {
-      "revision": "scene-dev-v5",
+      "revision": "scene-dev-v5/11002",
       "generated": 6,
       "glbs": 6,
       "admitted": 0,
@@ -56,7 +56,7 @@
       "source": "evidence/crossing/development-lux-scene-dev-v5-11002.json"
     },
     {
-      "revision": "scene-dev-v6",
+      "revision": "scene-dev-v6/11002",
       "generated": 6,
       "glbs": 6,
       "admitted": 0,
@@ -71,7 +71,7 @@
       "source": "evidence/crossing/development-lux-scene-dev-v6-11002.json"
     },
     {
-      "revision": "scene-dev-v7",
+      "revision": "scene-dev-v7/11002",
       "generated": 6,
       "glbs": 6,
       "admitted": 0,
@@ -86,7 +86,7 @@
       "source": "evidence/crossing/development-lux-scene-dev-v7-11002.json"
     },
     {
-      "revision": "scene-dev-v8",
+      "revision": "scene-dev-v8/11002",
       "generated": 6,
       "glbs": 6,
       "admitted": 0,
@@ -101,7 +101,7 @@
       "source": "evidence/crossing/development-lux-scene-dev-v8-11002.json"
     },
     {
-      "revision": "scene-dev-v9",
+      "revision": "scene-dev-v9/22001",
       "generated": 6,
       "glbs": 6,
       "admitted": 4,
@@ -114,10 +114,51 @@
         7169801
       ],
       "source": "evidence/crossing/development-lux-scene-dev-v9-22001.json"
+    },
+    {
+      "revision": "scene-dev-v9/22003",
+      "generated": 6,
+      "glbs": 6,
+      "admitted": 2,
+      "task_ids": [
+        7174924,
+        7175321,
+        7175655,
+        7176155,
+        7176545,
+        7176932
+      ],
+      "source": "evidence/crossing/development-lux-scene-dev-v9-22003.json"
+    },
+    {
+      "revision": "scene-dev-v9/22004",
+      "generated": 6,
+      "glbs": 6,
+      "admitted": 0,
+      "task_ids": [
+        7178246,
+        7178672,
+        7179139,
+        7179472,
+        7180020,
+        7180388
+      ],
+      "source": "evidence/crossing/development-lux-scene-dev-v9-22004.json"
     }
   ],
-  "cumulative_created": 35,
-  "cumulative_glb_successes": 35,
+  "cumulative_created": 47,
+  "cumulative_glb_successes": 47,
+  "stop": {
+    "schema": "beforestep-crossing-development-stop/v1",
+    "criterion": "SPEC §12.2",
+    "reason": "No generated model admitted in screened development scene",
+    "revision": "scene-dev-v9",
+    "seed": 22004,
+    "new_creation_stopped": true,
+    "observed_at_unix": 1794593426.8493435,
+    "cumulative_created": 47,
+    "formal_test_scenes": 0
+  },
   "formal_test_scenes": 0,
   "corrections": [
     "Separate image foreground envelope from reliable passive depth mask.",
@@ -128,5 +169,5 @@
     "Use v72 action margins and sampled depth capacity; separate belly clearance from wheel step height."
   ],
   "frozen_changed": false,
-  "next_step": "Complete the remaining valid v9 development Lux chains; screen every candidate before Lux."
+  "next_step": "Publish the complete stopped development and private recovery checkpoint; no new cloud tasks."
 }

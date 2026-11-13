@@ -108,11 +108,7 @@ class Script:
             ref_velocity=np.zeros((4,3)) if previous is None else np.clip((reference-previous)/dt,-2,2);previous=reference.copy()
             # Position IK supplies posture stiffness; static force balance
             # supplies only gravity compensation through the same joint PD API.
-            required=e.data.qfrc_bias.copy()
-            heading=np.arctan2(rotation[1,0],rotation[0,0]);yaw_rate=(rotation@e.data.qvel[3:6])[2]
-            yaw_moment=float(np.clip(-6.*(heading-self.yaw)-2.*yaw_rate,-.8,.8))
-            required[3:6]+=rotation.T@np.array([0.,0.,yaw_moment])
-            tau=self.inverse_forces(required)
+            tau=self.inverse_forces(e.data.qfrc_bias)
             target=reference.copy();velocity_targets=np.zeros((4,3))
             for j,leg in enumerate(LEG):
                 for k,part in enumerate(['hip','thigh','calf']):
@@ -165,8 +161,8 @@ class Script:
         if phase=='front-right':b[0]-=.06*(target[0]-self.feet[j,0]);b[2]-=.005
         if not self.move(base=b,feet=f,seconds=max(2.,np.linalg.norm(f[j,:2]-self.feet[j,:2])/.08),phase=phase+'-swing'):return False
         if phase=='front-right':
-            b=self.base.copy();b[0]+=.018
-            if not self.move(base=b,seconds=4.,phase='align-before-first-landing'):return False
+            b=self.base.copy();b[0]+=.020
+            if not self.move(base=b,seconds=2.,phase='align-before-first-landing'):return False
         if phase=='front-left':
             b=self.base.copy();b[0]=self.near;b[1]=self.lateral-.025;b[2]=max(.38,self.high+.26);other=f.copy();other[0,0]=self.far+.25;other[2:,0]=self.near-.24
             if not self.move(base=b,feet=other,seconds=8.,phase='centre-before-front-left-landing'):return False
@@ -197,18 +193,6 @@ def crossing(rec,geometry,settings=None):
     t0=e.t
     while min(wheel_anchors(e)[:2,0])<front_line and e.t-t0<15:
         if not rec.command(pose,np.full(4,.07/WHEEL_R),phase='approach'):return False,[]
-    # Physically align on four grounded wheels. Integral feedback overcomes
-    # static wheel/skid friction without changing the common wheel speed cap.
-    align_start=e.t;integral=0.
-    while e.t-align_start<30.:
-        w,x,y,z=e.data.qpos[3:7];yaw=np.arctan2(2*(w*z+x*y),1-2*(y*y+z*z))
-        if abs(yaw)<.001:break
-        integral=np.clip(integral+yaw/e.control_hz,-.5,.5)
-        speed=float(np.clip(-1.5*yaw-.5*integral,-.15,.15))
-        omega=np.array([(1 if leg in ['FR','RR'] else -1)*speed/WHEEL_R for leg in LEG])
-        if not rec.command(pose,omega,phase='align-heading-on-four-wheels'):return False,[]
-    for _ in range(int(.5*e.control_hz)):
-        if not rec.command(pose,phase='seat-after-heading-alignment'):return False,[]
     feet=wheel_anchors(e);base=e.data.qpos[:3].copy();sc=Script(rec,base,feet);sc.near=near;sc.far=far;sc.high=height;sc.lateral=lateral
     # Narrow the supporting front-left wheel before the threshold. This makes
     # a support triangle near the crossing line rather than straddling its edge.

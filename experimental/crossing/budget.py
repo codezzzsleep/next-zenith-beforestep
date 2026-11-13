@@ -15,10 +15,14 @@ class CrossingBudgetExhausted(RuntimeError):
     pass
 
 
+class CrossingStopped(RuntimeError):
+    pass
+
+
 class CrossingBudget:
     def __init__(self, path=None, gate=None):
         self.path = Path(path or C.ROOT / 'outputs/generation/crossing-budget.json')
-        self.gate = Path(gate or C.ROOT / 'evidence/crossing/calibration/capability.json')
+        self.gate = Path(gate or C.ROOT / 'evidence/crossing/calibration/gate.json')
 
     @staticmethod
     def usage(data):
@@ -44,6 +48,8 @@ class CrossingBudget:
         if not self.gate.exists() or not json.loads(self.gate.read_text())['physical_gate_passed']:
             raise PhysicalGatePending('The measured physical gate has not passed; no HTTP create allowed')
         with self.locked() as data:
+            if data.get('stop', {}).get('new_creation_stopped'):
+                raise CrossingStopped('SPEC §12.4 provider rejection recorded; collect known tasks only')
             old = next((row for row in data['tasks'] if row['identity'] == identity), None)
             if old:
                 return old

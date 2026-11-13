@@ -26,12 +26,13 @@ def event(attempt, **fields):
         write(path, ledger)
 
 
-def trial(attempt, case, variant='default'):
+def trial(attempt, case, variant='default', control_hz=100):
     h, d, angle = case
     folder = OUT / 'calibration' / attempt / f'gait-h{h:.3f}-d{d:.3f}-a{angle:+.1f}'
     folder.mkdir(parents=True, exist_ok=True)
     command = [sys.executable, str(ROOT / 'ops/crossing_gait.py'), '--attempt', attempt,
-               '--height', str(h), '--depth', str(d), '--angle', str(angle), '--variant', variant]
+               '--height', str(h), '--depth', str(d), '--angle', str(angle), '--variant', variant,
+               '--control-hz', str(control_hz)]
     if not (folder / 'result.json').exists():
         with (folder / 'run.log').open('a') as log:
             process = subprocess.Popen(command, cwd=ROOT, stdout=log, stderr=subprocess.STDOUT)
@@ -62,6 +63,7 @@ def main():
     parser.add_argument('--case', action='append', required=True, help='height,depth,angle in m,m,deg')
     parser.add_argument('--workers', type=int, default=2)
     parser.add_argument('--variant', choices=['default','force','fullframe','heading'], default='default')
+    parser.add_argument('--control-hz', type=int, choices=[50,100,250,500], default=100)
     args = parser.parse_args()
     cases = [tuple(map(float, case.split(','))) for case in args.case]
     assert all(len(case) == 3 for case in cases)
@@ -75,7 +77,7 @@ def main():
             action_path, ROOT / 'experimental/crossing/runtime.py',
             ROOT / 'ops/crossing_gait.py']}
         registration = {'attempt': args.attempt, 'cases': cases, 'source_sha256': identity,
-                        'variant': args.variant,
+                        'variant': args.variant, 'control_hz': args.control_hz,
                         'kind': 'development calibration, excluded from registered test statistics'}
         if (folder / 'identity.json').exists():
             assert json.loads((folder / 'identity.json').read_text()) == json.loads(json.dumps(registration))
@@ -86,7 +88,7 @@ def main():
         started = time.monotonic()
         results = []
         with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
-            tasks = [pool.submit(trial, args.attempt, case, args.variant) for case in cases]
+            tasks = [pool.submit(trial, args.attempt, case, args.variant, args.control_hz) for case in cases]
             for task in concurrent.futures.as_completed(tasks):
                 result = task.result()
                 results.append(result)

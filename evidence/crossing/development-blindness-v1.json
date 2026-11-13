@@ -1,0 +1,697 @@
+{
+  "stage": "zero-paid development; excluded from statistics",
+  "scenes": [
+    {
+      "schema": "beforestep-crossing-blindness/v1",
+      "seed": 11001,
+      "revision": "scene-dev-v1",
+      "camera_world": {
+        "camera_schema": "camera-snapshot/v2",
+        "body_name": "base_link",
+        "body_id": 1,
+        "local_pos": [
+          0.42,
+          0.0,
+          -0.00125
+        ],
+        "local_quat_wxyz": [
+          0.5958034399409956,
+          0.38081263234624513,
+          -0.38081263234624513,
+          -0.5958034399409956
+        ],
+        "world_pos": [
+          2.612457795889716,
+          9.259331253844536e-05,
+          0.3833222525838295
+        ],
+        "R_world_from_camera": [
+          [
+            0.00016299535878033788,
+            0.4188918926831519,
+            -0.9080360982234355
+          ],
+          [
+            -0.9999999833711226,
+            0.00014254939572111436,
+            -0.00011374280174275553
+          ],
+          [
+            8.179405959357622e-05,
+            0.9080361016633631,
+            0.41889190895233974
+          ]
+        ],
+        "fovy_deg": 70.0,
+        "image_width": 1600,
+        "image_height": 1200,
+        "intrinsics": {
+          "fx": 856.8888040452688,
+          "fy": 856.8888040452688,
+          "cx": 799.5,
+          "cy": 599.5,
+          "width": 1600,
+          "height": 1200
+        },
+        "robot_qpos": [
+          2.192456649241421,
+          2.4198147389378223e-05,
+          0.38409337917466624,
+          0.9999998333415513,
+          -4.0850562321179214e-05,
+          -0.0005700898448135338,
+          8.152098146702213e-05,
+          -8.54263220756793e-05,
+          0.8505306556419939,
+          -1.6553587619173513,
+          0.019207557466320694,
+          0.00014608534632569746,
+          0.850628678648432,
+          -1.6554569437523663,
+          0.018096707133208285,
+          7.6898386598724e-05,
+          0.8474207618399758,
+          -1.6580584374608849,
+          0.0028991828751083483,
+          -8.522216266662421e-05,
+          0.8474771067736799,
+          -1.6579152510342543,
+          0.0017887258793917776
+        ],
+        "robot_qvel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "depth_convention": "positive_camera_minus_z"
+      },
+      "camera_to_near_m": 0.38757947673766946,
+      "leg_stance": "STANCE; reached through env.step_command, 50Hz control/500Hz physics",
+      "sun": {
+        "elevation_deg": 10.0,
+        "azimuth_deg": 63.02606478910907
+      },
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "truth": {
+            "near": 3.0000372726273854,
+            "far": 3.237274547296401,
+            "high": 0.12582914499212877,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.0000355204227014,
+            "far": 3.116695307345414,
+            "high": 0.12583710699385964,
+            "points": 17738
+          },
+          "unseen_far_m": 0.12057923995098685,
+          "unseen_height_m": -7.962001730865698e-06
+        },
+        {
+          "track_y_m": 0.192,
+          "truth": {
+            "near": 3.025857930442525,
+            "far": 3.2674355681172274,
+            "high": 0.13455118538268465,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.025861509132395,
+            "far": 3.127960043495799,
+            "high": 0.1345108118419124,
+            "points": 16388
+          },
+          "unseen_far_m": 0.13947552462142854,
+          "unseen_height_m": 4.0373540772242755e-05
+        }
+      ],
+      "crop_native_height_px": 602,
+      "native_ok": true,
+      "visible_points": 304995,
+      "new_lux_tasks": 0,
+      "source_identity": {
+        "seed": 11001,
+        "revision": "scene-dev-v1",
+        "pid": 2616764,
+        "source_sha256": {
+          "ops/crossing_observe.py": "529bf806033de5abff1404953bec651bf8b8ab972a6c0bcf95f2040c920debe3",
+          "experimental/crossing/scene.py": "0696b305eb4499c48af15eefd26dc4b95074c2b4fd184e274f67f76a5762ef49",
+          "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf"
+        },
+        "stage": "zero-paid RGB-D blind-region measurement"
+      },
+      "input_sha256": {
+        "rgb.png": "37a046215e47d8e3fbcd1c33a66b325c36880712d07847340ea08acf99e6849d",
+        "depth.npy": "c1d329a01b0df4ea071015bae4a4a5c133e20a9f1b90ca70ae987bba213182a8",
+        "mask.png": "3ac502bc67818d9a2fafcc9cc345939308e6aba8ba03ef5425e35dde94bfbf35",
+        "dark.png": "8db6f3c29f6a7a0f79b0424808c035943f38bb05be4d82e2140c8db49535d44c"
+      },
+      "limitations": [
+        "Ideal target segmentation; passive-dark depth suppressed.",
+        "True far edges include the low >=4mm rear skirt; observed stone filter is >=4cm, as in the frozen pipeline."
+      ]
+    },
+    {
+      "schema": "beforestep-crossing-blindness/v1",
+      "seed": 11002,
+      "revision": "scene-dev-v1",
+      "camera_world": {
+        "camera_schema": "camera-snapshot/v2",
+        "body_name": "base_link",
+        "body_id": 1,
+        "local_pos": [
+          0.42,
+          0.0,
+          -0.00125
+        ],
+        "local_quat_wxyz": [
+          0.5958034399409956,
+          0.38081263234624513,
+          -0.38081263234624513,
+          -0.5958034399409956
+        ],
+        "world_pos": [
+          2.661164028087873,
+          5.3992175874074155e-05,
+          0.3833193471827169
+        ],
+        "R_world_from_camera": [
+          [
+            7.462887211395763e-05,
+            0.4189059917346113,
+            -0.9080296055302252
+          ],
+          [
+            -0.9999999929172684,
+            0.00011545008696278725,
+            -2.8926522054384396e-05
+          ],
+          [
+            9.27146035145654e-05,
+            0.9080296012576474,
+            0.4189059973835217
+          ]
+        ],
+        "fovy_deg": 70.0,
+        "image_width": 1600,
+        "image_height": 1200,
+        "intrinsics": {
+          "fx": 856.8888040452688,
+          "fy": 856.8888040452688,
+          "cx": 799.5,
+          "cy": 599.5,
+          "width": 1600,
+          "height": 1200
+        },
+        "robot_qpos": [
+          2.241162889050061,
+          2.272006324350856e-05,
+          0.38409699041465045,
+          0.9999998401215887,
+          -4.633631146971943e-05,
+          -0.0005623303584114417,
+          3.7340498341588934e-05,
+          -7.116856309179225e-05,
+          0.850552171398927,
+          -1.655352358170042,
+          0.01933565445630619,
+          0.00015744975882950804,
+          0.8506381279333433,
+          -1.6554491021166262,
+          0.018268651700169072,
+          1.4971233914499682e-05,
+          0.8473705509419852,
+          -1.658080343873951,
+          0.0036544090107332636,
+          -4.817596687619292e-05,
+          0.8475099465106266,
+          -1.6578979503807634,
+          0.002699531757091695
+        ],
+        "robot_qvel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "depth_convention": "positive_camera_minus_z"
+      },
+      "camera_to_near_m": 0.3419187216510533,
+      "leg_stance": "STANCE; reached through env.step_command, 50Hz control/500Hz physics",
+      "sun": {
+        "elevation_deg": 10.0,
+        "azimuth_deg": 36.60781349757046
+      },
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "truth": {
+            "near": 3.003082749738926,
+            "far": 3.2696653526828894,
+            "high": 0.12538830647015528,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.009434788718924,
+            "far": 3.101553823186088,
+            "high": 0.1254109426446226,
+            "points": 19256
+          },
+          "unseen_far_m": 0.1681115294968012,
+          "unseen_height_m": -2.2636174467322023e-05
+        },
+        {
+          "track_y_m": 0.192,
+          "truth": {
+            "near": 3.0036759235042214,
+            "far": 3.2630238080225684,
+            "high": 0.1319025326268795,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.0108696625692657,
+            "far": 3.1115214941798817,
+            "high": 0.13173033491480535,
+            "points": 21444
+          },
+          "unseen_far_m": 0.15150231384268675,
+          "unseen_height_m": 0.00017219771207416246
+        }
+      ],
+      "crop_native_height_px": 644,
+      "native_ok": true,
+      "visible_points": 339453,
+      "new_lux_tasks": 0,
+      "source_identity": {
+        "seed": 11002,
+        "revision": "scene-dev-v1",
+        "pid": 2616764,
+        "source_sha256": {
+          "ops/crossing_observe.py": "529bf806033de5abff1404953bec651bf8b8ab972a6c0bcf95f2040c920debe3",
+          "experimental/crossing/scene.py": "0696b305eb4499c48af15eefd26dc4b95074c2b4fd184e274f67f76a5762ef49",
+          "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf"
+        },
+        "stage": "zero-paid RGB-D blind-region measurement"
+      },
+      "input_sha256": {
+        "rgb.png": "5e7f52bd67e64b34c108d40422a7a78fd80e33cb738127f709ffe96ed6f2babb",
+        "depth.npy": "223c4ce3f8ed41350ad1597c9ac4f5b10c78c871a3002572b9224d50b4874730",
+        "mask.png": "dc126924261e64d212f88cce1d87027b6cd293fa0d84eae27ec504ab697350e8",
+        "dark.png": "870dc8003e3663729363ecc4c810021a6a847d590461bc10d805bfbd7569fd14"
+      },
+      "limitations": [
+        "Ideal target segmentation; passive-dark depth suppressed.",
+        "True far edges include the low >=4mm rear skirt; observed stone filter is >=4cm, as in the frozen pipeline."
+      ]
+    },
+    {
+      "schema": "beforestep-crossing-blindness/v1",
+      "seed": 11003,
+      "revision": "scene-dev-v1",
+      "camera_world": {
+        "camera_schema": "camera-snapshot/v2",
+        "body_name": "base_link",
+        "body_id": 1,
+        "local_pos": [
+          0.42,
+          0.0,
+          -0.00125
+        ],
+        "local_quat_wxyz": [
+          0.5958034399409956,
+          0.38081263234624513,
+          -0.38081263234624513,
+          -0.5958034399409956
+        ],
+        "world_pos": [
+          2.6518100799282407,
+          5.5800475194848356e-05,
+          0.3833184381350045
+        ],
+        "R_world_from_camera": [
+          [
+            7.730393154115056e-05,
+            0.41890825268043996,
+            -0.9080285622491848
+          ],
+          [
+            -0.9999999927566812,
+            0.00011615221845345802,
+            -3.154835573992987e-05
+          ],
+          [
+            9.225366534637569e-05,
+            0.9080285581108569,
+            0.41890825862517733
+          ]
+        ],
+        "fovy_deg": 70.0,
+        "image_width": 1600,
+        "image_height": 1200,
+        "intrinsics": {
+          "fx": 856.8888040452688,
+          "fy": 856.8888040452688,
+          "cx": 799.5,
+          "cy": 599.5,
+          "width": 1600,
+          "height": 1200
+        },
+        "robot_qpos": [
+          2.23180894291344,
+          2.3404572744702063e-05,
+          0.3840971272768311,
+          0.9999998407808094,
+          -4.610513844665794e-05,
+          -0.0005610852842702083,
+          3.867784084353402e-05,
+          -7.042227056599162e-05,
+          0.8505514083060661,
+          -1.6553532777359394,
+          0.019332898826910375,
+          0.0001552433550116577,
+          0.8506357852351467,
+          -1.6554499283846493,
+          0.01825944535983416,
+          1.3562912571125529e-05,
+          0.8473735677190836,
+          -1.6580773896766683,
+          0.003663161509318422,
+          -4.328631007105801e-05,
+          0.8475099852323519,
+          -1.6578990797037956,
+          0.00269401049988837
+        ],
+        "robot_qvel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "depth_convention": "positive_camera_minus_z"
+      },
+      "camera_to_near_m": 0.35044092270310356,
+      "leg_stance": "STANCE; reached through env.step_command, 50Hz control/500Hz physics",
+      "sun": {
+        "elevation_deg": 10.0,
+        "azimuth_deg": 47.89392716023078
+      },
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "truth": {
+            "near": 3.002289848379242,
+            "far": 3.2579523566086297,
+            "high": 0.12601261437679612,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.0087866920614172,
+            "far": 3.0997877461628556,
+            "high": 0.12591495592373597,
+            "points": 19078
+          },
+          "unseen_far_m": 0.15816461044577412,
+          "unseen_height_m": 9.765845306014542e-05
+        },
+        {
+          "track_y_m": 0.192,
+          "truth": {
+            "near": 3.0022510026313443,
+            "far": 3.2501447995363297,
+            "high": 0.13402959791735064,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.0087861039852135,
+            "far": 3.1050788289686664,
+            "high": 0.13404763623031865,
+            "points": 20899
+          },
+          "unseen_far_m": 0.14506597056766335,
+          "unseen_height_m": -1.8038312968010617e-05
+        }
+      ],
+      "crop_native_height_px": 611,
+      "native_ok": true,
+      "visible_points": 350935,
+      "new_lux_tasks": 0,
+      "source_identity": {
+        "seed": 11003,
+        "revision": "scene-dev-v1",
+        "pid": 2616764,
+        "source_sha256": {
+          "ops/crossing_observe.py": "529bf806033de5abff1404953bec651bf8b8ab972a6c0bcf95f2040c920debe3",
+          "experimental/crossing/scene.py": "0696b305eb4499c48af15eefd26dc4b95074c2b4fd184e274f67f76a5762ef49",
+          "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf"
+        },
+        "stage": "zero-paid RGB-D blind-region measurement"
+      },
+      "input_sha256": {
+        "rgb.png": "89cc5391d59a38f194745c2f48b9db607cf88f286f05741cb6811a91550fdba0",
+        "depth.npy": "76cba79d72555235b879f01a359229deb94645db4791ab538bdf99a359a12eb9",
+        "mask.png": "f7c6ae4d8abb862ba0faffef669b2ca66d4943237e709514f75bc666a80f3a45",
+        "dark.png": "630210c8dec698b3d0f967ab94704718f0b2d38c155e707cf80f37e3636b60e3"
+      },
+      "limitations": [
+        "Ideal target segmentation; passive-dark depth suppressed.",
+        "True far edges include the low >=4mm rear skirt; observed stone filter is >=4cm, as in the frozen pipeline."
+      ]
+    },
+    {
+      "schema": "beforestep-crossing-blindness/v1",
+      "seed": 11004,
+      "revision": "scene-dev-v1",
+      "camera_world": {
+        "camera_schema": "camera-snapshot/v2",
+        "body_name": "base_link",
+        "body_id": 1,
+        "local_pos": [
+          0.42,
+          0.0,
+          -0.00125
+        ],
+        "local_quat_wxyz": [
+          0.5958034399409956,
+          0.38081263234624513,
+          -0.38081263234624513,
+          -0.5958034399409956
+        ],
+        "world_pos": [
+          2.6434561461221486,
+          5.537108390915009e-05,
+          0.38331937222281404
+        ],
+        "R_world_from_camera": [
+          [
+            7.750440186099494e-05,
+            0.4189051971377534,
+            -0.9080299718643925
+          ],
+          [
+            -0.999999992691725,
+            0.00011672131517198592,
+            -3.150692888870266e-05
+          ],
+          [
+            9.278803627427168e-05,
+            0.9080299676701846,
+            0.4189052031226943
+          ]
+        ],
+        "fovy_deg": 70.0,
+        "image_width": 1600,
+        "image_height": 1200,
+        "intrinsics": {
+          "fx": 856.8888040452688,
+          "fy": 856.8888040452688,
+          "cx": 799.5,
+          "cy": 599.5,
+          "width": 1600,
+          "height": 1200
+        },
+        "robot_qpos": [
+          2.223455006495948,
+          2.2891268464313593e-05,
+          0.38409664807774735,
+          0.9999998398191322,
+          -4.637220238508901e-05,
+          -0.0005627677787630692,
+          3.877830392339961e-05,
+          -7.020970623659085e-05,
+          0.8505542753723925,
+          -1.6553525415597725,
+          0.01933497869380174,
+          0.0001553229851271138,
+          0.8506374702399719,
+          -1.6554482754503217,
+          0.01826741397290952,
+          2.128387095735504e-05,
+          0.8473690362299665,
+          -1.658078011099495,
+          0.003655868112252535,
+          -4.850265905787311e-05,
+          0.84751075775764,
+          -1.6579005185938425,
+          0.002696841967338297
+        ],
+        "robot_qvel": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "depth_convention": "positive_camera_minus_z"
+      },
+      "camera_to_near_m": 0.3583548360140596,
+      "leg_stance": "STANCE; reached through env.step_command, 50Hz control/500Hz physics",
+      "sun": {
+        "elevation_deg": 10.0,
+        "azimuth_deg": 57.684235761765464
+      },
+      "tracks": [
+        {
+          "track_y_m": -0.192,
+          "truth": {
+            "near": 3.0018109821362082,
+            "far": 3.253713152618404,
+            "high": 0.1230197600318295,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.0072094366453834,
+            "far": 3.0971433263759005,
+            "high": 0.12296883754233479,
+            "points": 17709
+          },
+          "unseen_far_m": 0.15656982624250348,
+          "unseen_height_m": 5.092248949471745e-05
+        },
+        {
+          "track_y_m": 0.192,
+          "truth": {
+            "near": 3.0147031355696785,
+            "far": 3.254832816921244,
+            "high": 0.1288538032348797,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          },
+          "observed": {
+            "near": 3.0179117748456443,
+            "far": 3.1108839272163884,
+            "high": 0.12890388829602434,
+            "points": 18319
+          },
+          "unseen_far_m": 0.14394888970485553,
+          "unseen_height_m": -5.008506114465017e-05
+        }
+      ],
+      "crop_native_height_px": 626,
+      "native_ok": true,
+      "visible_points": 319823,
+      "new_lux_tasks": 0,
+      "source_identity": {
+        "seed": 11004,
+        "revision": "scene-dev-v1",
+        "pid": 2616764,
+        "source_sha256": {
+          "ops/crossing_observe.py": "529bf806033de5abff1404953bec651bf8b8ab972a6c0bcf95f2040c920debe3",
+          "experimental/crossing/scene.py": "0696b305eb4499c48af15eefd26dc4b95074c2b4fd184e274f67f76a5762ef49",
+          "experimental/crossing/runtime.py": "a78b7a672862f8f7b16ccd4ffe55cd71b15703b20d0738e21bdfb837442542cf"
+        },
+        "stage": "zero-paid RGB-D blind-region measurement"
+      },
+      "input_sha256": {
+        "rgb.png": "89f505df79ce35cc3955d2850b73ba22d82a62cc41f8da6ed91f38cb38bda84f",
+        "depth.npy": "990ad379f79fcc3c22830ca37ac207cf20a5b071c30a9095dae58a7e9516620e",
+        "mask.png": "d45fe56a9d28015e711d821fc9d1fa3aa148f7c54c0334ebd2cdd630fd8cc1e5",
+        "dark.png": "c2effc4d155e681c8bd120325ea4ca9d28941e05d3a38f59deddb30b7e4da888"
+      },
+      "limitations": [
+        "Ideal target segmentation; passive-dark depth suppressed.",
+        "True far edges include the low >=4mm rear skirt; observed stone filter is >=4cm, as in the frozen pipeline."
+      ]
+    }
+  ]
+}

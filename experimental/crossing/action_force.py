@@ -60,9 +60,15 @@ class Script:
         centre=weights@pos
         lever=pos-centre;den=max(1e-6,float(np.sum(weights[:,None]*lever*lever)))
         yaw=moment[2]-((centre[0]-root[0])*force[1]-(centre[1]-root[1])*force[0])
+        # Feedback redistributes a fixed vertical resultant rather than adding
+        # net lift to the body when one supporting wheel loses normal load.
+        normals=weights*force[2]
+        if self.swing_leg is not None and self.unload_fraction>=1.:
+            normals=np.maximum(.25,normals+.3*(normals-loads[keep]))
+            normals*=force[2]/normals.sum()
         tau=required.copy()
         for k,j in enumerate(keep):
-            normal=weights[k]*force[2];horizontal=weights[k]*(force[:2]+yaw*np.array([-lever[k,1],lever[k,0]])/den)
+            normal=normals[k];horizontal=weights[k]*(force[:2]+yaw*np.array([-lever[k,1],lever[k,0]])/den)
             size=np.linalg.norm(horizontal)
             if size>.55*normal:horizontal*=.55*normal/size
             jac=np.zeros((3,e.model.nv));ang=np.zeros_like(jac);bid=mujoco.mj_name2id(e.model,mujoco.mjtObj.mjOBJ_BODY,LEG[j]+'_wheel_link')
@@ -188,7 +194,7 @@ class Script:
 
 def crossing(rec,geometry,settings=None):
     cfg={'lift_margin_m':.035,'landing_margin_m':.055,'rear_landing_margin_m':.025,'body_height_m':.38,'near_margin_m':.040,'support_narrow_y_m':-.015}
-    cfg.update(settings or {});rec.leg_kd=12.
+    cfg.update(settings or {});rec.leg_kd=5.
     near=min(geometry['near']);far=max(geometry['far']);height=max(geometry['high']);lateral=geometry.get('lateral',0.)
     # Approach is driven with normal stance; stop based on front wheel centre.
     e=rec.e;pose=stance_array(STANCE)

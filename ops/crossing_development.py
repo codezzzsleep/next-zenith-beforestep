@@ -11,11 +11,13 @@ sys.path.insert(0, str(ROOT))
 from experimental.crossing.runtime import OUT, sha, write
 
 
-def derive():
+def derive(through=None):
     jobs = json.loads((OUT / 'jobs.json').read_text())['jobs']
     attempts = []
     for folder in sorted((OUT / 'calibration').glob('gait-v*'),
                          key=lambda p: (int(re.match(r'gait-v(\d+)', p.name)[1]), p.name)):
+        if through is not None and int(re.match(r'gait-v(\d+)', folder.name)[1]) > through:
+            continue
         rows = []
         for result_path in sorted(folder.glob('*/result.json')):
             result = json.loads(result_path.read_text())
@@ -68,7 +70,8 @@ def derive():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--out', required=True)
+    parser.add_argument('--through', type=int)
     args = parser.parse_args()
-    data = derive()
+    data = derive(args.through)
     write(ROOT / args.out, data)
     print(json.dumps({key: data[key] for key in ['attempt_count', 'trial_count']}))

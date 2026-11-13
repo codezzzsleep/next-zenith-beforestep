@@ -28,13 +28,15 @@ def check(url,out):
             assert page.locator('#crossing-table button').count()==cells
             assert str(measured['trial_count']) in page.locator('#crossing-summary').inner_text()
             page.select_option('#crossing-method','high');page.locator('#crossing-table button[aria-label="高8厘米深20厘米，3场通过，查看记录"]').click()
-            assert '3 场合格通过 / 3 场' in page.locator('#crossing-detail').inner_text()
+            assert '3 场任务通过 / 3 场' in page.locator('#crossing-detail').inner_text()
             page.locator('#crossing-table button').last.click();assert '失稳' in page.locator('#crossing-detail').inner_text()
             page.select_option('#crossing-method','gait')
             assert page.locator('#crossing-table button').count()==cells
             group=next(g for g in measured['groups'] if g['method']=='gait' and g['height_m']==.10 and g['depth_m']==.15)
-            page.locator(f'#crossing-table button[aria-label="高10厘米深15厘米，{group["support_compliant_passed"]}场通过，查看记录"]').click()
+            page.locator(f'#crossing-table button[aria-label="高10厘米深15厘米，{group["passed"]}场通过，查看记录"]').click()
+            page.locator('#crossing-detail details summary').first.click()
             assert '实际指令轮不承重时' in page.locator('#crossing-detail').inner_text()
+            assert '按补充说明 1 通过' in page.locator('#crossing-gate').inner_text()
             assert page.locator('#crossing-rocks tbody tr').count()==3
             development=json.loads((ROOT/'evidence/crossing/development.json').read_text())
             assert page.locator('#crossing-development-attempt option').count()==development['attempt_count']
@@ -42,6 +44,10 @@ def check(url,out):
             assert '机身触石' in page.locator('#crossing-development-detail').inner_text()
             references=json.loads((ROOT/'evidence/crossing/references.json').read_text())
             assert page.locator('#crossing-references a').count()==len(references['verified'])
+            page.wait_for_function("document.querySelectorAll('#crossing-lux-table table').length===2")
+            lux=json.loads((ROOT/'evidence/crossing/development-lux-first.json').read_text())
+            assert page.locator('#crossing-lux-table table').first.locator('tbody tr').count()==lux['glb_successes']
+            assert '按规范 §12.4' in page.locator('.checkpoint').inner_text()
             overflow=page.evaluate('document.documentElement.scrollWidth>innerWidth');assert not overflow;assert not errors,errors;assert not http,http
             page.screenshot(path=str(out/f'{width}.png'),full_page=True)
             rows.append({'viewport':[width,height],'cells':cells,'three_method_switch':True,'actual_cell_details':True,'three_rock_comparisons':True,'development_failures_visible':True,'verified_fact_links':True,'horizontal_overflow':overflow,'console_errors':errors,'http_errors':http})

@@ -21,6 +21,11 @@ def stop(reason,seed):
     print(json.dumps(record),flush=True)
 
 if __name__=='__main__':
+    if json.loads(CrossingBudget().path.read_text()).get('threshold_generation_closed'):
+        event('remaining-development-v9',status='cancelled_by_addendum2',seeds=SEEDS,
+              reason='Low-threshold development and formal tests cancelled; collect existing tasks only')
+        print('Cancelled by Addendum 2; no simulation or task creation',flush=True)
+        sys.exit(0)
     event('remaining-development-v9',status='running',pid=os.getpid(),source='ops/crossing_remaining_development.py',seeds=SEEDS)
     for seed in SEEDS:
         report=ROOT/f'evidence/crossing/development-lux-{REVISION}-{seed}.json'

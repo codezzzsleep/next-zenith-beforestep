@@ -48,6 +48,8 @@ class CrossingBudget:
         if not self.gate.exists() or not json.loads(self.gate.read_text())['physical_gate_passed']:
             raise PhysicalGatePending('The measured physical gate has not passed; no HTTP create allowed')
         with self.locked() as data:
+            if data.get('threshold_generation_closed') and not metadata.get('scene', '').startswith('route/'):
+                raise CrossingStopped('Addendum 2 closes low-threshold generation permanently; route high rocks only')
             if data.get('stop', {}).get('new_creation_stopped'):
                 raise CrossingStopped('A SPEC stopping condition is recorded; collect known tasks only')
             old = next((row for row in data['tasks'] if row['identity'] == identity), None)

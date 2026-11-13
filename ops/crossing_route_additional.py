@@ -73,7 +73,7 @@ def execute(plan):
         if row['status']=='终态':continue
         if row['status']=='未开始' and datetime.now(timezone.utc)>=CUTOFF:
             row.update(status='终态',result='未开工：已过截止');write(PLAN,plan);continue
-        row.update(status='运行中',started_at=datetime.now(timezone.utc).isoformat(),pid=os.getpid());write(PLAN,plan)
+        row.update(status='运行中',pid=os.getpid());row.setdefault('started_at',datetime.now(timezone.utc).isoformat());write(PLAN,plan)
         passed=False
         for near in [9.,9.25,9.5]:
             for seed in [22001,22003,22004,22005]:

@@ -31,12 +31,15 @@ if __name__=='__main__':
             run([sys.executable,'ops/crossing_route_run.py','--vehicle','D','--reuse',str((base/'A/segment1').relative_to(ROOT))],'route-formal-D.log')
         record({'pid':os.getpid(),'phase':'D_terminal','result':str(base/'D/result.json'),'at_unix':time.time()})
         # Extra-scene worker begins before publication, independent of D outcome.
+        extra_process=None
         extra=ROOT/'ops/crossing_route_additional.py'
         if extra.exists():
             with (LIVE/'route-additional.log').open('a') as stream:
                 proc=subprocess.Popen([sys.executable,str(extra)],cwd=ROOT,stdout=stream,stderr=subprocess.STDOUT)
+                extra_process=proc
                 record({'pid':os.getpid(),'phase':'extra_started','child_pid':proc.pid,'at_unix':time.time()})
         for command in [[sys.executable,'ops/crossing_route_summary.py'],[sys.executable,'ops/crossing_route_text.py'],[sys.executable,'ops/crossing_route_report_assets.py'],[sys.executable,'ops/crossing_route_report.py'],
                         [sys.executable,'ops/crossing_route_publish.py','--stage','first-four-terminal','--message','Publish all four route outcomes without selecting results']]:
             subprocess.run(command,cwd=ROOT,check=True)
         record({'pid':os.getpid(),'phase':'first_published','at_unix':time.time()})
+        if extra_process is not None and extra_process.wait():raise RuntimeError('Additional worker interrupted; preserve its log and resume from terminal checks')

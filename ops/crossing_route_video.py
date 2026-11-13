@@ -48,7 +48,7 @@ def narrations():
         if summary['all_terminal']:
             accidents=[r for r in summary['rows'] if r['total_result']=='collision']
             if all(r['total_result'] in ('stopped','stuck') for r in summary['rows']):
-                seven+='换成 Lux3D 的想象，四辆车都没有到达，'+('没有一辆出事。' if not accidents else '实际接触按结果表保留。')
+                seven+='换成 Lux3D 的想象，四辆车'+('都停下了，' if all(r['total_result']=='stopped' for r in summary['rows']) else '都没有到达，')+('没有一辆出事。' if not accidents else '实际接触按结果表保留。')
             else:seven+='四车的实际结果逐项保留在表里。'
             seven+='我们把这个结果照实放在这里。'
         else:seven+='四车试验还在进行，结果表展示当前已经终态的运行。'

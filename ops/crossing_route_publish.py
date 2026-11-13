@@ -20,7 +20,7 @@ if __name__=='__main__':
     paths=['experimental/crossing/route',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_route_*.py')],
         'README.md','docs/story.md','docs/history/README-before-addendum2.md','docs/crossing.md','docs/report.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md',
         'docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.js','site/crossing.css']
-    paths+=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md','site/report.html','docs/hackathon-submission.md','docs/history/hackathon-submission-before-addendum3.md']
+    paths+=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/reviews/VIDEO-source-addendum3.md','docs/video.md','site/report.html','docs/hackathon-submission.md','docs/history/hackathon-submission-before-addendum3.md']
     if a.homepage:paths+=['site/index.html','site/home.css','site/home.js','site/home-assets','site/homepage-integration.json']
     if a.video:paths+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
     if a.pdf:paths+=['site/media/report.pdf','site/media/history/addendum2']
@@ -33,7 +33,7 @@ if __name__=='__main__':
     assert value(['git','ls-remote','origin','refs/heads/main']).split()[0]==state['main']
     state['main_verified']=True;save(state)
     copied=[]
-    extra=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md','site/report.html','docs/hackathon-submission.md']
+    extra=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/reviews/VIDEO-source-addendum3.md','docs/video.md','site/report.html','docs/hackathon-submission.md']
     if a.homepage:
         extra+=['site/index.html','site/home.css','site/home.js','site/homepage-integration.json']
         extra+=[str(p.relative_to(ROOT)) for p in (ROOT/'site/home-assets').rglob('*') if p.is_file()]

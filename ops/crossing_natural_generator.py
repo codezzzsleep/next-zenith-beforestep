@@ -1,5 +1,5 @@
 """Zero-paid fixture range calibration with smaller overlap beyond the real gate."""
-import copy,json,shutil,sys
+import argparse,copy,json,shutil,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path.insert(0,str(ROOT))
 import numpy as np
@@ -14,10 +14,13 @@ PARAMETERS={**copy.deepcopy(SCENE.GENERATOR),'revision':REVISION,'height_m':[.14
 
 
 if __name__=='__main__':
+    parser=argparse.ArgumentParser();parser.add_argument('--seed',type=int,nargs='+');args=parser.parse_args()
+    seeds=args.seed or SEEDS
     SCENE.GENERATOR=PARAMETERS
     SCENE.SOURCE_ROCKS=['moon_rock_03','rock_07']
-    rows=[]
-    for seed in SEEDS:
+    previous=ROOT/'evidence/crossing/diagnosis-generator-v9.json'
+    rows=json.loads(previous.read_text())['candidates'] if previous.exists() else []
+    for seed in seeds:
         folder=OUT/'development'/REVISION/f'seed-{seed}'
         if (folder/'generator-source/registration.json').exists():scene=json.loads((folder/'scene.json').read_text())
         else:
@@ -32,10 +35,11 @@ if __name__=='__main__':
             write(folder/'scene.json',scene)
             source=folder/'generator-source';source.mkdir(exist_ok=True)
             shutil.copyfile(Path(__file__),source/Path(__file__).name)
-            write(source/'registration.json',{'source_sha256':sha(Path(__file__)),'parameters':PARAMETERS,'seeds':SEEDS,
+            write(source/'registration.json',{'source_sha256':sha(Path(__file__)),'parameters':PARAMETERS,'seeds':seeds,
                                               'source_models':SCENE.SOURCE_ROCKS,'new_lux_tasks':0})
-        rows.append({'seed':seed,'dimensions_m':scene['dimensions_m'],'gap_m':scene['gap_m'],
+        row={'seed':seed,'dimensions_m':scene['dimensions_m'],'gap_m':scene['gap_m'],
                      'overlap_m':scene['dimensions_m']['width']-scene['gap_m'],
-                     'ridge_min_high_m':scene['ridge_min_high_m'],'truth_geometry':scene['truth_geometry']})
-        print(json.dumps(rows[-1]),flush=True)
+                     'ridge_min_high_m':scene['ridge_min_high_m'],'truth_geometry':scene['truth_geometry']}
+        if seed not in [r['seed'] for r in rows]:rows.append(row)
+        print(json.dumps(row),flush=True)
     write(ROOT/'evidence/crossing/diagnosis-generator-v9.json',{'parameters':PARAMETERS,'candidates':rows,'new_lux_tasks':0})

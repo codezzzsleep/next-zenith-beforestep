@@ -179,3 +179,8 @@ E是真值诊断，不是Lux3D成绩。两个深坎的E失败记录也保留，�
 当前继续零付费v9生成器标定：T宽1.10–1.20米、缺口0.90–1.00米，仍覆盖两端，保持高度必要带和浅/深范围。轮行可过的候选作废并保留，当前原有效开发仍只有两个浅场，旧深场不能充当正式负类。还没有四条正式达标证据、锚点、帧或最终PDF。
 
 [诊断完整数据](../evidence/crossing/diagnosis-summary.json) · [原36配准](../evidence/crossing/diagnosis-cached-poses-v1.json) · [观察初值诊断](../evidence/crossing/diagnosis-observed-pose-scene-dev-v8.json)
+
+## 窄门槛开发最新
+
+窄门槛候选 5 个，轮行可过而作废 1 个，有效 4 个。四有效 E/B 的逐场结果、首场真实 Lux 准入与 D 决定见窄门槛报告；本轮累计创建 35、GLB 成功 35，正式测试 0，未预注册。
+[窄门槛标定](reviews/RESULT_CROSSING_NARROW_GENERATOR.md)。

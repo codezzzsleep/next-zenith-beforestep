@@ -31,28 +31,358 @@
       "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/detour/result.json"
     },
     "wheel-fixed-center": {
-      "step_status": "未开始",
-      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-center/result.json"
+      "step_status": "终态",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-center/result.json",
+      "schema": "beforestep-crossing-route-wheel-trial/v1",
+      "stance": "fixed",
+      "lateral_m": 0.0,
+      "status": "stuck",
+      "arrived": false,
+      "sim_seconds": 240.00000000004897,
+      "time_limit_s": 240.0,
+      "contact": {
+        "physics_steps": 120000,
+        "contact_counts": {
+          "wheel_ground": 601250,
+          "wheel_threshold": 418410,
+          "body_stone": 0,
+          "unstable": 0
+        },
+        "steps_with_wheel_stone": 80109,
+        "max_tilt_deg": 22.533924160133076,
+        "failure": null
+      },
+      "final_base": [
+        9.106424786294602,
+        0.044040760359022324,
+        0.3830776876404871,
+        0.9999984885203792,
+        9.738339166149898e-06,
+        -0.0010312739596317416,
+        0.0013997628878449735
+      ],
+      "final_wheels": [
+        [
+          9.307319434499604,
+          -0.1483427605325609,
+          0.08690402650284737
+        ],
+        [
+          9.306306526460098,
+          0.23751877211058803,
+          0.08690077137750514
+        ],
+        [
+          8.917994058000902,
+          -0.15065224307914438,
+          0.08703896260787958
+        ],
+        [
+          8.917062012681837,
+          0.23768024682660047,
+          0.08709412952500037
+        ]
+      ],
+      "speed_cap_m_s": 0.15,
+      "check": "wheel_cannot_cross",
+      "passed": true,
+      "position": "center",
+      "new_lux_tasks": 0
     },
     "wheel-fixed-left": {
-      "step_status": "未开始",
-      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-left/result.json"
+      "step_status": "终态",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-left/result.json",
+      "schema": "beforestep-crossing-route-wheel-trial/v1",
+      "stance": "fixed",
+      "lateral_m": 0.23135614706318836,
+      "status": "stuck",
+      "arrived": false,
+      "sim_seconds": 240.00000000004897,
+      "time_limit_s": 240.0,
+      "contact": {
+        "physics_steps": 120000,
+        "contact_counts": {
+          "wheel_ground": 670068,
+          "wheel_threshold": 469852,
+          "body_stone": 0,
+          "unstable": 0
+        },
+        "steps_with_wheel_stone": 83955,
+        "max_tilt_deg": 21.67297171096634,
+        "failure": null
+      },
+      "final_base": [
+        9.11893305748469,
+        0.23551162876566206,
+        0.3829927624914555,
+        0.9992083358341696,
+        0.0001458640583214395,
+        -0.0016013653317370278,
+        -0.039750672349785354
+      ],
+      "final_wheels": [
+        [
+          9.303687884397974,
+          0.027307068666811186,
+          0.08694405764768758
+        ],
+        [
+          9.3341685772373,
+          0.4119103018009541,
+          0.08699830160799706
+        ],
+        [
+          8.915685735711847,
+          0.056659723414239645,
+          0.08692297145025607
+        ],
+        [
+          8.946039719540924,
+          0.4445455041357627,
+          0.08672853430930584
+        ]
+      ],
+      "speed_cap_m_s": 0.15,
+      "check": "wheel_cannot_cross",
+      "passed": true,
+      "position": "left",
+      "new_lux_tasks": 0
     },
     "wheel-fixed-right": {
-      "step_status": "未开始",
-      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-right/result.json"
+      "step_status": "终态",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-fixed-right/result.json",
+      "schema": "beforestep-crossing-route-wheel-trial/v1",
+      "stance": "fixed",
+      "lateral_m": -0.23135614706318836,
+      "status": "stuck",
+      "arrived": false,
+      "sim_seconds": 240.00000000004897,
+      "time_limit_s": 240.0,
+      "contact": {
+        "physics_steps": 120000,
+        "contact_counts": {
+          "wheel_ground": 616944,
+          "wheel_threshold": 369552,
+          "body_stone": 0,
+          "unstable": 0
+        },
+        "steps_with_wheel_stone": 86894,
+        "max_tilt_deg": 21.96739347773091,
+        "failure": null
+      },
+      "final_base": [
+        9.108226764967624,
+        -0.24639540719912642,
+        0.3830452908183768,
+        0.999969275062179,
+        -5.8562570732649635e-06,
+        -0.0014367366140847627,
+        0.007706145938475441
+      ],
+      "final_wheels": [
+        [
+          9.31163183264764,
+          -0.43618615655233817,
+          0.08692850998988741
+        ],
+        [
+          9.305712358916953,
+          -0.050425575163855506,
+          0.08698168491815182
+        ],
+        [
+          8.922428805917889,
+          -0.44350643116367616,
+          0.08687494898896862
+        ],
+        [
+          8.916768195556811,
+          -0.05509399924213056,
+          0.08681975462824706
+        ]
+      ],
+      "speed_cap_m_s": 0.15,
+      "check": "wheel_cannot_cross",
+      "passed": true,
+      "position": "right",
+      "new_lux_tasks": 0
     },
     "wheel-high-center": {
-      "step_status": "未开始",
-      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-center/result.json"
+      "step_status": "终态",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-center/result.json",
+      "schema": "beforestep-crossing-route-wheel-trial/v1",
+      "stance": "high",
+      "lateral_m": 0.0,
+      "status": "stuck",
+      "arrived": false,
+      "sim_seconds": 240.00000000004897,
+      "time_limit_s": 240.0,
+      "contact": {
+        "physics_steps": 120000,
+        "contact_counts": {
+          "wheel_ground": 593182,
+          "wheel_threshold": 361356,
+          "body_stone": 0,
+          "unstable": 0
+        },
+        "steps_with_wheel_stone": 66762,
+        "max_tilt_deg": 22.783003674405226,
+        "failure": null
+      },
+      "final_base": [
+        9.115521439695684,
+        0.11897240458844846,
+        0.46591581451869,
+        0.9999869453568219,
+        -6.006515419579302e-07,
+        -4.4005973192992084e-05,
+        -0.0051095184748274226
+      ],
+      "final_wheels": [
+        [
+          9.310056713268507,
+          -0.07601775179543732,
+          0.08690613828593928
+        ],
+        [
+          9.313883297441581,
+          0.309967865758414,
+          0.08688298457726874
+        ],
+        [
+          8.917195094847491,
+          -0.07291595240691787,
+          0.08684482492232962
+        ],
+        [
+          8.920885869648439,
+          0.31501052260448476,
+          0.08683770339988975
+        ]
+      ],
+      "speed_cap_m_s": 0.15,
+      "check": "wheel_cannot_cross",
+      "passed": true,
+      "position": "center",
+      "new_lux_tasks": 0
     },
     "wheel-high-left": {
-      "step_status": "未开始",
-      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-left/result.json"
+      "step_status": "终态",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-left/result.json",
+      "schema": "beforestep-crossing-route-wheel-trial/v1",
+      "stance": "high",
+      "lateral_m": 0.23135614706318836,
+      "status": "stuck",
+      "arrived": false,
+      "sim_seconds": 240.00000000004897,
+      "time_limit_s": 240.0,
+      "contact": {
+        "physics_steps": 120000,
+        "contact_counts": {
+          "wheel_ground": 573578,
+          "wheel_threshold": 449776,
+          "body_stone": 0,
+          "unstable": 0
+        },
+        "steps_with_wheel_stone": 84290,
+        "max_tilt_deg": 21.911422738764415,
+        "failure": null
+      },
+      "final_base": [
+        9.121709718495431,
+        0.2014806409537801,
+        0.465804902902888,
+        0.9996586802038446,
+        1.5258496109856736e-05,
+        -0.0005907298101413646,
+        -0.026118458962559238
+      ],
+      "final_wheels": [
+        [
+          9.308371749549902,
+          -0.0014413538370458348,
+          0.08699830270354968
+        ],
+        [
+          9.328114405407673,
+          0.38402023245155187,
+          0.08692019717423911
+        ],
+        [
+          8.915561677817884,
+          0.01734200525813446,
+          0.08673377902280903
+        ],
+        [
+          8.936227646208943,
+          0.4060841160754854,
+          0.08684303156294668
+        ]
+      ],
+      "speed_cap_m_s": 0.15,
+      "check": "wheel_cannot_cross",
+      "passed": true,
+      "position": "left",
+      "new_lux_tasks": 0
     },
     "wheel-high-right": {
-      "step_status": "未开始",
-      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-right/result.json"
+      "step_status": "终态",
+      "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/prechecks/x9.00-seed22001/wheel-high-right/result.json",
+      "schema": "beforestep-crossing-route-wheel-trial/v1",
+      "stance": "high",
+      "lateral_m": -0.23135614706318836,
+      "status": "stuck",
+      "arrived": false,
+      "sim_seconds": 240.00000000004897,
+      "time_limit_s": 240.0,
+      "contact": {
+        "physics_steps": 120000,
+        "contact_counts": {
+          "wheel_ground": 608620,
+          "wheel_threshold": 361520,
+          "body_stone": 0,
+          "unstable": 0
+        },
+        "steps_with_wheel_stone": 67395,
+        "max_tilt_deg": 22.179273565048156,
+        "failure": null
+      },
+      "final_base": [
+        9.115942901682365,
+        -0.2502779919614866,
+        0.46591821756959956,
+        0.9999672174440198,
+        8.902058778746998e-06,
+        -0.00030032286830894043,
+        0.008091586012251056
+      ],
+      "final_wheels": [
+        [
+          9.315810529877968,
+          -0.44001449298456174,
+          0.08698550315445087
+        ],
+        [
+          9.309309453685996,
+          -0.05414217123177293,
+          0.08696954197723158
+        ],
+        [
+          8.92262947294618,
+          -0.44757489136310286,
+          0.08679383009290359
+        ],
+        [
+          8.916170294231481,
+          -0.05934671727666065,
+          0.08668217623623677
+        ]
+      ],
+      "speed_cap_m_s": 0.15,
+      "check": "wheel_cannot_cross",
+      "passed": true,
+      "position": "right",
+      "new_lux_tasks": 0
     }
   },
   "all_terminal": false,

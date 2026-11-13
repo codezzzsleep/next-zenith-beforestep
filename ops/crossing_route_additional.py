@@ -75,7 +75,7 @@ def execute(plan):
             row.update(status='终态',result='未开工：已过截止');write(PLAN,plan);continue
         row.update(status='运行中',pid=os.getpid());row.setdefault('started_at',datetime.now(timezone.utc).isoformat());write(PLAN,plan)
         passed=False
-        for near in [9.,9.25,9.5]:
+        for near in row.get('candidate_near_x_m',[9.,9.25,9.5]):
             for seed in [22001,22003,22004,22005]:
                 scene=build(near,seed,row['base_scene']);select(scene)
                 row.update(near_x_m=near,threshold_seed=seed);write(PLAN,plan);commit_scene(scene)
@@ -87,7 +87,9 @@ def execute(plan):
                 report=aggregate(scene)
                 if any(not report['checks'][f'wheel-{s}-{p}'].get('passed') for s in ['fixed','high'] for p in ['center','left','right']):continue
                 run_one(scene,'leg');run_one(scene,'detour');report=aggregate(scene)
-                row['placement_attempts'].append({'near_x_m':near,'seed':seed,'precheck':str((EVIDENCE/f'precheck-{scene["name"]}.json').relative_to(ROOT)),'all_four_passed':report['all_four_passed']});write(PLAN,plan)
+                snapshot=EVIDENCE/'precheck-history'/scene['name']/f'{scene["attempt"]}.json'
+                write(snapshot,report)
+                row['placement_attempts'].append({'near_x_m':near,'seed':seed,'precheck':str(snapshot.relative_to(ROOT)),'all_four_passed':report['all_four_passed']});write(PLAN,plan)
                 if report['all_four_passed']:passed=True;break
                 # A detour obstruction is addressed by moving the gate back,
                 # rather than changing the original high rocks or method.
@@ -116,6 +118,7 @@ def execute(plan):
         subprocess.run([sys.executable,'ops/crossing_route_report_assets.py','--usage-only'],cwd=ROOT,check=True)
         subprocess.run([sys.executable,'ops/crossing_route_report.py'],cwd=ROOT,check=True)
         subprocess.run([sys.executable,'ops/crossing_route_publish.py','--stage',scene['name']+'-terminal','--message','Publish additional route outcomes from saved evidence'],cwd=ROOT,check=True)
+    plan['selection_complete']=True;write(PLAN,plan)
     state=json.loads(progress.read_text());state['steps']['extra_scenes'].update(status='终态',result=str(PLAN.relative_to(ROOT)));write(progress,state)
 
 if __name__=='__main__':

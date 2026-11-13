@@ -26,18 +26,19 @@ if __name__=='__main__':
         while not all(state[k] for k in ['video','pdf','handoff']):
             terminal=(ROUTE/'stress_v8_gate/D/result.json').exists()
             plan=json.loads((EVIDENCE/'additional-scenes.json').read_text()) if (EVIDENCE/'additional-scenes.json').exists() else {'scenes':[]}
-            all_extra=bool(plan['scenes']) and all(r['status']=='终态' for r in plan['scenes'])
+            all_extra=bool(plan['scenes']) and plan.get('selection_complete',True) and all(r['status']=='终态' for r in plan['scenes'])
             for entry in plan['scenes']:
-                if entry['status']!='终态' or entry['scene'] in state['extra_archives']:continue
+                if entry['status']!='终态' or (entry['scene']+'-'+str(entry['near_x_m'])) in state['extra_archives']:continue
                 folder=ROUTE/entry['scene']
                 from ops.crossing_route_package import package
                 files=[p for p in folder.rglob('*') if p.is_file()]
-                artifact=package('additional-scene-'+entry['scene'],files)
+                key=entry['scene']+'-'+str(entry['near_x_m'])
+                artifact=package('additional-scene-'+key,files)
                 index=EVIDENCE/'additional-archive-index.json'
                 existing=json.loads(index.read_text()) if index.exists() else {'archives':[]}
                 existing['archives'].append(artifact);write(index,existing)
-                call('crossing_route_publish.py','--stage',entry['scene']+'-raw','--message','Retain the complete additional scene observations and physics records')
-                state['extra_archives'].append(entry['scene']);write(LIVE/'addendum3-delivery.json',state)
+                call('crossing_route_publish.py','--stage',key+'-raw','--message','Retain the complete additional scene observations and physics records')
+                state['extra_archives'].append(key);write(LIVE/'addendum3-delivery.json',state)
             if not state['pdf'] and ((terminal and all_extra) or datetime.now(timezone.utc)>=DEADLINE):
                 call('crossing_route_summary.py');call('crossing_route_text.py');call('crossing_route_report_assets.py','--usage-only');call('crossing_route_report.py')
                 call('crossing_route_pdf.py');call('crossing_route_publish.py','--stage','pdf-addendum3','--message','Publish the one updated complete report and retain its prior PDF','--pdf')

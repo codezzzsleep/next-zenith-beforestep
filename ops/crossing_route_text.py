@@ -38,7 +38,15 @@ if __name__=='__main__':
     support=gate['support_diagnostic'];chapter+=f'动作按三轮支撑设计，单场两轮承重累计最长 {support["maximum_trial_total_two_loaded_wheels_s"]:.3f} 秒；最长连续片段 {support["longest_two_loaded_wheels_s"]:.3f} 秒。这是保留的支撑诊断，不增加闸门条件。结果不好看也不移动正式场景、不重跑终态、不改包络或准入阈值。原门槛预注册和十二场测试取消；同路两石的未完成项目由进度和结果表明确标出。\n\n'
     chapter+='[交互页面](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) · [四车原始结果](../evidence/crossing/route/summary.json) · [负责人故事原文](story.md) · [补充说明 2](reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md)。\n'
     (ROOT/'docs/crossing.md').write_text('# 轮腿与想象\n\n'+chapter+'\n## 附录\n\n学习模型与 Arena 停在 2747/4000，未完成；既有版本和失败证据保留。\n')
-    p=ROOT/'docs/report.md';text=p.read_text();marker='<!-- PHOTO-STORY-REPORT-START -->\n';head,tail=text.split(marker,1);_,tail=tail.split('\n\n',1);text=head+marker+opening+'\n\n'+tail
+    p=ROOT/'docs/report.md';text=p.read_text()
+    text=re.sub(r'<!-- ROUTE-ACTUAL-SUMMARY-START -->.*?<!-- ROUTE-ACTUAL-SUMMARY-END -->\n*','',text,flags=re.S)
+    marker='<!-- PHOTO-STORY-REPORT-START -->\n';head,tail=text.split(marker,1);_,tail=tail.split('\n\n',1)
+    actual=summary['state']+'。'+summary['legs_necessity']+' '+summary['imagination_necessity']
+    for extra in summary.get('additional_scenes',[]):
+        for r in extra.get('rows',[]):
+            if r['vehicle'] in ['B','C'] and r['total_result']=='arrived':actual+=f' 追加 {extra["scene"]} 的 {r["vehicle"]} 用 {r["sim_seconds"]:.2f} 仿真秒到达，该场不靠想象也到了。'
+    note='<!-- ROUTE-ACTUAL-SUMMARY-START -->\n上述两种必要性是要检验的说法，结论以实际结果为准。**当前实测：**'+actual+'\n<!-- ROUTE-ACTUAL-SUMMARY-END -->\n\n'
+    text=head+marker+opening+'\n\n'+note+tail
     text=text.replace('不作为泛化证据','不作为样本外证据')
     if '\n## 轮腿跨越\n' in text:text=text.split('\n## 轮腿跨越\n')[0]
     if '\n## 轮腿与想象\n' in text:text=text.split('\n## 轮腿与想象\n')[0]

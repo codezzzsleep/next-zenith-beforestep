@@ -112,7 +112,11 @@ def make_shot(shot,branch):
     if shot==1:
         source=ROOT/'site/media/award/first.png'
         encode(['-loop','1','-framerate','30','-i',str(source)],FIT+",zoompan=z='1+0.0003*on':d=1:s=1920x1080:fps=30",path,duration,'机器人第一眼：原始相机图像','1')
-    elif shot in [2,3,4,8,9]:page_clip(str(shot),path,duration)
+    elif shot in [2,3,4,8]:page_clip(str(shot),path,duration)
+    elif shot==9:
+        base=OUT/'shots/9-page.mp4';page_clip('9',base,duration)
+        links=draw('作品 https://codezzzsleep.github.io/next-zenith-beforestep/\n源码 https://github.com/codezzzsleep/next-zenith-beforestep','9-links').replace('fontsize=30','fontsize=32').replace('x=36:y=35','x=(w-text_w)/2:y=850')
+        encode(['-i',str(base)],FIT+links,path,duration,shot='9-end-links')
     elif shot==5:
         parts=[OUT/'shots/5-worlds.mp4',OUT/'shots/5-drive.mp4',OUT/'shots/5-overview.mp4']
         page_clip('5',parts[0],12)
@@ -121,6 +125,9 @@ def make_shot(shot,branch):
             encode(['-i',str(p)],f'setpts=(PTS-STARTPTS)*{5/length:.10f},fps=30,'+FIT,out,5,'R1 原运行：真实物理轨迹回放（加速）','5-'+source)
         concat(parts,path,'5')
     elif shot==6:
+        for group in ['wheel-stuck','leg-cross','sill-close']:
+            check=FRAMES/group/'index.json'
+            if not check.exists() or json.loads(check.read_text()).get('status')!='complete':raise RuntimeError(group+' frame set still running; leave this shot pending')
         left=OUT/'shots/6-wheel.mp4';right=OUT/'shots/6-leg.mp4';split=OUT/'shots/6-split.mp4';close=OUT/'shots/6-close.mp4'
         wheel=read(str((FRAMES/'wheel-stuck/index.json').relative_to(ROOT)));leg=read(str((FRAMES/'leg-cross/index.json').relative_to(ROOT)))
         if wheel['threshold_sha256']!=leg['threshold_sha256'] or wheel['scene_sha256']!=leg['scene_sha256']:raise RuntimeError('Shot 6 sources are not the same scene and sill')
@@ -129,7 +136,8 @@ def make_shot(shot,branch):
         length=sum(f['camera']=='side_follow' for f in leg['frames'])/30
         speed=length/22
         frame_clip('leg-cross','side_follow',right,22,f'逐轮跨越：同场同石预检查（{speed:.1f}×）')
-        filtergraph='[0:v]scale=960:540,pad=960:1080:0:250:color=0x080909[l];[1:v]scale=960:540,pad=960:1080:0:250:color=0x080909[r];[l][r]hstack=inputs=2[v]'
+        banner=draw('统计：独立能力标定\n画面：同场同石预检查（非四车正式运行）','6-global')[1:].replace('fontsize=30','fontsize=38')
+        filtergraph='[0:v]scale=960:540,pad=960:1080:0:250:color=0x080909[l];[1:v]scale=960:540,pad=960:1080:0:250:color=0x080909[r];[l][r]hstack=inputs=2[v0];[v0]'+banner+'[v]'
         run(['ffmpeg','-hide_banner','-y','-filter_complex_threads','1','-i',str(left),'-i',str(right),'-filter_complex',filtergraph,'-map','[v]','-t','22','-an','-c:v','libx264','-preset','veryfast','-crf','21','-threads','1','-pix_fmt','yuv420p',str(split)],'6-split')
         # A complete front-right lift/swing/landing in the recorded close camera.
         import numpy as np
@@ -192,8 +200,9 @@ def render():
                     p=FRAMES/name/'index.json';inputs[name]=sha(p) if p.exists() else None
             signature=hashlib.sha256(json.dumps(inputs,sort_keys=True).encode()).hexdigest();meta=OUT/'shots'/f'{shot}.json';path=OUT/'shots'/f'{shot}.mp4'
             old=json.loads(meta.read_text()) if meta.exists() else {}
-            if old.get('signature')!=signature or not path.exists():
-                path=make_shot(shot,branch);write(meta,{'shot':shot,'signature':signature,'inputs':inputs,'path':str(path.relative_to(ROOT)),'sha256':sha(path)})
+            layout_revision=2 if shot==9 else 1
+            if old.get('signature')!=signature or old.get('layout_revision',1)!=layout_revision or not path.exists():
+                path=make_shot(shot,branch);write(meta,{'shot':shot,'signature':signature,'layout_revision':layout_revision,'renderer_sha256':sha(Path(__file__)),'inputs':inputs,'path':str(path.relative_to(ROOT)),'sha256':sha(path)})
             done.append(path)
         except Exception as error:pending.append({'shot':shot,'reason':str(error)});print(json.dumps(pending[-1],ensure_ascii=False),flush=True)
     write(OUT/'render-state.json',{'pid':os.getpid(),'completed_shots':[int(p.stem) for p in done],'pending':pending,'branch':branch})

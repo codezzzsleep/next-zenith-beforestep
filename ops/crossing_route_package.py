@@ -60,12 +60,25 @@ if __name__=='__main__':
         write(EVIDENCE/'first-scene-archive-index.json',{'schema':'beforestep-route-complete-records/v1','scene':'stress_v8_gate','archives':archives,
             'all_raw_fields_retained':['RGB/depth','uploaded images','task IDs and admission','qpos/qvel and 16 joints','500Hz contacts','every rehearsal','complete physical handoff','program/cloud wait attempts']})
     else:
-        output=handoff_partial();archives=[package('handoff-final',[p for p in output.rglob('*') if p.is_file()])]
-        pending=[]
+        output=handoff_partial();archives=[]
+        core=[p for p in output.rglob('*') if p.is_file() and 'frames' not in p.relative_to(output).parts]
+        archives.append(package('handoff-final-core',core))
+        for folder in sorted((output/'frames').iterdir()):
+            if not folder.is_dir():continue
+            chunks=[];part=[];size=0
+            for file in sorted(p for p in folder.rglob('*') if p.is_file() and p.suffix!='.tmp'):
+                if part and size+file.stat().st_size>900_000_000:chunks.append(part);part=[];size=0
+                part.append(file);size+=file.stat().st_size
+            if part:chunks.append(part)
+            for number,files in enumerate(chunks,1):archives.append(package(f'handoff-final-{folder.name}-{number:02d}',files))
+        pending=[];not_applicable=[]
         for v in ['A','B','C','D']:
             if not (output/f'{v}-trajectory.json').exists():pending.append(v+' trajectory absent; no terminal physical recording')
-        for label in ['A-actual','B-actual','D-actual','D-rehearsal','D-closeup']:
+        for label in ['wheel-stuck','leg-cross','sill-close','connect','A-actual','B-actual','D-actual','D-rehearsal','D-closeup']:
             p=output/'frames'/label/'index.json'
-            if not p.exists() or json.loads(p.read_text())['status'] not in ('complete','not_applicable'):pending.append(label+' frames absent; see actual run outcome')
-        write(EVIDENCE/'handoff-index.json',{'schema':'beforestep-route-handoff-index/v1','complete':not pending,'archives':archives,'pending':pending})
+            data=json.loads(p.read_text()) if p.exists() else {}
+            if data.get('status')=='not_applicable':not_applicable.append({'clip':label,'reason':data['reason'],'source':data.get('formal_result_source')})
+            elif data.get('status')!='complete':pending.append(label+' frames absent; see actual run outcome')
+        write(EVIDENCE/'handoff-index.json',{'schema':'beforestep-route-handoff-index/v1','complete':not pending,'archives':archives,'pending':pending,
+            'not_applicable':not_applicable,'archive_partition':'Core plus frame clips, with each raw partition capped at 900 MB; every member verified by SHA'})
     print(json.dumps({'stage':a.stage,'archive':archive['path'] if a.stage=='B-handoff' else [r['path'] for r in archives]},ensure_ascii=False),flush=True)

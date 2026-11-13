@@ -84,21 +84,23 @@ def child(scene,vehicle,reuse=None,probe=False):
     write(folder/'result.json',result)
     print(json.dumps({k:result[k] for k in ('vehicle','first_segment_result','second_segment_result','total_result','sim_seconds','looks')},ensure_ascii=False),flush=True)
 
-def compare_r1(probe):
-    old=ROOT/'evidence/reviews/beforestep_r1/lux/original_b'
+def compare_r1(probe,source=None):
+    old=Path(source).resolve() if source else ROOT/'evidence/reviews/beforestep_r1/lux/original_b'
     rows=[]
     for current in sorted((probe/'segment1/looks/look1').glob('T*/lux_request.json')):
-        target=current.parent.name;new=json.loads(current.read_text());original=json.loads((old/f'looks/look1/{target}/lux_request.json').read_text())
+        target=current.parent.name;new=json.loads(current.read_text());former_request=old/f'looks/look1/{target}/lux_request.json'
+        original=json.loads(former_request.read_text()) if former_request.exists() else {'items':[]}
         old_items={r['id']:r for r in original['items']}
         for item in new['items']:
-            former=old_items[item['id']]
-            paths=item.get('paths') or [item['path']];old_paths=former.get('paths') or [former['path']]
+            former=old_items.get(item['id'],{})
+            paths=item.get('paths') or [item['path']];old_paths=(former.get('paths') or [former['path']]) if former else []
             same=len(paths)==len(old_paths) and all(sha(ROOT/p)==sha(ROOT/q) for p,q in zip(paths,old_paths))
             rows.append({'target':target,'sample':item['id'],'equal_uploaded_bytes':same,
                 'new_sha256':[sha(ROOT/p) for p in paths],'r1_sha256':[sha(ROOT/p) for p in old_paths]})
-    report={'schema':'beforestep-crossing-route-r1-reuse/v1','comparisons':rows,'all_uploaded_inputs_equal':len(rows)==12 and all(r['equal_uploaded_bytes'] for r in rows),
+    report={'schema':'beforestep-crossing-route-r1-reuse/v1','comparisons':rows,'all_uploaded_inputs_equal':bool(rows) and (source is not None or len(rows)==12) and all(r['equal_uploaded_bytes'] for r in rows),
         'r1_source':str(old.relative_to(ROOT)),'current_source':str(probe.relative_to(ROOT)),'new_lux_tasks':0}
-    write(EVIDENCE/'input-reuse-stress_v8_gate.json',report)
+    name=probe.parent.name
+    report['comparison_source']=str(old.relative_to(ROOT));write(EVIDENCE/f'input-reuse-{name}.json',report)
     if report['all_uploaded_inputs_equal']:
         for current in sorted((probe/'segment1/looks/look1').glob('T*/lux_request.json')):
             original=json.loads((old/f'looks/look1/{current.parent.name}/lux_result.json').read_text())
@@ -175,7 +177,7 @@ def preserve_attempt(folder,number):
 
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--scene',default='stress_v8_gate');ap.add_argument('--vehicle',choices=['C','B','A','D'],default='A')
-    ap.add_argument('--child',action='store_true');ap.add_argument('--probe',action='store_true');ap.add_argument('--reuse');a=ap.parse_args()
+    ap.add_argument('--child',action='store_true');ap.add_argument('--probe',action='store_true');ap.add_argument('--reuse');ap.add_argument('--comparison-source');a=ap.parse_args()
     scene=scene_for(a.scene)
     check=json.loads((EVIDENCE/f'precheck-{a.scene}.json').read_text())
     assert check['all_four_passed'],'All four zero-paid prechecks must pass first'
@@ -209,7 +211,7 @@ if __name__=='__main__':
         preserve_attempt(folder,number)
         if a.probe:
             assert code==10,'Probe must stop before creating any cloud tasks'
-            report=compare_r1(folder);print(json.dumps(report,ensure_ascii=False));break
+            report=compare_r1(folder,a.comparison_source);print(json.dumps(report,ensure_ascii=False));break
         if code==0 and (folder/'result.json').exists():
             state=json.loads(progress.read_text());state['steps'][a.vehicle].update(status='终态',result=str((folder/'result.json').relative_to(ROOT)));write(progress,state);break
         if code!=10:raise RuntimeError(f'Program interruption {code}; preserve {log}, repair before repeating')

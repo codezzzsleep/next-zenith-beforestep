@@ -98,12 +98,15 @@ def execute(plan):
         row['prechecks_commit']=commit_scene(scene);write(PLAN,plan)
         for vehicle in ['C','B','A','D']:
             command=[sys.executable,'ops/crossing_route_run.py','--scene',scene['name'],'--vehicle',vehicle]
-            if vehicle in ['A','D']:
-                reuse=ROUTE/scene['name']/('A' if vehicle=='D' else 'original-input-probe')/'segment1'
-                if vehicle=='D':command+=['--reuse',str(reuse.relative_to(ROOT))]
-                # A's first input must be measured here; frozen byte-validation
-                # accepts original models only if the uploaded inputs are equal.
-                elif row.get('original_run'):command+=['--reuse',row['original_run']]
+            if vehicle=='A':
+                probe=ROUTE/scene['name']/'input-probe/segment1'
+                identity=EVIDENCE/f'input-reuse-{scene["name"]}.json'
+                if not identity.exists():
+                    probe_command=[sys.executable,'ops/crossing_route_run.py','--scene',scene['name'],'--vehicle','A','--probe']
+                    if row.get('original_run'):probe_command+=['--comparison-source',row['original_run']]
+                    subprocess.run(probe_command,cwd=ROOT,check=True)
+                command+=['--reuse',str(probe.relative_to(ROOT))]
+            elif vehicle=='D':command+=['--reuse',str((ROUTE/scene['name']/'A/segment1').relative_to(ROOT))]
             subprocess.run(command,cwd=ROOT,check=True)
         results=[json.loads((ROUTE/scene['name']/v/'result.json').read_text()) for v in ['A','B','C','D']]
         output=EVIDENCE/f'summary-{scene["name"]}.json';write(output,{'scene':scene['name'],'all_terminal':True,'rows':results})

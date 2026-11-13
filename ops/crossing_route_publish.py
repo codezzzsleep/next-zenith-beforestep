@@ -13,16 +13,17 @@ def save(state):
     (PRIVATE/(state['stage']+'.json')).write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n')
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');ap.add_argument('--homepage',action='store_true');ap.add_argument('--video',action='store_true');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');ap.add_argument('--homepage',action='store_true');ap.add_argument('--video',action='store_true');ap.add_argument('--pdf',action='store_true');a=ap.parse_args()
     PRIVATE.mkdir(parents=True,exist_ok=True)
     publication_lock=(PRIVATE/'publication.lock').open('a');fcntl.flock(publication_lock,fcntl.LOCK_EX)
     state={'stage':a.stage,'status':'running'};save(state)
     paths=['experimental/crossing/route',*[str(p.relative_to(ROOT)) for p in ROOT.glob('ops/crossing_route_*.py')],
         'README.md','docs/story.md','docs/history/README-before-addendum2.md','docs/crossing.md','docs/report.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md',
         'docs/reviews/RESULT_WHEELLEG_CROSSING.md','evidence/crossing','site/crossing.html','site/crossing.js','site/crossing.css']
-    paths+=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md']
+    paths+=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md','site/report.html','docs/hackathon-submission.md','docs/history/hackathon-submission-before-addendum3.md']
     if a.homepage:paths+=['site/index.html','site/home.css','site/home.js','site/home-assets','site/homepage-integration.json']
     if a.video:paths+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
+    if a.pdf:paths+=['site/media/report.pdf','site/media/history/addendum2']
     budget=json.loads((ROOT/'outputs/generation/crossing-budget.json').read_text())
     paths += ['assets/candidates/'+str(r['task_id']) for r in budget['tasks'] if r.get('task_id') and r['status']=='ok']
     run(['git','diff','--check']);run(['git','add',*paths])
@@ -32,11 +33,12 @@ if __name__=='__main__':
     assert value(['git','ls-remote','origin','refs/heads/main']).split()[0]==state['main']
     state['main_verified']=True;save(state)
     copied=[]
-    extra=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md']
+    extra=['docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','docs/video.md','site/report.html','docs/hackathon-submission.md']
     if a.homepage:
         extra+=['site/index.html','site/home.css','site/home.js','site/homepage-integration.json']
         extra+=[str(p.relative_to(ROOT)) for p in (ROOT/'site/home-assets').rglob('*') if p.is_file()]
     if a.video:extra+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
+    if a.pdf:extra+=['site/media/report.pdf']+[str(p.relative_to(ROOT)) for p in (ROOT/'site/media/history/addendum2').rglob('*') if p.is_file()]
     for relative in extra:
         destination=relative.removeprefix('site/');target=PAGES/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/relative,target);copied.append(destination)
     for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','README.md','docs/history/README-before-addendum2.md','docs/report.md','docs/story.md','docs/crossing.md',

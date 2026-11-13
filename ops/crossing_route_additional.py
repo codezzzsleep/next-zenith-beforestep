@@ -111,6 +111,10 @@ def execute(plan):
         results=[json.loads((ROUTE/scene['name']/v/'result.json').read_text()) for v in ['A','B','C','D']]
         output=EVIDENCE/f'summary-{scene["name"]}.json';write(output,{'scene':scene['name'],'all_terminal':True,'rows':results})
         row.update(status='终态',result=str(output.relative_to(ROOT)));write(PLAN,plan)
+        for script in ['crossing_route_summary.py','crossing_route_text.py']:
+            subprocess.run([sys.executable,'ops/'+script],cwd=ROOT,check=True)
+        subprocess.run([sys.executable,'ops/crossing_route_report_assets.py','--usage-only'],cwd=ROOT,check=True)
+        subprocess.run([sys.executable,'ops/crossing_route_report.py'],cwd=ROOT,check=True)
         subprocess.run([sys.executable,'ops/crossing_route_publish.py','--stage',scene['name']+'-terminal','--message','Publish additional route outcomes from saved evidence'],cwd=ROOT,check=True)
     state=json.loads(progress.read_text());state['steps']['extra_scenes'].update(status='终态',result=str(PLAN.relative_to(ROOT)));write(progress,state)
 

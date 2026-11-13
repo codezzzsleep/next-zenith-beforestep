@@ -59,6 +59,14 @@ def build(name='stress_v8_gate'):
         'cumulative_created':budget['created'],'first_scene_only':True,'additional_scenes':[],
         'state':'首场四种车全部终态' if complete else '四项预检查和首场运行正在进行',
         'freeze_verification':{'action_sha256':sha(ROOT/'experimental/crossing/action.py'),'base_scene_sha256':sha(ROOT/f'config/scenes/{scene["base_scene"]}.json'),'admission_sha256':sha(ROOT/'config/admission.json')}}
+    plan=EVIDENCE/'additional-scenes.json'
+    if plan.exists():
+        for entry in json.loads(plan.read_text())['scenes']:
+            extra={k:entry.get(k) for k in ['scene','status','result','near_x_m','threshold_seed']}
+            source=entry.get('result')
+            if source and (ROOT/source).is_file():extra.update(json.loads((ROOT/source).read_text()))
+            report['additional_scenes'].append(extra)
+    report['first_scene_created']=sum(r['scene'].startswith('route/'+name+'/') and bool(r.get('task_id')) for r in budget['tasks'])
     write(EVIDENCE/'summary.json',report)
     write(EVIDENCE/'replay.json',{'schema':'beforestep-route-replay/v1','scene':report['scene_data'],'cars':cars})
     return report

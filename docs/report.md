@@ -1,5 +1,12 @@
 # 先见一步：一张照片，变成一整块石头
 
+<!-- ADDENDUM3-LUX-USAGE-START -->
+Lux3D 使用：本项目调用图像转三维任务创建接口（单图 `img` / 多图 `imgs`）、任务查询接口以及官方上传流程。客户端账本有 **431 个真实已创建任务**，其中 404 份返回 GLB、27 份服务端失败；逐项任务号与输入 SHA 见 [公开调用账本](../evidence/crossing/route/lux-usage.json)。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 77/400。
+
+生成结果是高石头看不见部分的三维假设：先与可见观测核对，准入后进入各个完整物理预演世界，全部安全才实走。门槛石的跨越用实拍几何，Lux3D 在门槛石上的开发没有被记为跨越成功。
+<!-- ADDENDUM3-LUX-USAGE-END -->
+
+
 <!-- PHOTO-STORY-REPORT-START -->
 机器人只拍到石头的一面。矮石头，相机看得到它的顶和背，轮腿抬腿跨过去；高石头，背面永远拍不到，Lux3D 把它想象出来，机器人检验、预演之后再绕。一条路上两种石头都有，少了腿或少了想象，都到不了。
 
@@ -439,7 +446,25 @@ V6/V7/V8 的源码、输入、生成资产、融合几何和失败结果保留�
 
 [训练附录](training.md) · [主动观察控制附录](observation-control.md) · [版本证据](milestones.md) · [旧 v0.3 报告](history/report_v03.md)。PSSNet、PVD、Robust Grasp Planning、Uncertain Regions 与 NBV-SC 为多候选形状、动作评价及补看提供研究依据；本项目贡献是受观测自检约束、同控制器完整预演与独立执行的轮腿导航实证，不主张全球首次或科学上只有 Lux3D 能实现。[相关工作](related-work.md)。
 
-首页提供实际轨迹、全部候选与十二格预演的交互查看。当前是受控仿真实验，不是实机或月球部署。R1 新 Demo 由负责人使用完整保存数据制作；网页保留视频位置，现有 v0.3 视频明确作为历史，冻结发布不改。完整可运行源码、原资产、失败和恢复输入见 [仓库](../README.md)、[R1 数据说明](../evidence/reviews/beforestep_r1/README.md)。
+首页提供实际轨迹、全部候选与十二格预演的交互查看。当前是受控仿真实验，不是实机或月球部署。新版 Demo 由 Agent 按负责人分镜合成，使用真实保存数据与公网页面录屏；网页保留视频位置，现有 v0.3 视频明确作为历史，冻结发布不改。完整可运行源码、原资产、失败和恢复输入见 [仓库](../README.md)、[R1 数据说明](../evidence/reviews/beforestep_r1/README.md)。
+
+<!-- ADDENDUM3-ASSET-ITERATIONS-START -->
+## 关键资产迭代：输入、生成结果与自检
+
+门槛石六轮输入全部计数，下面每行是一份标明任务号的代表例。没有通过的轮次照实显示拒绝；第六轮展示一份准入例，全部 53 个任务仍在原账本。图中三维使用原 GLB 三角面，只省略纹理，不改变形状。
+
+![门槛石第一、二轮输入与自检](../evidence/crossing/route/report-assets/low-inputs-1.png)
+
+![门槛石第三、四轮输入与自检](../evidence/crossing/route/report-assets/low-inputs-2.png)
+
+![门槛石第五、六轮输入与自检](../evidence/crossing/route/report-assets/low-inputs-3.png)
+
+高石 B 保持同一块原石头和同一场景。第二眼来自机器人实际移动后的新观测，输入图、生成任务与自检结论分别记录；不会把第一眼的任务号当成第二眼的新调用。
+
+![高石 B 的两次真实输入、模型和自检结论](../evidence/crossing/route/report-assets/high-two-looks.png)
+
+[每张输入、原模型 SHA 与准入指标](../evidence/crossing/route/report-assets/manifest.json) · [六轮全部结果](../evidence/crossing/route/low-stone.json) · [核心历史版本与资产迭代](../evidence/award/asset-iterations/manifest.json)。
+<!-- ADDENDUM3-ASSET-ITERATIONS-END -->
 
 ## 轮腿与想象
 
@@ -477,7 +502,13 @@ V6/V7/V8 的源码、输入、生成资产、融合几何和失败结果保留�
 
 四种车尚未全部终态，腿的必要性待核对。 四种车尚未全部终态，想象的必要性待核对。
 
-B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。
+追加场景 suite_r2_v4_F1_003_gate：未开始。
+
+追加场景 suite_r2_v4_F2_001_gate：未开始。
+
+追加场景 suite_r2_v4_F2_007_gate：未开始。
+
+四组共用同一个物理车体；A 关闭逐轮跨越能力，只允许既有常规和高姿态轮行。B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。
 
 ### 事实出处与边界
 

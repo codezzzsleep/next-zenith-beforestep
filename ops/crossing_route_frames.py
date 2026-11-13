@@ -14,7 +14,8 @@ from experimental.crossing.route.world import ROUTE,EVIDENCE,make
 def inputs(scene,vehicle,kind):
     base=ROUTE/scene['name']/vehicle
     if kind=='rehearsal':
-        pane=base/'segment1/rehearsal/look1/pane0'
+        candidates=sorted((base/'segment1').glob('rehearsal/look*/pane*/full-record/trajectory.npz'))
+        pane=candidates[0].parents[1] if candidates else base/'segment1/rehearsal/look1/pane0'
         p=pane/'full-record/trajectory.npz'
         if not p.exists():p=pane/'traj.npz'
         return p,pane
@@ -44,6 +45,12 @@ if __name__=='__main__':
             with np.load(other) as d:t=np.r_[t,d['t']];q=np.concatenate([q,d['qpos']]);phase=np.r_[phase,d['phase']]
             end=min(end,float(t[-1]))
         else:end=float(t[-1])
+    elif a.kind=='actual' and a.vehicle=='D':
+        begin=float(t[0]);end=float(t[-1])
+        second=ROUTE/scene['name']/'D/segment2/trajectory.npz'
+        if second.exists():
+            with np.load(second) as d:t=np.r_[t,d['t'][1:]];q=np.concatenate([q,d['qpos'][1:]]);phase=np.r_[phase,d['phase'][1:]]
+            end=float(t[-1])
     else:begin=max(float(t[0]),float(t[-1])-35.);end=max(begin,float(t[-1])-15.)
     samples=begin+np.arange(int(np.floor((end-begin)*30))+1)/30.
     e,rb,meta,threshold=make(scene)
@@ -65,6 +72,9 @@ if __name__=='__main__':
         'width':1280,'height':720,'fps':30,'time_range_s':[float(samples[0]),float(samples[-1])],
         'source':str(source.relative_to(ROOT)),'source_sha256':sha(source),'physics_advanced':False,'encoded_video':False,
         'shadow_map_size':shadow_size,'sensor_inputs_unchanged':True,'cameras':{},'frames':[]}
+    records['sources']=[{'path':str(source.relative_to(ROOT)),'sha256':sha(source)}]
+    second=ROUTE/scene['name']/a.vehicle/'segment2/trajectory.npz'
+    if a.kind=='actual' and a.vehicle=='D' and second.exists():records['sources'].append({'path':str(second.relative_to(ROOT)),'sha256':sha(second)})
     write(index,records)
     try:
         for ci,name in enumerate(['side_follow','overhead']):

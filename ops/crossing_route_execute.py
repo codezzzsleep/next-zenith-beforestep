@@ -36,7 +36,7 @@ if __name__=='__main__':
             with (LIVE/'route-additional.log').open('a') as stream:
                 proc=subprocess.Popen([sys.executable,str(extra)],cwd=ROOT,stdout=stream,stderr=subprocess.STDOUT)
                 record({'pid':os.getpid(),'phase':'extra_started','child_pid':proc.pid,'at_unix':time.time()})
-        for command in [[sys.executable,'ops/crossing_route_summary.py'],[sys.executable,'ops/crossing_route_text.py'],
+        for command in [[sys.executable,'ops/crossing_route_summary.py'],[sys.executable,'ops/crossing_route_text.py'],[sys.executable,'ops/crossing_route_report_assets.py'],[sys.executable,'ops/crossing_route_report.py'],
                         [sys.executable,'ops/crossing_route_publish.py','--stage','first-four-terminal','--message','Publish all four route outcomes without selecting results']]:
             subprocess.run(command,cwd=ROOT,check=True)
         record({'pid':os.getpid(),'phase':'first_published','at_unix':time.time()})

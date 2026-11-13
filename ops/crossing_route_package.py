@@ -37,7 +37,7 @@ def handoff_partial():
     readme+='轨迹与原始 OBJ 使用 MuJoCo Z 向上；展示 GLB 使用标准 Y 向上，坐标转换为 [x,z,-y]，完整矩阵在 models.json。这是显示转换，物理和生成原件没有移动。\n\n'
     readme+='scene.glb：真实地形、高石、石门、门槛的显示模型，合计低于 2 MB；models.json 记录原始扫描 SHA、地形显示采样与碰撞凸包。D-imagination.glb 若存在，包含 D 用到的准入假设，合计低于 2 MB，原始模型另行保留。\n\n'
     readme+='A/B/C/D-trajectory.json：对应四个正式一次运行；未终态的轨迹文件不会伪造。summary.json 含结果、两段交接、仿真用时与原因。\n\n'
-    readme+='frames/：1280×720、30 fps JPG，仅渲染保存状态，不推进物理、不编码视频。每段 index.json 逐帧记录相机、原物理时间、SHA；side_follow 与 overhead 两机位。B-actual 是轮触高石后停下的真实末段，不是机身碰撞。其他片段以最终索引列出的实际来源为准。\n'
+    readme+='frames/：1280×720、30 fps JPG，仅渲染保存状态，不推进物理；成片另由 ffmpeg 按分镜合成。每段 index.json 逐帧记录相机、原物理时间、SHA；side_follow 与 overhead 两机位。B-actual 是轮触高石后停下的真实末段，不是机身碰撞。其他片段以最终索引列出的实际来源为准。\n'
     (output/'README.md').write_text(readme)
     return output
 
@@ -66,6 +66,6 @@ if __name__=='__main__':
             if not (output/f'{v}-trajectory.json').exists():pending.append(v+' trajectory absent; no terminal physical recording')
         for label in ['A-actual','B-actual','D-actual','D-rehearsal','D-closeup']:
             p=output/'frames'/label/'index.json'
-            if not p.exists() or json.loads(p.read_text())['status']!='complete':pending.append(label+' frames absent; see actual run outcome')
+            if not p.exists() or json.loads(p.read_text())['status'] not in ('complete','not_applicable'):pending.append(label+' frames absent; see actual run outcome')
         write(EVIDENCE/'handoff-index.json',{'schema':'beforestep-route-handoff-index/v1','complete':not pending,'archives':archives,'pending':pending})
     print(json.dumps({'stage':a.stage,'archive':archive['path'] if a.stage=='B-handoff' else [r['path'] for r in archives]},ensure_ascii=False),flush=True)

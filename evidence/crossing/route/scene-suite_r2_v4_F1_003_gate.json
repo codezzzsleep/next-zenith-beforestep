@@ -3,16 +3,16 @@
   "name": "suite_r2_v4_F1_003_gate",
   "base_scene": "suite_r2_v4_F1_003",
   "base_scene_sha256": "3cff513ef970b4756be3e6d4efdab73dfc1f341b98e6fef6227cf7860027b79f",
-  "attempt": "x9.25-seed22001",
+  "attempt": "x9.00-seed22001",
   "threshold_seed": 22001,
-  "near_x_m": 9.25,
+  "near_x_m": 9.0,
   "gap_m": 0.9627122941263767,
   "staging_xy": [
-    8.4,
+    8.15,
     0.0
   ],
   "goal": [
-    10.75,
+    10.5,
     0.0
   ],
   "start": [
@@ -55,19 +55,19 @@
   },
   "objects": [
     {
-      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.25-seed22001/threshold"
+      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.00-seed22001/threshold"
     },
     {
-      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.25-seed22001/gate-1"
+      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.00-seed22001/gate-1"
     },
     {
-      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.25-seed22001/gate-2"
+      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.00-seed22001/gate-2"
     }
   ],
   "mesh_paths": [
-    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.25-seed22001/threshold/truth.obj",
-    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.25-seed22001/gate-1/truth.obj",
-    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.25-seed22001/gate-2/truth.obj"
+    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.00-seed22001/threshold/truth.obj",
+    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.00-seed22001/gate-1/truth.obj",
+    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.00-seed22001/gate-2/truth.obj"
   ],
   "provenance": [
     {
@@ -75,7 +75,7 @@
       "source_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/threshold/truth.obj",
       "source_sha256": "b6d30a453f7661f1996c9b9326f196971203ef27e7b12c14f71fc52702215945",
       "translation_m": [
-        6.25,
+        6.0,
         0.0,
         0.0
       ],
@@ -87,7 +87,7 @@
       "source_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/gate-1/truth.obj",
       "source_sha256": "e522120d7f41b074d4747f4bdf2aa1f5911e8e5fd6532a2266468e26b98f932b",
       "translation_m": [
-        6.25,
+        6.0,
         0.0,
         0.0
       ],
@@ -99,7 +99,7 @@
       "source_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/gate-2/truth.obj",
       "source_sha256": "ff659c90038f4719de7714365d4f5f39e551a0b11313f1e998c66abfc0e63f19",
       "translation_m": [
-        6.25,
+        6.0,
         0.0,
         0.0
       ],
@@ -109,12 +109,12 @@
   ],
   "truth_geometry": {
     "near": [
-      9.25731463521658,
-      9.25224320744098
+      9.00731463521658,
+      9.00224320744098
     ],
     "far": [
-      9.370210801047433,
-      9.386750080847886
+      9.120210801047433,
+      9.136750080847886
     ],
     "high": [
       0.14610288877632707,
@@ -123,15 +123,15 @@
     "lateral": 0.0,
     "tracks": [
       {
-        "near": 9.25731463521658,
-        "far": 9.370210801047433,
+        "near": 9.00731463521658,
+        "far": 9.120210801047433,
         "high": 0.14610288877632707,
         "track_y_m": -0.192,
         "band_halfwidth_m": 0.025
       },
       {
-        "near": 9.25224320744098,
-        "far": 9.386750080847886,
+        "near": 9.00224320744098,
+        "far": 9.136750080847886,
         "high": 0.13805864663401565,
         "track_y_m": 0.192,
         "band_halfwidth_m": 0.025

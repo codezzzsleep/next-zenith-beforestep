@@ -1,7 +1,7 @@
 {
   "schema": "beforestep-crossing-route-precheck/v1",
   "scene": "suite_r2_v4_F1_003_gate",
-  "attempt": "x9.00-seed22001",
+  "attempt": "x9.25-seed22001",
   "checks": {
     "contour": {
       "step_status": "终态",
@@ -10,11 +10,11 @@
       "passed": true,
       "has_path": false,
       "start": [
-        8.15,
+        8.4,
         0.0
       ],
       "goal": [
-        10.5,
+        10.75,
         0.0
       ],
       "planner": "unchanged beforestep.navigation.map.plan",
@@ -23,159 +23,16 @@
       "new_lux_tasks": 0
     },
     "leg": {
-      "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/leg/result.json",
-      "schema": "beforestep-crossing-route-leg-segment/v1",
-      "status": "body_collision",
-      "arrived": false,
-      "sim_seconds": 0.002,
-      "contact": {
-        "physics_steps": 1,
-        "contact_counts": {
-          "wheel_ground": 4,
-          "wheel_threshold": 16,
-          "body_stone": 8,
-          "unstable": 0
-        },
-        "steps_with_wheel_stone": 1,
-        "max_tilt_deg": 0.06367233072104105,
-        "failure": {
-          "kind": "body_collision",
-          "reason": "contact",
-          "t": 0.002,
-          "geom_ids": [
-            8,
-            55
-          ],
-          "position": [
-            8.445144191425923,
-            0.026648689442757147,
-            0.2947179107229978
-          ]
-        }
-      },
-      "geometry_decision": {
-        "source": "true geometry diagnostic",
-        "within_frozen_capability": true,
-        "geometry": {
-          "near": [
-            9.00731463521658,
-            9.00224320744098
-          ],
-          "far": [
-            9.120210801047433,
-            9.136750080847886
-          ],
-          "high": [
-            0.14610288877632707,
-            0.13805864663401565
-          ],
-          "lateral": 0.0,
-          "tracks": [
-            {
-              "near": 9.00731463521658,
-              "far": 9.120210801047433,
-              "high": 0.14610288877632707,
-              "track_y_m": -0.192,
-              "band_halfwidth_m": 0.025
-            },
-            {
-              "near": 9.00224320744098,
-              "far": 9.136750080847886,
-              "high": 0.13805864663401565,
-              "track_y_m": 0.192,
-              "band_halfwidth_m": 0.025
-            }
-          ],
-          "minimum_stone_z_m": 0.004
-        },
-        "lux_tasks": 0
-      },
-      "stages": [],
-      "final_base": [
-        8.148899618047022,
-        4.235372845193474e-05,
-        0.38580356615172684,
-        0.9999998016412405,
-        -0.0005021124527199975,
-        0.00023796097731920495,
-        -0.0002966060312624132
-      ],
-      "final_wheels": [
-        [
-          8.346423536250812,
-          -0.19228164934259132,
-          0.08651369886566292
-        ],
-        [
-          8.346405146701853,
-          0.1923625622558278,
-          0.08649812014449276
-        ],
-        [
-          7.961582687208821,
-          -0.1923378106411873,
-          0.08727438129877287
-        ],
-        [
-          7.961606570356483,
-          0.1923720676911657,
-          0.08727729221695246
-        ]
-      ],
-      "goal": [
-        10.5,
-        0.0
-      ],
-      "last_phase": "prepare-normal-stance",
-      "action_sha256": "488401d8a5ad8ebed4f1906266efa6a4f377cd70cb1b80e7484753756b31368d",
-      "truth_diagnostic": true,
-      "check": "legs_cross",
-      "passed": false,
-      "new_lux_tasks": 0
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/leg/result.json"
     },
     "detour": {
-      "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/detour/result.json",
-      "check": "original_detour",
-      "passed": false,
-      "summary": {
-        "policy": "imagination",
-        "tag": "segment1",
-        "see_dark": false,
-        "imagine": "truth",
-        "result": "stuck",
-        "controller": "rules",
-        "controller_sha256": null,
-        "pose_controller_sha256": null,
-        "scene_id": "suite_r2_v4_F1_003_gate",
-        "goal": [
-          8.15,
-          0.0
-        ],
-        "start_mode": "scene_start",
-        "execution_elapsed_s": 58.46,
-        "sensor_mode": "live",
-        "looks": 2,
-        "final_pose": [
-          4.677,
-          1.002,
-          -60.6
-        ],
-        "sim_time_s": 59.66,
-        "wall_s": 54.1,
-        "collision": null
-      },
-      "final_hashes": {
-        "qpos": "1a2abf713db11baa4cb9d15bf26c93b208146988b3700ae852041c404c75e013",
-        "qvel": "55e3fbb8659ce737daaa61419f191df4d447f443b64ac8a10962744e1f7c608d"
-      },
-      "truth_diagnostic": true,
-      "new_lux_tasks": 0
+      "step_status": "未开始",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/detour/result.json"
     },
     "wheel-fixed-center": {
       "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/wheel-fixed-center/result.json",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/wheel-fixed-center/result.json",
       "schema": "beforestep-crossing-route-wheel-trial/v1",
       "stance": "fixed",
       "lateral_m": 0.0,
@@ -187,54 +44,54 @@
         "physics_steps": 1,
         "contact_counts": {
           "wheel_ground": 4,
-          "wheel_threshold": 16,
-          "body_stone": 8,
+          "wheel_threshold": 8,
+          "body_stone": 12,
           "unstable": 0
         },
         "steps_with_wheel_stone": 1,
-        "max_tilt_deg": 0.06367230698332377,
+        "max_tilt_deg": 0.17438996260303855,
         "failure": {
           "kind": "body_collision",
           "reason": "contact",
           "t": 0.002,
           "geom_ids": [
-            8,
+            6,
             55
           ],
           "position": [
-            8.445144191425923,
-            0.026648689442757147,
-            0.2947179107229978
+            8.50489470729946,
+            0.04672200173346715,
+            0.3271079257010623
           ]
         }
       },
       "final_base": [
-        8.148899619015554,
-        4.235381355343808e-05,
-        0.38580356453021913,
-        0.9999998016413199,
-        -0.0005021122281158301,
-        0.00023796096756773866,
-        -0.0002966061516823114
+        8.399858980280074,
+        -6.511673895607488e-05,
+        0.3847879178792354,
+        0.999998834058809,
+        0.0008620163164991917,
+        0.001254161708616445,
+        -0.0001260448388642238
       ],
       "final_wheels": [
         [
-          8.346423536250812,
+          8.596423536250812,
           -0.19228164934259132,
           0.08651369886566292
         ],
         [
-          8.346405146701853,
+          8.596405146701853,
           0.1923625622558278,
           0.08649812014449276
         ],
         [
-          7.961582687208821,
+          8.21158268720882,
           -0.1923378106411873,
           0.08727438129877287
         ],
         [
-          7.961606570356483,
+          8.211606570356484,
           0.1923720676911657,
           0.08727729221695246
         ]
@@ -247,7 +104,7 @@
     },
     "wheel-fixed-left": {
       "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/wheel-fixed-left/result.json",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/wheel-fixed-left/result.json",
       "schema": "beforestep-crossing-route-wheel-trial/v1",
       "stance": "fixed",
       "lateral_m": 0.23135614706318836,
@@ -259,12 +116,12 @@
         "physics_steps": 1,
         "contact_counts": {
           "wheel_ground": 4,
-          "wheel_threshold": 32,
-          "body_stone": 19,
+          "wheel_threshold": 16,
+          "body_stone": 17,
           "unstable": 0
         },
         "steps_with_wheel_stone": 1,
-        "max_tilt_deg": 0.7640618774808248,
+        "max_tilt_deg": 0.3171533634714027,
         "failure": {
           "kind": "body_collision",
           "reason": "contact",
@@ -274,39 +131,39 @@
             55
           ],
           "position": [
-            8.335811586202347,
-            0.26028088983047104,
-            0.36666287574088674
+            8.32932038890941,
+            0.2643027946964028,
+            0.36843653678057914
           ]
         }
       },
       "final_base": [
-        8.148504938862393,
-        0.23094384365842854,
-        0.3871738756145192,
-        0.9999777163274206,
-        0.0065683406816617424,
-        -0.0011464880324810372,
-        -0.00033062740009450473
+        8.400054772807788,
+        0.23118875670248468,
+        0.38495819728717706,
+        0.9999960516500036,
+        -0.00026610222009351524,
+        0.0027548596132558577,
+        0.00048643861170813023
       ],
       "final_wheels": [
         [
-          8.346423536250812,
+          8.596423536250812,
           0.03907449772059706,
           0.08651369886566292
         ],
         [
-          8.346405146701853,
+          8.596405146701853,
           0.4237187093190161,
           0.08649812014449276
         ],
         [
-          7.961582687208821,
+          8.21158268720882,
           0.03901833642200107,
           0.08727438129877287
         ],
         [
-          7.961606570356483,
+          8.211606570356484,
           0.42372821475435407,
           0.08727729221695246
         ]
@@ -319,55 +176,68 @@
     },
     "wheel-fixed-right": {
       "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/wheel-fixed-right/result.json",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/wheel-fixed-right/result.json",
       "schema": "beforestep-crossing-route-wheel-trial/v1",
       "stance": "fixed",
       "lateral_m": -0.23135614706318836,
-      "status": "stuck",
+      "status": "unstable",
       "arrived": false,
-      "sim_seconds": 240.00000000004897,
+      "sim_seconds": 8.119999999999916,
       "time_limit_s": 240.0,
       "contact": {
-        "physics_steps": 120000,
+        "physics_steps": 4060,
         "contact_counts": {
-          "wheel_ground": 843752,
-          "wheel_threshold": 470514,
+          "wheel_ground": 37736,
+          "wheel_threshold": 32480,
           "body_stone": 0,
-          "unstable": 0
+          "unstable": 1
         },
-        "steps_with_wheel_stone": 120000,
-        "max_tilt_deg": 4.844235488967352,
-        "failure": null
+        "steps_with_wheel_stone": 4060,
+        "max_tilt_deg": 56.519450688912364,
+        "failure": {
+          "kind": "unstable",
+          "reason": "contact",
+          "t": 8.119999999999381,
+          "geom_ids": [
+            0,
+            49
+          ],
+          "position": [
+            7.986735926323622,
+            -0.3476903381276308,
+            0.00039384719403853704
+          ]
+        }
       },
       "final_base": [
-        8.33988583494539,
-        -0.32866586158677136,
-        0.3833922746549959,
-        0.9399550617283697,
-        0.004418233769614605,
-        -0.004383259512386414,
-        0.34124148073998894
+        8.049954822163702,
+        -0.24673901821698502,
+        0.3930489713918394,
+        0.8776895110401645,
+        0.013449315396016617,
+        -0.47327812366423344,
+        -0.07408141323110068
       ],
       "final_wheels": [
         [
-          8.61661256926354,
-          -0.3458611647010967,
-          0.08688333946934014
+          8.382476709510861,
+          -0.47806663637169006,
+          0.37112860230052314
         ],
         [
-          8.366695295920003,
-          -0.057064462706998,
-          0.08675503367594674
+          8.427459083477011,
+          -0.0989991588773953,
+          0.40701718345646454
         ],
         [
-          8.326282804043633,
-          -0.5856121785179869,
-          0.08674954827511394
+          8.182253669536918,
+          -0.42894816797696816,
+          0.08653861153804203
         ],
         [
-          8.07523883343206,
-          -0.2955096683740372,
-          0.08697105965828567
+          8.208580042910373,
+          -0.040466801572213426,
+          0.07135612710245694
         ]
       ],
       "speed_cap_m_s": 0.15,
@@ -378,7 +248,7 @@
     },
     "wheel-high-center": {
       "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/wheel-high-center/result.json",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/wheel-high-center/result.json",
       "schema": "beforestep-crossing-route-wheel-trial/v1",
       "stance": "high",
       "lateral_m": 0.0,
@@ -390,54 +260,54 @@
         "physics_steps": 1,
         "contact_counts": {
           "wheel_ground": 4,
-          "wheel_threshold": 16,
-          "body_stone": 8,
+          "wheel_threshold": 8,
+          "body_stone": 12,
           "unstable": 0
         },
         "steps_with_wheel_stone": 1,
-        "max_tilt_deg": 0.06367147816681895,
+        "max_tilt_deg": 0.1743843939310876,
         "failure": {
           "kind": "body_collision",
           "reason": "contact",
           "t": 0.002,
           "geom_ids": [
-            8,
+            6,
             55
           ],
           "position": [
-            8.445144191425923,
-            0.026648689442757147,
-            0.2947179107229978
+            8.50489470729946,
+            0.04672200173346715,
+            0.3271079257010623
           ]
         }
       },
       "final_base": [
-        8.148899561955941,
-        4.2347275573424926e-05,
-        0.38580365582117404,
-        0.9999998016446219,
-        -0.0005020997746139731,
-        0.00023797035610499356,
-        -0.000296608568250237
+        8.399858897079492,
+        -6.511818103380414e-05,
+        0.38478801744841956,
+        0.9999988341333874,
+        0.0008618626142625489,
+        0.0012542083749690798,
+        -0.0001260398836421344
       ],
       "final_wheels": [
         [
-          8.346423536250812,
+          8.596423536250812,
           -0.19228164934259132,
           0.08651369886566292
         ],
         [
-          8.346405146701853,
+          8.596405146701853,
           0.1923625622558278,
           0.08649812014449276
         ],
         [
-          7.961582687208821,
+          8.21158268720882,
           -0.1923378106411873,
           0.08727438129877287
         ],
         [
-          7.961606570356483,
+          8.211606570356484,
           0.1923720676911657,
           0.08727729221695246
         ]
@@ -450,7 +320,7 @@
     },
     "wheel-high-left": {
       "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/wheel-high-left/result.json",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/wheel-high-left/result.json",
       "schema": "beforestep-crossing-route-wheel-trial/v1",
       "stance": "high",
       "lateral_m": 0.23135614706318836,
@@ -462,12 +332,12 @@
         "physics_steps": 1,
         "contact_counts": {
           "wheel_ground": 4,
-          "wheel_threshold": 32,
-          "body_stone": 19,
+          "wheel_threshold": 16,
+          "body_stone": 17,
           "unstable": 0
         },
         "steps_with_wheel_stone": 1,
-        "max_tilt_deg": 0.7640720168037184,
+        "max_tilt_deg": 0.31716450533127466,
         "failure": {
           "kind": "body_collision",
           "reason": "contact",
@@ -477,39 +347,39 @@
             55
           ],
           "position": [
-            8.335811586202347,
-            0.26028088983047104,
-            0.36666287574088674
+            8.32932038890941,
+            0.2643027946964028,
+            0.36843653678057914
           ]
         }
       },
       "final_base": [
-        8.148504916313538,
-        0.23094383583121744,
-        0.38717392659042665,
-        0.9999777157366319,
-        0.006568426853224646,
-        -0.001146508923599342,
-        -0.0003306298683195874
+        8.400054764018904,
+        0.2311887613182559,
+        0.38495822206537955,
+        0.9999960513743714,
+        -0.0002662046891118671,
+        0.002754947397045763,
+        0.00048645202079785726
       ],
       "final_wheels": [
         [
-          8.346423536250812,
+          8.596423536250812,
           0.03907449772059706,
           0.08651369886566292
         ],
         [
-          8.346405146701853,
+          8.596405146701853,
           0.4237187093190161,
           0.08649812014449276
         ],
         [
-          7.961582687208821,
+          8.21158268720882,
           0.03901833642200107,
           0.08727438129877287
         ],
         [
-          7.961606570356483,
+          8.211606570356484,
           0.42372821475435407,
           0.08727729221695246
         ]
@@ -522,55 +392,60 @@
     },
     "wheel-high-right": {
       "step_status": "终态",
-      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.00-seed22001/wheel-high-right/result.json",
+      "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/prechecks/x9.25-seed22001/wheel-high-right/result.json",
       "schema": "beforestep-crossing-route-wheel-trial/v1",
       "stance": "high",
       "lateral_m": -0.23135614706318836,
-      "status": "stuck",
+      "status": "unstable",
       "arrived": false,
-      "sim_seconds": 47.00000000000175,
+      "sim_seconds": 18.939999999999685,
       "time_limit_s": 240.0,
       "contact": {
-        "physics_steps": 23500,
+        "physics_steps": 9470,
         "contact_counts": {
-          "wheel_ground": 179110,
-          "wheel_threshold": 214308,
+          "wheel_ground": 89512,
+          "wheel_threshold": 75760,
           "body_stone": 0,
-          "unstable": 0
+          "unstable": 1
         },
-        "steps_with_wheel_stone": 23500,
-        "max_tilt_deg": 3.9740310306604814,
-        "failure": null
+        "steps_with_wheel_stone": 9470,
+        "max_tilt_deg": 60.0818618620449,
+        "failure": {
+          "kind": "unstable",
+          "reason": "tilt",
+          "t": 18.94000000000038,
+          "tilt_deg": 60.0818618620449
+        }
       },
       "final_base": [
-        8.154162509054206,
-        -0.2548825418194924,
-        0.46543929811344853,
-        0.9998361452610346,
-        -0.008081603296635088,
-        0.007020076811525301,
-        0.014597562785329745
+        7.96914843437332,
+        -0.25312058103427154,
+        0.42872416247722733,
+        0.8639826103866881,
+        0.012874358110151838,
+        -0.5004529714841492,
+        -0.053991880735346935
       ],
       "final_wheels": [
         [
-          8.328262597118485,
-          -0.45277979775247745,
-          0.08675290456771266
+          8.377611998386302,
+          -0.47576826609070677,
+          0.38700955445317287
         ],
         [
-          8.350781415123368,
-          -0.053383165047016935,
-          0.08487984294871145
+          8.408482917836837,
+          -0.09509202448444307,
+          0.41617775217362907
         ],
         [
-          7.9583518916962745,
-          -0.45829515162787965,
-          0.09069114140901931
+          8.19552117128859,
+          -0.4446940130226604,
+          0.0866535030466885
         ],
         [
-          7.961418354305725,
-          -0.07922191678043139,
-          0.08662101625487614
+          8.209518959095535,
+          -0.04788570897761804,
+          0.07308101040572662
         ]
       ],
       "speed_cap_m_s": 0.15,
@@ -580,7 +455,7 @@
       "new_lux_tasks": 0
     }
   },
-  "all_terminal": true,
+  "all_terminal": false,
   "all_four_passed": false,
   "new_lux_tasks": 0,
   "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F1_003_gate.json"

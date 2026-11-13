@@ -1,0 +1,353 @@
+{
+  "schema": "beforestep-crossing-low-stone/v1",
+  "development_not_formal": true,
+  "seed": 22001,
+  "B": {
+    "status": "clean_pass",
+    "sim_seconds": 191.3600000000241,
+    "trajectory": {
+      "path": "evidence/crossing/route/low-stone/B-trajectory.json",
+      "sha256": "f7ebb7e4cf6c573678b3a8e2cba5c44b4bd7888ded240c2752c4c40df286a39f",
+      "samples": 4785,
+      "nominal_hz": 25
+    },
+    "result": "outputs/crossing/development/scene-dev-v9/seed-22001/method-B-v1/result.json"
+  },
+  "D": {
+    "status": "stopped",
+    "reason": "no_position_within_all_admitted_worlds",
+    "physical_execution": false,
+    "rehearsal_count": 0,
+    "decision": "evidence/crossing/route/low-stone/D-decision.json"
+  },
+  "models": [
+    {
+      "task_id": 7168545,
+      "sample": "crossing_scene-dev-v9_22001_A1",
+      "path": "evidence/crossing/route/low-stone/overlay-7168545.glb",
+      "bytes": 772848,
+      "sha256": "4e4d4f3e2d0b9bf910ff785c97c07e7f43c9b2cd7ae504a6b45becef369159fd",
+      "admitted": true,
+      "geometry": {
+        "near": [
+          2.9969929333203673,
+          3.004077053791805
+        ],
+        "far": [
+          3.1784114178762675,
+          3.18401306794514
+        ],
+        "high": [
+          0.1367500347061598,
+          0.13815131426501454
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.9969929333203673,
+            "far": 3.1784114178762675,
+            "high": 0.1367500347061598,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.004077053791805,
+            "far": 3.18401306794514,
+            "high": 0.13815131426501454,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "source_world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/decision/world_crossing_scene-dev-v9_22001_A1.obj",
+      "source_sha256": "db2d66054d189a623e8656a828cf7c6b3213ccce442c5adbedb53f5d691dffdf"
+    },
+    {
+      "task_id": 7168778,
+      "sample": "crossing_scene-dev-v9_22001_A2",
+      "path": "evidence/crossing/route/low-stone/overlay-7168778.glb",
+      "bytes": 791884,
+      "sha256": "4516376d600546084132d55718fe5bef809aba5fb98a13a756825714fbc26e59",
+      "admitted": true,
+      "geometry": {
+        "near": [
+          2.9966663309423334,
+          3.0041373628270835
+        ],
+        "far": [
+          3.1764163162643437,
+          3.1822397800076563
+        ],
+        "high": [
+          0.13635984722505703,
+          0.1378888094222682
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.9966663309423334,
+            "far": 3.1764163162643437,
+            "high": 0.13635984722505703,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.0041373628270835,
+            "far": 3.1822397800076563,
+            "high": 0.1378888094222682,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "source_world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/decision/world_crossing_scene-dev-v9_22001_A2.obj",
+      "source_sha256": "060726d6bf5db8934d71a44db61db0ce4c09d5d8010b67387c81cc3ed2277a07"
+    },
+    {
+      "task_id": 7169482,
+      "sample": "crossing_scene-dev-v9_22001_C1",
+      "path": "evidence/crossing/route/low-stone/overlay-7169482.glb",
+      "bytes": 771960,
+      "sha256": "ad6ae40e2f3e3d8dcaeb0ef3d554eb162771dd01928e24e808dce0fbfa232044",
+      "admitted": true,
+      "geometry": {
+        "near": [
+          2.99617897590398,
+          3.0002356953882163
+        ],
+        "far": [
+          3.1799087258323144,
+          3.187764269477551
+        ],
+        "high": [
+          0.13632447042097526,
+          0.13708157084011802
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.99617897590398,
+            "far": 3.1799087258323144,
+            "high": 0.13632447042097526,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.0002356953882163,
+            "far": 3.187764269477551,
+            "high": 0.13708157084011802,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "source_world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/decision/world_crossing_scene-dev-v9_22001_C1.obj",
+      "source_sha256": "ad0a3ebb46f73f926eba5b320cdfda38168ce74f4b8658507205376710081e0d"
+    },
+    {
+      "task_id": 7169801,
+      "sample": "crossing_scene-dev-v9_22001_C2",
+      "path": "evidence/crossing/route/low-stone/overlay-7169801.glb",
+      "bytes": 781768,
+      "sha256": "4319a6a0d9d426565f6547d6aedc688fd1ad8651b1cc0997e4de0a5c03ad9e9b",
+      "admitted": true,
+      "geometry": {
+        "near": [
+          2.9963476038474157,
+          3.0006181753827987
+        ],
+        "far": [
+          3.1793331668516696,
+          3.186978110598709
+        ],
+        "high": [
+          0.13607378808144713,
+          0.13670751494183123
+        ],
+        "lateral": 0.0,
+        "tracks": [
+          {
+            "near": 2.9963476038474157,
+            "far": 3.1793331668516696,
+            "high": 0.13607378808144713,
+            "track_y_m": -0.192,
+            "band_halfwidth_m": 0.025
+          },
+          {
+            "near": 3.0006181753827987,
+            "far": 3.186978110598709,
+            "high": 0.13670751494183123,
+            "track_y_m": 0.192,
+            "band_halfwidth_m": 0.025
+          }
+        ],
+        "minimum_stone_z_m": 0.004
+      },
+      "source_world_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/decision/world_crossing_scene-dev-v9_22001_C2.obj",
+      "source_sha256": "479f263da63ba9e7b48ab92249996c0c714b28c30b33ef4c8fc3e2ad665ba07e"
+    }
+  ],
+  "overlay_image": "evidence/crossing/route/low-stone/admitted-vs-truth.png",
+  "truth_depth_m": [
+    0.11289616428468907,
+    0.13450687109578174
+  ],
+  "imagination_envelope_depth_range_m": [
+    0.18430013466154094,
+    0.19158529357357112
+  ],
+  "frozen_depth_limit_m": 0.15,
+  "unseen_rear_range_m": [
+    0.024689798980456867,
+    0.07746611250402102
+  ],
+  "six_input_rounds": [
+    {
+      "revision": "scene-dev-v3",
+      "created": 5,
+      "glb_successes": 5,
+      "admitted": 0,
+      "admission_records_found": 5,
+      "main_rejections": {
+        "轮廓 IoU 不足": 5,
+        "尺度不符": 2
+      },
+      "task_ids": [
+        7083779,
+        7083787,
+        7083823,
+        7083826,
+        7083832
+      ]
+    },
+    {
+      "revision": "scene-dev-v5",
+      "created": 6,
+      "glb_successes": 6,
+      "admitted": 0,
+      "admission_records_found": 6,
+      "main_rejections": {
+        "轮廓 IoU 不足": 5,
+        "尺度不符": 6,
+        "隐藏占比不足": 4,
+        "侵入已知空地": 4
+      },
+      "task_ids": [
+        7116060,
+        7116281,
+        7116654,
+        7116978,
+        7117234,
+        7117519
+      ]
+    },
+    {
+      "revision": "scene-dev-v6",
+      "created": 6,
+      "glb_successes": 6,
+      "admitted": 0,
+      "admission_records_found": 6,
+      "main_rejections": {
+        "轮廓 IoU 不足": 6,
+        "尺度不符": 5,
+        "隐藏占比不足": 2,
+        "侵入已知空地": 3
+      },
+      "task_ids": [
+        7135384,
+        7135792,
+        7136048,
+        7136414,
+        7136577,
+        7136932
+      ]
+    },
+    {
+      "revision": "scene-dev-v7",
+      "created": 6,
+      "glb_successes": 6,
+      "admitted": 0,
+      "admission_records_found": 6,
+      "main_rejections": {
+        "轮廓 IoU 不足": 6,
+        "尺度不符": 6,
+        "侵入已知空地": 2,
+        "可见壳接触不足": 1
+      },
+      "task_ids": [
+        7145058,
+        7145691,
+        7146092,
+        7146496,
+        7146803,
+        7147183
+      ]
+    },
+    {
+      "revision": "scene-dev-v8",
+      "created": 6,
+      "glb_successes": 6,
+      "admitted": 0,
+      "admission_records_found": 6,
+      "main_rejections": {
+        "轮廓 IoU 不足": 6,
+        "尺度不符": 6,
+        "侵入已知空地": 2
+      },
+      "task_ids": [
+        7152597,
+        7152939,
+        7153326,
+        7153668,
+        7153964,
+        7154269
+      ]
+    },
+    {
+      "revision": "scene-dev-v9",
+      "created": 24,
+      "glb_successes": 24,
+      "admitted": 7,
+      "admission_records_found": 24,
+      "main_rejections": {
+        "尺度不符": 12,
+        "轮廓 IoU 不足": 14,
+        "侵入已知空地": 2
+      },
+      "task_ids": [
+        7168305,
+        7168545,
+        7168778,
+        7169115,
+        7169482,
+        7169801,
+        7174924,
+        7175321,
+        7175655,
+        7176155,
+        7176545,
+        7176932,
+        7178246,
+        7178672,
+        7179139,
+        7179472,
+        7180020,
+        7180388,
+        7194466,
+        7194847,
+        7195130,
+        7195440,
+        7196131,
+        7196501
+      ]
+    }
+  ],
+  "threshold_created": 53,
+  "threshold_admitted": 7,
+  "new_simulations": 0,
+  "new_lux_tasks": 0,
+  "story_count_note": "STORY.md preserves the original 35-task checkpoint; this table includes the authorized closing batch."
+}

@@ -106,6 +106,9 @@ def main():
             event(name,task_ids=[r['task_id'] for r in jobs],task_identities=[r['identity'] for r in jobs])
             with Path('/root/3d/MEMORY.md').open('a') as m:
                 m.write(f'\n真实crossing Lux已创建/恢复：{record["task_id"]}，identity {record["identity"]}；独立budget和client ledger已即刻落账。job {name}，输入{request_path.relative_to(ROOT)}，禁止重建已知或uncertain请求。\n')
+            from ops.crossing_private_checkpoint import checkpoint
+            synced=checkpoint(f'task-{record["task_id"]}-known')
+            print(json.dumps({'private_checkpoint':synced['private_commit'],'task_id':record['task_id']}),flush=True)
             # Complete one submitted task before creating the next: the initial
             # batch hit the provider's global concurrent-generation limit.
             jobs[-1]=budget.poll(record)

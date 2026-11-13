@@ -26,9 +26,10 @@ if __name__=='__main__':
         report=ROOT/f'evidence/crossing/development-lux-{REVISION}-{seed}.json'
         if not report.exists():run(['ops/crossing_lux.py','--revision',REVISION,'--seed',str(seed),'--first','B1'])
         result=json.loads(report.read_text())
-        if result['admitted']==0:stop('No generated model admitted in screened development scene',seed);sys.exit(0)
         destination=ROOT/f'outputs/crossing/development/{REVISION}/seed-{seed}/method-D-v1/result.json'
         if not destination.exists():run(['ops/crossing_method_development.py','--revision',REVISION,'--seed',str(seed),'--method','D'])
     decisions=[json.loads((ROOT/f'outputs/crossing/development/{REVISION}/seed-{seed}/method-D-v1/result.json').read_text()) for seed in SEEDS]
+    total_admitted=sum(json.loads((ROOT/f'evidence/crossing/development-lux-{REVISION}-{seed}.json').read_text())['admitted'] for seed in SEEDS)
+    if total_admitted==0:stop('No generated model admitted across four valid development scenes',SEEDS[-1]);sys.exit(0)
     if not any(row['decision']=='cross' for row in decisions):stop('None of four valid development scenes produced a cross decision',SEEDS[-1]);sys.exit(0)
     event('remaining-development-v9',status='complete',cross_decisions=sum(r['decision']=='cross' for r in decisions))

@@ -1,0 +1,91 @@
+{
+  "schema": "beforestep-route-additional-scenes/v1",
+  "authority": "docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md §1",
+  "candidate_order": [
+    {
+      "base_scene": "suite_r2_v4_F1_003",
+      "original_run": "outputs/suite/real/suite_r2_v4_F1_003/imagination",
+      "original_result": "arrived",
+      "original_admitted": 5,
+      "source_summary": "evidence/suite/summary.json"
+    },
+    {
+      "base_scene": "suite_r2_v4_F2_001",
+      "original_run": "outputs/suite/real/suite_r2_v4_F2_001/imagination",
+      "original_result": "arrived",
+      "original_admitted": 8,
+      "source_summary": "evidence/suite/summary.json"
+    },
+    {
+      "base_scene": "suite_r2_v4_F2_007",
+      "original_run": "outputs/suite/real/suite_r2_v4_F2_007/imagination",
+      "original_result": "arrived",
+      "original_admitted": 7,
+      "source_summary": "evidence/suite/summary.json"
+    },
+    {
+      "base_scene": "suite_r2_v4_F3_001",
+      "original_run": "outputs/suite/real/suite_r2_v4_F3_001/imagination",
+      "original_result": "arrived",
+      "original_admitted": 4,
+      "source_summary": "evidence/suite/summary.json"
+    },
+    {
+      "base_scene": "suite_r2_v4_F3_002",
+      "original_run": "outputs/suite/real/suite_r2_v4_F3_002/imagination",
+      "original_result": "arrived",
+      "original_admitted": 5,
+      "source_summary": "evidence/suite/summary.json"
+    },
+    {
+      "base_scene": "suite_r2_v4_F3_005",
+      "original_result": "arrived",
+      "original_admitted": 31,
+      "source_summary": "evidence/reviews/beforestep_r3/summary.json"
+    }
+  ],
+  "scenes": [
+    {
+      "base_scene": "suite_r2_v4_F1_003",
+      "original_run": "outputs/suite/real/suite_r2_v4_F1_003/imagination",
+      "original_result": "arrived",
+      "original_admitted": 5,
+      "source_summary": "evidence/suite/summary.json",
+      "scene": "suite_r2_v4_F1_003_gate",
+      "near_x_m": 9.0,
+      "threshold_seed": 22001,
+      "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F1_003_gate.json",
+      "status": "未开始",
+      "placement_attempts": []
+    },
+    {
+      "base_scene": "suite_r2_v4_F2_001",
+      "original_run": "outputs/suite/real/suite_r2_v4_F2_001/imagination",
+      "original_result": "arrived",
+      "original_admitted": 8,
+      "source_summary": "evidence/suite/summary.json",
+      "scene": "suite_r2_v4_F2_001_gate",
+      "near_x_m": 9.0,
+      "threshold_seed": 22001,
+      "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F2_001_gate.json",
+      "status": "未开始",
+      "placement_attempts": []
+    },
+    {
+      "base_scene": "suite_r2_v4_F2_007",
+      "original_run": "outputs/suite/real/suite_r2_v4_F2_007/imagination",
+      "original_result": "arrived",
+      "original_admitted": 7,
+      "source_summary": "evidence/suite/summary.json",
+      "scene": "suite_r2_v4_F2_007_gate",
+      "near_x_m": 9.0,
+      "threshold_seed": 22001,
+      "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F2_007_gate.json",
+      "status": "未开始",
+      "placement_attempts": []
+    }
+  ],
+  "start_cutoff_utc": "2026-11-14T12:00:00+00:00",
+  "maximum_scenes": 3,
+  "first_D_result_not_selection_criterion": true
+}

@@ -106,3 +106,19 @@ Arena v2不再恢复，最终结论为“未完成”：2747/4000条数据，原
 ## 最新续行终态
 
 新观察6份GLB成功、0准入；累计本轮11创建/11GLB成功/0已创建生成失败。旧并发拒绝另列保留。D无准入停下，按§12.2停止新增。完整数值由脚本生成于[续行报告](RESULT_CROSSING_RESUMPTION.md)及[原件](../../evidence/crossing/development-resumption.json)。这是开发停因，SPEC未全完成；正式测试、锚点、素材、帧和最终PDF仍未完成。
+
+## §6 真实Lux开发链路完成
+
+开发种子11002，scene-dev-v6：生成6份、成功GLB6份、原阈值准入0份。各任务号、每份双轮迹远缘/最高点误差见[原始表](../../evidence/crossing/development-lux-scene-dev-v6-11002.json)。这是开发数据，不入正式统计；未降低准入阈值。
+
+## §6 真实Lux开发链路完成
+
+开发种子11002，scene-dev-v7：生成6份、成功GLB6份、原阈值准入0份。各任务号、每份双轮迹远缘/最高点误差见[原始表](../../evidence/crossing/development-lux-scene-dev-v7-11002.json)。这是开发数据，不入正式统计；未降低准入阈值。
+
+## §6 真实Lux开发链路完成
+
+开发种子11002，scene-dev-v8：生成6份、成功GLB6份、原阈值准入0份。各任务号、每份双轮迹远缘/最高点误差见[原始表](../../evidence/crossing/development-lux-scene-dev-v8-11002.json)。这是开发数据，不入正式统计；未降低准入阈值。
+
+## 继续执行：输入错误已修正，生成器标定进行中
+
+用户“去做”后完成坐标、输入掩码、配准初值与真实模型验证，全部指标来自[诊断报告](RESULT_CROSSING_DIAGNOSIS.md)。旧停因保持历史记录；当前继续标定更合理的门槛宽度。未预注册、无正式实验或Lux跨越锚点，不能把真值诊断算作模型成功。

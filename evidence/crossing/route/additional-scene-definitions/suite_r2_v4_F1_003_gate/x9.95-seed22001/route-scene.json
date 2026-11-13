@@ -1,0 +1,151 @@
+{
+  "schema": "beforestep-crossing-route-scene/v1",
+  "name": "suite_r2_v4_F1_003_gate",
+  "base_scene": "suite_r2_v4_F1_003",
+  "base_scene_sha256": "3cff513ef970b4756be3e6d4efdab73dfc1f341b98e6fef6227cf7860027b79f",
+  "attempt": "x9.95-seed22001",
+  "threshold_seed": 22001,
+  "near_x_m": 9.945304,
+  "gap_m": 0.9627122941263767,
+  "staging_xy": [
+    9.095304,
+    0.0
+  ],
+  "goal": [
+    11.445304,
+    0.0
+  ],
+  "start": [
+    0.0,
+    -0.5
+  ],
+  "first_stop": [
+    2.3,
+    -0.5
+  ],
+  "rocks": {
+    "A": {
+      "rock": "rock_07",
+      "height": 0.421985,
+      "x": 4.369772,
+      "y": -0.726405,
+      "yaw": 90.958422
+    },
+    "B": {
+      "rock": "moon_rock_05",
+      "height": 0.359955,
+      "x": 6.803644,
+      "y": 0.276002,
+      "yaw": -31.297326
+    },
+    "C": {
+      "rock": "moon_rock_04",
+      "height": 0.576196,
+      "x": 7.710423,
+      "y": 0.599223,
+      "yaw": -16.303792
+    },
+    "D": {
+      "rock": "stone_01",
+      "height": 0.557569,
+      "x": 1.3,
+      "y": 1.7,
+      "yaw": 87.22953
+    }
+  },
+  "objects": [
+    {
+      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.95-seed22001/threshold"
+    },
+    {
+      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.95-seed22001/gate-1"
+    },
+    {
+      "posed_dir": "/root/3d/next-zenith-beforestep/outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.95-seed22001/gate-2"
+    }
+  ],
+  "mesh_paths": [
+    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.95-seed22001/threshold/truth.obj",
+    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.95-seed22001/gate-1/truth.obj",
+    "outputs/crossing/route/suite_r2_v4_F1_003_gate/scene-attempts/x9.95-seed22001/gate-2/truth.obj"
+  ],
+  "provenance": [
+    {
+      "source_scene": "outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+      "source_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/threshold/truth.obj",
+      "source_sha256": "b6d30a453f7661f1996c9b9326f196971203ef27e7b12c14f71fc52702215945",
+      "translation_m": [
+        6.945304,
+        0.0,
+        0.0
+      ],
+      "shape_size_orientation_unchanged": true,
+      "rock": "rock_07"
+    },
+    {
+      "source_scene": "outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+      "source_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/gate-1/truth.obj",
+      "source_sha256": "e522120d7f41b074d4747f4bdf2aa1f5911e8e5fd6532a2266468e26b98f932b",
+      "translation_m": [
+        6.945304,
+        0.0,
+        0.0
+      ],
+      "shape_size_orientation_unchanged": true,
+      "rock": "rock_07"
+    },
+    {
+      "source_scene": "outputs/crossing/development/scene-dev-v9/seed-22001/scene.json",
+      "source_mesh": "outputs/crossing/development/scene-dev-v9/seed-22001/gate-2/truth.obj",
+      "source_sha256": "ff659c90038f4719de7714365d4f5f39e551a0b11313f1e998c66abfc0e63f19",
+      "translation_m": [
+        6.945304,
+        0.0,
+        0.0
+      ],
+      "shape_size_orientation_unchanged": true,
+      "rock": "moon_rock_03"
+    }
+  ],
+  "truth_geometry": {
+    "near": [
+      9.95261863521658,
+      9.947547207440978
+    ],
+    "far": [
+      10.065514801047433,
+      10.082054080847884
+    ],
+    "high": [
+      0.14610288877632707,
+      0.13805864663401565
+    ],
+    "lateral": 0.0,
+    "tracks": [
+      {
+        "near": 9.95261863521658,
+        "far": 10.065514801047433,
+        "high": 0.14610288877632707,
+        "track_y_m": -0.192,
+        "band_halfwidth_m": 0.025
+      },
+      {
+        "near": 9.947547207440978,
+        "far": 10.082054080847884,
+        "high": 0.13805864663401565,
+        "track_y_m": 0.192,
+        "band_halfwidth_m": 0.025
+      }
+    ],
+    "minimum_stone_z_m": 0.004
+  },
+  "registration": "runtime; original config/scenes and src untouched",
+  "gate_treatment": "Known terrain, excluded from generation targets and included in all first-segment planning/rehearsal worlds",
+  "formal_order": [
+    "C",
+    "B",
+    "A",
+    "D"
+  ],
+  "frozen_action_sha256": "488401d8a5ad8ebed4f1906266efa6a4f377cd70cb1b80e7484753756b31368d"
+}

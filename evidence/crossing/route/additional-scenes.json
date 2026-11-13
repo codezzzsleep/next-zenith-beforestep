@@ -52,10 +52,10 @@
       "original_admitted": 5,
       "source_summary": "evidence/suite/summary.json",
       "scene": "suite_r2_v4_F1_003_gate",
-      "near_x_m": 9.5,
+      "near_x_m": 9.945304,
       "threshold_seed": 22001,
       "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F1_003_gate.json",
-      "status": "终态",
+      "status": "运行中",
       "placement_attempts": [
         {
           "near_x_m": 9.0,
@@ -84,8 +84,19 @@
       ],
       "predeclared_commit": "1ea281c19566c96ed0898e3a723c9e495ec2341b",
       "started_at": "2026-11-13T21:32:55.931526+00:00",
-      "pid": 799527,
-      "result": "四项预检查未全通过，未跑正式车"
+      "pid": 803835,
+      "prior_outcomes": [
+        {
+          "status": "终态",
+          "result": "四项预检查未全通过，未跑正式车",
+          "near_x_m": 9.5,
+          "reason": "All three absolute placement positions block the original high-rock route; prechecks, no formal car"
+        }
+      ],
+      "candidate_near_x_m": [
+        9.945304
+      ],
+      "placement_rationale": "Stage at original reached goal x=9.095304,y=0; true-contour route exists there; high rocks and sill shape unchanged"
     },
     {
       "base_scene": "suite_r2_v4_F2_001",
@@ -120,5 +131,6 @@
   ],
   "start_cutoff_utc": "2026-11-14T12:00:00+00:00",
   "maximum_scenes": 3,
-  "first_D_result_not_selection_criterion": true
+  "first_D_result_not_selection_criterion": true,
+  "selection_complete": false
 }

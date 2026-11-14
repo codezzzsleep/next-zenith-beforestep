@@ -13,7 +13,7 @@ def save(state):
     (PRIVATE/(state['stage']+'.json')).write_text(json.dumps(state,ensure_ascii=False,indent=2)+'\n')
 
 if __name__=='__main__':
-    ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');ap.add_argument('--homepage',action='store_true');ap.add_argument('--video',action='store_true');ap.add_argument('--pdf',action='store_true');a=ap.parse_args()
+    ap=argparse.ArgumentParser();ap.add_argument('--stage',required=True);ap.add_argument('--message',required=True);ap.add_argument('--skip-page-check',action='store_true');ap.add_argument('--homepage',action='store_true');ap.add_argument('--video',action='store_true');ap.add_argument('--pdf',action='store_true');ap.add_argument('--gallery',action='store_true');a=ap.parse_args()
     PRIVATE.mkdir(parents=True,exist_ok=True)
     publication_lock=(PRIVATE/'publication.lock').open('a');fcntl.flock(publication_lock,fcntl.LOCK_EX)
     state={'stage':a.stage,'status':'running'};save(state)
@@ -26,6 +26,7 @@ if __name__=='__main__':
     if a.homepage:paths+=['site/index.html','site/home.css','site/home.js','site/home-assets','site/homepage-integration.json']
     if a.video:paths+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
     if a.pdf:paths+=['site/media/report.pdf','site/media/history/addendum2']
+    if a.gallery:paths+=['site/gallery.html','site/gallery.css','site/gallery-viewer.js','site/vendor/aholo-viewer']
     budget=json.loads((ROOT/'outputs/generation/crossing-budget.json').read_text())
     paths += ['assets/candidates/'+str(r['task_id']) for r in budget['tasks'] if r.get('task_id') and r['status']=='ok']
     run(['git','diff','--check']);run(['git','add',*paths])
@@ -42,6 +43,9 @@ if __name__=='__main__':
         extra+=[str(p.relative_to(ROOT)) for p in (ROOT/'site/home-assets').rglob('*') if p.is_file()]
     if a.video:extra+=['site/media/demo-v2.mp4','site/media/demo-v2-cover.jpg']
     if a.pdf:extra+=['site/media/report.pdf']+[str(p.relative_to(ROOT)) for p in (ROOT/'site/media/history/addendum2').rglob('*') if p.is_file()]
+    if a.gallery:
+        extra+=['site/gallery.html','site/gallery.css','site/gallery-viewer.js']
+        extra+=[str(p.relative_to(ROOT)) for p in (ROOT/'site/vendor/aholo-viewer').rglob('*') if p.is_file()]
     for relative in extra:
         destination=relative.removeprefix('site/');target=PAGES/destination;target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(ROOT/relative,target);copied.append(destination)
     for relative in ['site/crossing.html','site/crossing.css','site/crossing.js','README.md','docs/history/README-before-addendum2.md','docs/report.md','docs/story.md','docs/crossing.md',
@@ -66,7 +70,7 @@ if __name__=='__main__':
         time.sleep(15)
     else:raise RuntimeError('Build pending; resume read-only verification without republishing')
     if not a.skip_page_check:
-        checker='ops/crossing_route_homepage.py' if a.homepage else 'ops/crossing_route_check.py'
+        checker='ops/crossing_route_gallery_check.py' if a.gallery else 'ops/crossing_route_homepage.py' if a.homepage else 'ops/crossing_route_check.py'
         run([sys.executable,checker,'--url',PUBLIC,'--out',str(PRIVATE/(a.stage+'-public'))])
     verified=[]
     for relative in ['crossing.html','crossing.js','crossing.css','docs/story.md','docs/crossing.md','docs/video.md','docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md','evidence/crossing/route/summary.json','evidence/crossing/route/low-stone.json','evidence/crossing/route/threshold-closure.json']+(['index.html','home.css','home.js','homepage-integration.json'] if a.homepage else []):

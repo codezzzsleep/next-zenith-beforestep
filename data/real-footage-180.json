@@ -1,0 +1,662 @@
+{
+  "schema": "beforestep-real-footage-180/v1",
+  "film": {
+    "status": "complete",
+    "path": "media/demo-v4.mp4",
+    "clean_master": "media/demo-v4-clean.mp4",
+    "duration_s": 180,
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "30/1",
+          "nb_frames": "5400"
+        }
+      ],
+      "format": {
+        "duration": "180.000000"
+      }
+    },
+    "sha256": "d457b96b8ce2aea9f0435abbb26dabb9e9e95542a4f846293f81134676dd9499",
+    "clean_sha256": "c8e0c82b350416cad5ff364d87b99fad96037f1cd64b6f664ea8d5c1e07e48e7",
+    "no_diagram_substitutes": true,
+    "shared_r1_clock": {
+      "seconds": 42,
+      "output_knots_s": [
+        0.0,
+        17.142857142857142,
+        20.952380952380953,
+        26.666666666666668,
+        31.428571428571427,
+        35.23809523809524,
+        40.0,
+        42
+      ],
+      "sim_knots_s": [
+        1.2,
+        75,
+        82.5,
+        107,
+        114.5,
+        138,
+        142.2,
+        142.2
+      ],
+      "shared_clock": true,
+      "camera": "same follow camera parameters and initial view",
+      "terminal_holds_at_each_original_end": true,
+      "capture_output_knots_s": [
+        0,
+        18,
+        22,
+        28,
+        33,
+        37,
+        42
+      ],
+      "final_original_terminal_hold_s": 2
+    },
+    "original_records_only": true,
+    "new_physics_runs": 0,
+    "new_generation_tasks": 0
+  },
+  "preview": {
+    "status": "complete",
+    "path": "media/real-footage/low-stone-preview.mp4",
+    "clean": "media/real-footage/low-stone-preview-clean.mp4",
+    "duration_s": 25,
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "30/1",
+          "nb_frames": "750"
+        }
+      ],
+      "format": {
+        "duration": "25.000000"
+      }
+    },
+    "sha256": "ba02d622b0c6e794fffc7114b4530f70316dc3a3e030bd1c811618ef9044a5fd",
+    "continuous_complete_lift_source_s": [
+      50.14,
+      64.10666666668
+    ],
+    "source_scene": "stress_v8_gate",
+    "formal_vehicle_run": false,
+    "all_actions_from_original_records": true
+  },
+  "chapters": [
+    {
+      "id": "chapter-01",
+      "title": "前往目标点",
+      "start_s": 0,
+      "duration_s": 15,
+      "scene": "R1 / stress_v8",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-01.jpg",
+      "poster_sha256": "60ce7c69f6fd79a1e79b3d9ef805fe67030693a99569ccde286ecc2ba8f39b1d",
+      "clean_video": "media/real-footage/chapter-01-clean.mp4",
+      "clean_sha256": "71dfa99e7e8bd24469e5f60ea02d09d5ae9689830d417c9340554efc04d93520",
+      "sources": [
+        {
+          "id": "r1-opening-fixed",
+          "record": "data/real-footage-sources/r1-opening-fixed.json",
+          "record_sha256": "76cb5621950d57f0798c18c42281ee589af9a2c95b992710de1012160a04f9cb",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "source_time_s": [
+            1.2000000000000006,
+            16.08
+          ],
+          "camera": "fixed-establishing"
+        },
+        {
+          "id": "r1-opening-follow",
+          "record": "data/real-footage-sources/r1-opening-follow.json",
+          "record_sha256": "04f4ab676b8e486c312089dff9cfaf65f0ce81687bea9b5eeb5b905b1685277e",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "source_time_s": [
+            1.2000000000000006,
+            16.08
+          ],
+          "camera": "follow"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/01.json"
+    },
+    {
+      "id": "chapter-02",
+      "title": "低石：轮行受阻，逐轮跨越",
+      "start_s": 15,
+      "duration_s": 20,
+      "scene": "stress_v8_gate / 独立预检查",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-02.jpg",
+      "poster_sha256": "b3e9bd63fdb2509647b60f490d3fcd2e5fc23f3bec8441423794f095c5681472",
+      "clean_video": "media/real-footage/chapter-02-clean.mp4",
+      "clean_sha256": "234285b5c4a552dde2a3ac161b8a0a273ad0849573af2c581372398f9d5ff285",
+      "sources": [
+        {
+          "id": "low-stone-wheel",
+          "record": "data/real-footage-sources/low-stone-wheel.json",
+          "record_sha256": "dffc8e1357724ec3babc761e342d0581be2623d1b5a087efdf3c402db06eb191",
+          "original_path": "outputs/crossing/route/handoff/frames/wheel-stuck/index.json",
+          "source_time_s": [
+            6.653999999999893,
+            11.62066666666656
+          ],
+          "camera": {
+            "azimuth_deg": 25.0,
+            "elevation_deg": -18.0,
+            "distance_m": 2.5,
+            "closeup": false
+          }
+        },
+        {
+          "id": "low-stone-full-lift",
+          "record": "data/real-footage-sources/low-stone-full-lift.json",
+          "record_sha256": "d3906cc6939999bf363c0bd55a599014633456edf5bba31b05ab84079a3815c3",
+          "original_path": "outputs/crossing/route/handoff/frames/sill-close/index.json",
+          "source_time_s": [
+            50.139999999996945,
+            64.10666666666361
+          ],
+          "camera": {
+            "azimuth_deg": 25.0,
+            "elevation_deg": -18.0,
+            "distance_m": 1.65,
+            "closeup": true
+          }
+        },
+        {
+          "id": "low-stone-depart",
+          "record": "data/real-footage-sources/low-stone-depart.json",
+          "record_sha256": "3e33443e710233bcf1e1fe6a3d15b22a24e8448f03c02bcc18b72ab007f4df50",
+          "original_path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+          "source_time_s": [
+            167.08,
+            173.08
+          ],
+          "camera": "side_follow"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/02.json"
+    },
+    {
+      "id": "chapter-03",
+      "title": "R1：第一眼看见什么",
+      "start_s": 35,
+      "duration_s": 18,
+      "scene": "R1 / stress_v8",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-03.jpg",
+      "poster_sha256": "70f12a2c0ee77c1cdee343a693f005dd47eb01e894f32ffd194ca3570b00da1e",
+      "clean_video": "media/real-footage/chapter-03-clean.mp4",
+      "clean_sha256": "7bee5104c1d4cf415483eecab0bcf79e714b1a4256b4bc2116257a7dffa6068f",
+      "sources": [
+        {
+          "id": "r1-first-person",
+          "record": "data/real-footage-sources/r1-first-person.json",
+          "record_sha256": "34e5d960c24f7ab9dfca8737fd9cab3ee3ed2bd0bece9ff3bcc3e9469e64a0c0",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "source_time_s": [
+            14.08,
+            16.08
+          ],
+          "camera": "front_cam"
+        },
+        {
+          "id": "r1-observation-input",
+          "record": "data/real-footage-sources/r1-observation-input.json",
+          "record_sha256": "86886529a85310cfc5be950ef9e61ecf0aebb761b4cd67b52ce389b9d9255d0a",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/rgb.png",
+          "source_time_s": 16.08,
+          "camera": "原相机或原帧机位"
+        },
+        {
+          "id": "r1-observation-external",
+          "record": "data/real-footage-sources/r1-observation-external.json",
+          "record_sha256": "1f8de47176d7d17918794ced7505785c3e552580ab0782beccaf211244d687b8",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "source_time_s": [
+            14.08,
+            16.08
+          ],
+          "camera": "follow"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/03.json"
+    },
+    {
+      "id": "chapter-04",
+      "title": "已有任务返回的原模型",
+      "start_s": 53,
+      "duration_s": 22,
+      "scene": "R1 / stress_v8",
+      "kind": "原任务资产录屏",
+      "poster": "media/real-footage/chapter-04.jpg",
+      "poster_sha256": "ab61b73ad7ddbce87fc616c277f58330b2b1b11d2d88bc9b1cef69f5d3cde339",
+      "clean_video": "media/real-footage/chapter-04-clean.mp4",
+      "clean_sha256": "b7ecb2f24415ddc9a20cd89401294ddbbfd19ef93e4b97a7422f1cbc4e801574",
+      "sources": [
+        {
+          "id": "r1-candidate-records",
+          "record": "data/real-footage-sources/r1-candidate-records.json",
+          "record_sha256": "8fb70d81ea60c22521b32b5ac3624a25e5144174721cce2d41f70aa1ca0ffa24",
+          "original_path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/gen/variants/A1_upload.jpg, outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/gen/variants/A2_upload.jpg",
+          "source_time_s": null,
+          "camera": "原网页录屏"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/04.json"
+    },
+    {
+      "id": "chapter-05",
+      "title": "十二个实体预演世界",
+      "start_s": 75,
+      "duration_s": 30,
+      "scene": "R1 / stress_v8",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-05.jpg",
+      "poster_sha256": "a001c519d928dfa76b30a040156ea526f607ac6669b1e2abe514ba72f932d054",
+      "clean_video": "media/real-footage/chapter-05-clean.mp4",
+      "clean_sha256": "63befd2240bf5e6e8c6219990c687d6ca3989b05d10866211cc83567199f17af",
+      "sources": [
+        {
+          "id": "rehearsal-full-00",
+          "record": "data/real-footage-sources/rehearsal-full-00.json",
+          "record_sha256": "f37fedf9892b8133f2827c68eecff82242803a98c548e2ba1c7e0e2d6d2987c2",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+          "source_time_s": [
+            0.0,
+            96.179999999998
+          ],
+          "camera": "follow"
+        },
+        {
+          "id": "world-01",
+          "record": "data/recordings/world-01.json",
+          "record_sha256": "6961ff1682f279fe7562d6300673fed1e7874fd5bab0f23c7e4dc8ae54a2beb7",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane1/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-02",
+          "record": "data/recordings/world-02.json",
+          "record_sha256": "aad9b3df321c60030ce7fd35058fd9464b8b08fffda651c9c1bf3a067f864393",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane2/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-03",
+          "record": "data/recordings/world-03.json",
+          "record_sha256": "732c4d1b98b2cf1c13394386cdb3fbffe56c758fd785dd952cdeee624f92d993",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane3/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-04",
+          "record": "data/recordings/world-04.json",
+          "record_sha256": "fde5f04eedf4bbb02b5311f59ebc54fef059e68008bb15be892f2d08247f337d",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane4/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-05",
+          "record": "data/recordings/world-05.json",
+          "record_sha256": "8ea26f5b736dce83e8af2423d35e8b5d0de077e0462d7fe54811eff2ea585cb6",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane5/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-06",
+          "record": "data/recordings/world-06.json",
+          "record_sha256": "02591d00c09d9597a985456ba9230fa82f8c00f37f44ca2b67a48af8972d846a",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane6/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-07",
+          "record": "data/recordings/world-07.json",
+          "record_sha256": "98feca02b49c430cbbe0da9ecbf9b69ca611d1389f0f35ddd7a5257574a3cc6a",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane7/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-08",
+          "record": "data/recordings/world-08.json",
+          "record_sha256": "b36d34ba31e98526819794bba1f701a7e401201e20f06f4ba5ebbb91ad069378",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane8/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-09",
+          "record": "data/recordings/world-09.json",
+          "record_sha256": "f2e373ac8cf2513cbe59250e84e9bc166de50a98d308c325ef02219f99a3c3ee",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane9/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-10",
+          "record": "data/recordings/world-10.json",
+          "record_sha256": "1aa6f764ca346b4b3aa3147877273e884e826581f307aa888e372542a077b7a9",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane10/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        },
+        {
+          "id": "world-11",
+          "record": "data/recordings/world-11.json",
+          "record_sha256": "eaace46e003b5dc59414e788875b802e7726e01f44414393ff7302f0e8f71f73",
+          "used_file_time_s": [
+            3,
+            7
+          ],
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane11/traj.npz",
+          "source_time_s": [
+            24.213146853146352,
+            55.82475524475409
+          ],
+          "camera": "原预演侧后跟拍（原录像3–7秒）"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/05.json"
+    },
+    {
+      "id": "chapter-06",
+      "title": "三策略：同一条仿真时钟",
+      "start_s": 105,
+      "duration_s": 42,
+      "scene": "R1 / stress_v8",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-06.jpg",
+      "poster_sha256": "8c2c323dcc8152057cd786b21e1945ac0123afa3542f04f848bd9449b697c7e3",
+      "clean_video": "media/real-footage/chapter-06-clean.mp4",
+      "clean_sha256": "92a23ca1a76ad0f69df4337204280e54c88a26561542b4698095ca1d951b37ff",
+      "sources": [
+        {
+          "id": "r1-synchronised-optimistic",
+          "record": "data/real-footage-sources/r1-synchronised-optimistic.json",
+          "record_sha256": "49a4f701cde5ae1a0677b100e4cca7d03b0478896bab5f9cc1417dc3875c6e5f",
+          "original_path": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/traj.npz",
+          "source_time_s": [
+            1.2000000000000006,
+            80.86600000000105
+          ],
+          "camera": "comparison"
+        },
+        {
+          "id": "r1-synchronised-conservative",
+          "record": "data/real-footage-sources/r1-synchronised-conservative.json",
+          "record_sha256": "8d2a64ef35d7b493ae125bad3226c4814b62408292c2fbf75f4b456c0da000af",
+          "original_path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/traj.npz",
+          "source_time_s": [
+            1.2000000000000006,
+            142.19999999999894
+          ],
+          "camera": "comparison"
+        },
+        {
+          "id": "r1-synchronised-imagination",
+          "record": "data/real-footage-sources/r1-synchronised-imagination.json",
+          "record_sha256": "17b36900fff972c342e901ef5efb9994c5d5f653b265ff18096426bce14c606a",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "source_time_s": [
+            1.2000000000000006,
+            112.83999999999469
+          ],
+          "camera": "comparison"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/06.json"
+    },
+    {
+      "id": "chapter-07",
+      "title": "成功的边界与另场失败",
+      "start_s": 147,
+      "duration_s": 16,
+      "scene": "R1 + 另场 F3_004",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-07.jpg",
+      "poster_sha256": "f158618ba038df5d3cdf2f2c344c4ab6c532b16c41948af17f6dceb585f59c53",
+      "clean_video": "media/real-footage/chapter-07-clean.mp4",
+      "clean_sha256": "20997f023a38343daecb6b7da71fd05668bc222435c5552b637aa30c725841c6",
+      "sources": [
+        {
+          "id": "r1-overlay",
+          "record": "data/real-footage-sources/r1-overlay.json",
+          "record_sha256": "fe19e18ffd8530996df67f4f0326a4ff8f40a6f55149b4415f6c7774bce5d5c1",
+          "original_path": "outputs/crossing/route/video/shots/4.mp4",
+          "source_time_s": null,
+          "camera": "原相机或原帧机位"
+        },
+        {
+          "id": "f3-004-contact",
+          "record": "data/real-footage-sources/f3-004-contact.json",
+          "record_sha256": "799d918335d61d90fd56244e836b3f663ef8076474d2f85c9d4dcfd4e569ed1f",
+          "original_path": "outputs/suite/real/suite_r2_v4_F3_004/imagination/traj.npz",
+          "source_time_s": [
+            70.14,
+            82.14
+          ],
+          "camera": "failure"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/07.json"
+    },
+    {
+      "id": "chapter-08",
+      "title": "连续到达尾段",
+      "start_s": 163,
+      "duration_s": 17,
+      "scene": "R1 / stress_v8",
+      "kind": "原状态回放",
+      "poster": "media/real-footage/chapter-08.jpg",
+      "poster_sha256": "bfb03ee4b457eb7539d2a8dbbce447096aaceb1679d58febca6acf95ef4e698a",
+      "clean_video": "media/real-footage/chapter-08-clean.mp4",
+      "clean_sha256": "08edcbada9671ee818487224ec71a73bdfac5e53a809b8f6c0b057871b0df6ed",
+      "sources": [
+        {
+          "id": "r1-tail",
+          "record": "data/real-footage-sources/r1-tail.json",
+          "record_sha256": "1cb89cf80aa76eef8018b0add546807bd7eed137453202b73dd740ec23918bf2",
+          "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "source_time_s": [
+            98.0,
+            112.83999999999469
+          ],
+          "camera": "follow"
+        }
+      ],
+      "source_record": "data/real-footage-chapters/08.json"
+    }
+  ],
+  "video_first": true,
+  "webgl_required": false,
+  "new_physics_runs": 0,
+  "new_generation_tasks": 0,
+  "captions": [
+    [
+      0,
+      15,
+      "前往目标点。先看清这条路。"
+    ],
+    [
+      15,
+      19,
+      "换到独立低石预检查：轮行在门槛前受阻。"
+    ],
+    [
+      19,
+      33,
+      "同一块石头，完整抬轮、越过、落地。"
+    ],
+    [
+      33,
+      35,
+      "随后，整车离开门槛。"
+    ],
+    [
+      35,
+      45,
+      "从这里，我只能看见它的一面。"
+    ],
+    [
+      45,
+      53,
+      "外部机位只给观众解释，机器人没有获得背面真值。"
+    ],
+    [
+      53,
+      64,
+      "这是已有任务返回的原模型，输入与任务号逐项对应。"
+    ],
+    [
+      64,
+      75,
+      "另一块石头也有自己的原观测和候选。"
+    ],
+    [
+      75,
+      93,
+      "先在一个真实候选世界中，完整开到终点。"
+    ],
+    [
+      93,
+      105,
+      "六种 A 与两种 B，十二个组合都完成原预演。"
+    ],
+    [
+      105,
+      123,
+      "回到同一条 R1 路。三种策略，共用一条仿真时钟。"
+    ],
+    [
+      123,
+      133,
+      "直冲车实际碰到了石头，画面停在它的原终态。"
+    ],
+    [
+      133,
+      142,
+      "想象车绕过去，到达目标点。"
+    ],
+    [
+      142,
+      147,
+      "保守车没有到达，总共进行了五次观测。"
+    ],
+    [
+      147,
+      151,
+      "R1 事后核对：这一份背面短了 0.70 米。"
+    ],
+    [
+      151,
+      157,
+      "另一个场景 F3_004：预演通过，仍不能保证真实执行。"
+    ],
+    [
+      157,
+      163,
+      "接触前后连续保留；原记录到碰撞就结束。"
+    ],
+    [
+      163,
+      176,
+      "回到 R1，连续看完到达尾段。"
+    ],
+    [
+      176,
+      180,
+      "先在假设里走一步。有效，也有边界。"
+    ]
+  ]
+}

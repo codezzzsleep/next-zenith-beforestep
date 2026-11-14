@@ -1,0 +1,36 @@
+{
+  "id": "chapter-01",
+  "title": "前往目标点",
+  "start_s": 0,
+  "duration_s": 15,
+  "scene": "R1 / stress_v8",
+  "kind": "原状态回放",
+  "poster": "media/real-footage/chapter-01.jpg",
+  "poster_sha256": "60ce7c69f6fd79a1e79b3d9ef805fe67030693a99569ccde286ecc2ba8f39b1d",
+  "clean_video": "media/real-footage/chapter-01-clean.mp4",
+  "clean_sha256": "71dfa99e7e8bd24469e5f60ea02d09d5ae9689830d417c9340554efc04d93520",
+  "sources": [
+    {
+      "id": "r1-opening-fixed",
+      "record": "data/real-footage-sources/r1-opening-fixed.json",
+      "record_sha256": "76cb5621950d57f0798c18c42281ee589af9a2c95b992710de1012160a04f9cb",
+      "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+      "source_time_s": [
+        1.2000000000000006,
+        16.08
+      ],
+      "camera": "fixed-establishing"
+    },
+    {
+      "id": "r1-opening-follow",
+      "record": "data/real-footage-sources/r1-opening-follow.json",
+      "record_sha256": "04f4ab676b8e486c312089dff9cfaf65f0ce81687bea9b5eeb5b905b1685277e",
+      "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+      "source_time_s": [
+        1.2000000000000006,
+        16.08
+      ],
+      "camera": "follow"
+    }
+  ]
+}

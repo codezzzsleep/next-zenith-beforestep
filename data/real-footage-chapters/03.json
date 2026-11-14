@@ -1,0 +1,44 @@
+{
+  "id": "chapter-03",
+  "title": "R1：第一眼看见什么",
+  "start_s": 35,
+  "duration_s": 18,
+  "scene": "R1 / stress_v8",
+  "kind": "原状态回放",
+  "poster": "media/real-footage/chapter-03.jpg",
+  "poster_sha256": "70f12a2c0ee77c1cdee343a693f005dd47eb01e894f32ffd194ca3570b00da1e",
+  "clean_video": "media/real-footage/chapter-03-clean.mp4",
+  "clean_sha256": "7bee5104c1d4cf415483eecab0bcf79e714b1a4256b4bc2116257a7dffa6068f",
+  "sources": [
+    {
+      "id": "r1-first-person",
+      "record": "data/real-footage-sources/r1-first-person.json",
+      "record_sha256": "34e5d960c24f7ab9dfca8737fd9cab3ee3ed2bd0bece9ff3bcc3e9469e64a0c0",
+      "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+      "source_time_s": [
+        14.08,
+        16.08
+      ],
+      "camera": "front_cam"
+    },
+    {
+      "id": "r1-observation-input",
+      "record": "data/real-footage-sources/r1-observation-input.json",
+      "record_sha256": "86886529a85310cfc5be950ef9e61ecf0aebb761b4cd67b52ce389b9d9255d0a",
+      "original_path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/rgb.png",
+      "source_time_s": 16.08,
+      "camera": "原相机或原帧机位"
+    },
+    {
+      "id": "r1-observation-external",
+      "record": "data/real-footage-sources/r1-observation-external.json",
+      "record_sha256": "1f8de47176d7d17918794ced7505785c3e552580ab0782beccaf211244d687b8",
+      "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+      "source_time_s": [
+        14.08,
+        16.08
+      ],
+      "camera": "follow"
+    }
+  ]
+}

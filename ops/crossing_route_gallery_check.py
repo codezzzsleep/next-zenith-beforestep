@@ -29,7 +29,9 @@ def check(url, output):
             page.goto(url + 'gallery.html', wait_until='networkidle', timeout=90000)
             page.wait_for_function('document.documentElement.dataset.galleryReady === "true"')
             page.locator('#gallery-load').click()
-            page.wait_for_function('document.querySelector("#gallery-model").loaded === true', timeout=90000)
+            page.wait_for_function('document.querySelector("#gallery-model").loaded === true || document.querySelector("#gallery-model").lastError', timeout=45000)
+            load_error=page.locator('#gallery-model').evaluate('(e)=>e.lastError || ""')
+            assert not load_error, {'load_error':load_error,'page_errors':errors,'http_errors':failed}
             model = page.locator('#gallery-model')
             model.scroll_into_view_if_needed()
             box = model.bounding_box()

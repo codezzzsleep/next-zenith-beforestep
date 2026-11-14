@@ -1,0 +1,52 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "stress_v8_gate-A",
+    "scene": "stress_v8_gate",
+    "path": "media/footage/stress_v8_gate-A.mp4",
+    "source": "outputs/crossing/route/stress_v8_gate/A/segment1/full-record/trajectory.npz",
+    "source_sha256": "45f178bc47267c88720a82a4c206ee15f7df7e4fc9299f6af613eb504819064e",
+    "source_time_range_s": [
+      0.020000000000000004,
+      54.880000000021106
+    ],
+    "clip_duration_s": 18,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 3.04777777777895,
+    "world_source": {
+      "scene": "evidence/crossing/route/scene-stress_v8_gate.json",
+      "sha256": "fc5b02e6e8ff8f75cbc347ecea8c958a54210871f50503329a6e3ef46c0024fa"
+    },
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/stress_v8_gate/A/segment1/full-record/trajectory.npz",
+        "sha256": "45f178bc47267c88720a82a4c206ee15f7df7e4fc9299f6af613eb504819064e"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "a90ece0ac60d3cc1260c0452b6e86e00bac9cc5b394100a6512c88743134f83a",
+    "bytes": 1574686,
+    "poster": "media/footage/stress_v8_gate-A.jpg"
+  },
+  "original_result": {
+    "policy": "imagination",
+    "vehicle": "A",
+    "total_result": "stopped",
+    "sim_seconds": 53.68,
+    "looks": 2,
+    "reason": "imagined_blocked",
+    "legs_used": false
+  },
+  "original_result_path": "outputs/crossing/route/stress_v8_gate/A/result.json",
+  "original_result_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b"
+}

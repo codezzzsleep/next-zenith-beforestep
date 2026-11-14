@@ -1,0 +1,56 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F2_001_gate-B",
+    "scene": "suite_r2_v4_F2_001_gate",
+    "path": "media/footage/suite_r2_v4_F2_001_gate-B.mp4",
+    "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/segment1/full-record/trajectory.npz",
+    "source_sha256": "c846ef441bab1b6944781d67ef8c076a6d127e4b8ae553d7c2512ff7ceb7bd36",
+    "source_time_range_s": [
+      0.020000000000000004,
+      284.08000000062833
+    ],
+    "clip_duration_s": 18,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 15.78111111114602,
+    "world_source": {
+      "scene": "evidence/crossing/route/scene-suite_r2_v4_F2_001_gate.json",
+      "sha256": "2bac36bba371ea1b958c055334bf52deb3b445abdc67a910432184078f470691"
+    },
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/segment1/full-record/trajectory.npz",
+        "sha256": "c846ef441bab1b6944781d67ef8c076a6d127e4b8ae553d7c2512ff7ceb7bd36"
+      },
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/segment2/trajectory.npz",
+        "sha256": "b635c9b77da9b6230d4d2107b6de1b551076dee35d8f4e1e7956ba7d432f16df"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "a5a66e2a8e168706116d0f3836a3a1d423e25fbdb8f106c45e4c14529aef1d84",
+    "bytes": 1358202,
+    "poster": "media/footage/suite_r2_v4_F2_001_gate-B.jpg"
+  },
+  "original_result": {
+    "policy": "optimistic",
+    "vehicle": "B",
+    "total_result": "arrived",
+    "sim_seconds": 282.88000000003245,
+    "looks": 2,
+    "reason": null,
+    "legs_used": true
+  },
+  "original_result_path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+  "original_result_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701"
+}

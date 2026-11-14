@@ -1,0 +1,770 @@
+{
+  "schema": "beforestep-lux3d-demo/v1",
+  "objective": "Actual photo to Lux3D 3D output to observation check to physics rehearsal to independent action",
+  "groups": [
+    {
+      "id": "core",
+      "chapter": "先见一步 · 照片变成3D",
+      "base_duration_s": 11,
+      "parts": [
+        {
+          "id": "core-robot",
+          "kind": "video",
+          "base_duration_s": 4,
+          "source": "evidence/production-v6/shots/s01-open-v2.mp4",
+          "span": 6
+        },
+        {
+          "id": "core-pair",
+          "kind": "pair",
+          "base_duration_s": 7,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "core-01",
+          "text": "机器人拍一张石头照片，交给 Lux3D，拿回一整块石头的三维模型。"
+        },
+        {
+          "id": "core-02",
+          "text": "先见一步，让机器人据此判断看不见的背面。"
+        }
+      ]
+    },
+    {
+      "id": "question",
+      "chapter": "为什么需要完整形状",
+      "base_duration_s": 8,
+      "parts": [
+        {
+          "id": "question-rgb",
+          "kind": "video",
+          "base_duration_s": 8,
+          "source": "evidence/production-v6/shots/s02-eye-v2.mp4",
+          "span": 3
+        }
+      ],
+      "sentences": [
+        {
+          "id": "question-01",
+          "text": "相机只拍到石头朝向自己的一面，背面藏在遮挡和黑影里。"
+        }
+      ]
+    },
+    {
+      "id": "proof",
+      "chapter": "一张照片 → Lux3D → 三维模型",
+      "base_duration_s": 12,
+      "parts": [
+        {
+          "id": "proof-pair",
+          "kind": "pair",
+          "base_duration_s": 12,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "proof-01",
+          "text": "Lux3D 把这张照片，变成可以转到背面看的三维模型。"
+        },
+        {
+          "id": "proof-02",
+          "text": "画面中的照片和模型，来自同一个真实任务。"
+        }
+      ]
+    },
+    {
+      "id": "viewer",
+      "chapter": "官方 Aholo Viewer · 真实模型",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "viewer-ui",
+          "kind": "video",
+          "base_duration_s": 4,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 4,
+          "crop": [
+            365,
+            100,
+            1180,
+            610
+          ]
+        },
+        {
+          "id": "viewer-close",
+          "kind": "viewer",
+          "base_duration_s": 10,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "viewer-01",
+          "text": "用官方 Aholo Viewer，在网页里旋转，直接检查真实返回的形状。"
+        },
+        {
+          "id": "viewer-02",
+          "text": "后续对高石盲区的判断，都建立在这个三维模型上。"
+        }
+      ]
+    },
+    {
+      "id": "check",
+      "chapter": "第一道判断 · 模型与照片对得上吗",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "check-model",
+          "kind": "viewer",
+          "base_duration_s": 6,
+          "source": "evidence/production-v6/shots/r03-glb-B.mp4",
+          "span": 8
+        },
+        {
+          "id": "check-plot",
+          "kind": "image",
+          "base_duration_s": 8,
+          "source": "evidence/production-v6/figures/r1-self-check.png"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "check-01",
+          "text": "机器人不会直接相信生成结果。先把模型与相机看到的正面核对，对不上的丢掉。"
+        },
+        {
+          "id": "check-02",
+          "text": "这块石头返回五份模型，三份被拒绝，只有两份通过。"
+        }
+      ]
+    },
+    {
+      "id": "worlds",
+      "chapter": "第二道判断 · 每份模型里先走一遍",
+      "base_duration_s": 18,
+      "parts": [
+        {
+          "id": "world-main",
+          "kind": "video",
+          "base_duration_s": 12,
+          "source": "evidence/production-v6/shots/s05-world-1-v2.mp4",
+          "span": 8.0,
+          "requested_source_span_s": 12
+        },
+        {
+          "id": "world-grid",
+          "kind": "video",
+          "base_duration_s": 6,
+          "source": "evidence/production-v6/shots/s05-world-grid.mp4",
+          "span": 6
+        }
+      ],
+      "sentences": [
+        {
+          "id": "worlds-01",
+          "text": "同一块石头生成多份候选，每份模型都是一种可能的背面。"
+        },
+        {
+          "id": "worlds-02",
+          "text": "把通过检查的模型放进虚拟世界，让机器人先把整条路走完。"
+        },
+        {
+          "id": "worlds-03",
+          "text": "这一场有十二个世界，全部预演安全，才允许出发。"
+        }
+      ]
+    },
+    {
+      "id": "action",
+      "chapter": "模型改变行动 · 再走真实路线",
+      "base_duration_s": 19,
+      "parts": [
+        {
+          "id": "action-route",
+          "kind": "video",
+          "base_duration_s": 19,
+          "source": "evidence/production-v6/shots/s03-imagination-v2.mp4",
+          "span": 19
+        }
+      ],
+      "sentences": [
+        {
+          "id": "action-01",
+          "text": "现在，机器人开始按模型判断出的路线，绕过高石头。"
+        },
+        {
+          "id": "action-02",
+          "text": "这是原始运行记录：只看一眼，一百十二点八四秒，到达终点。"
+        }
+      ]
+    },
+    {
+      "id": "comparison",
+      "chapter": "同一条路 · 三种判断的原结果",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "compare",
+          "kind": "comparison",
+          "base_duration_s": 14,
+          "source": "evidence/lux3d-demo/sources/comparison.mkv",
+          "span": 28
+        }
+      ],
+      "sentences": [
+        {
+          "id": "comparison-01",
+          "text": "同一条路上，把未知当作没有的车撞了，把未知都当危险的车停了。"
+        },
+        {
+          "id": "comparison-02",
+          "text": "Lux3D 的模型让这次盲区判断，有了可以检验的依据。"
+        }
+      ]
+    },
+    {
+      "id": "boundary",
+      "chapter": "模型是可以检验的假设",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "back-error",
+          "kind": "video",
+          "base_duration_s": 5.333333333333333,
+          "source": "evidence/production-v6/shots/r01-reveal.mp4",
+          "span": 10,
+          "start": 1,
+          "crop": [
+            380,
+            455,
+            500,
+            440
+          ]
+        },
+        {
+          "id": "safe-stop",
+          "kind": "video",
+          "base_duration_s": 8.666666666666668,
+          "source": "evidence/production-v6/shots/s09-F3002-A-stop-v2.mp4",
+          "span": 14
+        }
+      ],
+      "sentences": [
+        {
+          "id": "boundary-01",
+          "text": "但正面通过核对，背面仍可能被想短。"
+        },
+        {
+          "id": "boundary-02",
+          "text": "在另一个场景，候选模型全部被拒绝，机器人选择停车。"
+        }
+      ]
+    },
+    {
+      "id": "iteration",
+      "chapter": "输入、模型与迭代都保留",
+      "base_duration_s": 9,
+      "parts": [
+        {
+          "id": "versions-early",
+          "kind": "image",
+          "base_duration_s": 4.5,
+          "source": "evidence/production-v6/figures/six-version-assets.png",
+          "crop": [
+            20,
+            135,
+            1400,
+            450
+          ]
+        },
+        {
+          "id": "versions-later",
+          "kind": "image",
+          "base_duration_s": 4.5,
+          "source": "evidence/production-v6/figures/six-version-assets.png",
+          "crop": [
+            20,
+            600,
+            1400,
+            450
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "id": "iteration-01",
+          "text": "不同版本的输入照片、真实模型和拒绝结果，都保存在仓库里，评审可以逐一核对。"
+        }
+      ]
+    },
+    {
+      "id": "records",
+      "chapter": "400+ 次实际使用 Lux3D",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "records-pair",
+          "kind": "pair",
+          "base_duration_s": 14,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "records-01",
+          "text": "作品真实使用 Lux3D 四百多次，把生成的三维模型用于机器人判断。"
+        },
+        {
+          "id": "records-02",
+          "text": "照片、模型、判断和行动，都能在作品里查看。"
+        }
+      ]
+    },
+    {
+      "id": "ending",
+      "chapter": "先见一步 · BeforeStep",
+      "base_duration_s": 9,
+      "parts": [
+        {
+          "id": "ending-card",
+          "kind": "ending",
+          "base_duration_s": 9,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "ending-01",
+          "text": "从一张照片，到一个三维模型，再到一次有依据的行动。"
+        },
+        {
+          "id": "ending-02",
+          "text": "先见一步。"
+        }
+      ]
+    }
+  ],
+  "sources": {
+    "evidence/production-v6/shots/s01-open-v2.mp4": {
+      "sha256": "e154b58ca4ad052fb40e7ad9e9139a9e0c8622b18f72832fff511ae4b0a27288",
+      "bytes": 9335153
+    },
+    "evidence/production-v6/shots/s01-open-v2.json": {
+      "sha256": "2d96e4854726f22b4ce3d845a4de928a10e91215f25cb5048ee0f42d60031300",
+      "bytes": 9049
+    },
+    "evidence/production-v6/shots/r02-glb-A.mp4": {
+      "sha256": "e2bf467c49342c5cfa9ed9461fa48db98996e874d89ff44088c6d9059b7fd2f5",
+      "bytes": 609941
+    },
+    "evidence/production-v6/shots/r02-glb-A.json": {
+      "sha256": "a2b1f3f2b1c438e57f89bc2a8cc2929765eeee540e77ff3015d794a0c0e4daae",
+      "bytes": 3533
+    },
+    "evidence/production-v6/shots/s02-eye-v2.mp4": {
+      "sha256": "968a64aba7e666eacc685c88aac854cb3f75f2898895f601a2d2b7ae65bfe82c",
+      "bytes": 496508
+    },
+    "evidence/production-v6/shots/s02-eye-v2.json": {
+      "sha256": "6d067313f78d1d92edc87615ad5b87c6ebbdfac7e0e4d1c6d5b76b0b6d4f24b3",
+      "bytes": 5075
+    },
+    "evidence/production-v6/shots/r03-glb-B.mp4": {
+      "sha256": "7ddcc96d1e0b273adc7f2498787e97f8e34a30ac523062be14b126af73c03d8c",
+      "bytes": 528926
+    },
+    "evidence/production-v6/shots/r03-glb-B.json": {
+      "sha256": "25d025dfa64a421b9dc52a6e015b1b08e9faaf1ae290e7201a137eca1100d446",
+      "bytes": 3533
+    },
+    "evidence/production-v6/figures/r1-self-check.png": {
+      "sha256": "36b912116da418135adf8f129cdf773b6274e8eea9f997c77e65f4a54f35c764",
+      "bytes": 40174
+    },
+    "evidence/production-v6/shots/s05-world-1-v2.mp4": {
+      "sha256": "a88e2a1d6fddfef2abc656d8383270a091f2f26f2591531cbefd716e65bb58bd",
+      "bytes": 6716466
+    },
+    "evidence/production-v6/shots/s05-world-1-v2.json": {
+      "sha256": "cde7b99250226bb753f70fc7aecc05d10d362b59b73bafa9bc1fc6e65ef1d1d7",
+      "bytes": 9046
+    },
+    "evidence/production-v6/shots/s05-world-grid.mp4": {
+      "sha256": "b10a0005b52962f8d9b8069b75f55d0c3ec1ab5e18c5557c30f00fed7aa5e762",
+      "bytes": 4440080
+    },
+    "evidence/production-v6/shots/s05-world-grid.json": {
+      "sha256": "e256bd7bd86eb2bfb8ec5eac5e5bae39553502053c71d3e8b9c9ddf14d3a982a",
+      "bytes": 23890
+    },
+    "evidence/production-v6/shots/s03-imagination-v2.mp4": {
+      "sha256": "e6597d1fc34db1abf6c8f5a7d83547d365a0ab313a9f835d916be97202d3fad4",
+      "bytes": 19019171
+    },
+    "evidence/production-v6/shots/s03-imagination-v2.json": {
+      "sha256": "82c0d2114810a3151c6b25b0634381ad05bd0650fd047c03fd2fc8ac2e64b384",
+      "bytes": 9123
+    },
+    "evidence/lux3d-demo/sources/comparison.mkv": {
+      "sha256": "2e94ed49ece0e933b0192d5f229495c6eee4db47a99e41c24088b34774324bfa",
+      "bytes": 124889349
+    },
+    "evidence/lux3d-demo/sources/comparison.json": {
+      "sha256": "e6f1f019206845c9a9cd87d2df01b33404d9dd48e652f6be7f8d0acad2782877",
+      "bytes": 586
+    },
+    "evidence/production-v6/shots/r01-reveal.mp4": {
+      "sha256": "9cf05cd49f6434b7939d2d1a7521563f861af86cf10c43735e529b7cdc6cdd24",
+      "bytes": 969301
+    },
+    "evidence/production-v6/shots/r01-reveal.json": {
+      "sha256": "fd48d3a19c8a872ee875ff090bb775d1d61580d916c32f0216c47e71b1e47d61",
+      "bytes": 5754
+    },
+    "evidence/production-v6/shots/s09-F3002-A-stop-v2.mp4": {
+      "sha256": "8df6e940eb062c6c34d14a7426fcca0ca75b9992c4efc17419710ef86546b0e3",
+      "bytes": 9425329
+    },
+    "evidence/production-v6/shots/s09-F3002-A-stop-v2.json": {
+      "sha256": "71a671a7d9677f2d748a3fd90fb52cc20a7a7f2271c6d849e612408cf664bb52",
+      "bytes": 9379
+    },
+    "evidence/production-v6/figures/six-version-assets.png": {
+      "sha256": "eb497dc4f14668f205ec27135f2e82db78f336046d5eb9e1aafba82d75984cae",
+      "bytes": 348022
+    },
+    "evidence/lux3d-demo/sources/r1-task-5958685-input.jpg": {
+      "sha256": "36c6920301bb5aee1a23970af7b9229a100ee42ffb0aa70f9e84edd61c2aa5cd",
+      "bytes": 528351
+    },
+    "evidence/lux3d-demo/sources/r1-task-5958685-original.glb": {
+      "sha256": "6be9c81656748329cc2bde212939abac7bce0b9c793ccdc754ded3c7747ce180",
+      "bytes": 7702168
+    },
+    "evidence/production-v6/film/facts.json": {
+      "sha256": "7798e9b4a2913147806488300c587cd3535899f290d4e9401af8b862a91e054f",
+      "bytes": 12221
+    }
+  },
+  "pair": {
+    "task_id": 5958685,
+    "photo": "evidence/lux3d-demo/sources/r1-task-5958685-input.jpg",
+    "photo_sha256": "36c6920301bb5aee1a23970af7b9229a100ee42ffb0aa70f9e84edd61c2aa5cd",
+    "glb": "evidence/lux3d-demo/sources/r1-task-5958685-original.glb",
+    "glb_sha256": "6be9c81656748329cc2bde212939abac7bce0b9c793ccdc754ded3c7747ce180",
+    "viewer": "official @manycore/aholo-viewer 1.14.0",
+    "viewer_source": "r02-glb-A actual screen recording"
+  },
+  "facts": {
+    "source_facts": "evidence/production-v6/facts.json",
+    "source_facts_sha256": "93af685ed2eb30e5a94243fd49d1a8fa40d6f10d17eb29205536df5df23713bc",
+    "bindings": {
+      "r1/optimistic/sim_time_s": {
+        "value": 80.87,
+        "source": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json",
+        "source_sha256": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+        "json_pointer": "/sim_time_s",
+        "status": "verified",
+        "story_expected": 80.87
+      },
+      "r1/conservative/sim_time_s": {
+        "value": 142.2,
+        "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+        "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+        "json_pointer": "/sim_time_s",
+        "status": "verified",
+        "story_expected": 142.2
+      },
+      "r1/imagination/sim_time_s": {
+        "value": 112.84,
+        "source": "evidence/reviews/beforestep_r1/lux/original_b/summary.json",
+        "source_sha256": "dd5f8921b9cfc03fe32d105ae5104ed0a7641bd25aab73d20be08f728c8e9cd6",
+        "json_pointer": "/sim_time_s",
+        "status": "verified",
+        "story_expected": 112.84
+      },
+      "r1/conservative/looks": {
+        "value": 5,
+        "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+        "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+        "json_pointer": "/looks",
+        "status": "verified"
+      },
+      "back_error/candidate_count": {
+        "value": 64,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/candidate_count",
+        "status": "verified",
+        "story_expected": 64
+      },
+      "back_error/shorter_than_five_cm": {
+        "value": 23,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/shorter_than_five_cm",
+        "status": "verified",
+        "story_expected": 23
+      },
+      "back_error/r1_reveal_examples/0/back_error_m": {
+        "value": -0.699856413070945,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/rows/6/back_error_m",
+        "status": "verified"
+      },
+      "back_error/threshold_m": {
+        "value": -0.05,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/threshold_m",
+        "status": "verified",
+        "story_expected": -0.05
+      },
+      "decisive_eight/count": {
+        "value": 8,
+        "source": "evidence/suite/summary.json",
+        "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+        "json_pointer": "/scenes filtered classification=decisive",
+        "status": "verified",
+        "story_expected": 8
+      },
+      "decisive_eight/imagination/counts/arrived": {
+        "value": 3,
+        "source": "evidence/suite/summary.json",
+        "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+        "json_pointer": "/scenes[classification=decisive]/runs/imagination/summary/result",
+        "status": "verified",
+        "story_expected": 3
+      },
+      "decisive_eight/imagination/counts/collision": {
+        "value": 2,
+        "source": "evidence/suite/summary.json",
+        "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+        "json_pointer": "/scenes[classification=decisive]/runs/imagination/summary/result",
+        "status": "verified",
+        "story_expected": 2
+      },
+      "decisive_eight/imagination/counts/safe_stop": {
+        "value": 3,
+        "source": "evidence/suite/summary.json",
+        "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+        "json_pointer": "/scenes[classification=decisive]/runs/imagination/summary/result",
+        "status": "verified",
+        "story_expected": 3
+      },
+      "post_result_v3/completed": {
+        "value": 17,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/completed",
+        "status": "verified",
+        "story_expected": 17
+      },
+      "post_result_v3/collisions": {
+        "value": 0,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/collisions",
+        "status": "verified",
+        "story_expected": 0
+      },
+      "post_result_v3/safe_stop": {
+        "value": 14,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/safe_stop",
+        "status": "verified",
+        "story_expected": 14
+      },
+      "post_result_v3/arrived": {
+        "value": 3,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/arrived",
+        "status": "verified",
+        "story_expected": 3
+      },
+      "legs/wheel_trials_at_band_heights": {
+        "value": 90,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/wheel_trials_at_band_heights",
+        "status": "verified",
+        "story_expected": 90
+      },
+      "legs/wheel_passes_at_band_heights": {
+        "value": 0,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/wheel_passes_at_band_heights",
+        "status": "verified",
+        "story_expected": 0
+      },
+      "legs/band_gait_trials": {
+        "value": 24,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/band_gait_trials",
+        "status": "verified",
+        "story_expected": 24
+      },
+      "legs/band_gait_clean_trials": {
+        "value": 24,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/band_gait_clean_trials",
+        "status": "verified",
+        "story_expected": 24
+      },
+      "legs/true_rocks": {
+        "value": 3,
+        "source": "evidence/crossing/calibration/capability-v72.json",
+        "source_sha256": "d461bd1bc482e9528abf1629ff91eec8bcb12ce22410178c727fe71f6f8f519d",
+        "json_pointer": "/clean_support_compliant_rocks length",
+        "status": "verified",
+        "story_expected": 3
+      },
+      "F3_002/A/total_result": {
+        "value": "stopped",
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+        "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+        "json_pointer": "/total_result",
+        "status": "verified"
+      },
+      "F3_002/A/sim_seconds": {
+        "value": 57.7,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+        "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+        "json_pointer": "/sim_seconds",
+        "status": "verified"
+      },
+      "F3_002/A/looks": {
+        "value": 2,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+        "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+        "json_pointer": "/looks",
+        "status": "verified"
+      },
+      "F3_002/A/second_segment_result": {
+        "value": "not_run",
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+        "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+        "json_pointer": "/second_segment_result",
+        "status": "verified"
+      },
+      "F3_002/A/legs_used": {
+        "value": false,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+        "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+        "json_pointer": "/legs_used",
+        "status": "verified"
+      },
+      "F3_002/B/total_result": {
+        "value": "stopped",
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+        "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+        "json_pointer": "/total_result",
+        "status": "verified"
+      },
+      "F3_002/B/sim_seconds": {
+        "value": 79.82,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+        "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+        "json_pointer": "/sim_seconds",
+        "status": "verified"
+      },
+      "F3_002/B/looks": {
+        "value": 1,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+        "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+        "json_pointer": "/looks",
+        "status": "verified"
+      },
+      "F3_002/B/second_segment_result": {
+        "value": "not_run",
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+        "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+        "json_pointer": "/second_segment_result",
+        "status": "verified"
+      },
+      "F3_002/B/legs_used": {
+        "value": false,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+        "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+        "json_pointer": "/legs_used",
+        "status": "verified"
+      },
+      "F3_002/D/total_result": {
+        "value": "stopped",
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+        "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+        "json_pointer": "/total_result",
+        "status": "verified"
+      },
+      "F3_002/D/sim_seconds": {
+        "value": 57.7,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+        "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+        "json_pointer": "/sim_seconds",
+        "status": "verified"
+      },
+      "F3_002/D/looks": {
+        "value": 2,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+        "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+        "json_pointer": "/looks",
+        "status": "verified"
+      },
+      "F3_002/D/second_segment_result": {
+        "value": "not_run",
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+        "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+        "json_pointer": "/second_segment_result",
+        "status": "verified"
+      },
+      "F3_002/D/legs_used": {
+        "value": false,
+        "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+        "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+        "json_pointer": "/legs_used",
+        "status": "verified"
+      }
+    },
+    "live_lux_counts": {
+      "created": 491,
+      "statuses": {
+        "ok": 460,
+        "failed": 31
+      },
+      "source": "source_facts:/lux/live_ledger_counts",
+      "all_task_SHA_verified": true
+    },
+    "same_route": {
+      "completed": 5,
+      "D_arrived": 2,
+      "source": "source_facts:/same_route"
+    },
+    "rehearsal_worlds": {
+      "value": 12,
+      "source": "evidence/production-v6/shots/s05-world-grid.json",
+      "source_sha256": "0a230bf16dd476d186d3f315813fc0fdc79ab5073246f01b3f887ada5e6f59f7",
+      "derivation": "length of twelve original trajectory sources"
+    },
+    "mismatches": [],
+    "source_policy": "Current source SHA checked; words and displayed numbers are generated from these bindings."
+  },
+  "base_duration_s": 156,
+  "new_physics_runs": 0,
+  "new_Lux3D_tasks": 0,
+  "no_simulated_API_live_submission": true,
+  "all_motion_is_retained_run_playback": true
+}

@@ -155,10 +155,52 @@
       "started_at": "2026-11-14T00:34:57.940893+00:00",
       "prechecks_commit": "1c932007d3426782717b89c273bbc7e94581c06e",
       "result": "evidence/crossing/route/summary-suite_r2_v4_F2_007_gate.json"
+    },
+    {
+      "base_scene": "suite_r2_v4_F3_002",
+      "scene": "suite_r2_v4_F3_002_gate",
+      "original_run": "outputs/suite/real/suite_r2_v4_F3_002/imagination",
+      "original_result": "arrived",
+      "original_admitted": 5,
+      "source_summary": "evidence/suite/summary.json",
+      "near_x_m": 9.0,
+      "threshold_seed": 22001,
+      "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F3_002_gate.json",
+      "status": "未开始",
+      "placement_attempts": [],
+      "selection_rule": {
+        "criteria": [
+          "决定性场景",
+          "R2原想象车到达",
+          "尚未做过同路实验"
+        ],
+        "selected": "suite_r2_v4_F3_002",
+        "disclosure": "本场是在前四个同路场景出结果之后追加的，目的是检验决定性场景；单场演示，不是统计证据",
+        "prior_four_scenes_retained": true,
+        "D_result_not_selection_criterion": true
+      },
+      "authority": "docs/reviews/SPEC_BEFORESTEP_ADDENDUM4.md §1",
+      "start_cutoff_utc": "2026-11-14T18:00:00+00:00",
+      "candidate_near_x_m": [
+        9.0,
+        9.25,
+        9.5
+      ]
     }
   ],
   "start_cutoff_utc": "2026-11-14T12:00:00+00:00",
   "maximum_scenes": 3,
   "first_D_result_not_selection_criterion": true,
-  "selection_complete": true
+  "selection_complete": true,
+  "selection_rule_addendum4": {
+    "criteria": [
+      "决定性场景",
+      "R2原想象车到达",
+      "尚未做过同路实验"
+    ],
+    "selected": "suite_r2_v4_F3_002",
+    "disclosure": "本场是在前四个同路场景出结果之后追加的，目的是检验决定性场景；单场演示，不是统计证据",
+    "prior_four_scenes_retained": true,
+    "D_result_not_selection_criterion": true
+  }
 }

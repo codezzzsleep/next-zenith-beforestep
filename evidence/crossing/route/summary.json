@@ -1190,8 +1190,8 @@
   "legs_necessity": "D 尚未到达终点，这一场不能证明腿的必要性。",
   "imagination_necessity": "D 尚未到达终点，这一场不能证明想象的必要性。",
   "threshold_closed_created": 53,
-  "route_new_created": 48,
-  "cumulative_created": 101,
+  "route_new_created": 60,
+  "cumulative_created": 113,
   "first_scene_only": true,
   "additional_scenes": [
     {
@@ -8188,10 +8188,280 @@
     },
     {
       "scene": "suite_r2_v4_F2_007_gate",
-      "status": "未开始",
-      "result": null,
+      "status": "终态",
+      "result": "evidence/crossing/route/summary-suite_r2_v4_F2_007_gate.json",
       "near_x_m": 9.0,
-      "threshold_seed": 22001
+      "threshold_seed": 22001,
+      "all_terminal": true,
+      "rows": [
+        {
+          "schema": "beforestep-crossing-route-vehicle/v1",
+          "scene": "suite_r2_v4_F2_007_gate",
+          "vehicle": "A",
+          "legs": false,
+          "policy": "imagination",
+          "imagine": "lux",
+          "first_segment": {
+            "policy": "imagination",
+            "tag": "segment1",
+            "see_dark": false,
+            "imagine": "lux",
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F2_007_gate",
+            "goal": [
+              8.15,
+              0.0
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 83.97,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              7.215,
+              -0.688,
+              35.71
+            ],
+            "sim_time_s": 85.17,
+            "wall_s": 934.6,
+            "collision": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.294,
+                -0.365,
+                0.143
+              ],
+              "t": 85.172
+            }
+          },
+          "first_segment_result": "stopped",
+          "second_segment": null,
+          "second_segment_result": "not_run",
+          "total_result": "stopped",
+          "sim_seconds": 83.97,
+          "looks": 1,
+          "reason": {
+            "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+            "original_pipeline_result": "collision",
+            "contact": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.294,
+                -0.365,
+                0.143
+              ],
+              "t": 85.172
+            },
+            "body_stone_contacts": 0,
+            "wheel_stone_steps": 1,
+            "maximum_tilt_deg": 0.7630239737792086
+          },
+          "legs_used": false,
+          "handoff": null,
+          "formal_runs": 1,
+          "high_rock_inputs_live": true,
+          "threshold_lux_tasks": 0,
+          "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A"
+        },
+        {
+          "schema": "beforestep-crossing-route-vehicle/v1",
+          "scene": "suite_r2_v4_F2_007_gate",
+          "vehicle": "B",
+          "legs": true,
+          "policy": "optimistic",
+          "imagine": null,
+          "first_segment": {
+            "policy": "optimistic",
+            "tag": "segment1",
+            "see_dark": false,
+            "imagine": null,
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F2_007_gate",
+            "goal": [
+              8.15,
+              0.0
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 82.46,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              7.184,
+              -0.687,
+              34.75
+            ],
+            "sim_time_s": 83.66,
+            "wall_s": 34.6,
+            "collision": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.266,
+                -0.367,
+                0.145
+              ],
+              "t": 83.664
+            }
+          },
+          "first_segment_result": "stopped",
+          "second_segment": null,
+          "second_segment_result": "not_run",
+          "total_result": "stopped",
+          "sim_seconds": 82.46,
+          "looks": 1,
+          "reason": {
+            "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+            "original_pipeline_result": "collision",
+            "contact": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.266,
+                -0.367,
+                0.145
+              ],
+              "t": 83.664
+            },
+            "body_stone_contacts": 0,
+            "wheel_stone_steps": 1,
+            "maximum_tilt_deg": 0.7630239737792086
+          },
+          "legs_used": false,
+          "handoff": null,
+          "formal_runs": 1,
+          "high_rock_inputs_live": true,
+          "threshold_lux_tasks": 0,
+          "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B"
+        },
+        {
+          "schema": "beforestep-crossing-route-vehicle/v1",
+          "scene": "suite_r2_v4_F2_007_gate",
+          "vehicle": "C",
+          "legs": true,
+          "policy": "conservative",
+          "imagine": null,
+          "first_segment": {
+            "policy": "conservative",
+            "tag": "segment1",
+            "see_dark": false,
+            "imagine": null,
+            "result": "stuck",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F2_007_gate",
+            "goal": [
+              8.15,
+              0.0
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 82.13,
+            "sensor_mode": "live",
+            "looks": 5,
+            "final_pose": [
+              4.267,
+              1.995,
+              38.14
+            ],
+            "sim_time_s": 83.33,
+            "wall_s": 49.9,
+            "collision": null
+          },
+          "first_segment_result": "stopped",
+          "second_segment": null,
+          "second_segment_result": "not_run",
+          "total_result": "stopped",
+          "sim_seconds": 82.13,
+          "looks": 5,
+          "reason": "no_path",
+          "legs_used": false,
+          "handoff": null,
+          "formal_runs": 1,
+          "high_rock_inputs_live": true,
+          "threshold_lux_tasks": 0,
+          "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C"
+        },
+        {
+          "schema": "beforestep-crossing-route-vehicle/v1",
+          "scene": "suite_r2_v4_F2_007_gate",
+          "vehicle": "D",
+          "legs": true,
+          "policy": "imagination",
+          "imagine": "lux",
+          "first_segment": {
+            "policy": "imagination",
+            "tag": "segment1",
+            "see_dark": false,
+            "imagine": "lux",
+            "result": "collision",
+            "controller": "rules",
+            "controller_sha256": null,
+            "pose_controller_sha256": null,
+            "scene_id": "suite_r2_v4_F2_007_gate",
+            "goal": [
+              8.15,
+              0.0
+            ],
+            "start_mode": "scene_start",
+            "execution_elapsed_s": 83.97,
+            "sensor_mode": "live",
+            "looks": 1,
+            "final_pose": [
+              7.215,
+              -0.688,
+              35.71
+            ],
+            "sim_time_s": 85.17,
+            "wall_s": 115.2,
+            "collision": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.294,
+                -0.365,
+                0.143
+              ],
+              "t": 85.172
+            }
+          },
+          "first_segment_result": "stopped",
+          "second_segment": null,
+          "second_segment_result": "not_run",
+          "total_result": "stopped",
+          "sim_seconds": 83.97,
+          "looks": 1,
+          "reason": {
+            "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+            "original_pipeline_result": "collision",
+            "contact": {
+              "body": "obstacle1",
+              "robot_geom": null,
+              "pos": [
+                7.294,
+                -0.365,
+                0.143
+              ],
+              "t": 85.172
+            },
+            "body_stone_contacts": 0,
+            "wheel_stone_steps": 1,
+            "maximum_tilt_deg": 0.7630239737792086
+          },
+          "legs_used": false,
+          "handoff": null,
+          "formal_runs": 1,
+          "high_rock_inputs_live": true,
+          "threshold_lux_tasks": 0,
+          "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D"
+        }
+      ]
     }
   ],
   "state": "首场四种车全部终态",

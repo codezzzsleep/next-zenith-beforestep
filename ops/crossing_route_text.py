@@ -4,12 +4,21 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'src')]
 from ops.crossing_route_summary import build,labels
 
+def reason_label(row):
+    reason=row['reason']
+    names={'imagined_blocked':'想象中的路线被挡住','no_path':'没有找到可走的路线','wheel_only_both_stuck':'两种轮行姿态都没能越过门槛'}
+    if isinstance(reason,dict):
+        if reason.get('reason')=='frozen_contact_watch_stopped_on_wheel_contact_to_high_rock' and reason.get('body_stone_contacts')==0:
+            return '轮触高石后由既有监视器停车，机身未触石'
+        return names.get(reason.get('reason'),'详见结果原件')
+    return names.get(reason,str(reason or '—'))
+
 def table(summary):
     text='| 车 | 第一段结果 | 第二段结果 | 总结果 | 用时（仿真秒） | 看了几眼 | 出事位置或停下原因 |\n| --- | --- | --- | --- | --- | --- | --- |\n'
     by={r['vehicle']:r for r in summary['rows']}
     for v in ['A','B','C','D']:
         if v not in by:text+=f'| {v} | 未完成 | 未运行 | 未完成 | — | — | 等待终态 |\n';continue
-        r=by[v];reason=json.dumps(r['reason'],ensure_ascii=False) if isinstance(r['reason'],dict) else str(r['reason'] or '—')
+        r=by[v];reason=reason_label(r)
         if v in ['B','C'] and not r['legs_used']:reason+='；没有用上腿'
         text+=f'| {v} | {labels(r["first_segment_result"])} | {labels(r["second_segment_result"])} | {labels(r["total_result"])} | {r["sim_seconds"]:.2f} | {r["looks"]} | {reason} |\n'
     return text
@@ -28,6 +37,10 @@ if __name__=='__main__':
     for r in low['six_input_rounds']:chapter+=f'| {r["revision"]} | {r["created"]} | {r["glb_successes"]} | {r["admitted"]} | '+ '；'.join(f'{k} {v}' for k,v in r['main_rejections'].items())+' |\n'
     chapter+=f'\n累计 {low["threshold_created"]} 份包括补充说明 2 允许收尾的批次；STORY 原字节保留此前 35 份的检查点。全部为开发数据，原十二场正式门槛测试已取消。模型叠合和 B 轨迹见 [开发素材](../evidence/crossing/route/low-stone.json)。\n\n'
     chapter+='### 一条路上两种石头\n\n'+summary['state']+'。石门位置已运行前提交，四项检查和每条终态都有独立证据。\n\n'+table(summary)+'\n'+summary['legs_necessity']+' '+summary['imagination_necessity']+'\n\n'
+    first_B=next((row for row in summary['rows'] if row['vehicle']=='B'),None)
+    if first_B and isinstance(first_B.get('reason'),dict) and first_B['reason'].get('reason')=='frozen_contact_watch_stopped_on_wheel_contact_to_high_rock':
+        detail=first_B['reason']
+        chapter+=f'首场 B 是轮触高石触发既有接触监视器停车，机身触石 {detail["body_stone_contacts"]} 次，最大倾角 {detail["maximum_tilt_deg"]:.2f}°；原管线的 collision 字段完整保留在结果原件中，按本轮判定不计作机身事故。\n\n'
     for extra in summary.get('additional_scenes',[]):
         chapter+='追加场景 '+extra['scene']+'：'+extra['status']+'。\n\n'
         if extra.get('rows'):chapter+=table(extra)+'\n'

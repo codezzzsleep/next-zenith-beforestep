@@ -1,6 +1,7 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BeforeStep · 完整项目报告</title><style>@page{size:A4;margin:15mm}body{max-width:900px;margin:30px auto;padding:0 18px;color:#202a30;font:14px/1.75 "WenQuanYi Zen Hei",sans-serif;overflow-wrap:anywhere}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}h3{break-after:avoid}p,li{orphans:3;widows:3}img{max-width:100%;height:auto;break-inside:avoid}table{border-collapse:collapse;width:100%;font-size:11px}th,td{border:1px solid #b7bfc2;padding:6px;vertical-align:top;overflow-wrap:anywhere}a{color:#236a5c}pre{white-space:pre-wrap}code{font-size:11px}@media print{body{margin:0;padding:0}img{max-height:235mm;object-fit:contain}table{break-inside:auto}tr{break-inside:avoid}}</style></head><body><h1 id="_1">先见一步：一张照片，变成一整块石头</h1>
 <!-- ADDENDUM3-LUX-USAGE-START -->
-<p>Lux3D 使用：本项目调用图像转三维任务创建接口（单图 <code>img</code> / 多图 <code>imgs</code>）、任务查询接口以及官方上传流程。客户端账本有 <strong>455 个真实已创建任务</strong>，其中 428 份返回 GLB、27 份服务端失败；逐项任务号与输入 SHA 见 <a href="evidence/crossing/route/lux-usage.json">公开调用账本</a>。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 101/400。</p>
+<p>Lux3D 使用：本项目调用图像转三维任务创建接口（单图 <code>img</code> / 多图 <code>imgs</code>）、任务查询接口以及官方上传流程。客户端账本有 <strong>467 个真实已创建任务</strong>，其中 438 份返回 GLB、29 份服务端失败；逐项任务号与输入 SHA 见 <a href="evidence/crossing/route/lux-usage.json">公开调用账本</a>。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 113/400。</p>
+<p>陈列室的单模型查看使用官方 <code>@manycore/aholo-viewer</code> 1.14.0，直接加载原始 GLB，支持拖动旋转与缩放。</p>
 <p>生成结果是高石头看不见部分的三维假设：先与可见观测核对，准入后进入各个完整物理预演世界，全部安全才实走。门槛石的跨越用实拍几何，Lux3D 在门槛石上的开发没有被记为跨越成功。</p>
 <!-- ADDENDUM3-LUX-USAGE-END -->
 
@@ -1380,7 +1381,7 @@
 <td>停下</td>
 <td>53.68</td>
 <td>2</td>
-<td>imagined_blocked</td>
+<td>想象中的路线被挡住</td>
 </tr>
 <tr>
 <td>B</td>
@@ -1389,7 +1390,7 @@
 <td>停下</td>
 <td>80.34</td>
 <td>1</td>
-<td>{"reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock", "original_pipeline_result": "collision", "contact": {"body": "obstacle1", "robot_geom": null, "pos": [6.91, -0.264, 0.106], "t": 81.542}, "body_stone_contacts": 0, "wheel_stone_steps": 1, "maximum_tilt_deg": 0.7602970110720764}；没有用上腿</td>
+<td>轮触高石后由既有监视器停车，机身未触石；没有用上腿</td>
 </tr>
 <tr>
 <td>C</td>
@@ -1398,7 +1399,7 @@
 <td>停下</td>
 <td>140.18</td>
 <td>5</td>
-<td>no_path；没有用上腿</td>
+<td>没有找到可走的路线；没有用上腿</td>
 </tr>
 <tr>
 <td>D</td>
@@ -1407,11 +1408,12 @@
 <td>停下</td>
 <td>53.68</td>
 <td>2</td>
-<td>imagined_blocked</td>
+<td>想象中的路线被挡住</td>
 </tr>
 </tbody>
 </table>
 <p>D 尚未到达终点，这一场不能证明腿的必要性。 D 尚未到达终点，这一场不能证明想象的必要性。</p>
+<p>首场 B 是轮触高石触发既有接触监视器停车，机身触石 0 次，最大倾角 0.76°；原管线的 collision 字段完整保留在结果原件中，按本轮判定不计作机身事故。</p>
 <p>追加场景 suite_r2_v4_F1_003_gate：终态。</p>
 <table>
 <thead>
@@ -1433,7 +1435,7 @@
 <td>卡住</td>
 <td>576.22</td>
 <td>1</td>
-<td>wheel_only_both_stuck</td>
+<td>两种轮行姿态都没能越过门槛</td>
 </tr>
 <tr>
 <td>B</td>
@@ -1451,7 +1453,7 @@
 <td>停下</td>
 <td>138.60</td>
 <td>5</td>
-<td>no_path；没有用上腿</td>
+<td>没有找到可走的路线；没有用上腿</td>
 </tr>
 <tr>
 <td>D</td>
@@ -1485,7 +1487,7 @@
 <td>卡住</td>
 <td>569.40</td>
 <td>1</td>
-<td>wheel_only_both_stuck</td>
+<td>两种轮行姿态都没能越过门槛</td>
 </tr>
 <tr>
 <td>B</td>
@@ -1503,7 +1505,7 @@
 <td>停下</td>
 <td>82.17</td>
 <td>5</td>
-<td>no_path；没有用上腿</td>
+<td>没有找到可走的路线；没有用上腿</td>
 </tr>
 <tr>
 <td>D</td>
@@ -1516,7 +1518,58 @@
 </tr>
 </tbody>
 </table>
-<p>追加场景 suite_r2_v4_F2_007_gate：未开始。</p>
+<p>追加场景 suite_r2_v4_F2_007_gate：终态。</p>
+<table>
+<thead>
+<tr>
+<th>车</th>
+<th>第一段结果</th>
+<th>第二段结果</th>
+<th>总结果</th>
+<th>用时（仿真秒）</th>
+<th>看了几眼</th>
+<th>出事位置或停下原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>停下</td>
+<td>未运行</td>
+<td>停下</td>
+<td>83.97</td>
+<td>1</td>
+<td>轮触高石后由既有监视器停车，机身未触石</td>
+</tr>
+<tr>
+<td>B</td>
+<td>停下</td>
+<td>未运行</td>
+<td>停下</td>
+<td>82.46</td>
+<td>1</td>
+<td>轮触高石后由既有监视器停车，机身未触石；没有用上腿</td>
+</tr>
+<tr>
+<td>C</td>
+<td>停下</td>
+<td>未运行</td>
+<td>停下</td>
+<td>82.13</td>
+<td>5</td>
+<td>没有找到可走的路线；没有用上腿</td>
+</tr>
+<tr>
+<td>D</td>
+<td>停下</td>
+<td>未运行</td>
+<td>停下</td>
+<td>83.97</td>
+<td>1</td>
+<td>轮触高石后由既有监视器停车，机身未触石</td>
+</tr>
+</tbody>
+</table>
 <p>四组共用同一个物理车体；A 关闭逐轮跨越能力，只允许既有常规和高姿态轮行。B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。</p>
 <h3 id="_33">事实出处与边界</h3>
 <p>事实出处保留原文核对记录：<a href="evidence/crossing/references.json">来源</a>。石门为简化任务，地形和几何限定在这一场；采用月面重力、被动暗区深度规则和理想目标分割，尚未验证实机。两极太阳约束及主动车灯方案的差异见原出处；仿真太阳是已冻结场景条件。</p>

@@ -90,9 +90,14 @@ def iterations():
 
 def update_report(data,assets):
     path=ROOT/'docs/report.md';text=path.read_text()
+    viewer_path=ROOT/'evidence/crossing/route/official-viewer.json'
+    viewer=json.loads(viewer_path.read_text()) if viewer_path.exists() else {}
+    viewer_note='陈列室的单模型查看使用官方 `@manycore/aholo-viewer` '+viewer.get('version','')+'，直接加载原始 GLB，支持拖动旋转与缩放。' if viewer.get('status')=='complete' else ''
     start='<!-- ADDENDUM3-LUX-USAGE-START -->';end='<!-- ADDENDUM3-LUX-USAGE-END -->'
     block=f'''{start}
 Lux3D 使用：本项目调用图像转三维任务创建接口（单图 `img` / 多图 `imgs`）、任务查询接口以及官方上传流程。客户端账本有 **{data['generated_task_creates']} 个真实已创建任务**，其中 {data['status_counts'].get('ok',0)} 份返回 GLB、{data['status_counts'].get('failed',0)} 份服务端失败；逐项任务号与输入 SHA 见 [公开调用账本](../evidence/crossing/route/lux-usage.json)。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 {data['crossing_budget_created']}/{data['crossing_limit']}。
+
+{viewer_note}
 
 生成结果是高石头看不见部分的三维假设：先与可见观测核对，准入后进入各个完整物理预演世界，全部安全才实走。门槛石的跨越用实拍几何，Lux3D 在门槛石上的开发没有被记为跨越成功。
 {end}

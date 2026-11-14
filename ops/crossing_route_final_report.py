@@ -71,7 +71,8 @@ def generate():
     for vehicle in 'ABCD':
         count = counts[vehicle]
         text += f'| {vehicle} | {count["arrived"]} | {clean[vehicle]} | {count["stopped"]} | {count["stuck"]} | {sum(row["vehicle"] == vehicle for row in accidents)} |\n'
-    text += '\n4. 原 §7.4 四条说法在这组同路示例中的数值检查依次为：'+ '；'.join(('达到' if passed else '没达到') for passed in checks)+'。原十二场的预注册验收未执行，这些数值不替代它。\n\n'
+    criteria=['A 到达 0 场','D 无机身触石或失稳',f'D 在 {len(scenes)} 个能接通的示例中干净跨过至少一半','D 的事故少于 B，或到达多于 C']
+    text += '\n4. 原 §7.4 四条说法在这组同路示例中的数值检查为：'+ '；'.join(label+'：'+('达到' if passed else '没达到') for label,passed in zip(criteria,checks))+'。原十二场的预注册验收未执行，这些数值不替代它。\n\n'
     text += f'5. 同路正式运行机身事故 {len(accidents)} 次。首场 B 轮触高石后被冻结的接触监视器停下，原始 collision 字段保留，但按本轮轮触石不算机身事故。\n\n'
     for row in accidents:
         text += f'   - {row["scene"]} / {row["vehicle"]}：{json.dumps(row["reason"], ensure_ascii=False)}。\n'

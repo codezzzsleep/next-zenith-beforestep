@@ -42,6 +42,10 @@ def check(url, output):
             page.mouse.up()
             page.wait_for_timeout(400)
             assert model.evaluate('(element)=>element.yaw') != before
+            before_zoom = model.evaluate('(element)=>element.distance')
+            page.mouse.wheel(0, -120)
+            page.wait_for_timeout(200)
+            assert model.evaluate('(element)=>element.distance') < before_zoom
             first_src = model.evaluate('(element)=>element.src')
             first_canvas = str(output / f'{width}-first-model.png')
             model.screenshot(path=first_canvas)
@@ -55,7 +59,7 @@ def check(url, output):
             assert not errors, errors
             assert not failed, failed
             checks.append({'viewport': [width, height], 'official_element': model.evaluate('(e)=>e.tagName'),
-                           'two_original_models_loaded': True, 'pointer_rotation': True,
+                           'two_original_models_loaded': True, 'pointer_rotation': True, 'wheel_zoom': True,
                            'horizontal_overflow': False, 'console_errors': errors, 'http_errors': failed})
             page.close()
         browser.close()

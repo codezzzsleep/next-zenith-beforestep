@@ -166,8 +166,15 @@
       "near_x_m": 9.0,
       "threshold_seed": 22001,
       "scene_definition": "evidence/crossing/route/scene-suite_r2_v4_F3_002_gate.json",
-      "status": "未开始",
-      "placement_attempts": [],
+      "status": "运行中",
+      "placement_attempts": [
+        {
+          "near_x_m": 9.0,
+          "seed": 22001,
+          "precheck": "evidence/crossing/route/precheck-history/suite_r2_v4_F3_002_gate/x9.00-seed22001.json",
+          "all_four_passed": true
+        }
+      ],
       "selection_rule": {
         "criteria": [
           "决定性场景",
@@ -185,7 +192,8 @@
         9.0,
         9.25,
         9.5
-      ]
+      ],
+      "predeclared_commit": "2e7d593b46e8aa7bc09ee78a2c4495019969467b"
     }
   ],
   "start_cutoff_utc": "2026-11-14T12:00:00+00:00",

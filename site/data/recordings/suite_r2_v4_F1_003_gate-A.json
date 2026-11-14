@@ -1,0 +1,60 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F1_003_gate-A",
+    "scene": "suite_r2_v4_F1_003_gate",
+    "path": "media/footage/suite_r2_v4_F1_003_gate-A.mp4",
+    "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment1/full-record/trajectory.npz",
+    "source_sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124",
+    "source_time_range_s": [
+      0.020000000000000004,
+      577.4200000001696
+    ],
+    "clip_duration_s": 18,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 32.0777777777872,
+    "world_source": {
+      "scene": "evidence/crossing/route/scene-suite_r2_v4_F1_003_gate.json",
+      "sha256": "a69f8329a1d715e55e6bd2d241b84b43723b4c29c2ae7505c8e65ef6dad55332"
+    },
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment1/full-record/trajectory.npz",
+        "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+      },
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment2/fixed/trajectory.npz",
+        "sha256": "39837e3652af16720e430387f3111f842c2d4b4e5b6818ff851cf64360a1910b"
+      },
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment2/high/trajectory.npz",
+        "sha256": "4b248356d1cd3d863ff13469dccfb64eefe68686ebdd083dcc31679ef7c5f439"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "477a93207d977d7a86c3cb044613124b4b8415444094d86f7d1cb94d90f1ab8b",
+    "bytes": 1038063,
+    "poster": "media/footage/suite_r2_v4_F1_003_gate-A.jpg"
+  },
+  "original_result": {
+    "policy": "imagination",
+    "vehicle": "A",
+    "total_result": "stuck",
+    "sim_seconds": 576.2199999997671,
+    "looks": 1,
+    "reason": "wheel_only_both_stuck",
+    "legs_used": false
+  },
+  "original_result_path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+  "original_result_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe"
+}

@@ -1,0 +1,54 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F1_003_gate-D",
+    "path": "media/footage/suite_r2_v4_F1_003_gate-D.mp4",
+    "poster": "media/footage/suite_r2_v4_F1_003_gate-D.jpg",
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+        "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+      },
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment2/trajectory.npz",
+        "sha256": "a793f4a474c3ca28297f9f3ac81d01c32937488e4a526a02d6d107f471823c6e"
+      }
+    ],
+    "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+    "source_sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124",
+    "source_time_range_s": [
+      0.020000000000000004,
+      293.9600000006755
+    ],
+    "physics_advanced": false,
+    "recording_type": "retained_camera_frames_of_original_recorded_MuJoCo_states",
+    "approx_speed": 16.33000000003753,
+    "clip_duration_s": 18,
+    "sha256": "f951858b2372cc15aea1272d519531db6794725cdf3c4e6e20f49c4f2394d1fb",
+    "bytes": 1652460,
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "width": 960,
+          "height": 540,
+          "nb_frames": "540"
+        }
+      ],
+      "format": {
+        "duration": "18.000000"
+      }
+    }
+  },
+  "original_result": {
+    "policy": "imagination",
+    "vehicle": "D",
+    "total_result": "arrived",
+    "sim_seconds": 292.76000000002483,
+    "looks": 2,
+    "reason": null,
+    "legs_used": true
+  },
+  "original_result_path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+  "original_result_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7"
+}

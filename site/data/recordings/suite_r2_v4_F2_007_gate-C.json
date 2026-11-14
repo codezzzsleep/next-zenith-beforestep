@@ -1,0 +1,52 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F2_007_gate-C",
+    "scene": "suite_r2_v4_F2_007_gate",
+    "path": "media/footage/suite_r2_v4_F2_007_gate-C.mp4",
+    "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/segment1/full-record/trajectory.npz",
+    "source_sha256": "a1cdfe0057e3c6f56a2edd91446985fbc9af4eac1c5c4e9d8ce5a94b41bf69e1",
+    "source_time_range_s": [
+      0.020000000000000004,
+      83.3299999999872
+    ],
+    "clip_duration_s": 18,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 4.628333333332622,
+    "world_source": {
+      "scene": "evidence/crossing/route/scene-suite_r2_v4_F2_007_gate.json",
+      "sha256": "96efd3226f76ef1069b73a11cdeeab19a4a2165a409c3c94fb72f5b3baf0799c"
+    },
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/segment1/full-record/trajectory.npz",
+        "sha256": "a1cdfe0057e3c6f56a2edd91446985fbc9af4eac1c5c4e9d8ce5a94b41bf69e1"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "17f267f16056de3ee920494a8dc6435b7a13f9978c95138f4cd5f0a7f1d85023",
+    "bytes": 1208363,
+    "poster": "media/footage/suite_r2_v4_F2_007_gate-C.jpg"
+  },
+  "original_result": {
+    "policy": "conservative",
+    "vehicle": "C",
+    "total_result": "stopped",
+    "sim_seconds": 82.13,
+    "looks": 5,
+    "reason": "no_path",
+    "legs_used": false
+  },
+  "original_result_path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+  "original_result_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9"
+}

@@ -1,0 +1,56 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F3_006-imagination",
+    "scene": "suite_r2_v4_F3_006",
+    "path": "media/footage/suite_r2_v4_F3_006-imagination.mp4",
+    "source": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/traj.npz",
+    "source_sha256": "e9e6b6dcdf9bbcbd63de459838baf3025e18edaf6df7a948778cd11cbc39366d",
+    "source_time_range_s": [
+      1.2000000000000006,
+      83.28000000000057
+    ],
+    "clip_duration_s": 14,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 5.862857142857183,
+    "source_files": [
+      {
+        "path": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/traj.npz",
+        "sha256": "e9e6b6dcdf9bbcbd63de459838baf3025e18edaf6df7a948778cd11cbc39366d"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "d8794f338763d21eff6c48e9726d6a62e4cfd5d2004c1872cdbff6de3f44caa4",
+    "bytes": 871822,
+    "poster": "media/footage/suite_r2_v4_F3_006-imagination.jpg"
+  },
+  "original_result": {
+    "scene_id": "suite_r2_v4_F3_006",
+    "policy": "imagination",
+    "result": "collision",
+    "sim_time_s": 83.28,
+    "looks": 1,
+    "collision": {
+      "body": "obstacle1",
+      "robot_geom": null,
+      "pos": [
+        7.125,
+        -0.362,
+        0.135
+      ],
+      "t": 83.28
+    }
+  },
+  "original_result_path": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/summary.json",
+  "original_result_sha256": "3a84c9fe5f33d07691e97252dfd9a76fff7ef28d769c2405f07a8f57274ccef7"
+}

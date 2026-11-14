@@ -1,0 +1,56 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F2_003-optimistic",
+    "scene": "suite_r2_v4_F2_003",
+    "path": "media/footage/suite_r2_v4_F2_003-optimistic.mp4",
+    "source": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_003/optimistic/run/traj.npz",
+    "source_sha256": "f63d49608e78254e49fedc9acb2320ec47bfd51882df0fbd49f2506bc470fdb9",
+    "source_time_range_s": [
+      1.2000000000000006,
+      82.79400000000066
+    ],
+    "clip_duration_s": 14,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 5.828142857142905,
+    "source_files": [
+      {
+        "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_003/optimistic/run/traj.npz",
+        "sha256": "f63d49608e78254e49fedc9acb2320ec47bfd51882df0fbd49f2506bc470fdb9"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "0b3371455f5259d5417cd80dd2bcb37d751c8adee0e159c3a6c27cb487bde7d4",
+    "bytes": 911045,
+    "poster": "media/footage/suite_r2_v4_F2_003-optimistic.jpg"
+  },
+  "original_result": {
+    "scene_id": "suite_r2_v4_F2_003",
+    "policy": "optimistic",
+    "result": "collision",
+    "sim_time_s": 82.79,
+    "looks": 1,
+    "collision": {
+      "body": "obstacle1",
+      "robot_geom": null,
+      "pos": [
+        7.133,
+        -0.385,
+        0.127
+      ],
+      "t": 82.794
+    }
+  },
+  "original_result_path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_003/optimistic/run/summary.json",
+  "original_result_sha256": "fc1f0b45dc79d4027d90cd7084ea7d10a3a266a86c4545938b42d5f504b8ae9e"
+}

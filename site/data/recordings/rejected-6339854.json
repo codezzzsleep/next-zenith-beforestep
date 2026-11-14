@@ -1,0 +1,65 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "rejected-6339854",
+    "scene": "suite_r2_v4_F0_001",
+    "path": "media/footage/rejected-6339854.mp4",
+    "source": "outputs/suite/counterfactuals/suite_r2_v4_F0_001/look1_T2_A1/trusted/traj.npz",
+    "source_sha256": "e3eb0a91d438daceddcbd05c5e62bb6a1f22648e789151f2a510d82de5b5066e",
+    "source_time_range_s": [
+      1.2000000000000006,
+      81.09200000000101
+    ],
+    "clip_duration_s": 14,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 5.7065714285715,
+    "world_source": {
+      "diagnostic_not_formal": true,
+      "task_id": 6339854,
+      "rejected_in_original_run": true,
+      "ledger": "outputs/suite/counterfactuals/suite_r2_v4_F0_001/counterfactuals.json",
+      "sha256": "77fc8421365a0ceba1dbddad7891b29afb34fc56ceb57abb386112e1818f633c",
+      "prefix_verified": true,
+      "source_decision": "outputs/suite/real/suite_r2_v4_F0_001/imagination/looks/look1/T2/decide/target_decision.json"
+    },
+    "source_files": [
+      {
+        "path": "outputs/suite/counterfactuals/suite_r2_v4_F0_001/look1_T2_A1/trusted/traj.npz",
+        "sha256": "e3eb0a91d438daceddcbd05c5e62bb6a1f22648e789151f2a510d82de5b5066e"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "0b32c368268d746071306573638568018c1492ba2a3b9f731845f71e64a9af74",
+    "bytes": 1533933,
+    "poster": "media/footage/rejected-6339854.jpg"
+  },
+  "original_result": {
+    "scene_id": "suite_r2_v4_F0_001",
+    "policy": "imagination",
+    "result": "collision",
+    "sim_time_s": 81.09,
+    "looks": 1,
+    "collision": {
+      "body": "obstacle1",
+      "robot_geom": null,
+      "pos": [
+        6.967,
+        -0.275,
+        0.114
+      ],
+      "t": 81.092
+    }
+  },
+  "original_result_path": "outputs/suite/counterfactuals/suite_r2_v4_F0_001/look1_T2_A1/trusted/summary.json",
+  "original_result_sha256": "ffd5a93f7c4b97b8060ea496a7c5a73aa311730686ddad1e63ca0b8336a3718a"
+}

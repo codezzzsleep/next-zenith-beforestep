@@ -1,0 +1,68 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "stress_v8_gate-B",
+    "scene": "stress_v8_gate",
+    "path": "media/footage/stress_v8_gate-B.mp4",
+    "source": "outputs/crossing/route/stress_v8_gate/B/segment1/full-record/trajectory.npz",
+    "source_sha256": "ecf2bff8c9b2b68337c3f07156a09923bc8aa5d24fb242a553c1f67c8d7712e2",
+    "source_time_range_s": [
+      0.020000000000000004,
+      81.54199999999136
+    ],
+    "clip_duration_s": 18,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 4.52899999999952,
+    "world_source": {
+      "scene": "evidence/crossing/route/scene-stress_v8_gate.json",
+      "sha256": "fc5b02e6e8ff8f75cbc347ecea8c958a54210871f50503329a6e3ef46c0024fa"
+    },
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/stress_v8_gate/B/segment1/full-record/trajectory.npz",
+        "sha256": "ecf2bff8c9b2b68337c3f07156a09923bc8aa5d24fb242a553c1f67c8d7712e2"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "f3021c054f446828b85a44a7755fd92a98510ff2a4824a436eda762da975cc94",
+    "bytes": 1883472,
+    "poster": "media/footage/stress_v8_gate-B.jpg"
+  },
+  "original_result": {
+    "policy": "optimistic",
+    "vehicle": "B",
+    "total_result": "stopped",
+    "sim_seconds": 80.34,
+    "looks": 1,
+    "reason": {
+      "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+      "original_pipeline_result": "collision",
+      "contact": {
+        "body": "obstacle1",
+        "robot_geom": null,
+        "pos": [
+          6.91,
+          -0.264,
+          0.106
+        ],
+        "t": 81.542
+      },
+      "body_stone_contacts": 0,
+      "wheel_stone_steps": 1,
+      "maximum_tilt_deg": 0.7602970110720764
+    },
+    "legs_used": false
+  },
+  "original_result_path": "outputs/crossing/route/stress_v8_gate/B/result.json",
+  "original_result_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78"
+}

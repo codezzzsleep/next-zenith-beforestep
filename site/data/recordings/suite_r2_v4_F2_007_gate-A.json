@@ -1,0 +1,68 @@
+{
+  "recording": {
+    "status": "complete",
+    "id": "suite_r2_v4_F2_007_gate-A",
+    "scene": "suite_r2_v4_F2_007_gate",
+    "path": "media/footage/suite_r2_v4_F2_007_gate-A.mp4",
+    "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/full-record/trajectory.npz",
+    "source_sha256": "5fdc54fe89bd806d08221f27c2b1d95294ce7bf17a6ea86ac30dc5671aa9c489",
+    "source_time_range_s": [
+      0.020000000000000004,
+      85.1719999999829
+    ],
+    "clip_duration_s": 18,
+    "sample_fps": 12,
+    "video_fps": 30,
+    "width": 864,
+    "height": 486,
+    "physics_advanced": false,
+    "recording_type": "original_saved_MuJoCo_states_rendered_in_original_world",
+    "approx_speed": 4.730666666665717,
+    "world_source": {
+      "scene": "evidence/crossing/route/scene-suite_r2_v4_F2_007_gate.json",
+      "sha256": "96efd3226f76ef1069b73a11cdeeab19a4a2165a409c3c94fb72f5b3baf0799c"
+    },
+    "source_files": [
+      {
+        "path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/full-record/trajectory.npz",
+        "sha256": "5fdc54fe89bd806d08221f27c2b1d95294ce7bf17a6ea86ac30dc5671aa9c489"
+      }
+    ],
+    "display_transform_verification": {
+      "passed": true,
+      "states_checked": 3,
+      "maximum_transform_error": 0.0,
+      "no_physics_solver_during_display": true
+    },
+    "sha256": "e3e83ecdb6789ce9bf8a0f89f2145804ef8f9bcbe22eaff421a626ab872b95d2",
+    "bytes": 1313489,
+    "poster": "media/footage/suite_r2_v4_F2_007_gate-A.jpg"
+  },
+  "original_result": {
+    "policy": "imagination",
+    "vehicle": "A",
+    "total_result": "stopped",
+    "sim_seconds": 83.97,
+    "looks": 1,
+    "reason": {
+      "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+      "original_pipeline_result": "collision",
+      "contact": {
+        "body": "obstacle1",
+        "robot_geom": null,
+        "pos": [
+          7.294,
+          -0.365,
+          0.143
+        ],
+        "t": 85.172
+      },
+      "body_stone_contacts": 0,
+      "wheel_stone_steps": 1,
+      "maximum_tilt_deg": 0.7630239737792086
+    },
+    "legs_used": false
+  },
+  "original_result_path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+  "original_result_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54"
+}

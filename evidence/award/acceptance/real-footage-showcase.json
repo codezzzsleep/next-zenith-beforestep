@@ -1,0 +1,1756 @@
+{
+  "schema": "beforestep-footage-showcase-audit/v1",
+  "passed": true,
+  "recorded_clips": 78,
+  "worlds": 12,
+  "known_scenes": 12,
+  "known_strategies": 36,
+  "holdout_films": 10,
+  "route_scenes": 4,
+  "route_vehicle_films": 16,
+  "threshold_films": 3,
+  "post_run_rejected_model_diagnostic_films": 1,
+  "new_experiments": 0,
+  "new_generation_tasks": 0,
+  "historical_generation_tasks_unchanged": 467,
+  "film": {
+    "status": "complete",
+    "path": "media/demo-v3.mp4",
+    "duration_s": 150,
+    "metadata": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "codec_type": "video",
+          "width": 1920,
+          "height": 1080,
+          "r_frame_rate": "30/1",
+          "nb_frames": "4500"
+        }
+      ],
+      "format": {
+        "duration": "150.000000"
+      }
+    },
+    "bytes": 31490601,
+    "sha256": "40313878542e2d1c0dd6429ef5000d119f6fac27a9133276204e226ac01bb300",
+    "no_diagram_shots": true,
+    "sources": [
+      {
+        "path": "site/media/footage/wheel-stuck.mp4",
+        "sha256": "c4c34c02a5d930afac9e41ad01fec3ebc16d88e99629be15c21a956cb18a02db"
+      },
+      {
+        "path": "site/media/footage/leg-cross.mp4",
+        "sha256": "6d17a8996b1cc04436358bf55ba522a10ca3c062b7d87d149728d690709d6145"
+      },
+      {
+        "path": "site/media/footage/leg-close.mp4",
+        "sha256": "afe3ec2b6c2827d853198409a8d3c88a0c9e75a0005878ed3cda19b38f5af0a0"
+      },
+      {
+        "path": "site/media/footage/rejected-6339854.mp4",
+        "sha256": "0b32c368268d746071306573638568018c1492ba2a3b9f731845f71e64a9af74"
+      },
+      {
+        "path": "site/media/footage/stress_v8-optimistic.mp4",
+        "sha256": "bc9bde6be287f4b0b15e65ba29869ce81504334b2123654356f37a876e4ee0db"
+      },
+      {
+        "path": "site/media/footage/stress_v8-conservative.mp4",
+        "sha256": "3bcbf9c3e1ece09a4c23609766e58e03c9b27e6e89817e55f0b014aa4b8ca0c9"
+      },
+      {
+        "path": "site/media/footage/stress_v8-imagination.mp4",
+        "sha256": "3b6ec08845b6b5dfa53a1aaaad74c62454f2caa685f00597770b2d3f30dc36bb"
+      },
+      {
+        "path": "site/media/footage/suite_r2_v4_F3_004-imagination.mp4",
+        "sha256": "1e7281b1a3e37175bff90ab675d1be1b291ff9ee55e5f0ffcb304ca8b83211d6"
+      },
+      {
+        "path": "site/media/footage/suite_r2_v4_F1_003_gate-B.mp4",
+        "sha256": "019c7f2a213bec91951bc3ed73f74000479baceadc8ec85ec1fdbc4d79c6f01e"
+      },
+      {
+        "path": "site/media/footage/suite_r2_v4_F1_003_gate-D.mp4",
+        "sha256": "f951858b2372cc15aea1272d519531db6794725cdf3c4e6e20f49c4f2394d1fb"
+      },
+      {
+        "path": "site/media/footage/suite_r2_v4_F0_002-imagination_strict.mp4",
+        "sha256": "3a794cbc5268e48f8dad2b072738a08ce607bfb844c2da4d5fc532fb9b44e020"
+      },
+      {
+        "path": "site/media/footage/world-00.mp4",
+        "sha256": "ef095f113264ca579ccb3019adb2a134259898257edbec2fd2a78e28e3f21bf3"
+      },
+      {
+        "path": "site/media/footage/world-01.mp4",
+        "sha256": "7ef3d48c34722de69035f9437db441ecd839e339aa7e5023377335bd832e16fd"
+      },
+      {
+        "path": "site/media/footage/world-02.mp4",
+        "sha256": "01b521898823b4c7f3ad3dcf1e11f7852e159ca825546bfaaed8eaf1e8d9113d"
+      },
+      {
+        "path": "site/media/footage/world-03.mp4",
+        "sha256": "aa4211af3a1248aa7c2e2d7e98abef4e83fa9eabd03178b4cedf6ee06e7ffb58"
+      },
+      {
+        "path": "site/media/footage/world-04.mp4",
+        "sha256": "8864993e04b20202099d4e0d8dbf26029feb49b0224b4eb4a6cfe49955981d23"
+      },
+      {
+        "path": "site/media/footage/world-05.mp4",
+        "sha256": "a5459573190df3db2475aed24fa8ab4eff059380e083ce2df2d7e17d550d1346"
+      },
+      {
+        "path": "site/media/footage/world-06.mp4",
+        "sha256": "3568bd75eecb712bb056dec686347250a24a42596044cd54cd705dd6718acd86"
+      },
+      {
+        "path": "site/media/footage/world-07.mp4",
+        "sha256": "acef44d180a6c1fc2993e01b01cb48c488873302b71f45f4540a48f59e23db94"
+      },
+      {
+        "path": "site/media/footage/world-08.mp4",
+        "sha256": "0d8d280037033f17941543f636b6a937afcbf93c0f744d466b5fbd530af4fede"
+      },
+      {
+        "path": "site/media/footage/world-09.mp4",
+        "sha256": "cee9db419c7fbf6289b3c8bd3f8cc171b287cb3f23559ed3b9e119e50555c346"
+      },
+      {
+        "path": "site/media/footage/world-10.mp4",
+        "sha256": "d2d01f70551abc6a77e8b171c56a391a6fefd8e7a761431d6d76b0f9bd238e10"
+      },
+      {
+        "path": "site/media/footage/world-11.mp4",
+        "sha256": "788465d32e2991858f7a2e283816c62b0e24f9faa4ba26044b7c2168eb59401c"
+      },
+      {
+        "path": "outputs/crossing/route/video/shots/2.mp4",
+        "sha256": "35b56b2ff26c7600883a6ed349580427f59af6e9d13189dd50eb0ed5fbdf7e12"
+      },
+      {
+        "path": "outputs/crossing/route/video/shots/4.mp4",
+        "sha256": "4dc9d8f75d3a1d3d06182451ac8e024ac16ec8935e3b354c74707ce39b07fd73"
+      }
+    ],
+    "new_experiments": 0,
+    "new_generation_tasks": 0,
+    "screen_recordings": [
+      "outputs/crossing/route/video/pages/2.json",
+      "outputs/crossing/route/video/pages/4.json"
+    ]
+  },
+  "checks": [
+    {
+      "id": "leg-close",
+      "sha256": "afe3ec2b6c2827d853198409a8d3c88a0c9e75a0005878ed3cda19b38f5af0a0",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/handoff/frames/sill-close/index.json",
+          "sha256": "a75e1e5617a4993b8e53e1e27b41bc65a9f238e292c725ce419dc11391dac205"
+        },
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+          "sha256": "d13748641cb3dbde2cf2e49788e682677051f6f677340606216680350bcfd537"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "leg-cross",
+      "sha256": "6d17a8996b1cc04436358bf55ba522a10ca3c062b7d87d149728d690709d6145",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/handoff/frames/leg-cross/index.json",
+          "sha256": "1cdd2a2230d7bab6650e00c2df3b95e5e6e92d846eac5efe49cc23616707db55"
+        },
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+          "sha256": "d13748641cb3dbde2cf2e49788e682677051f6f677340606216680350bcfd537"
+        }
+      ],
+      "duration_s": 34.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "1020"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "rejected-6339854",
+      "sha256": "0b32c368268d746071306573638568018c1492ba2a3b9f731845f71e64a9af74",
+      "source_files": [
+        {
+          "path": "outputs/suite/counterfactuals/suite_r2_v4_F0_001/look1_T2_A1/trusted/traj.npz",
+          "sha256": "e3eb0a91d438daceddcbd05c5e62bb6a1f22648e789151f2a510d82de5b5066e"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8-conservative",
+      "sha256": "3bcbf9c3e1ece09a4c23609766e58e03c9b27e6e89817e55f0b014aa4b8ca0c9",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/traj.npz",
+          "sha256": "3203fdd9b7d013cb90d306cd0dde4dd4d8cf6d2f232a48265b23aa907e86a0ed"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8-imagination",
+      "sha256": "3b6ec08845b6b5dfa53a1aaaad74c62454f2caa685f00597770b2d3f30dc36bb",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8-optimistic",
+      "sha256": "bc9bde6be287f4b0b15e65ba29869ce81504334b2123654356f37a876e4ee0db",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/traj.npz",
+          "sha256": "f2e0cdb4f5ffda2bae45350b5d892cc9e80606f7be76b6d317c761f92e8264ed"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8_gate-A",
+      "sha256": "a90ece0ac60d3cc1260c0452b6e86e00bac9cc5b394100a6512c88743134f83a",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "45f178bc47267c88720a82a4c206ee15f7df7e4fc9299f6af613eb504819064e"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8_gate-B",
+      "sha256": "f3021c054f446828b85a44a7755fd92a98510ff2a4824a436eda762da975cc94",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/B/segment1/full-record/trajectory.npz",
+          "sha256": "ecf2bff8c9b2b68337c3f07156a09923bc8aa5d24fb242a553c1f67c8d7712e2"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8_gate-C",
+      "sha256": "c0628e064a5bd0371ecffb300eac06a08a6f8fec4f7aa49f47563d7d83519cc6",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/C/segment1/full-record/trajectory.npz",
+          "sha256": "f18125b8323ef7eab8f1572dc03d054411fa783d8d033c2ec0050941188ab774"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "stress_v8_gate-D",
+      "sha256": "a90ece0ac60d3cc1260c0452b6e86e00bac9cc5b394100a6512c88743134f83a",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "45f178bc47267c88720a82a4c206ee15f7df7e4fc9299f6af613eb504819064e"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_001-conservative",
+      "sha256": "362d15d497cefe0e6d5420426d1f34890d0461a86f52a2202e9e72305981edd1",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F0_001/conservative/run/traj.npz",
+          "sha256": "5446d1af639c80011451b2773a20b4cd95240637300d4279445dc753fc78a4bf"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_001-imagination",
+      "sha256": "77235dd0224a0092a000626b68cacc41b48f010bce7173cf9b011d131a545a98",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F0_001/imagination/traj.npz",
+          "sha256": "4a2d2d0da7dd7d2d65ccd46180c66b0a4b843ab15f174baa24da00808e3be955"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_001-optimistic",
+      "sha256": "d3e2cce537a38ff284adb3bf772a237372ae67f01e4e0557ba686dc08bd5cd68",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F0_001/optimistic/run/traj.npz",
+          "sha256": "557551ef2bf822a58d57b571245dc16acbd8eac8e1759988169ca86337f41a71"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_002-imagination",
+      "sha256": "3a794cbc5268e48f8dad2b072738a08ce607bfb844c2da4d5fc532fb9b44e020",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination/imagination/traj.npz",
+          "sha256": "eced954b33fd9b773ed752b7cb9815352ff901ab5154408894e5e7303fbd4945"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_002-imagination_strict",
+      "sha256": "3a794cbc5268e48f8dad2b072738a08ce607bfb844c2da4d5fc532fb9b44e020",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F0_002/imagination_strict/imagination_strict/traj.npz",
+          "sha256": "eced954b33fd9b773ed752b7cb9815352ff901ab5154408894e5e7303fbd4945"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_003-imagination",
+      "sha256": "d659b3771997396ddf0721346b75d5f34d11b069dfd8b7a1fdfd199c0ce684b5",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination/imagination/traj.npz",
+          "sha256": "0aafc5a68b5e3d5698331250a36040acada8325d9b59e56dbd1a341315c77a35"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_003-imagination_strict",
+      "sha256": "a7bb07efd711d24430ef05d5ed7be3217558bbc8dab5bbb7b53d356db54391a0",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F0_003/imagination_strict/imagination_strict/traj.npz",
+          "sha256": "0806f192e49647a9cfad9142ec5ba418b6f77cb8c0553857dba67a45ed884508"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_005-conservative",
+      "sha256": "99461d507493aaaa81439847acc18bdeaa17a9728eb5e2774b8b3626a0fc05a8",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F0_005/conservative/run/traj.npz",
+          "sha256": "9c2502772421442333d84f20257e98819a195a445121a0ed5e3c9e3865751cc4"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_005-imagination",
+      "sha256": "a93d758de66911216252d5fbb6669fe9fc8851639c6df0264d25ffe6edd253e5",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F0_005/imagination/traj.npz",
+          "sha256": "e35f2ccb9101e58a90657806e8ed8876b4b007d2d22d66e625676c8cc1d07821"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F0_005-optimistic",
+      "sha256": "2ed80bcf57cd62fdedffd3c4c685b2bb27fd2ca4ccb815dc9ea82e090ba48829",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F0_005/optimistic/run/traj.npz",
+          "sha256": "7db0b616f074e5e4de9b19e36866e970e36d84a1dcedc3857fc7e3dd8e0e2dcd"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_001-conservative",
+      "sha256": "58e7ddffa1e10ddcbebbe7a1b1a6ca68e81cf8a48d8e5d4d4faac00468b1615c",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_001/conservative/run/traj.npz",
+          "sha256": "a3310606a4688c827402860d06826a3bcdb35902dbc6f89f2e98e38d818f795c"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_001-imagination",
+      "sha256": "d25d042126cf4d98ccc8c5fd62fdbceb594950386496a723bdd77abeaae9e925",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F1_001/imagination/traj.npz",
+          "sha256": "3c2173536221b2fa8bd52e36c3e9e6f66276796b6df6c073e0b0286e46f630ef"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_001-optimistic",
+      "sha256": "0d13067df67bb33c1e1ae8c7379d2eb1ac4de4df064ec0876761322246db371f",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_001/optimistic/run/traj.npz",
+          "sha256": "cfe29479fcaba43b3a7bf3c7d0bf2c7b3b0ef18b2d0f7a953ed72aa80a92a758"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003-conservative",
+      "sha256": "2ff32b1b316d57b8e75a4324e773571ffd8eb2d958c8fc3408a024a1f3815031",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_003/conservative/run/traj.npz",
+          "sha256": "77cc15345b947e9e51e681e7d432ce65d51b170d1b92263687f5e5ad22e084da"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003-imagination",
+      "sha256": "aecec80ce2b0bbfe471e7fbd34ad28939964a44bb40a9b02a8338576ba7afb82",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F1_003/imagination/traj.npz",
+          "sha256": "f44d099ac795d28af0168afe3878683e36b1773db942fa19fe510a5b8f92ea00"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003-optimistic",
+      "sha256": "447fba97410915f81c5e0fc443196762409226a4a4989e0aee9d5ce3ace87ead",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_003/optimistic/run/traj.npz",
+          "sha256": "ccc21ed91be8e95c29f138f79c67226eee25b791c131e19f1a0ea737eae721f2"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003_gate-A",
+      "sha256": "477a93207d977d7a86c3cb044613124b4b8415444094d86f7d1cb94d90f1ab8b",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment2/fixed/trajectory.npz",
+          "sha256": "39837e3652af16720e430387f3111f842c2d4b4e5b6818ff851cf64360a1910b"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment2/high/trajectory.npz",
+          "sha256": "4b248356d1cd3d863ff13469dccfb64eefe68686ebdd083dcc31679ef7c5f439"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003_gate-B",
+      "sha256": "019c7f2a213bec91951bc3ed73f74000479baceadc8ec85ec1fdbc4d79c6f01e",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/segment1/full-record/trajectory.npz",
+          "sha256": "1f33f90353fc3d762608c8404746809d2a6e3d428f26ea0ec8b592d77a7c61ed"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/segment2/trajectory.npz",
+          "sha256": "13b544d4b22c59ee99eb5f60d9a87693348ff2e8a872ea5498de2aa6509f6597"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003_gate-C",
+      "sha256": "e74dc0c3f171e5ec5f40238bcbbcb69fedb2862b2acbbefa7b6eec6a02c29588",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/segment1/full-record/trajectory.npz",
+          "sha256": "8de3052ca2cd6f125bb563b0c155608564563cebcc7d97193e98e45fe72e17ba"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_003_gate-D",
+      "sha256": "f951858b2372cc15aea1272d519531db6794725cdf3c4e6e20f49c4f2394d1fb",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment2/trajectory.npz",
+          "sha256": "a793f4a474c3ca28297f9f3ac81d01c32937488e4a526a02d6d107f471823c6e"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 960,
+        "height": 540,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_020-conservative",
+      "sha256": "72f10ae7a00beab11aa5e7f09c6fb2e1105a36ed850c7ed013d02ba8cd69d59d",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_020/conservative/run/traj.npz",
+          "sha256": "af3dd1a0ef1e80319782dcdfac0cab78b3e8978df0b29902546d4d8de8b77ddc"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_020-imagination",
+      "sha256": "bbf62bde1e33f482a3cef0c7cbf8a24c2a8502b0137a3b5079155754caf32bbf",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F1_020/imagination/traj.npz",
+          "sha256": "64953f469f6c81e66d1805958ec58a56cef3779e91dd727471db2242e812529b"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F1_020-optimistic",
+      "sha256": "c60917d431f1c67cf53741e6eff92f4e338d97bd01ea55fba4e2a93f9f5e2cc7",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F1_020/optimistic/run/traj.npz",
+          "sha256": "e7129ba9b13173052061fc2ebd82a475f222ca88d162161f627d337aa188a723"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001-conservative",
+      "sha256": "ae683d035fa4ffb6216e166c57ac0171002e4ff913e1a7553a43742e1c76ffe4",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_001/conservative/run/traj.npz",
+          "sha256": "b177b6dde77185f0b58626380dd4bed84838f5f97126c85ce0e3b251b3829eca"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001-imagination",
+      "sha256": "3e63f6cda462fcba27d737d6555fd83156aa98683abde764ab73b026c285a3cb",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F2_001/imagination/traj.npz",
+          "sha256": "356fe173c6675a6ba20001357753230fdf8b0db080f03c584ed0be947c05d27d"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001-optimistic",
+      "sha256": "c15cc7cd8161041a69daf7a67234db1e57c8bf7666e7d3938adb0d48519f2cd3",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_001/optimistic/run/traj.npz",
+          "sha256": "0d1e615578270c72c3bee8e694b0a6275ab4933e59f72f05eca23bd9a8eb2fdd"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001_gate-A",
+      "sha256": "030c4fcaf9537b97d3c4693776014030961ea5744d338d5c45a56af976815e4b",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/segment2/fixed/trajectory.npz",
+          "sha256": "4a9e3f539a6665df1b9b22990836b55930d91cf1267a0774ae77953e1916a2f6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/segment2/high/trajectory.npz",
+          "sha256": "a3ea59af857fc0e20a99bdcefa4539ba043a4cc97041a2959ee9698d857cf9d0"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001_gate-B",
+      "sha256": "a5a66e2a8e168706116d0f3836a3a1d423e25fbdb8f106c45e4c14529aef1d84",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/segment1/full-record/trajectory.npz",
+          "sha256": "c846ef441bab1b6944781d67ef8c076a6d127e4b8ae553d7c2512ff7ceb7bd36"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/segment2/trajectory.npz",
+          "sha256": "b635c9b77da9b6230d4d2107b6de1b551076dee35d8f4e1e7956ba7d432f16df"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001_gate-C",
+      "sha256": "f7ae5ac134ed8a6e8d26f4853a8efe91fbe1b783ab412c0fcd4e7d29c739ac75",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/segment1/full-record/trajectory.npz",
+          "sha256": "4ba3a98861ef4d95fcda8050b8efd43c93c42758cba497e3fa1b83fbb651e3c3"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_001_gate-D",
+      "sha256": "20ba7502c981fbfa1c6663352d8d8a411b38b84f14850cc93657209a7e320f9a",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment2/trajectory.npz",
+          "sha256": "af47e00d47c008874672373776b7dd6e8d232287fa57c5ef5dca535715a4019d"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_003-conservative",
+      "sha256": "9c288d8486db1df07275e2a6f3538cbe6de8153c82a2f3daa45a4fbec0286d83",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_003/conservative/run/traj.npz",
+          "sha256": "b19f6bca331c62c0ddfc35aa42e43cff3d180ceac45fcf360bedcb3f110dc806"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_003-imagination",
+      "sha256": "fd497d91bd766c98dcb0fe36ef8fd7b8a7face8e8782c2e2e0136a838a3ba2c9",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F2_003/imagination/traj.npz",
+          "sha256": "90fbbb339ba72a84ecec9276c5da65a9d9b228fdb6e401372d9cfc9d0bccd3c6"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_003-optimistic",
+      "sha256": "0b3371455f5259d5417cd80dd2bcb37d751c8adee0e159c3a6c27cb487bde7d4",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_003/optimistic/run/traj.npz",
+          "sha256": "f63d49608e78254e49fedc9acb2320ec47bfd51882df0fbd49f2506bc470fdb9"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007-conservative",
+      "sha256": "d1c001dd38629bcfefbbde896dabdbbde68c5790604e6347459077c5b29c087d",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_007/conservative/run/traj.npz",
+          "sha256": "6de7d1f75aa4b7c60884fa02e31cfbbc3fa355fb900c576a7ef6ff416da0fae7"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007-imagination",
+      "sha256": "918dc87da30b4fa440f54bc3b8f21a62c63f347950de19dfd7a4b278dc98a9ab",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F2_007/imagination/traj.npz",
+          "sha256": "7170df89ed93145e90084ce39443172430d6461ffadcef065cd6205570124a4b"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007-optimistic",
+      "sha256": "543a538afe02f6c1edc94944d84c3167853e3d6a1586b83e2a92301e677d4b8b",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F2_007/optimistic/run/traj.npz",
+          "sha256": "b6409f6c7a86be203fb166ff04ee009bce39b38efbbe0eadd73ae86d2588b301"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007_gate-A",
+      "sha256": "e3e83ecdb6789ce9bf8a0f89f2145804ef8f9bcbe22eaff421a626ab872b95d2",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "5fdc54fe89bd806d08221f27c2b1d95294ce7bf17a6ea86ac30dc5671aa9c489"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007_gate-B",
+      "sha256": "34a08c09f81ea962f7e0829de74462ee0e6886bcb00dc71b31bc0685cc661444",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/segment1/full-record/trajectory.npz",
+          "sha256": "f2fe0fb669a80ebdfdb48d8ffa1cc37ed69299048096bfce794166ddcfa96931"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007_gate-C",
+      "sha256": "17f267f16056de3ee920494a8dc6435b7a13f9978c95138f4cd5f0a7f1d85023",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/segment1/full-record/trajectory.npz",
+          "sha256": "a1cdfe0057e3c6f56a2edd91446985fbc9af4eac1c5c4e9d8ce5a94b41bf69e1"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_007_gate-D",
+      "sha256": "e3e83ecdb6789ce9bf8a0f89f2145804ef8f9bcbe22eaff421a626ab872b95d2",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "5fdc54fe89bd806d08221f27c2b1d95294ce7bf17a6ea86ac30dc5671aa9c489"
+        }
+      ],
+      "duration_s": 18.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "540"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_011-imagination",
+      "sha256": "fb2d7bacc1ece9f36cf7fc0c79c936e20f5fd60d1bd8e93d0fcc817ee66c778e",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F2_011/imagination/imagination/traj.npz",
+          "sha256": "0f877d4b8947c97c13fb3dd31e7ed67a60a59defc8e30dbb769d771488836e99"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F2_011-imagination_strict",
+      "sha256": "fb2d7bacc1ece9f36cf7fc0c79c936e20f5fd60d1bd8e93d0fcc817ee66c778e",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F2_011/imagination_strict/imagination_strict/traj.npz",
+          "sha256": "0f877d4b8947c97c13fb3dd31e7ed67a60a59defc8e30dbb769d771488836e99"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_001-conservative",
+      "sha256": "1f92a1d72a5c99cd43ad657f45202fb1cec60ecf301ebe5ef10b6d6b7d4512f3",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/conservative/run/traj.npz",
+          "sha256": "e4d5795c1260f9cd09838660d426a03e9811ffc21be304588007166f9b4702e9"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_001-imagination",
+      "sha256": "6a1d6d43fa0f93dbd1c566a52e59d93e75b949256ce4f50e11502ec18dd6004e",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F3_001/imagination/traj.npz",
+          "sha256": "b0a44d394f746ee5798a02dda9e18da1e3a4cec582be35233571c86f2fb5d670"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_001-optimistic",
+      "sha256": "d3f30247654776749a9b893d532367a9300108a7dc044ea1efb157334a64c4a0",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_001/optimistic/run/traj.npz",
+          "sha256": "21eeb20406a2646e7efafe3b9d8de70d61d3246d9d91ee416b81cc6feb6c2159"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_002-conservative",
+      "sha256": "2f8d473e45f2b88c1dfaa7e1e086b9676ca07998b8f9c495ec5c5d58297463a9",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_002/conservative/run/traj.npz",
+          "sha256": "28acd5d110e37a9c68011b9a1fd37b72f12ac20a7bbb3bee45ded4f2e1d21408"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_002-imagination",
+      "sha256": "0e2bea6b82e863980bf5ac6be7ce80c77406513e57a82c0c04fd4efa0577c049",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F3_002/imagination/traj.npz",
+          "sha256": "0c82acc9a1de826308456be40f3bf1a469e2ebb5a5c836078df4af6fa491cb35"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_002-optimistic",
+      "sha256": "0fef521573995aecbe87135a333bbb06ef7f0bc70006b17833c3cf8f4bc51c6a",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_002/optimistic/run/traj.npz",
+          "sha256": "38b86c0f81c4daeaa52c4f1729579cb7d82b9901889130da4c6903f4d49b83a3"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_004-conservative",
+      "sha256": "0277813484c603b0e8fc6da7fc7f16f72ff34c7a86c6503823cfaf7349d8dfe9",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_004/conservative/run/traj.npz",
+          "sha256": "e8c9ac9e8701baf175a385670798fbe187df8879ad120ec2339cba66e4943c5c"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_004-imagination",
+      "sha256": "1e7281b1a3e37175bff90ab675d1be1b291ff9ee55e5f0ffcb304ca8b83211d6",
+      "source_files": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F3_004/imagination/traj.npz",
+          "sha256": "aab20e6499662e27e273ae4660db137666431e0021607f378426a0de06fd1bdb"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_004-optimistic",
+      "sha256": "18c4efb46fb2ad239c578f5edb1afa3bf881423a6c979b984a759663e9d47de7",
+      "source_files": [
+        {
+          "path": "outputs/suite/baselines-crater-target/suite_r2_v4_F3_004/optimistic/run/traj.npz",
+          "sha256": "eda99d5bdf4fe9dfa67c3c72afa437acd0a5c8054f01c0b86e2146cb40684e34"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_005-imagination",
+      "sha256": "fe1b7de60e6e6a2c47e454c33eca69a64c9ac437acff1ae7c39d60b96f0ff422",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F3_005/imagination/imagination/traj.npz",
+          "sha256": "6089058796e703c4a978f823a924ba1f799615e7a2612c1d49b0dec632eac06c"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_005-imagination_strict",
+      "sha256": "4a628c60fd893ac191e4fabdd0ec3907ca503d58c3f8857ad7fb5da550f18219",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F3_005/imagination_strict/imagination_strict/traj.npz",
+          "sha256": "80c8b322cf5237e64c0525fad679541e7868fa8763a708f4065c279f2e6067d5"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_006-imagination",
+      "sha256": "d8794f338763d21eff6c48e9726d6a62e4cfd5d2004c1872cdbff6de3f44caa4",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination/imagination/traj.npz",
+          "sha256": "e9e6b6dcdf9bbcbd63de459838baf3025e18edaf6df7a948778cd11cbc39366d"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "suite_r2_v4_F3_006-imagination_strict",
+      "sha256": "ba68da3f19eda3ffe5c80fe5f0028403ab5a5e6c94fb031bdc8b802f6e68198f",
+      "source_files": [
+        {
+          "path": "outputs/r3/v3/holdouts/suite_r2_v4_F3_006/imagination_strict/imagination_strict/traj.npz",
+          "sha256": "1d84b56627ac9a122d60633df145d40d453c7b39337c255b3c1e22b071cce7a0"
+        }
+      ],
+      "duration_s": 14.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "420"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "wheel-stuck",
+      "sha256": "c4c34c02a5d930afac9e41ad01fec3ebc16d88e99629be15c21a956cb18a02db",
+      "source_files": [
+        {
+          "path": "outputs/crossing/route/handoff/frames/wheel-stuck/index.json",
+          "sha256": "bfbd8a09133aeb07e51c900e696c92fbc9b16bfd516f967eb21cff3f9081ed07"
+        },
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/wheel-fixed-center/trajectory.npz",
+          "sha256": "c2a1a5374f5ea970e42090a910f44999a1deaafcd110d920efbbe92f09d024c3"
+        }
+      ],
+      "duration_s": 15.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "30/1",
+        "nb_frames": "450"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-00",
+      "sha256": "ef095f113264ca579ccb3019adb2a134259898257edbec2fd2a78e28e3f21bf3",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-01",
+      "sha256": "7ef3d48c34722de69035f9437db441ecd839e339aa7e5023377335bd832e16fd",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane1/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-02",
+      "sha256": "01b521898823b4c7f3ad3dcf1e11f7852e159ca825546bfaaed8eaf1e8d9113d",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane2/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-03",
+      "sha256": "aa4211af3a1248aa7c2e2d7e98abef4e83fa9eabd03178b4cedf6ee06e7ffb58",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane3/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-04",
+      "sha256": "8864993e04b20202099d4e0d8dbf26029feb49b0224b4eb4a6cfe49955981d23",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane4/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-05",
+      "sha256": "a5459573190df3db2475aed24fa8ab4eff059380e083ce2df2d7e17d550d1346",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane5/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-06",
+      "sha256": "3568bd75eecb712bb056dec686347250a24a42596044cd54cd705dd6718acd86",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane6/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-07",
+      "sha256": "acef44d180a6c1fc2993e01b01cb48c488873302b71f45f4540a48f59e23db94",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane7/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-08",
+      "sha256": "0d8d280037033f17941543f636b6a937afcbf93c0f744d466b5fbd530af4fede",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane8/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-09",
+      "sha256": "cee9db419c7fbf6289b3c8bd3f8cc171b287cb3f23559ed3b9e119e50555c346",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane9/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-10",
+      "sha256": "d2d01f70551abc6a77e8b171c56a391a6fefd8e7a761431d6d76b0f9bd238e10",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane10/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    },
+    {
+      "id": "world-11",
+      "sha256": "788465d32e2991858f7a2e283816c62b0e24f9faa4ba26044b7c2168eb59401c",
+      "source_files": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane11/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "duration_s": 12.0,
+      "metadata": {
+        "codec_name": "h264",
+        "codec_type": "video",
+        "width": 864,
+        "height": 486,
+        "r_frame_rate": "30/1",
+        "nb_frames": "360"
+      },
+      "camera_recording": true
+    }
+  ],
+  "source_data_unchanged": true,
+  "frontpage_illustrative_maps": 0
+}

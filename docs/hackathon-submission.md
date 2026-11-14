@@ -4,7 +4,7 @@
 
 | 项目 | 链接或明确状态 | 完成者 |
 | --- | --- | --- |
-| 项目报告 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；本轮唯一 PDF 更新已完成（23 页），旧版留档 | Agent 准备与核验；负责人提交 |
+| 项目报告 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；正式 v3 已更新（10 页，用户提供原 PDF），上一版 23 页及技术报告留档 | Agent 准备与核验；负责人提交 |
 | 可运行 Demo | [作品首页](https://codezzzsleep.github.io/next-zenith-beforestep/) · [真实关卡回放](https://codezzzsleep.github.io/next-zenith-beforestep/levels.html) · [轻量沙盒](https://codezzzsleep.github.io/next-zenith-beforestep/sandbox.html) · [轮腿实测](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) | Agent 已集成并核验首页第二版 |
 | 新视频 | [demo-v2.mp4](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo-v2.mp4) 定版已合成并核验；成片由 Agent 合成，待负责人看片。1080p/30fps/H.264，烧录字幕，无人声、无配乐；[分镜](video.md) | Agent 合成；负责人看片与提交 |
 | 视频来源边界 | 门槛轮行、腿跨越与两段接通使用已终态的真实物理预检查；石头是真实扫描几何，画面照实标注，不当作四车正式结果。[旧视频](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo.mp4)原处保留，明确为旧版 | Agent 留出处 |

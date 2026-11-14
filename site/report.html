@@ -1,13 +1,13 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BeforeStep · 完整项目报告</title><style>@page{size:A4;margin:15mm}body{max-width:900px;margin:30px auto;padding:0 18px;color:#202a30;font:14px/1.75 "WenQuanYi Zen Hei",sans-serif;overflow-wrap:anywhere}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}h3{break-after:avoid}p,li{orphans:3;widows:3}img{max-width:100%;height:auto;break-inside:avoid}table{border-collapse:collapse;width:100%;font-size:11px}th,td{border:1px solid #b7bfc2;padding:6px;vertical-align:top;overflow-wrap:anywhere}a{color:#236a5c}pre{white-space:pre-wrap}code{font-size:11px}@media print{body{margin:0;padding:0}img{max-height:235mm;object-fit:contain}table{break-inside:auto}tr{break-inside:avoid}}</style></head><body><h1 id="_1">先见一步：一张照片，变成一整块石头</h1>
 <!-- ADDENDUM3-LUX-USAGE-START -->
-<p>Lux3D 使用：本项目调用图像转三维任务创建接口（单图 <code>img</code> / 多图 <code>imgs</code>）、任务查询接口以及官方上传流程。客户端账本有 <strong>443 个真实已创建任务</strong>，其中 416 份返回 GLB、27 份服务端失败；逐项任务号与输入 SHA 见 <a href="evidence/crossing/route/lux-usage.json">公开调用账本</a>。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 89/400。</p>
+<p>Lux3D 使用：本项目调用图像转三维任务创建接口（单图 <code>img</code> / 多图 <code>imgs</code>）、任务查询接口以及官方上传流程。客户端账本有 <strong>455 个真实已创建任务</strong>，其中 428 份返回 GLB、27 份服务端失败；逐项任务号与输入 SHA 见 <a href="evidence/crossing/route/lux-usage.json">公开调用账本</a>。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 101/400。</p>
 <p>生成结果是高石头看不见部分的三维假设：先与可见观测核对，准入后进入各个完整物理预演世界，全部安全才实走。门槛石的跨越用实拍几何，Lux3D 在门槛石上的开发没有被记为跨越成功。</p>
 <!-- ADDENDUM3-LUX-USAGE-END -->
 
 <!-- PHOTO-STORY-REPORT-START -->
 <p>机器人只拍到石头的一面。矮石头，相机看得到它的顶和背，轮腿抬腿跨过去；高石头，背面永远拍不到，Lux3D 把它想象出来，机器人检验、预演之后再绕。一条路上两种石头都有，少了腿或少了想象，都到不了。</p>
 <!-- ROUTE-ACTUAL-SUMMARY-START -->
-<p>上述两种必要性是要检验的说法，结论以实际结果为准。<strong>当前实测：</strong>首场四种车全部终态。D 尚未到达终点，这一场不能证明腿的必要性。 D 尚未到达终点，这一场不能证明想象的必要性。 追加 suite_r2_v4_F1_003_gate 的 B 用 299.60 仿真秒到达，该场不靠想象也到了。</p>
+<p>上述两种必要性是要检验的说法，结论以实际结果为准。<strong>当前实测：</strong>首场四种车全部终态。D 尚未到达终点，这一场不能证明腿的必要性。 D 尚未到达终点，这一场不能证明想象的必要性。 追加 suite_r2_v4_F1_003_gate 的 B 用 299.60 仿真秒到达，该场不靠想象也到了。 追加 suite_r2_v4_F2_001_gate 的 B 用 282.88 仿真秒到达，该场不靠想象也到了。</p>
 <!-- ROUTE-ACTUAL-SUMMARY-END -->
 
 <p>锚点真实 Lux 分支1眼、112.84秒到达（仿真行程，不含云端生成墙钟），首眼12个真实任务返回11个模型、1个供应商失败。陈列室保留全部306份既有真实生成模型。</p>
@@ -1464,7 +1464,58 @@
 </tr>
 </tbody>
 </table>
-<p>追加场景 suite_r2_v4_F2_001_gate：运行中。</p>
+<p>追加场景 suite_r2_v4_F2_001_gate：终态。</p>
+<table>
+<thead>
+<tr>
+<th>车</th>
+<th>第一段结果</th>
+<th>第二段结果</th>
+<th>总结果</th>
+<th>用时（仿真秒）</th>
+<th>看了几眼</th>
+<th>出事位置或停下原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>A</td>
+<td>到达</td>
+<td>卡住</td>
+<td>卡住</td>
+<td>569.40</td>
+<td>1</td>
+<td>wheel_only_both_stuck</td>
+</tr>
+<tr>
+<td>B</td>
+<td>到达</td>
+<td>干净跨过</td>
+<td>到达</td>
+<td>282.88</td>
+<td>2</td>
+<td>—</td>
+</tr>
+<tr>
+<td>C</td>
+<td>停下</td>
+<td>未运行</td>
+<td>停下</td>
+<td>82.17</td>
+<td>5</td>
+<td>no_path；没有用上腿</td>
+</tr>
+<tr>
+<td>D</td>
+<td>到达</td>
+<td>干净跨过</td>
+<td>到达</td>
+<td>277.76</td>
+<td>2</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
 <p>追加场景 suite_r2_v4_F2_007_gate：未开始。</p>
 <p>四组共用同一个物理车体；A 关闭逐轮跨越能力，只允许既有常规和高姿态轮行。B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。</p>
 <h3 id="_33">事实出处与边界</h3>

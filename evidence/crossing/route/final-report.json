@@ -1,0 +1,49 @@
+{
+  "schema": "beforestep-crossing-final-report/v1",
+  "formal_route_scenes": 4,
+  "formal_route_runs": 16,
+  "counts": {
+    "A": {
+      "stopped": 2,
+      "stuck": 2
+    },
+    "B": {
+      "stopped": 2,
+      "arrived": 2
+    },
+    "C": {
+      "stopped": 4
+    },
+    "D": {
+      "stopped": 2,
+      "arrived": 2
+    }
+  },
+  "clean_passes": {
+    "A": 0,
+    "B": 2,
+    "C": 0,
+    "D": 2
+  },
+  "original_twelve_tests_cancelled": true,
+  "original_claims_checked_on_route_examples_only": [
+    true,
+    true,
+    true,
+    true
+  ],
+  "accidents": [],
+  "new_route_tasks": 60,
+  "crossing_created": 113,
+  "crossing_statuses": {
+    "ok": 109,
+    "failed": 4
+  },
+  "historical_created": 467,
+  "excluded_scenes": [],
+  "report": "docs/reviews/RESULT_WHEELLEG_CROSSING_FINAL.md",
+  "report_sha256": "304cb1d228c250d70a9a82113ce45fe52814f6bcb44c40edaef7b1888380a924",
+  "video_sha256": "2e9413e5db589d090095e72dcb55deb64a8d6cd54d3722275667e9f74b32bb04",
+  "pdf_sha256": "8f5012bc0c662df93b4e2283705291d84feaab02d3771f6412143e62c7db6bda",
+  "evidence_snapshot_main": "153e6f6370f2e913ac65bcf664b1c5855f643563"
+}

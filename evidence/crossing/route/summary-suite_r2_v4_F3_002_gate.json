@@ -1,0 +1,228 @@
+{
+  "scene": "suite_r2_v4_F3_002_gate",
+  "all_terminal": true,
+  "rows": [
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "suite_r2_v4_F3_002_gate",
+      "vehicle": "A",
+      "legs": false,
+      "policy": "imagination",
+      "imagine": "lux",
+      "first_segment": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_002_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 57.7,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.272,
+          1.198,
+          -20.73
+        ],
+        "sim_time_s": 58.9,
+        "wall_s": 1227.4,
+        "collision": null
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 57.7,
+      "looks": 2,
+      "reason": "imagined_blocked",
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A"
+    },
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "suite_r2_v4_F3_002_gate",
+      "vehicle": "B",
+      "legs": true,
+      "policy": "optimistic",
+      "imagine": null,
+      "first_segment": {
+        "policy": "optimistic",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": null,
+        "result": "collision",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_002_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 79.82,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          6.585,
+          -0.586,
+          20.02
+        ],
+        "sim_time_s": 81.02,
+        "wall_s": 36.9,
+        "collision": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            6.768,
+            -0.289,
+            0.103
+          ],
+          "t": 81.022
+        }
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 79.82,
+      "looks": 1,
+      "reason": {
+        "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+        "original_pipeline_result": "collision",
+        "contact": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            6.768,
+            -0.289,
+            0.103
+          ],
+          "t": 81.022
+        },
+        "body_stone_contacts": 0,
+        "wheel_stone_steps": 1,
+        "maximum_tilt_deg": 0.7664592456035915
+      },
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B"
+    },
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "suite_r2_v4_F3_002_gate",
+      "vehicle": "C",
+      "legs": true,
+      "policy": "conservative",
+      "imagine": null,
+      "first_segment": {
+        "policy": "conservative",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": null,
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_002_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 165.55,
+        "sensor_mode": "live",
+        "looks": 5,
+        "final_pose": [
+          7.644,
+          -1.401,
+          42.41
+        ],
+        "sim_time_s": 166.75,
+        "wall_s": 76.9,
+        "collision": null
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 165.55,
+      "looks": 5,
+      "reason": "no_path",
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C"
+    },
+    {
+      "schema": "beforestep-crossing-route-vehicle/v1",
+      "scene": "suite_r2_v4_F3_002_gate",
+      "vehicle": "D",
+      "legs": true,
+      "policy": "imagination",
+      "imagine": "lux",
+      "first_segment": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F3_002_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 57.7,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.272,
+          1.198,
+          -20.73
+        ],
+        "sim_time_s": 58.9,
+        "wall_s": 1205.8,
+        "collision": null
+      },
+      "first_segment_result": "stopped",
+      "second_segment": null,
+      "second_segment_result": "not_run",
+      "total_result": "stopped",
+      "sim_seconds": 57.7,
+      "looks": 2,
+      "reason": "imagined_blocked",
+      "legs_used": false,
+      "handoff": null,
+      "formal_runs": 1,
+      "high_rock_inputs_live": true,
+      "threshold_lux_tasks": 0,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D"
+    }
+  ],
+  "authority": "docs/reviews/SPEC_BEFORESTEP_ADDENDUM4.md",
+  "scope": "前四场之后追加的决定性单场演示，不是统计证据",
+  "completed_at_utc": "2026-11-14T16:51:10.561194+00:00",
+  "deadline_utc": "2026-11-14T16:45:00+00:00",
+  "all_terminal_before_deadline": false
+}

@@ -1,0 +1,382 @@
+{
+  "status": "technical_passed_awaiting_visual_and_playback",
+  "passed": true,
+  "film_sha256": "73258f05fd1ef30ebc30686fd7b35676ea5235547f7650268365c2f9fe383006",
+  "metadata": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 50,
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 2412032,
+        "duration": "157.033333",
+        "bit_rate": "2754371",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "4711",
+        "extradata_size": 48,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc60.31.102 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 1,
+        "channel_layout": "mono",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 7537584,
+        "duration": "157.033000",
+        "bit_rate": "135620",
+        "nb_frames": "7362",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "evidence/lux3d-demo/BeforeStep-Lux3D-Demo.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "157.033333",
+      "size": "56902255",
+      "bit_rate": "2898862",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf60.16.100"
+      }
+    }
+  },
+  "full_decode": {
+    "passed": true,
+    "frames": 4711,
+    "audio_decoded": true,
+    "black_intervals": 0
+  },
+  "source_hashes_unchanged": true,
+  "real_input_GLb_pair_verified": 5958685,
+  "narration_caption_text_equal": true,
+  "captions": 23,
+  "maximum_caption_lines": 2,
+  "audio_stretched": false,
+  "audio_volume_db": {
+    "mean": -18.6,
+    "maximum": -1.4
+  },
+  "review_frames": [
+    {
+      "time_s": 0.2,
+      "file": "evidence/lux3d-demo/qc/final-00-0.20s.jpg",
+      "sha256": "8e6aef41252245d88dc1c1134aabee6b45a98524e4902539259686f93ddab51c"
+    },
+    {
+      "time_s": 1.6591111111111114,
+      "file": "evidence/lux3d-demo/qc/final-01-1.66s.jpg",
+      "sha256": "fd46df036684652373ee419e471673da812e92b888ef9ee2dda31dff59f2c309"
+    },
+    {
+      "time_s": 2.183333333333333,
+      "file": "evidence/lux3d-demo/qc/final-02-2.18s.jpg",
+      "sha256": "7475ff43c44b00680596ac70ea047ce455cd997272fb2e67d7c20422b69b4253"
+    },
+    {
+      "time_s": 8.2,
+      "file": "evidence/lux3d-demo/qc/final-03-8.20s.jpg",
+      "sha256": "cfb4921d3873e1f24a698f274c21422130a7a6f6d9bf8b1276f3ba410ae49c87"
+    },
+    {
+      "time_s": 8.238222222222223,
+      "file": "evidence/lux3d-demo/qc/final-04-8.24s.jpg",
+      "sha256": "6622dccd24dab46975695ef207479d52bede1dd45c6deec6c307240b55488c73"
+    },
+    {
+      "time_s": 13.833333333333332,
+      "file": "evidence/lux3d-demo/qc/final-05-13.83s.jpg",
+      "sha256": "28aef4907aaf35fc17ff477d83e9fe096af80716b2a37f4f3db7246b97a98030"
+    },
+    {
+      "time_s": 16.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-06-16.03s.jpg",
+      "sha256": "c923c73e1933c639f7feaa93cb7632b7e27d6f2af00d1e390d887480ad1f5bb6"
+    },
+    {
+      "time_s": 21.833333333333336,
+      "file": "evidence/lux3d-demo/qc/final-07-21.83s.jpg",
+      "sha256": "cb19991720646b2a719e627bc7a0e6175d48616fffdc7c15ca1d8c803f59bb11"
+    },
+    {
+      "time_s": 26.033333333333335,
+      "file": "evidence/lux3d-demo/qc/final-08-26.03s.jpg",
+      "sha256": "212e0e878e4f0f9e61a404e153effa7c197aaa2286b0dfa6506260ccc51e3e37"
+    },
+    {
+      "time_s": 27.475333333333335,
+      "file": "evidence/lux3d-demo/qc/final-09-27.48s.jpg",
+      "sha256": "4fa795b86cef5489bd2d4c5fa31b88acd665b2de587755c761c498ad61d9a330"
+    },
+    {
+      "time_s": 33.833333333333336,
+      "file": "evidence/lux3d-demo/qc/final-10-33.83s.jpg",
+      "sha256": "e528375d56d4af5fe1e853e8f842b181caf56efd50beee63eebb1844ea7874b7"
+    },
+    {
+      "time_s": 34.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-11-34.03s.jpg",
+      "sha256": "63f303217af62d906c27085347418483ee85f0c57bb37e3b69eb75c120b4cd5d"
+    },
+    {
+      "time_s": 41.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-12-41.03s.jpg",
+      "sha256": "ba77912b553674ffb3c540d1cd81170d43887d87983e05921e96b33d216d51d8"
+    },
+    {
+      "time_s": 41.059333333333335,
+      "file": "evidence/lux3d-demo/qc/final-13-41.06s.jpg",
+      "sha256": "b1894433a391fe6d16a2c38a09de8f095627a983382434c8e3bfece43dc6c8d5"
+    },
+    {
+      "time_s": 47.833333333333336,
+      "file": "evidence/lux3d-demo/qc/final-14-47.83s.jpg",
+      "sha256": "0de2aa764e0562ddaa83fa53af00505732df55e3b6f708a12385a402ab099b7a"
+    },
+    {
+      "time_s": 49.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-15-49.03s.jpg",
+      "sha256": "95431f4382357fc59284d6e8798bca3cb937cc476e40fbb4d299ed30b3e721df"
+    },
+    {
+      "time_s": 55.308,
+      "file": "evidence/lux3d-demo/qc/final-16-55.31s.jpg",
+      "sha256": "278f8b046dc1f2923738149978e92c33613d74a7b7a61f53ff39c17f97562fc0"
+    },
+    {
+      "time_s": 56.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-17-56.03s.jpg",
+      "sha256": "79f064799659fda235300adcd07605aec500e1eac91130e753f021a20a9ad605"
+    },
+    {
+      "time_s": 61.833333333333336,
+      "file": "evidence/lux3d-demo/qc/final-18-61.83s.jpg",
+      "sha256": "f82856cafd45519bd4798388854031d5bf7c8f1bae3235da5deac9b4b324e1df"
+    },
+    {
+      "time_s": 66.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-19-66.03s.jpg",
+      "sha256": "0ea9ae447271a9fac1196051eb8a775e8920af4aaed2c8614e57f4147c01a8c5"
+    },
+    {
+      "time_s": 67.86333333333333,
+      "file": "evidence/lux3d-demo/qc/final-20-67.86s.jpg",
+      "sha256": "3a667b8d12c55515a6d8adb97725f6da98a89d566ee04145fb2f9b11b98bed58"
+    },
+    {
+      "time_s": 73.71333333333334,
+      "file": "evidence/lux3d-demo/qc/final-21-73.71s.jpg",
+      "sha256": "109aecc17a506004b58944a25ec7b7cf8928a7f3829035d3822a837357b90083"
+    },
+    {
+      "time_s": 75.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-22-75.03s.jpg",
+      "sha256": "d4529d374ca3f7d017613cc905316a70123ca1c5a9844925d3b88455a312fce8"
+    },
+    {
+      "time_s": 79.83333333333333,
+      "file": "evidence/lux3d-demo/qc/final-23-79.83s.jpg",
+      "sha256": "f0dba218416a03c7cbc30e88f54a1b254505e9212076b692f0332e92af3db07d"
+    },
+    {
+      "time_s": 85.72733333333333,
+      "file": "evidence/lux3d-demo/qc/final-24-85.73s.jpg",
+      "sha256": "e84550c00069be152d99bf4cedd1d67110a05c23121f631c5684eac8703b9eee"
+    },
+    {
+      "time_s": 87.53333333333333,
+      "file": "evidence/lux3d-demo/qc/final-25-87.53s.jpg",
+      "sha256": "e6465d690d49b9cccd36a6db7c29d249285424de8ecebef0359b09476a667d41"
+    },
+    {
+      "time_s": 98.83333333333333,
+      "file": "evidence/lux3d-demo/qc/final-26-98.83s.jpg",
+      "sha256": "8a3de9eaa2ef3e6748a2584cdd583ac9d96d49e153e802f95f7793ebcb08c2eb"
+    },
+    {
+      "time_s": 104.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-27-104.03s.jpg",
+      "sha256": "df3522600d7d2b4abd6606d3f629ca4c9af49b7d0687004fa0555deade897497"
+    },
+    {
+      "time_s": 105.33933333333333,
+      "file": "evidence/lux3d-demo/qc/final-28-105.34s.jpg",
+      "sha256": "07187af651cfcde2c82d1c9f013d3a7759fd0b956069a3134e84938d277e1598"
+    },
+    {
+      "time_s": 112.83333333333333,
+      "file": "evidence/lux3d-demo/qc/final-29-112.83s.jpg",
+      "sha256": "baf8f10e6fa7a3e6bf5d3e3551ca27a8283190a9a4fa24369610939c3c2bb558"
+    },
+    {
+      "time_s": 113.7,
+      "file": "evidence/lux3d-demo/qc/final-30-113.70s.jpg",
+      "sha256": "e1af2d0c198c86435eb47322e9247fca0ba533be8b9e9a4415fd12a2dbafbc41"
+    },
+    {
+      "time_s": 117.57533333333333,
+      "file": "evidence/lux3d-demo/qc/final-31-117.58s.jpg",
+      "sha256": "d5e5682f59f1535b48370b5d439d5c8171e1ac46d6e81f5cdc78c56995c0d69e"
+    },
+    {
+      "time_s": 120.69999999999999,
+      "file": "evidence/lux3d-demo/qc/final-32-120.70s.jpg",
+      "sha256": "0a1b26321d7b7f15b4114f9eaba87481723465f2894c7e1561103f025304d4a5"
+    },
+    {
+      "time_s": 126.83333333333333,
+      "file": "evidence/lux3d-demo/qc/final-33-126.83s.jpg",
+      "sha256": "43f91cbd91e21ddcf25e2cc74d9cd8460c0f92cbd2f77d22cc67c4a784d88239"
+    },
+    {
+      "time_s": 127.28333333333333,
+      "file": "evidence/lux3d-demo/qc/final-34-127.28s.jpg",
+      "sha256": "bb82cbd4e26c925a2d80acecf90a7b99386c88ccc0bfc3cf0d36f0e8491969c9"
+    },
+    {
+      "time_s": 131.78333333333333,
+      "file": "evidence/lux3d-demo/qc/final-35-131.78s.jpg",
+      "sha256": "8c8daa582f891f2a4e698e19d2af0881b21b8f3aae49dfad6f1e826efacbb34f"
+    },
+    {
+      "time_s": 135.83333333333331,
+      "file": "evidence/lux3d-demo/qc/final-36-135.83s.jpg",
+      "sha256": "75153abab3b75345ee375566008440e1debb217bea25ec9daf585a6cfd1e79b0"
+    },
+    {
+      "time_s": 141.03333333333333,
+      "file": "evidence/lux3d-demo/qc/final-37-141.03s.jpg",
+      "sha256": "a90d26dd63f14d9ea3fde8ef83a561238844ee535afee704d24965e6bf34e50f"
+    },
+    {
+      "time_s": 143.72799999999998,
+      "file": "evidence/lux3d-demo/qc/final-38-143.73s.jpg",
+      "sha256": "f2952d1c52f474bf2295a164605400fe5d526c6c1b47e2fac59eb340aaf4da1b"
+    },
+    {
+      "time_s": 149.83333333333331,
+      "file": "evidence/lux3d-demo/qc/final-39-149.83s.jpg",
+      "sha256": "152ed32176dfa7f95f1fb3ad87064d715ee4ab698fa4e4f599e7e684c5208aa3"
+    },
+    {
+      "time_s": 152.53333333333333,
+      "file": "evidence/lux3d-demo/qc/final-40-152.53s.jpg",
+      "sha256": "5ad5c2479776b7cfc9fc0b09a4b8ef94c7147acbedfd8220ed45260c42b4e217"
+    },
+    {
+      "time_s": 154.71733333333333,
+      "file": "evidence/lux3d-demo/qc/final-41-154.72s.jpg",
+      "sha256": "af3f732a7f178a5759c8d99be2a434ae86c7e19018294efb338d78ab8d338439"
+    },
+    {
+      "time_s": 156.83333333333334,
+      "file": "evidence/lux3d-demo/qc/final-42-156.83s.jpg",
+      "sha256": "ceef024325b1b01b3e69e1fa97a9e4c1cf9784c1ce966671ac37d695057f4901"
+    }
+  ],
+  "contact_sheets": [
+    "evidence/lux3d-demo/qc/final-contact-1.jpg",
+    "evidence/lux3d-demo/qc/final-contact-2.jpg",
+    "evidence/lux3d-demo/qc/final-contact-3.jpg",
+    "evidence/lux3d-demo/qc/final-contact-4.jpg"
+  ],
+  "new_physics_runs": 0,
+  "new_Lux3D_tasks": 0
+}

@@ -1,0 +1,899 @@
+{
+  "groups": [
+    {
+      "id": "core",
+      "chapter": "先见一步 · 照片变成3D",
+      "base_duration_s": 11,
+      "parts": [
+        {
+          "id": "core-robot",
+          "kind": "video",
+          "base_duration_s": 4,
+          "source": "evidence/production-v6/shots/s01-open-v2.mp4",
+          "span": 6
+        },
+        {
+          "id": "core-pair",
+          "kind": "pair",
+          "base_duration_s": 7,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "core-01",
+          "text": "机器人拍一张石头照片，交给 Lux3D，拿回一整块石头的三维模型。"
+        },
+        {
+          "id": "core-02",
+          "text": "先见一步，让机器人据此判断看不见的背面。"
+        }
+      ],
+      "start_s": 0.0,
+      "end_s": 12.033333333333333,
+      "duration_s": 12.033333333333333,
+      "frames": 361
+    },
+    {
+      "id": "question",
+      "chapter": "为什么需要完整形状",
+      "base_duration_s": 8,
+      "parts": [
+        {
+          "id": "question-rgb",
+          "kind": "video",
+          "base_duration_s": 8,
+          "source": "evidence/production-v6/shots/s02-eye-v2.mp4",
+          "span": 3
+        }
+      ],
+      "sentences": [
+        {
+          "id": "question-01",
+          "text": "相机只拍到石头朝向自己的一面，背面藏在遮挡和黑影里。"
+        }
+      ],
+      "start_s": 12.033333333333333,
+      "end_s": 20.033333333333335,
+      "duration_s": 8.0,
+      "frames": 240
+    },
+    {
+      "id": "proof",
+      "chapter": "一张照片 → Lux3D → 三维模型",
+      "base_duration_s": 12,
+      "parts": [
+        {
+          "id": "proof-pair",
+          "kind": "pair",
+          "base_duration_s": 12,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "proof-01",
+          "text": "Lux3D 把这张照片，变成可以转到背面看的三维模型。"
+        },
+        {
+          "id": "proof-02",
+          "text": "画面中的照片和模型，来自同一个真实任务。"
+        }
+      ],
+      "start_s": 20.033333333333335,
+      "end_s": 32.03333333333333,
+      "duration_s": 12.0,
+      "frames": 360
+    },
+    {
+      "id": "viewer",
+      "chapter": "官方 Aholo Viewer · 真实模型",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "viewer-ui",
+          "kind": "video",
+          "base_duration_s": 4,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 4,
+          "crop": [
+            365,
+            100,
+            1180,
+            610
+          ]
+        },
+        {
+          "id": "viewer-close",
+          "kind": "viewer",
+          "base_duration_s": 10,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "viewer-01",
+          "text": "用官方 Aholo Viewer，在网页里旋转，直接检查真实返回的形状。"
+        },
+        {
+          "id": "viewer-02",
+          "text": "后续对高石盲区的判断，都建立在这个三维模型上。"
+        }
+      ],
+      "start_s": 32.03333333333333,
+      "end_s": 46.03333333333333,
+      "duration_s": 14.0,
+      "frames": 420
+    },
+    {
+      "id": "check",
+      "chapter": "第一道判断 · 模型与照片对得上吗",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "check-model",
+          "kind": "viewer",
+          "base_duration_s": 6,
+          "source": "evidence/production-v6/shots/r03-glb-B.mp4",
+          "span": 8
+        },
+        {
+          "id": "check-plot",
+          "kind": "image",
+          "base_duration_s": 8,
+          "source": "evidence/production-v6/figures/r1-self-check.png"
+        }
+      ],
+      "sentences": [
+        {
+          "id": "check-01",
+          "text": "机器人不会直接相信生成结果。先把模型与相机看到的正面核对，对不上的丢掉。"
+        },
+        {
+          "id": "check-02",
+          "text": "这块石头返回五份模型，三份被拒绝，只有两份通过。"
+        }
+      ],
+      "start_s": 46.03333333333333,
+      "end_s": 60.03333333333333,
+      "duration_s": 14.0,
+      "frames": 420
+    },
+    {
+      "id": "worlds",
+      "chapter": "第二道判断 · 每份模型里先走一遍",
+      "base_duration_s": 18,
+      "parts": [
+        {
+          "id": "world-main",
+          "kind": "video",
+          "base_duration_s": 12,
+          "source": "evidence/production-v6/shots/s05-world-1-v2.mp4",
+          "span": 8.0,
+          "requested_source_span_s": 12
+        },
+        {
+          "id": "world-grid",
+          "kind": "video",
+          "base_duration_s": 6,
+          "source": "evidence/production-v6/shots/s05-world-grid.mp4",
+          "span": 6
+        }
+      ],
+      "sentences": [
+        {
+          "id": "worlds-01",
+          "text": "同一块石头生成多份候选，每份模型都是一种可能的背面。"
+        },
+        {
+          "id": "worlds-02",
+          "text": "把通过检查的模型放进虚拟世界，让机器人先把整条路走完。"
+        },
+        {
+          "id": "worlds-03",
+          "text": "这一场有十二个世界，全部预演安全，才允许出发。"
+        }
+      ],
+      "start_s": 60.03333333333333,
+      "end_s": 78.03333333333333,
+      "duration_s": 18.0,
+      "frames": 540
+    },
+    {
+      "id": "action",
+      "chapter": "模型改变行动 · 再走真实路线",
+      "base_duration_s": 19,
+      "parts": [
+        {
+          "id": "action-route",
+          "kind": "video",
+          "base_duration_s": 19,
+          "source": "evidence/production-v6/shots/s03-imagination-v2.mp4",
+          "span": 19
+        }
+      ],
+      "sentences": [
+        {
+          "id": "action-01",
+          "text": "现在，机器人开始按模型判断出的路线，绕过高石头。"
+        },
+        {
+          "id": "action-02",
+          "text": "这是原始运行记录：只看一眼，一百十二点八四秒，到达终点。"
+        }
+      ],
+      "start_s": 78.03333333333333,
+      "end_s": 97.03333333333333,
+      "duration_s": 19.0,
+      "frames": 570
+    },
+    {
+      "id": "comparison",
+      "chapter": "同一条路 · 三种判断的原结果",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "compare",
+          "kind": "comparison",
+          "base_duration_s": 14,
+          "source": "evidence/lux3d-demo/sources/comparison.mkv",
+          "span": 28
+        }
+      ],
+      "sentences": [
+        {
+          "id": "comparison-01",
+          "text": "同一条路上，把未知当作没有的车撞了，把未知都当危险的车停了。"
+        },
+        {
+          "id": "comparison-02",
+          "text": "Lux3D 的模型让这次盲区判断，有了可以检验的依据。"
+        }
+      ],
+      "start_s": 97.03333333333333,
+      "end_s": 111.03333333333333,
+      "duration_s": 14.0,
+      "frames": 420
+    },
+    {
+      "id": "boundary",
+      "chapter": "模型是可以检验的假设",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "back-error",
+          "kind": "video",
+          "base_duration_s": 5.333333333333333,
+          "source": "evidence/production-v6/shots/r01-reveal.mp4",
+          "span": 10,
+          "start": 1,
+          "crop": [
+            380,
+            455,
+            500,
+            440
+          ]
+        },
+        {
+          "id": "safe-stop",
+          "kind": "video",
+          "base_duration_s": 8.666666666666668,
+          "source": "evidence/production-v6/shots/s09-F3002-A-stop-v2.mp4",
+          "span": 14
+        }
+      ],
+      "sentences": [
+        {
+          "id": "boundary-01",
+          "text": "但正面通过核对，背面仍可能被想短。"
+        },
+        {
+          "id": "boundary-02",
+          "text": "在另一个场景，候选模型全部被拒绝，机器人选择停车。"
+        }
+      ],
+      "start_s": 111.03333333333333,
+      "end_s": 125.03333333333333,
+      "duration_s": 14.0,
+      "frames": 420
+    },
+    {
+      "id": "iteration",
+      "chapter": "输入、模型与迭代都保留",
+      "base_duration_s": 9,
+      "parts": [
+        {
+          "id": "versions-early",
+          "kind": "image",
+          "base_duration_s": 4.5,
+          "source": "evidence/production-v6/figures/six-version-assets.png",
+          "crop": [
+            20,
+            135,
+            1400,
+            450
+          ]
+        },
+        {
+          "id": "versions-later",
+          "kind": "image",
+          "base_duration_s": 4.5,
+          "source": "evidence/production-v6/figures/six-version-assets.png",
+          "crop": [
+            20,
+            600,
+            1400,
+            450
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "id": "iteration-01",
+          "text": "不同版本的输入照片、真实模型和拒绝结果，都保存在仓库里，评审可以逐一核对。"
+        }
+      ],
+      "start_s": 125.03333333333333,
+      "end_s": 134.03333333333333,
+      "duration_s": 9.0,
+      "frames": 270
+    },
+    {
+      "id": "records",
+      "chapter": "491 个真实任务 · 每次都有记录",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "records-pair",
+          "kind": "pair",
+          "base_duration_s": 14,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "records-01",
+          "text": "作品真实创建了四百九十一个 Lux3D 任务，拿回四百六十份模型，三十一次服务端失败。"
+        },
+        {
+          "id": "records-02",
+          "text": "每次都保留任务号、输入照片和生成结果。"
+        }
+      ],
+      "start_s": 134.03333333333333,
+      "end_s": 148.03333333333333,
+      "duration_s": 14.0,
+      "frames": 420
+    },
+    {
+      "id": "ending",
+      "chapter": "先见一步 · BeforeStep",
+      "base_duration_s": 9,
+      "parts": [
+        {
+          "id": "ending-card",
+          "kind": "ending",
+          "base_duration_s": 9,
+          "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+          "span": 8
+        }
+      ],
+      "sentences": [
+        {
+          "id": "ending-01",
+          "text": "从一张照片，到一个三维模型，再到一次有依据的行动。"
+        },
+        {
+          "id": "ending-02",
+          "text": "先见一步。"
+        }
+      ],
+      "start_s": 148.03333333333333,
+      "end_s": 157.03333333333333,
+      "duration_s": 9.0,
+      "frames": 270
+    }
+  ],
+  "parts": [
+    {
+      "id": "core-robot",
+      "kind": "video",
+      "base_duration_s": 4,
+      "source": "evidence/production-v6/shots/s01-open-v2.mp4",
+      "span": 6,
+      "group": "core",
+      "chapter": "先见一步 · 照片变成3D",
+      "frames": 131,
+      "start_s": 0.0,
+      "end_s": 4.366666666666666,
+      "duration_s": 4.366666666666666
+    },
+    {
+      "id": "core-pair",
+      "kind": "pair",
+      "base_duration_s": 7,
+      "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+      "span": 8,
+      "group": "core",
+      "chapter": "先见一步 · 照片变成3D",
+      "frames": 230,
+      "start_s": 4.366666666666666,
+      "end_s": 12.033333333333333,
+      "duration_s": 7.666666666666667
+    },
+    {
+      "id": "question-rgb",
+      "kind": "video",
+      "base_duration_s": 8,
+      "source": "evidence/production-v6/shots/s02-eye-v2.mp4",
+      "span": 3,
+      "group": "question",
+      "chapter": "为什么需要完整形状",
+      "frames": 240,
+      "start_s": 12.033333333333333,
+      "end_s": 20.033333333333335,
+      "duration_s": 8.0
+    },
+    {
+      "id": "proof-pair",
+      "kind": "pair",
+      "base_duration_s": 12,
+      "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+      "span": 8,
+      "group": "proof",
+      "chapter": "一张照片 → Lux3D → 三维模型",
+      "frames": 360,
+      "start_s": 20.033333333333335,
+      "end_s": 32.03333333333333,
+      "duration_s": 12.0
+    },
+    {
+      "id": "viewer-ui",
+      "kind": "video",
+      "base_duration_s": 4,
+      "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+      "span": 4,
+      "crop": [
+        365,
+        100,
+        1180,
+        610
+      ],
+      "group": "viewer",
+      "chapter": "官方 Aholo Viewer · 真实模型",
+      "frames": 120,
+      "start_s": 32.03333333333333,
+      "end_s": 36.03333333333333,
+      "duration_s": 4.0
+    },
+    {
+      "id": "viewer-close",
+      "kind": "viewer",
+      "base_duration_s": 10,
+      "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+      "span": 8,
+      "group": "viewer",
+      "chapter": "官方 Aholo Viewer · 真实模型",
+      "frames": 300,
+      "start_s": 36.03333333333333,
+      "end_s": 46.03333333333333,
+      "duration_s": 10.0
+    },
+    {
+      "id": "check-model",
+      "kind": "viewer",
+      "base_duration_s": 6,
+      "source": "evidence/production-v6/shots/r03-glb-B.mp4",
+      "span": 8,
+      "group": "check",
+      "chapter": "第一道判断 · 模型与照片对得上吗",
+      "frames": 180,
+      "start_s": 46.03333333333333,
+      "end_s": 52.03333333333333,
+      "duration_s": 6.0
+    },
+    {
+      "id": "check-plot",
+      "kind": "image",
+      "base_duration_s": 8,
+      "source": "evidence/production-v6/figures/r1-self-check.png",
+      "group": "check",
+      "chapter": "第一道判断 · 模型与照片对得上吗",
+      "frames": 240,
+      "start_s": 52.03333333333333,
+      "end_s": 60.03333333333333,
+      "duration_s": 8.0
+    },
+    {
+      "id": "world-main",
+      "kind": "video",
+      "base_duration_s": 12,
+      "source": "evidence/production-v6/shots/s05-world-1-v2.mp4",
+      "span": 8.0,
+      "requested_source_span_s": 12,
+      "group": "worlds",
+      "chapter": "第二道判断 · 每份模型里先走一遍",
+      "frames": 360,
+      "start_s": 60.03333333333333,
+      "end_s": 72.03333333333333,
+      "duration_s": 12.0
+    },
+    {
+      "id": "world-grid",
+      "kind": "video",
+      "base_duration_s": 6,
+      "source": "evidence/production-v6/shots/s05-world-grid.mp4",
+      "span": 6,
+      "group": "worlds",
+      "chapter": "第二道判断 · 每份模型里先走一遍",
+      "frames": 180,
+      "start_s": 72.03333333333333,
+      "end_s": 78.03333333333333,
+      "duration_s": 6.0
+    },
+    {
+      "id": "action-route",
+      "kind": "video",
+      "base_duration_s": 19,
+      "source": "evidence/production-v6/shots/s03-imagination-v2.mp4",
+      "span": 19,
+      "group": "action",
+      "chapter": "模型改变行动 · 再走真实路线",
+      "frames": 570,
+      "start_s": 78.03333333333333,
+      "end_s": 97.03333333333333,
+      "duration_s": 19.0
+    },
+    {
+      "id": "compare",
+      "kind": "comparison",
+      "base_duration_s": 14,
+      "source": "evidence/lux3d-demo/sources/comparison.mkv",
+      "span": 28,
+      "group": "comparison",
+      "chapter": "同一条路 · 三种判断的原结果",
+      "frames": 420,
+      "start_s": 97.03333333333333,
+      "end_s": 111.03333333333333,
+      "duration_s": 14.0
+    },
+    {
+      "id": "back-error",
+      "kind": "video",
+      "base_duration_s": 5.333333333333333,
+      "source": "evidence/production-v6/shots/r01-reveal.mp4",
+      "span": 10,
+      "start": 1,
+      "crop": [
+        380,
+        455,
+        500,
+        440
+      ],
+      "group": "boundary",
+      "chapter": "模型是可以检验的假设",
+      "frames": 160,
+      "start_s": 111.03333333333333,
+      "end_s": 116.36666666666666,
+      "duration_s": 5.333333333333333
+    },
+    {
+      "id": "safe-stop",
+      "kind": "video",
+      "base_duration_s": 8.666666666666668,
+      "source": "evidence/production-v6/shots/s09-F3002-A-stop-v2.mp4",
+      "span": 14,
+      "group": "boundary",
+      "chapter": "模型是可以检验的假设",
+      "frames": 260,
+      "start_s": 116.36666666666666,
+      "end_s": 125.03333333333333,
+      "duration_s": 8.666666666666666
+    },
+    {
+      "id": "versions-early",
+      "kind": "image",
+      "base_duration_s": 4.5,
+      "source": "evidence/production-v6/figures/six-version-assets.png",
+      "crop": [
+        20,
+        135,
+        1400,
+        450
+      ],
+      "group": "iteration",
+      "chapter": "输入、模型与迭代都保留",
+      "frames": 135,
+      "start_s": 125.03333333333333,
+      "end_s": 129.53333333333333,
+      "duration_s": 4.5
+    },
+    {
+      "id": "versions-later",
+      "kind": "image",
+      "base_duration_s": 4.5,
+      "source": "evidence/production-v6/figures/six-version-assets.png",
+      "crop": [
+        20,
+        600,
+        1400,
+        450
+      ],
+      "group": "iteration",
+      "chapter": "输入、模型与迭代都保留",
+      "frames": 135,
+      "start_s": 129.53333333333333,
+      "end_s": 134.03333333333333,
+      "duration_s": 4.5
+    },
+    {
+      "id": "records-pair",
+      "kind": "pair",
+      "base_duration_s": 14,
+      "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+      "span": 8,
+      "group": "records",
+      "chapter": "491 个真实任务 · 每次都有记录",
+      "frames": 420,
+      "start_s": 134.03333333333333,
+      "end_s": 148.03333333333333,
+      "duration_s": 14.0
+    },
+    {
+      "id": "ending-card",
+      "kind": "ending",
+      "base_duration_s": 9,
+      "source": "evidence/production-v6/shots/r02-glb-A.mp4",
+      "span": 8,
+      "group": "ending",
+      "chapter": "先见一步 · BeforeStep",
+      "frames": 270,
+      "start_s": 148.03333333333333,
+      "end_s": 157.03333333333333,
+      "duration_s": 9.0
+    }
+  ],
+  "captions": [
+    {
+      "id": "core-01",
+      "text": "机器人拍一张石头照片，交给 Lux3D，拿回一整块石头的三维模型。",
+      "audio": "evidence/lux3d-demo/audio/core-01.mp3",
+      "audio_sha256": "a3891b5f9aa3a1b64033ca832bcc629d9ac463a9e5124e0098d007cd871f4948",
+      "audio_duration_s": 6.12,
+      "group": "core",
+      "start_s": 0.45911111111111147,
+      "end_s": 6.579111111111112
+    },
+    {
+      "id": "core-02",
+      "text": "先见一步，让机器人据此判断看不见的背面。",
+      "audio": "evidence/lux3d-demo/audio/core-02.mp3",
+      "audio_sha256": "7db84c83b0e0d002f70822dba9b16b170f7a46aabfa1e8424131d4277287578b",
+      "audio_duration_s": 4.536,
+      "group": "core",
+      "start_s": 7.038222222222223,
+      "end_s": 11.574222222222222
+    },
+    {
+      "id": "question-01",
+      "text": "相机只拍到石头朝向自己的一面，背面藏在遮挡和黑影里。",
+      "audio": "evidence/lux3d-demo/audio/question-01.mp3",
+      "audio_sha256": "e97d392057e8ad51c9069a7fac41a8067b1f3d7d895730f9d68feb358edb0896",
+      "audio_duration_s": 5.04,
+      "group": "question",
+      "start_s": 12.633333333333333,
+      "end_s": 17.673333333333332
+    },
+    {
+      "id": "proof-01",
+      "text": "Lux3D 把这张照片，变成可以转到背面看的三维模型。",
+      "audio": "evidence/lux3d-demo/audio/proof-01.mp3",
+      "audio_sha256": "5f5f85de09ecc1505310ed7ea7d99e01442a10489ddb6ef6b779c1396ebbf5ad",
+      "audio_duration_s": 4.392,
+      "group": "proof",
+      "start_s": 20.633333333333336,
+      "end_s": 25.025333333333336
+    },
+    {
+      "id": "proof-02",
+      "text": "画面中的照片和模型，来自同一个真实任务。",
+      "audio": "evidence/lux3d-demo/audio/proof-02.mp3",
+      "audio_sha256": "ddebe349e4d82d9305523bedee9c05d2ec65589d177907cb0f9f3236a8c45b84",
+      "audio_duration_s": 3.636,
+      "group": "proof",
+      "start_s": 26.275333333333336,
+      "end_s": 29.911333333333335
+    },
+    {
+      "id": "viewer-01",
+      "text": "用官方 Aholo Viewer，在网页里旋转，直接检查真实返回的形状。",
+      "audio": "evidence/lux3d-demo/audio/viewer-01.mp3",
+      "audio_sha256": "086f19573a3482e0c0420f1f032125203d6aa177af097489f8c049ade1f9ec7b",
+      "audio_duration_s": 5.976,
+      "group": "viewer",
+      "start_s": 32.63333333333333,
+      "end_s": 38.60933333333333
+    },
+    {
+      "id": "viewer-02",
+      "text": "后续对高石盲区的判断，都建立在这个三维模型上。",
+      "audio": "evidence/lux3d-demo/audio/viewer-02.mp3",
+      "audio_sha256": "4c81b9d48af34e2843a6f1630671fbeaa146c0239f6f47618eb9dd975550a340",
+      "audio_duration_s": 3.636,
+      "group": "viewer",
+      "start_s": 39.85933333333333,
+      "end_s": 43.495333333333335
+    },
+    {
+      "id": "check-01",
+      "text": "机器人不会直接相信生成结果。先把模型与相机看到的正面核对，对不上的丢掉。",
+      "audio": "evidence/lux3d-demo/audio/check-01.mp3",
+      "audio_sha256": "75c4573bea3ee480369fda3db5867e30608ffa93f397d2ecea142b05f211b66f",
+      "audio_duration_s": 6.624,
+      "group": "check",
+      "start_s": 46.63333333333333,
+      "end_s": 53.257333333333335
+    },
+    {
+      "id": "check-02",
+      "text": "这块石头返回五份模型，三份被拒绝，只有两份通过。",
+      "audio": "evidence/lux3d-demo/audio/check-02.mp3",
+      "audio_sha256": "65f4f210f77e588e5f61aa1f0dd92a8d733058d4708009ea82a5256bd6f78c8f",
+      "audio_duration_s": 4.824,
+      "group": "check",
+      "start_s": 54.108,
+      "end_s": 58.931999999999995
+    },
+    {
+      "id": "worlds-01",
+      "text": "同一块石头生成多份候选，每份模型都是一种可能的背面。",
+      "audio": "evidence/lux3d-demo/audio/worlds-01.mp3",
+      "audio_sha256": "4d1c0ab330bfe4eead7208365af40da4983dbc227c9dfbc644c920f3af05e942",
+      "audio_duration_s": 5.04,
+      "group": "worlds",
+      "start_s": 60.63333333333333,
+      "end_s": 65.67333333333333
+    },
+    {
+      "id": "worlds-02",
+      "text": "把通过检查的模型放进虚拟世界，让机器人先把整条路走完。",
+      "audio": "evidence/lux3d-demo/audio/worlds-02.mp3",
+      "audio_sha256": "ba758c841e515994caf4ca043040ba38d87e499046440863fb3c17149d2ce859",
+      "audio_duration_s": 4.86,
+      "group": "worlds",
+      "start_s": 66.66333333333333,
+      "end_s": 71.52333333333333
+    },
+    {
+      "id": "worlds-03",
+      "text": "这一场有十二个世界，全部预演安全，才允许出发。",
+      "audio": "evidence/lux3d-demo/audio/worlds-03.mp3",
+      "audio_sha256": "0983b5a3ce70b865a0e4b34e52aa7ce122fb3c9abc48e5d32f245ca6aea00065",
+      "audio_duration_s": 4.14,
+      "group": "worlds",
+      "start_s": 72.51333333333334,
+      "end_s": 76.65333333333334
+    },
+    {
+      "id": "action-01",
+      "text": "现在，机器人开始按模型判断出的路线，绕过高石头。",
+      "audio": "evidence/lux3d-demo/audio/action-01.mp3",
+      "audio_sha256": "0869a25eaa000ab1fec0c815ac0a1706aff7b0de9ac4c1144229bf7ccda4421e",
+      "audio_duration_s": 4.644,
+      "group": "action",
+      "start_s": 78.63333333333333,
+      "end_s": 83.27733333333333
+    },
+    {
+      "id": "action-02",
+      "text": "这是原始运行记录：只看一眼，一百十二点八四秒，到达终点。",
+      "audio": "evidence/lux3d-demo/audio/action-02.mp3",
+      "audio_sha256": "b1fd1464aee800d68409d003e47d7c5c79f8567495520d56444dc38698f4e0b0",
+      "audio_duration_s": 5.112,
+      "group": "action",
+      "start_s": 84.52733333333333,
+      "end_s": 89.63933333333333
+    },
+    {
+      "id": "comparison-01",
+      "text": "同一条路上，把未知当作没有的车撞了，把未知都当危险的车停了。",
+      "audio": "evidence/lux3d-demo/audio/comparison-01.mp3",
+      "audio_sha256": "178276a5fc70b1dbed384df3f9ad2f7d4350d250053fcb103ab6352c5d8ac1c0",
+      "audio_duration_s": 5.256,
+      "group": "comparison",
+      "start_s": 97.63333333333333,
+      "end_s": 102.88933333333333
+    },
+    {
+      "id": "comparison-02",
+      "text": "Lux3D 的模型让这次盲区判断，有了可以检验的依据。",
+      "audio": "evidence/lux3d-demo/audio/comparison-02.mp3",
+      "audio_sha256": "cf2dc8865338f6f993795d0744c429c266f0349d27c29440784d69982fc6f940",
+      "audio_duration_s": 4.032,
+      "group": "comparison",
+      "start_s": 104.13933333333333,
+      "end_s": 108.17133333333332
+    },
+    {
+      "id": "boundary-01",
+      "text": "但正面通过核对，背面仍可能被想短。",
+      "audio": "evidence/lux3d-demo/audio/boundary-01.mp3",
+      "audio_sha256": "69f1f408dfe287cb6c4f67ca15d4244ef5e929c43162ce22de0c8d744825e94e",
+      "audio_duration_s": 3.492,
+      "group": "boundary",
+      "start_s": 111.63333333333333,
+      "end_s": 115.12533333333333
+    },
+    {
+      "id": "boundary-02",
+      "text": "在另一个场景，候选模型全部被拒绝，机器人选择停车。",
+      "audio": "evidence/lux3d-demo/audio/boundary-02.mp3",
+      "audio_sha256": "7a661fc21824866d9001e047dde50a1349cfe3644986c2a5202f8d0756501e4f",
+      "audio_duration_s": 5.04,
+      "group": "boundary",
+      "start_s": 116.37533333333333,
+      "end_s": 121.41533333333334
+    },
+    {
+      "id": "iteration-01",
+      "text": "不同版本的输入照片、真实模型和拒绝结果，都保存在仓库里，评审可以逐一核对。",
+      "audio": "evidence/lux3d-demo/audio/iteration-01.mp3",
+      "audio_sha256": "9d8b0cf550c09fe368bbac65ece4a89dcf1aec2214e2957475be5a3bd2af3c2e",
+      "audio_duration_s": 6.84,
+      "group": "iteration",
+      "start_s": 125.63333333333333,
+      "end_s": 132.47333333333333
+    },
+    {
+      "id": "records-01",
+      "text": "作品真实创建了四百九十一个 Lux3D 任务，拿回四百六十份模型，三十一次服务端失败。",
+      "audio": "evidence/lux3d-demo/audio/records-01.mp3",
+      "audio_sha256": "916b69c16bd6215f34ea1554e05d52d79e0c674d6e7563d689b651ce0149c58e",
+      "audio_duration_s": 6.84,
+      "group": "records",
+      "start_s": 134.63333333333333,
+      "end_s": 141.47333333333333
+    },
+    {
+      "id": "records-02",
+      "text": "每次都保留任务号、输入照片和生成结果。",
+      "audio": "evidence/lux3d-demo/audio/records-02.mp3",
+      "audio_sha256": "745c7eb4127866db294c88ac38b3b6759b91ec53810af70ba850be99323e24fb",
+      "audio_duration_s": 3.996,
+      "group": "records",
+      "start_s": 142.528,
+      "end_s": 146.524
+    },
+    {
+      "id": "ending-01",
+      "text": "从一张照片，到一个三维模型，再到一次有依据的行动。",
+      "audio": "evidence/lux3d-demo/audio/ending-01.mp3",
+      "audio_sha256": "09871a7de7f0df08168d78c9ac25405b7cc5212c8beef7dc4b475517d00e4fe6",
+      "audio_duration_s": 4.356,
+      "group": "ending",
+      "start_s": 148.63333333333333,
+      "end_s": 152.98933333333332
+    },
+    {
+      "id": "ending-02",
+      "text": "先见一步。",
+      "audio": "evidence/lux3d-demo/audio/ending-02.mp3",
+      "audio_sha256": "01a35b0eb2c718c3ebd44b2d4a17911a70ee23755deeec21dade2a6df09e9d3f",
+      "audio_duration_s": 1.08,
+      "group": "ending",
+      "start_s": 154.17733333333334,
+      "end_s": 155.25733333333335
+    }
+  ],
+  "duration_s": 157.03333333333333,
+  "frames": 4711,
+  "plan_sha256": "7740d8544463830c1ff8bc6fed24cc3a43c328167a187a77c4d23100999c5a82",
+  "audio_stretched": false,
+  "all_video_sources_retained": true,
+  "new_physics_runs": 0,
+  "new_Lux3D_tasks": 0
+}

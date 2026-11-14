@@ -3,7 +3,7 @@
 <!-- PHOTO-STORY-README-START -->
 月面机器人只看得到石头朝向它的一面。Lux3D 替它把背面想出来；我们把生成结果当作假设，先核对观测，再在每一份准入想象里预演完整路线，全部安全才迈步。想象有用，也会出错；矮门槛的跨越靠看见的几何与轮腿动作。
 
-[最新 3 分 05 秒中文成片与全部 39 条素材](evidence/production-v6/README.md) · [制作代码](tools/production_v6/README.md) · [原方法与失败](docs/reviews/STORY_V3.md)
+[最新 Lux3D 核心 Demo · 2 分 37 秒](evidence/lux3d-demo/README.md) · [3 分 05 秒故事版与全部 39 条素材](evidence/production-v6/README.md) · [制作代码](tools/production_v6/README.md) · [原方法与失败](docs/reviews/STORY_V3.md)
 
 [高石头绕行 R1 到 R3](docs/reviews/RESULT_BEFORESTEP_R1.md) · [同路两种石头的实际结果](docs/crossing.md)
 <!-- PHOTO-STORY-README-END -->

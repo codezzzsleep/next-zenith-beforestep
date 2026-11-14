@@ -1,0 +1,89 @@
+{
+  "scope": "README visual explanation from existing real assets",
+  "movie_source": {
+    "path": "evidence/lux3d-demo-v2/BeforeStep-Lux3D-Demo-v2.mp4",
+    "commit": "ab537d62c075c4d7be1e829cecb69a4708258221",
+    "sha256": "f5d36f6a113e0558a78cee963214186b79f9dfea716dc8b3d089672841de0870"
+  },
+  "GIF_excerpt": {
+    "start_s": 4.1,
+    "duration_s": 7.8,
+    "fps": 8,
+    "purpose": "Show the real robot photo and corresponding returned model, with actual official viewer imagery."
+  },
+  "flow_sources": [
+    {
+      "image": "site/media/real-footage/r1-task-5958685-input.jpg",
+      "sha256": "36c6920301bb5aee1a23970af7b9229a100ee42ffb0aa70f9e84edd61c2aa5cd",
+      "use": "01 / 机器人拍照"
+    },
+    {
+      "image": "site/media/home-lux3d/model-5958685.jpg",
+      "sha256": "feadecd1eefa082eb473208558224b77f7bd81426282e9cff5ed8e3ffe638461",
+      "use": "02 / Lux3D 生成"
+    },
+    {
+      "image": "site/media/home-lux3d/rehearsal.jpg",
+      "sha256": "cfc66a7f3c39838bdbf254639e227234629c2a1229c631c5da78ab87e0fd8b00",
+      "use": "03 / BeforeStep 预演"
+    },
+    {
+      "image": "site/media/home-lux3d/action.jpg",
+      "sha256": "3d544b4353b613f7d8596e35fc417fe14ab51bee02885d6138a925100708f6c3",
+      "use": "04 / 机器人行动"
+    }
+  ],
+  "asset_iterations_source": {
+    "path": "evidence/production-v6/figures/six-version-assets.png",
+    "sha256": "eb497dc4f14668f205ec27135f2e82db78f336046d5eb9e1aafba82d75984cae"
+  },
+  "files": [
+    {
+      "path": "docs/readme/asset-iterations.png",
+      "sha256": "e7a338f17e8a8f68ab659bcbd8309805d94240f7192469162537e3dd6da275de",
+      "bytes": 319967
+    },
+    {
+      "path": "docs/readme/badges/lux3d.svg",
+      "sha256": "5876c0833c27aef73cc5cfd4238269dcd8646a4afa46b36c5d160e2e854b719d",
+      "bytes": 449
+    },
+    {
+      "path": "docs/readme/badges/mujoco.svg",
+      "sha256": "1fcc8de61fe94d2166e22c746ffb77f850eac8a89630443fa5d27edf7059abce",
+      "bytes": 435
+    },
+    {
+      "path": "docs/readme/badges/viewer.svg",
+      "sha256": "eea7b236e7be380e2b576d33632bbacc2bc1cfff27c98a205ca18598e3c36389",
+      "bytes": 467
+    },
+    {
+      "path": "docs/readme/model-to-decision.png",
+      "sha256": "ba561de558eb8f8fa6c38398e80a51cd59e589ac593cef60d741edce9aab9439",
+      "bytes": 294527
+    },
+    {
+      "path": "docs/readme/photo-to-model.gif",
+      "sha256": "c1b883ceb30e4cb1dacca837234e4d63455be7fcebd7196d522eb1d746199db8",
+      "bytes": 1979696
+    },
+    {
+      "path": "docs/readme/robot-action.jpg",
+      "sha256": "3bb0e7621a34decea4cb3d32453521adfe313317b015c3876518749d0211ad53",
+      "bytes": 193795
+    },
+    {
+      "path": "docs/readme/viewer.jpg",
+      "sha256": "ab223a47d9e833daf8ce5a613d17de271ac153ad19f04bdc111d1c21e4faff9b",
+      "bytes": 129879
+    }
+  ],
+  "new_generation_tasks": 0,
+  "new_physics_runs": 0,
+  "snapshot_seconds": {
+    "viewer.jpg": 35,
+    "robot-action.jpg": 84
+  },
+  "asset_iterations_layout": "Six retained model/input panels with version-role titles"
+}

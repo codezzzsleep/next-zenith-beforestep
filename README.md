@@ -1,18 +1,65 @@
-# 先见一步 · BeforeStep
+<div align="center">
+  <img src="site/favicon.svg" width="80" alt="BeforeStep 图标">
+  <h1>先见一步 · BeforeStep</h1>
+  <p><b>一张石头照片，变成迈步前可以预演的 3D 模型。</b></p>
+  <p>
+    <img src="docs/readme/badges/lux3d.svg" alt="Aholo Lux3D：照片转 3D">
+    <img src="docs/readme/badges/viewer.svg" alt="官方 Aholo Viewer：查看生成模型">
+    <img src="docs/readme/badges/mujoco.svg" alt="MuJoCo：机器人仿真实录">
+  </p>
+  <p>
+    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">体验作品</a> ·
+    <a href="evidence/lux3d-demo-v2/README.md">中文 Demo · 2:37</a> ·
+    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf">项目报告 v3</a> ·
+    <a href="#快速开始">快速开始</a> ·
+    <a href="docs/code-tour.md">代码导览</a>
+  </p>
+  <a href="https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/ab537d62c075c4d7be1e829cecb69a4708258221/evidence/lux3d-demo-v2/BeforeStep-Lux3D-Demo-v2.mp4">
+    <img src="docs/readme/photo-to-model.gif" width="900" alt="机器人拍下石头照片，随后展示同一 Lux3D 任务返回的整块石头 3D 模型">
+  </a>
+  <p><sub>原始照片 → 对应 Lux3D 模型 · 点击观看带中文配音、字幕与配乐的完整 Demo</sub></p>
+</div>
 
-<!-- PHOTO-STORY-README-START -->
-月面机器人只看得到石头朝向它的一面。Lux3D 替它把背面想出来；我们把生成结果当作假设，先核对观测，再在每一份准入想象里预演完整路线，全部安全才迈步。想象有用，也会出错；矮门槛的跨越靠看见的几何与轮腿动作。
+BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作很直接：**把机器人拍到的一张石头照片交给 Lux3D，拿回一整块石头的 3D 模型。** 后续的观测核对、路线预演和行动选择，都建立在这些模型上。
 
-[最新 Lux3D Demo · 配乐与动画版 · 2 分 37 秒](evidence/lux3d-demo-v2/README.md) · [3 分 05 秒故事版与全部 39 条素材](evidence/production-v6/README.md) · [制作代码](tools/production_v6/README.md) · [原方法与失败](docs/reviews/STORY_V3.md)
+作品中**真实调用 Lux3D 四百多次**。生成模型进入实际判断，也通过**官方 Aholo Viewer** 展示在网页中：你可以查看原照片、旋转模型，再看机器人怎样走。
 
-[高石头绕行 R1 到 R3](docs/reviews/RESULT_BEFORESTEP_R1.md) · [同路两种石头的实际结果](docs/crossing.md)
-<!-- PHOTO-STORY-README-END -->
+## 从照片到行动
 
-## 三分钟跑起来 · Start in three minutes
+<p align="center">
+  <img src="docs/readme/model-to-decision.png" width="100%" alt="四步流程：机器人拍一张石头照片，Lux3D 返回整块石头的 3D，BeforeStep 核对观测并在模型世界里完整预演，机器人据此选择行动">
+</p>
 
-克隆后拉取首页和完整锚点运行所需的 LFS 资产，再安装冻结依赖。以下一条零付费命令复用真实 Lux3D 资产，运行观测、自检、全部物理预演与独立执行，完成后打开本地作品页。三分钟是安装与启动目标；完整仿真耗时随设备变化，实际新目录用时见[执行记录](docs/reviews/RESULT_HACKATHON_AWARD.md)。不需要密钥。
+一张照片可以生成多份完整形状。BeforeStep 把它们与看得见的那面核对，再将通过核对的模型组合成不同的世界，让同一台机器人在每个世界里**走完同一条候选路线**。预演结果支持执行时，才回到原场景迈步；需要更多信息时，补看或停车。
 
-Clone, fetch the LFS assets below, and install the frozen dependencies. The single zero-paid command reuses real Lux3D outputs, runs the full observation, checking, rehearsal and independent execution chain, then serves the local showcase. Three minutes is the setup/start target; full simulation timing is recorded in the [execution result](docs/reviews/RESULT_HACKATHON_AWARD.md). No API key is needed.
+R1 窄道中，六份石头 A 模型与两份石头 B 模型组成 **12 个世界**。机器人在全部组合里完成路线预演，随后用一次观测完成原场景绕行。
+
+## 看模型，也看机器人怎么走
+
+<table>
+  <tr>
+    <td width="50%"><a href="https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html"><img src="docs/readme/viewer.jpg" alt="官方 Aholo Viewer 展示实际 Lux3D 返回模型及其观测核对信息"></a></td>
+    <td width="50%"><a href="https://codezzzsleep.github.io/next-zenith-beforestep/#demo"><img src="docs/readme/robot-action.jpg" alt="R1 中轮腿机器人利用生成模型的预演结果完成绕行，MuJoCo 原运行回放"></a></td>
+  </tr>
+  <tr>
+    <td align="center"><sub><b>模型陈列室</b> · 旋转查看 Lux3D 返回的形状</sub></td>
+    <td align="center"><sub><b>机器人行动</b> · 看预演之后的实际绕行</sub></td>
+  </tr>
+</table>
+
+同一条 R1 窄道里的三种选择，对应三种实际结果：
+
+| 策略 | 观察次数 | 运行结果 |
+| --- | --- | --- |
+| 直接走 · 乐观策略 | 1 眼 | 80.87 秒碰撞 |
+| 看清再走 · 保守策略 | 5 眼 | 142.20 秒停车 |
+| 想一想再走 · Lux3D + 预演 | 1 眼 | **112.84 秒到达** |
+
+时间为该场原运行的仿真时钟。完整对照见 [R1 执行记录](docs/reviews/RESULT_BEFORESTEP_R1.md)；更多场景可打开[关卡回放](https://codezzzsleep.github.io/next-zenith-beforestep/levels.html)和[同路两种石头](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html)。
+
+## 快速开始
+
+直接[打开作品主页](https://codezzzsleep.github.io/next-zenith-beforestep/)即可看模型与 Demo。本地运行需要 **Python 3.12、Git LFS 和 MuJoCo 的 OpenGL 渲染环境**；以下命令复用仓库中的真实 Lux3D 资产，不需要 API 密钥。
 
 ```bash
 GIT_LFS_SKIP_SMUDGE=1 git clone --depth 1 https://github.com/codezzzsleep/next-zenith-beforestep.git
@@ -23,26 +70,52 @@ git lfs pull --include="assets/runtime-*.tar.gz,assets/candidates/595*/tex_mesh.
 .venv/bin/python ops/quickstart.py --reuse-lux --serve
 ```
 
-Ubuntu/Debian 需先具备 Python 3.12 和 `venv`（缺少时：`sudo apt-get install python3.12-venv`）。
+Ubuntu/Debian 缺少 `venv` 时，先安装 `sudo apt-get install python3.12-venv`。命令完成观测、自检、12 个世界的完整物理预演与独立执行后，在 <http://127.0.0.1:8080> 打开本地作品页。
 
-<!-- FRESH-TIMING-START -->
-全新 GitHub 克隆实测：环境安装与启动 103.71 秒，完整零付费链另耗时 1287.87 秒；12 个世界完整预演、独立执行与五组轨迹数组核对均通过，新增任务 0。[原始实测记录](evidence/award/acceptance/C5-fresh.json)。网页在链完成后用同一全新环境独立启动并验收。
+<details>
+<summary><b>运行耗时与资源下载</b></summary>
 
-Fresh-clone verification: setup/start 103.71 s, followed by 1287.87 s for the full zero-paid chain. All 12 rehearsals and five trajectory-array comparisons passed. The local showcase was served independently after completion in the same environment.
-<!-- FRESH-TIMING-END -->
+全新克隆实测，安装与启动约 104 秒，完整仿真另耗时约 21 分钟；耗时随设备变化。原记录见 [C5-fresh.json](evidence/award/acceptance/C5-fresh.json)。
 
-打开 <http://127.0.0.1:8080>。全部其余历史证据可以另用 `git lfs pull --include="" --exclude=""` 下载。六步源文件、独立命令与输出见[代码导览](docs/code-tour.md)。
+视频、报告和大型模型使用 Git LFS 保存。按需下载最新版视频与报告：
 
-## 轮腿与想象
+```bash
+git lfs pull --include="evidence/lux3d-demo-v2/**" --exclude=""
+```
 
-首场四种车全部终态。原门槛石开发已收尾，四项物理闸门通过；同路两种石头的四车结果按原件公开，结论以 [结果表](docs/crossing.md#一条路上两种石头) 为准。
+下载全部历史二进制资料：
 
-[交互页面](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) · [实验规范](docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md) · [故事](docs/story.md)。
+```bash
+git lfs pull --include="" --exclude=""
+```
 
-## 源码、资产与版本证据
+六步源码入口、独立命令和输出位置见[代码导览](docs/code-tour.md)。
 
-[代码导览](docs/code-tour.md)、[版本里程碑](docs/milestones.md)和[核心资产迭代](evidence/award/asset-iterations/manifest.json)保留各版本的源码、输入、原生成资产及失败对比；[原 README 与历史复现命令](docs/history/README-before-addendum2.md)原字节留档。
+</details>
 
-## 附录
+## 技术与资产迭代
 
-学习模型保留历史记录；Arena 停在 2747/4000，未完成，原数据与失败证据保留。
+从 V6、V7、V8 到 v0.1、v0.2、v0.3，项目逐步加入观测约束、候选核对、完整路线预演与独立执行。每个核心版本保留输入、生成资产、源码和运行结果，可以按版本比较。
+
+<details>
+<summary><b>展开查看六个版本的输入与 3D 模型</b></summary>
+
+<p align="center">
+  <a href="https://codezzzsleep.github.io/next-zenith-beforestep/award-assets.html"><img src="docs/readme/asset-iterations.png" width="100%" alt="V6、V7、V8、v0.1、v0.2、v0.3 六个核心版本的实际输入和生成资产对比"></a>
+</p>
+
+[交互资产对比](https://codezzzsleep.github.io/next-zenith-beforestep/award-assets.html) · [技术里程碑](docs/milestones.md) · [核心资产清单](evidence/award/asset-iterations/manifest.json)
+
+</details>
+
+## 源码与资料
+
+| 你想看什么 | 从这里进入 |
+| --- | --- |
+| 观测 → 生成 → 核对 → 预演 → 执行的代码 | [五分钟代码导览](docs/code-tour.md) · [src/beforestep](src/beforestep/) |
+| 最新完整视频与正式报告 | [Lux3D Demo · 配乐与动画版](evidence/lux3d-demo-v2/README.md) · [项目报告 v3](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) |
+| 新版视频与 v3 报告一起下载 | [视频与报告 ZIP](https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/ab537d62c075c4d7be1e829cecb69a4708258221/evidence/lux3d-demo-v2/BeforeStep-Lux3D-v2-submission.zip) |
+| 视频怎样制作 | [原 Demo 合成代码](tools/lux3d_demo/README.md) · [配乐与过渡代码](tools/lux3d_demo_v2/README.md) |
+| 原始输入、生成模型与实验数据 | [assets](assets/) · [evidence](evidence/) · [R1](docs/reviews/RESULT_BEFORESTEP_R1.md) · [R2](docs/reviews/RESULT_BEFORESTEP_R2.md) · [R3](docs/reviews/RESULT_BEFORESTEP_R3.md) |
+| 完整故事版与 39 条镜头素材 | [production-v6](evidence/production-v6/README.md) · [制作代码](tools/production_v6/README.md) |
+| README 图片与 GIF 的来源 | [图文素材说明](docs/readme/README.md) |

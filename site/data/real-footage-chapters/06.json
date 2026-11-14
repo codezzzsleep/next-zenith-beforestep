@@ -1,0 +1,47 @@
+{
+  "id": "chapter-06",
+  "title": "三策略：同一条仿真时钟",
+  "start_s": 105,
+  "duration_s": 42,
+  "scene": "R1 / stress_v8",
+  "kind": "原状态回放",
+  "poster": "media/real-footage/chapter-06.jpg",
+  "poster_sha256": "8c2c323dcc8152057cd786b21e1945ac0123afa3542f04f848bd9449b697c7e3",
+  "clean_video": "media/real-footage/chapter-06-clean.mp4",
+  "clean_sha256": "92a23ca1a76ad0f69df4337204280e54c88a26561542b4698095ca1d951b37ff",
+  "sources": [
+    {
+      "id": "r1-synchronised-optimistic",
+      "record": "data/real-footage-sources/r1-synchronised-optimistic.json",
+      "record_sha256": "49a4f701cde5ae1a0677b100e4cca7d03b0478896bab5f9cc1417dc3875c6e5f",
+      "original_path": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/traj.npz",
+      "source_time_s": [
+        1.2000000000000006,
+        80.86600000000105
+      ],
+      "camera": "comparison"
+    },
+    {
+      "id": "r1-synchronised-conservative",
+      "record": "data/real-footage-sources/r1-synchronised-conservative.json",
+      "record_sha256": "8d2a64ef35d7b493ae125bad3226c4814b62408292c2fbf75f4b456c0da000af",
+      "original_path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/traj.npz",
+      "source_time_s": [
+        1.2000000000000006,
+        142.19999999999894
+      ],
+      "camera": "comparison"
+    },
+    {
+      "id": "r1-synchronised-imagination",
+      "record": "data/real-footage-sources/r1-synchronised-imagination.json",
+      "record_sha256": "17b36900fff972c342e901ef5efb9994c5d5f653b265ff18096426bce14c606a",
+      "original_path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+      "source_time_s": [
+        1.2000000000000006,
+        112.83999999999469
+      ],
+      "camera": "comparison"
+    }
+  ]
+}

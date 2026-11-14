@@ -1,0 +1,33 @@
+{
+  "id": "chapter-07",
+  "title": "成功的边界与另场失败",
+  "start_s": 147,
+  "duration_s": 16,
+  "scene": "R1 + 另场 F3_004",
+  "kind": "原状态回放",
+  "poster": "media/real-footage/chapter-07.jpg",
+  "poster_sha256": "f158618ba038df5d3cdf2f2c344c4ab6c532b16c41948af17f6dceb585f59c53",
+  "clean_video": "media/real-footage/chapter-07-clean.mp4",
+  "clean_sha256": "20997f023a38343daecb6b7da71fd05668bc222435c5552b637aa30c725841c6",
+  "sources": [
+    {
+      "id": "r1-overlay",
+      "record": "data/real-footage-sources/r1-overlay.json",
+      "record_sha256": "fe19e18ffd8530996df67f4f0326a4ff8f40a6f55149b4415f6c7774bce5d5c1",
+      "original_path": "outputs/crossing/route/video/shots/4.mp4",
+      "source_time_s": null,
+      "camera": "原相机或原帧机位"
+    },
+    {
+      "id": "f3-004-contact",
+      "record": "data/real-footage-sources/f3-004-contact.json",
+      "record_sha256": "799d918335d61d90fd56244e836b3f663ef8076474d2f85c9d4dcfd4e569ed1f",
+      "original_path": "outputs/suite/real/suite_r2_v4_F3_004/imagination/traj.npz",
+      "source_time_s": [
+        70.14,
+        82.14
+      ],
+      "camera": "failure"
+    }
+  ]
+}

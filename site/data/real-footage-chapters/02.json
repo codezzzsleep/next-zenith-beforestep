@@ -1,0 +1,57 @@
+{
+  "id": "chapter-02",
+  "title": "低石：轮行受阻，逐轮跨越",
+  "start_s": 15,
+  "duration_s": 20,
+  "scene": "stress_v8_gate / 独立预检查",
+  "kind": "原状态回放",
+  "poster": "media/real-footage/chapter-02.jpg",
+  "poster_sha256": "b3e9bd63fdb2509647b60f490d3fcd2e5fc23f3bec8441423794f095c5681472",
+  "clean_video": "media/real-footage/chapter-02-clean.mp4",
+  "clean_sha256": "234285b5c4a552dde2a3ac161b8a0a273ad0849573af2c581372398f9d5ff285",
+  "sources": [
+    {
+      "id": "low-stone-wheel",
+      "record": "data/real-footage-sources/low-stone-wheel.json",
+      "record_sha256": "dffc8e1357724ec3babc761e342d0581be2623d1b5a087efdf3c402db06eb191",
+      "original_path": "outputs/crossing/route/handoff/frames/wheel-stuck/index.json",
+      "source_time_s": [
+        6.653999999999893,
+        11.62066666666656
+      ],
+      "camera": {
+        "azimuth_deg": 25.0,
+        "elevation_deg": -18.0,
+        "distance_m": 2.5,
+        "closeup": false
+      }
+    },
+    {
+      "id": "low-stone-full-lift",
+      "record": "data/real-footage-sources/low-stone-full-lift.json",
+      "record_sha256": "d3906cc6939999bf363c0bd55a599014633456edf5bba31b05ab84079a3815c3",
+      "original_path": "outputs/crossing/route/handoff/frames/sill-close/index.json",
+      "source_time_s": [
+        50.139999999996945,
+        64.10666666666361
+      ],
+      "camera": {
+        "azimuth_deg": 25.0,
+        "elevation_deg": -18.0,
+        "distance_m": 1.65,
+        "closeup": true
+      }
+    },
+    {
+      "id": "low-stone-depart",
+      "record": "data/real-footage-sources/low-stone-depart.json",
+      "record_sha256": "3e33443e710233bcf1e1fe6a3d15b22a24e8448f03c02bcc18b72ab007f4df50",
+      "original_path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+      "source_time_s": [
+        167.08,
+        173.08
+      ],
+      "camera": "side_follow"
+    }
+  ]
+}

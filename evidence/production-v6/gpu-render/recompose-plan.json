@@ -1,0 +1,249 @@
+{
+  "authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+  "shots": [
+    {
+      "id": "s03-optimistic-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/traj.npz",
+          "sha256": "f2e0cdb4f5ffda2bae45350b5d892cc9e80606f7be76b6d317c761f92e8264ed"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 80.87,
+      "duration_s": null,
+      "speed": 6,
+      "camera": "follow-v2",
+      "terminal_hold_s": 2,
+      "base_version": "s03-optimistic",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s03-conservative-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/traj.npz",
+          "sha256": "3203fdd9b7d013cb90d306cd0dde4dd4d8cf6d2f232a48265b23aa907e86a0ed"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 142.2,
+      "duration_s": null,
+      "speed": 12,
+      "camera": "follow-v2",
+      "terminal_hold_s": 0,
+      "base_version": "s03-conservative",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s03-imagination-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 112.84,
+      "duration_s": null,
+      "speed": 6,
+      "camera": "follow-v2",
+      "terminal_hold_s": 2,
+      "base_version": "s03-imagination",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s01-open-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 1.2,
+      "sim_end": 16.08,
+      "duration_s": 15,
+      "speed": null,
+      "camera": "opening-v2",
+      "base_version": "s01-open",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "opening",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s05-world-1-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 96.18,
+      "duration_s": 8,
+      "speed": null,
+      "camera": "world-close-v2",
+      "objects": [
+        {
+          "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A1.obj",
+          "sha256": "a37573cda15b2f11f3fa8c9b92397df06878c3e5a8528b0d6672000d6bd71166"
+        },
+        {
+          "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+          "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+        }
+      ],
+      "pane": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/pane.json",
+        "sha256": "6d3abd11aff23f1e0590fabdc4b72ae7196ccfc7307c1d066668dc2493b18772"
+      },
+      "base_version": "s05-world-1",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": 25,
+        "elevation": -12,
+        "distance": 1.7,
+        "x_offset": 0.12,
+        "y_offset": 0,
+        "z_scale": 0.6
+      }
+    },
+    {
+      "id": "s02-eye-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 14.08,
+      "sim_end": 16.08,
+      "duration_s": 3,
+      "speed": null,
+      "camera": "original_sensor_rgb",
+      "original_rgb": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/rgb.png",
+        "sha256": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d"
+      },
+      "original_camera": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/camera_world.json",
+        "sha256": "f8c07755d5ddae94aa3d1fad6137936e9216e04412786787ebe542b1b73db7ec"
+      },
+      "selection": "Original16.08s camera photograph held3s; no changed sensor image or re-created target view",
+      "base_version": "s02-eye",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": null
+    },
+    {
+      "id": "s09-backup-F1_003-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment2/trajectory.npz",
+          "sha256": "a793f4a474c3ca28297f9f3ac81d01c32937488e4a526a02d6d107f471823c6e"
+        }
+      ],
+      "scene": "suite_r2_v4_F1_003_gate",
+      "sim_start": null,
+      "sim_end": null,
+      "duration_s": 10,
+      "speed": null,
+      "camera": "overhead-close-v2",
+      "route": "suite_r2_v4_F1_003_gate",
+      "base_version": "s09-backup-F1_003",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -90,
+        "elevation": -55,
+        "distance": 2.4,
+        "x_offset": 0.15,
+        "y_offset": 0,
+        "z_scale": 0.5
+      }
+    },
+    {
+      "id": "s09-backup-F2_001-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment2/trajectory.npz",
+          "sha256": "af47e00d47c008874672373776b7dd6e8d232287fa57c5ef5dca535715a4019d"
+        }
+      ],
+      "scene": "suite_r2_v4_F2_001_gate",
+      "sim_start": null,
+      "sim_end": null,
+      "duration_s": 10,
+      "speed": null,
+      "camera": "overhead-close-v2",
+      "route": "suite_r2_v4_F2_001_gate",
+      "base_version": "s09-backup-F2_001",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -90,
+        "elevation": -55,
+        "distance": 2.4,
+        "x_offset": 0.15,
+        "y_offset": 0,
+        "z_scale": 0.5
+      }
+    }
+  ],
+  "keep_originals": true,
+  "quality_parameters_unchanged": true,
+  "gpu_shutdown": false,
+  "manual_transfer_threshold_bytes": 20000000,
+  "close_camera_probe_range": [
+    0.362962962962963,
+    0.45925925925925926
+  ]
+}

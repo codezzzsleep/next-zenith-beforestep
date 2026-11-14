@@ -1,0 +1,52 @@
+{
+  "authority": "DECISION_B2.md",
+  "authority_sha256": "7daea8805d16a4218cc5e705f4e06e745af764ad3090e309afdd058436e02d4c",
+  "selected_variant": "h-center",
+  "render_resolution": [
+    3840,
+    2160
+  ],
+  "output_resolution": [
+    1920,
+    1080
+  ],
+  "shadowsize": 8192,
+  "offsamples": 4,
+  "shadowclip": 3,
+  "znear": 0.001,
+  "extent_override": null,
+  "shadow_center": "robot qpos[:3] every frame",
+  "additional_fill": false,
+  "photography_exposure": "same as selected leg-h-center; no extra i-fill headlight",
+  "sun_direction": "original each scene unchanged",
+  "ffmpeg_scale": "scale=1920:1080:flags=lanczos",
+  "ffmpeg_input": "raw RGB24 pipe:0 at3840x2160/30fps",
+  "codec": "libx264",
+  "crf": 14,
+  "preset": "slow",
+  "pixel_format": "yuv420p",
+  "fps": 30,
+  "burned_text": false,
+  "audio": false,
+  "sharpening": false,
+  "frame_files": false,
+  "physics_advanced": false,
+  "source_qpos_dimensions": 23,
+  "display_interpolation": "linear hinges/position; shortest-sign normalized linear quaternion; never writes original states",
+  "consistency_gate_status": "accepted_by_owner_NOTE_GPU_GO",
+  "local_consistency_max_difference": 0,
+  "gpu_maximum_channel_difference": 101,
+  "gpu_mean_absolute_channel_difference": 0.645767103909465,
+  "owner_acceptance": {
+    "accepted": true,
+    "authority": "/root/3d/NOTE_FOR_CODEX_GPU_GO.md",
+    "authority_sha256": "7697d3685a782fdd27d3c6a3747073ebcc71532f0a21f5af038e840019473358",
+    "snapshot": "evidence/production-v6/gpu-render/instructions/NOTE_FOR_CODEX_GPU_GO-7697d3685a78.md",
+    "visual_pair_accepted_by_owner": true,
+    "mean_difference_limit": 2,
+    "pixels_exceeding_8_fraction_limit": 0.01,
+    "gpu_frame_sha256": "35759174652767686b99176eb64653272a3f87010ff76d4b6ac2696a24ab9fe1",
+    "reason": "Owner inspected GPU/CPU side by side; numerical criteria relaxed and all three explicitly passed",
+    "supersedes": "DECISION_B2 §3.2 max<=8"
+  }
+}

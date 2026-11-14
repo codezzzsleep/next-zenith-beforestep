@@ -1,0 +1,299 @@
+{
+  "source_facts": "evidence/production-v6/facts.json",
+  "source_facts_sha256": "93af685ed2eb30e5a94243fd49d1a8fa40d6f10d17eb29205536df5df23713bc",
+  "bindings": {
+    "r1/optimistic/sim_time_s": {
+      "value": 80.87,
+      "source": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json",
+      "source_sha256": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+      "json_pointer": "/sim_time_s",
+      "status": "verified",
+      "story_expected": 80.87
+    },
+    "r1/conservative/sim_time_s": {
+      "value": 142.2,
+      "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+      "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+      "json_pointer": "/sim_time_s",
+      "status": "verified",
+      "story_expected": 142.2
+    },
+    "r1/imagination/sim_time_s": {
+      "value": 112.84,
+      "source": "evidence/reviews/beforestep_r1/lux/original_b/summary.json",
+      "source_sha256": "dd5f8921b9cfc03fe32d105ae5104ed0a7641bd25aab73d20be08f728c8e9cd6",
+      "json_pointer": "/sim_time_s",
+      "status": "verified",
+      "story_expected": 112.84
+    },
+    "r1/conservative/looks": {
+      "value": 5,
+      "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+      "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+      "json_pointer": "/looks",
+      "status": "verified"
+    },
+    "back_error/candidate_count": {
+      "value": 64,
+      "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+      "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+      "json_pointer": "/candidate_count",
+      "status": "verified",
+      "story_expected": 64
+    },
+    "back_error/shorter_than_five_cm": {
+      "value": 23,
+      "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+      "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+      "json_pointer": "/shorter_than_five_cm",
+      "status": "verified",
+      "story_expected": 23
+    },
+    "back_error/r1_reveal_examples/0/back_error_m": {
+      "value": -0.699856413070945,
+      "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+      "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+      "json_pointer": "/rows/6/back_error_m",
+      "status": "verified"
+    },
+    "back_error/threshold_m": {
+      "value": -0.05,
+      "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+      "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+      "json_pointer": "/threshold_m",
+      "status": "verified",
+      "story_expected": -0.05
+    },
+    "decisive_eight/count": {
+      "value": 8,
+      "source": "evidence/suite/summary.json",
+      "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+      "json_pointer": "/scenes filtered classification=decisive",
+      "status": "verified",
+      "story_expected": 8
+    },
+    "decisive_eight/imagination/counts/arrived": {
+      "value": 3,
+      "source": "evidence/suite/summary.json",
+      "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+      "json_pointer": "/scenes[classification=decisive]/runs/imagination/summary/result",
+      "status": "verified",
+      "story_expected": 3
+    },
+    "decisive_eight/imagination/counts/collision": {
+      "value": 2,
+      "source": "evidence/suite/summary.json",
+      "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+      "json_pointer": "/scenes[classification=decisive]/runs/imagination/summary/result",
+      "status": "verified",
+      "story_expected": 2
+    },
+    "decisive_eight/imagination/counts/safe_stop": {
+      "value": 3,
+      "source": "evidence/suite/summary.json",
+      "source_sha256": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31",
+      "json_pointer": "/scenes[classification=decisive]/runs/imagination/summary/result",
+      "status": "verified",
+      "story_expected": 3
+    },
+    "post_result_v3/completed": {
+      "value": 17,
+      "source": "evidence/reviews/beforestep_r3/summary.json",
+      "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+      "json_pointer": "/all_run_stats/completed",
+      "status": "verified",
+      "story_expected": 17
+    },
+    "post_result_v3/collisions": {
+      "value": 0,
+      "source": "evidence/reviews/beforestep_r3/summary.json",
+      "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+      "json_pointer": "/all_run_stats/collisions",
+      "status": "verified",
+      "story_expected": 0
+    },
+    "post_result_v3/safe_stop": {
+      "value": 14,
+      "source": "evidence/reviews/beforestep_r3/summary.json",
+      "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+      "json_pointer": "/all_run_stats/safe_stop",
+      "status": "verified",
+      "story_expected": 14
+    },
+    "post_result_v3/arrived": {
+      "value": 3,
+      "source": "evidence/reviews/beforestep_r3/summary.json",
+      "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+      "json_pointer": "/all_run_stats/arrived",
+      "status": "verified",
+      "story_expected": 3
+    },
+    "legs/wheel_trials_at_band_heights": {
+      "value": 90,
+      "source": "evidence/crossing/calibration/gate.json",
+      "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+      "json_pointer": "/wheel_trials_at_band_heights",
+      "status": "verified",
+      "story_expected": 90
+    },
+    "legs/wheel_passes_at_band_heights": {
+      "value": 0,
+      "source": "evidence/crossing/calibration/gate.json",
+      "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+      "json_pointer": "/wheel_passes_at_band_heights",
+      "status": "verified",
+      "story_expected": 0
+    },
+    "legs/band_gait_trials": {
+      "value": 24,
+      "source": "evidence/crossing/calibration/gate.json",
+      "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+      "json_pointer": "/band_gait_trials",
+      "status": "verified",
+      "story_expected": 24
+    },
+    "legs/band_gait_clean_trials": {
+      "value": 24,
+      "source": "evidence/crossing/calibration/gate.json",
+      "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+      "json_pointer": "/band_gait_clean_trials",
+      "status": "verified",
+      "story_expected": 24
+    },
+    "legs/true_rocks": {
+      "value": 3,
+      "source": "evidence/crossing/calibration/capability-v72.json",
+      "source_sha256": "d461bd1bc482e9528abf1629ff91eec8bcb12ce22410178c727fe71f6f8f519d",
+      "json_pointer": "/clean_support_compliant_rocks length",
+      "status": "verified",
+      "story_expected": 3
+    },
+    "F3_002/A/total_result": {
+      "value": "stopped",
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+      "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+      "json_pointer": "/total_result",
+      "status": "verified"
+    },
+    "F3_002/A/sim_seconds": {
+      "value": 57.7,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+      "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+      "json_pointer": "/sim_seconds",
+      "status": "verified"
+    },
+    "F3_002/A/looks": {
+      "value": 2,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+      "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+      "json_pointer": "/looks",
+      "status": "verified"
+    },
+    "F3_002/A/second_segment_result": {
+      "value": "not_run",
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+      "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+      "json_pointer": "/second_segment_result",
+      "status": "verified"
+    },
+    "F3_002/A/legs_used": {
+      "value": false,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+      "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+      "json_pointer": "/legs_used",
+      "status": "verified"
+    },
+    "F3_002/B/total_result": {
+      "value": "stopped",
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+      "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+      "json_pointer": "/total_result",
+      "status": "verified"
+    },
+    "F3_002/B/sim_seconds": {
+      "value": 79.82,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+      "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+      "json_pointer": "/sim_seconds",
+      "status": "verified"
+    },
+    "F3_002/B/looks": {
+      "value": 1,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+      "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+      "json_pointer": "/looks",
+      "status": "verified"
+    },
+    "F3_002/B/second_segment_result": {
+      "value": "not_run",
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+      "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+      "json_pointer": "/second_segment_result",
+      "status": "verified"
+    },
+    "F3_002/B/legs_used": {
+      "value": false,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+      "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+      "json_pointer": "/legs_used",
+      "status": "verified"
+    },
+    "F3_002/D/total_result": {
+      "value": "stopped",
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+      "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+      "json_pointer": "/total_result",
+      "status": "verified"
+    },
+    "F3_002/D/sim_seconds": {
+      "value": 57.7,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+      "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+      "json_pointer": "/sim_seconds",
+      "status": "verified"
+    },
+    "F3_002/D/looks": {
+      "value": 2,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+      "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+      "json_pointer": "/looks",
+      "status": "verified"
+    },
+    "F3_002/D/second_segment_result": {
+      "value": "not_run",
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+      "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+      "json_pointer": "/second_segment_result",
+      "status": "verified"
+    },
+    "F3_002/D/legs_used": {
+      "value": false,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+      "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+      "json_pointer": "/legs_used",
+      "status": "verified"
+    }
+  },
+  "live_lux_counts": {
+    "created": 491,
+    "statuses": {
+      "ok": 460,
+      "failed": 31
+    },
+    "source": "source_facts:/lux/live_ledger_counts",
+    "all_task_SHA_verified": true
+  },
+  "same_route": {
+    "completed": 5,
+    "D_arrived": 2,
+    "source": "source_facts:/same_route"
+  },
+  "rehearsal_worlds": {
+    "value": 12,
+    "source": "evidence/production-v6/shots/s05-world-grid.json",
+    "source_sha256": "e256bd7bd86eb2bfb8ec5eac5e5bae39553502053c71d3e8b9c9ddf14d3a982a",
+    "derivation": "length of twelve original trajectory sources"
+  },
+  "mismatches": [],
+  "source_policy": "Current source SHA checked; words and displayed numbers are generated from these bindings."
+}

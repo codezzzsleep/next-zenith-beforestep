@@ -1,0 +1,322 @@
+{
+  "id": "s05-world-1-v2",
+  "status": "complete",
+  "frame_count": 240,
+  "duration_s": 8.0,
+  "sources": [
+    {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+      "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698",
+      "saved_range_s": [
+        0.0,
+        96.179999999998
+      ],
+      "median_saved_dt_s": 0.019999999999999574
+    }
+  ],
+  "camera": "world-close-v2",
+  "camera_spec": {
+    "kind": "follow",
+    "azimuth": 25,
+    "elevation": -12,
+    "distance": 1.7,
+    "x_offset": 0.12,
+    "y_offset": 0,
+    "z_scale": 0.6
+  },
+  "base_version": "s05-world-1",
+  "sim_requested_range_s": [
+    0.0,
+    96.18
+  ],
+  "sim_clipped_range_s": [
+    0.0,
+    96.179999999998
+  ],
+  "display_interpolation": "linear position and hinges; normalized linear quaternion with shortest sign",
+  "source_qpos_dimensions": 23,
+  "physics_advanced": false,
+  "physics_step_guard_active": true,
+  "original_sensor_inputs_changed": false,
+  "parameters": {
+    "render_resolution": [
+      3840,
+      2160
+    ],
+    "output_resolution": [
+      1920,
+      1080
+    ],
+    "shadowsize": 8192,
+    "offsamples": 4,
+    "shadowclip": 3,
+    "znear": 0.001,
+    "shadow_center_tracks_robot": true,
+    "additional_fill": false,
+    "solar_direction_changed": false,
+    "sharpening": false,
+    "frame_files": false
+  },
+  "ffmpeg_command": [
+    "ffmpeg",
+    "-hide_banner",
+    "-loglevel",
+    "error",
+    "-y",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "rgb24",
+    "-video_size",
+    "3840x2160",
+    "-framerate",
+    "30",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "scale=1920:1080:flags=lanczos",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-crf",
+    "14",
+    "-preset",
+    "slow",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "evidence/production-v6/shots/s05-world-1-v2-recording.mp4"
+  ],
+  "consistency": {
+    "label": "gpu",
+    "status": "stopped_consistency_gate",
+    "maximum_channel_difference": 101,
+    "mean_absolute_channel_difference": 0.645767103909465,
+    "different_pixel_fraction": 0.7051162229938271,
+    "pixels_exceeding_8_fraction": 0.002574749228395062,
+    "GL_RENDERER": "NVIDIA GeForce RTX 4090 D/PCIe/SSE2",
+    "GL_VENDOR": "NVIDIA Corporation",
+    "mujoco_version": "3.17.0",
+    "source": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+    "source_sha256": "d13748641cb3dbde2cf2e49788e682677051f6f677340606216680350bcfd537",
+    "source_row": 2857,
+    "qpos_sha256": "312a87076a5a4944283ffcee82262ad0909b546e0d6c9617d0d79b9f7e8b4ec7",
+    "saved_sim_s": 57.14000000002387,
+    "reference_sha256": "f42e628f5133ef84459a8aede46497a7684f3aa40ae74d86349aacd1cd5e94bf",
+    "output_sha256": "35759174652767686b99176eb64653272a3f87010ff76d4b6ac2696a24ab9fe1",
+    "elapsed_s": 5.107473708689213,
+    "render_resolution": [
+      1920,
+      1080
+    ],
+    "shadowsize": 8192,
+    "offsamples": 4,
+    "shadowclip": 3.0,
+    "znear": 0.0010000000474974513,
+    "extent": 1.0,
+    "center": [
+      8.864833620447197,
+      0.02819530229126173,
+      0.40769839283267717
+    ],
+    "solar_directions": [
+      [
+        0.8066975451202407,
+        -0.564788244105249,
+        -0.17393478668020057
+      ]
+    ],
+    "physics_advanced": false,
+    "physics_step_guard_active": true,
+    "additional_fill": false,
+    "supersampling": false,
+    "sharpening": false,
+    "difference_image": "evidence/production-v6/render-ab/gpu-diff.png",
+    "difference_image_gain": 4
+  },
+  "owner_acceptance": {
+    "accepted": true,
+    "authority": "/root/3d/NOTE_FOR_CODEX_GPU_GO.md",
+    "authority_sha256": "7697d3685a782fdd27d3c6a3747073ebcc71532f0a21f5af038e840019473358",
+    "snapshot": "evidence/production-v6/gpu-render/instructions/NOTE_FOR_CODEX_GPU_GO-7697d3685a78.md",
+    "visual_pair_accepted_by_owner": true,
+    "mean_difference_limit": 2,
+    "pixels_exceeding_8_fraction_limit": 0.01,
+    "gpu_frame_sha256": "35759174652767686b99176eb64653272a3f87010ff76d4b6ac2696a24ab9fe1",
+    "reason": "Owner inspected GPU/CPU side by side; numerical criteria relaxed and all three explicitly passed",
+    "supersedes": "DECISION_B2 §3.2 max<=8"
+  },
+  "timing_note": null,
+  "models": [
+    {
+      "solar_directions": [
+        [
+          0.8066975451202407,
+          -0.564788244105249,
+          -0.17393478668020057
+        ]
+      ],
+      "extent": 1.0,
+      "nq": 23,
+      "ngeom": 69
+    }
+  ],
+  "display_samples": [
+    {
+      "frame": 0,
+      "world": 0,
+      "requested_sim_s": 0.0,
+      "clipped_sim_s": 0.0,
+      "left_row": 0,
+      "right_row": 1,
+      "interpolation_u": 0.0,
+      "qpos_sha256": "11a49cb55f9339f2acdd4937ccc5c44c95729eb6e000de62124495df1ea3e386",
+      "camera": {
+        "azimuth": 25.0,
+        "elevation": -12.0,
+        "distance": 1.7,
+        "lookat": [
+          2.4117097567343357,
+          -0.5002016821930501,
+          0.23068359597093951
+        ]
+      }
+    },
+    {
+      "frame": 120,
+      "world": 0,
+      "requested_sim_s": 48.291213389121346,
+      "clipped_sim_s": 48.291213389121346,
+      "left_row": 2414,
+      "right_row": 2415,
+      "interpolation_u": 0.560669455969799,
+      "qpos_sha256": "e8d83d5a8eb05448503e6fddcd564fc5381ca21b3177bbb1d38c80c25bbc846a",
+      "camera": {
+        "azimuth": 25.0,
+        "elevation": -12.0,
+        "distance": 1.7,
+        "lookat": [
+          5.01445307763891,
+          0.38888180589860866,
+          0.23145383314396106
+        ]
+      }
+    },
+    {
+      "frame": 239,
+      "world": 0,
+      "requested_sim_s": 96.18,
+      "clipped_sim_s": 96.179999999998,
+      "left_row": 4808,
+      "right_row": 4809,
+      "interpolation_u": 1.0,
+      "qpos_sha256": "fd7eb0feb4004388eee2d4faa9ad5d6e894c7c932d38b1854a61c9e8b1165c9c",
+      "camera": {
+        "azimuth": 25.0,
+        "elevation": -12.0,
+        "distance": 1.7,
+        "lookat": [
+          10.611826529906782,
+          -0.0011418063940310172,
+          0.230708168296282
+        ]
+      }
+    }
+  ],
+  "GL_RENDERER": "NVIDIA GeForce RTX 4090 D/PCIe/SSE2",
+  "rendered_frames": 240,
+  "elapsed_s": 11.745313569903374,
+  "render_seconds": 3.9154642056673765,
+  "render_seconds_per_frame": 0.016314434190280735,
+  "total_seconds_per_frame": 0.048938806541264056,
+  "sha256": "a88e2a1d6fddfef2abc656d8383270a091f2f26f2591531cbefd716e65bb58bd",
+  "bytes": 6716466,
+  "interpolated_display_state_sha256": "5345e8d26bb3030c2483f1af3e2cc09deafb768eacfdeb90d41c82c40f5b2e67",
+  "ffprobe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 50,
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 122880,
+        "duration": "8.000000",
+        "bit_rate": "6712750",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "240",
+        "extradata_size": 47,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc60.31.102 libx264"
+        }
+      }
+    ],
+    "format": {
+      "filename": "evidence/production-v6/shots/s05-world-1-v2-recording.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "8.000000",
+      "size": "6716466",
+      "bit_rate": "6716466",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf60.16.100"
+      }
+    }
+  },
+  "local_path": "evidence/production-v6/shots/s05-world-1-v2.mp4",
+  "transfer_status": "verified",
+  "local_sha256": "a88e2a1d6fddfef2abc656d8383270a091f2f26f2591531cbefd716e65bb58bd"
+}

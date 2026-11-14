@@ -1,0 +1,1254 @@
+{
+  "duration_s": 185.0,
+  "frames": 5550,
+  "groups": [
+    {
+      "id": "hook",
+      "chapter": "只看得到一面",
+      "base_duration_s": 13,
+      "parts": [
+        {
+          "id": "opening",
+          "shot": "s01-open-v2",
+          "base_duration_s": 10,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "R1 · 原运行状态回放",
+          "crop": null
+        },
+        {
+          "id": "eye",
+          "shot": "s02-eye-v2",
+          "base_duration_s": 3,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "机器人原始观测 · 保存输入单帧",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "hook-01",
+          "text": "月球南极，太阳贴着地平线，石头拖着长黑影。",
+          "audio": "evidence/production-v6/film/audio/hook-01.mp3",
+          "audio_sha256": "9fe9785475434d3370a435ee1da478206b2a861edf89f22442433af97cacec47",
+          "audio_duration_s": 4.536,
+          "start_s": 0.65,
+          "end_s": 5.186,
+          "group": "hook"
+        },
+        {
+          "id": "hook-02",
+          "text": "机器人只拍到朝着自己的一面。背面有什么？",
+          "audio": "evidence/production-v6/film/audio/hook-02.mp3",
+          "audio_sha256": "8ae9c5eaeba3ba717a609a07476c509c4a82f8420a084c40128807ce1cec15bb",
+          "audio_duration_s": 3.96,
+          "start_s": 6.686,
+          "end_s": 10.646,
+          "group": "hook"
+        }
+      ],
+      "start_s": 0.0,
+      "end_s": 13.0,
+      "duration_s": 13.0
+    },
+    {
+      "id": "comparison",
+      "chapter": "三种做法",
+      "base_duration_s": 28,
+      "parts": [
+        {
+          "id": "comparison",
+          "type": "shared_clock",
+          "base_duration_s": 28
+        }
+      ],
+      "sentences": [
+        {
+          "id": "comparison-01",
+          "text": "同一条路，同一机位，三种做法从同一时刻出发。",
+          "audio": "evidence/production-v6/film/audio/comparison-01.mp3",
+          "audio_sha256": "09fe55f0841f76efec8d0bb78cb94e338be966ab6812609b18f53fbc0ca96e14",
+          "audio_duration_s": 4.428,
+          "start_s": 13.65,
+          "end_s": 18.078,
+          "group": "comparison"
+        },
+        {
+          "id": "comparison-02",
+          "text": "乐观车把没看见的当作没有，八十点八七秒，碰撞。",
+          "audio": "evidence/production-v6/film/audio/comparison-02.mp3",
+          "audio_sha256": "97962ba7d398c89f123b112aeb687e301a3bf59dd5802738e696998fc123a63b",
+          "audio_duration_s": 4.824,
+          "start_s": 19.4732,
+          "end_s": 24.297199999999997,
+          "group": "comparison"
+        },
+        {
+          "id": "comparison-03",
+          "text": "Lux3D 想出背面，先检验再走：一眼，一百十二点八四秒，到达。",
+          "audio": "evidence/production-v6/film/audio/comparison-03.mp3",
+          "audio_sha256": "8298a0570b9929fd6c6ba1aca01411dceee4239cadf1c3ecbe7044af03d6e579",
+          "audio_duration_s": 7.344,
+          "start_s": 25.6924,
+          "end_s": 33.0364,
+          "group": "comparison"
+        },
+        {
+          "id": "comparison-04",
+          "text": "保守车看了五眼，一百四十二点二零秒后，仍然没有路。",
+          "audio": "evidence/production-v6/film/audio/comparison-04.mp3",
+          "audio_sha256": "0ccadd7e8729d79bcf96513dda945bf6fcdcbfe0dacf6c9321cc71b30c382418",
+          "audio_duration_s": 4.428,
+          "start_s": 34.4316,
+          "end_s": 38.8596,
+          "group": "comparison"
+        }
+      ],
+      "start_s": 13.0,
+      "end_s": 41.0,
+      "duration_s": 28.0
+    },
+    {
+      "id": "model",
+      "chapter": "想象怎么被检验",
+      "base_duration_s": 18,
+      "parts": [
+        {
+          "id": "photo",
+          "shot": "r04-photo-to-glb",
+          "base_duration_s": 10,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "原照片与已有任务返回模型",
+          "crop": null
+        },
+        {
+          "id": "glbA",
+          "shot": "r02-glb-A",
+          "base_duration_s": 4,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "Lux3D 原始 GLB · 官方 Aholo Viewer",
+          "crop": [
+            405,
+            185,
+            560,
+            490
+          ]
+        },
+        {
+          "id": "glbB",
+          "shot": "r03-glb-B",
+          "base_duration_s": 4,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "另一块石头 · 原始 GLB 保留",
+          "crop": [
+            405,
+            185,
+            560,
+            490
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "id": "model-01",
+          "text": "把照片交给 Lux3D，回来一整块石头，连看不见的背面也被补出来。",
+          "audio": "evidence/production-v6/film/audio/model-01.mp3",
+          "audio_sha256": "0dbcb50cbf10cf881b9b08e84729c8390e73a619c8f35af476dfec0197178fee",
+          "audio_duration_s": 5.364,
+          "start_s": 41.65,
+          "end_s": 47.013999999999996,
+          "group": "model"
+        },
+        {
+          "id": "model-02",
+          "text": "但看起来像，不等于真实。通过正面核对的六十四份想象里，二十三份背面短了五厘米以上。",
+          "audio": "evidence/production-v6/film/audio/model-02.mp3",
+          "audio_sha256": "ddd9a6ff5ce469561d2e35c77fb6597735e80d41804e04f0b26612f2b9945a24",
+          "audio_duration_s": 7.812,
+          "start_s": 48.514,
+          "end_s": 56.326,
+          "group": "model"
+        }
+      ],
+      "start_s": 41.0,
+      "end_s": 59.0,
+      "duration_s": 18.0
+    },
+    {
+      "id": "reveal",
+      "chapter": "想象怎么被检验",
+      "base_duration_s": 9,
+      "parts": [
+        {
+          "id": "reveal",
+          "shot": "r01-reveal",
+          "base_duration_s": 9,
+          "source_start_s": 1,
+          "source_span_s": 10,
+          "hold_frame": false,
+          "label": "R1 · 原模型与真值叠合 · 事后诊断",
+          "crop": [
+            380,
+            455,
+            500,
+            440
+          ]
+        }
+      ],
+      "sentences": [
+        {
+          "id": "reveal-01",
+          "text": "正面通过了核对，这一份背面却短了零点七米。",
+          "audio": "evidence/production-v6/film/audio/reveal-01.mp3",
+          "audio_sha256": "2945240ab3ddf8e542aed6b0a323c335ccc3ca47a06098182e27750ac85d902e",
+          "audio_duration_s": 4.248,
+          "start_s": 59.65,
+          "end_s": 63.897999999999996,
+          "group": "reveal"
+        }
+      ],
+      "start_s": 59.0,
+      "end_s": 68.0,
+      "duration_s": 9.0
+    },
+    {
+      "id": "worlds",
+      "chapter": "想象怎么被检验",
+      "base_duration_s": 12,
+      "parts": [
+        {
+          "id": "world",
+          "shot": "s05-world-1-v2",
+          "base_duration_s": 9,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "一份想象中的完整路线预演",
+          "crop": null
+        },
+        {
+          "id": "grid",
+          "shot": "s05-world-grid",
+          "base_duration_s": 3,
+          "source_start_s": 3,
+          "source_span_s": 3,
+          "hold_frame": false,
+          "label": "多个准入世界 · 原预演记录",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "worlds-01",
+          "text": "所以我们生成多份、核对正面，再在每一份想象里预演完整路线，全部安全才迈步。",
+          "audio": "evidence/production-v6/film/audio/worlds-01.mp3",
+          "audio_sha256": "612222a02c30c2ff19a4990917e2207bb34f643a80721a356c3e8b2a16cb93d6",
+          "audio_duration_s": 7.128,
+          "start_s": 68.65,
+          "end_s": 75.778,
+          "group": "worlds"
+        },
+        {
+          "id": "worlds-02",
+          "text": "十二个世界，都先走完。",
+          "audio": "evidence/production-v6/film/audio/worlds-02.mp3",
+          "audio_sha256": "da718e71bb7471713fbe5457d47fd0b06bb2de700bf86efc33cf25a42f99d972",
+          "audio_duration_s": 2.196,
+          "start_s": 76.67,
+          "end_s": 78.866,
+          "group": "worlds"
+        }
+      ],
+      "start_s": 68.0,
+      "end_s": 80.0,
+      "duration_s": 12.0
+    },
+    {
+      "id": "results",
+      "chapter": "有用，也会出错",
+      "base_duration_s": 24,
+      "parts": [
+        {
+          "id": "failure",
+          "shot": "s06-failure",
+          "base_duration_s": 24,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "F3_004 · 原事故连续记录 · 半速回放",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "results-01",
+          "text": "八个决定性场景，预先按真实形状走通、乐观撞、保守停来选定。",
+          "audio": "evidence/production-v6/film/audio/results-01.mp3",
+          "audio_sha256": "c22d922c0eb248ef2663371fa0e5e21566c073af1d5423fc7ebff127aee7cf5f",
+          "audio_duration_s": 6.12,
+          "start_s": 80.65,
+          "end_s": 86.77000000000001,
+          "group": "results"
+        },
+        {
+          "id": "results-02",
+          "text": "在这八个别的做法都到不了的场景里，想象让机器人到了三个。",
+          "audio": "evidence/production-v6/film/audio/results-02.mp3",
+          "audio_sha256": "b07859545c5355b58c28392f2a1aafe7d7648b63040ca6929b944bf3c3d0059e",
+          "audio_duration_s": 5.04,
+          "start_s": 88.2076,
+          "end_s": 93.2476,
+          "group": "results"
+        },
+        {
+          "id": "results-03",
+          "text": "它也撞了二次，二次都留在页面上。",
+          "audio": "evidence/production-v6/film/audio/results-03.mp3",
+          "audio_sha256": "e275d0d9ef5f09148a81c22b90e59de7848e549d1cb2d28b54ede66f8d6677a0",
+          "audio_duration_s": 2.952,
+          "start_s": 94.6852,
+          "end_s": 97.63719999999999,
+          "group": "results"
+        },
+        {
+          "id": "results-04",
+          "text": "这次就是原事故，画面连续保留。",
+          "audio": "evidence/production-v6/film/audio/results-04.mp3",
+          "audio_sha256": "a574ec23c47784f042b28edf14ee2f5ecb817b34c2ac13a7ef0b8bed2c430d75",
+          "audio_duration_s": 2.7,
+          "start_s": 99.0748,
+          "end_s": 101.7748,
+          "group": "results"
+        }
+      ],
+      "start_s": 80.0,
+      "end_s": 104.0,
+      "duration_s": 24.0
+    },
+    {
+      "id": "post",
+      "chapter": "有用，也会出错",
+      "base_duration_s": 9,
+      "parts": [
+        {
+          "id": "post",
+          "shot": "s06-failure",
+          "base_duration_s": 9,
+          "source_start_s": 23.96,
+          "source_span_s": 0.03,
+          "hold_frame": true,
+          "label": "背景：原事故帧 · 右侧另列赛后统计",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "post-01",
+          "text": "赛后收紧规则，十七场没有碰撞，但十四场停车。更安全，也更常停。",
+          "audio": "evidence/production-v6/film/audio/post-01.mp3",
+          "audio_sha256": "2691e33a2eaacd0ba6b1fdd9fcd163d2978b3b96198edcdcb639533119840ba7",
+          "audio_duration_s": 6.552,
+          "start_s": 104.65,
+          "end_s": 111.202,
+          "group": "post"
+        }
+      ],
+      "start_s": 104.0,
+      "end_s": 113.0,
+      "duration_s": 9.0
+    },
+    {
+      "id": "wheel",
+      "chapter": "路上还有另一种石头",
+      "base_duration_s": 4,
+      "parts": [
+        {
+          "id": "wheel",
+          "shot": "s08-wheel",
+          "base_duration_s": 4,
+          "source_start_s": 0.5,
+          "source_span_s": 4,
+          "hold_frame": false,
+          "label": "独立门槛预检查 · 轮行受阻",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "wheel-01",
+          "text": "路上还有矮门槛，轮子却过不去。",
+          "audio": "evidence/production-v6/film/audio/wheel-01.mp3",
+          "audio_sha256": "d69fe457b769d0624409b6d602c9f0055bfa0e97dac6aa773675364a9ccc2ccf",
+          "audio_duration_s": 2.844,
+          "start_s": 113.578,
+          "end_s": 116.422,
+          "group": "wheel"
+        }
+      ],
+      "start_s": 113.0,
+      "end_s": 117.0,
+      "duration_s": 4.0
+    },
+    {
+      "id": "leg",
+      "chapter": "路上还有另一种石头",
+      "base_duration_s": 16,
+      "parts": [
+        {
+          "id": "lift",
+          "shot": "s08-lift",
+          "base_duration_s": 14,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "同石独立预检查 · 完整抬轮、越过、落地",
+          "crop": null
+        },
+        {
+          "id": "depart",
+          "shot": "s08-depart",
+          "base_duration_s": 2,
+          "source_start_s": 2,
+          "source_span_s": 2,
+          "hold_frame": false,
+          "label": "同一预检查记录 · 整车离开",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "leg-01",
+          "text": "同一高度带，轮行九十次，没有一次通过；逐轮抬腿，二十四次全部干净跨过。",
+          "audio": "evidence/production-v6/film/audio/leg-01.mp3",
+          "audio_sha256": "a0abfc8ade61ca86db470a5d2c82e704b7bbbf7037c2831b37004377b4f16dca",
+          "audio_duration_s": 7.38,
+          "start_s": 117.65,
+          "end_s": 125.03,
+          "group": "leg"
+        },
+        {
+          "id": "leg-02",
+          "text": "动作只用看见的几何，不靠想象。",
+          "audio": "evidence/production-v6/film/audio/leg-02.mp3",
+          "audio_sha256": "74fefa3813224aa9b25178b74617338a6f229e289c61e518c106eccecdc5a618",
+          "audio_duration_s": 3.024,
+          "start_s": 126.53,
+          "end_s": 129.554,
+          "group": "leg"
+        }
+      ],
+      "start_s": 117.0,
+      "end_s": 133.0,
+      "duration_s": 16.0
+    },
+    {
+      "id": "connect",
+      "chapter": "路上还有另一种石头",
+      "base_duration_s": 18,
+      "parts": [
+        {
+          "id": "connect",
+          "shot": "s09-connect-overview-v2",
+          "base_duration_s": 18,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "真实形状 · 连接预检查 · 不计正式车成绩",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "connect-01",
+          "text": "两种石头连成一条路，先绕过高石，再穿门跨过门槛。",
+          "audio": "evidence/production-v6/film/audio/connect-01.mp3",
+          "audio_sha256": "1743c53516ec1ab92c4fba47617f1383e42840b67501f0ca14f61d1526cbde82",
+          "audio_duration_s": 4.968,
+          "start_s": 133.65,
+          "end_s": 138.618,
+          "group": "connect"
+        },
+        {
+          "id": "connect-02",
+          "text": "这里用真实形状做连接预检查，转场处交接保存状态。不是正式车的到达成绩。",
+          "audio": "evidence/production-v6/film/audio/connect-02.mp3",
+          "audio_sha256": "bd1e26d20063419bef92cc33d79f4bac761845a356c2476a79ef5bdec6bc8e38",
+          "audio_duration_s": 7.128,
+          "start_s": 140.118,
+          "end_s": 147.24599999999998,
+          "group": "connect"
+        }
+      ],
+      "start_s": 133.0,
+      "end_s": 151.0,
+      "duration_s": 18.0
+    },
+    {
+      "id": "close",
+      "chapter": "路上还有另一种石头",
+      "base_duration_s": 8,
+      "parts": [
+        {
+          "id": "close",
+          "shot": "s09-connect-close-v2",
+          "base_duration_s": 8,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "连接预检查 · 门槛近景 · 看见的几何",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "close-01",
+          "text": "门槛近景再看一次：抬轮、越过、落地。",
+          "audio": "evidence/production-v6/film/audio/close-01.mp3",
+          "audio_sha256": "513df5489314439a3ff0c8ebdb937fbcefb34e0b002900c8b57c351a326404f2",
+          "audio_duration_s": 4.14,
+          "start_s": 151.65,
+          "end_s": 155.79,
+          "group": "close"
+        }
+      ],
+      "start_s": 151.0,
+      "end_s": 159.0,
+      "duration_s": 8.0
+    },
+    {
+      "id": "stopA",
+      "chapter": "路上还有另一种石头",
+      "base_duration_s": 7,
+      "parts": [
+        {
+          "id": "stopA",
+          "shot": "s09-F3002-A-stop-v2",
+          "base_duration_s": 7,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "正式 F3_002 · A/D 同轨迹 · 高石段停车",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "stopA-01",
+          "text": "换回想象，后石候选全被拒绝，车停了。",
+          "audio": "evidence/production-v6/film/audio/stopA-01.mp3",
+          "audio_sha256": "5bb321a5e71eb1de7bc8031dd11752f6abd67bf8728e4f116f766954434194e6",
+          "audio_duration_s": 3.996,
+          "start_s": 161.804,
+          "end_s": 165.8,
+          "group": "stopA"
+        }
+      ],
+      "start_s": 159.0,
+      "end_s": 166.0,
+      "duration_s": 7.0
+    },
+    {
+      "id": "stopB",
+      "chapter": "路上还有另一种石头",
+      "base_duration_s": 5,
+      "parts": [
+        {
+          "id": "stopB",
+          "shot": "s09-F3002-B-stop-v2",
+          "base_duration_s": 5,
+          "source_start_s": 0,
+          "source_span_s": null,
+          "hold_frame": false,
+          "label": "正式 F3_002 · B 轮触高石，由监视器停车",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "stopB-01",
+          "text": "只信看见的车，也在高石前停下。",
+          "audio": "evidence/production-v6/film/audio/stopB-01.mp3",
+          "audio_sha256": "06b49ad660a023a80ad4641db5812d7376695e8938321fdd8528e9f777b057e2",
+          "audio_duration_s": 3.132,
+          "start_s": 167.668,
+          "end_s": 170.8,
+          "group": "stopB"
+        }
+      ],
+      "start_s": 166.0,
+      "end_s": 171.0,
+      "duration_s": 5.0
+    },
+    {
+      "id": "ending",
+      "chapter": "先检验，再迈步",
+      "base_duration_s": 14,
+      "parts": [
+        {
+          "id": "ending",
+          "shot": "s03-imagination-v2",
+          "base_duration_s": 14,
+          "source_start_s": 15.5,
+          "source_span_s": 5.3,
+          "hold_frame": false,
+          "label": "R1 · 原到达尾段与终态保持",
+          "crop": null
+        }
+      ],
+      "sentences": [
+        {
+          "id": "ending-01",
+          "text": "五个同路场景，想象车到达二个。",
+          "audio": "evidence/production-v6/film/audio/ending-01.mp3",
+          "audio_sha256": "485eca57907723cf76cf824beee27bcf7f3df18f0eb1d7aae77265f4e6e15078",
+          "audio_duration_s": 2.916,
+          "start_s": 171.65,
+          "end_s": 174.566,
+          "group": "ending"
+        },
+        {
+          "id": "ending-02",
+          "text": "Lux3D 共创建四百九十一个任务。",
+          "audio": "evidence/production-v6/film/audio/ending-02.mp3",
+          "audio_sha256": "8467971b00b8d0a67b7d674702ab2e86710832b846fbe9b0c7a903fcbc55e5ca",
+          "audio_duration_s": 3.816,
+          "start_s": 175.618,
+          "end_s": 179.434,
+          "group": "ending"
+        },
+        {
+          "id": "ending-03",
+          "text": "BeforeStep：先检验，再迈步。",
+          "audio": "evidence/production-v6/film/audio/ending-03.mp3",
+          "audio_sha256": "1a4693aa7c47b591fc07297fec9b1f529be774374c40827d82bd07c1cde7512e",
+          "audio_duration_s": 3.06,
+          "start_s": 180.486,
+          "end_s": 183.546,
+          "group": "ending"
+        }
+      ],
+      "start_s": 171.0,
+      "end_s": 185.0,
+      "duration_s": 14.0
+    }
+  ],
+  "parts": [
+    {
+      "id": "opening",
+      "shot": "s01-open-v2",
+      "base_duration_s": 10,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "R1 · 原运行状态回放",
+      "crop": null,
+      "group": "hook",
+      "chapter": "只看得到一面",
+      "start_s": 0.0,
+      "duration_s": 10.0,
+      "end_s": 10.0
+    },
+    {
+      "id": "eye",
+      "shot": "s02-eye-v2",
+      "base_duration_s": 3,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "机器人原始观测 · 保存输入单帧",
+      "crop": null,
+      "group": "hook",
+      "chapter": "只看得到一面",
+      "start_s": 10.0,
+      "duration_s": 3.0,
+      "end_s": 13.0
+    },
+    {
+      "id": "comparison",
+      "type": "shared_clock",
+      "base_duration_s": 28,
+      "group": "comparison",
+      "chapter": "三种做法",
+      "start_s": 13.0,
+      "duration_s": 28.0,
+      "end_s": 41.0
+    },
+    {
+      "id": "photo",
+      "shot": "r04-photo-to-glb",
+      "base_duration_s": 10,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "原照片与已有任务返回模型",
+      "crop": null,
+      "group": "model",
+      "chapter": "想象怎么被检验",
+      "start_s": 41.0,
+      "duration_s": 10.0,
+      "end_s": 51.0
+    },
+    {
+      "id": "glbA",
+      "shot": "r02-glb-A",
+      "base_duration_s": 4,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "Lux3D 原始 GLB · 官方 Aholo Viewer",
+      "crop": [
+        405,
+        185,
+        560,
+        490
+      ],
+      "group": "model",
+      "chapter": "想象怎么被检验",
+      "start_s": 51.0,
+      "duration_s": 4.0,
+      "end_s": 55.0
+    },
+    {
+      "id": "glbB",
+      "shot": "r03-glb-B",
+      "base_duration_s": 4,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "另一块石头 · 原始 GLB 保留",
+      "crop": [
+        405,
+        185,
+        560,
+        490
+      ],
+      "group": "model",
+      "chapter": "想象怎么被检验",
+      "start_s": 55.0,
+      "duration_s": 4.0,
+      "end_s": 59.0
+    },
+    {
+      "id": "reveal",
+      "shot": "r01-reveal",
+      "base_duration_s": 9,
+      "source_start_s": 1,
+      "source_span_s": 10,
+      "hold_frame": false,
+      "label": "R1 · 原模型与真值叠合 · 事后诊断",
+      "crop": [
+        380,
+        455,
+        500,
+        440
+      ],
+      "group": "reveal",
+      "chapter": "想象怎么被检验",
+      "start_s": 59.0,
+      "duration_s": 9.0,
+      "end_s": 68.0
+    },
+    {
+      "id": "world",
+      "shot": "s05-world-1-v2",
+      "base_duration_s": 9,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "一份想象中的完整路线预演",
+      "crop": null,
+      "group": "worlds",
+      "chapter": "想象怎么被检验",
+      "start_s": 68.0,
+      "duration_s": 9.0,
+      "end_s": 77.0
+    },
+    {
+      "id": "grid",
+      "shot": "s05-world-grid",
+      "base_duration_s": 3,
+      "source_start_s": 3,
+      "source_span_s": 3,
+      "hold_frame": false,
+      "label": "多个准入世界 · 原预演记录",
+      "crop": null,
+      "group": "worlds",
+      "chapter": "想象怎么被检验",
+      "start_s": 77.0,
+      "duration_s": 3.0,
+      "end_s": 80.0
+    },
+    {
+      "id": "failure",
+      "shot": "s06-failure",
+      "base_duration_s": 24,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "F3_004 · 原事故连续记录 · 半速回放",
+      "crop": null,
+      "group": "results",
+      "chapter": "有用，也会出错",
+      "start_s": 80.0,
+      "duration_s": 24.0,
+      "end_s": 104.0
+    },
+    {
+      "id": "post",
+      "shot": "s06-failure",
+      "base_duration_s": 9,
+      "source_start_s": 23.96,
+      "source_span_s": 0.03,
+      "hold_frame": true,
+      "label": "背景：原事故帧 · 右侧另列赛后统计",
+      "crop": null,
+      "group": "post",
+      "chapter": "有用，也会出错",
+      "start_s": 104.0,
+      "duration_s": 9.0,
+      "end_s": 113.0
+    },
+    {
+      "id": "wheel",
+      "shot": "s08-wheel",
+      "base_duration_s": 4,
+      "source_start_s": 0.5,
+      "source_span_s": 4,
+      "hold_frame": false,
+      "label": "独立门槛预检查 · 轮行受阻",
+      "crop": null,
+      "group": "wheel",
+      "chapter": "路上还有另一种石头",
+      "start_s": 113.0,
+      "duration_s": 4.0,
+      "end_s": 117.0
+    },
+    {
+      "id": "lift",
+      "shot": "s08-lift",
+      "base_duration_s": 14,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "同石独立预检查 · 完整抬轮、越过、落地",
+      "crop": null,
+      "group": "leg",
+      "chapter": "路上还有另一种石头",
+      "start_s": 117.0,
+      "duration_s": 14.0,
+      "end_s": 131.0
+    },
+    {
+      "id": "depart",
+      "shot": "s08-depart",
+      "base_duration_s": 2,
+      "source_start_s": 2,
+      "source_span_s": 2,
+      "hold_frame": false,
+      "label": "同一预检查记录 · 整车离开",
+      "crop": null,
+      "group": "leg",
+      "chapter": "路上还有另一种石头",
+      "start_s": 131.0,
+      "duration_s": 2.0,
+      "end_s": 133.0
+    },
+    {
+      "id": "connect",
+      "shot": "s09-connect-overview-v2",
+      "base_duration_s": 18,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "真实形状 · 连接预检查 · 不计正式车成绩",
+      "crop": null,
+      "group": "connect",
+      "chapter": "路上还有另一种石头",
+      "start_s": 133.0,
+      "duration_s": 18.0,
+      "end_s": 151.0
+    },
+    {
+      "id": "close",
+      "shot": "s09-connect-close-v2",
+      "base_duration_s": 8,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "连接预检查 · 门槛近景 · 看见的几何",
+      "crop": null,
+      "group": "close",
+      "chapter": "路上还有另一种石头",
+      "start_s": 151.0,
+      "duration_s": 8.0,
+      "end_s": 159.0
+    },
+    {
+      "id": "stopA",
+      "shot": "s09-F3002-A-stop-v2",
+      "base_duration_s": 7,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "正式 F3_002 · A/D 同轨迹 · 高石段停车",
+      "crop": null,
+      "group": "stopA",
+      "chapter": "路上还有另一种石头",
+      "start_s": 159.0,
+      "duration_s": 7.0,
+      "end_s": 166.0
+    },
+    {
+      "id": "stopB",
+      "shot": "s09-F3002-B-stop-v2",
+      "base_duration_s": 5,
+      "source_start_s": 0,
+      "source_span_s": null,
+      "hold_frame": false,
+      "label": "正式 F3_002 · B 轮触高石，由监视器停车",
+      "crop": null,
+      "group": "stopB",
+      "chapter": "路上还有另一种石头",
+      "start_s": 166.0,
+      "duration_s": 5.0,
+      "end_s": 171.0
+    },
+    {
+      "id": "ending",
+      "shot": "s03-imagination-v2",
+      "base_duration_s": 14,
+      "source_start_s": 15.5,
+      "source_span_s": 5.3,
+      "hold_frame": false,
+      "label": "R1 · 原到达尾段与终态保持",
+      "crop": null,
+      "group": "ending",
+      "chapter": "先检验，再迈步",
+      "start_s": 171.0,
+      "duration_s": 14.0,
+      "end_s": 185.0
+    }
+  ],
+  "captions": [
+    {
+      "id": "hook-01",
+      "text": "月球南极，太阳贴着地平线，石头拖着长黑影。",
+      "audio": "evidence/production-v6/film/audio/hook-01.mp3",
+      "audio_sha256": "9fe9785475434d3370a435ee1da478206b2a861edf89f22442433af97cacec47",
+      "audio_duration_s": 4.536,
+      "start_s": 0.65,
+      "end_s": 5.186,
+      "group": "hook"
+    },
+    {
+      "id": "hook-02",
+      "text": "机器人只拍到朝着自己的一面。背面有什么？",
+      "audio": "evidence/production-v6/film/audio/hook-02.mp3",
+      "audio_sha256": "8ae9c5eaeba3ba717a609a07476c509c4a82f8420a084c40128807ce1cec15bb",
+      "audio_duration_s": 3.96,
+      "start_s": 6.686,
+      "end_s": 10.646,
+      "group": "hook"
+    },
+    {
+      "id": "comparison-01",
+      "text": "同一条路，同一机位，三种做法从同一时刻出发。",
+      "audio": "evidence/production-v6/film/audio/comparison-01.mp3",
+      "audio_sha256": "09fe55f0841f76efec8d0bb78cb94e338be966ab6812609b18f53fbc0ca96e14",
+      "audio_duration_s": 4.428,
+      "start_s": 13.65,
+      "end_s": 18.078,
+      "group": "comparison"
+    },
+    {
+      "id": "comparison-02",
+      "text": "乐观车把没看见的当作没有，八十点八七秒，碰撞。",
+      "audio": "evidence/production-v6/film/audio/comparison-02.mp3",
+      "audio_sha256": "97962ba7d398c89f123b112aeb687e301a3bf59dd5802738e696998fc123a63b",
+      "audio_duration_s": 4.824,
+      "start_s": 19.4732,
+      "end_s": 24.297199999999997,
+      "group": "comparison"
+    },
+    {
+      "id": "comparison-03",
+      "text": "Lux3D 想出背面，先检验再走：一眼，一百十二点八四秒，到达。",
+      "audio": "evidence/production-v6/film/audio/comparison-03.mp3",
+      "audio_sha256": "8298a0570b9929fd6c6ba1aca01411dceee4239cadf1c3ecbe7044af03d6e579",
+      "audio_duration_s": 7.344,
+      "start_s": 25.6924,
+      "end_s": 33.0364,
+      "group": "comparison"
+    },
+    {
+      "id": "comparison-04",
+      "text": "保守车看了五眼，一百四十二点二零秒后，仍然没有路。",
+      "audio": "evidence/production-v6/film/audio/comparison-04.mp3",
+      "audio_sha256": "0ccadd7e8729d79bcf96513dda945bf6fcdcbfe0dacf6c9321cc71b30c382418",
+      "audio_duration_s": 4.428,
+      "start_s": 34.4316,
+      "end_s": 38.8596,
+      "group": "comparison"
+    },
+    {
+      "id": "model-01",
+      "text": "把照片交给 Lux3D，回来一整块石头，连看不见的背面也被补出来。",
+      "audio": "evidence/production-v6/film/audio/model-01.mp3",
+      "audio_sha256": "0dbcb50cbf10cf881b9b08e84729c8390e73a619c8f35af476dfec0197178fee",
+      "audio_duration_s": 5.364,
+      "start_s": 41.65,
+      "end_s": 47.013999999999996,
+      "group": "model"
+    },
+    {
+      "id": "model-02",
+      "text": "但看起来像，不等于真实。通过正面核对的六十四份想象里，二十三份背面短了五厘米以上。",
+      "audio": "evidence/production-v6/film/audio/model-02.mp3",
+      "audio_sha256": "ddd9a6ff5ce469561d2e35c77fb6597735e80d41804e04f0b26612f2b9945a24",
+      "audio_duration_s": 7.812,
+      "start_s": 48.514,
+      "end_s": 56.326,
+      "group": "model"
+    },
+    {
+      "id": "reveal-01",
+      "text": "正面通过了核对，这一份背面却短了零点七米。",
+      "audio": "evidence/production-v6/film/audio/reveal-01.mp3",
+      "audio_sha256": "2945240ab3ddf8e542aed6b0a323c335ccc3ca47a06098182e27750ac85d902e",
+      "audio_duration_s": 4.248,
+      "start_s": 59.65,
+      "end_s": 63.897999999999996,
+      "group": "reveal"
+    },
+    {
+      "id": "worlds-01",
+      "text": "所以我们生成多份、核对正面，再在每一份想象里预演完整路线，全部安全才迈步。",
+      "audio": "evidence/production-v6/film/audio/worlds-01.mp3",
+      "audio_sha256": "612222a02c30c2ff19a4990917e2207bb34f643a80721a356c3e8b2a16cb93d6",
+      "audio_duration_s": 7.128,
+      "start_s": 68.65,
+      "end_s": 75.778,
+      "group": "worlds"
+    },
+    {
+      "id": "worlds-02",
+      "text": "十二个世界，都先走完。",
+      "audio": "evidence/production-v6/film/audio/worlds-02.mp3",
+      "audio_sha256": "da718e71bb7471713fbe5457d47fd0b06bb2de700bf86efc33cf25a42f99d972",
+      "audio_duration_s": 2.196,
+      "start_s": 76.67,
+      "end_s": 78.866,
+      "group": "worlds"
+    },
+    {
+      "id": "results-01",
+      "text": "八个决定性场景，预先按真实形状走通、乐观撞、保守停来选定。",
+      "audio": "evidence/production-v6/film/audio/results-01.mp3",
+      "audio_sha256": "c22d922c0eb248ef2663371fa0e5e21566c073af1d5423fc7ebff127aee7cf5f",
+      "audio_duration_s": 6.12,
+      "start_s": 80.65,
+      "end_s": 86.77000000000001,
+      "group": "results"
+    },
+    {
+      "id": "results-02",
+      "text": "在这八个别的做法都到不了的场景里，想象让机器人到了三个。",
+      "audio": "evidence/production-v6/film/audio/results-02.mp3",
+      "audio_sha256": "b07859545c5355b58c28392f2a1aafe7d7648b63040ca6929b944bf3c3d0059e",
+      "audio_duration_s": 5.04,
+      "start_s": 88.2076,
+      "end_s": 93.2476,
+      "group": "results"
+    },
+    {
+      "id": "results-03",
+      "text": "它也撞了二次，二次都留在页面上。",
+      "audio": "evidence/production-v6/film/audio/results-03.mp3",
+      "audio_sha256": "e275d0d9ef5f09148a81c22b90e59de7848e549d1cb2d28b54ede66f8d6677a0",
+      "audio_duration_s": 2.952,
+      "start_s": 94.6852,
+      "end_s": 97.63719999999999,
+      "group": "results"
+    },
+    {
+      "id": "results-04",
+      "text": "这次就是原事故，画面连续保留。",
+      "audio": "evidence/production-v6/film/audio/results-04.mp3",
+      "audio_sha256": "a574ec23c47784f042b28edf14ee2f5ecb817b34c2ac13a7ef0b8bed2c430d75",
+      "audio_duration_s": 2.7,
+      "start_s": 99.0748,
+      "end_s": 101.7748,
+      "group": "results"
+    },
+    {
+      "id": "post-01",
+      "text": "赛后收紧规则，十七场没有碰撞，但十四场停车。更安全，也更常停。",
+      "audio": "evidence/production-v6/film/audio/post-01.mp3",
+      "audio_sha256": "2691e33a2eaacd0ba6b1fdd9fcd163d2978b3b96198edcdcb639533119840ba7",
+      "audio_duration_s": 6.552,
+      "start_s": 104.65,
+      "end_s": 111.202,
+      "group": "post"
+    },
+    {
+      "id": "wheel-01",
+      "text": "路上还有矮门槛，轮子却过不去。",
+      "audio": "evidence/production-v6/film/audio/wheel-01.mp3",
+      "audio_sha256": "d69fe457b769d0624409b6d602c9f0055bfa0e97dac6aa773675364a9ccc2ccf",
+      "audio_duration_s": 2.844,
+      "start_s": 113.578,
+      "end_s": 116.422,
+      "group": "wheel"
+    },
+    {
+      "id": "leg-01",
+      "text": "同一高度带，轮行九十次，没有一次通过；逐轮抬腿，二十四次全部干净跨过。",
+      "audio": "evidence/production-v6/film/audio/leg-01.mp3",
+      "audio_sha256": "a0abfc8ade61ca86db470a5d2c82e704b7bbbf7037c2831b37004377b4f16dca",
+      "audio_duration_s": 7.38,
+      "start_s": 117.65,
+      "end_s": 125.03,
+      "group": "leg"
+    },
+    {
+      "id": "leg-02",
+      "text": "动作只用看见的几何，不靠想象。",
+      "audio": "evidence/production-v6/film/audio/leg-02.mp3",
+      "audio_sha256": "74fefa3813224aa9b25178b74617338a6f229e289c61e518c106eccecdc5a618",
+      "audio_duration_s": 3.024,
+      "start_s": 126.53,
+      "end_s": 129.554,
+      "group": "leg"
+    },
+    {
+      "id": "connect-01",
+      "text": "两种石头连成一条路，先绕过高石，再穿门跨过门槛。",
+      "audio": "evidence/production-v6/film/audio/connect-01.mp3",
+      "audio_sha256": "1743c53516ec1ab92c4fba47617f1383e42840b67501f0ca14f61d1526cbde82",
+      "audio_duration_s": 4.968,
+      "start_s": 133.65,
+      "end_s": 138.618,
+      "group": "connect"
+    },
+    {
+      "id": "connect-02",
+      "text": "这里用真实形状做连接预检查，转场处交接保存状态。不是正式车的到达成绩。",
+      "audio": "evidence/production-v6/film/audio/connect-02.mp3",
+      "audio_sha256": "bd1e26d20063419bef92cc33d79f4bac761845a356c2476a79ef5bdec6bc8e38",
+      "audio_duration_s": 7.128,
+      "start_s": 140.118,
+      "end_s": 147.24599999999998,
+      "group": "connect"
+    },
+    {
+      "id": "close-01",
+      "text": "门槛近景再看一次：抬轮、越过、落地。",
+      "audio": "evidence/production-v6/film/audio/close-01.mp3",
+      "audio_sha256": "513df5489314439a3ff0c8ebdb937fbcefb34e0b002900c8b57c351a326404f2",
+      "audio_duration_s": 4.14,
+      "start_s": 151.65,
+      "end_s": 155.79,
+      "group": "close"
+    },
+    {
+      "id": "stopA-01",
+      "text": "换回想象，后石候选全被拒绝，车停了。",
+      "audio": "evidence/production-v6/film/audio/stopA-01.mp3",
+      "audio_sha256": "5bb321a5e71eb1de7bc8031dd11752f6abd67bf8728e4f116f766954434194e6",
+      "audio_duration_s": 3.996,
+      "start_s": 161.804,
+      "end_s": 165.8,
+      "group": "stopA"
+    },
+    {
+      "id": "stopB-01",
+      "text": "只信看见的车，也在高石前停下。",
+      "audio": "evidence/production-v6/film/audio/stopB-01.mp3",
+      "audio_sha256": "06b49ad660a023a80ad4641db5812d7376695e8938321fdd8528e9f777b057e2",
+      "audio_duration_s": 3.132,
+      "start_s": 167.668,
+      "end_s": 170.8,
+      "group": "stopB"
+    },
+    {
+      "id": "ending-01",
+      "text": "五个同路场景，想象车到达二个。",
+      "audio": "evidence/production-v6/film/audio/ending-01.mp3",
+      "audio_sha256": "485eca57907723cf76cf824beee27bcf7f3df18f0eb1d7aae77265f4e6e15078",
+      "audio_duration_s": 2.916,
+      "start_s": 171.65,
+      "end_s": 174.566,
+      "group": "ending"
+    },
+    {
+      "id": "ending-02",
+      "text": "Lux3D 共创建四百九十一个任务。",
+      "audio": "evidence/production-v6/film/audio/ending-02.mp3",
+      "audio_sha256": "8467971b00b8d0a67b7d674702ab2e86710832b846fbe9b0c7a903fcbc55e5ca",
+      "audio_duration_s": 3.816,
+      "start_s": 175.618,
+      "end_s": 179.434,
+      "group": "ending"
+    },
+    {
+      "id": "ending-03",
+      "text": "BeforeStep：先检验，再迈步。",
+      "audio": "evidence/production-v6/film/audio/ending-03.mp3",
+      "audio_sha256": "1a4693aa7c47b591fc07297fec9b1f529be774374c40827d82bd07c1cde7512e",
+      "audio_duration_s": 3.06,
+      "start_s": 180.486,
+      "end_s": 183.546,
+      "group": "ending"
+    }
+  ],
+  "shared_r1_clock": {
+    "knots": [
+      [
+        0,
+        1.2
+      ],
+      [
+        5,
+        55
+      ],
+      [
+        12.6924,
+        80.87
+      ],
+      [
+        21.431600000000003,
+        112.84
+      ],
+      [
+        26.75,
+        142.2
+      ],
+      [
+        28.0,
+        142.2
+      ]
+    ],
+    "focus_switches": [
+      12.6924,
+      21.431600000000003
+    ],
+    "order": [
+      "optimistic",
+      "imagination",
+      "conservative"
+    ],
+    "video_frame_selection": "Closest existing encoded frame to common simulation time; terminated policies hold their final frame"
+  },
+  "plan_sha256": "c48faafde1e07dbf64f8e74daf5772927c337445b3c9b412ed107e14b0fff5a6",
+  "audio_stretched": false,
+  "music": false
+}

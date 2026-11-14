@@ -1,0 +1,141 @@
+{
+  "shots": [
+    {
+      "id": "s09-connect-overview-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/detour/segment1/full-record/trajectory.npz",
+          "sha256": "ccba284b666ae12f2ffc07550eaa1ad8b2a94e9bf5fdf29ac7accb6c77d190a4"
+        },
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/connection-precheck/observed-leg-segment/trajectory.npz",
+          "sha256": "f2b9ed57f3d44ada575d54b2082ecfe069b50af226ab201c504a9807699e3ff2"
+        }
+      ],
+      "scene": "stress_v8_gate",
+      "route": "stress_v8_gate",
+      "duration_s": 18,
+      "speed": null,
+      "camera": "overhead-close-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -90,
+        "elevation": -55,
+        "distance": 2.4,
+        "x_offset": 0.15,
+        "y_offset": 0,
+        "z_scale": 0.5
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 306.8000000007368,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "handoff": {
+        "source": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/detour/segment1/physical-state.json",
+        "restoration": "Complete env-state/v2 restored at initialization into the exact saved first-segment world",
+        "before": {
+          "qpos": "3945dadd79324359b68bc0282d6e62e80fc3a3b833add0adff463ce7cb58decd",
+          "qvel": "edf00e22c7b211cc20419caf3bd2bd67b7c561b3e3439400e9c30dc1b9281e66"
+        },
+        "after": {
+          "qpos": "3945dadd79324359b68bc0282d6e62e80fc3a3b833add0adff463ce7cb58decd",
+          "qvel": "edf00e22c7b211cc20419caf3bd2bd67b7c561b3e3439400e9c30dc1b9281e66"
+        },
+        "equal": true,
+        "first_segment_not_rerun": true
+      },
+      "source_classification": "Truth-geometry route diagnostic plus observed-threshold connection precheck; not formalD or a Lux3D success",
+      "transition_annotation": {
+        "start_s": 5.8769411304327255,
+        "end_s": 7.176941130432726,
+        "text": "转场：保存状态交接 · 门槛跨越"
+      },
+      "source_join_sim_s": 106.99999999993203
+    },
+    {
+      "id": "s09-connect-close-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/connection-precheck/observed-leg-segment/trajectory.npz",
+          "sha256": "f2b9ed57f3d44ada575d54b2082ecfe069b50af226ab201c504a9807699e3ff2"
+        }
+      ],
+      "scene": "stress_v8_gate",
+      "route": "stress_v8_gate",
+      "duration_s": 8,
+      "speed": null,
+      "camera": "low-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": 25,
+        "elevation": -12,
+        "distance": 1.7,
+        "x_offset": 0.12,
+        "y_offset": 0,
+        "z_scale": 0.6
+      },
+      "sim_start": 170.14000000008429,
+      "sim_end": 183.3600000001474,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "source_classification": "Observed-threshold leg detail from completed connection precheck; no new physics"
+    },
+    {
+      "id": "s09-F3002-A-stop-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 14,
+      "speed": null,
+      "camera": "follow-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 58.90000000002602,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "terminal_hold_s": 2,
+      "source_classification": "Formal A stopped;57.7 execution simulation seconds/2looks/imagined_blocked; no gate crossing"
+    },
+    {
+      "id": "s09-F3002-B-stop-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/segment1/full-record/trajectory.npz",
+          "sha256": "082aad060961cd207b8681a10c7a5e2ad975accbbce0fb2496f583049772a335"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 10,
+      "speed": null,
+      "camera": "follow-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 81.02199999999257,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "terminal_hold_s": 1,
+      "source_classification": "Formal B79.82s/1look; wheel contact triggered monitor; body did not hit rock"
+    }
+  ],
+  "authority": "NOTE_FOR_CODEX_ACT5.md",
+  "no_wait_for_D": true,
+  "gpu_shutdown": false
+}

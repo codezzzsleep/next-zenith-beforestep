@@ -1,0 +1,1073 @@
+{
+  "shots": [
+    {
+      "id": "s03-optimistic",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/traj.npz",
+          "sha256": "f2e0cdb4f5ffda2bae45350b5d892cc9e80606f7be76b6d317c761f92e8264ed"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 80.87,
+      "duration_s": null,
+      "speed": 6,
+      "camera": "follow",
+      "terminal_hold_s": 2
+    },
+    {
+      "id": "s03-conservative",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/traj.npz",
+          "sha256": "3203fdd9b7d013cb90d306cd0dde4dd4d8cf6d2f232a48265b23aa907e86a0ed"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 142.2,
+      "duration_s": null,
+      "speed": 12,
+      "camera": "follow",
+      "terminal_hold_s": 0
+    },
+    {
+      "id": "s03-imagination",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 112.84,
+      "duration_s": null,
+      "speed": 6,
+      "camera": "follow",
+      "terminal_hold_s": 2
+    },
+    {
+      "id": "s08-wheel",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/wheel-fixed-center/trajectory.npz",
+          "sha256": "c2a1a5374f5ea970e42090a910f44999a1deaafcd110d920efbbe92f09d024c3"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 6.654,
+      "sim_end": 11.654,
+      "duration_s": 5,
+      "speed": null,
+      "camera": "low",
+      "route": "stress_v8_gate"
+    },
+    {
+      "id": "s08-lift",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+          "sha256": "d13748641cb3dbde2cf2e49788e682677051f6f677340606216680350bcfd537"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 50.14,
+      "sim_end": 64.14,
+      "duration_s": 14,
+      "speed": null,
+      "camera": "low",
+      "route": "stress_v8_gate"
+    },
+    {
+      "id": "s08-depart",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/leg/trajectory.npz",
+          "sha256": "d13748641cb3dbde2cf2e49788e682677051f6f677340606216680350bcfd537"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 167.08,
+      "sim_end": 173.08,
+      "duration_s": 6,
+      "speed": null,
+      "camera": "low",
+      "route": "stress_v8_gate"
+    },
+    {
+      "id": "s01-open",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 1.2,
+      "sim_end": 16.08,
+      "duration_s": 15,
+      "speed": null,
+      "camera": "opening"
+    },
+    {
+      "id": "s02-eye",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 14.08,
+      "sim_end": 16.08,
+      "duration_s": 3,
+      "speed": null,
+      "camera": "front_cam",
+      "original_rgb": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/rgb.png",
+        "sha256": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d"
+      },
+      "original_camera": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/camera_world.json",
+        "sha256": "f8c07755d5ddae94aa3d1fad6137936e9216e04412786787ebe542b1b73db7ec"
+      },
+      "selection": "Original16.08s camera photograph held3s; no changed sensor image or re-created target view"
+    },
+    {
+      "id": "s06-failure",
+      "sources": [
+        {
+          "path": "outputs/suite/real/suite_r2_v4_F3_004/imagination/traj.npz",
+          "sha256": "aab20e6499662e27e273ae4660db137666431e0021607f378426a0de06fd1bdb"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_004",
+      "sim_start": 70.14,
+      "sim_end": 82.14,
+      "duration_s": 24,
+      "speed": 0.5,
+      "camera": "failure",
+      "timing_note": "12 simulation seconds at0.5x require24 video seconds; editor can trim"
+    },
+    {
+      "id": "s05-world-1",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 96.18,
+      "duration_s": 8,
+      "speed": null,
+      "camera": "follow",
+      "objects": [
+        {
+          "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A1.obj",
+          "sha256": "a37573cda15b2f11f3fa8c9b92397df06878c3e5a8528b0d6672000d6bd71166"
+        },
+        {
+          "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+          "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+        }
+      ],
+      "pane": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/pane.json",
+        "sha256": "6d3abd11aff23f1e0590fabdc4b72ae7196ccfc7307c1d066668dc2493b18772"
+      }
+    },
+    {
+      "id": "s05-world-grid",
+      "scene": "stress_v8",
+      "duration_s": 6,
+      "worlds": [
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/pane.json",
+            "sha256": "6d3abd11aff23f1e0590fabdc4b72ae7196ccfc7307c1d066668dc2493b18772"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A1.obj",
+              "sha256": "a37573cda15b2f11f3fa8c9b92397df06878c3e5a8528b0d6672000d6bd71166"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+              "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane1/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane1/pane.json",
+            "sha256": "c62f17db27d56aa4e30ed46429d582fa3a80fb33d0ca3bd59e8b7288b04532f2"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A1.obj",
+              "sha256": "a37573cda15b2f11f3fa8c9b92397df06878c3e5a8528b0d6672000d6bd71166"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_C1.obj",
+              "sha256": "08faf0a871877856ab77cd774f63f6ab36383c82994400036de5fffccbc14cbb"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane2/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane2/pane.json",
+            "sha256": "326dfd9301b8925d5b08a3fbcea0da7a84acc1fbbed8a804a29cdaa7c72ebdce"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A2.obj",
+              "sha256": "1c470c170d89b221ad423f4df53cf48345d3cc5a8b128178055dfef842d3e16e"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+              "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane3/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane3/pane.json",
+            "sha256": "d50e3fcb619c0fcf09e28731d7b1469e054a7d1751924d5a8b25775046be5514"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A2.obj",
+              "sha256": "1c470c170d89b221ad423f4df53cf48345d3cc5a8b128178055dfef842d3e16e"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_C1.obj",
+              "sha256": "08faf0a871877856ab77cd774f63f6ab36383c82994400036de5fffccbc14cbb"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane4/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane4/pane.json",
+            "sha256": "e671bbd057e445918f91b45da667a8711ba477285d0771abe5c3cafad0669df8"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_B1.obj",
+              "sha256": "cd15ade31b88d8a030d3242e154d1188df37a6e3f03d591d8afbd29674bd3f2b"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+              "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane5/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane5/pane.json",
+            "sha256": "60581e7800ee9e6ff839137323451cc2f41513f417e912b3f16a2f33712810dc"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_B1.obj",
+              "sha256": "cd15ade31b88d8a030d3242e154d1188df37a6e3f03d591d8afbd29674bd3f2b"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_C1.obj",
+              "sha256": "08faf0a871877856ab77cd774f63f6ab36383c82994400036de5fffccbc14cbb"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane6/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane6/pane.json",
+            "sha256": "c37f69173a24c414f43fbe4c81499c0b0514ff1af4648b9ccb0880cf8564e8cc"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_B2.obj",
+              "sha256": "b1c2b8bc5f2b3a79e5709aa671a5c8c6ed829c593efc8986959c581fd0e05303"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+              "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane7/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane7/pane.json",
+            "sha256": "492dffb648f1ebc696b9a3eab6d4dd8d85463f4e091c731ffc349aeb48582775"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_B2.obj",
+              "sha256": "b1c2b8bc5f2b3a79e5709aa671a5c8c6ed829c593efc8986959c581fd0e05303"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_C1.obj",
+              "sha256": "08faf0a871877856ab77cd774f63f6ab36383c82994400036de5fffccbc14cbb"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane8/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane8/pane.json",
+            "sha256": "1da40eee52198e4702819bfc4e73b33eecdb944f31dd23c5da190d91057efc61"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_C1.obj",
+              "sha256": "405a2ee27c72e3b14ab01469eeb4c3bedb13133c446dbc8e0ae1b3f327a1f063"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+              "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane9/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane9/pane.json",
+            "sha256": "9da62c1eb53a7ef4e09e410d082fe1790dd5b234affc698757272f9ef33e63f5"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_C1.obj",
+              "sha256": "405a2ee27c72e3b14ab01469eeb4c3bedb13133c446dbc8e0ae1b3f327a1f063"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_C1.obj",
+              "sha256": "08faf0a871877856ab77cd774f63f6ab36383c82994400036de5fffccbc14cbb"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane10/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane10/pane.json",
+            "sha256": "7e2ca4d1f8a784dee40379621cbdb3ee086fd7f0738d36c8442ebe0b59e302fb"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_C2.obj",
+              "sha256": "942a6c3db6085085eb2f288afb9e603e8e4b7ad88cb12348cbedc207f9580b21"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+              "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+            }
+          ]
+        },
+        {
+          "source": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane11/traj.npz",
+            "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+          },
+          "pane": {
+            "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane11/pane.json",
+            "sha256": "dab1579212a81bc14f625deffd8df59c74bbca6bcf082c339c81b421b9cca44a"
+          },
+          "objects": [
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_C2.obj",
+              "sha256": "942a6c3db6085085eb2f288afb9e603e8e4b7ad88cb12348cbedc207f9580b21"
+            },
+            {
+              "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_C1.obj",
+              "sha256": "08faf0a871877856ab77cd774f63f6ab36383c82994400036de5fffccbc14cbb"
+            }
+          ]
+        }
+      ],
+      "camera": "follow",
+      "sim_start": 25,
+      "sim_end": 41
+    },
+    {
+      "id": "s09-backup-F1_003",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment2/trajectory.npz",
+          "sha256": "a793f4a474c3ca28297f9f3ac81d01c32937488e4a526a02d6d107f471823c6e"
+        }
+      ],
+      "scene": "suite_r2_v4_F1_003_gate",
+      "sim_start": null,
+      "sim_end": null,
+      "duration_s": 10,
+      "speed": null,
+      "camera": "overview",
+      "route": "suite_r2_v4_F1_003_gate"
+    },
+    {
+      "id": "s09-backup-F2_001",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment2/trajectory.npz",
+          "sha256": "af47e00d47c008874672373776b7dd6e8d232287fa57c5ef5dca535715a4019d"
+        }
+      ],
+      "scene": "suite_r2_v4_F2_001_gate",
+      "sim_start": null,
+      "sim_end": null,
+      "duration_s": 10,
+      "speed": null,
+      "camera": "overview",
+      "route": "suite_r2_v4_F2_001_gate"
+    },
+    {
+      "id": "s03-optimistic-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/traj.npz",
+          "sha256": "f2e0cdb4f5ffda2bae45350b5d892cc9e80606f7be76b6d317c761f92e8264ed"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 80.87,
+      "duration_s": null,
+      "speed": 6,
+      "camera": "follow-v2",
+      "terminal_hold_s": 2,
+      "base_version": "s03-optimistic",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s03-conservative-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/section25_final_base/conservative/traj.npz",
+          "sha256": "3203fdd9b7d013cb90d306cd0dde4dd4d8cf6d2f232a48265b23aa907e86a0ed"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 142.2,
+      "duration_s": null,
+      "speed": 12,
+      "camera": "follow-v2",
+      "terminal_hold_s": 0,
+      "base_version": "s03-conservative",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s03-imagination-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 112.84,
+      "duration_s": null,
+      "speed": 6,
+      "camera": "follow-v2",
+      "terminal_hold_s": 2,
+      "base_version": "s03-imagination",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s01-open-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 1.2,
+      "sim_end": 16.08,
+      "duration_s": 15,
+      "speed": null,
+      "camera": "opening-v2",
+      "base_version": "s01-open",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "opening",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      }
+    },
+    {
+      "id": "s05-world-1-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+          "sha256": "6bb233179915b1a4d9d9fde9c7283b40643b8ec56640552f1a9f94515da08698"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 0,
+      "sim_end": 96.18,
+      "duration_s": 8,
+      "speed": null,
+      "camera": "world-close-v2",
+      "objects": [
+        {
+          "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T1/decide/world_A1.obj",
+          "sha256": "a37573cda15b2f11f3fa8c9b92397df06878c3e5a8528b0d6672000d6bd71166"
+        },
+        {
+          "path": "outputs/reviews/r1/section23_lux_original_b/imagination/looks/look1/T2/decide/world_A2.obj",
+          "sha256": "190b126a845d77a4b3da64bc8218b95435e72cb168aec88991e2b4c197f0fd34"
+        }
+      ],
+      "pane": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/pane.json",
+        "sha256": "6d3abd11aff23f1e0590fabdc4b72ae7196ccfc7307c1d066668dc2493b18772"
+      },
+      "base_version": "s05-world-1",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": 25,
+        "elevation": -12,
+        "distance": 1.7,
+        "x_offset": 0.12,
+        "y_offset": 0,
+        "z_scale": 0.6
+      }
+    },
+    {
+      "id": "s02-eye-v2",
+      "sources": [
+        {
+          "path": "evidence/reviews/beforestep_r1/lux/original_b/traj.npz",
+          "sha256": "6b1481752708b9a2c9039ad91e55f98493714924afdd52da1be0baaee4758d1e"
+        }
+      ],
+      "scene": "stress_v8",
+      "sim_start": 14.08,
+      "sim_end": 16.08,
+      "duration_s": 3,
+      "speed": null,
+      "camera": "original_sensor_rgb",
+      "original_rgb": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/rgb.png",
+        "sha256": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d"
+      },
+      "original_camera": {
+        "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/camera_world.json",
+        "sha256": "f8c07755d5ddae94aa3d1fad6137936e9216e04412786787ebe542b1b73db7ec"
+      },
+      "selection": "Original16.08s camera photograph held3s; no changed sensor image or re-created target view",
+      "base_version": "s02-eye",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": null
+    },
+    {
+      "id": "s09-backup-F1_003-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment2/trajectory.npz",
+          "sha256": "a793f4a474c3ca28297f9f3ac81d01c32937488e4a526a02d6d107f471823c6e"
+        }
+      ],
+      "scene": "suite_r2_v4_F1_003_gate",
+      "sim_start": null,
+      "sim_end": null,
+      "duration_s": 10,
+      "speed": null,
+      "camera": "overhead-close-v2",
+      "route": "suite_r2_v4_F1_003_gate",
+      "base_version": "s09-backup-F1_003",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -90,
+        "elevation": -55,
+        "distance": 2.4,
+        "x_offset": 0.15,
+        "y_offset": 0,
+        "z_scale": 0.5
+      }
+    },
+    {
+      "id": "s09-backup-F2_001-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment2/trajectory.npz",
+          "sha256": "af47e00d47c008874672373776b7dd6e8d232287fa57c5ef5dca535715a4019d"
+        }
+      ],
+      "scene": "suite_r2_v4_F2_001_gate",
+      "sim_start": null,
+      "sim_end": null,
+      "duration_s": 10,
+      "speed": null,
+      "camera": "overhead-close-v2",
+      "route": "suite_r2_v4_F2_001_gate",
+      "base_version": "s09-backup-F2_001",
+      "recompose_authority": "NOTE_FOR_CODEX_RECOMPOSE.md",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -90,
+        "elevation": -55,
+        "distance": 2.4,
+        "x_offset": 0.15,
+        "y_offset": 0,
+        "z_scale": 0.5
+      }
+    },
+    {
+      "id": "s09-gate-overview",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 18,
+      "speed": null,
+      "sim_start": 0.020000000000000004,
+      "sim_end": 58.90000000002602,
+      "camera": "overview",
+      "formal_total_result": "stopped",
+      "camera_spec": {
+        "kind": "gate_overview",
+        "azimuth": -40,
+        "elevation": -55,
+        "distance": 3.6,
+        "x_offset": 0.35,
+        "y_offset": 0,
+        "z_scale": 0.5
+      }
+    },
+    {
+      "id": "s09-gate-approach",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 8,
+      "speed": null,
+      "sim_start": 35.019999999996834,
+      "sim_end": 58.90000000002602,
+      "camera": "low",
+      "selection": "Actual saved states near the first high rock; range bounded by observed progress"
+    },
+    {
+      "id": "s09-gate-A",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 8,
+      "speed": null,
+      "sim_start": 38.90000000002602,
+      "sim_end": 58.90000000002602,
+      "camera": "low",
+      "formal_total_result": "stopped",
+      "selection": "Last20 saved simulation seconds; position/outcome may be before high rock if A never reached threshold"
+    },
+    {
+      "id": "s09-backup-F1_003-approach-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        }
+      ],
+      "scene": "suite_r2_v4_F1_003_gate",
+      "route": "suite_r2_v4_F1_003_gate",
+      "duration_s": 10,
+      "speed": null,
+      "sim_start": 31.49999999999342,
+      "sim_end": 54.80000000002101,
+      "camera": "low",
+      "selection": "Actual saved states near the first high rock; range bounded by observed progress"
+    },
+    {
+      "id": "s09-backup-F1_003-crossing-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/segment2/trajectory.npz",
+          "sha256": "a793f4a474c3ca28297f9f3ac81d01c32937488e4a526a02d6d107f471823c6e"
+        }
+      ],
+      "scene": "suite_r2_v4_F1_003_gate",
+      "route": "suite_r2_v4_F1_003_gate",
+      "duration_s": 10,
+      "speed": null,
+      "sim_start": 118.31999999990565,
+      "sim_end": 282.3800000006202,
+      "camera": "low",
+      "selection": "Recorded leg segment while body is near threshold; no generated actions"
+    },
+    {
+      "id": "s09-backup-F1_003-A-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "18ad46e92dc3c0624e211bb22c095ed2c1e38e1c6d44460fd88774f98cdb9124"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment2/fixed/trajectory.npz",
+          "sha256": "39837e3652af16720e430387f3111f842c2d4b4e5b6818ff851cf64360a1910b"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/segment2/high/trajectory.npz",
+          "sha256": "4b248356d1cd3d863ff13469dccfb64eefe68686ebdd083dcc31679ef7c5f439"
+        }
+      ],
+      "scene": "suite_r2_v4_F1_003_gate",
+      "route": "suite_r2_v4_F1_003_gate",
+      "duration_s": 8,
+      "speed": null,
+      "sim_start": 557.4200000001696,
+      "sim_end": 577.4200000001696,
+      "camera": "low",
+      "formal_total_result": "stuck"
+    },
+    {
+      "id": "s09-backup-F2_001-approach-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        }
+      ],
+      "scene": "suite_r2_v4_F2_001_gate",
+      "route": "suite_r2_v4_F2_001_gate",
+      "duration_s": 10,
+      "speed": null,
+      "sim_start": 33.55999999999505,
+      "sim_end": 57.580000000024405,
+      "camera": "low",
+      "selection": "Actual saved states near the first high rock; range bounded by observed progress"
+    },
+    {
+      "id": "s09-backup-F2_001-crossing-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/segment2/trajectory.npz",
+          "sha256": "af47e00d47c008874672373776b7dd6e8d232287fa57c5ef5dca535715a4019d"
+        }
+      ],
+      "scene": "suite_r2_v4_F2_001_gate",
+      "route": "suite_r2_v4_F2_001_gate",
+      "duration_s": 10,
+      "speed": null,
+      "sim_start": 108.09999999992947,
+      "sim_end": 267.3800000005486,
+      "camera": "low",
+      "selection": "Recorded leg segment while body is near threshold; no generated actions"
+    },
+    {
+      "id": "s09-backup-F2_001-A-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "53fbf3815d9be8b35b42fb5f99222291100e3c496c760fa6afeb8c66e22188a6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/segment2/fixed/trajectory.npz",
+          "sha256": "4a9e3f539a6665df1b9b22990836b55930d91cf1267a0774ae77953e1916a2f6"
+        },
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/segment2/high/trajectory.npz",
+          "sha256": "a3ea59af857fc0e20a99bdcefa4539ba043a4cc97041a2959ee9698d857cf9d0"
+        }
+      ],
+      "scene": "suite_r2_v4_F2_001_gate",
+      "route": "suite_r2_v4_F2_001_gate",
+      "duration_s": 8,
+      "speed": null,
+      "sim_start": 550.6000000003309,
+      "sim_end": 570.6000000003309,
+      "camera": "low",
+      "formal_total_result": "stuck"
+    },
+    {
+      "id": "s09-connect-overview-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/detour/segment1/full-record/trajectory.npz",
+          "sha256": "ccba284b666ae12f2ffc07550eaa1ad8b2a94e9bf5fdf29ac7accb6c77d190a4"
+        },
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/connection-precheck/observed-leg-segment/trajectory.npz",
+          "sha256": "f2b9ed57f3d44ada575d54b2082ecfe069b50af226ab201c504a9807699e3ff2"
+        }
+      ],
+      "scene": "stress_v8_gate",
+      "route": "stress_v8_gate",
+      "duration_s": 18,
+      "speed": null,
+      "camera": "overhead-close-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -90,
+        "elevation": -55,
+        "distance": 2.4,
+        "x_offset": 0.15,
+        "y_offset": 0,
+        "z_scale": 0.5
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 306.8000000007368,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "handoff": {
+        "source": "outputs/crossing/route/stress_v8_gate/prechecks/x9.00-seed22001/detour/segment1/physical-state.json",
+        "restoration": "Complete env-state/v2 restored at initialization into the exact saved first-segment world",
+        "before": {
+          "qpos": "3945dadd79324359b68bc0282d6e62e80fc3a3b833add0adff463ce7cb58decd",
+          "qvel": "edf00e22c7b211cc20419caf3bd2bd67b7c561b3e3439400e9c30dc1b9281e66"
+        },
+        "after": {
+          "qpos": "3945dadd79324359b68bc0282d6e62e80fc3a3b833add0adff463ce7cb58decd",
+          "qvel": "edf00e22c7b211cc20419caf3bd2bd67b7c561b3e3439400e9c30dc1b9281e66"
+        },
+        "equal": true,
+        "first_segment_not_rerun": true
+      },
+      "source_classification": "Truth-geometry route diagnostic plus observed-threshold connection precheck; not formalD or a Lux3D success",
+      "transition_annotation": {
+        "start_s": 5.8769411304327255,
+        "end_s": 7.176941130432726,
+        "text": "转场：保存状态交接 · 门槛跨越"
+      },
+      "source_join_sim_s": 106.99999999993203
+    },
+    {
+      "id": "s09-connect-close-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/stress_v8_gate/connection-precheck/observed-leg-segment/trajectory.npz",
+          "sha256": "f2b9ed57f3d44ada575d54b2082ecfe069b50af226ab201c504a9807699e3ff2"
+        }
+      ],
+      "scene": "stress_v8_gate",
+      "route": "stress_v8_gate",
+      "duration_s": 8,
+      "speed": null,
+      "camera": "low-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": 25,
+        "elevation": -12,
+        "distance": 1.7,
+        "x_offset": 0.12,
+        "y_offset": 0,
+        "z_scale": 0.6
+      },
+      "sim_start": 170.14000000008429,
+      "sim_end": 183.3600000001474,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "source_classification": "Observed-threshold leg detail from completed connection precheck; no new physics"
+    },
+    {
+      "id": "s09-F3002-A-stop-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 14,
+      "speed": null,
+      "camera": "follow-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 58.90000000002602,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "terminal_hold_s": 2,
+      "source_classification": "Formal A stopped;57.7 execution simulation seconds/2looks/imagined_blocked; no gate crossing"
+    },
+    {
+      "id": "s09-F3002-B-stop-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/segment1/full-record/trajectory.npz",
+          "sha256": "082aad060961cd207b8681a10c7a5e2ad975accbbce0fb2496f583049772a335"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 10,
+      "speed": null,
+      "camera": "follow-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 81.02199999999257,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "terminal_hold_s": 1,
+      "source_classification": "Formal B79.82s/1look; wheel contact triggered monitor; body did not hit rock"
+    },
+    {
+      "id": "s09-F3002-D-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 14,
+      "speed": null,
+      "camera": "follow-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 58.90000000002602,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "terminal_hold_s": 2,
+      "source_classification": "Formal D stopped57.7s/2looks/imagined_blocked, no gate or legs; actual first segment byte-identical toA"
+    }
+  ],
+  "pending": [],
+  "pending_reason": "F3_002 formal A/D not terminal/available; no physics started here",
+  "screen_recordings": [
+    "r01-reveal",
+    "r02-glb-A",
+    "r03-glb-B",
+    "r04-photo-to-glb"
+  ],
+  "not_applicable": [
+    {
+      "id": "s09-gate-crossing",
+      "status": "not_applicable",
+      "reason": "Formal D did not execute a leg crossing; no saved segment2 trajectory exists"
+    }
+  ],
+  "gate_summary": {
+    "path": "evidence/crossing/route/summary-suite_r2_v4_F3_002_gate.json",
+    "sha256": "aac8eed548cdf1c980e41a459d6aceb2f609cd0db5288060bd84cd92e6f6341e",
+    "D_result": "stopped",
+    "A_result": "stopped"
+  },
+  "act5_replaces_old_gate_wait": true
+}

@@ -1,0 +1,176 @@
+{
+  "id": "s02-eye-v2",
+  "status": "complete",
+  "frame_count": 90,
+  "duration_s": 3,
+  "camera": "original_sensor_rgb",
+  "sources": [
+    {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/rgb.png",
+      "sha256": "85a33f3ba58c5fe95b31a657a8d6ba1892867e23bf39204d1af91a3991a6de8d"
+    },
+    {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/camera_world.json",
+      "sha256": "f8c07755d5ddae94aa3d1fad6137936e9216e04412786787ebe542b1b73db7ec"
+    }
+  ],
+  "sim_requested_range_s": [
+    16.08,
+    16.08
+  ],
+  "original_sensor_inputs_changed": false,
+  "physics_advanced": false,
+  "source_qpos_dimensions": 23,
+  "display_interpolation": "Original single RGB photograph held for3s",
+  "parameters": {
+    "source_resolution": [
+      1600,
+      1200
+    ],
+    "output_resolution": [
+      1920,
+      1080
+    ],
+    "fps": 30,
+    "frame_files": false,
+    "sharpening": false,
+    "additional_fill": false,
+    "solar_direction_changed": false,
+    "CG_supersampling": "not applied to original sensor photograph"
+  },
+  "owner_acceptance": {
+    "accepted": true,
+    "authority": "/root/3d/NOTE_FOR_CODEX_GPU_GO.md",
+    "authority_sha256": "7697d3685a782fdd27d3c6a3747073ebcc71532f0a21f5af038e840019473358",
+    "snapshot": "evidence/production-v6/gpu-render/instructions/NOTE_FOR_CODEX_GPU_GO-7697d3685a78.md",
+    "visual_pair_accepted_by_owner": true,
+    "mean_difference_limit": 2,
+    "pixels_exceeding_8_fraction_limit": 0.01,
+    "gpu_frame_sha256": "35759174652767686b99176eb64653272a3f87010ff76d4b6ac2696a24ab9fe1",
+    "reason": "Owner inspected GPU/CPU side by side; numerical criteria relaxed and all three explicitly passed",
+    "supersedes": "DECISION_B2 §3.2 max<=8"
+  },
+  "ffmpeg_command": [
+    "ffmpeg",
+    "-v",
+    "error",
+    "-y",
+    "-f",
+    "rawvideo",
+    "-pixel_format",
+    "rgb24",
+    "-video_size",
+    "1600x1200",
+    "-framerate",
+    "30",
+    "-i",
+    "pipe:0",
+    "-vf",
+    "scale=1920:1080:force_original_aspect_ratio=decrease:flags=lanczos,pad=1920:1080:(ow-iw)/2:(oh-ih)/2",
+    "-an",
+    "-c:v",
+    "libx264",
+    "-crf",
+    "14",
+    "-preset",
+    "slow",
+    "-pix_fmt",
+    "yuv420p",
+    "-movflags",
+    "+faststart",
+    "evidence/production-v6/shots/s02-eye-v2-recording.mp4"
+  ],
+  "rendered_frames": 90,
+  "elapsed_s": 1.4840356148779392,
+  "render_seconds": 0,
+  "render_seconds_per_frame": 0,
+  "total_seconds_per_frame": 0.016489284609754882,
+  "sha256": "968a64aba7e666eacc685c88aac854cb3f75f2898895f601a2d2b7ae65bfe82c",
+  "bytes": 496508,
+  "ffprobe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 50,
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 46080,
+        "duration": "3.000000",
+        "bit_rate": "1318848",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "90",
+        "extradata_size": 47,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc60.31.102 libx264"
+        }
+      }
+    ],
+    "format": {
+      "filename": "evidence/production-v6/shots/s02-eye-v2-recording.mp4",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "3.000000",
+      "size": "496508",
+      "bit_rate": "1324021",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf60.16.100"
+      }
+    }
+  },
+  "local_path": "evidence/production-v6/shots/s02-eye-v2.mp4",
+  "transfer_status": "verified",
+  "local_sha256": "968a64aba7e666eacc685c88aac854cb3f75f2898895f601a2d2b7ae65bfe82c"
+}

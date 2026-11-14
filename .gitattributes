@@ -32,3 +32,15 @@ site/media/award/demo/*.png filter=lfs diff=lfs merge=lfs -text
 evidence/learning/arena_v2/**/results.json filter=lfs diff=lfs merge=lfs -text
 
 evidence/crossing/**/*.tar.gz filter=lfs diff=lfs merge=lfs -text
+
+# Production v6 films, data snapshots and binary evidence
+evidence/production-v6/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.zip filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.npz filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.npy filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.glb filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.obj filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.png filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.jpg filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+evidence/production-v6/**/*.wav filter=lfs diff=lfs merge=lfs -text

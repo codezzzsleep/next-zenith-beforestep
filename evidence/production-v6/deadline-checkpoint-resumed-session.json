@@ -1,0 +1,53 @@
+{
+  "observed_at_utc": "2026-11-14T16:45:00.000105+00:00",
+  "deadline_utc": "2026-11-14T16:45:00+00:00",
+  "authority": "/root/3d/NOTE_FOR_CODEX_BUDGET.md",
+  "rows": [
+    {
+      "vehicle": "A",
+      "terminal": true,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+      "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+      "result": "stopped"
+    },
+    {
+      "vehicle": "B",
+      "terminal": true,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+      "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+      "result": "stopped"
+    },
+    {
+      "vehicle": "C",
+      "terminal": true,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+      "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+      "result": "stopped"
+    },
+    {
+      "vehicle": "D",
+      "terminal": false,
+      "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json"
+    }
+  ],
+  "all_terminal_at_check": false,
+  "D_live_job": {
+    "pid": 241230,
+    "command": [
+      "/usr/bin/python3",
+      "ops/crossing_route_run.py",
+      "--scene",
+      "suite_r2_v4_F3_002_gate",
+      "--vehicle",
+      "D",
+      "--child",
+      "--reuse",
+      "outputs/crossing/route/suite_r2_v4_F3_002_gate/input-probe/segment1"
+    ],
+    "attempt": 5,
+    "log": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/attempt-005.log"
+  },
+  "D_process_exists": true,
+  "forced_stop": false,
+  "policy": "At cutoff record unfinished accurately; do not forcibly end the already-running vehicle."
+}

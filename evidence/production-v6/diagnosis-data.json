@@ -1,0 +1,1666 @@
+{
+  "suite_r2_v4_F2_007": {
+    "A": {
+      "run": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1",
+      "summary": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "collision",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_007_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 83.97,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          7.215,
+          -0.688,
+          35.71
+        ],
+        "sim_time_s": 85.17,
+        "wall_s": 934.6,
+        "collision": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            7.294,
+            -0.365,
+            0.143
+          ],
+          "t": 85.172
+        }
+      },
+      "looks": [
+        {
+          "look": "look1",
+          "targets": [
+            {
+              "target": "T1",
+              "state": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T1/state.json",
+              "generated": 6,
+              "returned_glb": 4,
+              "admitted": 2,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 7293064,
+                  "back_error_m": 0.5002439437593535,
+                  "predicted_farthest_m": 5.47452797142464,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.5,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T1/decide/footprint_A1.npy",
+                  "sha256": "c71e83418b891089e722f4b5c9863305af97cfc66893f551c19286b9e6458db4"
+                },
+                {
+                  "candidate": "B1",
+                  "task_id": 7293211,
+                  "back_error_m": 0.3501393808038573,
+                  "predicted_farthest_m": 5.324423408469144,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.25,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T1/decide/footprint_B1.npy",
+                  "sha256": "553d583ffba5f290b947ed733ff6d36ac97d7649f0ef3007a665252bb68b7c4a"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "86e5bb18ea4d992934e10fcd0cb30b154549037157b07ffcf9c8b6488242889a"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "86e5bb18ea4d992934e10fcd0cb30b154549037157b07ffcf9c8b6488242889a"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "79603c877d42909a206ad48e128283a75031a2cdedb4e57a150bdae4f20f326d"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "79603c877d42909a206ad48e128283a75031a2cdedb4e57a150bdae4f20f326d"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "3f6b04f82e765c8ecf0d4ebe0e2f2fc40ae3d66ab462701817fa2915596edfbe"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "3f6b04f82e765c8ecf0d4ebe0e2f2fc40ae3d66ab462701817fa2915596edfbe"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T1/decide/target_decision.json"
+            },
+            {
+              "target": "T2",
+              "state": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T2/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 1,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 7301931,
+                  "back_error_m": -0.7498254852732584,
+                  "predicted_farthest_m": 6.675399341543821,
+                  "truth_farthest_m": 7.42522482681708,
+                  "associated_true_rocks": [
+                    "B"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": null,
+                  "contact_band_candidate_present": false,
+                  "footprint": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T2/decide/footprint_A1.npy",
+                  "sha256": "cdcf61a70bb45492ddb45e5d30331719895a444dccfbfdd2cfc2f00ba2081915"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "02c03b3f6f5e7922547e7883cedd02cbfdfec697e4dfa123d587d9d1b97ad330"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "02c03b3f6f5e7922547e7883cedd02cbfdfec697e4dfa123d587d9d1b97ad330"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "ea78c69dcbd05ddef702d967d85bf72dfc61ae66a1eb6e800221d5d4806bd132"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "ea78c69dcbd05ddef702d967d85bf72dfc61ae66a1eb6e800221d5d4806bd132"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "8ca76af38ed732edeadeb6a986a1b25e3cc26a81680252d0297cc8919dcd3884"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "8ca76af38ed732edeadeb6a986a1b25e3cc26a81680252d0297cc8919dcd3884"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/segment1/looks/look1/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 3
+        }
+      ],
+      "first_inputs_equal_original": {
+        "T1": false,
+        "T2": false
+      }
+    },
+    "D": {
+      "run": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1",
+      "summary": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "collision",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_007_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 83.97,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          7.215,
+          -0.688,
+          35.71
+        ],
+        "sim_time_s": 85.17,
+        "wall_s": 115.2,
+        "collision": {
+          "body": "obstacle1",
+          "robot_geom": null,
+          "pos": [
+            7.294,
+            -0.365,
+            0.143
+          ],
+          "t": 85.172
+        }
+      },
+      "looks": [
+        {
+          "look": "look1",
+          "targets": [
+            {
+              "target": "T1",
+              "state": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T1/state.json",
+              "generated": 6,
+              "returned_glb": 4,
+              "admitted": 2,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 7293064,
+                  "back_error_m": 0.5002439437593535,
+                  "predicted_farthest_m": 5.47452797142464,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.5,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T1/decide/footprint_A1.npy",
+                  "sha256": "c71e83418b891089e722f4b5c9863305af97cfc66893f551c19286b9e6458db4"
+                },
+                {
+                  "candidate": "B1",
+                  "task_id": 7293211,
+                  "back_error_m": 0.3501393808038573,
+                  "predicted_farthest_m": 5.324423408469144,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.25,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T1/decide/footprint_B1.npy",
+                  "sha256": "553d583ffba5f290b947ed733ff6d36ac97d7649f0ef3007a665252bb68b7c4a"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "86e5bb18ea4d992934e10fcd0cb30b154549037157b07ffcf9c8b6488242889a"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "86e5bb18ea4d992934e10fcd0cb30b154549037157b07ffcf9c8b6488242889a"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "79603c877d42909a206ad48e128283a75031a2cdedb4e57a150bdae4f20f326d"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "79603c877d42909a206ad48e128283a75031a2cdedb4e57a150bdae4f20f326d"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "3f6b04f82e765c8ecf0d4ebe0e2f2fc40ae3d66ab462701817fa2915596edfbe"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "3f6b04f82e765c8ecf0d4ebe0e2f2fc40ae3d66ab462701817fa2915596edfbe"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T1/decide/target_decision.json"
+            },
+            {
+              "target": "T2",
+              "state": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T2/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 1,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 7301931,
+                  "back_error_m": -0.7498254852732584,
+                  "predicted_farthest_m": 6.675399341543821,
+                  "truth_farthest_m": 7.42522482681708,
+                  "associated_true_rocks": [
+                    "B"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": null,
+                  "contact_band_candidate_present": false,
+                  "footprint": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T2/decide/footprint_A1.npy",
+                  "sha256": "cdcf61a70bb45492ddb45e5d30331719895a444dccfbfdd2cfc2f00ba2081915"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "02c03b3f6f5e7922547e7883cedd02cbfdfec697e4dfa123d587d9d1b97ad330"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "02c03b3f6f5e7922547e7883cedd02cbfdfec697e4dfa123d587d9d1b97ad330"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "ea78c69dcbd05ddef702d967d85bf72dfc61ae66a1eb6e800221d5d4806bd132"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "ea78c69dcbd05ddef702d967d85bf72dfc61ae66a1eb6e800221d5d4806bd132"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "8ca76af38ed732edeadeb6a986a1b25e3cc26a81680252d0297cc8919dcd3884"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "8ca76af38ed732edeadeb6a986a1b25e3cc26a81680252d0297cc8919dcd3884"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/segment1/looks/look1/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 3
+        }
+      ],
+      "first_inputs_equal_original": {
+        "T1": false,
+        "T2": false
+      }
+    },
+    "original": {
+      "run": "outputs/suite/real/suite_r2_v4_F2_007/imagination",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "suite_r2_v4_F2_007",
+        "goal": [
+          10.056258,
+          0.005516
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 127.2,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          10.048,
+          0.006,
+          17.9
+        ],
+        "sim_time_s": 128.4,
+        "wall_s": 860.3,
+        "collision": null
+      },
+      "looks": [
+        {
+          "look": "look1",
+          "targets": [
+            {
+              "target": "T1",
+              "state": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 5,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 6349651,
+                  "back_error_m": 0.1001743080626305,
+                  "predicted_farthest_m": 5.074458335727917,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.10000000000000053,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_A1.npy",
+                  "sha256": "aa2abe52e3eb73a1810ba7fce6ac526c076889d6dcbd21350c39eef220434a68"
+                },
+                {
+                  "candidate": "A2",
+                  "task_id": 6349656,
+                  "back_error_m": 0.1002091745378415,
+                  "predicted_farthest_m": 5.074493202203128,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.10000000000000053,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_A2.npy",
+                  "sha256": "fe484d7a34179db94717f5d98e2751058d1d9f7db675c4f9014121ab4b510a01"
+                },
+                {
+                  "candidate": "B1",
+                  "task_id": 6349659,
+                  "back_error_m": 0.3501393808038573,
+                  "predicted_farthest_m": 5.324423408469144,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.25,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_B1.npy",
+                  "sha256": "4d02f24ac7e5f0e738ffa4427cb42b53a2295c325f193d077d23277d69e9d946"
+                },
+                {
+                  "candidate": "B2",
+                  "task_id": 6349662,
+                  "back_error_m": 0.3501393808038573,
+                  "predicted_farthest_m": 5.324423408469144,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.25,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_B2.npy",
+                  "sha256": "392ba15ae761081b685b246b3ca031e60ddf53c1407021f1602cf703fc346f5c"
+                },
+                {
+                  "candidate": "C2",
+                  "task_id": 6349718,
+                  "back_error_m": 0.10024404101305251,
+                  "predicted_farthest_m": 5.074528068678339,
+                  "truth_farthest_m": 4.974284027665287,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.0,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/footprint_C2.npy",
+                  "sha256": "90f64e49001d099187fef5e5886cb6b6b7226ff4182495ebfa57140626e2d0c9"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "56ba27cde064609f268af062066179b33e41edf437a0e3d1f1fe3a0b0eb8bdb2"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "56ba27cde064609f268af062066179b33e41edf437a0e3d1f1fe3a0b0eb8bdb2"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "64d6b439b828cffe45763bad56fb68d7285071adb7e8f0f59eb048fd8dc64d1b"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "64d6b439b828cffe45763bad56fb68d7285071adb7e8f0f59eb048fd8dc64d1b"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "5a150b7f9f1d703d076841b62d96aa68fb944274ac29ac622a38f0e71f99c434"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "5a150b7f9f1d703d076841b62d96aa68fb944274ac29ac622a38f0e71f99c434"
+                  ]
+                }
+              ],
+              "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T1/decide/target_decision.json"
+            },
+            {
+              "target": "T2",
+              "state": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T2/state.json",
+              "generated": 6,
+              "returned_glb": 4,
+              "admitted": 0,
+              "rows": [],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "390836f1e7b9e7f19c97f815282bc9e36751afd05cfcde94b7ced71bac9b0e2a"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "390836f1e7b9e7f19c97f815282bc9e36751afd05cfcde94b7ced71bac9b0e2a"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "d3179a114249eddc5403354358b907b51740c772291fbb01f80e042fb63ce173"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "d3179a114249eddc5403354358b907b51740c772291fbb01f80e042fb63ce173"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "c00d768c7a8551f1ac232839cc3ba56c3d988e518ce2ec3892c0f7f9c8f0a497"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "c00d768c7a8551f1ac232839cc3ba56c3d988e518ce2ec3892c0f7f9c8f0a497"
+                  ]
+                }
+              ],
+              "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look1/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 5
+        },
+        {
+          "look": "look2",
+          "targets": [
+            {
+              "target": "T2",
+              "state": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 2,
+              "rows": [
+                {
+                  "candidate": "B1",
+                  "task_id": 6350945,
+                  "back_error_m": -0.09747851619319459,
+                  "predicted_farthest_m": 7.334559294881429,
+                  "truth_farthest_m": 7.432037811074624,
+                  "associated_true_rocks": [
+                    "B"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": -0.1999999999999993,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/footprint_B1.npy",
+                  "sha256": "bb4ae8cc96cdf4ffd744fd2ba30cb8ed6ab7e5dfdbf40fa38e5ae64e90cb6788"
+                },
+                {
+                  "candidate": "B2",
+                  "task_id": 6350950,
+                  "back_error_m": -0.09747851619319459,
+                  "predicted_farthest_m": 7.334559294881429,
+                  "truth_farthest_m": 7.432037811074624,
+                  "associated_true_rocks": [
+                    "B"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": -0.25,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/footprint_B2.npy",
+                  "sha256": "d4600717ebb58fe92005f9e92e3fb2e4df5c7da9ecb144f19cb0b8455b1b7d2f"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "2aa25800473d0ea3c398fdffd833a882558099dde34881db92543e7424aeb4b2"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "2aa25800473d0ea3c398fdffd833a882558099dde34881db92543e7424aeb4b2"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "9e652cd17c28424503125eba4b1cc588ffa3feea30105d640e8bb08abe64230b"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "9e652cd17c28424503125eba4b1cc588ffa3feea30105d640e8bb08abe64230b"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "2f681a6385cb005be80d80f06a90cb7435ca9484e63391ad81b73cb876c31605"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "2f681a6385cb005be80d80f06a90cb7435ca9484e63391ad81b73cb876c31605"
+                  ]
+                }
+              ],
+              "decision": "outputs/suite/real/suite_r2_v4_F2_007/imagination/looks/look2/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 6,
+          "admitted": 2
+        }
+      ]
+    }
+  },
+  "stress_v8": {
+    "A": {
+      "run": "outputs/crossing/route/stress_v8_gate/A/segment1",
+      "summary": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.68,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.075,
+          0.397,
+          -0.69
+        ],
+        "sim_time_s": 54.88,
+        "wall_s": 1898.5,
+        "collision": null
+      },
+      "looks": [
+        {
+          "look": "look1",
+          "targets": [
+            {
+              "target": "T1",
+              "state": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 6,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 7207374,
+                  "back_error_m": 0.0004017206423796438,
+                  "predicted_farthest_m": 4.8747552954007976,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.09999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/footprint_A1.npy",
+                  "sha256": "885463ae9d9f5dc5715a4352aeb3a6aa8d71dc0c9a1a2e4de27961cdc3533904"
+                },
+                {
+                  "candidate": "A2",
+                  "task_id": 7207760,
+                  "back_error_m": 0.00037302631078084403,
+                  "predicted_farthest_m": 4.874726601069199,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.04999999999999982,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/footprint_A2.npy",
+                  "sha256": "b384f1aff87d3942b11115312dc36f3077ab0738458dc7aced23ab31eaf69f29"
+                },
+                {
+                  "candidate": "B1",
+                  "task_id": 7208183,
+                  "back_error_m": 0.35028688568045485,
+                  "predicted_farthest_m": 5.224640460438873,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.34999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/footprint_B1.npy",
+                  "sha256": "cdfb31ebde2b0a6d4735e868835626ac87c499b4a74da205da31341862907088"
+                },
+                {
+                  "candidate": "B2",
+                  "task_id": 7208576,
+                  "back_error_m": 0.35028688568045485,
+                  "predicted_farthest_m": 5.224640460438873,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.34999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/footprint_B2.npy",
+                  "sha256": "1c80573050a1e99ddad0a8f4649d853b30dd9dde363015ddbf12a62a5bfbf2fd"
+                },
+                {
+                  "candidate": "C1",
+                  "task_id": 7208971,
+                  "back_error_m": 0.05034432374553521,
+                  "predicted_farthest_m": 4.924697898503953,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.09999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/footprint_C1.npy",
+                  "sha256": "64dafa22d52d929c385f93b918730fd127d930f3e2252fd0fe847186d3263c0a"
+                },
+                {
+                  "candidate": "C2",
+                  "task_id": 7209396,
+                  "back_error_m": 0.05034432374553521,
+                  "predicted_farthest_m": 4.924697898503953,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.09999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/footprint_C2.npy",
+                  "sha256": "e1ee8dcdc2087851e4a64672d657e573eca70b86de67e82d2a73ab2d0020548c"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "ed3b723fc0bfa262b6c6443828eccfbb8636c67b97590ebc5ebbded2cf755a22"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "ed3b723fc0bfa262b6c6443828eccfbb8636c67b97590ebc5ebbded2cf755a22"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "c5c70ce6feb0e7f6f0d8162970a55d330c5959d4d3226eb582efb37e48a89c4b"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "c5c70ce6feb0e7f6f0d8162970a55d330c5959d4d3226eb582efb37e48a89c4b"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "c19d10b5e3f59196d7552fe59ab3c94a07c6851e24befe2ad97ad8cf159425c1"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "c19d10b5e3f59196d7552fe59ab3c94a07c6851e24befe2ad97ad8cf159425c1"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1/decide/target_decision.json"
+            },
+            {
+              "target": "T2",
+              "state": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T2/state.json",
+              "generated": 6,
+              "returned_glb": 4,
+              "admitted": 0,
+              "rows": [],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "b9dcaa1972d3c9bea1728e6e48de3b526de92c74c54f4f65932648651b57f11d"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "b9dcaa1972d3c9bea1728e6e48de3b526de92c74c54f4f65932648651b57f11d"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "dcc17116465ac3336268f59160c0660643bc9e881576833b5ce69028ebfe2008"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "dcc17116465ac3336268f59160c0660643bc9e881576833b5ce69028ebfe2008"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "ac55e34f993cf9749c54628cb4615eab1cde0d635a666ef037259458e717de95"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "ac55e34f993cf9749c54628cb4615eab1cde0d635a666ef037259458e717de95"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 6
+        },
+        {
+          "look": "look2",
+          "targets": [
+            {
+              "target": "T2",
+              "state": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look2/T2/state.json",
+              "generated": 12,
+              "returned_glb": 12,
+              "admitted": 0,
+              "rows": [],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "410436ec71cc648f48548a89c5e9e07140b0d534469b3343d07c0b25b881f308"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "410436ec71cc648f48548a89c5e9e07140b0d534469b3343d07c0b25b881f308"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "dde5bc2e40afb5e0a6fe2246a52c6977e7f3a35b2e33ff4b05b596fce760f90c"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "dde5bc2e40afb5e0a6fe2246a52c6977e7f3a35b2e33ff4b05b596fce760f90c"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "28100076edf39db4ad766b0f0750b1e1d3be6eaf3618dfac265e672a6e47af9f"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "28100076edf39db4ad766b0f0750b1e1d3be6eaf3618dfac265e672a6e47af9f"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look2/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 0
+        }
+      ],
+      "first_inputs_equal_original": {
+        "T1": false,
+        "T2": false
+      }
+    },
+    "D": {
+      "run": "outputs/crossing/route/stress_v8_gate/D/segment1",
+      "summary": {
+        "policy": "imagination",
+        "tag": "segment1",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "stuck",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8_gate",
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 53.68,
+        "sensor_mode": "live",
+        "looks": 2,
+        "final_pose": [
+          4.075,
+          0.397,
+          -0.69
+        ],
+        "sim_time_s": 54.88,
+        "wall_s": 138.6,
+        "collision": null
+      },
+      "looks": [
+        {
+          "look": "look1",
+          "targets": [
+            {
+              "target": "T1",
+              "state": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 6,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 7207374,
+                  "back_error_m": 0.0004017206423796438,
+                  "predicted_farthest_m": 4.8747552954007976,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.09999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/footprint_A1.npy",
+                  "sha256": "885463ae9d9f5dc5715a4352aeb3a6aa8d71dc0c9a1a2e4de27961cdc3533904"
+                },
+                {
+                  "candidate": "A2",
+                  "task_id": 7207760,
+                  "back_error_m": 0.00037302631078084403,
+                  "predicted_farthest_m": 4.874726601069199,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.04999999999999982,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/footprint_A2.npy",
+                  "sha256": "b384f1aff87d3942b11115312dc36f3077ab0738458dc7aced23ab31eaf69f29"
+                },
+                {
+                  "candidate": "B1",
+                  "task_id": 7208183,
+                  "back_error_m": 0.35028688568045485,
+                  "predicted_farthest_m": 5.224640460438873,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.34999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/footprint_B1.npy",
+                  "sha256": "cdfb31ebde2b0a6d4735e868835626ac87c499b4a74da205da31341862907088"
+                },
+                {
+                  "candidate": "B2",
+                  "task_id": 7208576,
+                  "back_error_m": 0.35028688568045485,
+                  "predicted_farthest_m": 5.224640460438873,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.34999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/footprint_B2.npy",
+                  "sha256": "1c80573050a1e99ddad0a8f4649d853b30dd9dde363015ddbf12a62a5bfbf2fd"
+                },
+                {
+                  "candidate": "C1",
+                  "task_id": 7208971,
+                  "back_error_m": 0.05034432374553521,
+                  "predicted_farthest_m": 4.924697898503953,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.09999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/footprint_C1.npy",
+                  "sha256": "64dafa22d52d929c385f93b918730fd127d930f3e2252fd0fe847186d3263c0a"
+                },
+                {
+                  "candidate": "C2",
+                  "task_id": 7209396,
+                  "back_error_m": 0.05034432374553521,
+                  "predicted_farthest_m": 4.924697898503953,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.09999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/footprint_C2.npy",
+                  "sha256": "e1ee8dcdc2087851e4a64672d657e573eca70b86de67e82d2a73ab2d0020548c"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "ed3b723fc0bfa262b6c6443828eccfbb8636c67b97590ebc5ebbded2cf755a22"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "ed3b723fc0bfa262b6c6443828eccfbb8636c67b97590ebc5ebbded2cf755a22"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "c5c70ce6feb0e7f6f0d8162970a55d330c5959d4d3226eb582efb37e48a89c4b"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "c5c70ce6feb0e7f6f0d8162970a55d330c5959d4d3226eb582efb37e48a89c4b"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "c19d10b5e3f59196d7552fe59ab3c94a07c6851e24befe2ad97ad8cf159425c1"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "c19d10b5e3f59196d7552fe59ab3c94a07c6851e24befe2ad97ad8cf159425c1"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T1/decide/target_decision.json"
+            },
+            {
+              "target": "T2",
+              "state": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T2/state.json",
+              "generated": 6,
+              "returned_glb": 4,
+              "admitted": 0,
+              "rows": [],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "b9dcaa1972d3c9bea1728e6e48de3b526de92c74c54f4f65932648651b57f11d"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "b9dcaa1972d3c9bea1728e6e48de3b526de92c74c54f4f65932648651b57f11d"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "dcc17116465ac3336268f59160c0660643bc9e881576833b5ce69028ebfe2008"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "dcc17116465ac3336268f59160c0660643bc9e881576833b5ce69028ebfe2008"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "ac55e34f993cf9749c54628cb4615eab1cde0d635a666ef037259458e717de95"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "ac55e34f993cf9749c54628cb4615eab1cde0d635a666ef037259458e717de95"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look1/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 6
+        },
+        {
+          "look": "look2",
+          "targets": [
+            {
+              "target": "T2",
+              "state": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look2/T2/state.json",
+              "generated": 12,
+              "returned_glb": 12,
+              "admitted": 0,
+              "rows": [],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "410436ec71cc648f48548a89c5e9e07140b0d534469b3343d07c0b25b881f308"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "410436ec71cc648f48548a89c5e9e07140b0d534469b3343d07c0b25b881f308"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "dde5bc2e40afb5e0a6fe2246a52c6977e7f3a35b2e33ff4b05b596fce760f90c"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "dde5bc2e40afb5e0a6fe2246a52c6977e7f3a35b2e33ff4b05b596fce760f90c"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "28100076edf39db4ad766b0f0750b1e1d3be6eaf3618dfac265e672a6e47af9f"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "28100076edf39db4ad766b0f0750b1e1d3be6eaf3618dfac265e672a6e47af9f"
+                  ]
+                }
+              ],
+              "decision": "outputs/crossing/route/stress_v8_gate/D/segment1/looks/look2/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 0
+        }
+      ],
+      "first_inputs_equal_original": {
+        "T1": false,
+        "T2": false
+      }
+    },
+    "original": {
+      "run": "evidence/reviews/beforestep_r1/lux/original_b",
+      "summary": {
+        "policy": "imagination",
+        "tag": "imagination",
+        "see_dark": false,
+        "imagine": "lux",
+        "result": "arrived",
+        "controller": "rules",
+        "controller_sha256": null,
+        "pose_controller_sha256": null,
+        "scene_id": "stress_v8",
+        "goal": [
+          10.5,
+          0.0
+        ],
+        "start_mode": "scene_start",
+        "execution_elapsed_s": 111.64,
+        "sensor_mode": "live",
+        "looks": 1,
+        "final_pose": [
+          10.492,
+          -0.001,
+          10.57
+        ],
+        "sim_time_s": 112.84,
+        "wall_s": 1223.6,
+        "collision": null
+      },
+      "looks": [
+        {
+          "look": "look1",
+          "targets": [
+            {
+              "target": "T1",
+              "state": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/state.json",
+              "generated": 6,
+              "returned_glb": 6,
+              "admitted": 6,
+              "rows": [
+                {
+                  "candidate": "A1",
+                  "task_id": 5958685,
+                  "back_error_m": 0.0003443319791820443,
+                  "predicted_farthest_m": 4.8746979067376,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.04999999999999982,
+                  "contact_band_candidate_present": true,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_A1.npy",
+                  "sha256": "df0b0b8c5a4e631217ecba0b5fb344c8abb373ebc75c4cc8b09ef12e23e5bb7d"
+                },
+                {
+                  "candidate": "A2",
+                  "task_id": 5958690,
+                  "back_error_m": 0.0003443319791820443,
+                  "predicted_farthest_m": 4.8746979067376,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.04999999999999982,
+                  "contact_band_candidate_present": true,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_A2.npy",
+                  "sha256": "30e1b8f18dc07330eabc089867a051f6c96ff729dcf3a1c04e566e0e8727271f"
+                },
+                {
+                  "candidate": "B1",
+                  "task_id": 5958877,
+                  "back_error_m": 0.35028688568045485,
+                  "predicted_farthest_m": 5.224640460438873,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.2999999999999998,
+                  "contact_band_candidate_present": true,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_B1.npy",
+                  "sha256": "faafbe6d8a455b22f7aff46838c1c0e1595f6fda176dae173d8f9a97d97923e6"
+                },
+                {
+                  "candidate": "B2",
+                  "task_id": 5958911,
+                  "back_error_m": 0.35028688568045485,
+                  "predicted_farthest_m": 5.224640460438873,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.34999999999999964,
+                  "contact_band_candidate_present": true,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_B2.npy",
+                  "sha256": "6f92bb0c446c306e46acba6f54a6f3f85a9483bc7dc4602f65cbd50240475e4e"
+                },
+                {
+                  "candidate": "C1",
+                  "task_id": 5958948,
+                  "back_error_m": 0.10034431551188838,
+                  "predicted_farthest_m": 4.974697890270306,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.15000000000000036,
+                  "contact_band_candidate_present": true,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_C1.npy",
+                  "sha256": "c8d35319b742899ea494f6ffa7182bcbcbe9159596f49f7a49bfd21f4a992968"
+                },
+                {
+                  "candidate": "C2",
+                  "task_id": 5959025,
+                  "back_error_m": 0.10034431551188838,
+                  "predicted_farthest_m": 4.974697890270306,
+                  "truth_farthest_m": 4.874353574758418,
+                  "associated_true_rocks": [
+                    "A"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": 0.15000000000000036,
+                  "contact_band_candidate_present": true,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/footprint_C2.npy",
+                  "sha256": "ff3c49aa220259ed6b4f67efc6495a0b22231830602f4b05a5c3d108e9cbb962"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "36c6920301bb5aee1a23970af7b9229a100ee42ffb0aa70f9e84edd61c2aa5cd"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "36c6920301bb5aee1a23970af7b9229a100ee42ffb0aa70f9e84edd61c2aa5cd"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "133c086f7f897a04faf034cb5a6d87d3cea1efabca350cab7b734afc4089e709"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "133c086f7f897a04faf034cb5a6d87d3cea1efabca350cab7b734afc4089e709"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35"
+                  ]
+                }
+              ],
+              "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json"
+            },
+            {
+              "target": "T2",
+              "state": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/state.json",
+              "generated": 6,
+              "returned_glb": 5,
+              "admitted": 2,
+              "rows": [
+                {
+                  "candidate": "A2",
+                  "task_id": 5958654,
+                  "back_error_m": -0.699856413070945,
+                  "predicted_farthest_m": 6.725328877387817,
+                  "truth_farthest_m": 7.425185290458762,
+                  "associated_true_rocks": [
+                    "B"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": null,
+                  "contact_band_candidate_present": false,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/footprint_A2.npy",
+                  "sha256": "95ce07a860f7660261ac8cedae9f0c4456f27f9c59e83896c5d7e49bf9cda337"
+                },
+                {
+                  "candidate": "C1",
+                  "task_id": 5958934,
+                  "back_error_m": -0.5999999011962327,
+                  "predicted_farthest_m": 6.825185389262529,
+                  "truth_farthest_m": 7.425185290458762,
+                  "associated_true_rocks": [
+                    "B"
+                  ],
+                  "contact_band_y_m": [
+                    -0.465,
+                    -0.265
+                  ],
+                  "contact_band_back_error_m": null,
+                  "contact_band_candidate_present": false,
+                  "footprint": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/footprint_C1.npy",
+                  "sha256": "1f9526a5c01e6ddeb2ec07212573a236e69ccd8a4368bc113227ac25eeac8567"
+                }
+              ],
+              "inputs": [
+                {
+                  "sample": "A1",
+                  "sha256": [
+                    "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf"
+                  ]
+                },
+                {
+                  "sample": "A2",
+                  "sha256": [
+                    "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf"
+                  ]
+                },
+                {
+                  "sample": "B1",
+                  "sha256": [
+                    "f7ad06b194c998f40fca8aa49e931e18b0571dbb54d35f793d79b2426ab13e0b"
+                  ]
+                },
+                {
+                  "sample": "B2",
+                  "sha256": [
+                    "f7ad06b194c998f40fca8aa49e931e18b0571dbb54d35f793d79b2426ab13e0b"
+                  ]
+                },
+                {
+                  "sample": "C1",
+                  "sha256": [
+                    "39c99c447cbb30ee0a0ffd0f87a22653d9439a9605a031c0e20ed8423aab3d2c"
+                  ]
+                },
+                {
+                  "sample": "C2",
+                  "sha256": [
+                    "39c99c447cbb30ee0a0ffd0f87a22653d9439a9605a031c0e20ed8423aab3d2c"
+                  ]
+                }
+              ],
+              "decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json"
+            }
+          ],
+          "generated": 12,
+          "admitted": 8
+        }
+      ]
+    },
+    "read_only_planner_tests": [
+      {
+        "look": 1,
+        "saved_state": "outputs/crossing/route/stress_v8_gate/A/segment1/decision/look1_state.npy",
+        "start": [
+          2.2917097567343356,
+          -0.5002016821930501
+        ],
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "candidate_union_cells": 435,
+        "zero_admitted_fallback_cells": 2560,
+        "target_unions": [
+          "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1",
+          "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T2"
+        ],
+        "planner_paths": {
+          "production_with_zero_admitted_fallback": false,
+          "admitted_candidates_only": true,
+          "without_imagination_or_fallback": true,
+          "true_high_rock_occupancy": true
+        },
+        "margin_planner_paths": {
+          "production_with_zero_admitted_fallback": false,
+          "admitted_candidates_only": true,
+          "without_imagination_or_fallback": true,
+          "true_high_rock_occupancy": true
+        }
+      },
+      {
+        "look": 2,
+        "saved_state": "outputs/crossing/route/stress_v8_gate/A/segment1/decision/look2_state.npy",
+        "start": [
+          4.074952812711008,
+          0.3970295501674754
+        ],
+        "goal": [
+          8.15,
+          0.0
+        ],
+        "candidate_union_cells": 435,
+        "zero_admitted_fallback_cells": 1741,
+        "target_unions": [
+          "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look1/T1",
+          "outputs/crossing/route/stress_v8_gate/A/segment1/looks/look2/T2"
+        ],
+        "planner_paths": {
+          "production_with_zero_admitted_fallback": false,
+          "admitted_candidates_only": true,
+          "without_imagination_or_fallback": true,
+          "true_high_rock_occupancy": true
+        },
+        "margin_planner_paths": {
+          "production_with_zero_admitted_fallback": false,
+          "admitted_candidates_only": true,
+          "without_imagination_or_fallback": true,
+          "true_high_rock_occupancy": true
+        }
+      }
+    ]
+  }
+}

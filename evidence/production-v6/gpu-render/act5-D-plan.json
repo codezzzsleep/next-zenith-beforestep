@@ -1,0 +1,36 @@
+{
+  "shots": [
+    {
+      "id": "s09-F3002-D-v2",
+      "sources": [
+        {
+          "path": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/segment1/full-record/trajectory.npz",
+          "sha256": "35f628466ae6944e44cc933f62fa1d963514789a001f384ff549e445747f0928"
+        }
+      ],
+      "scene": "suite_r2_v4_F3_002_gate",
+      "route": "suite_r2_v4_F3_002_gate",
+      "duration_s": 14,
+      "speed": null,
+      "camera": "follow-v2",
+      "camera_spec": {
+        "kind": "follow",
+        "azimuth": -40,
+        "elevation": -17,
+        "distance": 1.7,
+        "x_offset": 0.08,
+        "y_offset": 0,
+        "z_scale": 0.65
+      },
+      "sim_start": 0.020000000000000004,
+      "sim_end": 58.90000000002602,
+      "act5_authority": "NOTE_FOR_CODEX_ACT5.md",
+      "terminal_hold_s": 2,
+      "source_classification": "Formal D stopped57.7s/2looks/imagined_blocked, no gate or legs; actual first segment byte-identical toA"
+    }
+  ],
+  "authority": "NOTE_FOR_CODEX_ACT5.md §4",
+  "D_terminal": true,
+  "first_segment_byte_identical_toA": true,
+  "gpu_shutdown": false
+}

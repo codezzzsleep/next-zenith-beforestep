@@ -1,13 +1,11 @@
 # 先见一步 · BeforeStep
 
 <!-- PHOTO-STORY-README-START -->
-机器人只拍到石头的一面。矮石头，相机看得到它的顶和背，轮腿抬腿跨过去；高石头，背面永远拍不到，Lux3D 把它想象出来，机器人检验、预演之后再绕。一条路上两种石头都有，少了腿或少了想象，都到不了。
+月面机器人只看得到石头朝向它的一面。Lux3D 替它把背面想出来；我们把生成结果当作假设，先核对观测，再在每一份准入想象里预演完整路线，全部安全才迈步。想象有用，也会出错；矮门槛的跨越靠看见的几何与轮腿动作。
 
-[自检拦下了什么](docs/report.md#全部反事实本批自检偏保守)
+[最新 3 分 05 秒中文成片与全部 39 条素材](evidence/production-v6/README.md) · [制作代码](tools/production_v6/README.md) · [原方法与失败](docs/reviews/STORY_V3.md)
 
-[高石头绕行 R1 到 R3](docs/reviews/RESULT_BEFORESTEP_R1.md)
-
-[腿与想象：同路两种石头](docs/crossing.md)
+[高石头绕行 R1 到 R3](docs/reviews/RESULT_BEFORESTEP_R1.md) · [同路两种石头的实际结果](docs/crossing.md)
 <!-- PHOTO-STORY-README-END -->
 
 ## 三分钟跑起来 · Start in three minutes

@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BeforeStep · 完整项目报告</title><style>@page{size:A4;margin:15mm}body{max-width:900px;margin:30px auto;padding:0 18px;color:#202a30;font:14px/1.75 "WenQuanYi Zen Hei",sans-serif;overflow-wrap:anywhere}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}h3{break-after:avoid}p,li{orphans:3;widows:3}img{max-width:100%;height:auto;break-inside:avoid}table{border-collapse:collapse;width:100%;font-size:11px}th,td{border:1px solid #b7bfc2;padding:6px;vertical-align:top;overflow-wrap:anywhere}a{color:#236a5c}pre{white-space:pre-wrap}code{font-size:11px}@media print{body{margin:0;padding:0}img{max-height:235mm;object-fit:contain}table{break-inside:auto}tr{break-inside:avoid}}</style></head><body><h1 id="_1">先见一步：一张照片，变成一整块石头</h1>
 <!-- ADDENDUM3-LUX-USAGE-START -->
-<p>Lux3D 使用：本项目调用图像转三维任务创建接口（单图 <code>img</code> / 多图 <code>imgs</code>）、任务查询接口以及官方上传流程。客户端账本有 <strong>467 个真实已创建任务</strong>，其中 438 份返回 GLB、29 份服务端失败；逐项任务号与输入 SHA 见 <a href="evidence/crossing/route/lux-usage.json">公开调用账本</a>。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 113/400。</p>
+<p>Lux3D 使用：本项目调用图像转三维任务创建接口（单图 <code>img</code> / 多图 <code>imgs</code>）、任务查询接口以及官方上传流程。客户端账本有 <strong>467 个真实已创建任务</strong>，其中 438 份返回 GLB、29 份服务端失败；逐项任务号与输入 SHA 见 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/crossing/route/lux-usage.json">公开调用账本</a>。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 113/400。</p>
 <p>陈列室的单模型查看使用官方 <code>@manycore/aholo-viewer</code> 1.14.0，直接加载原始 GLB，支持拖动旋转与缩放。</p>
 <p>生成结果是高石头看不见部分的三维假设：先与可见观测核对，准入后进入各个完整物理预演世界，全部安全才实走。门槛石的跨越用实拍几何，Lux3D 在门槛石上的开发没有被记为跨越成功。</p>
 <!-- ADDENDUM3-LUX-USAGE-END -->
@@ -14,7 +14,7 @@
 <p>锚点真实 Lux 分支1眼、112.84秒到达（仿真行程，不含云端生成墙钟），首眼12个真实任务返回11个模型、1个供应商失败。陈列室保留全部306份既有真实生成模型。</p>
 <p>原8个已知决定性场景：3到达/3停车/2碰撞；5个指定留出：原想象1到达/2停车/2碰撞，最终v3赛后修订0到达/5停车/0碰撞。首页的13场/4到达/4碰撞是两个分层的算术相加，技术结论分别报告；全12个已知复测为3到达/9停车/0碰撞。</p>
 <p>四次原方法碰撞均保留：suite_r2_v4_F1_020、suite_r2_v4_F3_004、suite_r2_v4_F0_003、suite_r2_v4_F3_006。F1_020碰到从未形成观测目标的C；另外三场低估B背面，正面自检与所有预演通过后仍实际接触。early oldv2 F1_003碰撞另列。原拒绝反事实17/102碰撞，R3已知0/17、留出13/112，合计231次干预、30次碰撞；干预次数不等于独立生成资产份数。</p>
-<p><a href="index.html">作品首页</a> · <a href="gallery.html">全部想象</a> · <a href="overlays.html">真假叠合</a> · <a href="evidence/award/acceptance/home-numbers.json">数字审计</a>。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/index.html">作品首页</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html">全部想象</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/overlays.html">真假叠合</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/acceptance/home-numbers.json">数字审计</a>。</p>
 <!-- PHOTO-STORY-REPORT-END -->
 
 <p>Next Zenith · Aholo Lux3D。报告保留R1原窄道锚点与R2预注册场景组；R1主实验源码 <code>2147b2f</code>，R2源码身份逐场保存在原运行记录。完整结果见<a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/reviews/RESULT_BEFORESTEP_R1.md">R1执行记录</a>与<a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/reviews/RESULT_BEFORESTEP_R2.md">R2执行记录</a>。</p>
@@ -59,7 +59,7 @@
 <h3 id="_4">全部准入候选的背面误差</h3>
 <p><img alt="原R1和R2全部准入候选的赛后背面误差分布" src="media/r3-back-error.png" /></p>
 <p>原 R1 + R2 共 <strong>64</strong> 份通过自检的候选，其中 <strong>23</strong> 份的背面比关联真值短 <strong>5 cm 以上</strong>。误差为每次观测时沿机器人前进轴的候选占地最远端减真值最远端；图中的负 <strong>5 cm</strong> 线是冻结余量。联合观测对关联真值并集统计，所有准入候选逐份入列，真值仅用于赛后诊断，不能证明阴影中的几何已经还原。</p>
-<p><a href="evidence/reviews/beforestep_r3/back-error/stats.json">原始统计与每份候选身份</a> · <a href="evidence/reviews/beforestep_r3/failure-facts.json">两次失败的原始数值</a> · <a href="evidence/video/index.json">给负责人渲染视频的数据索引</a></p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r3/back-error/stats.json">原始统计与每份候选身份</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r3/failure-facts.json">两次失败的原始数值</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/video/index.json">给负责人渲染视频的数据索引</a></p>
 <!-- R3-FAILURE-END -->
 
 <!-- AWARD-HOLDOUT-FAILURES-START -->
@@ -68,7 +68,7 @@
 <li><strong>suite_r2_v4_F0_003</strong>：采纳几何的背面偏短，正面自检通过、18个候选世界完整预演全部通过，原路线仍在真实B旁发生接触（93.7s）；沿原观测前进轴的准入候选背面误差为 <code>[-0.3999138511360245, -0.3999425454676233, -0.7997990079404529]</code> m，计划二维包络侵入代理为 <code>0.17843487917553086</code> m。</li>
 <li><strong>suite_r2_v4_F3_006</strong>：采纳几何的背面偏短，正面自检通过、12个候选世界完整预演全部通过，原路线仍在真实B旁发生接触（83.28s）；沿原观测前进轴的准入候选背面误差为 <code>[-0.8502062351769979, -0.8502062351769979]</code> m，计划二维包络侵入代理为 <code>0.12694207414826353</code> m。</li>
 </ul>
-<p>背面误差和二维包络代理均为赛后真值诊断，不是生产输入，也不替代实际接触；不从它们推导三维穿透深度。只描述这两次原方法失败，最终v3修订停车的结果另列。<a href="evidence/award/holdout-collisions.json">原身份、任务、候选及数值</a>。</p>
+<p>背面误差和二维包络代理均为赛后真值诊断，不是生产输入，也不替代实际接触；不从它们推导三维穿透深度。只描述这两次原方法失败，最终v3修订停车的结果另列。<a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/holdout-collisions.json">原身份、任务、候选及数值</a>。</p>
 <!-- AWARD-HOLDOUT-FAILURES-END -->
 
 <h2 id="_6">窄道的约束</h2>
@@ -91,42 +91,42 @@
 <td>无路线、停车</td>
 <td>5</td>
 <td>142.2 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">原始身份</a></td>
 </tr>
 <tr>
 <td>黑影测深对照</td>
 <td>到达</td>
 <td>3</td>
 <td>147.26 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">原始身份</a></td>
 </tr>
 <tr>
 <td>直接走</td>
 <td>碰撞</td>
 <td>1</td>
 <td>80.87 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">原始身份</a></td>
 </tr>
 <tr>
 <td>想一想再走</td>
 <td>到达</td>
 <td>1</td>
 <td>112.84 s</td>
-<td><a href="evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">原始身份</a></td>
 </tr>
 <tr>
 <td>真实形状检验</td>
 <td>到达</td>
 <td>1</td>
 <td>115.88 s</td>
-<td><a href="evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">原始身份</a></td>
 </tr>
 </tbody>
 </table>
 <p><img alt="三种策略的实际轨迹" src="media/r1-routes.png" /></p>
 <p>这些结果支持在本次冻结场景中生成几何对行动判断的作用；不宣称对任意石头或场景都可靠。地图上的扫描轮廓只用于赛后复盘，生产规划器不读取隐藏真值。</p>
 <h2 id="_8">真实生成、自检与被拒候选</h2>
-<p>首眼共提交 12 个独立真实任务，获得 11 个 GLB、1 个服务端失败。A 的六份全部准入；B 的五个可用模型中两份准入、三份拒绝。B2 任务 <code>5958893</code> 失败，无 GLB；不能将它计为自检拒绝。所有原始输入、实际上传字节、任务身份、模型、矩阵和占据保留在 <a href="evidence/reviews/beforestep_r1/lux/original_b">完整实验数据</a>。</p>
+<p>首眼共提交 12 个独立真实任务，获得 11 个 GLB、1 个服务端失败。A 的六份全部准入；B 的五个可用模型中两份准入、三份拒绝。B2 任务 <code>5958893</code> 失败，无 GLB；不能将它计为自检拒绝。所有原始输入、实际上传字节、任务身份、模型、矩阵和占据保留在 <a href="https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/evidence/reviews/beforestep_r1/lux/original_b">完整实验数据</a>。</p>
 <table>
 <thead>
 <tr>
@@ -187,7 +187,7 @@
 <p>按每一个保存 qpos 重建原 MuJoCo 可碰撞几何，其最小有符号距离为 A 256.109 mm、B 47.541 mm，均为正，与执行无碰撞相容。XY 的 0.76×0.66 m 矩形包络对 B 间隙为零，中心距离减半车宽最小为 -62.778 mm；这是平面包络指标，同时公开（中心减半宽=-0.062778 m），不当作三维接触。原规划始终遵循冻结的 5 cm 占据扩张规则；不将 47.541 mm 向上写成真实 5 cm。</p>
 <p><img alt="真实可碰撞几何的最小距离" src="media/r1-clearance.png" /></p>
 <p>原运行墙钟 1223.6 s，含冷配准和完整物理预演，不含此前云端排队，不能称为端到端延迟；仿真总时长与执行时间分别记录在summary。</p>
-<p>原始 <a href="evidence/reviews/beforestep_r1/lux/original_b/eval.json">eval</a>、<a href="evidence/reviews/beforestep_r1/lux/original_b/physical_clearance.json">三维最近点和时刻</a> 与 <a href="evidence/reviews/beforestep_r1/replay_validation.json">完整重放核验</a> 可独立检查。</p>
+<p>原始 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/eval.json">eval</a>、<a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/physical_clearance.json">三维最近点和时刻</a> 与 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/replay_validation.json">完整重放核验</a> 可独立检查。</p>
 <h2 id="_12">全部反事实：本批自检偏保守</h2>
 <p>按预注册逐一只信 B 第一眼被拒的 A1、B1、C2，不挑选，不补看，不重新调用 Lux3D。三次均到达、无碰撞，碰撞数 0/3。因此此次不能说“自检挡住了会撞的想象”；结论是本批自检偏保守。</p>
 <table>
@@ -204,29 +204,29 @@
 <td>B/A1</td>
 <td>到达、无碰撞</td>
 <td>104.0 s</td>
-<td><a href="evidence/reviews/beforestep_r1/counterfactuals/A1/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/counterfactuals/A1/run_identity.json">原始身份</a></td>
 </tr>
 <tr>
 <td>B/B1</td>
 <td>到达、无碰撞</td>
 <td>104.0 s</td>
-<td><a href="evidence/reviews/beforestep_r1/counterfactuals/B1/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/counterfactuals/B1/run_identity.json">原始身份</a></td>
 </tr>
 <tr>
 <td>B/C2</td>
 <td>到达、无碰撞</td>
 <td>119.16 s</td>
-<td><a href="evidence/reviews/beforestep_r1/counterfactuals/C2/run_identity.json">原始身份</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/counterfactuals/C2/run_identity.json">原始身份</a></td>
 </tr>
 </tbody>
 </table>
 <h2 id="_13">关卡：先选，再揭晓</h2>
-<p>每关先看真实第一眼，选策略，回放原物理轨迹，再看真值与全部候选、记分。<a href="levels.html">进入12关</a>。</p>
+<p>每关先看真实第一眼，选策略，回放原物理轨迹，再看真值与全部候选、记分。<a href="https://codezzzsleep.github.io/next-zenith-beforestep/levels.html">进入12关</a>。</p>
 <!-- SUITE-START -->
 <h1 id="_14">预注册月面场景组</h1>
 <p>场景组在任何本轮 Lux3D 结果之前冻结。选择只依据保守、see-dark、乐观和真实形状检验四次非 Lux 运行；各类别按种子从小到大取决定性与普通场景，stress_v8 直接使用已完成的 R1 锚点。冻结后不换场景、不放宽门槛、不迭代控制器。</p>
 <p>原冻结 12 个场景，完成 12 个。未完成：无。</p>
-<p><a href="config/suite/frozen.json">冻结名单与预期</a> · <a href="evidence/suite/summary.json">原始结果总表</a></p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/suite/frozen.json">冻结名单与预期</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/summary.json">原始结果总表</a></p>
 <h2 id="_15">候选池分布</h2>
 <table>
 <thead>
@@ -295,104 +295,104 @@
 <tbody>
 <tr>
 <td>stress_v8 / F0 / 决定性 / R1锚点</td>
-<td>安全停车 · 5眼 · 142.2s · <a href="evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">身份</a></td>
-<td>到达 · 3眼 · 147.26s · <a href="evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 80.87s · <a href="evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 115.88s · <a href="evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 112.84s · <a href="evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 142.2s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 147.26s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.87s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 115.88s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/section25_final_base/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 112.84s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r1/lux/original_b/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F0_001 / F0 / 决定性 / 1</td>
-<td>安全停车 · 5眼 · 142.92s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 3眼 · 145.24s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 80.83s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 114.84s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/truth/run_identity.json">身份</a></td>
-<td>安全停车 · 2眼 · 54.58s · <a href="evidence/suite/scenes/suite_r2_v4_F0_001/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 142.92s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_001/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 145.24s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.83s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 114.84s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_001/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 54.58s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_001/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F0_005 / F0 / 普通 / 5</td>
-<td>安全停车 · 5眼 · 143.98s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 3眼 · 151.76s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/see_dark/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 102.42s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 114.6s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/truth/run_identity.json">身份</a></td>
-<td>安全停车 · 2眼 · 53.0s · <a href="evidence/suite/scenes/suite_r2_v4_F0_005/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 143.98s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_005/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 151.76s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_005/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.42s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_005/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 114.6s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_005/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 53.0s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F0_005/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F1_001 / F1 / 决定性 / 1</td>
-<td>安全停车 · 5眼 · 111.74s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/conservative/run_identity.json">身份</a></td>
-<td>碰撞 · 4眼 · 91.03s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 72.47s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 2眼 · 124.38s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/truth/run_identity.json">身份</a></td>
-<td>安全停车 · 2眼 · 42.7s · <a href="evidence/suite/scenes/suite_r2_v4_F1_001/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 111.74s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_001/runs/conservative/run_identity.json">身份</a></td>
+<td>碰撞 · 4眼 · 91.03s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 72.47s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 2眼 · 124.38s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_001/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 42.7s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_001/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F1_020 / F1 / 决定性 / 20</td>
-<td>安全停车 · 5眼 · 129.12s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/conservative/run_identity.json">身份</a></td>
-<td>未完成 · 4眼 · 121.09s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 79.24s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 78.16s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/truth/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 61.46s · <a href="evidence/suite/scenes/suite_r2_v4_F1_020/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 129.12s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_020/runs/conservative/run_identity.json">身份</a></td>
+<td>未完成 · 4眼 · 121.09s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_020/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 79.24s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_020/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 78.16s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_020/runs/truth/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 61.46s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_020/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F1_003 / F1 / 普通 / 3</td>
-<td>碰撞 · 4眼 · 134.49s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 5眼 · 129.45s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/see_dark/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 105.18s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 99.64s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/truth/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 108.0s · <a href="evidence/suite/scenes/suite_r2_v4_F1_003/runs/imagination/run_identity.json">身份</a></td>
+<td>碰撞 · 4眼 · 134.49s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_003/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 5眼 · 129.45s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_003/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 105.18s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_003/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 99.64s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_003/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 108.0s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F1_003/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F2_003 / F2 / 决定性 / 3</td>
-<td>安全停车 · 5眼 · 83.06s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 4眼 · 165.2s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 82.79s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 124.92s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/truth/run_identity.json">身份</a></td>
-<td>安全停车 · 2眼 · 57.8s · <a href="evidence/suite/scenes/suite_r2_v4_F2_003/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 83.06s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_003/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 4眼 · 165.2s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_003/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 82.79s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_003/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 124.92s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_003/runs/truth/run_identity.json">身份</a></td>
+<td>安全停车 · 2眼 · 57.8s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_003/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F2_007 / F2 / 决定性 / 7</td>
-<td>安全停车 · 5眼 · 83.33s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 4眼 · 157.28s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 80.41s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 112.56s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/truth/run_identity.json">身份</a></td>
-<td>到达 · 2眼 · 128.4s · <a href="evidence/suite/scenes/suite_r2_v4_F2_007/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 83.33s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_007/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 4眼 · 157.28s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_007/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.41s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_007/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 112.56s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_007/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 2眼 · 128.4s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_007/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F2_001 / F2 / 普通 / 1</td>
-<td>安全停车 · 5眼 · 83.43s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 3眼 · 133.18s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/see_dark/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 102.5s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 102.5s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/truth/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 102.7s · <a href="evidence/suite/scenes/suite_r2_v4_F2_001/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 83.43s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_001/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 133.18s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.5s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.5s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_001/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 102.7s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F2_001/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F3_002 / F3 / 决定性 / 2</td>
-<td>安全停车 · 5眼 · 218.48s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 5眼 · 119.05s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 80.4s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 117.54s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/truth/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 107.6s · <a href="evidence/suite/scenes/suite_r2_v4_F3_002/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 5眼 · 218.48s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_002/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 5眼 · 119.05s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_002/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 80.4s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_002/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 117.54s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_002/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 107.6s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_002/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F3_004 / F3 / 决定性 / 4</td>
-<td>安全停车 · 1眼 · 18.1s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/conservative/run_identity.json">身份</a></td>
-<td>未完成 · 4眼 · 129.63s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/see_dark/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 79.59s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 106.44s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/truth/run_identity.json">身份</a></td>
-<td>碰撞 · 1眼 · 82.14s · <a href="evidence/suite/scenes/suite_r2_v4_F3_004/runs/imagination/run_identity.json">身份</a></td>
+<td>安全停车 · 1眼 · 18.1s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_004/runs/conservative/run_identity.json">身份</a></td>
+<td>未完成 · 4眼 · 129.63s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_004/runs/see_dark/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 79.59s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_004/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 106.44s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_004/runs/truth/run_identity.json">身份</a></td>
+<td>碰撞 · 1眼 · 82.14s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_004/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 <tr>
 <td>suite_r2_v4_F3_001 / F3 / 普通 / 1</td>
-<td>未完成 · 2眼 · 111.83s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/conservative/run_identity.json">身份</a></td>
-<td>到达 · 3眼 · 125.97s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/see_dark/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 111.88s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/optimistic/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 107.64s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/truth/run_identity.json">身份</a></td>
-<td>到达 · 1眼 · 112.5s · <a href="evidence/suite/scenes/suite_r2_v4_F3_001/runs/imagination/run_identity.json">身份</a></td>
+<td>未完成 · 2眼 · 111.83s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_001/runs/conservative/run_identity.json">身份</a></td>
+<td>到达 · 3眼 · 125.97s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_001/runs/see_dark/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 111.88s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_001/runs/optimistic/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 107.64s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_001/runs/truth/run_identity.json">身份</a></td>
+<td>到达 · 1眼 · 112.5s · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/scenes/suite_r2_v4_F3_001/runs/imagination/run_identity.json">身份</a></td>
 </tr>
 </tbody>
 </table>
 <p>B4在付费前发现并纠正预演中的旧右墙配置遗漏。上表全部新增场景的四基线随后统一重跑，与真实Lux使用相同源码；最初用于选取的四次结果仍保存在冻结名单中，没有据修正后的结果增删或替换场景。
-<a href="evidence/suite/pool/crater-target-baselines/manifest_results.json">同源基线回归</a>。修正后分类发生变化的场景：无。</p>
+<a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/pool/crater-target-baselines/manifest_results.json">同源基线回归</a>。修正后分类发生变化的场景：无。</p>
 <p>每项时间为原始 summary 的仿真总时长，包含该运行的接近与观察，不包含云端排队。自检计算与预演计算墙钟另在原运行中保留，不作为端到端速度优势。所有运行使用 rules，传感器、机器人与5cm规则保持冻结；真实Lux流程使用同一准入门槛、最多两眼，保守、see-dark与乐观对照保留最多五眼，真实形状检验也最多两眼。真实形状是独立检验，未提供给生产规划器。</p>
 <h2 id="_17">候选与补看</h2>
 <table>
@@ -838,7 +838,7 @@
 <tr>
 <td>suite_r2_v4_F3_004 / F3</td>
 <td>真实物理接触</td>
-<td>{"body": "obstacle1", "robot_geom": null, "pos": [6.681, -0.3, 0.1], "t": 82.14}；未形成生成请求的岩石：C。候选自检和预演只覆盖实际形成的候选，不能证明未观测岩石安全。；实际碰撞位置在真值B占地内，却不在两份准入B候选的占地内；候选只约覆盖真值B投影的14%。12格预演没有覆盖这个真实接触位置。 <a href="evidence/suite/actual-collisions/suite_r2_v4_F3_004/diagnostic.json">原始比较</a></td>
+<td>{"body": "obstacle1", "robot_geom": null, "pos": [6.681, -0.3, 0.1], "t": 82.14}；未形成生成请求的岩石：C。候选自检和预演只覆盖实际形成的候选，不能证明未观测岩石安全。；实际碰撞位置在真值B占地内，却不在两份准入B候选的占地内；候选只约覆盖真值B投影的14%。12格预演没有覆盖这个真实接触位置。 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/suite/actual-collisions/suite_r2_v4_F3_004/diagnostic.json">原始比较</a></td>
 </tr>
 </tbody>
 </table>
@@ -849,7 +849,7 @@
 <h2 id="_22">赛后修订：想象只解释太阳的影子</h2>
 <p><strong>想象只解释太阳的影子；视线的影子，再看一眼。</strong> <code>imagination_strict</code> 出现在看过 R2 结果之后，始终标为赛后修订，不替换原 <code>imagination</code> 或预注册主结果。</p>
 <p>同一 5 cm 栅格，以已知地形、所有实际观测可见高度、通过自检的世界网格逐格最高点预测 0.05–5.00 m 的太阳阴影；方向取同一个渲染太阳函数。只有被解释的 DARK 可以通行，HIDDEN/UNSEEN 继续阻塞。补看和目标路线统一用这个占据定义，移动与最后转向都先在全部采纳世界完整预演。新方法最多 5 眼，第一眼的观测和真实任务逐字节复用。</p>
-<p>锚点首眼的真实形状阴影诊断：与原 DARK 全地图 IoU <strong>0.09316194010071562</strong>，在已观测地面内为 <strong>0.1489637305699482</strong>。方向已按同一渲染函数与方块单测核对，保留低 IoU 与差异，不调参数；真值仅用于这次诊断，不输入修订规划器。<a href="evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json">完整太阳诊断</a>。</p>
+<p>锚点首眼的真实形状阴影诊断：与原 DARK 全地图 IoU <strong>0.09316194010071562</strong>，在已观测地面内为 <strong>0.1489637305699482</strong>。方向已按同一渲染函数与方块单测核对，保留低 IoU 与差异，不调参数；真值仅用于这次诊断，不输入修订规划器。<a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r3/sun-diagnostic/diagnostic.json">完整太阳诊断</a>。</p>
 <h3 id="v3">已知冻结场景复测：最终 v3</h3>
 <p>这 12 场是看过原结果后的修订复测，<strong>不是样本外证据</strong>。已完成 12 场：到达 3、停车 9、碰撞 0；未完成 0 场。</p>
 <table>
@@ -1156,7 +1156,7 @@
 </tr>
 </tbody>
 </table>
-<p>原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 <a href="evidence/reviews/beforestep_r3/summary.json">R3 数据</a>，执行与失败判断见 <a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/reviews/RESULT_BEFORESTEP_R3.md">R3 执行记录</a>。</p>
+<p>原 R1/R2 数字、结果、冻结名单及证据保持原字节。完整六种运行、身份和复盘见 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/reviews/beforestep_r3/summary.json">R3 数据</a>，执行与失败判断见 <a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/reviews/RESULT_BEFORESTEP_R3.md">R3 执行记录</a>。</p>
 <!-- R3-METHOD-END -->
 
 <!-- AWARD-DEMO-START -->
@@ -1212,12 +1212,12 @@
 </table>
 <p>被拒候选反事实（修订想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
 <p>被拒候选反事实（原想象）：尝试 18，可执行 18，碰撞 0，不能执行 0；已执行干预的原观察前缀逐字节核验 True。</p>
-<p><a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/conservative_postmortem/eval.json">保守的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/see_dark_postmortem/eval.json">黑影测深对照的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/optimistic_postmortem/eval.json">乐观的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/truth_postmortem/eval.json">真实形状检验的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_postmortem/eval.json">原想象的独立复盘</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_strict_postmortem/eval.json">修订想象的独立复盘</a> · </p>
-<p><a href="award-demo.html">逐步可点的真实记录流程</a> · <a href="evidence/award/demo/plan.json">预期与选择规则</a> · <a href="evidence/award/demo/result.json">原始结果</a> · <a href="evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json">完整保全清单</a>。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/conservative_postmortem/eval.json">保守的独立复盘</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/see_dark_postmortem/eval.json">黑影测深对照的独立复盘</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/optimistic_postmortem/eval.json">乐观的独立复盘</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/truth_postmortem/eval.json">真实形状检验的独立复盘</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_postmortem/eval.json">原想象的独立复盘</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/runs/imagination_strict_postmortem/eval.json">修订想象的独立复盘</a> · </p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/award-demo.html">逐步可点的真实记录流程</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/plan.json">预期与选择规则</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/result.json">原始结果</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/demo/scenes/suite_r2_v4_F0_006/manifest.json">完整保全清单</a>。</p>
 <!-- AWARD-DEMO-END -->
 
 <h2 id="_25">沙盒</h2>
-<p><a href="sandbox.html">自由摆石头</a>是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/sandbox.html">自由摆石头</a>是轻量几何规划，不实时调用Lux3D或执行物理仿真。原12场首眼几何8/12一致，全部不一致公开。</p>
 <!-- AWARD-REPORT-START -->
 <h2 id="lux3d">Lux3D 在完整工程链中的位置</h2>
 <p><strong>真实观测（RGB-D）</strong> → 机器人实际首眼与补看。太阳黑影与视线遮挡分别处理。</p>
@@ -1227,7 +1227,7 @@
 <p><strong>逐候选完整预演（PHYSICS）</strong> → 每个采纳世界都以同一控制器走完整条路线，包含补看与最后转向。</p>
 <p><strong>独立执行与复盘（INDEPENDENT ACT）</strong> → 原想象有 2 场碰撞；最终 v3 已知场景碰撞 0、留出碰撞 0。oldv2 的碰撞保留。</p>
 <p><strong>被拒候选也测试（COUNTERFACTUAL）</strong> → 原批 17/102 碰撞；修订已知批 17 份、0 碰撞，留出批 112 份、13 碰撞。</p>
-<p><a href="evidence/award/facts.json">数字与原始来源</a>。仿真行程不包含云端生成与配准墙钟。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/facts.json">数字与原始来源</a>。仿真行程不包含云端生成与配准墙钟。</p>
 <h2 id="_26">关键资产迭代对比</h2>
 <p><img alt="六个版本真实模型与输入，浏览器实际渲染截图" src="media/award/asset-iterations.png" /></p>
 <p>图片由本仓库的真实 STL/GLB 在本地查看器加载后截取，没有重绘。V6 的 STL 仅做坐标轴转换后导出查看用 GLB；原件不改。v0.1 展示真实两图重试 M4，v0.3 示例为被拒候选；这不是控制变量相同的模型质量排名。</p>
@@ -1243,43 +1243,43 @@
 <tbody>
 <tr>
 <td>V6</td>
-<td><a href="assets/geometry/reference_v6/observation_fused.stl">模型</a> · <a href="evidence/award/asset-iterations/v6-input/crop_white.png">输入</a><br>真实融合结果；可见区域受观测约束，未知背面没有被证明。</td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/geometry/reference_v6/observation_fused.stl">模型</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/asset-iterations/v6-input/crop_white.png">输入</a><br>真实融合结果；可见区域受观测约束，未知背面没有被证明。</td>
 <td><code>e55c137494e7a810f75534a5d757ebec1da23c9ca560d5b5a6f0a20e37d75252</code></td>
-<td><a href="evidence/milestones/v6/config/unseen_v6_1_fusion.json">unseen_v6_1_fusion.json</a><br><a href="evidence/milestones/v6/config/unseen_v6_protocol.json">unseen_v6_protocol.json</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/milestones/v6/config/unseen_v6_1_fusion.json">unseen_v6_1_fusion.json</a><br><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/milestones/v6/config/unseen_v6_protocol.json">unseen_v6_protocol.json</a></td>
 </tr>
 <tr>
 <td>V7</td>
-<td><a href="assets/candidates/reference_v7/A_naive1.glb">模型</a> · <a href="assets/inputs/reference_v7/A_naive1.png">输入</a><br>原真实候选；阴影深度与多视角比较仍有失败。</td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/candidates/reference_v7/A_naive1.glb">模型</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/inputs/reference_v7/A_naive1.png">输入</a><br>原真实候选；阴影深度与多视角比较仍有失败。</td>
 <td><code>b52c8d2b0ec4d95b29d36e379bb0e0c8f8ec48eaf678b6f4d66a6f74c74b0276</code></td>
-<td><a href="evidence/milestones/v7/config/v5_admission.json">v5_admission.json</a><br><a href="evidence/milestones/v7/config/unseen_v7_protocol.json">unseen_v7_protocol.json</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/milestones/v7/config/v5_admission.json">v5_admission.json</a><br><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/milestones/v7/config/unseen_v7_protocol.json">unseen_v7_protocol.json</a></td>
 </tr>
 <tr>
 <td>V8</td>
-<td><a href="assets/candidates/reference_v8/look1/T1/B2.glb">模型</a> · <a href="assets/observations/reference_v8/looks/look1/T1/gen/variants/B2.png">输入</a><br>原窄道第一块采纳候选；第二块全拒，原任务停车。</td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/candidates/reference_v8/look1/T1/B2.glb">模型</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/observations/reference_v8/looks/look1/T1/gen/variants/B2.png">输入</a><br>原窄道第一块采纳候选；第二块全拒，原任务停车。</td>
 <td><code>5161562b0ff08802501a4c2c29a2fe42e4a0018af3c6112673ae6af0fe4c135a</code></td>
-<td><a href="evidence/milestones/v8/config/v5_admission.json">v5_admission.json</a><br><a href="evidence/milestones/v8/config/v5_protocol.json">v5_protocol.json</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/milestones/v8/config/v5_admission.json">v5_admission.json</a><br><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/milestones/v8/config/v5_protocol.json">v5_protocol.json</a></td>
 </tr>
 <tr>
 <td>v0.1</td>
-<td><a href="assets/candidates/4979742/tex_mesh.glb">模型</a> · <a href="assets/inputs/polar_retry_001/look1_T2.jpg">输入</a> · <a href="assets/inputs/polar_retry_001/look2_T2.jpg">另一输入</a><br>真实两图重试任务 4979742 / M4，仍被拒；工程重构不能替代几何证据。</td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/candidates/4979742/tex_mesh.glb">模型</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/inputs/polar_retry_001/look1_T2.jpg">输入</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/inputs/polar_retry_001/look2_T2.jpg">另一输入</a><br>真实两图重试任务 4979742 / M4，仍被拒；工程重构不能替代几何证据。</td>
 <td><code>ab211250eb52f1ede4958d4452bcb4ebfcccb6af6eac58f5b115786bdb49f73c</code><br><code>2cf5200405bddabefe4f87c4f838e8e326fc0363248c42f3a37b6898a146dba6</code></td>
-<td><a href="config/admission.json">admission.json</a><br><a href="config/protocol.json">protocol.json</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/admission.json">admission.json</a><br><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/protocol.json">protocol.json</a></td>
 </tr>
 <tr>
 <td>v0.2</td>
-<td><a href="assets/candidates/5027323/tex_mesh.glb">模型</a> · <a href="assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg">输入</a><br>实际关口任务 5027323；通过原自检，参与完整预演与执行。</td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/candidates/5027323/tex_mesh.glb">模型</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/observations/gate_passage_001/looks/look1/T1/gen/variants/A1_upload.jpg">输入</a><br>实际关口任务 5027323；通过原自检，参与完整预演与执行。</td>
 <td><code>99de31a9b0fa71acdb0f50793baaff06a67bda00151288052147d3b048f3ef0c</code></td>
-<td><a href="config/admission.json">admission.json</a><br><a href="config/protocol.json">protocol.json</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/admission.json">admission.json</a><br><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/protocol.json">protocol.json</a></td>
 </tr>
 <tr>
 <td>v0.3</td>
-<td><a href="assets/candidates/5125347/tex_mesh.glb">模型</a> · <a href="assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg">输入</a><br>实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。</td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/candidates/5125347/tex_mesh.glb">模型</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/assets/observations/trained_live_gate_001/looks/look1/T1/gen/variants/A1_upload.jpg">输入</a><br>实际任务 5125347，被拒；学习控制版本保留坏例，未放宽门槛。</td>
 <td><code>ac51a2e154e12cc34b4d161bc2524929af16682ffd73682e6ff9916f901dcca2</code></td>
-<td><a href="config/admission.json">admission.json</a><br><a href="config/protocol.json">protocol.json</a></td>
+<td><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/admission.json">admission.json</a><br><a href="https://codezzzsleep.github.io/next-zenith-beforestep/config/protocol.json">protocol.json</a></td>
 </tr>
 </tbody>
 </table>
-<p><a href="evidence/award/asset-iterations/manifest.json">所有模型、输入与配置的完整 SHA 表</a> · <a href="award-assets.html">可旋转对照</a>。V6 原观测与深度从历史证据逐字节保全在本仓库；v0.1 原上传的两张 JPEG 都有独立 SHA。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/asset-iterations/manifest.json">所有模型、输入与配置的完整 SHA 表</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/award-assets.html">可旋转对照</a>。V6 原观测与深度从历史证据逐字节保全在本仓库；v0.1 原上传的两张 JPEG 都有独立 SHA。</p>
 <!-- AWARD-REPORT-END -->
 
 <h2 id="_27">迭代、训练与相关工作</h2>
@@ -1294,7 +1294,7 @@
 <p><img alt="门槛石第五、六轮输入与自检" src="evidence/crossing/route/report-assets/low-inputs-3.png" /></p>
 <p>高石 B 保持同一块原石头和同一场景。第二眼来自机器人实际移动后的新观测，输入图、生成任务与自检结论分别记录；不会把第一眼的任务号当成第二眼的新调用。</p>
 <p><img alt="高石 B 的两次真实输入、模型和自检结论" src="evidence/crossing/route/report-assets/high-two-looks.png" /></p>
-<p><a href="evidence/crossing/route/report-assets/manifest.json">每张输入、原模型 SHA 与准入指标</a> · <a href="evidence/crossing/route/low-stone.json">六轮全部结果</a> · <a href="evidence/award/asset-iterations/manifest.json">核心历史版本与资产迭代</a>。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/crossing/route/report-assets/manifest.json">每张输入、原模型 SHA 与准入指标</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/crossing/route/low-stone.json">六轮全部结果</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/award/asset-iterations/manifest.json">核心历史版本与资产迭代</a>。</p>
 <!-- ADDENDUM3-ASSET-ITERATIONS-END -->
 
 <h2 id="_29">轮腿与想象</h2>
@@ -1358,7 +1358,7 @@
 </tr>
 </tbody>
 </table>
-<p>累计 53 份包括补充说明 2 允许收尾的批次；STORY 原字节保留此前 35 份的检查点。全部为开发数据，原十二场正式门槛测试已取消。模型叠合和 B 轨迹见 <a href="evidence/crossing/route/low-stone.json">开发素材</a>。</p>
+<p>累计 53 份包括补充说明 2 允许收尾的批次；STORY 原字节保留此前 35 份的检查点。全部为开发数据，原十二场正式门槛测试已取消。模型叠合和 B 轨迹见 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/crossing/route/low-stone.json">开发素材</a>。</p>
 <h3 id="_32">一条路上两种石头</h3>
 <p>首场四种车全部终态。石门位置已运行前提交，四项检查和每条终态都有独立证据。</p>
 <table>
@@ -1572,8 +1572,8 @@
 </table>
 <p>四组共用同一个物理车体；A 关闭逐轮跨越能力，只允许既有常规和高姿态轮行。B、C 若第一段没有到整备点，第二段不运行；这不计作腿失败。到整备点的车保存完整物理状态，使用同一个 MuJoCo 世界继续，qpos/qvel 交接 SHA 必须相等。门槛石只用实拍的可见几何与冻结 v72，未对门槛创建任何 Lux3D。</p>
 <h3 id="_33">事实出处与边界</h3>
-<p>事实出处保留原文核对记录：<a href="evidence/crossing/references.json">来源</a>。石门为简化任务，地形和几何限定在这一场；采用月面重力、被动暗区深度规则和理想目标分割，尚未验证实机。两极太阳约束及主动车灯方案的差异见原出处；仿真太阳是已冻结场景条件。</p>
+<p>事实出处保留原文核对记录：<a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/crossing/references.json">来源</a>。石门为简化任务，地形和几何限定在这一场；采用月面重力、被动暗区深度规则和理想目标分割，尚未验证实机。两极太阳约束及主动车灯方案的差异见原出处；仿真太阳是已冻结场景条件。</p>
 <p>动作按三轮支撑设计，单场两轮承重累计最长 0.424 秒；最长连续片段 0.090 秒。这是保留的支撑诊断，不增加闸门条件。结果不好看也不移动正式场景、不重跑终态、不改包络或准入阈值。原门槛预注册和十二场测试取消；同路两石的未完成项目由进度和结果表明确标出。</p>
-<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html">交互页面</a> · <a href="evidence/crossing/route/summary.json">四车原始结果</a> · <a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/story.md">负责人故事原文</a> · <a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md">补充说明 2</a>。</p>
+<p><a href="https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html">交互页面</a> · <a href="https://codezzzsleep.github.io/next-zenith-beforestep/evidence/crossing/route/summary.json">四车原始结果</a> · <a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/story.md">负责人故事原文</a> · <a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM2.md">补充说明 2</a>。</p>
 <h2 id="_34">学习附录</h2>
 <p>学习模型与 Arena 停在 2747/4000，未完成；<a href="https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/docs/training.md">历史版本与训练证据</a>保留。</p></body></html>

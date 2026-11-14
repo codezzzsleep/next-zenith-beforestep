@@ -3,6 +3,7 @@ import posixpath,re,sys
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'src')]
 import markdown
+PUBLIC='https://codezzzsleep.github.io/next-zenith-beforestep/'
 
 if __name__=='__main__':
     text=(ROOT/'docs/report.md').read_text()
@@ -16,7 +17,8 @@ if __name__=='__main__':
         relative=posixpath.normpath('docs/'+path)
         if kind=='src':target=relative.removeprefix('site/')
         elif relative.endswith('.md') or '.md#' in relative:target='https://github.com/codezzzsleep/next-zenith-beforestep/blob/main/'+relative
-        else:target=relative.removeprefix('site/')
+        elif (ROOT/relative).is_dir():target='https://github.com/codezzzsleep/next-zenith-beforestep/tree/main/'+relative
+        else:target=PUBLIC+relative.removeprefix('site/')
         return f'{kind}="{target}"'
     html=re.sub(r'(src|href)="([^"]+)"',asset,html)
     style='''@page{size:A4;margin:15mm}body{max-width:900px;margin:30px auto;padding:0 18px;color:#202a30;font:14px/1.75 "WenQuanYi Zen Hei",sans-serif;overflow-wrap:anywhere}h1{font-size:29px}h2{margin-top:28px;break-after:avoid}h3{break-after:avoid}p,li{orphans:3;widows:3}img{max-width:100%;height:auto;break-inside:avoid}table{border-collapse:collapse;width:100%;font-size:11px}th,td{border:1px solid #b7bfc2;padding:6px;vertical-align:top;overflow-wrap:anywhere}a{color:#236a5c}pre{white-space:pre-wrap}code{font-size:11px}@media print{body{margin:0;padding:0}img{max-height:235mm;object-fit:contain}table{break-inside:auto}tr{break-inside:avoid}}'''

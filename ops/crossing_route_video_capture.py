@@ -33,6 +33,8 @@ def record(browser,shot,force=False):
         if shot=='7-table':
             page.wait_for_function('document.documentElement.dataset.crossingReady==="true"',timeout=90000)
             page.locator('#route-results').scroll_into_view_if_needed()
+            page.locator('#route-results').evaluate('(element)=>element.scrollIntoView({block:"center"})')
+            result['result_table_centered']=True
             with urllib.request.urlopen(PUBLIC+'evidence/crossing/route/summary.json',timeout=60) as remote:result['summary_sha256']=hashlib.sha256(remote.read()).hexdigest()
         else:
             page.wait_for_function('document.querySelector("#hero-rock").loaded===true',timeout=90000)

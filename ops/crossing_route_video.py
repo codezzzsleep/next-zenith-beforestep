@@ -85,7 +85,8 @@ FIT='scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/
 def page_clip(shot,path,duration=None):
     index=PAGES/f'{shot}.json';data=json.loads(index.read_text());duration=duration or data['duration_s']
     if data['status']=='complete':
-        encode(['-ss',str(data['stable_start_s']),'-i',str(ROOT/data['path'])],FIT+',setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration=1',path,duration,shot=shot)
+        framing=('crop=1280:720:(iw-1280)/2:(ih-720)/2,' if shot=='7-table' else '')+FIT
+        encode(['-ss',str(data['stable_start_s']),'-i',str(ROOT/data['path'])],framing+',setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration=1',path,duration,shot=shot)
     else:
         still=PAGES/f'{shot}-still.jpg'
         if not still.exists():raise RuntimeError(f'No usable corresponding page for shot {shot}')
@@ -193,6 +194,7 @@ def render():
         if shot in errors:pending.append({'shot':shot,'numeric_difference':errors[shot]});continue
         try:
             inputs={'text':text[shot],'branch':branch if shot==7 else None,'duration':DURATIONS[shot-1]}
+            if shot==7:inputs['table_display_revision']=2
             for name in ([str(shot)] if shot in [2,3,4,5,8,9] else ['7-table'] if shot==7 else []):
                 p=PAGES/f'{name}.json';inputs[name]=sha(p) if p.exists() else None
             if shot in [6,7]:

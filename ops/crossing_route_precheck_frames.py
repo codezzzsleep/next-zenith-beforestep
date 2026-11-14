@@ -1,5 +1,5 @@
 """Replay the four authorized diagnostics; never advance physical simulation."""
-import argparse,json,sys,time
+import argparse,fcntl,json,sys,time
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1];sys.path[:0]=[str(ROOT),str(ROOT/'src')]
 import mujoco
@@ -87,4 +87,8 @@ def render(clip,preview=False):
 
 if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--clip',choices=['wheel-stuck','leg-cross','sill-close','connect','all'],default='all');p.add_argument('--preview',action='store_true');a=p.parse_args()
-    for clip in ['wheel-stuck','leg-cross','sill-close','connect'] if a.clip=='all' else [a.clip]:render(clip,a.preview)
+    for clip in ['wheel-stuck','leg-cross','sill-close','connect'] if a.clip=='all' else [a.clip]:
+        locks=ROOT.parent/'.memory/live/frame-render-locks';locks.mkdir(parents=True,exist_ok=True)
+        with (locks/(clip+'.lock')).open('a') as lock:
+            fcntl.flock(lock,fcntl.LOCK_EX)
+            render(clip,a.preview)

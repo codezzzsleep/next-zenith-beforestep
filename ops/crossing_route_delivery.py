@@ -22,7 +22,8 @@ def published_summary_current():
 if __name__=='__main__':
     with (LIVE/'addendum3-delivery.lock').open('a') as lock:
         fcntl.flock(lock,fcntl.LOCK_EX|fcntl.LOCK_NB)
-        state={'pid':os.getpid(),'status':'running','video':False,'pdf':False,'handoff':False,'extra_archives':[]};write(LIVE/'addendum3-delivery.json',state)
+        previous=json.loads((LIVE/'addendum3-delivery.json').read_text()) if (LIVE/'addendum3-delivery.json').exists() else {}
+        state={'video':False,'pdf':False,'handoff':False,'extra_archives':[],**previous,'pid':os.getpid(),'status':'running'};write(LIVE/'addendum3-delivery.json',state)
         while not all(state[k] for k in ['video','pdf','handoff']):
             terminal=(ROUTE/'stress_v8_gate/D/result.json').exists()
             plan=json.loads((EVIDENCE/'additional-scenes.json').read_text()) if (EVIDENCE/'additional-scenes.json').exists() else {'scenes':[]}
@@ -36,7 +37,8 @@ if __name__=='__main__':
                 artifact=package('additional-scene-'+key,files)
                 index=EVIDENCE/'additional-archive-index.json'
                 existing=json.loads(index.read_text()) if index.exists() else {'archives':[]}
-                existing['archives'].append(artifact);write(index,existing)
+                if not any(record['path']==artifact['path'] for record in existing['archives']):existing['archives'].append(artifact)
+                write(index,existing)
                 call('crossing_route_publish.py','--stage',key+'-raw','--message','Retain the complete additional scene observations and physics records')
                 state['extra_archives'].append(key);write(LIVE/'addendum3-delivery.json',state)
             if not state['pdf'] and ((terminal and all_extra) or datetime.now(timezone.utc)>=DEADLINE):
@@ -45,8 +47,12 @@ if __name__=='__main__':
                 state['pdf']=True;write(LIVE/'addendum3-delivery.json',state)
             ready=all(complete(ROUTE/'handoff/frames'/clip/'index.json') for clip in ['wheel-stuck','leg-cross','sill-close','connect'])
             if ready and not state['video'] and published_summary_current():
-                call('crossing_route_video_capture.py','--shot','7-table','--force')
-                call('crossing_route_video.py')
+                if not complete(ROOT/'outputs/crossing/route/video/render-state.json'):
+                    capture=ROOT/'outputs/crossing/route/video/pages/7-table.json'
+                    current=sha(EVIDENCE/'summary.json')
+                    if not capture.exists() or json.loads(capture.read_text()).get('summary_sha256')!=current:
+                        call('crossing_route_video_capture.py','--shot','7-table','--force')
+                    call('crossing_route_video.py')
                 if complete(ROOT/'outputs/crossing/route/video/render-state.json'):
                     check=ROOT/'docs/hackathon-submission.md';text=check.read_text().replace('demo-v2.mp4) 合成中','demo-v2.mp4) 初版已合成并核验');check.write_text(text)
                     call('crossing_route_publish.py','--stage','video-v2-first','--message','Publish the 154-second evidence-checked subtitled demo','--video')

@@ -10,7 +10,7 @@ DURATIONS=[8,10,14,14,22,30,30,16,10]
 
 def read(path):return json.loads((ROOT/path).read_text())
 def ffprobe(path):
-    return json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type,codec_name,width,height,r_frame_rate','-of','json',str(path)],text=True))
+    return json.loads(subprocess.check_output(['ffprobe','-v','error','-show_entries','format=duration:stream=codec_type,codec_name,width,height,r_frame_rate,start_time,nb_frames','-of','json',str(path)],text=True))
 
 def narrations():
     home=read('site/home-assets/data/site.json');exhibit=read('site/home-assets/data/exhibit.json')
@@ -85,7 +85,7 @@ FIT='scale=1920:1080:force_original_aspect_ratio=decrease,pad=1920:1080:(ow-iw)/
 def page_clip(shot,path,duration=None):
     index=PAGES/f'{shot}.json';data=json.loads(index.read_text());duration=duration or data['duration_s']
     if data['status']=='complete':
-        encode(['-ss',str(data['stable_start_s']),'-i',str(ROOT/data['path'])],FIT+',fps=30',path,duration,shot=shot)
+        encode(['-ss',str(data['stable_start_s']),'-i',str(ROOT/data['path'])],FIT+',setpts=PTS-STARTPTS,fps=30,tpad=stop_mode=clone:stop_duration=1',path,duration,shot=shot)
     else:
         still=PAGES/f'{shot}-still.jpg'
         if not still.exists():raise RuntimeError(f'No usable corresponding page for shot {shot}')
@@ -144,7 +144,7 @@ def make_shot(shot,branch):
         with np.load(ROOT/leg['source_runs'][0]['path']) as trajectory:
             phase=trajectory['phase'].astype(str);stamps=trajectory['t']
             lift=float(stamps[np.flatnonzero(phase=='front-right-lift')[0]])
-            seat=float(stamps[np.flatnonzero(phase=='front-right-seat')[0]])
+            seat=float(stamps[np.flatnonzero(phase=='front-right-seat')[-1]])
         begin=leg['time_range_s'][0];start=int(round((lift-begin)*30));span=seat-lift
         frame_clip('sill-close','side_follow',close,8,f'门槛特写：真实几何预检查（{span/8:.1f}×）',start,span)
         concat([split,close],path,'6')
@@ -201,8 +201,12 @@ def render():
             signature=hashlib.sha256(json.dumps(inputs,sort_keys=True).encode()).hexdigest();meta=OUT/'shots'/f'{shot}.json';path=OUT/'shots'/f'{shot}.mp4'
             old=json.loads(meta.read_text()) if meta.exists() else {}
             layout_revision=2 if shot==9 else 1
-            if old.get('signature')!=signature or old.get('layout_revision',1)!=layout_revision or not path.exists():
+            timing_valid=path.exists() and abs(float(ffprobe(path)['format']['duration'])-DURATIONS[shot-1])<.01
+            if old.get('signature')!=signature or old.get('layout_revision',1)!=layout_revision or not timing_valid:
                 path=make_shot(shot,branch);write(meta,{'shot':shot,'signature':signature,'layout_revision':layout_revision,'renderer_sha256':sha(Path(__file__)),'inputs':inputs,'path':str(path.relative_to(ROOT)),'sha256':sha(path)})
+            timing=ffprobe(path);stream=next(s for s in timing['streams'] if s['codec_type']=='video')
+            assert abs(float(timing['format']['duration'])-DURATIONS[shot-1])<.01
+            assert abs(float(stream['start_time']))<.01 and int(stream['nb_frames'])==DURATIONS[shot-1]*30
             done.append(path)
         except Exception as error:pending.append({'shot':shot,'reason':str(error)});print(json.dumps(pending[-1],ensure_ascii=False),flush=True)
     write(OUT/'render-state.json',{'pid':os.getpid(),'completed_shots':[int(p.stem) for p in done],'pending':pending,'branch':branch})

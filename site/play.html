@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>你来开机器人 · BeforeStep</title>
+  <meta name="description" content="用键盘或手机摇杆驾驶真实轮腿机器人模型，在浏览器实时物理仿真里转向、抬升、观察并抵达终点。">
+  <link rel="icon" href="favicon.svg"><link rel="stylesheet" href="robot-play.css">
+  <script type="importmap">{"imports":{"three":"./vendor/three/three.module.js"}}</script>
+  <script type="module" src="robot-play.js"></script>
+</head>
+<body>
+<header class="bar"><a href="index.html" class="brand">先见一步<span>BEFORESTEP / 驾驶舱</span></a><nav><a href="index.html">作品首页</a><a href="gallery.html">3D 模型</a><a href="report.html">项目报告</a></nav></header>
+<main class="shell">
+  <div class="intro"><div><p class="eyebrow">NOW YOU DRIVE / 轮腿机器人</p><h1>这次，你来开。</h1></div><p>把机器人开到终点。遇到遮挡，打开已有的 3D 模型，<br class="wide">再决定下一步怎么走。</p></div>
+  <div class="play-layout">
+    <section class="stage" aria-label="机器人实时驾驶场景">
+      <canvas id="world" tabindex="0" aria-label="机器人驾驶画面，WASD或方向键驾驶，空格刹车，R重置"></canvas>
+      <div class="top-hud"><span class="live-dot"></span><span id="run-state">准备驾驶</span><span id="elapsed">00:00</span><button id="pause" type="button" disabled>暂停</button></div>
+      <div class="camera-label" id="camera-label">跟随视角</div>
+      <div class="camera-mini-label">机器人相机 · 实时</div>
+      <div class="start-layer" id="start-layer"><div class="start-card"><span class="start-icon">↗</span><h2>坐进驾驶舱</h2><p id="loading-text">正在准备机器人与月面…</p><button id="start" class="primary" disabled>开始驾驶</button><p class="start-keys">W A S D / 方向键 · 手机用摇杆</p></div></div>
+      <div id="fallback" class="fallback" hidden><h2>此设备暂时无法打开驾驶场景</h2><p id="fallback-text"></p><a href="index.html#demo">观看机器人 Demo</a><button type="button" onclick="location.reload()">重新加载</button></div>
+      <div id="finish" class="finish" hidden><span>✓</span><h2>抵达终点</h2><p id="finish-text"></p><button id="next-course" class="primary">下一关</button><button id="again">再开一次</button></div>
+      <div class="touch-controls"><div id="joystick" class="joystick" role="group" aria-label="触屏驾驶摇杆"><span class="pad-cross"></span><span id="stick" class="stick"></span><span class="pad-label">驾驶</span></div><button id="touch-brake" class="brake" aria-label="按住刹车">刹车<span>按住</span></button></div>
+      <div id="status" class="status" role="status">选择一关，自己试着开过去。</div>
+    </section>
+    <aside class="panel">
+      <section><div class="panel-heading"><span class="eyebrow">目的地</span><span id="best"></span></div><div class="courses" id="courses"></div><p id="mission" class="mission"></p></section>
+      <section class="telemetry"><div><span>到终点</span><strong id="distance">—</strong></div><div><span>速度</span><strong id="speed">0.00 <small>m/s</small></strong></div><div><span>车身倾角</span><strong id="tilt">0°</strong></div></section>
+      <section><div class="panel-heading"><h2>轮腿姿态</h2><span>试着升高与蹲下</span></div><div class="segments" id="pose-controls"><button data-pose="low">蹲伏</button><button data-pose="normal" aria-pressed="true">标准</button><button data-pose="high">抬升</button></div><p class="hint">姿态改变由关节电机执行，车轮会继续接触地面。</p></section>
+      <section><div class="panel-heading"><h2>看清，再走</h2><span class="model-tag">Lux3D</span></div><button id="models" class="model-button" disabled aria-pressed="false">打开已有模型辅助 <span>＋</span></button><button id="navigate" class="secondary" disabled aria-pressed="false">按模型参考路线驾驶</button><p id="model-hint" class="hint">第 2 关可以查看项目已有的 Lux3D 模型与路线参考。</p></section>
+      <section class="view-actions"><button id="camera">切换视角 <kbd>V</kbd></button><button id="reset">重新开始 <kbd>R</kbd></button></section>
+      <details class="guide"><summary>怎么操作 / 模型从哪里来</summary><p><kbd>W</kbd><kbd>S</kbd>前进、后退，<kbd>A</kbd><kbd>D</kbd>转向；方向键也可以。<kbd>Space</kbd>按住刹车，<kbd>H</kbd>模型辅助。拖动画面旋转，滚轮或双指缩放。</p><p>手机用左下摇杆驾驶，右下按住刹车。移开手指或切走页面，驾驶指令会归零。</p><p>这里运行 MuJoCo 3.17 实时物理仿真，使用项目原 Go2W 机器人。模型辅助复用真实 Lux3D 任务 5958685、5958654 的生成几何；本次游玩没有新生成请求。路线来自这些模型，当前场景中的实际碰撞仍由物理引擎决定。</p><a href="gallery.html">查看原照片与生成模型 ↗</a> · <a href="media/robot-play/manifest.json">资产来源</a></details>
+    </aside>
+  </div>
+  <p class="footnote">浏览器实时物理仿真 · 本页为独立驾驶体验，游玩成绩不计入原研究结果。<a href="report.html">了解完整的观测、模型与预演过程 ↗</a></p>
+</main>
+</body></html>

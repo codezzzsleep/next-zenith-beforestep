@@ -63,3 +63,7 @@ evidence/lux3d-demo-v2/**/*.wav filter=lfs diff=lfs merge=lfs -text
 evidence/lux3d-demo-v2/**/*.jpg filter=lfs diff=lfs merge=lfs -text
 evidence/lux3d-demo-v2/**/*.png filter=lfs diff=lfs merge=lfs -text
 evidence/lux3d-demo-v2/**/*.pdf filter=lfs diff=lfs merge=lfs -text
+
+# Preserve exact upstream WebAssembly/Three source formatting
+site/vendor/mujoco/** -whitespace
+site/vendor/three/** -whitespace

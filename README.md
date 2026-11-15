@@ -8,7 +8,8 @@
     <img src="docs/readme/badges/mujoco.svg" alt="MuJoCo：机器人仿真实录">
   </p>
   <p>
-    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">体验作品</a> ·
+    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html">亲自驾驶机器人</a> ·
+    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">作品首页</a> ·
     <a href="evidence/lux3d-demo-v2/README.md">中文 Demo · 2:37</a> ·
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf">项目报告 v3</a> ·
     <a href="#快速开始">快速开始</a> ·
@@ -23,6 +24,12 @@
 BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作很直接：**把机器人拍到的一张石头照片交给 Lux3D，拿回一整块石头的 3D 模型。** 后续的观测核对、路线预演和行动选择，都建立在这些模型上。
 
 作品中**真实调用 Lux3D 四百多次**。生成模型进入实际判断，也通过**官方 Aholo Viewer** 展示在网页中：你可以查看原照片、旋转模型，再看机器人怎样走。
+
+## 这次，你来开机器人
+
+[打开驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，用 **WASD / 方向键** 或 **手机摇杆** 亲自驾驶轮腿机器人。可以转向、刹车、升高与蹲伏，切换机器人相机；第 2 关还可以打开已有 Lux3D 模型和参考路线，随时接管驾驶。
+
+浏览器使用 **MuJoCo 3.17 实时计算物理状态**，轮腿电机推动原 Go2W 机器人模型；无需安装 Python、配置密钥或调用新的生成任务。三关为独立驾驶体验，原研究结果、视频和资产迭代继续保留。[实现、来源与本地运行](docs/robot-play.md)。
 
 ## 从照片到行动
 

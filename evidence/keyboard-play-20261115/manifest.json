@@ -1,0 +1,51 @@
+{
+  "title": "BeforeStep 月面任务键盘试玩",
+  "recorded_on": "2026-11-15",
+  "video": "BeforeStep-keyboard-mission.mp4",
+  "source_application": {
+    "url": "https://codezzzsleep.github.io/next-zenith-beforestep/play.html?v=mission-2",
+    "source_commit": "5ae1f249487e2f283a3fa927dde43c5d996048da",
+    "runtime": "Browser MuJoCo simulation"
+  },
+  "selected_candidates": {
+    "A": [
+      "A1"
+    ],
+    "B": [
+      "A2",
+      "C1"
+    ]
+  },
+  "model_worlds_previewed": 2,
+  "media": {
+    "duration_seconds": 1712.7,
+    "width": 1440,
+    "height": 1100,
+    "fps": 20,
+    "codec": "H.264",
+    "audio": false,
+    "frames": 34254,
+    "bytes": 19736281,
+    "sha256": "a43e4b9bf4c392be604d9a0d3e87ba798dfa35b8081d2a66b33e4c50a89fb708"
+  },
+  "controls": {
+    "drive": "Native keyboard W/A/D with visual route guidance",
+    "legs": "Native keyboard 1–4 selects legs; J lifts, K advances, L lands",
+    "gui_actions": [
+      "Resume model route for navigation handoff at the sill",
+      "Preview visible sill crossing",
+      "Return to wheel driving"
+    ],
+    "controller_assistance": "Center-of-mass and support adjustment"
+  },
+  "editing": "Trimmed only setup before takeover and the idle tail after arrival; remaining screen capture stays at original speed.",
+  "verification": {
+    "full_decode": "passed",
+    "goal_reached": true,
+    "player_leg_actions": "12/12",
+    "sill_wheels": "4/4",
+    "final_goal_distance_display_m": 0.3,
+    "final_speed_display": 0.0,
+    "final_tilt_display_degrees": 0.0
+  }
+}

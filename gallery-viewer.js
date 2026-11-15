@@ -65,7 +65,7 @@ class AholoGalleryViewer extends HTMLElement {
         this.viewer.getScene().add([this.light, this.light.target]);
         sdk.setViewerConfig(this.viewer, {pipeline: {
           Background: {background: {active: sdk.BackgroundMode.BasicBackground,
-            basic: {color: new sdk.Color(25 / 255, 30 / 255, 32 / 255)}}, ground: {enabled: false}},
+            basic: {color: new sdk.Color(11 / 255, 19 / 255, 32 / 255)}}, ground: {enabled: false}},
           Splatting: {enabled: false}, TAA: {enabled: false},
         }});
         this.viewer.requestRenderHandler = () => this.requestRender();

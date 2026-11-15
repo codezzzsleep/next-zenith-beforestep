@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three/three.module.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
-import {COURSES,inflateGzip,modelRoute,clamp} from './robot-physics.js';
+import {COURSES,inflateGzip,modelRoute,clamp} from './robot-physics.js?v=wheellegs-2';
 
 const $=id=>document.getElementById(id), canvas=$('world'),stage=canvas.parentElement;
 const keys=new Set();let joystick=[0,0],touchBrake=false,stickPointer=null;
@@ -290,13 +290,13 @@ async function init(){
     if(!window.WebAssembly||!window.DecompressionStream)throw new Error('请使用较新的 Chrome、Edge 或 Safari 打开驾驶舱。');
     setupScene();resize();$('loading-text').textContent='正在加载原机器人与物理引擎…';
     const [manifest,wasm,bundle,display]=await Promise.all([
-      fetch('media/robot-play/manifest.json').then(r=>{if(!r.ok)throw new Error('资产清单暂时无法加载');return r.json();}),
+      fetch('media/robot-play/manifest.json?v=wheellegs-2').then(r=>{if(!r.ok)throw new Error('资产清单暂时无法加载');return r.json();}),
       fetch('vendor/mujoco/mujoco.wasm.gz').then(r=>{if(!r.ok)throw new Error('物理引擎暂时无法加载');return r.arrayBuffer();}),
-      fetch('media/robot-play/world.tar.gz').then(r=>{if(!r.ok)throw new Error('机器人资产暂时无法加载');return r.arrayBuffer();}),
+      fetch('media/robot-play/world.tar.gz?v=wheellegs-2').then(r=>{if(!r.ok)throw new Error('机器人资产暂时无法加载');return r.arrayBuffer();}),
       fetch('media/robot-play/display.json.gz').then(r=>{if(!r.ok)throw new Error('机器人显示资产暂时无法加载');return r.arrayBuffer();}).then(inflateGzip).then(bytes=>JSON.parse(new TextDecoder().decode(bytes))),
     ]);
     $('loading-text').textContent='正在让机器人站稳…';displayMeshes=display;
-    worker=new Worker('./robot-worker.js',{type:'module'});
+    worker=new Worker('./robot-worker.js?v=wheellegs-2',{type:'module'});
     let model,engine,snapshot;
     await new Promise((resolve,reject)=>{
       worker.onerror=e=>reject(new Error(e.message));

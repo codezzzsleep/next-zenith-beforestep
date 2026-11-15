@@ -1,11 +1,9 @@
+import {WheelLegControl} from './wheelleg-control.js';
 /** Real MuJoCo control: only reset assigns pose; driving writes actuator torque. */
 export const COURSES = [
-  {id:'practice', title:'01 · 先上手', goal:[4,0], start:[0,0],
-   instruction:'把机器人开进绿色终点。先试前进、转向，再试抬升车身。', rocks:false, threshold:false},
-  {id:'blind-rocks', title:'02 · 看见另一面', goal:[10,0], start:[0,-.5],
-   instruction:'绕过两块高石。打开模型辅助，看看已有 Lux3D 模型给出的路线参考。', rocks:true, threshold:false},
-  {id:'wheel-legs', title:'03 · 轮腿试驾', goal:[5,0], start:[0,0],
-   instruction:'试着通过低台阶。也可以转向绕开，比较不同车身高度的反馈。', rocks:false, threshold:true},
+  {id:'practice', title:'01 · 轮行与抬腿', goal:[2.4,0], start:[0,0], instruction:'先开进绿色区域，再停下来试试：选一条腿，抬起、前移、落地。', rocks:false, threshold:false},
+  {id:'wheel-legs', title:'02 · 跨过门槛', goal:[3.4,0], start:[1.15,0], instruction:'12 厘米门槛横贯通道。先试轮行，再用逐腿跨越：每条腿的抬起、前移、落地由你决定。', rocks:false, threshold:true, barrier:{near:1.8,far:1.84,high:.12}},
+  {id:'blind-rocks', title:'03 · 看清再绕行', goal:[10,0], start:[0,-.5], instruction:'高石超过抬腿能力。查看同一张照片生成的完整模型，选择绕行路线，自己开过去。', rocks:true, threshold:false},
 ];
 export const clamp = (x,a,b)=>Math.max(a,Math.min(b,x));
 const parts=['hip','thigh','calf'];
@@ -42,15 +40,15 @@ export class RobotWorld {
     const id=(kind,name)=>mj.mj_name2id(this.model,kind,name);
     for(const leg of legs)for(const part of [...parts,'wheel']){
       const joint=id(3,leg+'_'+part+'_joint');
-      this.joints[leg+'_'+part]={q:this.model.jnt_qposadr[joint],v:this.model.jnt_dofadr[joint],act:id(19,leg+'_'+part)};
+      this.joints[leg+'_'+part]={q:this.model.jnt_qposadr[joint],id:joint,v:this.model.jnt_dofadr[joint],act:id(19,leg+'_'+part)};
     }
     this.geom={};for(const name of ['rock_A','rock_B','threshold','hypothesis_A','hypothesis_B'])this.geom[name]=id(5,name);
-    this.base=id(1,'base_link');this.steps=0;
+    this.base=id(1,'base_link');this.robotBodies=new Set();for(let body=1;body<this.model.nbody;body++){let parent=body;while(parent&&parent!==this.base)parent=this.model.body_parentid[parent];if(parent===this.base)this.robotBodies.add(body);}this.wheelBodies=new Set(legs.map(l=>id(1,l+'_wheel_link')));this.steps=0;
     this.course=COURSES[0];this.reset(0);
   }
   reset(index=this.courseIndex||0){
     this.courseIndex=index;this.course=COURSES[index];
-    this.poseName='normal';this.pose=[...poses.normal];this.driveV=0;this.driveW=0;
+    this.legControl?.destroy();this.legControl=null;this.poseName='normal';this.pose=[...poses.normal];this.driveV=0;this.driveW=0;
     const m=this.model,d=this.data;
     const a=this.geom.rock_A,b=this.geom.rock_B,t=this.geom.threshold;
     const bodyA=m.geom_bodyid[a],bodyB=m.geom_bodyid[b];
@@ -58,7 +56,7 @@ export class RobotWorld {
     m.body_pos.set(this.course.rocks?[6.86,.22,0]:[100,0,0],bodyB*3);
     m.body_quat.set([Math.cos(Math.PI/4),0,0,Math.sin(Math.PI/4)],bodyA*4);
     const angle=-26*Math.PI/180;m.body_quat.set([Math.cos(angle/2),0,0,Math.sin(angle/2)],bodyB*4);
-    m.geom_pos.set(this.course.threshold?[2.8,0,.025]:[100,0,.025],t*3);
+    m.geom_contype[t]=this.course.threshold?1:0;m.geom_conaffinity[t]=this.course.threshold?1:0;
     this.mj.mj_resetData(m,d);
     d.qpos.set(m.qpos0);d.qpos[0]=this.course.start[0];d.qpos[1]=this.course.start[1];d.qpos[2]=.42;
     d.qpos.set([1,0,0,0],3);
@@ -70,6 +68,10 @@ export class RobotWorld {
   }
   setPose(name){if(poses[name])this.poseName=name;}
   step(v=0,w=0,brake=false){
+    if(this.legControl){this.legControl.tick();}else this.driveMotors(v,w,brake);
+    this.mj.mj_step(this.model,this.data);this.steps++;this.elapsed=(this.elapsed||0)+this.timestep;
+  }
+  driveMotors(v=0,w=0,brake=false){
     const d=this.data,dt=this.timestep,q=d.qpos,velocity=d.qvel,ctrl=d.ctrl;
     const desired=poses[this.poseName];
     for(let i=0;i<3;i++)this.pose[i]+=clamp(desired[i]-this.pose[i],-.55*dt,.55*dt);
@@ -87,9 +89,16 @@ export class RobotWorld {
       const target=clamp((this.driveV+(leg.endsWith('R')?1:-1)*yawCommand*.2837/2)/.08599,-6,6);
       ctrl[j.act]=brake?clamp(-6*velocity[j.v],-15,15):clamp(1.2*(target-velocity[j.v]),-15,15);
     }
-    this.mj.mj_step(this.model,d);this.steps++;
-    this.elapsed=(this.elapsed||0)+dt;
+
   }
+  legAction(action){
+    if(this.state().speed>.08)return false;
+    if(action==='cross'){const s=this.state();if(!this.course.barrier||Math.abs(s.y)>.18||Math.abs(s.yaw)>.2||s.x>this.course.barrier.near-.40)return false;}
+    if(!this.legControl)this.legControl=new WheelLegControl(this);
+    return this.legControl.command(action);
+  }
+  selectLeg(index){if(!this.legControl)this.legControl=new WheelLegControl(this);this.legControl.select(index);}
+  resumeWheels(){if(this.legControl&&!this.legControl.busy&&!this.legControl.lifted&&!this.legControl.waiting){this.legControl.destroy();this.legControl=null;return true;}return false;}
   state(){
     const d=this.data,q=d.qpos;
     const yaw=Math.atan2(2*(q[3]*q[6]+q[4]*q[5]),1-2*(q[5]*q[5]+q[6]*q[6]));
@@ -107,14 +116,13 @@ export class RobotWorld {
         const c=contacts.get(i);
         try{
           const a=c.geom1,b=c.geom2;
-          if((obstacle.has(a)&&this.model.geom_bodyid[b]===this.base)||
-             (obstacle.has(b)&&this.model.geom_bodyid[a]===this.base))touch=true;
+          const robot=obstacle.has(a)?b:obstacle.has(b)?a:-1;if(robot>=0){const body=this.model.geom_bodyid[robot];if(this.robotBodies.has(body)&&!this.wheelBodies.has(body))touch=true;}
         }finally{c?.delete();}
       }
     }finally{contacts.delete();}
     return touch;
   }
-  destroy(){this.data.delete();this.model.delete();}
+  destroy(){this.legControl?.destroy();this.data.delete();this.model.delete();}
 }
 
 function inside(x,y,poly){

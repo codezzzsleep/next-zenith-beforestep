@@ -9,7 +9,9 @@ let ready=false,started=false,paused=true,modelsOn=false,auto=false,route=null,r
 let lastFrame=0,frameCount=0,view=0,goalHold=0,uiElapsed=0,objects=[],modelObjects=[];
 const temp=new THREE.Vector3(),matrix=new THREE.Matrix4(),robotQuaternion=new THREE.Quaternion();
 let miniRect={x:0,y:0,w:0,h:0};
-let best={};try{best=JSON.parse(localStorage.getItem('beforestep.play.v1')||'{}');}catch{}
+let selectedLeg=0,practiceWheel=false,practiceFoot=false,lastLegAction='',crossDone=false,footMarker;
+const legLabels=['右前','左前','右后','左后'];
+let best={};try{best=JSON.parse(localStorage.getItem('beforestep.play.v2')||'{}');}catch{}
 const time=s=>`${String(Math.floor(s/60)).padStart(2,'0')}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 function say(text){$('status').textContent=text;}
 function sendInput(){
@@ -33,7 +35,7 @@ function setupScene(){
   controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;
   controls.minDistance=1.25;controls.maxDistance=12;controls.maxPolarAngle=Math.PI*.47;
   controls.target.set(0,0,.3);controls.update();
-  scene.add(new THREE.HemisphereLight('#dbeef4','#55585a',.9));
+  scene.add(new THREE.HemisphereLight('#dbeef4','#68706b',1.4));
   const sun=new THREE.DirectionalLight('#fff7e8',2.0);sun.position.set(-9,-7,8);sun.castShadow=true;
   sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-13,right:13,top:8,bottom:-8,near:.1,far:35});
   sun.shadow.bias=-.0003;sun.shadow.normalBias=.01;scene.add(sun);
@@ -46,6 +48,7 @@ function setupScene(){
   flag.rotation.x=Math.PI/2;flag.position.set(0,0,.575);goalRing.add(flag);
   const fabric=new THREE.Mesh(new THREE.PlaneGeometry(.32,.16),new THREE.MeshBasicMaterial({color:'#9de6c5',side:THREE.DoubleSide}));
   fabric.rotation.x=Math.PI/2;fabric.position.set(.16,0,1.07);goalRing.add(fabric);scene.add(goalRing);
+  footMarker=new THREE.Mesh(new THREE.TorusGeometry(.105,.009,8,40),new THREE.MeshBasicMaterial({color:'#9de6c5',depthTest:false}));footMarker.renderOrder=5;footMarker.visible=false;scene.add(footMarker);
   const points=[];let seed=42;
   const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
   for(let i=0;i<190;i++)points.push((rand()-.5)*120,(rand()-.5)*120,15+rand()*50);
@@ -85,7 +88,7 @@ function buildGeometry(){
     else if(type===3){geometry=new THREE.CapsuleGeometry(s[0],s[1]*2,8,12);geometry.rotateX(Math.PI/2);}
     else continue;
     let rgba=m.geom_rgba.slice(g*4,g*4+4);const mat=m.geom_matid[g];if(mat>=0)rgba=m.mat_rgba.slice(mat*4,mat*4+4);
-    const color=type===0?new THREE.Color('#777d7f'):new THREE.Color().setRGB(Math.max(.015,rgba[0]),Math.max(.015,rgba[1]),Math.max(.015,rgba[2]),THREE.SRGBColorSpace);
+    const color=type===0?new THREE.Color('#a2aaa5'):new THREE.Color().setRGB(Math.max(.015,rgba[0]),Math.max(.015,rgba[1]),Math.max(.015,rgba[2]),THREE.SRGBColorSpace);
     const isModel=m.geom_group[g]===4;
     const material=isModel?new THREE.MeshBasicMaterial({color:'#77f1c7',transparent:true,opacity:.3,depthWrite:false,depthTest:false,side:THREE.DoubleSide}):
       new THREE.MeshStandardMaterial({color,roughness:mat>=0?.6:.97,metalness:mat>=0?.13:0,map:type===0?soil:null});
@@ -101,7 +104,9 @@ function syncGeometry(){
     mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);
     mesh.matrixWorldNeedsUpdate=true;
     if(mesh.renderOrder===3)mesh.visible=modelsOn&&world.course.rocks;
+    if(g===world.model.thresholdGeom)mesh.visible=world.course.threshold;
   }
+  const ls=world.state().legs;const foot=ls?.positions[ls.selected];footMarker.visible=!!foot;if(foot){footMarker.position.set(...foot);footMarker.position.z-=.075;}
   const q=world.data.qpos;robotQuaternion.set(q[4],q[5],q[6],q[3]);
   carCamera.position.copy(temp.set(.28,0,.12).applyQuaternion(robotQuaternion)).add(new THREE.Vector3(q[0],q[1],q[2]));
   const forward=new THREE.Vector3(3,0,.06).applyQuaternion(robotQuaternion).add(new THREE.Vector3(q[0],q[1],q[2]));
@@ -141,37 +146,40 @@ function modelToggle(){
   else{cancelAuto();say('模型辅助已关闭，继续自己驾驶。');}
   $('models').setAttribute('aria-pressed',String(modelsOn));$('models').innerHTML=(modelsOn?'关闭模型辅助':'打开已有模型辅助')+' <span>'+(modelsOn?'−':'＋')+'</span>';
   $('navigate').disabled=!modelsOn||!route;
-  $('model-hint').textContent=modelsOn?'模型来自项目已有的两次 Lux3D 返回。参考路线使用模型几何，遇到实际接触可以接管。':'第 2 关可以查看项目已有的 Lux3D 模型与路线参考。';
+  $('model-hint').textContent=modelsOn?'模型来自项目已有的两次 Lux3D 返回。参考路线使用模型几何，遇到实际接触可以接管。':'第 3 项任务：查看完整石头形状，选择绕行。';
 }
 function switchCourse(index){
-  if(!ready)return;stopInput();cancelAuto();modelsOn=false;world.reset(index);goalHold=0;$('finish').hidden=true;
+  if(!ready)return;stopInput();cancelAuto();modelsOn=false;world.reset(index);goalHold=0;practiceWheel=practiceFoot=crossDone=false;lastLegAction='';selectedLeg=0;$('finish').hidden=true;
   if(routeLine){scene.remove(routeLine);routeLine.geometry.dispose();routeLine.material.dispose();routeLine=null;}route=null;
   for(const b of $('courses').children)b.setAttribute('aria-pressed',String(Number(b.dataset.course)===index));
+  $('begin-cross').hidden=!world.course.barrier;
   $('mission').textContent=world.course.instruction;goalRing.position.set(...world.course.goal,0);
   $('models').disabled=!world.course.rocks;$('navigate').disabled=true;$('models').setAttribute('aria-pressed','false');$('models').innerHTML='打开已有模型辅助 <span>＋</span>';
-  $('model-hint').textContent='第 2 关可以查看项目已有的 Lux3D 模型与路线参考。';
+  $('model-hint').textContent='第 3 项任务：查看完整石头形状，选择绕行。';
   $('best').textContent=best[world.course.id]?'最佳 '+time(best[world.course.id]):'';
   setPaused(!started);setView(0);say(world.course.instruction);updateUI();
 }
 function setView(next){
   view=next;controls.enabled=view!==1;
   const s=world.state();
-  if(view===0){controls.target.set(s.x,s.y,s.z+.05);camera.position.set(s.x-2.2,s.y-2.8,s.z+2.0);controls.update();}
+  if(view===0){controls.target.set(s.x,s.y,s.z+.05);camera.position.set(s.x-1.15,s.y-1.55,s.z+1.0);controls.update();}
   if(view===2){controls.target.set(5,0,0);camera.position.set(5,-.01,11.7);controls.update();}
   $('camera-label').textContent=['跟随视角','机器人视角','俯视全场'][view];
 }
 function updateUI(){
   const s=world.state();$('distance').textContent=s.goalDistance.toFixed(1)+' m';$('speed').innerHTML=s.speed.toFixed(2)+' <small>m/s</small>';
   $('tilt').textContent=s.tilt.toFixed(1)+'°';$('elapsed').textContent=time(s.elapsed);
-  $('run-state').textContent=!started?'准备驾驶':paused?'已暂停':auto?'模型参考驾驶':'手动驾驶';$('pause').textContent=paused?'继续':'暂停';
-  for(const b of $('pose-controls').children)b.setAttribute('aria-pressed',String(b.dataset.pose===world.poseName));
+  $('run-state').textContent=!started?'准备驾驶':paused?'已暂停':s.legs?'逐腿操作':auto?'模型参考驾驶':'手动驾驶';$('pause').textContent=paused?'继续':'暂停';
+  for(const b of $('pose-controls').children){b.setAttribute('aria-pressed',String(b.dataset.pose===world.poseName));b.disabled=!!s.legs;}
+  updateLegUI(s);updateCoach(s);
 }
 function complete(){
   setPaused(true);cancelAuto();stopInput();$('finish').hidden=false;
   const elapsed=world.state().elapsed;const id=world.course.id;
-  if(!best[id]||elapsed<best[id]){best[id]=elapsed;try{localStorage.setItem('beforestep.play.v1',JSON.stringify(best));}catch{}}
+  if(!best[id]||elapsed<best[id]){best[id]=elapsed;try{localStorage.setItem('beforestep.play.v2',JSON.stringify(best));}catch{}}
   $('finish-text').textContent=`用时 ${time(elapsed)}。这是你这次驾驶的实时结果。`;
-  $('next-course').textContent=world.courseIndex<2?'下一关':'再试第 1 关';say('抵达终点，机器人已停稳。');
+  $('finish-title').textContent=world.courseIndex===0?'轮行与逐腿，已掌握':world.courseIndex===1?'门槛通过！':'看清形状，完成绕行';
+  $('next-course').textContent=world.courseIndex<2?'下一项任务':'再试第一项任务';say('任务完成，机器人已停稳。');
 }
 function frameBody(t){
   if(!ready)return;const dt=lastFrame?clamp((t-lastFrame)/1000,0,.045):0;lastFrame=t;
@@ -179,14 +187,65 @@ function frameBody(t){
     const s=world.state();
     if(!s.finite)throw new Error('物理状态无法继续，请重新加载场景。');
     if(s.tilt>58){setPaused(true);cancelAuto();stopInput();say('机器人翻倒了。点击重新开始，再试一种开法。');}
-    else if(s.bodyContact)say('车身接触了障碍。后退或转向，换条路试试。');
-    if(s.goalDistance<.65&&s.speed<.16){goalHold+=dt;if(goalHold>.55)complete();}else goalHold=0;
+    else if(s.bodyContact)say(world.course.barrier?'门槛挡住了轮行。重新开始，在门槛前进入逐腿跨越。':'车身接触高石，先后退，再参考完整模型选择绕行。');
+    if(s.legs?.mode==='complete')crossDone=true;
+    if(lastLegAction==='land'&&s.legs&&!s.legs.busy&&!s.legs.lifted&&s.legs.loads[s.legs.selected]>.2){practiceFoot=true;lastLegAction='';}
+    if(s.goalDistance<.65&&s.speed<.16){goalHold+=dt;if(goalHold>.55){if(world.courseIndex===0){practiceWheel=true;if(practiceFoot)complete();}else if(world.courseIndex===1){if(crossDone)complete();}else complete();}}else goalHold=0;
   }
-  syncGeometry();render();uiElapsed+=dt;if(uiElapsed>.15){updateUI();uiElapsed=0;}
+  syncGeometry();render();if(t-uiElapsed>150){updateUI();uiElapsed=t;}
   requestAnimationFrame(frame);
 }
 function frame(t){try{frameBody(t);}catch(e){setPaused(true);stopInput();fail(e);}}
 
+function selectLeg(index){
+  if(!ready||!started||paused)return;stopInput();cancelAuto();selectedLeg=index;worker.postMessage({type:'legSelect',index});
+}
+function legAction(action){
+  if(!ready||!started||paused)return;const l=world.state().legs;if(l?.busy||l?.mode==='complete'||(l?.waiting&&l.waiting.action!==action)||(action==='lift'&&l?.lifted)||(action!=='lift'&&!l?.lifted))return;
+  stopInput();cancelAuto();worker.postMessage({type:'legAction',action});
+}
+function updateLegUI(s){
+  const l=s.legs;if(l)selectedLeg=l.selected;
+  $('leg-title').textContent='操作'+legLabels[selectedLeg]+'腿';
+  $('leg-state').textContent=l?.error?'需要重试':l?.busy?'动作执行中':l?.lifted?'轮腿已抬起':l?'支撑模式':'轮行模式';
+  for(const button of $('leg-select').children){const j=Number(button.dataset.leg);button.setAttribute('aria-pressed',String(j===selectedLeg));button.disabled=!started||paused||s.speed>.08||!!l?.busy||!!l?.lifted;
+    const airborne=l&&l.loads[j]<.1;button.classList.toggle('airborne',!!airborne);button.querySelector('small').textContent=airborne?'离地':l?'接地 · '+l.loads[j].toFixed(1)+' N':'接地';}
+  for(const button of $('leg-actions').children){const action=button.dataset.action;const next=l?.waiting?.action||(l?.lifted?(lastLegAction==='advance'?'land':'advance'):'lift');
+    button.disabled=!started||paused||s.speed>.08||!!l?.busy||!!l?.error||(l?.waiting?l.waiting.action!==action:action==='lift'?!!l?.lifted:!l?.lifted)||l?.mode==='complete';
+    button.classList.toggle('next-action',!button.disabled&&next===action);}
+  $('wheel-mode').disabled=!l||l.busy||l.lifted||!!l.waiting||!started||paused;
+  $('begin-cross').hidden=!world.course.barrier||l?.mode==='crossing'||crossDone;
+  $('begin-cross').disabled=!!l?.busy||!started||paused;
+  $('cross-count').textContent=l?.mode==='crossing'||crossDone?`${l?.crossed.length??4} / 4 条腿已过门槛`:'一次抬一条腿';
+  $('cross-hint').textContent=world.course.barrier?'跨越引导负责重心与支撑。每条腿的抬起、前移、落地，由你逐步触发。':'选腿后进入支撑模式。先把抬起的腿落地，再回到轮行。';
+  $('leg-hint').textContent=l?.error|| (l?.busy?'正在缓慢调整重心和关节，等动作完成后继续。':l?.waiting?`接下来：${legLabels[l.waiting.leg]}腿${{lift:'抬起',advance:'前移',land:'落地'}[l.waiting.action]}。点击高亮动作。`:l?.lifted?'轮腿已经离地。前移一次约 10 厘米；落地后可选另一条腿。':'抬起时其余轮腿支撑。一次操作一条腿，落地后再选择下一条。');
+}
+function updateCoach(s){
+  const l=s.legs;let step,title,text,progress;
+  if(s.tilt>58){step='重新开始';title=world.course.barrier?'轮行没能通过门槛':'机器人失去平衡';text=world.course.barrier?'点击“重新开始”，在门槛前进入逐腿跨越，用腿的抬、移、落通过。':'点击“重新开始”，停稳后再操作轮腿。';progress='R / 重新开始';}
+  else if(l?.error){step='请调整动作';title='目标超出当前可达范围';text=l.error;progress='R / 重新开始';}
+  else if(world.courseIndex===0){
+    step=practiceWheel?'02 / 亲手抬腿':'01 / 学会轮行';
+    if(!practiceWheel){title='开进绿色区域，再停稳';text='W / ↑ 前进，A D 转向；手机用左下摇杆。到绿色区域后，试一次抬、移、落。';progress='轮行 → 逐腿';}
+    else if(practiceFoot){title='回到轮行，停在绿色区域';text='点击“回到轮行”，把机器人开到绿色区域停稳，完成第一项任务。';progress='已掌握抬、移、落';}
+    else{title=l?.busy?'让重心和轮腿慢慢就位':l?.lifted?'现在前移，再落地':'选一条腿，亲手抬起';text=l?.lifted?'点击“前移 K”，看轮子向前送出；接着点击“落地 L”，观察接地状态。':'在下方点选一条腿，点击“抬起 J”。高亮的轮子会离地，其余轮腿继续支撑。';progress='抬起 → 前移 → 落地';}
+  }else if(world.courseIndex===1){
+    step='02 / 门槛需要腿';progress=`${l?.crossed.length|| (crossDone?4:0)} / 4 条腿`;
+    if(crossDone){title='四条腿已过门槛，回到轮行';text='点击“回到轮行”，前进到绿色终点并停稳。';}
+    else if(l?.waiting){const a={lift:'抬起',advance:'前移',land:'落地'}[l.waiting.action];title=`${legLabels[l.waiting.leg]}腿：${a}`;text={lift:'点击“抬起”，让轮子离地并高于门槛。',advance:'轮子已离地。点击“前移”，把它送到门槛另一侧。',land:'轮子已越过门槛。点击“落地”，在另一侧恢复支撑。'}[l.waiting.action];}
+    else if(l?.mode==='crossing'){title='正在调整支撑与重心';text='让其余轮腿站稳，再操作下一条腿。动作就绪时，下方会高亮下一步。';}
+    else{title='轮子被挡住，试着迈腿';text='门槛高 12 厘米并横贯通道。可先试轮行；点击“进入逐腿跨越”，亲手完成四条腿的抬、移、落。';}
+  }else{
+    step='03 / 看清再绕行';progress=modelsOn?'完整形状已显示':'照片 → 3D → 路线';
+    title=modelsOn?'沿参考路线绕行，也可以自己选路':'高石太高，先看看它的另一面';
+    text=modelsOn?'绿色显示真实生成模型及绕行参考。自己驾驶，或跟随参考路线后随时用方向键接管。':'点击“打开已有模型辅助”。完整的石头形状会影响绕行距离；抬腿无法越过这些高石。';
+  }
+  $('coach-step').textContent=step;$('coach-title').textContent=title;$('coach-text').textContent=text;$('coach-progress').textContent=progress;
+}
+for(const button of $('leg-select').children)button.onclick=()=>selectLeg(Number(button.dataset.leg));
+for(const button of $('leg-actions').children)button.onclick=()=>legAction(button.dataset.action);
+$('begin-cross').onclick=()=>{if(!ready||!started||paused)return;stopInput();cancelAuto();worker.postMessage({type:'legAction',action:'cross'});};
+$('wheel-mode').onclick=()=>{stopInput();worker.postMessage({type:'wheelMode'});};
 for(const [i,course]of COURSES.entries()){
   const button=document.createElement('button');button.textContent=course.title;button.dataset.course=i;button.setAttribute('aria-pressed',String(i===0));
   button.onclick=()=>switchCourse(i);$('courses').append(button);
@@ -198,6 +257,7 @@ $('next-course').onclick=()=>switchCourse((world.courseIndex+1)%COURSES.length);
 $('camera').onclick=()=>{if(ready)setView((view+1)%3);};$('models').onclick=modelToggle;
 $('navigate').onclick=()=>{
   if(auto){cancelAuto();say('已交还手动驾驶。');return;}
+  if(world.state().legs){say('先把抬起的腿落地，并回到轮行，再跟随模型参考路线。');return;}
   if(!modelsOn||!updateRoute()){say('没有可用模型参考路线，先自己调整位置。');return;}
   stopInput();auto=true;setPaused(false);worker.postMessage({type:'auto',route});$('navigate').setAttribute('aria-pressed','true');$('navigate').textContent='接管手动驾驶';say('按已有模型的参考路线行驶。按方向键或摇杆即可接管。');
 };
@@ -207,7 +267,10 @@ document.addEventListener('keydown',e=>{
   if(!ready||!started||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName))return;
   const key=e.key.length===1?e.key.toLowerCase():e.key;
   if(['w','a','s','d','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(key)){e.preventDefault();keys.add(key);sendInput();}
-  if(e.repeat)return;if(key==='r')switchCourse(world.courseIndex);if(key==='h')modelToggle();if(key==='v')setView((view+1)%3);
+  if(e.repeat)return;
+  if(['1','2','3','4'].includes(key))selectLeg(Number(key)-1);
+  if(['j','k','l'].includes(key)){e.preventDefault();legAction({j:'lift',k:'advance',l:'land'}[key]);}
+  if(key==='r')switchCourse(world.courseIndex);if(key==='h')modelToggle();if(key==='v')setView((view+1)%3);
 });
 document.addEventListener('keyup',e=>{keys.delete(e.key.length===1?e.key.toLowerCase():e.key);sendInput();});
 window.addEventListener('blur',()=>{stopInput();cancelAuto();});
@@ -240,6 +303,7 @@ async function init(){
       worker.onmessage=event=>{
         const data=event.data;
         if(data.type==='error'){reject(new Error(data.message));if(ready)fail(new Error(data.message));}
+        else if(data.type==='legCommand'){if(!data.ok)say(data.action==='cross'?'先重新开始门槛关，保持车头朝前，在门槛前进入跨越。':'先完成当前动作，或跟着高亮按钮操作。');else if(data.action!=='wheelMode')lastLegAction=data.action;}
         else if(data.type==='ready'){model=data.model;engine=data.engine;}
         else if(data.type==='state'){
           snapshot=data.state;if(world){
@@ -258,7 +322,7 @@ async function init(){
       };
       worker.postMessage({type:'init',manifest,wasm,bundle},[wasm,bundle]);
     });
-    buildGeometry();ready=true;switchCourse(0);resize();syncGeometry();render();
+    buildGeometry();ready=true;switchCourse(Math.floor(clamp(Number(new URLSearchParams(location.search).get('course'))||0,0,2)));resize();syncGeometry();render();
     $('loading-text').textContent='机器人已就绪。你来掌握方向。';$('start').disabled=false;
     document.documentElement.dataset.playReady='true';
     window.__robotPlay={world,get state(){return {...world.state(),ready,started,paused,modelsOn,auto,course:world.course.id,frames:frameCount,engine:world.engine,routePoints:route?.length||0};},get route(){return route;},get renderer(){return renderer;}};

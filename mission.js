@@ -219,7 +219,7 @@ for(const b of document.querySelectorAll('[data-leg]'))b.onclick=()=>post({type:
 for(const b of document.querySelectorAll('[data-pose]'))b.onclick=()=>post({type:'pose',value:b.dataset.pose});
 document.addEventListener('keydown',e=>{if(!ready||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.closest('aholo-gallery-viewer'))return;const key=e.key.length===1?e.key.toLowerCase():e.key;
   if(['w','a','s','d','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(key)&&['execute','gate','finish-drive'].includes(phase)){e.preventDefault();keys.add(key);sendInput();}
-  if(e.repeat)return;if(['j','k','l'].includes(key)&&phase==='crossing'&&!paused){e.preventDefault();post({type:'legAction',action:{j:'lift',k:'advance',l:'land'}[key]});}if(['1','2','3','4'].includes(key))post({type:'legSelect',index:Number(key)-1});if(key==='r')reset();if(key==='v')setView((view+1)%3);
+  if(e.repeat)return;if(['j','k','l'].includes(key)&&phase==='crossing'&&!paused){e.preventDefault();post({type:'legAction',action:{j:'lift',k:'advance',l:'land'}[key]});}if(['1','2','3','4'].includes(key)){const b=document.querySelector('[data-leg="'+(Number(key)-1)+'"]');if(b&&!b.disabled)post({type:'legSelect',index:Number(key)-1});}if(key==='r')reset();if(key==='v')setView((view+1)%3);
 });
 document.addEventListener('keyup',e=>{keys.delete(e.key.length===1?e.key.toLowerCase():e.key);sendInput();});canvas.addEventListener('pointerdown',()=>canvas.focus());
 window.addEventListener('blur',stopInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){stopInput();post({type:'pause',value:true});}});

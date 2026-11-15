@@ -1,0 +1,873 @@
+{
+  "schema": "beforestep-robot-play/v1",
+  "engine": "MuJoCo 3.17.0",
+  "robot": "Original Unitree Go2W mesh, inertial, joints and actuator model",
+  "scope": "New browser driving playground. Not an R1/R2/R3 research result or a new Lux3D request.",
+  "changes": [
+    "Lunar gravity 1.62",
+    "2ms timestep",
+    "30 solver iterations",
+    "Independent training/playground scenery",
+    "Retained model hypotheses are non-colliding overlays"
+  ],
+  "files": [
+    {
+      "file": "assets/base_0.obj",
+      "bytes": 1330465,
+      "sha256": "8cdc53719002a5ee737d867904e534a6d6fa930b616bdcc1b3131e577d4e46c0",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/base_0.obj",
+      "source_sha256": "8cdc53719002a5ee737d867904e534a6d6fa930b616bdcc1b3131e577d4e46c0"
+    },
+    {
+      "file": "assets/base_1.obj",
+      "bytes": 811791,
+      "sha256": "39d2f4724ff64dd5a0640c308fd98902a2946660a8d033ec8dbf368fd5af0dd6",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/base_1.obj",
+      "source_sha256": "39d2f4724ff64dd5a0640c308fd98902a2946660a8d033ec8dbf368fd5af0dd6"
+    },
+    {
+      "file": "assets/base_2.obj",
+      "bytes": 294090,
+      "sha256": "29cae463f95d678e4ede863c36c9b19b0d356b8340412add10670d70bdcc3095",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/base_2.obj",
+      "source_sha256": "29cae463f95d678e4ede863c36c9b19b0d356b8340412add10670d70bdcc3095"
+    },
+    {
+      "file": "assets/base_3.obj",
+      "bytes": 379093,
+      "sha256": "f51ba43bf300e68957a0c1aa83eaf3e4926f4ac7e64a0d6c33ae5d21fcbcf5f6",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/base_3.obj",
+      "source_sha256": "f51ba43bf300e68957a0c1aa83eaf3e4926f4ac7e64a0d6c33ae5d21fcbcf5f6"
+    },
+    {
+      "file": "assets/base_4.obj",
+      "bytes": 7776234,
+      "sha256": "49ddec0129546e5dd2075d5beacf7f207baa2860aeff7626818e64d2efbf3821",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/base_4.obj",
+      "source_sha256": "49ddec0129546e5dd2075d5beacf7f207baa2860aeff7626818e64d2efbf3821"
+    },
+    {
+      "file": "assets/hip_0.obj",
+      "bytes": 2863864,
+      "sha256": "cc29932ab4d251ce3f72389ec4c1f757e44eee138b87e772b648c2bc76b506cd",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/hip_0.obj",
+      "source_sha256": "cc29932ab4d251ce3f72389ec4c1f757e44eee138b87e772b648c2bc76b506cd"
+    },
+    {
+      "file": "assets/hip_1.obj",
+      "bytes": 2767918,
+      "sha256": "3fd5bd9b2ef6abe622c0739d3c67eaa1679b19b47132951972c4892a779ea7cf",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/hip_1.obj",
+      "source_sha256": "3fd5bd9b2ef6abe622c0739d3c67eaa1679b19b47132951972c4892a779ea7cf"
+    },
+    {
+      "file": "assets/thigh_0.obj",
+      "bytes": 2841868,
+      "sha256": "bb3edfe6a7b04f4f4dff1ce7b05d426ddce941e276cc6372fb542055893c71ec",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/thigh_0.obj",
+      "source_sha256": "bb3edfe6a7b04f4f4dff1ce7b05d426ddce941e276cc6372fb542055893c71ec"
+    },
+    {
+      "file": "assets/thigh_1.obj",
+      "bytes": 1491320,
+      "sha256": "3a631822f9f7d2114b1b79dcdff5abf95103630abb7d91d1f3b8b18117132ed2",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/thigh_1.obj",
+      "source_sha256": "3a631822f9f7d2114b1b79dcdff5abf95103630abb7d91d1f3b8b18117132ed2"
+    },
+    {
+      "file": "assets/thigh_mirror_0.obj",
+      "bytes": 2817674,
+      "sha256": "07abaedce761f1dd48647384ac14ba1959276bc78d5a2a62051e8f1c6093933b",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/thigh_mirror_0.obj",
+      "source_sha256": "07abaedce761f1dd48647384ac14ba1959276bc78d5a2a62051e8f1c6093933b"
+    },
+    {
+      "file": "assets/thigh_mirror_1.obj",
+      "bytes": 1482261,
+      "sha256": "db984a3e983eabbc9b38183427cca9ab0bb3bdb049f9eab030e06edda36579d6",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/thigh_mirror_1.obj",
+      "source_sha256": "db984a3e983eabbc9b38183427cca9ab0bb3bdb049f9eab030e06edda36579d6"
+    },
+    {
+      "file": "assets/calf_mirror_0.obj",
+      "bytes": 876538,
+      "sha256": "6dc0406207a1c08a5953fd5962aca1a270fd06593d30d100205e05c1b32d4af2",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/calf_mirror_0.obj",
+      "source_sha256": "6dc0406207a1c08a5953fd5962aca1a270fd06593d30d100205e05c1b32d4af2"
+    },
+    {
+      "file": "assets/calf_mirror_1.obj",
+      "bytes": 327261,
+      "sha256": "f84f5af90b914633165beb3a5493ee499169144c5797dcf04c6eb5842f74b31a",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/calf_mirror_1.obj",
+      "source_sha256": "f84f5af90b914633165beb3a5493ee499169144c5797dcf04c6eb5842f74b31a"
+    },
+    {
+      "file": "assets/calf.stl",
+      "bytes": 2247484,
+      "sha256": "2aee434b80da010deebb11c8538d593f7901a169cc34916350902746e591437e",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/calf.stl",
+      "source_sha256": "2aee434b80da010deebb11c8538d593f7901a169cc34916350902746e591437e"
+    },
+    {
+      "file": "assets/calf_mirror.stl",
+      "bytes": 1652384,
+      "sha256": "528b471bfc60b6e72dbb162b34eefebced994bea82aaf58eda91f090219cd911",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/calf_mirror.stl",
+      "source_sha256": "528b471bfc60b6e72dbb162b34eefebced994bea82aaf58eda91f090219cd911"
+    },
+    {
+      "file": "assets/foot.obj",
+      "bytes": 1144729,
+      "sha256": "df9e78a7c0110d02557439010f2a5f11f0ec4fd907b32704145dbd6aa7affc0b",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/foot.obj",
+      "source_sha256": "df9e78a7c0110d02557439010f2a5f11f0ec4fd907b32704145dbd6aa7affc0b"
+    },
+    {
+      "file": "assets/wheel.stl",
+      "bytes": 906584,
+      "sha256": "51c95e80dcd41c0cf1a9575d4d7c2c89855848f7fa2c4bf28f2f10c2e3d639e2",
+      "source": "vendor/unitree_mujoco/unitree_robots/go2w/assets/wheel.stl",
+      "source_sha256": "51c95e80dcd41c0cf1a9575d4d7c2c89855848f7fa2c4bf28f2f10c2e3d639e2"
+    },
+    {
+      "file": "assets/rock_A.stl",
+      "bytes": 742284,
+      "sha256": "2156ce58d779d025205adf8d12fe0a14297815ea921e6933f24e7d8d123dc462",
+      "source": "assets/rocks/rock_07/h0/body.stl",
+      "source_sha256": "f4c907a344bd0bab49d2bc65b9b7cf0912088a96e102de7509f90a37e905753e"
+    },
+    {
+      "file": "assets/rock_B.stl",
+      "bytes": 381884,
+      "sha256": "3d24f2218b39236c30bcbde7e9fe0903261bfde67b967cb835eb7c5f8865a898",
+      "source": "assets/rocks/moon_rock_04/h0/body.stl",
+      "source_sha256": "4eb866753ea21ebd492c3c0f29a0275fef4cb5da585b4df4776e42f270ae42a6"
+    },
+    {
+      "file": "assets/hypothesis_A.stl",
+      "bytes": 1304084,
+      "sha256": "87a08e1d9fa12c97c92f0b0d3085728f32a1fc4e1144ecce4f7929edd8ba205b",
+      "source": "assets/candidates/5958685/tex_mesh.glb",
+      "source_sha256": "6be9c81656748329cc2bde212939abac7bce0b9c793ccdc754ded3c7747ce180"
+    },
+    {
+      "file": "assets/hypothesis_B.stl",
+      "bytes": 1371584,
+      "sha256": "372e009213a03c4f0fc77e1567bcb9efbe8a33a6b06f9af5777234008f1ad2c3",
+      "source": "assets/candidates/5958654/tex_mesh.glb",
+      "source_sha256": "f717d8ae187c424f06b5f798b7a9b81328cde19982845c6526713415806ab890"
+    },
+    {
+      "file": "scene.xml",
+      "bytes": 17691,
+      "sha256": "97f37e97656dfa25b3b81cf7ec367f1ece8a5ccd0be8cd65edc2f263c6d29355"
+    }
+  ],
+  "models": [
+    {
+      "label": "A",
+      "task_id": 5958685,
+      "admitted": true,
+      "polygon": [
+        [
+          4.349958839650616,
+          -1.3473979885245937
+        ],
+        [
+          4.670397795879835,
+          -1.3432741609884675
+        ],
+        [
+          4.692733609889496,
+          -1.342233912840743
+        ],
+        [
+          4.710192079479824,
+          -1.34109149353251
+        ],
+        [
+          4.728857734084424,
+          -1.3393865981336066
+        ],
+        [
+          4.730450223012595,
+          -1.339157716431619
+        ],
+        [
+          4.737799519278779,
+          -1.3362809746318653
+        ],
+        [
+          4.741342884846978,
+          -1.3344954063412828
+        ],
+        [
+          4.741812090180172,
+          -1.3342297165087036
+        ],
+        [
+          4.764298358099744,
+          -1.278193001026652
+        ],
+        [
+          4.7708974793021,
+          -1.2574701746004846
+        ],
+        [
+          4.8252275737077825,
+          -1.062829708650801
+        ],
+        [
+          4.849463520952197,
+          -0.9600823330421243
+        ],
+        [
+          4.8540654717460265,
+          -0.9389355474003044
+        ],
+        [
+          4.8593562052919035,
+          -0.9119717253641657
+        ],
+        [
+          4.865672971869591,
+          -0.8783242260752914
+        ],
+        [
+          4.867520594437991,
+          -0.866350363101617
+        ],
+        [
+          4.868928935144214,
+          -0.8566051230924614
+        ],
+        [
+          4.8702946287707825,
+          -0.8466691907560568
+        ],
+        [
+          4.871423246432794,
+          -0.8347297692887589
+        ],
+        [
+          4.874167301027791,
+          -0.7970225305914083
+        ],
+        [
+          4.874067961202354,
+          -0.7856551984312955
+        ],
+        [
+          4.8731504797943215,
+          -0.7600636285815006
+        ],
+        [
+          4.8695548328805405,
+          -0.6751871171574818
+        ],
+        [
+          4.869151660158404,
+          -0.6660482262205333
+        ],
+        [
+          4.849895742874127,
+          -0.5426058773678601
+        ],
+        [
+          4.844485941698717,
+          -0.5112042170586137
+        ],
+        [
+          4.803416472729761,
+          -0.2858614066890226
+        ],
+        [
+          4.800170948122566,
+          -0.2736721981488637
+        ],
+        [
+          4.794656140010042,
+          -0.26240117381053585
+        ],
+        [
+          4.786672912505467,
+          -0.2551211356605241
+        ],
+        [
+          4.780646973407451,
+          -0.25250334922346485
+        ],
+        [
+          4.774312313583112,
+          -0.25196034493687025
+        ],
+        [
+          4.762539262816618,
+          -0.25274901373159797
+        ],
+        [
+          4.659874079755168,
+          -0.26697165171108295
+        ],
+        [
+          4.623116629717919,
+          -0.2721043933758278
+        ],
+        [
+          4.600106683315662,
+          -0.2760724011816845
+        ],
+        [
+          4.569145155309415,
+          -0.2841123568698809
+        ],
+        [
+          4.546143567933515,
+          -0.29187268282577716
+        ],
+        [
+          4.499534463093495,
+          -0.30845474191874916
+        ],
+        [
+          4.4808212136882535,
+          -0.3153799826979873
+        ],
+        [
+          4.4565794805008565,
+          -0.3259640062266992
+        ],
+        [
+          4.4425570974651345,
+          -0.3321354205076409
+        ],
+        [
+          4.4052305944051025,
+          -0.3486173681489718
+        ],
+        [
+          4.393265120012555,
+          -0.3540815782053159
+        ],
+        [
+          4.380118176806663,
+          -0.36121898343969994
+        ],
+        [
+          4.3748599243916875,
+          -0.3643007157496893
+        ],
+        [
+          4.359046087689058,
+          -0.3738347575044431
+        ],
+        [
+          4.325024002644911,
+          -0.39553529803859333
+        ],
+        [
+          4.320933404379967,
+          -0.40036071876527485
+        ],
+        [
+          4.247938274398545,
+          -0.5093495206629721
+        ],
+        [
+          4.244522627254813,
+          -0.5164449694430187
+        ],
+        [
+          4.235575969292869,
+          -0.5560947082473156
+        ],
+        [
+          4.215274325038351,
+          -0.6621462704835368
+        ],
+        [
+          4.21262393470753,
+          -0.6809648455104652
+        ],
+        [
+          4.2101493434001105,
+          -0.7985952569632854
+        ],
+        [
+          4.210662159002955,
+          -0.8166159802249268
+        ],
+        [
+          4.256149407049683,
+          -1.0857292692284308
+        ],
+        [
+          4.275897041130256,
+          -1.1895905690458273
+        ],
+        [
+          4.280690124940923,
+          -1.2119810964115436
+        ],
+        [
+          4.282721459843231,
+          -1.2203047437469867
+        ],
+        [
+          4.3060648993667545,
+          -1.3083404465902817
+        ],
+        [
+          4.313481669710002,
+          -1.3321263157617644
+        ],
+        [
+          4.315661802096573,
+          -1.3371666815250038
+        ],
+        [
+          4.318436252414761,
+          -1.3404673531352906
+        ],
+        [
+          4.322613533357064,
+          -1.3441705002885591
+        ],
+        [
+          4.326355260251265,
+          -1.346418457668225
+        ],
+        [
+          4.329882491868525,
+          -1.3470840119220941
+        ]
+      ],
+      "source_sha256": "6be9c81656748329cc2bde212939abac7bce0b9c793ccdc754ded3c7747ce180",
+      "registration": [
+        [
+          -0.0028160403617111104,
+          0.0058607468231351495,
+          -0.3132249876468014,
+          4.540192924500571
+        ],
+        [
+          -0.3132695217042048,
+          0.002486271636327763,
+          0.002862961325480692,
+          -0.7993289013108061
+        ],
+        [
+          0.002539293382424293,
+          0.31322777881760133,
+          0.005837969603592758,
+          0.2733748440632507
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "input": "evidence/web-assets/objects/36c6920301bb5aee1a23970af7b9229a100ee42ffb0aa70f9e84edd61c2aa5cd.jpg",
+      "original_model": "assets/candidates/5958685/tex_mesh.glb",
+      "note": "Retained R1 generated hypothesis, reused for this independent driving playground."
+    },
+    {
+      "label": "B",
+      "task_id": 5958654,
+      "admitted": true,
+      "polygon": [
+        [
+          6.706376503805578,
+          0.548255075292555
+        ],
+        [
+          6.706727800059271,
+          0.5500129604994677
+        ],
+        [
+          6.70620175398416,
+          0.5512638783141612
+        ],
+        [
+          6.700302832452543,
+          0.5550548522263334
+        ],
+        [
+          6.581514070633214,
+          0.6057826899968899
+        ],
+        [
+          6.56126269146037,
+          0.6139513424163571
+        ],
+        [
+          6.558483721663776,
+          0.6150638945751181
+        ],
+        [
+          6.478751724949136,
+          0.6458994637886184
+        ],
+        [
+          6.455654068256047,
+          0.6547389549755988
+        ],
+        [
+          6.433625565795404,
+          0.6611492026215245
+        ],
+        [
+          6.414981197489279,
+          0.6663025283175337
+        ],
+        [
+          6.403919199380568,
+          0.6690512958329209
+        ],
+        [
+          6.39556869514578,
+          0.6707915473314179
+        ],
+        [
+          6.3819103159623705,
+          0.6729410636401056
+        ],
+        [
+          6.366014790682323,
+          0.6742267005503716
+        ],
+        [
+          6.354763356434211,
+          0.6744783722306749
+        ],
+        [
+          6.34769553620062,
+          0.6744693576259734
+        ],
+        [
+          6.3323131038443625,
+          0.6731964719141537
+        ],
+        [
+          6.3211136745037795,
+          0.6716849629656637
+        ],
+        [
+          6.313250135695601,
+          0.6695728163955106
+        ],
+        [
+          6.304708756818501,
+          0.6660388710955801
+        ],
+        [
+          6.294753933578281,
+          0.6604848573130667
+        ],
+        [
+          6.276465308910275,
+          0.649411648978735
+        ],
+        [
+          6.2689175061276865,
+          0.6446312599081732
+        ],
+        [
+          6.260367722540309,
+          0.6389920871772565
+        ],
+        [
+          6.254741226462267,
+          0.6352246481141839
+        ],
+        [
+          6.250241222958175,
+          0.6318787421096399
+        ],
+        [
+          6.2445602988031395,
+          0.6276503072646813
+        ],
+        [
+          6.233372007502457,
+          0.6190653853117165
+        ],
+        [
+          6.22945903515284,
+          0.6156588430714998
+        ],
+        [
+          6.227051823024713,
+          0.6134902018957876
+        ],
+        [
+          6.2232064243248715,
+          0.60989382664939
+        ],
+        [
+          6.217059645900489,
+          0.6030706764008571
+        ],
+        [
+          6.21256022198096,
+          0.5978901019616873
+        ],
+        [
+          6.208073833689455,
+          0.5919393484659777
+        ],
+        [
+          6.202096886471663,
+          0.582795761239386
+        ],
+        [
+          6.19866240293607,
+          0.5770944596227043
+        ],
+        [
+          6.195605611481492,
+          0.5672036273267261
+        ],
+        [
+          6.193874411921159,
+          0.5605694373655401
+        ],
+        [
+          6.192912796039459,
+          0.5551046317934109
+        ],
+        [
+          6.191054219321563,
+          0.5415281635008546
+        ],
+        [
+          6.190607434239274,
+          0.535491902995149
+        ],
+        [
+          6.185568673139914,
+          0.43425414261566864
+        ],
+        [
+          6.184955653679177,
+          0.41782952361947
+        ],
+        [
+          6.185714381826817,
+          0.4141421746684665
+        ],
+        [
+          6.206055328570382,
+          0.3290368672992598
+        ],
+        [
+          6.221220809305573,
+          0.2785869667291682
+        ],
+        [
+          6.234445988416446,
+          0.24833748064416278
+        ],
+        [
+          6.2355401584700765,
+          0.24610967764332212
+        ],
+        [
+          6.237357749353096,
+          0.24371782523883928
+        ],
+        [
+          6.238964811912849,
+          0.24190097207887695
+        ],
+        [
+          6.250140108252762,
+          0.2340805667237416
+        ],
+        [
+          6.287835471268975,
+          0.21180791176945588
+        ],
+        [
+          6.338618303669889,
+          0.18609879110546604
+        ],
+        [
+          6.517617219785103,
+          0.11020404571393771
+        ],
+        [
+          6.519272029487936,
+          0.10965016794452137
+        ],
+        [
+          6.51991418178738,
+          0.10944573976696947
+        ],
+        [
+          6.5202630335166765,
+          0.1101062430240835
+        ],
+        [
+          6.522525132107198,
+          0.11500851520895727
+        ],
+        [
+          6.526499137179661,
+          0.12417430888487768
+        ],
+        [
+          6.527986567471628,
+          0.12766527003227174
+        ],
+        [
+          6.536544434150156,
+          0.14783912229349533
+        ]
+      ],
+      "source_sha256": "f717d8ae187c424f06b5f798b7a9b81328cde19982845c6526713415806ab890",
+      "registration": [
+        [
+          1.2593474734198815,
+          0.0,
+          -0.533708552874469,
+          6.393759441409432
+        ],
+        [
+          -0.533708552874469,
+          0.0,
+          -1.2593474734198813,
+          0.42402367745138336
+        ],
+        [
+          0.0,
+          1.3677722318501713,
+          0.0,
+          0.19740423116807984
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "input": "evidence/web-assets/objects/8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf.jpg",
+      "original_model": "assets/candidates/5958654/tex_mesh.glb",
+      "note": "Retained R1 generated hypothesis, reused for this independent driving playground."
+    }
+  ],
+  "bundle_sha256": "c6c175df5f9c262f9d2e3ce6e82cb732ead2350a59ddfa9b4585c21ff26860ba",
+  "bundle_bytes": 7712438,
+  "display_meshes": {
+    "base_0": {
+      "original_faces": 10130,
+      "display_faces": 631,
+      "display_grid_m": 0.006
+    },
+    "base_1": {
+      "original_faces": 3962,
+      "display_faces": 1375,
+      "display_grid_m": 0.006
+    },
+    "base_2": {
+      "original_faces": 2005,
+      "display_faces": 81,
+      "display_grid_m": 0.006
+    },
+    "base_3": {
+      "original_faces": 2320,
+      "display_faces": 412,
+      "display_grid_m": 0.006
+    },
+    "base_4": {
+      "original_faces": 59511,
+      "display_faces": 11234,
+      "display_grid_m": 0.006
+    },
+    "hip_0": {
+      "original_faces": 18056,
+      "display_faces": 1645,
+      "display_grid_m": 0.006
+    },
+    "hip_1": {
+      "original_faces": 18972,
+      "display_faces": 1846,
+      "display_grid_m": 0.006
+    },
+    "thigh_0": {
+      "original_faces": 18425,
+      "display_faces": 2883,
+      "display_grid_m": 0.006
+    },
+    "thigh_1": {
+      "original_faces": 11708,
+      "display_faces": 1308,
+      "display_grid_m": 0.006
+    },
+    "thigh_mirror_0": {
+      "original_faces": 18417,
+      "display_faces": 2883,
+      "display_grid_m": 0.006
+    },
+    "thigh_mirror_1": {
+      "original_faces": 11708,
+      "display_faces": 1308,
+      "display_grid_m": 0.006
+    },
+    "calf_mirror_0": {
+      "original_faces": 6512,
+      "display_faces": 1302,
+      "display_grid_m": 0.006
+    },
+    "calf_mirror_1": {
+      "original_faces": 2053,
+      "display_faces": 310,
+      "display_grid_m": 0.006
+    },
+    "calf": {
+      "original_faces": 44948,
+      "display_faces": 4066,
+      "display_grid_m": 0.006
+    },
+    "calf_mirror": {
+      "original_faces": 33046,
+      "display_faces": 3914,
+      "display_grid_m": 0.006
+    },
+    "foot": {
+      "original_faces": 4404,
+      "display_faces": 348,
+      "display_grid_m": 0.006
+    },
+    "wheel": {
+      "original_faces": 18130,
+      "display_faces": 6711,
+      "display_grid_m": 0.006
+    },
+    "rock_A": {
+      "original_faces": 14844,
+      "display_faces": 10852,
+      "display_grid_m": 0.018
+    },
+    "rock_B": {
+      "original_faces": 7636,
+      "display_faces": 7286,
+      "display_grid_m": 0.018
+    },
+    "hypothesis_A": {
+      "original_faces": 26080,
+      "display_faces": 12717,
+      "display_grid_m": 0.018
+    },
+    "hypothesis_B": {
+      "original_faces": 27430,
+      "display_faces": 5521,
+      "display_grid_m": 0.018
+    }
+  },
+  "display_only": "Grid-clustered display meshes. Original collision meshes, joint and inertial model remain unchanged."
+}

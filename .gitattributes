@@ -1,0 +1,6 @@
+
+# Exact upstream code and directly served compressed browser assets
+vendor/mujoco/** -whitespace
+vendor/three/** -whitespace
+vendor/mujoco/mujoco.wasm.gz -filter -diff -merge
+media/robot-play/*.gz -filter -diff -merge

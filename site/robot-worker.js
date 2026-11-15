@@ -3,7 +3,7 @@ import {RobotWorld,inflateGzip,unpackTar,installAssets,clamp} from './robot-phys
 let world,paused=true,input={v:0,w:0,brake:false},route=null,index=0,automatic=false;
 let ticks=0,touch=false,brakeUntil=0,resetSeq=0;
 function emit(){
-  const state={...world.state(),paused,auto:automatic,bodyContact:touch,resetSeq,courseIndex:world.courseIndex};
+  const state={...world.state(),paused,auto:automatic,bodyContact:touch,resetSeq,courseIndex:world.courseIndex,legs:world.legControl?.state()||null};
   const data={qpos:world.data.qpos.slice(),geom_xpos:world.data.geom_xpos.slice(),geom_xmat:world.data.geom_xmat.slice()};
   postMessage({type:'state',state,data},Object.values(data).map(x=>x.buffer));
 }
@@ -29,7 +29,7 @@ onmessage=async event=>{
     if(message.type==='init'){
       const [wasm,bundle]=await Promise.all([inflateGzip(message.wasm),inflateGzip(message.bundle)]);
       const mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));world=new RobotWorld(mj,message.manifest);
-      const m=world.model,model={ngeom:m.ngeom,nmesh:m.nmesh,mesh_names:Array.from({length:m.nmesh},(_,i)=>mj.mj_id2name(m,10,i))};
+      const m=world.model,model={ngeom:m.ngeom,nmesh:m.nmesh,thresholdGeom:world.geom.threshold,mesh_names:Array.from({length:m.nmesh},(_,i)=>mj.mj_id2name(m,10,i))};
       for(const key of ['geom_group','geom_type','geom_size','geom_dataid','mesh_vertadr','mesh_vertnum','mesh_faceadr','mesh_facenum','mesh_vert','mesh_face','geom_rgba','geom_matid','mat_rgba','mesh_pos','mesh_quat'])model[key]=m[key].slice();
       postMessage({type:'ready',model,engine:mj.mj_versionString()},Object.values(model).filter(ArrayBuffer.isView).map(x=>x.buffer));
       emit();setInterval(()=>{try{tick();}catch(e){paused=true;postMessage({type:'error',message:String(e)});}},20);
@@ -37,7 +37,10 @@ onmessage=async event=>{
       input={v:clamp(message.v,-.45,.45),w:clamp(message.w,-.95,.95),brake:!!message.brake};
       if(Math.abs(input.v)>.005||Math.abs(input.w)>.005||input.brake)automatic=false;
     }else if(message.type==='paused'){paused=message.value;if(paused){automatic=false;input={v:0,w:0,brake:true};}emit();}
-    else if(message.type==='pose'){world.setPose(message.value);emit();}
+    else if(message.type==='pose'){if(!world.legControl)world.setPose(message.value);emit();}
+    else if(message.type==='legSelect'){world.selectLeg(message.index);emit();}
+    else if(message.type==='legAction'){automatic=false;input={v:0,w:0,brake:false};const ok=world.legAction(message.action);postMessage({type:'legCommand',ok,action:message.action});emit();}
+    else if(message.type==='wheelMode'){const ok=world.resumeWheels();if(ok)world.setPose('high');postMessage({type:'legCommand',ok,action:'wheelMode'});emit();}
     else if(message.type==='reset'){automatic=false;touch=false;route=null;brakeUntil=0;input={v:0,w:0,brake:false};world.reset(message.index);resetSeq=message.seq;paused=!message.running;emit();}
     else if(message.type==='auto'){route=message.route;index=0;automatic=!!route;paused=false;input={v:0,w:0,brake:false};emit();}
     else if(message.type==='cancelAuto'){automatic=false;input={v:0,w:0,brake:false};emit();}

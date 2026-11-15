@@ -73,8 +73,8 @@ def build(repo, output):
         body = ET.SubElement(world, 'body', name='rock_body_' + label, pos='100 0 0')
         ET.SubElement(body, 'geom', name='rock_' + label, type='mesh', mesh='rock_' + label,
                       rgba='.57 .51 .43 1', friction='.9 .02 .001')
-    ET.SubElement(world, 'geom', name='threshold', type='box', pos='100 0 .025',
-                  size='.16 .8 .025', rgba='.66 .58 .43 1', friction='.9 .02 .001')
+    ET.SubElement(world, 'geom', name='threshold', type='box', pos='1.82 0 .06',
+                  size='.02 3 .06', rgba='.66 .58 .43 1', friction='.9 .02 .001')
     gallery = json.loads((repo / 'site/data/gallery.json').read_text())
     models = []
     for target, task in [('T1', 5958685), ('T2', 5958654)]:
@@ -117,7 +117,8 @@ def build(repo, output):
                 'robot': 'Original Unitree Go2W mesh, inertial, joints and actuator model',
                 'scope': 'New browser driving playground. Not an R1/R2/R3 research result or a new Lux3D request.',
                 'changes': ['Lunar gravity 1.62', '2ms timestep', '30 solver iterations',
-                            'Independent training/playground scenery', 'Retained model hypotheses are non-colliding overlays'],
+                            'Independent training/playground scenery', 'Retained model hypotheses are non-colliding overlays',
+                            '12cm threshold at fixed compiled position; collision masks disabled outside threshold course'],
                 'files': sources, 'models': models, 'bundle_sha256': hashlib.sha256(packed).hexdigest(),
                 'bundle_bytes': len(packed)}
     manifest['display_meshes'] = {name: {k: value for k, value in row.items() if k not in ['positions', 'indices']} for name, row in display.items()}

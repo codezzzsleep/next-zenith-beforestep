@@ -27,7 +27,7 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作�
 
 ## 这次，你来开机器人
 
-[打开驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，用 **WASD / 方向键** 或 **手机摇杆** 亲自驾驶轮腿机器人。可以转向、刹车、升高与蹲伏，切换机器人相机；第 2 关还可以打开已有 Lux3D 模型和参考路线，随时接管驾驶。
+[打开驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，用 **WASD / 方向键** 或 **手机摇杆** 亲自驾驶轮腿机器人。用 **1–4** 选择一条腿，**J 抬起 / K 前移 / L 落地**。第二项任务亲手完成 12 个逐腿动作跨过门槛；第三项任务查看已有 Lux3D 模型和绕行参考，随时接管驾驶。
 
 浏览器使用 **MuJoCo 3.17 实时计算物理状态**，轮腿电机推动原 Go2W 机器人模型；无需安装 Python、配置密钥或调用新的生成任务。三关为独立驾驶体验，原研究结果、视频和资产迭代继续保留。[实现、来源与本地运行](docs/robot-play.md)。
 

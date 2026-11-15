@@ -1,6 +1,6 @@
 import * as THREE from './vendor/three/three.module.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
-import './gallery-viewer.js';
+import './gallery-viewer.js?v=report-v3-1';
 import {inflateGzip,clamp} from './robot-physics.js?v=mission-1';
 import {accepted,admissionChecks,planRoute,modelWorlds} from './mission-planner.js?v=mission-1';
 const $=id=>document.getElementById(id),canvas=$('world'),stage=canvas.parentElement;
@@ -15,31 +15,31 @@ function setupScene(){
   renderer.setPixelRatio(Math.min(devicePixelRatio,1));renderer.shadowMap.enabled=false;
   renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;
   renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
-  scene=new THREE.Scene();scene.background=new THREE.Color('#192227');scene.fog=new THREE.Fog('#192227',19,60);
+  scene=new THREE.Scene();scene.background=new THREE.Color('#0b1320');scene.fog=new THREE.Fog('#0b1320',19,60);
   camera=new THREE.PerspectiveCamera(49,1,.03,100);camera.up.set(0,0,1);camera.position.set(-2.2,-2.8,2.4);
   carCamera=new THREE.PerspectiveCamera(68,16/9,.03,80);carCamera.up.set(0,0,1);
   controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;
   controls.minDistance=1.25;controls.maxDistance=12;controls.maxPolarAngle=Math.PI*.47;
   controls.target.set(0,0,.3);controls.update();
-  scene.add(new THREE.HemisphereLight('#dbeef4','#68706b',1.4));
-  const sun=new THREE.DirectionalLight('#fff7e8',2.0);sun.position.set(-9,-7,8);sun.castShadow=true;
+  scene.add(new THREE.HemisphereLight('#e6e8ec','#666970',1.4));
+  const sun=new THREE.DirectionalLight('#ffffff',2.0);sun.position.set(-9,-7,8);sun.castShadow=true;
   sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-13,right:13,top:8,bottom:-8,near:.1,far:35});
   sun.shadow.bias=-.0003;sun.shadow.normalBias=.01;scene.add(sun);
-  const grid=new THREE.GridHelper(24,48,'#879281','#515b52');grid.rotation.x=Math.PI/2;grid.position.set(5,0,.005);
+  const grid=new THREE.GridHelper(24,48,'#8b96aa','#53627a');grid.rotation.x=Math.PI/2;grid.position.set(5,0,.005);
   grid.material.transparent=true;grid.material.opacity=.1;scene.add(grid);
   goalRing=new THREE.Group();
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(.35,.025,10,64),new THREE.MeshBasicMaterial({color:'#a5f1cb'}));ring.position.z=.035;
+  const ring=new THREE.Mesh(new THREE.TorusGeometry(.35,.025,10,64),new THREE.MeshBasicMaterial({color:'#53cdb9'}));ring.position.z=.035;
   goalRing.add(ring);
-  const flag=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,1.15,8),new THREE.MeshStandardMaterial({color:'#bdd5bc'}));
+  const flag=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,1.15,8),new THREE.MeshStandardMaterial({color:'#a9b6cb'}));
   flag.rotation.x=Math.PI/2;flag.position.set(0,0,.575);goalRing.add(flag);
-  const fabric=new THREE.Mesh(new THREE.PlaneGeometry(.32,.16),new THREE.MeshBasicMaterial({color:'#9de6c5',side:THREE.DoubleSide}));
+  const fabric=new THREE.Mesh(new THREE.PlaneGeometry(.32,.16),new THREE.MeshBasicMaterial({color:'#53cdb9',side:THREE.DoubleSide}));
   fabric.rotation.x=Math.PI/2;fabric.position.set(.16,0,1.07);goalRing.add(fabric);scene.add(goalRing);
-  footMarker=new THREE.Mesh(new THREE.TorusGeometry(.105,.009,8,40),new THREE.MeshBasicMaterial({color:'#9de6c5',depthTest:false}));footMarker.renderOrder=5;footMarker.visible=false;scene.add(footMarker);
+  footMarker=new THREE.Mesh(new THREE.TorusGeometry(.105,.009,8,40),new THREE.MeshBasicMaterial({color:'#f0a93b',depthTest:false}));footMarker.renderOrder=5;footMarker.visible=false;scene.add(footMarker);
   const points=[];let seed=42;
   const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
   for(let i=0;i<190;i++)points.push((rand()-.5)*120,(rand()-.5)*120,15+rand()*50);
   const stars=new THREE.BufferGeometry();stars.setAttribute('position',new THREE.Float32BufferAttribute(points,3));
-  scene.add(new THREE.Points(stars,new THREE.PointsMaterial({color:'#d1dfda',size:.05,sizeAttenuation:true})));
+  scene.add(new THREE.Points(stars,new THREE.PointsMaterial({color:'#d6deea',size:.05,sizeAttenuation:true})));
 }
 function groundTexture(){
   const c=document.createElement('canvas');c.width=c.height=128;const ctx=c.getContext('2d'),image=ctx.createImageData(128,128);
@@ -80,10 +80,10 @@ function buildGeometry(){
     else if(type===3){geometry=new THREE.CapsuleGeometry(s[0],s[1]*2,8,12);geometry.rotateX(Math.PI/2);}
     else continue;
     let rgba=m.geom_rgba.slice(g*4,g*4+4);const mat=m.geom_matid[g];if(mat>=0)rgba=m.mat_rgba.slice(mat*4,mat*4+4);
-    const color=type<=1?new THREE.Color('#a2aaa5'):new THREE.Color().setRGB(Math.max(.015,rgba[0]),Math.max(.015,rgba[1]),Math.max(.015,rgba[2]),THREE.SRGBColorSpace);
-    if(type>1&&color.r>color.b*1.3&&color.r>color.g)color.set('#7d827b');
+    const color=type<=1?new THREE.Color('#a3a3a3'):new THREE.Color().setRGB(Math.max(.015,rgba[0]),Math.max(.015,rgba[1]),Math.max(.015,rgba[2]),THREE.SRGBColorSpace);
+    if(type>1&&color.r>color.b*1.3&&color.r>color.g)color.set('#848484');
     const isModel=m.geom_group[g]===4;
-    const material=isModel?new THREE.MeshBasicMaterial({color:'#77f1c7',transparent:true,opacity:.3,depthWrite:false,depthTest:false,side:THREE.DoubleSide}):
+    const material=isModel?new THREE.MeshBasicMaterial({color:'#8d9fb6',transparent:true,opacity:.3,depthWrite:false,depthTest:false,side:THREE.DoubleSide}):
       new THREE.MeshStandardMaterial({color,roughness:mat>=0?.6:.97,metalness:mat>=0?.13:0,map:type<=1?soil:null});
     const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.castShadow=!isModel&&type!==0;mesh.receiveShadow=!isModel;
     if(isModel){mesh.visible=false;mesh.renderOrder=3;modelObjects.push(mesh);}
@@ -120,7 +120,7 @@ function render(){
   else renderer.render(scene,camera);
   if(routeLine)routeLine.visible=false;
   const r=miniRect;renderer.setScissorTest(true);renderer.setScissor(r.x,r.y,r.w,r.h);renderer.setViewport(r.x,r.y,r.w,r.h);
-  renderer.setClearColor('#15211c');renderer.clear(true,true,true);carCamera.aspect=16/9;carCamera.updateProjectionMatrix();renderer.render(scene,carCamera);
+  renderer.setClearColor('#0b1320');renderer.clear(true,true,true);carCamera.aspect=16/9;carCamera.updateProjectionMatrix();renderer.render(scene,carCamera);
   renderer.setScissorTest(false);renderer.setClearColor(scene.background);
   if(routeLine)routeLine.visible=true;
 }
@@ -132,7 +132,7 @@ function setView(next){
 function drawRoute(plan){
   currentPlan=plan;if(routeLine){scene.remove(routeLine);routeLine.geometry.dispose();routeLine.material.dispose();routeLine=null;}
   if(!plan?.path)return;const geometry=new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(p[0],p[1],.035)));
-  routeLine=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:'#cced93',depthTest:false}));routeLine.renderOrder=4;scene.add(routeLine);
+  routeLine=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:'#f0a93b',depthTest:false}));routeLine.renderOrder=4;scene.add(routeLine);
 }
 const sourceBase='https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/';
 function inputURL(c){return sourceBase+c.input;}

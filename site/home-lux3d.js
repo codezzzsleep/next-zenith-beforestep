@@ -1,4 +1,4 @@
-import './gallery-viewer.js';
+import './gallery-viewer.js?v=report-v3-1';
 
 const viewer=document.querySelector('#core-model');
 const poster=document.querySelector('#model-poster');

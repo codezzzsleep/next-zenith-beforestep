@@ -12,7 +12,7 @@ function fitHomeModel(preserveZoom=false){
   const box=viewer.getBoundingClientRect();
   const aspect=box.width/Math.max(box.height,1);
   const zoom=preserveZoom&&homeDistance?viewer.distance/homeDistance:1;
-  homeDistance=viewer.fitDistance*.55*Math.max(1,1.45/aspect);
+  homeDistance=viewer.fitDistance*.60*Math.max(1,1.45/aspect);
   viewer.distance=homeDistance*zoom;
   viewer.requestRender();
 }

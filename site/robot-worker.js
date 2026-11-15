@@ -1,5 +1,5 @@
 import loadMujoco from './vendor/mujoco/mujoco.js';
-import {RobotWorld,inflateGzip,unpackTar,installAssets,clamp} from './robot-physics.js';
+import {RobotWorld,inflateGzip,unpackTar,installAssets,clamp} from './robot-physics.js?v=wheellegs-2';
 let world,paused=true,input={v:0,w:0,brake:false},route=null,index=0,automatic=false;
 let ticks=0,touch=false,brakeUntil=0,resetSeq=0;
 function emit(){

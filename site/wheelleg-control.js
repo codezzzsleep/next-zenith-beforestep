@@ -38,7 +38,7 @@ export class WheelLegControl {
     this.w=world;this.mj=world.mj;this.m=world.model;this.d=world.data;
     this.bodies=LEG_NAMES.map(l=>this.mj.mj_name2id(this.m,1,l+'_wheel_link'));
     this.geoms=this.bodies.map(b=>Array.from(this.m.geom_bodyid).map((v,i)=>v===b?i:-1).filter(i=>i>=0));
-    this.ground=new Set(Array.from(this.m.geom_type).map((t,i)=>t===0?i:-1).filter(i=>i>=0));
+    this.ground=new Set(Array.from(this.m.geom_type).map((t,i)=>(t===0||t===1)?i:-1).filter(i=>i>=0));
     this.jac=new this.mj.DoubleBuffer(this.m.nv*3);this.ang=new this.mj.DoubleBuffer(this.m.nv*3);this.force=new this.mj.DoubleBuffer(6);
     this.base=Array.from(this.d.qpos.slice(0,3));this.feet=this.anchors();this.yaw=world.state().yaw;
     this.swing=null;this.unloading=false;this.unloadFraction=1;this.adjust=[0,0,0,0];

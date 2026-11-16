@@ -1,0 +1,1087 @@
+{
+  "passed": true,
+  "scope": "New half-free showcase game; independent of frozen R1/R2/R3 research",
+  "full_browser": {
+    "checks": [
+      {
+        "name": "immediate_real_driving",
+        "info": {
+          "x": 2.2964075158120227,
+          "y": -0.4999568355426497,
+          "z": 0.385038874927441,
+          "poseName": "normal",
+          "yaw": 0.0001640919562595706,
+          "tilt": 0.06935310037120411,
+          "speed": 0.00022616425530820939,
+          "elapsed": 0.1400000000000001,
+          "steps": 70,
+          "finite": true,
+          "goalDistance": 8.31862999422795,
+          "legs": null,
+          "phase": "explore",
+          "paused": false,
+          "automatic": false,
+          "revision": 1,
+          "actionCount": 0,
+          "stable": true,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "approach",
+            "active": false,
+            "completed": false,
+            "viewedTask": null,
+            "releaseMode": null,
+            "triggers": 0
+          },
+          "scan": null,
+          "proof": null,
+          "gateProof": null
+        },
+        "seconds": 7.3
+      },
+      {
+        "name": "motor_braked_observation_forces_real_lux3d",
+        "info": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "seconds": 20.1
+      },
+      {
+        "name": "deliberate_original_model_rotation_unlocks_rehearsal",
+        "info": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+        "seconds": 39.2
+      },
+      {
+        "name": "two_real_model_worlds_rehearsed_from_live_pose",
+        "info": {
+          "passed": true,
+          "requestId": 1,
+          "usable": true,
+          "routeSession": false,
+          "revision": 1,
+          "worlds": 2,
+          "path": [
+            [
+              2.855455008473364,
+              -0.5029118748372193
+            ],
+            [
+              3.900000000000002,
+              0.20000000000000043
+            ],
+            [
+              4.799999999999999,
+              0.5000000000000004
+            ],
+            [
+              5.799999999999995,
+              -0.5999999999999995
+            ],
+            [
+              7.19999999999999,
+              -0.6999999999999995
+            ],
+            [
+              8.45,
+              0
+            ]
+          ],
+          "length": 6.530543048578162,
+          "anchor": {
+            "x": 2.855455008473364,
+            "y": -0.5029118748372193,
+            "z": 0.3851389653633642,
+            "poseName": "normal",
+            "yaw": 0.0001370911649001813,
+            "tilt": 0.016744301970718748,
+            "speed": 1.1021611763836061e-05,
+            "elapsed": 24.759999999997156,
+            "steps": 12380,
+            "finite": true,
+            "goalDistance": 7.760856749073042,
+            "legs": null
+          }
+        },
+        "seconds": 68.5
+      },
+      {
+        "name": "keyboard_takeover_of_rehearsed_route",
+        "info": null,
+        "seconds": 75.2
+      },
+      {
+        "name": "original_rehearsed_path_resumed_without_replanning",
+        "info": {
+          "x": 8.425137700667154,
+          "y": -0.0171825372506456,
+          "z": 0.38563330494067,
+          "poseName": "normal",
+          "yaw": 0.028763737475923524,
+          "tilt": 0.3671107140315933,
+          "speed": 0.0019894133797144753,
+          "elapsed": 109.71999999992569,
+          "steps": 54860,
+          "finite": true,
+          "goalDistance": 2.174930173740233,
+          "legs": null,
+          "phase": "gate",
+          "paused": false,
+          "automatic": false,
+          "revision": 1,
+          "actionCount": 0,
+          "stable": true,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "high-rocks",
+            "active": false,
+            "completed": true,
+            "viewedTask": 5958685,
+            "releaseMode": "assisted",
+            "triggers": 1
+          },
+          "scan": {
+            "valid": true,
+            "near": 9.1,
+            "far": 9.199729272086415,
+            "high": 0.12,
+            "heightAboveGround": 0.1191176456213,
+            "depth": 0.09972927208641558,
+            "camera": [
+              8.844757087317257,
+              -0.004179195219319427,
+              0.38452983983696853
+            ],
+            "points": null,
+            "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+          },
+          "proof": {
+            "passed": true,
+            "requestId": 1,
+            "usable": false,
+            "routeSession": true,
+            "revision": 1,
+            "worlds": 2,
+            "path": [
+              [
+                2.855455008473364,
+                -0.5029118748372193
+              ],
+              [
+                3.900000000000002,
+                0.20000000000000043
+              ],
+              [
+                4.799999999999999,
+                0.5000000000000004
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ],
+            "length": 6.530543048578162,
+            "anchor": {
+              "x": 2.855455008473364,
+              "y": -0.5029118748372193,
+              "z": 0.3851389653633642,
+              "poseName": "normal",
+              "yaw": 0.0001370911649001813,
+              "tilt": 0.016744301970718748,
+              "speed": 1.1021611763836061e-05,
+              "elapsed": 24.759999999997156,
+              "steps": 12380,
+              "finite": true,
+              "goalDistance": 7.760856749073042,
+              "legs": null
+            }
+          },
+          "gateProof": null
+        },
+        "seconds": 179.8
+      },
+      {
+        "name": "visible_threshold_real_crossing_rehearsal",
+        "info": null,
+        "seconds": 209.6
+      },
+      {
+        "name": "player_leg_action_1",
+        "info": {
+          "action": "lift",
+          "leg": 0
+        },
+        "seconds": 238.4
+      },
+      {
+        "name": "player_leg_action_2",
+        "info": {
+          "action": "advance",
+          "leg": 0
+        },
+        "seconds": 247.3
+      },
+      {
+        "name": "player_leg_action_3",
+        "info": {
+          "action": "land",
+          "leg": 0
+        },
+        "seconds": 250.0
+      },
+      {
+        "name": "player_leg_action_4",
+        "info": {
+          "action": "lift",
+          "leg": 1
+        },
+        "seconds": 255.8
+      },
+      {
+        "name": "player_leg_action_5",
+        "info": {
+          "action": "advance",
+          "leg": 1
+        },
+        "seconds": 259.9
+      },
+      {
+        "name": "player_leg_action_6",
+        "info": {
+          "action": "land",
+          "leg": 1
+        },
+        "seconds": 263.6
+      },
+      {
+        "name": "player_leg_action_7",
+        "info": {
+          "action": "lift",
+          "leg": 2
+        },
+        "seconds": 290.5
+      },
+      {
+        "name": "player_leg_action_8",
+        "info": {
+          "action": "advance",
+          "leg": 2
+        },
+        "seconds": 294.4
+      },
+      {
+        "name": "player_leg_action_9",
+        "info": {
+          "action": "land",
+          "leg": 2
+        },
+        "seconds": 299.4
+      },
+      {
+        "name": "player_leg_action_10",
+        "info": {
+          "action": "lift",
+          "leg": 3
+        },
+        "seconds": 307.7
+      },
+      {
+        "name": "player_leg_action_11",
+        "info": {
+          "action": "advance",
+          "leg": 3
+        },
+        "seconds": 312.1
+      },
+      {
+        "name": "player_leg_action_12",
+        "info": {
+          "action": "land",
+          "leg": 3
+        },
+        "seconds": 316.0
+      },
+      {
+        "name": "full_task_reached_goal",
+        "info": {
+          "x": 10.256295104809427,
+          "y": 0.006257049920679109,
+          "z": 0.46773063724598574,
+          "poseName": "high",
+          "yaw": -0.06970163752500264,
+          "tilt": 0.1989216727894004,
+          "speed": 0.003131642301692114,
+          "elapsed": 222.36600000033366,
+          "steps": 111183,
+          "finite": true,
+          "goalDistance": 0.3437618443801939,
+          "legs": null,
+          "phase": "complete",
+          "paused": true,
+          "automatic": false,
+          "revision": 1,
+          "actionCount": 12,
+          "stable": true,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "high-rocks",
+            "active": false,
+            "completed": true,
+            "viewedTask": 5958685,
+            "releaseMode": "assisted",
+            "triggers": 1
+          },
+          "scan": {
+            "valid": true,
+            "near": 9.1,
+            "far": 9.197859964515356,
+            "high": 0.12,
+            "heightAboveGround": 0.11911764562129978,
+            "depth": 0.09785996451535617,
+            "camera": [
+              8.845744339188823,
+              -0.00372513969846806,
+              0.3842777014670218
+            ],
+            "points": null,
+            "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+          },
+          "proof": {
+            "passed": true,
+            "requestId": 1,
+            "usable": false,
+            "routeSession": true,
+            "revision": 1,
+            "worlds": 2,
+            "path": [
+              [
+                2.855455008473364,
+                -0.5029118748372193
+              ],
+              [
+                3.900000000000002,
+                0.20000000000000043
+              ],
+              [
+                4.799999999999999,
+                0.5000000000000004
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ],
+            "length": 6.530543048578162,
+            "anchor": {
+              "x": 2.855455008473364,
+              "y": -0.5029118748372193,
+              "z": 0.3851389653633642,
+              "poseName": "normal",
+              "yaw": 0.0001370911649001813,
+              "tilt": 0.016744301970718748,
+              "speed": 1.1021611763836061e-05,
+              "elapsed": 24.759999999997156,
+              "steps": 12380,
+              "finite": true,
+              "goalDistance": 7.760856749073042,
+              "legs": null
+            }
+          },
+          "gateProof": {
+            "passed": true,
+            "requestId": 2,
+            "usable": false
+          }
+        },
+        "seconds": 330.9
+      }
+    ],
+    "errors": [],
+    "passed": true
+  },
+  "desktop_mobile": {
+    "checks": [
+      {
+        "name": "1280_starts_with_driving_and_visible_rock",
+        "info": {
+          "x": 2.2964580268447694,
+          "observations": [
+            "T1",
+            "T2"
+          ]
+        },
+        "seconds": 7.7
+      },
+      {
+        "name": "1280_checkpoint_brakes_and_forces_lux3d",
+        "info": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "seconds": 13.7
+      },
+      {
+        "name": "1280_driving_and_auto_rotation_cannot_skip_model",
+        "info": {
+          "xDelta": 0.00031943120033739447
+        },
+        "seconds": 15.0
+      },
+      {
+        "name": "1280_three_views_and_pip_same_snapshot",
+        "info": [
+          {
+            "view": "1",
+            "time": "8.339999999999455",
+            "pip": "{\"x\":645,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":8.339999999999455}",
+            "seen": "20697",
+            "total": "54540"
+          },
+          {
+            "view": "0",
+            "time": "8.339999999999455",
+            "pip": "{\"x\":645,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":8.339999999999455}",
+            "seen": "20697",
+            "total": "54540"
+          },
+          {
+            "view": "2",
+            "time": "8.339999999999455",
+            "pip": "{\"x\":645,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":8.339999999999455}",
+            "seen": "20697",
+            "total": "54540"
+          }
+        ],
+        "seconds": 26.7
+      },
+      {
+        "name": "1280_deliberate_rotation_unlocks_choices",
+        "info": {
+          "src": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+          "yaw": 3.7466585039886593,
+          "loadVersion": 1
+        },
+        "seconds": 30.8
+      },
+      {
+        "name": "1280_manual_driving_retains_rotating_original_3d",
+        "info": {
+          "beforeX": 2.8552255662713413,
+          "afterX": 3.0814308068812837,
+          "loadVersion": 1,
+          "falseProof": null
+        },
+        "seconds": 38.5
+      },
+      {
+        "name": "1280_layout_no_horizontal_overflow",
+        "info": 0,
+        "seconds": 46.8
+      },
+      {
+        "name": "1280_cancel_still_invalidates_rehearsal",
+        "info": null,
+        "seconds": 52.3
+      },
+      {
+        "name": "1280_manual_leg_operations_after_model_showcase",
+        "info": null,
+        "seconds": 68.0
+      },
+      {
+        "name": "1280_retry_restores_driving_and_checkpoint",
+        "info": null,
+        "seconds": 69.7
+      },
+      {
+        "name": "390_starts_with_driving_and_visible_rock",
+        "info": {
+          "x": 2.296448984951398,
+          "observations": [
+            "T1",
+            "T2"
+          ]
+        },
+        "seconds": 84.2
+      },
+      {
+        "name": "390_checkpoint_brakes_and_forces_lux3d",
+        "info": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "seconds": 89.6
+      },
+      {
+        "name": "390_driving_and_auto_rotation_cannot_skip_model",
+        "info": {
+          "xDelta": 0.0003401219240761755
+        },
+        "seconds": 90.9
+      },
+      {
+        "name": "390_three_views_and_pip_same_snapshot",
+        "info": [
+          {
+            "view": "1",
+            "time": "7.499999999999396",
+            "pip": "{\"x\":262.79999999999995,\"y\":472,\"w\":109.20000000000002,\"h\":61.42500000000001,\"stateTime\":7.499999999999396}",
+            "seen": "17395",
+            "total": "54540"
+          },
+          {
+            "view": "0",
+            "time": "7.499999999999396",
+            "pip": "{\"x\":262.79999999999995,\"y\":472,\"w\":109.20000000000002,\"h\":61.42500000000001,\"stateTime\":7.499999999999396}",
+            "seen": "17395",
+            "total": "54540"
+          },
+          {
+            "view": "2",
+            "time": "7.499999999999396",
+            "pip": "{\"x\":262.79999999999995,\"y\":472,\"w\":109.20000000000002,\"h\":61.42500000000001,\"stateTime\":7.499999999999396}",
+            "seen": "17395",
+            "total": "54540"
+          }
+        ],
+        "seconds": 93.8
+      },
+      {
+        "name": "390_deliberate_rotation_unlocks_choices",
+        "info": {
+          "src": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+          "yaw": 3.8586585039886594,
+          "loadVersion": 1
+        },
+        "seconds": 95.8
+      },
+      {
+        "name": "390_manual_driving_retains_rotating_original_3d",
+        "info": {
+          "beforeX": 2.8543881338033747,
+          "afterX": 3.206137213957296,
+          "loadVersion": 1,
+          "falseProof": null
+        },
+        "seconds": 101.2
+      },
+      {
+        "name": "390_layout_no_horizontal_overflow",
+        "info": 0,
+        "seconds": 107.8
+      },
+      {
+        "name": "390_cancel_still_invalidates_rehearsal",
+        "info": null,
+        "seconds": 112.6
+      },
+      {
+        "name": "390_manual_leg_operations_after_model_showcase",
+        "info": null,
+        "seconds": 125.2
+      },
+      {
+        "name": "390_retry_restores_driving_and_checkpoint",
+        "info": null,
+        "seconds": 127.6
+      }
+    ],
+    "errors": [],
+    "screens": [
+      "1280-guided.jpg",
+      "1280-manual-3d.jpg",
+      "390-guided.jpg",
+      "390-manual-3d.jpg"
+    ],
+    "passed": true
+  },
+  "visual_refresh": {
+    "checks": [
+      {
+        "name": "1280_starts_with_driving_and_visible_rock",
+        "info": {
+          "x": 2.2964663340785725,
+          "observations": [
+            "T1",
+            "T2"
+          ]
+        },
+        "seconds": 16.8
+      },
+      {
+        "name": "1280_checkpoint_brakes_and_forces_lux3d",
+        "info": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "seconds": 25.6
+      },
+      {
+        "name": "1280_driving_and_auto_rotation_cannot_skip_model",
+        "info": {
+          "xDelta": 0.00019554484554218377
+        },
+        "seconds": 27.1
+      },
+      {
+        "name": "1280_three_views_and_pip_same_snapshot",
+        "info": [
+          {
+            "view": "1",
+            "time": "13.160000000001064",
+            "pip": "{\"x\":645,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":13.160000000001064}",
+            "seen": "19849",
+            "total": "54540"
+          },
+          {
+            "view": "0",
+            "time": "13.160000000001064",
+            "pip": "{\"x\":645,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":13.160000000001064}",
+            "seen": "19849",
+            "total": "54540"
+          },
+          {
+            "view": "2",
+            "time": "13.160000000001064",
+            "pip": "{\"x\":645,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":13.160000000001064}",
+            "seen": "19849",
+            "total": "54540"
+          }
+        ],
+        "seconds": 51.4
+      },
+      {
+        "name": "1280_deliberate_rotation_unlocks_choices",
+        "info": {
+          "src": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+          "yaw": 3.6986585039886593,
+          "loadVersion": 1
+        },
+        "seconds": 60.9
+      },
+      {
+        "name": "1280_manual_driving_retains_rotating_original_3d",
+        "info": {
+          "beforeX": 2.8552808150003264,
+          "afterX": 3.091848972581627,
+          "loadVersion": 1,
+          "falseProof": null
+        },
+        "seconds": 84.7
+      },
+      {
+        "name": "390_starts_with_driving_and_visible_rock",
+        "info": {
+          "x": 2.2964877359680123,
+          "observations": [
+            "T1",
+            "T2"
+          ]
+        },
+        "seconds": 165.8
+      },
+      {
+        "name": "390_checkpoint_brakes_and_forces_lux3d",
+        "info": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "seconds": 178.2
+      },
+      {
+        "name": "390_driving_and_auto_rotation_cannot_skip_model",
+        "info": {
+          "xDelta": 0.00014087031708243103
+        },
+        "seconds": 179.5
+      },
+      {
+        "name": "390_three_views_and_pip_same_snapshot",
+        "info": [
+          {
+            "view": "1",
+            "time": "14.540000000001525",
+            "pip": "{\"x\":262.79999999999995,\"y\":472,\"w\":109.20000000000002,\"h\":61.42500000000001,\"stateTime\":14.540000000001525}",
+            "seen": "16843",
+            "total": "54540"
+          },
+          {
+            "view": "0",
+            "time": "14.540000000001525",
+            "pip": "{\"x\":262.79999999999995,\"y\":472,\"w\":109.20000000000002,\"h\":61.42500000000001,\"stateTime\":14.540000000001525}",
+            "seen": "16843",
+            "total": "54540"
+          },
+          {
+            "view": "2",
+            "time": "14.540000000001525",
+            "pip": "{\"x\":262.79999999999995,\"y\":472,\"w\":109.20000000000002,\"h\":61.42500000000001,\"stateTime\":14.540000000001525}",
+            "seen": "16843",
+            "total": "54540"
+          }
+        ],
+        "seconds": 193.6
+      },
+      {
+        "name": "390_deliberate_rotation_unlocks_choices",
+        "info": {
+          "src": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+          "yaw": 3.7146585039886593,
+          "loadVersion": 1
+        },
+        "seconds": 197.2
+      },
+      {
+        "name": "390_manual_driving_retains_rotating_original_3d",
+        "info": {
+          "beforeX": 2.8556658025060244,
+          "afterX": 3.1169520179465806,
+          "loadVersion": 1,
+          "falseProof": null
+        },
+        "seconds": 203.1
+      }
+    ],
+    "errors": [],
+    "screens": [
+      "1280-guided.jpg",
+      "1280-manual-3d.jpg",
+      "390-guided.jpg",
+      "390-manual-3d.jpg"
+    ],
+    "passed": true
+  },
+  "showcase_protocol": {
+    "passed": true,
+    "motorBrakedCheckpoint": {
+      "beforeX": 2.296371465470595,
+      "stoppedX": 2.852574203570624,
+      "speed": 0.00027794913419161414,
+      "simTime": 3.8599999999997965
+    },
+    "lockedInputCannotMove": true,
+    "unloadedOrUnturnedOrWrongTargetCannotRelease": true,
+    "changedViewedSelectionRelocks": true,
+    "cancelDoesNotCertifyOrRelease": true,
+    "manualReleaseRequiresNoFakeProof": true,
+    "resetRestoresCheckpoint": true,
+    "actualTwoModelRehearsalPassed": true,
+    "assistedReleaseRequiresCertificate": true,
+    "keyboardTakeoverAfterShowcase": true,
+    "selectedTasks": [
+      5958685,
+      5958654,
+      5958934
+    ],
+    "scope": "Guided game presentation, independent of frozen research"
+  },
+  "full_worker": {
+    "passed": true,
+    "selected": [
+      5958685,
+      5958654,
+      5958934
+    ],
+    "commands": [
+      {
+        "action": "lift",
+        "leg": 0
+      },
+      {
+        "action": "advance",
+        "leg": 0
+      },
+      {
+        "action": "land",
+        "leg": 0
+      },
+      {
+        "action": "lift",
+        "leg": 1
+      },
+      {
+        "action": "advance",
+        "leg": 1
+      },
+      {
+        "action": "land",
+        "leg": 1
+      },
+      {
+        "action": "lift",
+        "leg": 2
+      },
+      {
+        "action": "advance",
+        "leg": 2
+      },
+      {
+        "action": "land",
+        "leg": 2
+      },
+      {
+        "action": "lift",
+        "leg": 3
+      },
+      {
+        "action": "advance",
+        "leg": 3
+      },
+      {
+        "action": "land",
+        "leg": 3
+      }
+    ],
+    "terminal": {
+      "x": 10.266769120490022,
+      "y": -0.008451721348462837,
+      "z": 0.46778957809344374,
+      "poseName": "high",
+      "yaw": -0.09230322159295419,
+      "tilt": 0.0844563447529502,
+      "speed": 0.003582982477489046,
+      "elapsed": 170.76000000008725,
+      "steps": 85380,
+      "finite": true,
+      "goalDistance": 0.3333380426125191,
+      "legs": null,
+      "phase": "complete",
+      "paused": true,
+      "automatic": false,
+      "revision": 1,
+      "actionCount": 12,
+      "stable": true,
+      "showcase": {
+        "enabled": true,
+        "checkpointX": 2.8499999999999996,
+        "stage": "high-rocks",
+        "active": false,
+        "completed": true,
+        "viewedTask": 5958685,
+        "releaseMode": "assisted",
+        "triggers": 1
+      },
+      "scan": {
+        "valid": true,
+        "near": 9.1,
+        "far": 9.19828913992249,
+        "high": 0.12,
+        "heightAboveGround": 0.1191176456213,
+        "depth": 0.09828913992249078,
+        "camera": [
+          8.846150601655465,
+          -0.0050246921217369615,
+          0.38433277998320003
+        ],
+        "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+      },
+      "proof": {
+        "passed": true,
+        "requestId": "route",
+        "usable": false,
+        "routeSession": true,
+        "revision": 1,
+        "worlds": 2,
+        "path": [
+          [
+            2.852574203570624,
+            -0.5029432784470904
+          ],
+          [
+            3.900000000000002,
+            0.20000000000000043
+          ],
+          [
+            4.799999999999999,
+            0.5000000000000004
+          ],
+          [
+            5.799999999999995,
+            -0.5999999999999995
+          ],
+          [
+            7.19999999999999,
+            -0.6999999999999995
+          ],
+          [
+            8.45,
+            0
+          ]
+        ],
+        "length": 6.532951609970825,
+        "anchor": {
+          "x": 2.852574203570624,
+          "y": -0.5029432784470904,
+          "z": 0.38507818961983953,
+          "poseName": "normal",
+          "yaw": 0.0015891676217104007,
+          "tilt": 0.3011314364640864,
+          "speed": 0.00027794913419161414,
+          "elapsed": 3.8599999999997965,
+          "steps": 1930,
+          "finite": true,
+          "goalDistance": 7.763733535646006,
+          "legs": null
+        }
+      },
+      "gateProof": {
+        "passed": true,
+        "requestId": "threshold",
+        "usable": false
+      }
+    },
+    "terminalSnapshotDelivered": true,
+    "realMotorPhysics": true,
+    "scope": "New game protocol; independent of frozen research experiments"
+  },
+  "worker_session": {
+    "passed": true,
+    "requestIdentity": true,
+    "cancelledJobNeverCertified": true,
+    "completedJobUsesRealPhysics": true,
+    "previewPreservesLivePose": true,
+    "immediateFreeDrive": true,
+    "takeover": true,
+    "manualLegsTakeOverAssist": true,
+    "controllerPoseInvalidatesOldProof": true,
+    "movedStartRejectsOldProof": true,
+    "selectionClearsProof": true,
+    "selectedTasks": [
+      5958685,
+      5958654
+    ],
+    "worlds": 1,
+    "scope": "New game worker verification; separate from research results"
+  },
+  "experience": {
+    "passed": true,
+    "certificateChecks": 9,
+    "allWorlds": 12,
+    "singleWorld": 1,
+    "routeChanged": true,
+    "liveVisibleHits": 338,
+    "liveTargets": [
+      "T1",
+      "T2"
+    ],
+    "dreamDoesNotMutateLive": true,
+    "turningCameraChangesVisibleSurfaces": true,
+    "controllerPosePreservedInDream": true,
+    "scope": "New interactive experience; separate from research results"
+  },
+  "retained": {
+    "passed": true,
+    "base": "7b1ea455d702f42e1496e8196effdba106e51445",
+    "files": [
+      {
+        "path": "site/mission-planner.js",
+        "git_blob": "38bfb24ff9130ec407caf27330b3a9c7c8e95969",
+        "unchanged": true
+      },
+      {
+        "path": "site/mission-world.js",
+        "git_blob": "5e984aea1a632e732fe77eb034b3edd67e37ed59",
+        "unchanged": true
+      },
+      {
+        "path": "site/mission-rehearsal.js",
+        "git_blob": "a8e5245833a0116aac09d66255ae6cbb6ef59c4a",
+        "unchanged": true
+      },
+      {
+        "path": "site/mission-scene.js",
+        "git_blob": "ef4d995a27776cbbe02f05476c1891c19f7cb44d",
+        "unchanged": true
+      },
+      {
+        "path": "site/wheelleg-control.js",
+        "git_blob": "da4d5bd0675c06c59d9a7a6fa7b26c5dd9b31110",
+        "unchanged": true
+      },
+      {
+        "path": "site/media/mission/mission.json.gz",
+        "git_blob": "35091f18e65bd94b6723d6fafa92fecb639f184c",
+        "unchanged": true
+      },
+      {
+        "path": "site/media/mission/worlds.tar.gz",
+        "git_blob": "c4e22bc9d2e34ffe9d1989316b282831c24fdf03",
+        "unchanged": true
+      },
+      {
+        "path": "site/media/mission/display.json.gz",
+        "git_blob": "1f3c86ab685cedecf614cc5327664526b3812f38",
+        "unchanged": true
+      },
+      {
+        "path": "site/vendor/mujoco/mujoco.wasm.gz",
+        "git_blob": "503da867366915ab1d89f075bc486ca21e2591ae",
+        "unchanged": true
+      },
+      {
+        "path": "config/admission.json",
+        "git_blob": "4ae72181fe6f4e664445386fd9961d4801cc3bf2",
+        "unchanged": true
+      },
+      {
+        "path": "site/media/report.pdf",
+        "git_blob": "24906bffb773f0498968d43efacf4b51035b7ce9",
+        "unchanged": true
+      }
+    ],
+    "source_only_changes": "Guided UI and worker presentation boundaries; frozen collision inputs, controller, planner, admission and research report retained"
+  },
+  "limits": [
+    "Software WebGL/Chromium; mobile uses real touch-event emulation, not physical handset benchmarking",
+    "Original archived Lux3D GLB and photographs are loaded; no camera image is submitted as new generation"
+  ]
+}

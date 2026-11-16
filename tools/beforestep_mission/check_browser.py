@@ -22,11 +22,11 @@ async def main():
   try:
    await page.goto(base+'/play.html',wait_until='domcontentloaded');await page.wait_for_function('window.BeforeStepGame?.state && document.documentElement.dataset.missionReady',timeout=90000)
    s=await page.evaluate('BeforeStepGame.state');assert s['phase']=='explore' and not s['paused'];check('immediate_real_driving',s)
-   await page.keyboard.down('w');await page.wait_for_timeout(1100);await page.keyboard.up('w');await page.keyboard.down(' ');await page.wait_for_timeout(700);await page.keyboard.up(' ')
-   await page.wait_for_function('BeforeStepGame.state.stable',timeout=30000);s2=await page.evaluate('BeforeStepGame.state');assert s2['x']>s['x']+.08;check('keyboard_drive_before_models',{'before':s['x'],'after':s2['x']})
-   await page.locator('button[data-view="0"]').click();await page.wait_for_timeout(700);await page.locator('button[data-view="2"]').click();await page.wait_for_timeout(700);await page.locator('button[data-view="1"]').click();check('three_views_same_live_world',await page.locator('#world').evaluate('(e)=>({view:e.dataset.view,time:e.dataset.simulationTime,pip:e.dataset.pip,observed:e.dataset.observedVertices,total:e.dataset.totalRockVertices})'))
-   await page.locator('#observe').click();await page.locator('#think').click();await page.wait_for_function('document.querySelector("#raw-model").loaded',timeout=90000);check('official_raw_lux3d_model_in_thought_bubble',await page.locator('#raw-model').get_attribute('src'))
-   await page.locator('#model-turn').click();await page.locator('#raw-model').hover();await page.mouse.down();await page.mouse.move(1120,350,steps=6);await page.mouse.up()
+   await page.keyboard.down('w');await page.wait_for_function('BeforeStepGame.state.showcase.stage==="observe"',timeout=60000,polling=100);await page.keyboard.up('w')
+   await page.wait_for_function('document.querySelector("#raw-model").loaded',timeout=120000,polling=100);assert await page.locator('#brain').is_visible();assert await page.locator('#manual-continue').is_disabled();check('motor_braked_observation_forces_real_lux3d',await page.evaluate('BeforeStepGame.state.showcase'))
+   for view in [1,0,2]:
+    await page.locator(f'button[data-view="{view}"]').click();await page.wait_for_function(f'document.querySelector("#world").dataset.view==="{view}"',timeout=30000,polling=100)
+   await page.locator('button[data-view="0"]').click();await page.locator('#model-back').click();await page.wait_for_function('BeforeStepGame.state.showcase.stage==="model-seen" && !document.querySelector("#preview").disabled',timeout=30000,polling=100);check('deliberate_original_model_rotation_unlocks_rehearsal',await page.locator('#raw-model').get_attribute('src'))
    await page.locator('#preview').click();await page.wait_for_function('BeforeStepGame.state.proof?.passed',timeout=420000,polling=100);s=await page.evaluate('BeforeStepGame.state');assert s['proof']['usable'];check('two_real_model_worlds_rehearsed_from_live_pose',s['proof'])
    # Selection invalidation was verified in the retained first run.
    await page.locator('#execute').click();await page.wait_for_function('BeforeStepGame.state.automatic',timeout=30000);await page.wait_for_timeout(1300);await page.keyboard.down(' ');await page.wait_for_timeout(650);await page.keyboard.up(' ');await page.wait_for_function('!BeforeStepGame.state.automatic',timeout=30000);check('keyboard_takeover_of_rehearsed_route')
@@ -43,7 +43,7 @@ async def main():
     check(f'player_leg_action_{i+1}',waiting)
    await page.wait_for_function('BeforeStepGame.state.phase==="finish-drive"',timeout=180000,polling=100);await page.locator('#wheel-mode').click();await page.wait_for_function('!BeforeStepGame.state.legs',timeout=30000);await page.keyboard.down('w');await page.wait_for_function('BeforeStepGame.state.phase==="complete"',timeout=120000,polling=100);await page.keyboard.up('w');check('full_task_reached_goal',await page.evaluate('BeforeStepGame.state'));result['passed']=not result['errors'];save()
    await page.screenshot(path=str(l/'completed.jpg'),type='jpeg',quality=70,timeout=90000)
-  except Exception as e:result['failed']=str(e);result['state']=await page.evaluate('window.BeforeStepGame?.state');save();print('FAIL',str(e)[:350],flush=True)
+  except Exception as e:result['passed']=False;result['failed']=repr(e);result['state']=await page.evaluate('window.BeforeStepGame?.state');save();print('FAIL',str(e)[:350],flush=True)
   finally:
    result['video']=await page.video.path();save();await context.close();await browser.close()
 asyncio.run(main())

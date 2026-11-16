@@ -1,266 +1,112 @@
-import * as THREE from './vendor/three/three.module.js';
-import {OrbitControls} from './vendor/three/OrbitControls.js';
 import './gallery-viewer.js?v=report-v3-1';
-import {inflateGzip,clamp} from './robot-physics.js?v=mission-1';
+import {MissionScene} from './mission-scene.js?v=immersive-1';
+import {inflateGzip} from './robot-physics.js?v=mission-1';
 import {accepted,admissionChecks,planRoute,modelWorlds} from './mission-planner.js?v=mission-1';
-const $=id=>document.getElementById(id),canvas=$('world'),stage=canvas.parentElement;
-let world,worker,renderer,scene,camera,carCamera,controls,goalRing,routeLine,displayMeshes,footMarker,view=0,objects=[],modelObjects=[],miniRect={x:0,y:0,w:0,h:0};
-const temp=new THREE.Vector3(),robotQuaternion=new THREE.Quaternion();
-let mission,ready=false,checked=false,selected=[],focusId=null,phase='observation',paused=true,previewResults=[],currentPlan=null,gateResult=null,gateScan=null,lastUI=0,keys=new Set(),joystick=[0,0],touchBrake=false,stickPointer=null;
-const labels=['右前','左前','右后','左后'];
-const say=t=>$('stage-message').textContent=t;
-const post=m=>worker?.postMessage(m);
-function setupScene(){
-  renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false,preserveDrawingBuffer:true});
-  renderer.setPixelRatio(Math.min(devicePixelRatio,1));renderer.shadowMap.enabled=false;
-  renderer.shadowMap.type=THREE.PCFSoftShadowMap;renderer.shadowMap.autoUpdate=false;
-  renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1.1;
-  scene=new THREE.Scene();scene.background=new THREE.Color('#0b1320');scene.fog=new THREE.Fog('#0b1320',19,60);
-  camera=new THREE.PerspectiveCamera(49,1,.03,100);camera.up.set(0,0,1);camera.position.set(-2.2,-2.8,2.4);
-  carCamera=new THREE.PerspectiveCamera(68,16/9,.03,80);carCamera.up.set(0,0,1);
-  controls=new OrbitControls(camera,canvas);controls.enableDamping=true;controls.enablePan=false;
-  controls.minDistance=1.25;controls.maxDistance=12;controls.maxPolarAngle=Math.PI*.47;
-  controls.target.set(0,0,.3);controls.update();
-  scene.add(new THREE.HemisphereLight('#e6e8ec','#666970',1.4));
-  const sun=new THREE.DirectionalLight('#ffffff',2.0);sun.position.set(-9,-7,8);sun.castShadow=true;
-  sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-13,right:13,top:8,bottom:-8,near:.1,far:35});
-  sun.shadow.bias=-.0003;sun.shadow.normalBias=.01;scene.add(sun);
-  const grid=new THREE.GridHelper(24,48,'#8b96aa','#53627a');grid.rotation.x=Math.PI/2;grid.position.set(5,0,.005);
-  grid.material.transparent=true;grid.material.opacity=.1;scene.add(grid);
-  goalRing=new THREE.Group();
-  const ring=new THREE.Mesh(new THREE.TorusGeometry(.35,.025,10,64),new THREE.MeshBasicMaterial({color:'#53cdb9'}));ring.position.z=.035;
-  goalRing.add(ring);
-  const flag=new THREE.Mesh(new THREE.CylinderGeometry(.008,.008,1.15,8),new THREE.MeshStandardMaterial({color:'#a9b6cb'}));
-  flag.rotation.x=Math.PI/2;flag.position.set(0,0,.575);goalRing.add(flag);
-  const fabric=new THREE.Mesh(new THREE.PlaneGeometry(.32,.16),new THREE.MeshBasicMaterial({color:'#53cdb9',side:THREE.DoubleSide}));
-  fabric.rotation.x=Math.PI/2;fabric.position.set(.16,0,1.07);goalRing.add(fabric);scene.add(goalRing);
-  footMarker=new THREE.Mesh(new THREE.TorusGeometry(.105,.009,8,40),new THREE.MeshBasicMaterial({color:'#f0a93b',depthTest:false}));footMarker.renderOrder=5;footMarker.visible=false;scene.add(footMarker);
-  const points=[];let seed=42;
-  const rand=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};
-  for(let i=0;i<190;i++)points.push((rand()-.5)*120,(rand()-.5)*120,15+rand()*50);
-  const stars=new THREE.BufferGeometry();stars.setAttribute('position',new THREE.Float32BufferAttribute(points,3));
-  scene.add(new THREE.Points(stars,new THREE.PointsMaterial({color:'#d6deea',size:.05,sizeAttenuation:true})));
-}
-function groundTexture(){
-  const c=document.createElement('canvas');c.width=c.height=128;const ctx=c.getContext('2d'),image=ctx.createImageData(128,128);
-  let seed=67;for(let i=0;i<image.data.length;i+=4){seed=(seed*1103515245+12345)>>>0;const n=108+(seed%37);image.data.set([n,n,n,255],i);}ctx.putImageData(image,0,0);
-  const tex=new THREE.CanvasTexture(c);tex.wrapS=tex.wrapT=THREE.RepeatWrapping;tex.repeat.set(25,18);tex.colorSpace=THREE.SRGBColorSpace;return tex;
-}
-function buildGeometry(){
-  for(const {mesh}of objects){scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}objects=[];modelObjects=[];
-
-  const m=world.model,cache=new Map(),soil=groundTexture();
-  for(let g=0;g<m.ngeom;g++){
-    if(m.geom_group[g]===3)continue;
-    const type=m.geom_type[g],s=m.geom_size.slice(g*3,g*3+3);let geometry;
-    if(type===7){
-      const id=m.geom_dataid[g];
-      if(!cache.has(id)){
-        const geom=new THREE.BufferGeometry(),va=m.mesh_vertadr[id],vn=m.mesh_vertnum[id],fa=m.mesh_faceadr[id],fn=m.mesh_facenum[id];
-        const name=m.mesh_names[id],lod=displayMeshes?.[name];
-        if(lod){
-          geom.setAttribute('position',new THREE.Float32BufferAttribute(lod.positions,3));geom.setIndex(lod.indices);
-          const position=m.mesh_pos.slice(id*3,id*3+3),quat=m.mesh_quat.slice(id*4,id*4+4);
-          const inverse=new THREE.Matrix4().makeRotationFromQuaternion(new THREE.Quaternion(quat[1],quat[2],quat[3],quat[0])).invert();
-          inverse.multiply(new THREE.Matrix4().makeTranslation(-position[0],-position[1],-position[2]));geom.applyMatrix4(inverse);
-        }else{
-          geom.setAttribute('position',new THREE.BufferAttribute(new Float32Array(m.mesh_vert.slice(va*3,(va+vn)*3)),3));
-          geom.setIndex(new THREE.BufferAttribute(new Uint32Array(m.mesh_face.slice(fa*3,(fa+fn)*3)),1));
-        }
-        geom.computeVertexNormals();cache.set(id,geom);
-      }geometry=cache.get(id);
-    }else if(type===0){geometry=new THREE.PlaneGeometry(30,20);}
-    else if(type===1){
-      const id=m.geom_dataid[g],nr=m.hfield_nrow[id],nc=m.hfield_ncol[id],adr=m.hfield_adr[id],sz=m.hfield_size.slice(id*4,id*4+4);
-      geometry=new THREE.PlaneGeometry(sz[0]*2,sz[1]*2,nc-1,nr-1);const p=geometry.attributes.position;
-      for(let k=0;k<p.count;k++){const col=k%nc,row=nr-1-Math.floor(k/nc);p.setZ(k,m.hfield_data[adr+row*nc+col]*sz[2]);}geometry.computeVertexNormals();
-    }else if(type===6)geometry=new THREE.BoxGeometry(s[0]*2,s[1]*2,s[2]*2);
-    else if(type===2)geometry=new THREE.SphereGeometry(s[0],16,12);
-    else if(type===5){geometry=new THREE.CylinderGeometry(s[0],s[0],s[1]*2,16);geometry.rotateX(Math.PI/2);}
-    else if(type===3){geometry=new THREE.CapsuleGeometry(s[0],s[1]*2,8,12);geometry.rotateX(Math.PI/2);}
-    else continue;
-    let rgba=m.geom_rgba.slice(g*4,g*4+4);const mat=m.geom_matid[g];if(mat>=0)rgba=m.mat_rgba.slice(mat*4,mat*4+4);
-    const color=type<=1?new THREE.Color('#a3a3a3'):new THREE.Color().setRGB(Math.max(.015,rgba[0]),Math.max(.015,rgba[1]),Math.max(.015,rgba[2]),THREE.SRGBColorSpace);
-    if(type>1&&color.r>color.b*1.3&&color.r>color.g)color.set('#848484');
-    const isModel=m.geom_group[g]===4;
-    const material=isModel?new THREE.MeshBasicMaterial({color:'#8d9fb6',transparent:true,opacity:.3,depthWrite:false,depthTest:false,side:THREE.DoubleSide}):
-      new THREE.MeshStandardMaterial({color,roughness:mat>=0?.6:.97,metalness:mat>=0?.13:0,map:type<=1?soil:null});
-    const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.castShadow=!isModel&&type!==0;mesh.receiveShadow=!isModel;
-    if(isModel){mesh.visible=false;mesh.renderOrder=3;modelObjects.push(mesh);}
-    scene.add(mesh);objects.push({g,mesh});
-  }
-}
-function syncGeometry(){
-  const d=world.data;
-  for(const {g,mesh}of objects){
-    const p=g*3,r=g*9,rot=d.geom_xmat,pos=d.geom_xpos;
-    mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);
-    mesh.matrixWorldNeedsUpdate=true;
-    if(mesh.renderOrder===3)mesh.visible=true;
-
-  }
-  const ls=world.state().legs;const foot=ls?.positions[ls.selected];footMarker.visible=!!foot;if(foot){footMarker.position.set(...foot);footMarker.position.z-=.075;}
-  const q=world.data.qpos;robotQuaternion.set(q[4],q[5],q[6],q[3]);
-  carCamera.position.copy(temp.set(.28,0,.12).applyQuaternion(robotQuaternion)).add(new THREE.Vector3(q[0],q[1],q[2]));
-  const forward=new THREE.Vector3(3,0,.06).applyQuaternion(robotQuaternion).add(new THREE.Vector3(q[0],q[1],q[2]));
-  carCamera.up.copy(new THREE.Vector3(0,0,1).applyQuaternion(robotQuaternion));carCamera.lookAt(forward);
-  if(view===0){
-    const target=new THREE.Vector3(q[0],q[1],q[2]+.05),delta=target.sub(controls.target).multiplyScalar(.12);
-    controls.target.add(delta);camera.position.add(delta);controls.update();
-  }
-}
-function resize(){
-  if(!renderer)return;const w=stage.clientWidth,h=stage.clientHeight;
-  renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();
-  miniRect={x:w-Math.min(w*.35,240)-16,y:h-Math.min(w*.35,240)*9/16-63,w:Math.min(w*.35,240),h:Math.min(w*.35,240)*9/16};
-}
-function render(){
-  renderer.setScissorTest(false);renderer.setViewport(0,0,stage.clientWidth,stage.clientHeight);renderer.shadowMap.needsUpdate=false;
-  if(view===1){carCamera.aspect=stage.clientWidth/stage.clientHeight;carCamera.updateProjectionMatrix();renderer.render(scene,carCamera);}
-  else renderer.render(scene,camera);
-  if(routeLine)routeLine.visible=false;
-  const r=miniRect;renderer.setScissorTest(true);renderer.setScissor(r.x,r.y,r.w,r.h);renderer.setViewport(r.x,r.y,r.w,r.h);
-  renderer.setClearColor('#0b1320');renderer.clear(true,true,true);carCamera.aspect=16/9;carCamera.updateProjectionMatrix();renderer.render(scene,carCamera);
-  renderer.setScissorTest(false);renderer.setClearColor(scene.background);
-  if(routeLine)routeLine.visible=true;
-}
-function setView(next){
-  view=next;controls.enabled=view!==1;if(!world)return;const s=world.state();
-  if(view===0){controls.target.set(s.x,s.y,s.z+.05);camera.position.set(s.x-1.05,s.y-1.55,s.z+1.05);controls.update();}
-  if(view===2){controls.target.set(6.3,0,.1);camera.position.set(6.3,-.01,7.4);controls.update();}
-}
-function drawRoute(plan){
-  currentPlan=plan;if(routeLine){scene.remove(routeLine);routeLine.geometry.dispose();routeLine.material.dispose();routeLine=null;}
-  if(!plan?.path)return;const geometry=new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(p[0],p[1],.035)));
-  routeLine=new THREE.Line(geometry,new THREE.LineBasicMaterial({color:'#f0a93b',depthTest:false}));routeLine.renderOrder=4;scene.add(routeLine);
-}
-const sourceBase='https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/';
-function inputURL(c){return sourceBase+c.input;}
+const $=id=>document.getElementById(id),stage=$('main'),labels=['右前','左前','右后','左后'];
+const source='https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/';
+let worker,mission,mainScene,dreamScene,state=null,ready=false,view=1,pip=true,selected=[],focusId,policy='imagination',brainOpen=false,legsOpen=false,busy=null,results=[],cert=null,sensorTargets=[],speechUntil=0,rotate=true,lastRotate=0,anchor={x:30,y:185,visible:false},lastUI=0,currentJob=null,jobSequence=0,dreamKind='route';
+let keys=new Set(),joystick=[0,0],brake=false,stickPointer=null,audioContext,sound=false,inputs=0,observed=false,nearGateSaid=false,lastWaiting='',runId=0;
+function tone(f=440){if(!sound)return;audioContext??=new (window.AudioContext||window.webkitAudioContext)();audioContext.resume();const o=audioContext.createOscillator(),g=audioContext.createGain();o.frequency.value=f;g.gain.setValueAtTime(.045,audioContext.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioContext.currentTime+.13);o.connect(g).connect(audioContext.destination);o.start();o.stop(audioContext.currentTime+.14);}
+function say(text,seconds=5){$('status').textContent=text;$('speech-text').textContent=text;$('speech').hidden=false;speechUntil=performance.now()+seconds*1000;tone(420);}
+function post(message){worker?.postMessage(message);}
+function drive(){if(!ready)return;const v=((keys.has('w')||keys.has('ArrowUp')?1:0)-(keys.has('s')||keys.has('ArrowDown')?1:0)-joystick[1])*.36,w=((keys.has('a')||keys.has('ArrowLeft')?1:0)-(keys.has('d')||keys.has('ArrowRight')?1:0)-joystick[0])*.8;inputs++;post({type:'input',v,w,brake:brake||keys.has(' ')});}
+function stopInput(){keys.clear();joystick=[0,0];brake=false;stickPointer=null;$('stick').style.transform='';$('touch-brake').classList.remove('active');drive();}
+function visibleHeight(){return mainScene?.compactBrain?Math.max(180,Math.min(stage.clientHeight-445,330)):stage.clientHeight;}
+function sensorLens(){const b=stage.getBoundingClientRect();post({type:'sensorLens',verticalFov:2*Math.atan(Math.tan(34*Math.PI/180)/(b.width/visibleHeight()))*180/Math.PI});}
+function layoutBrain(){if(!mainScene)return;mainScene.compactBrain=brainOpen&&innerWidth<601;mainScene.pip=pip&&(innerWidth>=900||!brainOpen||mainScene.compactBrain);mainScene.insetOffset=brainOpen&&innerWidth>=900?395:18;mainScene.dirty=true;stage.style.setProperty('--upper-view',visibleHeight()+'px');stage.style.setProperty('--brain-top',(visibleHeight()+15)+'px');sensorLens();}
+window.addEventListener('resize',()=>{if(ready)layoutBrain();});
+function setView(next){view=next;mainScene?.setView(view);document.querySelectorAll('button[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.view)===view)));$('inset-label').textContent=view===1?'同一时刻 · 机器人外观':'同一时刻 · 机器人相机';}
+function setDreamKind(kind){dreamKind=kind;$('brain').classList.toggle('gate-mode',kind==='gate');$('brain-title').innerHTML=kind==='gate'?'在脑中试跨 <small>可见门槛 · 轮与腿</small>':'Lux3D <small>载入已有原模型</small>';}
+function toggleBrain(open=!brainOpen){if(!ready)return;brainOpen=open;$('brain').hidden=!open;stage.classList.toggle('brain-open',open);$('think').setAttribute('aria-pressed',String(open));layoutBrain();if(open){if(!busy)setDreamKind('route');legsOpen=false;$('leg-console').hidden=true;stage.classList.remove('legs-open');if(!focusId)focusCandidate(mission.candidates.find(c=>c.target==='T1'&&selected.includes(c.task_id))||mission.candidates.find(c=>selected.includes(c.task_id)));say('启动我的右顶叶！Lux3D，帮我想想背面。');}updateUI();}
 function focusCandidate(c){
-  focusId=c.task_id;document.querySelectorAll('.candidate').forEach(b=>b.classList.toggle('focused',Number(b.dataset.task)===focusId));
-  $('input-'+c.target).src=inputURL(c);document.querySelectorAll('[data-target]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.target===c.target)));
-  $('model-detail').hidden=false;$('model-name').textContent=`高石 ${c.target==='T1'?'A':'B'} / 候选 ${c.sample} · Lux3D ${c.task_id}`;
-  $('checks').replaceChildren();for(const check of admissionChecks(c,mission.thresholds)){const row=document.createElement('div');row.className=check.pass?'passed':'rejected';const name=document.createElement('span'),value=document.createElement('span');name.textContent=check.label;value.textContent=`${check.value.toFixed(3)} · ${check.pass?'通过':'不通过'}`;row.append(name,value);$('checks').append(row);}
-  $('model-source').href='gallery.html?v=site-design-3';$('raw-model').dataset.source=sourceBase+c.original_model;if($('model-detail').open)$('raw-model').src=$('raw-model').dataset.source;
+  if(!busy){setDreamKind('route');$('model-imagination').hidden=false;$('dream-view').hidden=true;}
+  focusId=c.task_id;$('raw-model').src=source+c.original_model;$('model-loading').hidden=false;$('model-loading').textContent='载入 Lux3D 原模型…';
+  $('model-name').textContent=`高石 ${c.target==='T1'?'A':'B'} · ${c.sample}`;$('input-photo').src=source+c.input;$('target-label').textContent=`高石 ${c.target==='T1'?'A':'B'} · 原记录输入`;$('task-label').textContent=`Lux3D 任务 ${c.task_id}`;
+  $('model-provenance').textContent=`原始任务 ${c.task_id} / SHA-256 ${c.original_sha256}`;$('original-download').href=source+c.original_model;
+  $('checks').replaceChildren();for(const check of admissionChecks(c,mission.thresholds)){const div=document.createElement('div');div.className=check.pass?'passed':'rejected';const name=document.createElement('span'),value=document.createElement('span');name.textContent=check.label;value.textContent=check.value.toFixed(3)+' · '+(check.pass?'符合':'不符合');div.append(name,value);$('checks').append(div);}
+  document.querySelectorAll('.candidate').forEach(b=>b.classList.toggle('focused',Number(b.dataset.task)===focusId));
 }
 function renderCandidates(){
   $('candidates').replaceChildren();for(const target of ['T1','T2']){
-    const group=document.createElement('div');group.className='candidate-group';const title=document.createElement('strong');title.textContent=`高石 ${target==='T1'?'A':'B'} · 照片生成的完整候选`;group.append(title);const grid=document.createElement('div');grid.className='candidate-grid';
+    const group=document.createElement('div');group.className='candidate-group';const title=document.createElement('strong');title.textContent=`高石 ${target==='T1'?'A':'B'} · 同一照片的不同背面`;group.append(title);const grid=document.createElement('div');grid.className='candidate-grid';
     for(const c of mission.candidates.filter(c=>c.target===target).sort((a,b)=>a.sample.localeCompare(b.sample))){
-      const b=document.createElement('button');b.className='candidate'+(checked&&!accepted(c,mission.thresholds)?' rejected':'');b.dataset.task=c.task_id;b.setAttribute('aria-pressed',String(selected.includes(c.task_id)));b.innerHTML=`${c.sample}<small>${checked?(accepted(c,mission.thresholds)?selected.includes(c.task_id)?'已选 ✓':'可选择':'被拒'):'待核对'}</small>`;
-      b.onclick=()=>{if(!['candidates','decision'].includes(phase))return;focusCandidate(c);if(!checked){say('先用原观测核对候选，看看哪些完整形状可信。');return;}if(!accepted(c,mission.thresholds)){say('这份模型与可见观测不符，不能放进预演。可展开查看具体原因。');return;}selected=selected.includes(c.task_id)?selected.filter(id=>id!==c.task_id):[...selected,c.task_id];previewResults=[];phase='candidates';renderCandidates();inspect();updateUI();};grid.append(b);
+      const valid=accepted(c,mission.thresholds),chosen=selected.includes(c.task_id),cell=document.createElement('div');cell.className='candidate'+(!valid?' rejected':'')+(c.task_id===focusId?' focused':'');cell.dataset.task=c.task_id;cell.setAttribute('aria-pressed',String(chosen));
+      const inspect=document.createElement('button');inspect.textContent=c.sample;inspect.setAttribute('aria-label',`旋转查看高石${target==='T1'?'A':'B'}候选${c.sample}`);inspect.onclick=()=>focusCandidate(c);
+      const choose=document.createElement('button');choose.className='candidate-select';choose.setAttribute('aria-pressed',String(chosen));choose.textContent=valid?(chosen?'✓ 已加入':'＋ 加入'):'观测不符';choose.setAttribute('aria-label',`${chosen?'移除':'加入'}候选${c.task_id}`);choose.onclick=()=>{focusCandidate(c);if(!valid){say('这个形状连已看到的部分都对不上。换个假设。');$('model-detail').open=true;return;}selected=chosen?selected.filter(id=>id!==c.task_id):[...selected,c.task_id];invalidateSelection();renderCandidates();};cell.append(inspect,choose);grid.append(cell);
     }group.append(grid);$('candidates').append(group);
   }
-  const a=selected.filter(id=>mission.candidates.find(c=>c.task_id===id).target==='T1').length,b=selected.length-a;$('selection-summary').textContent=checked?`已选 A ${a} 份 × B ${b} 份 = ${a*b} 个预演世界`:'11 份真实生成结果，等待观测核对。';
-  if(focusId)focusCandidate(mission.candidates.find(c=>c.task_id===focusId));
+  const a=selected.filter(id=>mission.candidates.find(c=>c.task_id===id).target==='T1').length,b=selected.length-a;const reference=state?planRoute(mission,selected,policy,[state.x,state.y]):null;$('selection-summary').textContent=`A ${a} 份 × B ${b} 份 = ${a*b} 个想象世界`+(reference?.path?` · 参考路线 ${reference.length.toFixed(1)} m`:' · 当前选择没有参考路线');
 }
-function inspect(){
-  const show=selected.length?selected:['T1','T2'].map(t=>mission.candidates.find(c=>c.target===t&&accepted(c,mission.thresholds)).task_id);
-  post({type:'inspect',selected:show});if(checked)drawRoute(planRoute(mission,selected));
-}
-function reset(){if(!ready)return;stopInput();checked=false;selected=[];phase='observation';previewResults=[];gateResult=gateScan=null;drawRoute(null);post({type:'reset'});$('debrief').hidden=true;$('model-detail').open=false;$('preview-results').hidden=true;$('candidates').hidden=true;$('check').hidden=true;$('selection-summary').textContent='';$('observation-cover').hidden=false;updateUI();}
-function sendInput(){
-  const v=clamp((keys.has('w')||keys.has('ArrowUp')?1:0)-(keys.has('s')||keys.has('ArrowDown')?1:0)-joystick[1],-1,1)*.36,w=clamp((keys.has('a')||keys.has('ArrowLeft')?1:0)-(keys.has('d')||keys.has('ArrowRight')?1:0)-joystick[0],-1,1)*.8;
-  post({type:'input',v,w,brake:keys.has(' ')||touchBrake});
-}
-function stopInput(){keys.clear();joystick=[0,0];touchBrake=false;stickPointer=null;$('stick').style.transform='';$('touch-brake').classList.remove('active');sendInput();}
+function invalidateSelection(){currentJob=null;busy=null;results=[];cert=null;post({type:'selection',selected,policy});$('preview-status').textContent='选择已改变。旧的试路结果失效，重新试这组假设。';$('world-results').replaceChildren();$('dream-view').hidden=true;$('model-imagination').hidden=false;const plan=planRoute(mission,selected,policy,[state.x,state.y]);mainScene.route(plan);updateUI();}
+function preview(){if(!ready)return;if(!state.stable){say('先停稳。我需要在同一个位置想清楚这条路。');return;}toggleBrain(true);currentJob=++jobSequence;post({type:'preview',requestId:currentJob});}
+function showResult(success,text){$('result').hidden=false;$('result-eyebrow').textContent=success?'探索完成 / 本次实时仿真':'再试一种走法';$('result-title').textContent=success?'先想一步，终于到啦！':'这次没过去。';$('result-text').textContent=text;}
 function updateUI(){
-  if(!ready)return;const s=world.state(),l=s.legs;let step=0,title,text,action,disabled=false;
-  const busy=['preview','gate-preview','wheel-trial'].includes(phase),drive=['execute','gate','finish-drive'].includes(phase);
-  document.querySelector('.camera-mini-label').hidden=phase==='observation';$('pause').hidden=!['execute','crossing','finish-drive'].includes(phase);$('pause').textContent=paused?'继续':'暂停';$('touch-controls').hidden=!drive;$('follow').hidden=phase!=='execute'||s.automatic;
-  $('candidates').hidden=phase==='observation';$('check').hidden=checked||phase==='observation';$('check').disabled=busy;$('preview-progress').hidden=!busy;
-  $('leg-console').hidden=!['crossing','finish-drive'].includes(phase);$('gate-info').hidden=!['gate','gate-preview','crossing','finish-drive','complete'].includes(phase);
-  document.querySelectorAll('.candidate').forEach(b=>b.disabled=!['candidates','decision'].includes(phase));
-  if(phase==='observation'){title='前面有路，石头后面呢？';text='先查看这两块高石的真实照片，再把 Lux3D 生成的完整形状带进路线判断。';action='查看 Lux3D 生成结果';}
-  else if(phase==='candidates'){
-    step=1;title=checked?'这些背面，会改变你怎么走。':'完整形状，还得和观测对得上。';text=checked?'绿色模型构成预演世界。点选 A、B 候选，路线与需要验证的组合随之改变。':'用原观测检查轮廓、尺寸、表面贴合与已知空地；点击候选可查看完整指标。';action=checked?'在所选模型里完整预演':'用原观测核对候选';disabled=checked&&!modelWorlds(mission,selected).length;
-  }else if(phase==='preview'){step=2;title='让这条路线，在每个可能的世界里走完。';text='你选的完整模型正在作为碰撞几何参与计算。每个组合都从起点行驶到门槛前。';action='物理预演中…';disabled=true;}
-  else if(phase==='decision'){step=2;const passed=previewResults.length&&previewResults.every(r=>r.passed);title=passed?'所选世界通过，现在交给机器人。':'有模型世界没能通过，请调整候选。';text=passed?`${previewResults.length} 个组合均完成绕行。执行会回到原月面场景；按方向键或摇杆可随时接管。`:'查看未通过的组合，重新选择可信模型并预演。';action=passed?'执行这条经过预演的路线':'返回候选选择';}
-  else if(phase==='execute'){step=3;title=s.automatic?'模型里的判断，变成实际绕行。':'你正在接管轮行。';text=s.automatic?'机器人按通过预演的路线绕开高石。方向键、WASD 或摇杆可以接管；到门槛前会停下来观察。':'WASD / 方向键或摇杆驾驶，空格刹车。也可以继续按已验证路线驶向门槛。';action='正在绕行…';disabled=true;}
-  else if(phase==='gate'){step=4;title=gateResult?.passed?'跨越预演通过，轮到你迈腿。':'车轮被挡住了，先试一遍怎么迈。';text=gateResult?.passed?'点击开始，然后逐条腿完成抬起、前移、落地。控制器辅助调整支撑与重心。':'机器人相机测到可见门槛。用这份几何预演跨越，看看车身与轮腿能否通过。';action=gateResult?.passed?'开始亲手逐腿跨越':'预演可见门槛的跨越';disabled=!!gateResult&&!gateResult.passed;}
-  else if(phase==='gate-preview'){step=4;title='用刚看到的几何，试一遍逐腿跨越。';text='门槛测量直接进入轮腿控制器。检查四轮过线、车身接触与平衡，再交给你操作。';action='跨越预演中…';disabled=true;}
-  else if(phase==='wheel-trial'){step=4;title='同一块门槛，先试试只用轮子。';text='这里固定腿姿，向前驱动车轮。观察轮子被门槛挡住的实际反馈，再决定下一步。';action='轮行尝试中…';disabled=true;}
-  else if(phase==='crossing'){
-    step=4;title=l?.waiting?`${labels[l.waiting.leg]}腿：${{lift:'抬起',advance:'前移',land:'落地'}[l.waiting.action]}`:'让支撑与重心慢慢就位。';text=l?.waiting?{lift:'点下方高亮的“抬起”，让轮子离地并高于门槛。',advance:'轮子已离地。点“前移”，把它送到门槛另一侧。',land:'轮子已越过门槛。点“落地”，在另一侧重新支撑。'}[l.waiting.action]:'动作就绪时，下方高亮下一步。四条腿的 12 个主要动作分别由你触发。';action=paused?'点击右上继续':'操作下方高亮轮腿动作';disabled=true;
-  }else if(phase==='finish-drive'){step=5;title=l?'四条腿都过去了，回到轮行。':'最后一小段，用轮子抵达。';text=l?'点击下方“回到轮行”，恢复轮子驱动，再驶入绿色圆圈。':'W / ↑ 或摇杆前进；进入绿色圆圈后，机器人会自动制动停稳。';action='等待抵达终点';disabled=true;}
-  else if(phase==='complete'){step=5;title='抵达。照片、模型、判断和行动连起来了。';text='这次通行依靠模型判断高石背面的路线，也依靠轮腿跨越挡住车轮的门槛。';action='换一组候选，再试';}
-  else{title='这次行动没能通过。';text='调整路线或重新开始。预演结果要由实际行动检验。';action='重新开始';}
-  $('coach-step').textContent=`0${step+1} / ${['观察','核对 3D','模型预演','实际绕行','逐腿跨越','抵达与回顾'][step]}`;$('coach-title').textContent=title;$('coach-text').textContent=text;$('next').textContent=action;$('next').disabled=disabled;
-  document.querySelectorAll('[data-step]').forEach(b=>{const n=Number(b.dataset.step);b.classList.toggle('done',n<step);if(n===step)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
-  $('distance').textContent=s.goalDistance.toFixed(1)+' m';$('speed').textContent=s.speed.toFixed(2);$('tilt').textContent=s.tilt.toFixed(1)+'°';
-  const candidateWorld=world.model.file!=='truth.xml',combo=mission.worlds.find(w=>w.file===world.model.file),comboLabel=combo?.tasks.map(id=>{const c=mission.candidates.find(c=>c.task_id===id);return (c.target==='T1'?'A / ':'B / ')+c.sample;}).join(' × ');$('scene-label').textContent=phase==='observation'?'机器人观察 / 原 R1 记录照片':candidateWorld?'Lux3D 模型世界 · '+comboLabel:phase==='gate-preview'?'可见门槛 · 物理跨越预演':phase==='wheel-trial'?'同一门槛 · 固定腿姿轮行试验':'原月面环境 · 实时机器人行动';
-  if(l){$('leg-title').textContent='操作'+labels[l.selected]+'腿';$('leg-state').textContent=l.waiting?'等待你的动作':l.busy?'重心与关节调整中':'轮腿支撑';$('cross-count').textContent=`${l.crossed.length} / 4`;
-    document.querySelectorAll('[data-leg]').forEach(b=>{const j=Number(b.dataset.leg);b.setAttribute('aria-pressed',String(j===l.selected));b.disabled=paused||l.busy||l.lifted||!!l.waiting;b.classList.toggle('airborne',l.loads[j]<.1);b.querySelector('small').textContent=l.loads[j]<.1?'离地':`${l.loads[j].toFixed(1)} N`;});
-    document.querySelectorAll('[data-action]').forEach(b=>{b.disabled=paused||!l.waiting||b.dataset.action!==l.waiting.action;b.classList.toggle('next-action',!b.disabled);});
-    $('leg-hint').textContent=l.waiting?`接下来：${labels[l.waiting.leg]}腿${{lift:'抬起',advance:'前移',land:'落地'}[l.waiting.action]}。点高亮动作，或按 ${ {lift:'J',advance:'K',land:'L'}[l.waiting.action]}。`:'其余轮腿支撑，等待动作就位。';
-  }
-  $('wheel-mode').hidden=phase!=='finish-drive'||!l;document.querySelectorAll('[data-pose]').forEach(b=>b.disabled=!!l||busy);
-  $('wheel-trial').disabled=phase!=='gate';
-  document.documentElement.dataset.missionPhase=phase;document.documentElement.dataset.missionReady='true';
+  if(!ready||!state)return;const l=state.legs,gate=state.x>7.9&&!['crossing','finish-drive','complete','failed'].includes(state.phase),over=state.phase==='finish-drive';
+  $('loading').hidden=true;$('distance').textContent=state.goalDistance.toFixed(1)+' m';$('speed').textContent=state.speed.toFixed(2)+' m/s';$('tilt').textContent=state.tilt.toFixed(1)+'°';$('pause').textContent=state.paused?'继续':'暂停';$('run-state').textContent=state.paused?'已暂停':state.automatic?'按预演路线行驶':l?'轮腿支撑':'你在驾驶';
+  $('objective').textContent=state.phase==='complete'?'抵达月面目标。':state.phase==='failed'?'换个走法，再试。':l?'轮子过不去？我还有腿。':gate?'门槛前，试试轮与腿。':'绕过高石，迈过门槛。';
+  $('hint').textContent=l?'第三视角可看清轮腿；高亮的是下一动作。':gate?'停稳、对正。可以先试轮行，再亲手迈腿。':state.automatic?'按方向键或摇杆随时接管；切视角继续观察。':observed?'看不见背面时，按 Q 载入 Lux3D；也可以继续自己尝试。':'WASD / 摇杆驾驶 · 靠近石头，看看被遮挡的背面。';
+  $('think').disabled=['complete','failed'].includes(state.phase);$('observe').disabled=!ready;$('preview').disabled=!!busy||!state.stable||!modelWorlds(mission,selected).length||!!l;$('preview').textContent=busy?'脑内试路中…':'在脑中试这条路';
+  $('preview').hidden=dreamKind==='gate';$('brain-cross').hidden=dreamKind!=='gate'||!!busy||!state.gateProof?.passed||state.gateProof.requestId!==currentJob;$('brain-cross').disabled=!state.gateProof?.usable;$('gate-retry').hidden=dreamKind!=='gate'||!!busy||!!state.gateProof?.usable;
+  $('execute').hidden=dreamKind==='gate'||!state.proof?.passed||state.proof.requestId!==currentJob||!!busy;$('execute').disabled=!!l||!state.proof?.usable;$('execute').textContent=state.proof?.usable?'按这条路线出发':'姿态或位置已变 · 请重新试路';$('cancel-preview').hidden=!busy;$('preview-bar').hidden=!busy;
+  $('follow').hidden=!state.proof?.routeSession||state.automatic||!!l||state.x>mission.dock[0];
+  $('gate-tools').hidden=!gate||brainOpen||legsOpen;$('gate-preview').disabled=!state.stable;$('cross-assisted').hidden=!state.gateProof?.passed||state.gateProof.requestId!==currentJob;$('cross-assisted').disabled=!state.gateProof?.usable;$('cross-direct').disabled=!state.stable;
+  const scan=state.scan;$('gate-measurement').textContent=scan?.valid?`相机看到：高 ${(scan.heightAboveGround*100).toFixed(1)} cm · 深 ${(scan.depth*100).toFixed(1)} cm`:'门槛挡住轮子？停稳后观察。';
+  $('leg-console').hidden=!(legsOpen||l)||brainOpen;stage.classList.toggle('legs-open',!!l||legsOpen);$('legs').setAttribute('aria-pressed',String(legsOpen||!!l));$('touch-controls').hidden=!!l||legsOpen||['complete','failed'].includes(state.phase);
+  $('wheel-mode').disabled=!!l&&(l.busy||l.lifted||!!l.waiting);$('leg-title').textContent=l?`${labels[l.selected]}腿 · ${l.mode==='crossing'?'跨越':'自由操作'}`:'选一条腿，亲手迈。';$('leg-state').textContent=l?.waiting?'等你触发':l?.busy?'支撑与重心调整中':state.stable?'已停稳':'先刹车';
+  document.querySelectorAll('[data-leg]').forEach(b=>{const j=Number(b.dataset.leg);b.setAttribute('aria-pressed',String(j===(l?.selected??0)));b.disabled=!state.stable&&!l||!!l&&(l.busy||l.lifted||!!l.waiting);b.querySelector('small').textContent=l?(l.loads[j]<.1?'离地':l.crossed.includes(j)?'已过线':'支撑'):'接地';});
+  document.querySelectorAll('[data-action]').forEach(b=>{const a=b.dataset.action;b.disabled=state.paused||(a==='lift'&&!state.stable)||(!l&&!state.stable)||!!l&&(l.busy||l.waiting&&l.waiting.action!==a||!l.waiting&&(a==='lift'?l.lifted:!l.lifted));b.classList.toggle('next-action',!b.disabled&&(!l?a==='lift':l.waiting?.action===a));});
+  $('cross-count').textContent=`${l?.crossed.length||0} / 4 条腿过线 · ${state.actionCount} 次玩家动作`;$('leg-hint').textContent=l?.waiting?`${labels[l.waiting.leg]}腿：按 ${ {lift:'J 抬起',advance:'K 前移',land:'L 落地'}[l.waiting.action]}。`:'你触发动作，控制器辅助平衡与支撑。';
+  const wait=l?.waiting?l.waiting.leg+':'+l.waiting.action:'';if(wait&&wait!==lastWaiting){say({lift:'抬！让我离开地面。',advance:'迈！向前一步。',land:'落！稳住，稳住。'}[l.waiting.action],3);lastWaiting=wait;}
+  if(gate&&!nearGateSaid){nearGateSaid=true;say('轮子过不去？别急，我还有腿！',5);}
+  if(state.proof?.passed&&!state.proof.usable&&!state.proof.routeSession&&!busy)$('preview-status').textContent='试路已完成，但你已改变位置。辅助出发需要停稳后重新试路；仍可自己驾驶。';
+  document.documentElement.dataset.missionReady='true';document.documentElement.dataset.missionPhase=state.phase;document.documentElement.dataset.previewBusy=busy||'';
 }
-$('next').onclick=()=>{
-  if(!ready)return;
-  if(phase==='observation'){phase='candidates';$('observation-cover').hidden=true;focusId=mission.candidates.find(c=>c.target==='T1').task_id;renderCandidates();inspect();setView(2);say('这些完整石头来自本次原 R1 观测的真实 Lux3D 返回。');}
-  else if(phase==='candidates'&&!checked){$('check').click();return;}
-  else if(phase==='candidates'&&checked){phase='preview';$('preview-results').hidden=false;$('preview-conclusion').textContent='正在逐个运行完整预演…';post({type:'preview',selected});}
-  else if(phase==='decision'){if(previewResults.every(r=>r.passed)){phase='execute';post({type:'execute'});setView(0);$('preview-progress').hidden=true;say('按模型预演通过的路线，开始实际绕行。');}else{phase='candidates';inspect();}}
-  else if(phase==='gate'){if(gateResult?.passed){phase='crossing';post({type:'cross'});setView(0);if(innerWidth<760)requestAnimationFrame(()=>$('leg-console').scrollIntoView({block:'end',behavior:'smooth'}));}else{phase='gate-preview';$('preview-text').textContent='可见门槛 · 完整跨越预演';$('preview-bar').value=0;$('preview-bar').max=1;post({type:'gatePreview'});}}
-  else if(['complete','failed'].includes(phase))reset();updateUI();
-};
-$('check').onclick=()=>{checked=true;selected=mission.candidates.filter(c=>accepted(c,mission.thresholds)).map(c=>c.task_id);renderCandidates();inspect();say('11 份候选中，8 份符合原观测。请选择要同时验证的完整形状。');updateUI();};
-$('model-detail').addEventListener('toggle',()=>{if($('model-detail').open&&$('raw-model').dataset.source)$('raw-model').src=$('raw-model').dataset.source;});
-$('raw-model').addEventListener('error',()=>say('原模型暂时无法加载，可在模型陈列室查看。任务场景仍可操作。'));
-for(const b of document.querySelectorAll('[data-target]'))b.onclick=()=>{if(!mission)return;focusCandidate(mission.candidates.find(c=>c.target===b.dataset.target));};
-$('reset').onclick=$('again').onclick=reset;$('camera').onclick=()=>ready&&setView((view+1)%3);$('pause').onclick=()=>{stopInput();post({type:'pause',value:!paused});};$('follow').onclick=()=>post({type:'follow'});$('wheel-mode').onclick=()=>post({type:'wheelMode'});
-$('cancel-preview').onclick=()=>{post({type:'cancel'});phase='candidates';gateResult=null;updateUI();};
-$('wheel-trial').onclick=()=>{post({type:'wheelTrial'});$('preview-text').textContent='同一门槛 · 固定腿姿轮行尝试';$('preview-bar').max=1;$('preview-bar').value=0;};
-for(const b of document.querySelectorAll('[data-action]'))b.onclick=()=>{if(!b.disabled)post({type:'legAction',action:b.dataset.action});};
-for(const b of document.querySelectorAll('[data-leg]'))b.onclick=()=>post({type:'legSelect',index:Number(b.dataset.leg)});
-for(const b of document.querySelectorAll('[data-pose]'))b.onclick=()=>post({type:'pose',value:b.dataset.pose});
-document.addEventListener('keydown',e=>{if(!ready||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.closest('aholo-gallery-viewer'))return;const key=e.key.length===1?e.key.toLowerCase():e.key;
-  if(['w','a','s','d','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(key)&&['execute','gate','finish-drive'].includes(phase)){e.preventDefault();keys.add(key);sendInput();}
-  if(e.repeat)return;if(['j','k','l'].includes(key)&&phase==='crossing'&&!paused){e.preventDefault();post({type:'legAction',action:{j:'lift',k:'advance',l:'land'}[key]});}if(['1','2','3','4'].includes(key)){const b=document.querySelector('[data-leg="'+(Number(key)-1)+'"]');if(b&&!b.disabled)post({type:'legSelect',index:Number(key)-1});}if(key==='r')reset();if(key==='v')setView((view+1)%3);
-});
-document.addEventListener('keyup',e=>{keys.delete(e.key.length===1?e.key.toLowerCase():e.key);sendInput();});canvas.addEventListener('pointerdown',()=>canvas.focus());
-window.addEventListener('blur',stopInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){stopInput();post({type:'pause',value:true});}});
-const pad=$('joystick');function padMove(e){const b=pad.getBoundingClientRect(),r=b.width*.35;let x=(e.clientX-b.left-b.width/2)/r,y=(e.clientY-b.top-b.height/2)/r;const length=Math.hypot(x,y);if(length>1){x/=length;y/=length;}joystick=[x,y];$('stick').style.transform=`translate(${x*r*.72}px,${y*r*.72}px)`;sendInput();}
-pad.addEventListener('pointerdown',e=>{e.preventDefault();stickPointer=e.pointerId;pad.setPointerCapture(e.pointerId);padMove(e);});pad.addEventListener('pointermove',e=>{if(e.pointerId===stickPointer)padMove(e);});for(const name of ['pointerup','pointercancel','lostpointercapture'])pad.addEventListener(name,()=>{joystick=[0,0];stickPointer=null;$('stick').style.transform='';sendInput();});
-$('touch-brake').addEventListener('pointerdown',e=>{e.preventDefault();touchBrake=true;$('touch-brake').setPointerCapture(e.pointerId);$('touch-brake').classList.add('active');sendInput();});for(const name of ['pointerup','pointercancel','lostpointercapture'])$('touch-brake').addEventListener(name,()=>{touchBrake=false;$('touch-brake').classList.remove('active');sendInput();});
-function fail(error){$('fallback').hidden=false;$('fallback-text').textContent=error.message||String(error);document.documentElement.dataset.missionError='true';$('next').disabled=true;}
-async function init(){
-  try{
-    if(!window.WebAssembly||!window.DecompressionStream)throw new Error('请使用较新的 Chrome、Edge 或 Safari 打开任务。');setupScene();resize();
-    const get=async path=>{const r=await fetch(path);if(!r.ok)throw new Error('任务资源暂时无法加载：'+path);return r.arrayBuffer();};
-    const [data,display,wasm,bundle]=await Promise.all([get('media/mission/mission.json.gz?v=mission-1').then(inflateGzip),get('media/mission/display.json.gz?v=mission-1').then(inflateGzip),get('vendor/mujoco/mujoco.wasm.gz'),get('media/mission/worlds.tar.gz?v=mission-1')]);
-    mission=JSON.parse(new TextDecoder().decode(data));displayMeshes=JSON.parse(new TextDecoder().decode(display));for(const t of ['T1','T2'])$('input-'+t).src=inputURL(mission.candidates.find(c=>c.target===t&&accepted(c,mission.thresholds)));
-    worker=new Worker('./mission-worker.js?v=mission-1',{type:'module'});worker.onerror=e=>fail(new Error(e.message));
-    worker.onmessage=({data:m})=>{
-      if(m.type==='error'){fail(new Error(m.message));return;}
-      if(m.type==='world'){if(world)world.model=m.model;else world={model:m.model,state(){return this.snapshot;}};world.needsBuild=true;}
-      if(m.type==='state'){
-        world.data=m.data;world.snapshot=m.state;phase=m.state.phase;paused=m.state.paused;
-        if(world.needsBuild){buildGeometry();world.needsBuild=false;goalRing.position.set(...mission.goal,.01);setView(view);}
-      }
-      if(m.type==='ready'){ready=true;updateUI();say('任务就绪。先看照片，再让生成的完整 3D 参与判断。');}
-      if(m.type==='plan'){
-        drawRoute(m.plan);$('world-results').replaceChildren();$('world-count').textContent=m.worlds.length+' 个组合';$('preview-bar').max=m.worlds.length;$('preview-bar').value=0;
-        for(const [i,w]of m.worlds.entries()){const cell=document.createElement('span');cell.id='pane-'+i;cell.textContent=w.tasks.map(id=>mission.candidates.find(c=>c.task_id===id).sample).join(' × ');$('world-results').append(cell);}
-      }
-      if(m.type==='previewProgress'){$('preview-text').textContent=`组合 ${m.index+1} / ${m.total} · 正在从起点试走`;document.querySelectorAll('#world-results span').forEach(b=>b.classList.remove('running'));$('pane-'+m.index)?.classList.add('running');}
-      if(m.type==='previewResult'){const c=$('pane-'+m.index);if(c){c.className=m.result.passed?'passed':'failed';c.textContent+=(m.result.passed?' ✓':' ×');} $('preview-bar').value=m.index+1;}
-      if(m.type==='previewDone'){previewResults=m.results;phase=m.passed?'decision':'candidates';$('preview-conclusion').textContent=m.passed?`${m.results.length} 个组合全部通过，可以执行。`:'预演未通过，请调整候选并再次检查。';updateUI();}
-      if(m.type==='gateObserved'){gateScan=m.scan;$('gate-measurement').textContent=`机器人相机测量：高 ${(m.scan.heightAboveGround*100).toFixed(1)} cm，可见深度 ${(m.scan.depth*100).toFixed(1)} cm。`;say('模型路线已执行到门槛前。现在用刚测到的几何，判断轮腿怎样跨越。');setView(0);}
-      if(m.type==='gatePreviewDone'){gateResult=m.result;$('preview-bar').value=1;say(m.result.passed?'跨越预演通过。开始亲手操作四条腿。':'跨越预演没能通过：'+({not_aligned_before_threshold:'车头还没有对正门槛',contact:'出现了车身接触',timeout:'动作未能完整完成',wheels_not_clear:'还有轮子未越过门槛'}[m.result.reason]||m.result.reason));}
-      if(m.type==='wheelTrialDone'){say(m.clear?'轮行已经通过门槛。': '固定腿姿的轮行未能通过。回到同一位置，试试逐腿跨越。');$('wheel-trial').textContent=m.clear?'轮行通过':'轮行未通过 · 再试';}
-      if(m.type==='crossed')say('四轮已过门槛。回到轮行，抵达绿色终点。');
-      if(m.type==='missionFailed')say(m.reason);
-      if(m.type==='missionComplete'){$('debrief').hidden=false;$('debrief-results').innerHTML=`<div><strong>${selected.length}</strong><p>符合观测的完整 3D 候选</p></div><div><strong>${previewResults.length}</strong><p>模型世界完成路线预演</p></div><div><strong>12 / 12</strong><p>你亲手触发的逐腿动作</p></div>`;say('任务完成。你选择的模型进入了预演，也影响了实际行动。');}
-      if(m.type==='commandRejected')say(m.reason);
-      if(m.type==='resetDone'){$('observation-cover').hidden=false;setView(0);}
-      if(ready)updateUI();
-    };
-    worker.postMessage({type:'init',mission,wasm,bundle},[wasm,bundle]);
-    let lastDraw=0;const loop=t=>{if(ready&&world.data){const interval=['preview','gate-preview','wheel-trial'].includes(phase)?80:33;if(t-lastDraw>=interval){syncGeometry();render();lastDraw=t;}if(t-lastUI>150){updateUI();lastUI=t;}}requestAnimationFrame(loop);};requestAnimationFrame(loop);
-  }catch(error){fail(error);}
-}
-new ResizeObserver(resize).observe(stage);init();
+function reset(){if(!ready)return;stopInput();runId++;currentJob=null;busy=null;cert=null;results=[];observed=false;nearGateSaid=false;lastWaiting='';$('result').hidden=true;toggleBrain(false);legsOpen=false;mainScene.resetSeen();mainScene.route(null);post({type:'reset'});$('world-results').replaceChildren();$('preview-status').textContent='模型符合原观测，仍不保证背面正确。';}
+$('think').onclick=()=>toggleBrain();$('brain-close').onclick=()=>toggleBrain(false);$('preview').onclick=preview;$('execute').onclick=()=>post({type:'execute'});$('follow').onclick=()=>post({type:'follow'});$('cancel-preview').onclick=()=>{currentJob=null;post({type:'cancel'});busy=null;setDreamKind('route');$('dream-view').hidden=true;$('model-imagination').hidden=false;results=[];cert=null;mainScene.route(null);$('preview-status').textContent='已取消。没有完成的预演不算通过。';updateUI();};
+$('observe').onclick=()=>{if(!ready)return;observed=true;post({type:'observe'});};$('compare').onclick=()=>{const target=mission.candidates.find(c=>c.task_id===focusId)?.target==='T1'?'T2':'T1';focusCandidate(mission.candidates.find(c=>c.target===target&&accepted(c,mission.thresholds)));};
+$('raw-model').addEventListener('load',()=>{$('model-loading').hidden=true;tone(660);});$('raw-model').addEventListener('error',()=>{$('model-loading').textContent='原模型加载失败；可重选重试或下载原件。';});$('model-turn').onclick=()=>{rotate=!rotate;$('model-turn').textContent='旋转：'+(rotate?'开':'关');$('model-turn').setAttribute('aria-pressed',String(rotate));};$('raw-model').addEventListener('pointerdown',()=>{rotate=false;$('model-turn').textContent='旋转：关';$('model-turn').setAttribute('aria-pressed','false');});
+for(const b of document.querySelectorAll('[data-policy]'))b.onclick=()=>{policy=b.dataset.policy;document.querySelectorAll('[data-policy]').forEach(c=>c.setAttribute('aria-pressed',String(c===b)));invalidateSelection();};
+for(const b of document.querySelectorAll('button[data-view]'))b.onclick=()=>setView(Number(b.dataset.view));$('pip').onclick=()=>{pip=!pip;$('pip').setAttribute('aria-pressed',String(pip));layoutBrain();$('inset-label').hidden=!pip;};
+$('pause').onclick=()=>{if(!ready||!state)return;stopInput();post({type:'pause',value:!state.paused});};$('reset').onclick=$('again').onclick=reset;$('result-close').onclick=()=>{$('result').hidden=true;};
+$('legs').onclick=()=>{if(!ready)return;legsOpen=!legsOpen;if(legsOpen)toggleBrain(false);updateUI();};$('wheel-mode').onclick=()=>{if(!state.legs){legsOpen=false;updateUI();return;}post({type:'wheelMode'});legsOpen=false;};
+function gatePreview(){toggleBrain(true);setDreamKind('gate');currentJob=++jobSequence;post({type:'gatePreview',requestId:currentJob});}
+$('gate-preview').onclick=$('gate-retry').onclick=gatePreview;$('brain-cross').onclick=()=>post({type:'cross',assisted:true});$('cross-assisted').onclick=()=>post({type:'cross',assisted:true});$('cross-direct').onclick=()=>post({type:'cross',assisted:false});
+for(const b of document.querySelectorAll('[data-action]'))b.onclick=()=>{if(!b.disabled)post({type:'legAction',action:b.dataset.action});};for(const b of document.querySelectorAll('[data-leg]'))b.onclick=()=>{if(!b.disabled)post({type:'legSelect',index:Number(b.dataset.leg)});};
+$('dream-camera').onclick=()=>dreamScene.setView(dreamScene.view===2?0:2);$('sound').onclick=()=>{sound=!sound;$('sound').textContent='音效：'+(sound?'开':'关');$('sound').setAttribute('aria-pressed',String(sound));tone(600);};
+function help(open=!$('help-panel').hidden){$('help-panel').hidden=open;$('help').setAttribute('aria-expanded',String(!open));} $('help').onclick=()=>help();$('help-close').onclick=()=>help(true);
+document.addEventListener('keydown',e=>{if(!ready||/INPUT|TEXTAREA|SELECT/.test(e.target.tagName)||e.target.closest('aholo-gallery-viewer'))return;const k=e.key.length===1?e.key.toLowerCase():e.key;if(['w','a','s','d','ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(k)){e.preventDefault();keys.add(k);drive();}if(e.repeat)return;if(k==='v')setView((view+1)%3);if(k==='q')toggleBrain();if(k==='e')$('observe').click();if(k==='r')reset();if(k==='Escape'){toggleBrain(false);help(true);}if(['j','k','l'].includes(k)){e.preventDefault();const b=document.querySelector('[data-action="'+{j:'lift',k:'advance',l:'land'}[k]+'"]');if(!b.disabled)b.click();}if(['1','2','3','4'].includes(k)){const b=document.querySelector('[data-leg="'+(Number(k)-1)+'"]');if(!b.disabled)b.click();}});
+document.addEventListener('keyup',e=>{keys.delete(e.key.length===1?e.key.toLowerCase():e.key);drive();});$('world').addEventListener('pointerdown',()=>$('world').focus());window.addEventListener('blur',stopInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){stopInput();post({type:'pause',value:true});}});
+function padMove(e){const b=$('joystick').getBoundingClientRect(),r=b.width*.35;let x=(e.clientX-b.left-b.width/2)/r,y=(e.clientY-b.top-b.height/2)/r;const length=Math.hypot(x,y);if(length>1){x/=length;y/=length;}joystick=[x,y];$('stick').style.transform=`translate(${x*r*.75}px,${y*r*.75}px)`;drive();}
+$('joystick').addEventListener('pointerdown',e=>{e.preventDefault();stickPointer=e.pointerId;$('joystick').setPointerCapture(e.pointerId);padMove(e);});$('joystick').addEventListener('pointermove',e=>{if(e.pointerId===stickPointer)padMove(e);});for(const event of ['pointerup','pointercancel','lostpointercapture'])$('joystick').addEventListener(event,()=>{joystick=[0,0];stickPointer=null;$('stick').style.transform='';drive();});$('touch-brake').addEventListener('pointerdown',e=>{e.preventDefault();brake=true;$('touch-brake').setPointerCapture(e.pointerId);$('touch-brake').classList.add('active');drive();});for(const event of ['pointerup','pointercancel','lostpointercapture'])$('touch-brake').addEventListener(event,()=>{brake=false;$('touch-brake').classList.remove('active');drive();});
+function fail(error){$('loading').hidden=true;$('fallback').hidden=false;$('fallback-text').textContent=error.message||String(error);document.documentElement.dataset.missionError='true';}
+async function init(){try{
+  const get=async p=>{const r=await fetch(p);if(!r.ok)throw new Error('无法加载任务资源：'+p);return r.arrayBuffer();};const [data,meshes,wasm,bundle]=await Promise.all([get('media/mission/mission.json.gz?v=mission-1').then(inflateGzip),get('media/mission/display.json.gz?v=mission-1').then(inflateGzip),get('vendor/mujoco/mujoco.wasm.gz'),get('media/mission/worlds.tar.gz?v=mission-1')]);mission=JSON.parse(new TextDecoder().decode(data));const display=JSON.parse(new TextDecoder().decode(meshes));
+  selected=[...mission.candidates.filter(c=>c.target==='T1'&&accepted(c,mission.thresholds)).slice(0,1),...mission.candidates.filter(c=>c.target==='T2'&&accepted(c,mission.thresholds)).slice(0,2)].map(c=>c.task_id);
+  mainScene=new MissionScene($('world'),{mission,display,onAnchor:p=>anchor=p});dreamScene=new MissionScene($('dream'),{mission,display,dream:true});dreamScene.view=0;dreamScene.pip=false;
+  worker=new Worker('./mission-worker.js?v=immersive-1',{type:'module'});worker.onerror=e=>fail(new Error(e.message));worker.onmessage=({data:m})=>{
+    if((m.channel==='dream'||['plan','previewProgress','previewResult','previewDone','gatePreviewStart','gatePreviewDone'].includes(m.type))&&m.requestId!==currentJob)return;
+    if(m.type==='world'){(m.channel==='live'?mainScene:dreamScene).setModel(m.model);if(m.channel==='live')mainScene.setView(view);}
+    if(m.type==='state'){if(m.channel==='live'){state=m.state;mainScene.update(m.data,m.state);}else{dreamScene.update(m.data,m.state);if(!dreamScene.started){dreamScene.setView(0);dreamScene.started=true;}}}
+    if(m.type==='ready'){ready=true;renderCandidates();post({type:'selection',selected,policy});sensorLens();say('出发！靠近石头，看看它挡住了什么。',4);mainScene.setView(view);updateUI();}
+    if(m.type==='observation'){mainScene.observe(m);sensorTargets=m.targets;if(!observed&&m.targets.length){observed=true;say('等等……它背后是什么？我现在看不见。',5);}}
+    if(m.type==='observed'){mainScene.observe(m.rocks);sensorTargets=m.rocks.targets;say(m.scan.valid?'轮子遇到门槛了。先试轮行，还是用腿？':sensorTargets.length?'只看见这一面。直接过去，我可不敢保证。':'相机里没有看清高石，转向它再观察。');}
+    if(m.type==='plan'){setDreamKind('route');busy='route';results=[];cert=null;$('dream-view').hidden=false;$('model-imagination').hidden=true;$('preview-bar').max=m.worlds.length;$('preview-bar').value=0;mainScene.route(m.plan);dreamScene.route(m.plan);$('world-results').replaceChildren();for(const [i,w]of m.worlds.entries()){const cell=document.createElement('span');cell.id='pane-'+i;cell.textContent=w.tasks.map(id=>mission.candidates.find(c=>c.task_id===id).sample).join(' × ');$('world-results').append(cell);}}
+    if(m.type==='previewProgress'){$('dream-label').textContent=`模型世界 ${m.index+1} / ${m.total} · 实时试走`;$('preview-status').textContent=`在所选完整模型里，试这条路……\n真实机器人仍在月面，你可以继续切视角或驾驶。`;document.querySelectorAll('#world-results span').forEach(b=>b.classList.remove('running'));$('pane-'+m.index)?.classList.add('running');}
+    if(m.type==='previewResult'){results.push(m.result);const cell=$('pane-'+m.index);if(cell){cell.className=m.result.passed?'passed':'failed';cell.textContent+=m.result.passed?' ✓':' ×';}$('preview-bar').value=m.index+1;}
+    if(m.type==='previewDone'){busy=null;cert=m;mainScene.route(m.plan,m.passed);$('preview-status').textContent=m.passed?`${m.results.length} 个所选模型世界都走完了。\n${m.policy==='imagination'?'路线给所选背面留出空间':'仅可见面的走法在这组假设中通过'}；这仍是模型假设，实际碰撞由月面仿真决定。`:'这个走法在模型里没有走通。看看接触位置，换个走法或假设再试。';say(m.passed?'在这些假设里能走通。好，出发！':'这条路碰到石头了，换个想法。');}
+    if(m.type==='dreamClosed'){if(busy){busy=null;$('preview-status').textContent='试路已停止，未完成的结果不算通过。';}}
+    if(m.type==='routeStarted'){toggleBrain(false);say('沿脑中试过的路走。你随时能接管。');}
+    if(m.type==='gateObserved')say('到门槛前啦。轮子试不过，就亲手迈腿。');
+    if(m.type==='gatePreviewStart'){setDreamKind('gate');say('门槛已经看清。先在脑中试试怎么迈。');busy='gate';$('dream-view').hidden=false;$('model-imagination').hidden=true;$('dream-label').textContent='可见门槛 · 真实轮腿预演';$('preview-bar').value=0;$('preview-bar').max=1;$('preview-status').textContent='用当前相机看到的门槛几何，试一遍跨越。';}
+    if(m.type==='gatePreviewDone'){busy=null;$('preview-status').textContent=m.result.passed?'跨越预演通过。按下“亲手迈腿”，你来抬、迈、落。':'跨越没能完成。停在门槛前至少 40 cm、对正中线，再试。';say(m.result.passed?'试跨通过！接下来，四条腿听你的。':'这个位置不好迈，后退、对正再试。');}
+    if(m.type==='crossStart'){toggleBrain(false);legsOpen=true;say('别急，我还有腿！准备支撑，然后你来抬、迈、落。');}
+    if(m.type==='legCommand'&&m.ok){say({lift:'抬！其余三条腿稳稳支撑。',advance:'迈！向前一步。',land:'落！稳住，稳住。'}[m.action],3);tone(600);}
+    if(m.type==='crossed')say('四条腿过去啦！回到轮行，最后一小段。');
+    if(m.type==='missionComplete')showResult(true,`你亲手触发 ${m.actions} 次轮腿动作。\n${m.modelWorlds} 个模型世界实际完成试路；抵达结果来自当前仿真。\n本次探索与原研究实验分别记录。`);
+    if(m.type==='missionFailed')showResult(false,m.reason+'\n按 R 或“再探索一次”从起点重试。');
+    if(m.type==='commandRejected')say(m.reason);if(m.type==='error')fail(new Error(m.message));if(m.type==='resetDone'){sensorLens();dreamScene.started=false;mainScene.setView(view);say('再来！这次你想怎么走？');}
+  };worker.postMessage({type:'init',mission,wasm,bundle,sensorVerticalFov:2*Math.atan(Math.tan(34*Math.PI/180)/(stage.clientWidth/stage.clientHeight))*180/Math.PI},[wasm,bundle]);
+  window.BeforeStepGame=Object.freeze({get state(){return state?structuredClone(state):null;},get selected(){return [...selected];},get observations(){return [...sensorTargets];},get inputEvents(){return inputs;},get preview(){return cert?structuredClone(cert):null;},get run(){return runId;}});
+  let lastDraw=0;function loop(t){if(ready){if(t-lastDraw>mainScene.frameInterval){mainScene.draw();if(brainOpen&&busy)dreamScene.draw();lastDraw=t;}if(t-lastUI>150){updateUI();lastUI=t;}if(brainOpen&&!busy&&rotate&&!state.paused&&$('raw-model').loaded&&t-lastRotate>45){$('raw-model').yaw+=.016;$('raw-model').requestRender();lastRotate=t;}const link=$('brain-link');link.hidden=!(brainOpen&&anchor.visible);if(!link.hidden){const b=$('brain').getBoundingClientRect(),r=stage.getBoundingClientRect();const tx=b.left-r.left+3,ty=b.top-r.top+150;[...link.children].forEach((dot,i)=>{const f=[.22,.5,.76][i],size=[9,15,23][i];dot.style.left=(anchor.x+(tx-anchor.x)*f)+'px';dot.style.top=(anchor.y+(ty-anchor.y)*f)+'px';dot.style.width=dot.style.height=size+'px';});$('brain').querySelector('.thought-tail').style.visibility='hidden';}else $('brain').querySelector('.thought-tail').style.visibility='visible';const speech=$('speech');speech.hidden=t>speechUntil;if(!speech.hidden){const x=anchor.visible?Math.max(18,Math.min(stage.clientWidth-275,anchor.x-110)):20,y=anchor.visible?Math.max(175,Math.min(stage.clientHeight-310,anchor.y-135)):175;speech.style.left=x+'px';speech.style.top=y+'px';}}requestAnimationFrame(loop);}requestAnimationFrame(loop);
+}catch(error){fail(error);}}
+init();

@@ -1,0 +1,20 @@
+/** Exercise the actual worker protocol and physics without a browser renderer. */
+import fs from 'node:fs';import {gunzipSync} from 'node:zlib';import assert from 'node:assert/strict';
+const root=new URL('../../site/',import.meta.url).pathname;
+const mission=JSON.parse(gunzipSync(fs.readFileSync(root+'media/mission/mission.json.gz')));
+const {accepted}=await import('../../site/mission-planner.js');
+const events=[];let tick;globalThis.postMessage=m=>events.push(m);globalThis.onmessage=null;globalThis.setInterval=fn=>{tick=fn;return 1;};
+await import('../../site/mission-worker.js');const send=data=>globalThis.onmessage({data});
+const array=file=>new Uint8Array(fs.readFileSync(root+file)).buffer;
+await send({type:'init',mission,wasm:array('vendor/mujoco/mujoco.wasm.gz'),bundle:array('media/mission/worlds.tar.gz')});
+const state=()=>events.filter(e=>e.type==='state'&&e.channel==='live').at(-1).state;
+const one=['T1','T2'].map(target=>mission.candidates.find(c=>c.target===target&&accepted(c,mission.thresholds)).task_id);
+await send({type:'selection',selected:one});assert.equal(state().phase,'explore');assert.equal(state().paused,false);
+await send({type:'execute'});assert(events.at(-1).type==='commandRejected');
+const initial=state(),job=send({type:'preview',requestId:'cancelled-job'});await new Promise(r=>setTimeout(r,20));await send({type:'cancel'});await job;
+assert(!events.some(e=>e.type==='previewDone'&&e.requestId==='cancelled-job'));assert.equal(state().proof,null);assert.equal(state().x,initial.x);
+await send({type:'preview',requestId:'completed-job'});const done=events.find(e=>e.type==='previewDone'&&e.requestId==='completed-job');assert(done?.passed);assert.equal(state().proof.requestId,'completed-job');assert(state().proof.usable);assert.equal(state().x,initial.x);
+await send({type:'execute'});assert(state().automatic);await send({type:'legSelect',index:1});assert(!state().automatic);assert(!state().proof.usable);await send({type:'wheelMode'});assert.equal(state().poseName,'high');assert(!state().proof.usable);await send({type:'execute'});assert(events.at(-1).type==='commandRejected');await send({type:'input',v:.36,w:0,brake:false});assert(!state().automatic);for(let i=0;i<100;i++)tick();await send({type:'input',v:0,w:0,brake:true});for(let i=0;i<30;i++)tick();assert(state().x>initial.x+.2);assert(!state().proof.usable);await send({type:'execute'});assert(events.at(-1).type==='commandRejected');
+await send({type:'selection',selected:one});assert.equal(state().proof,null);
+const result={passed:true,requestIdentity:true,cancelledJobNeverCertified:true,completedJobUsesRealPhysics:true,previewPreservesLivePose:true,immediateFreeDrive:true,takeover:true,manualLegsTakeOverAssist:true,controllerPoseInvalidatesOldProof:true,movedStartRejectsOldProof:true,selectionClearsProof:true,selectedTasks:one,worlds:done.results.length,scope:'New game worker verification; separate from research results'};
+if(process.argv[2])fs.writeFileSync(process.argv[2],JSON.stringify(result,null,2)+'\n');console.log(JSON.stringify(result));

@@ -1,0 +1,403 @@
+{
+  "scope": "New BeforeStep interactive game verification; separate from frozen R1/R2/R3 research results. No new Lux3D generation requests.",
+  "physics": {
+    "admission_matches_original": true,
+    "worlds": [
+      {
+        "tasks": [
+          5958685,
+          5958654
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958685,
+          5958934
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958690,
+          5958654
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958690,
+          5958934
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958877,
+          5958654
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958877,
+          5958934
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958911,
+          5958654
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958911,
+          5958934
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958948,
+          5958654
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5958948,
+          5958934
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5959025,
+          5958654
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      },
+      {
+        "tasks": [
+          5959025,
+          5958934
+        ],
+        "passed": true,
+        "elapsed": 81.03599999999254,
+        "maxTilt": 0.5074298117010189
+      }
+    ],
+    "truth_route": true,
+    "crossing": {
+      "passed": true,
+      "actions": 12,
+      "maxTilt": 3.1881252190651037
+    },
+    "finish_distance": 0.10163010474778232,
+    "wheel_only_blocked": true,
+    "visible_only_contact": true
+  },
+  "experience": {
+    "passed": true,
+    "certificateChecks": 9,
+    "allWorlds": 12,
+    "singleWorld": 1,
+    "routeChanged": true,
+    "liveVisibleHits": 338,
+    "liveTargets": [
+      "T1",
+      "T2"
+    ],
+    "dreamDoesNotMutateLive": true,
+    "turningCameraChangesVisibleSurfaces": true,
+    "controllerPosePreservedInDream": true,
+    "scope": "New interactive experience; separate from research results"
+  },
+  "worker_full": {
+    "passed": true,
+    "terminalSnapshotDelivered": true,
+    "commands": [
+      {
+        "action": "lift",
+        "leg": 0
+      },
+      {
+        "action": "advance",
+        "leg": 0
+      },
+      {
+        "action": "land",
+        "leg": 0
+      },
+      {
+        "action": "lift",
+        "leg": 1
+      },
+      {
+        "action": "advance",
+        "leg": 1
+      },
+      {
+        "action": "land",
+        "leg": 1
+      },
+      {
+        "action": "lift",
+        "leg": 2
+      },
+      {
+        "action": "advance",
+        "leg": 2
+      },
+      {
+        "action": "land",
+        "leg": 2
+      },
+      {
+        "action": "lift",
+        "leg": 3
+      },
+      {
+        "action": "advance",
+        "leg": 3
+      },
+      {
+        "action": "land",
+        "leg": 3
+      }
+    ],
+    "terminal": {
+      "x": 10.264547175989623,
+      "y": -0.018340056509146878,
+      "z": 0.4678361669766511,
+      "yaw": -0.1003130108345871,
+      "tilt": 0.11050322908508797,
+      "speed": 0.003770588977361827,
+      "elapsed": 167.29800000007072,
+      "steps": 83649,
+      "finite": true,
+      "goalDistance": 0.33595379862310726,
+      "legs": null,
+      "phase": "complete",
+      "paused": true,
+      "automatic": false,
+      "revision": 1,
+      "actionCount": 12,
+      "stable": true,
+      "scan": {
+        "valid": true,
+        "near": 9.1,
+        "far": 9.198320398373221,
+        "high": 0.12,
+        "heightAboveGround": 0.11911764562129956,
+        "depth": 0.0983203983732217,
+        "camera": [
+          8.846173690610962,
+          -0.005643331471182483,
+          0.3843524217733082
+        ],
+        "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+      },
+      "proof": {
+        "passed": true,
+        "requestId": "route",
+        "usable": false,
+        "routeSession": true,
+        "revision": 1,
+        "worlds": 2,
+        "path": [
+          [
+            2.296371465470595,
+            -0.4999577653544928
+          ],
+          [
+            3.0000000000000013,
+            -0.1999999999999996
+          ],
+          [
+            4.799999999999999,
+            0.5000000000000004
+          ],
+          [
+            5.799999999999995,
+            -0.5999999999999995
+          ],
+          [
+            7.19999999999999,
+            -0.6999999999999995
+          ],
+          [
+            8.45,
+            0
+          ]
+        ],
+        "length": 7.019046661317677,
+        "anchor": {
+          "x": 2.296371465470595,
+          "y": -0.4999577653544928,
+          "z": 0.3850373406443272,
+          "yaw": 0.00016357971818660447,
+          "tilt": 0.0717218115370864,
+          "speed": 0.00029401707413465424,
+          "elapsed": 0,
+          "steps": 0,
+          "finite": true,
+          "goalDistance": 8.318666035284096,
+          "legs": null
+        }
+      },
+      "gateProof": {
+        "passed": true,
+        "requestId": "threshold",
+        "usable": false
+      }
+    }
+  },
+  "mobile": {
+    "checks": [
+      "real_touch_joystick_and_brake",
+      "touch_three_views",
+      "real_raw_model_and_visible_fixed_actions",
+      "touch_cancel_and_no_false_pass",
+      "touch_selected_leg_lifts_with_real_physics",
+      "touch_land_and_return_to_wheels"
+    ],
+    "errors": [],
+    "overflow": 0,
+    "passed": true
+  },
+  "view_checks": [
+    {
+      "width": 1280,
+      "errors": [],
+      "views": [
+        {
+          "view": "1",
+          "time": "3.599999999999825",
+          "pip": "{\"x\":1022,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":3.599999999999825}",
+          "visibleVertices": "15669",
+          "totalVertices": "54540"
+        },
+        {
+          "view": "0",
+          "time": "3.599999999999825",
+          "pip": "{\"x\":1022,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":3.599999999999825}",
+          "visibleVertices": "15669",
+          "totalVertices": "54540"
+        },
+        {
+          "view": "2",
+          "time": "3.599999999999825",
+          "pip": "{\"x\":1022,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":3.599999999999825}",
+          "visibleVertices": "15669",
+          "totalVertices": "54540"
+        }
+      ],
+      "model": {
+        "src": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+        "loaded": true,
+        "yaw": 0.3490658503988659
+      },
+      "modelAfterRotate": -0.46093414960113416,
+      "overflow": 0,
+      "passed": true
+    },
+    {
+      "width": 390,
+      "errors": [],
+      "views": [
+        {
+          "view": "1",
+          "time": "1.460000000000001",
+          "pip": "{\"x\":255,\"y\":158,\"w\":117,\"h\":65.8125,\"stateTime\":1.460000000000001}",
+          "visibleVertices": "10995",
+          "totalVertices": "54540"
+        },
+        {
+          "view": "0",
+          "time": "1.460000000000001",
+          "pip": "{\"x\":255,\"y\":158,\"w\":117,\"h\":65.8125,\"stateTime\":1.460000000000001}",
+          "visibleVertices": "10995",
+          "totalVertices": "54540"
+        },
+        {
+          "view": "2",
+          "time": "1.460000000000001",
+          "pip": "{\"x\":255,\"y\":158,\"w\":117,\"h\":65.8125,\"stateTime\":1.460000000000001}",
+          "visibleVertices": "10995",
+          "totalVertices": "54540"
+        }
+      ],
+      "model": {
+        "src": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/assets/candidates/5958685/tex_mesh.glb",
+        "loaded": true,
+        "yaw": 0.3490658503988659
+      },
+      "modelAfterRotate": -0.4809341496011342,
+      "overflow": 0,
+      "passed": true
+    }
+  ],
+  "recording": {
+    "actual_complete_event_visible": true,
+    "actions": 12,
+    "model_worlds": 2,
+    "duration": 469,
+    "dimensions": [
+      1280,
+      800
+    ],
+    "capture": "Browser keyboard and mouse verification of live MuJoCo WebGL simulation; no state injection. Original continuous run, ending after actual completion card.",
+    "known_fixed_issue": "The recording revealed a missing terminal state snapshot under frame throttling. The completion event and card were already real; forced terminal frames now pass the complete worker regression."
+  },
+  "limits": [
+    "Touch checks use Chromium mobile emulation; no physical phone performance benchmark.",
+    "Rendering tested with software WebGL.",
+    "Accepted models and successful rehearsals do not guarantee correct hidden geometry."
+  ],
+  "passed": true,
+  "worker_session": {
+    "passed": true,
+    "requestIdentity": true,
+    "cancelledJobNeverCertified": true,
+    "completedJobUsesRealPhysics": true,
+    "previewPreservesLivePose": true,
+    "immediateFreeDrive": true,
+    "takeover": true,
+    "manualLegsTakeOverAssist": true,
+    "controllerPoseInvalidatesOldProof": true,
+    "movedStartRejectsOldProof": true,
+    "selectionClearsProof": true,
+    "selectedTasks": [
+      5958685,
+      5958654
+    ],
+    "worlds": 1,
+    "scope": "New game worker verification; separate from research results"
+  }
+}

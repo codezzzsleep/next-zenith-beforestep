@@ -19,7 +19,7 @@ export class MissionWorld{
   }
   reset(initial=null){
     this.legControl?.destroy();this.legControl=null;this.driveV=this.driveW=0;this.poseName='normal';this.pose=[0,.85,-1.65];const m=this.model,d=this.data;this.mj.mj_resetData(m,d);d.qpos.set(m.qpos0);
-    if(initial){d.qpos.set(initial.qpos);d.qvel.set(initial.qvel);}
+    if(initial){d.qpos.set(initial.qpos);d.qvel.set(initial.qvel);this.poseName=initial.poseName||'normal';if(initial.pose)this.pose=[...initial.pose];this.driveV=initial.driveV||0;this.driveW=initial.driveW||0;}
     else{d.qpos[0]=this.manifest.start[0];d.qpos[1]=this.manifest.start[1];d.qpos[2]=this.ground(d.qpos[0],d.qpos[1])+.42;d.qpos.set([1,0,0,0],3);for(const leg of legs)for(let k=0;k<3;k++)d.qpos[this.joints[leg+'_'+parts[k]].q]=this.pose[k];d.qvel.fill(0);}
     d.ctrl.fill(0);this.mj.mj_forward(m,d);this.steps=0;this.elapsed=0;
     if(!initial)for(let i=0;i<700;i++)this.step(0,0,true);this.steps=0;this.elapsed=0;
@@ -35,7 +35,7 @@ export class MissionWorld{
   step(v=0,w=0,brake=false){if(this.legControl)this.legControl.tick();else this.driveMotors(v,w,brake);this.mj.mj_step(this.model,this.data);this.steps++;this.elapsed+=this.timestep;}
   state(){
     const q=this.data.qpos,v=this.data.qvel,yaw=Math.atan2(2*(q[3]*q[6]+q[4]*q[5]),1-2*(q[5]**2+q[6]**2)),tilt=Math.acos(clamp(1-2*(q[4]**2+q[5]**2),-1,1))*180/Math.PI;
-    return {x:q[0],y:q[1],z:q[2],yaw,tilt,speed:Math.hypot(v[0],v[1]),elapsed:this.elapsed,steps:this.steps,finite:Array.from(q).every(Number.isFinite),goalDistance:Math.hypot(q[0]-this.course.goal[0],q[1]-this.course.goal[1]),legs:this.legControl?.state()||null};
+    return {x:q[0],y:q[1],z:q[2],poseName:this.poseName,yaw,tilt,speed:Math.hypot(v[0],v[1]),elapsed:this.elapsed,steps:this.steps,finite:Array.from(q).every(Number.isFinite),goalDistance:Math.hypot(q[0]-this.course.goal[0],q[1]-this.course.goal[1]),legs:this.legControl?.state()||null};
   }
   anchors(){return this.wheelBodies.map(b=>Array.from(this.data.xpos.slice(b*3,b*3+3)));}
   contacts(){
@@ -48,7 +48,7 @@ export class MissionWorld{
     }finally{c.delete();}}}finally{contacts.delete();}return {high,wall,gateBody,groundBody};
   }
   bodyContact(){const c=this.contacts();return c.gateBody||c.high||c.wall;}
-  physicalState(){return {qpos:Array.from(this.data.qpos),qvel:Array.from(this.data.qvel)};}
+  physicalState(){return {qpos:Array.from(this.data.qpos),qvel:Array.from(this.data.qvel),poseName:this.poseName,pose:[...this.pose],driveV:this.driveV,driveW:this.driveW};}
   legAction(action){if(!this.legControl)this.legControl=new WheelLegControl(this);return this.legControl.command(action);}
   selectLeg(index){if(!this.legControl)this.legControl=new WheelLegControl(this);this.legControl.select(index);}
   resumeWheels(){if(this.legControl&&!this.legControl.busy&&!this.legControl.lifted&&!this.legControl.waiting){this.legControl.destroy();this.legControl=null;this.setPose('high');return true;}return false;}
@@ -64,8 +64,22 @@ export class MissionWorld{
     const near=Math.min(...points.map(p=>p[0])),far=Math.max(...points.map(p=>p[0])),high=Math.max(...points.map(p=>p[2]));
     return {valid:true,near,far,high,heightAboveGround:high-this.ground((near+far)/2,s.y),depth:far-near,camera,points:points.filter((_,i)=>i%Math.max(1,Math.floor(points.length/400))===0),source:'Current MuJoCo camera rays; visible geometry, no Lux3D request'};
   }
+  /** Live sensor rays; only hit surfaces are exposed in every player camera. */
+  observeRocks(){
+    const s=this.state(),r=this.data.xmat.slice(this.base*9,this.base*9+9),rotate=v=>[0,1,2].map(i=>r[i*3]*v[0]+r[i*3+1]*v[1]+r[i*3+2]*v[2]),offset=rotate([.42,0,-.00125]),camera=[s.x+offset[0],s.y+offset[1],s.z+offset[2]],hits=[],targets=new Set();
+    for(let col=0;col<60;col++)for(let row=0;row<34;row++){
+      const az=(col/59-.5)*68*Math.PI/180,pitch=(-6+(row/33-.5)*(this.sensorVerticalFov||45))*Math.PI/180;
+      const ray=rotate([Math.cos(pitch)*Math.cos(az),Math.cos(pitch)*Math.sin(az),Math.sin(pitch)]);
+      const distance=this.mj.mj_ray(this.model,this.data,camera,ray,[1,0,0,0,0,0],true,this.base,this.rayGeom,this.rayNormal);
+      const g=this.rayGeom.GetView()[0],b=g>=0?this.model.geom_bodyid[g]:-1;
+      if(distance>0&&this.highBodies.has(b)){
+        const target=b===this.mj.mj_name2id(this.model,1,'obstacle0')?'T1':'T2';targets.add(target);hits.push({target,point:ray.map((v,k)=>camera[k]+distance*v),normal:Array.from(this.rayNormal.GetView())});
+      }
+    }
+    return {camera,hits,targets:[...targets],source:'Live MuJoCo visible-surface rays'};
+  }
   packet(){
-    const m=this.model,model={ngeom:m.ngeom,nmesh:m.nmesh,file:this.file,mesh_names:Array.from({length:m.nmesh},(_,i)=>this.mj.mj_id2name(m,10,i))};
+    const m=this.model,model={ngeom:m.ngeom,nmesh:m.nmesh,file:this.file,geom_roles:Array.from({length:m.ngeom},(_,g)=>{const b=m.geom_bodyid[g];return this.highBodies.has(b)?(b===this.mj.mj_name2id(m,1,'obstacle0')?'T1':'T2'):this.robotBodies.has(b)?'robot':'environment';}),leg_geoms:Array.from({length:m.ngeom},(_,g)=>this.wheelBodies.indexOf(m.geom_bodyid[g])),mesh_names:Array.from({length:m.nmesh},(_,i)=>this.mj.mj_id2name(m,10,i))};
     for(const key of ['geom_group','geom_type','geom_size','geom_dataid','mesh_vertadr','mesh_vertnum','mesh_faceadr','mesh_facenum','mesh_vert','mesh_face','geom_rgba','geom_matid','mat_rgba','mesh_pos','mesh_quat','hfield_adr','hfield_nrow','hfield_ncol','hfield_size','hfield_data'])model[key]=m[key].slice();return model;
   }
   renderData(){return {qpos:this.data.qpos.slice(),geom_xpos:this.data.geom_xpos.slice(),geom_xmat:this.data.geom_xmat.slice()};}

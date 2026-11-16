@@ -1,4 +1,4 @@
-import {RouteFollower} from './mission-world.js?v=mission-1';
+import {RouteFollower} from './mission-world.js?v=immersive-1';
 
 /** The same complete motor simulation runs in the browser and verification CLI. */
 export async function rehearseRoute(world,path,{onFrame=()=>{},cancelled=()=>false,yieldFrame=async()=>{}}={}){

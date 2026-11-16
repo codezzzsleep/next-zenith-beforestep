@@ -1,81 +1,99 @@
 import loadMujoco from './vendor/mujoco/mujoco.js';
 import {inflateGzip,unpackTar,installAssets} from './robot-physics.js?v=mission-1';
-import {MissionWorld,RouteFollower,clamp} from './mission-world.js?v=mission-1';
+import {MissionWorld,RouteFollower,clamp} from './mission-world.js?v=immersive-1';
 import {planRoute,modelWorlds,accepted} from './mission-planner.js?v=mission-1';
-import {rehearseRoute,rehearseCrossing} from './mission-rehearsal.js?v=mission-1';
-
-let mj,mission,world,phase='observation',paused=true,input={v:0,w:0,brake:true},follower=null,token=0,plan=null,preview=null,scan=null,gatePreview=null,dockState=null,held=0;
-const yieldFrame=()=>new Promise(r=>setTimeout(r,0));
-function frame(){if(!world)return;const data=world.renderData();postMessage({type:'state',state:{...world.state(),phase,paused,automatic:!!follower,scan:scan?{...scan,points:undefined}:null},data},Object.values(data).map(x=>x.buffer));}
-function replace(file,initial=null){world?.destroy();world=new MissionWorld(mj,mission,file,initial);postMessage({type:'world',model:world.packet()});frame();}
-function invalidate(){token++;preview=gatePreview=null;follower=null;paused=true;input={v:0,w:0,brake:true};}
+import {rehearseRoute,rehearseCrossing} from './mission-rehearsal.js?v=immersive-1';
+import {usableProof,progressOnPath,wrapAngle} from './mission-session.js?v=immersive-1';
+let mj,mission,live,phase='explore',paused=false,input={v:0,w:0,brake:true},follower=null;
+let token=0,revision=0,selected=[],policy='imagination',proof=null,gateProof=null,scan=null,held=0,actions=0,lastSensor=0,routeSession=false,lastLiveFrame=0,sensorVerticalFov=45;
+const yieldFrame=()=>new Promise(r=>setTimeout(r,8));
+const stable=()=>live.state().speed<.025&&Math.abs(live.data.qvel[5])<.08;
+function reject(reason){postMessage({type:'commandRejected',reason});}
+function packet(w,channel,requestId){postMessage({type:'world',channel,requestId,model:w.packet()});}
+function frame(w=live,channel='live',requestId){
+  if(!w)return;const data=w.renderData(),s=w.state();
+  postMessage({type:'state',channel,requestId,state:{...s,phase,paused,automatic:!!follower,revision,actionCount:actions,stable:stable(),scan:scan?{...scan,points:undefined}:null,proof:proof?{passed:proof.passed,requestId:proof.requestId,usable:!live.legControl&&usableProof(proof,live.state(),revision),routeSession,revision:proof.revision,worlds:proof.results.length,path:proof.plan.path,length:proof.plan.length,anchor:proof.anchor}:null,gateProof:gateProof?{passed:gateProof.passed,requestId:gateProof.requestId,usable:!live.legControl&&usableProof(gateProof,live.state(),revision)}:null},data},Object.values(data).map(x=>x.buffer));
+}
+function cancel(){token++;postMessage({type:'dreamClosed'});}
+function newLive(){live?.destroy();live=new MissionWorld(mj,mission);live.sensorVerticalFov=sensorVerticalFov;packet(live,'live');frame();}
 async function previewRoute(message){
-  invalidate();phase='preview';plan=planRoute(mission,message.selected,message.policy||'imagination');
-  const worlds=modelWorlds(mission,message.selected),key=token;
-  postMessage({type:'plan',plan,worlds});
-  if(!plan.path||!worlds.length){postMessage({type:'previewDone',passed:false,reason:plan.path?'select_both_targets':plan.reason,results:[]});phase='candidates';return;}
-  const results=[];
+  const requestId=message.requestId;
+  if(!stable()||live.legControl){reject('先松开驾驶、停稳，再在脑中试路。');return;}
+  cancel();proof=null;routeSession=false;follower=null;const key=token,anchor=live.state(),snapshot=live.physicalState(),plan=planRoute(mission,selected,policy,[anchor.x,anchor.y]),worlds=modelWorlds(mission,selected);
+  if(!plan.path||!worlds.length){reject(plan.path?'每块高石至少选一份可信候选。':'当前位置没有满足净空的参考路线，可以自行尝试或后退观察。');return;}
+  postMessage({type:'plan',plan,worlds,revision,requestId});const results=[];
   for(let i=0;i<worlds.length;i++){
-    if(key!==token)return;replace(worlds[i].file);postMessage({type:'previewProgress',index:i,total:worlds.length,world:worlds[i]});
-    const result=await rehearseRoute(world,plan.path,{onFrame:frame,cancelled:()=>key!==token,yieldFrame});
-    if(result.cancelled)return;results.push({...result,tasks:worlds[i].tasks});postMessage({type:'previewResult',index:i,result:results.at(-1)});
+    if(key!==token)return;const dream=new MissionWorld(mj,mission,worlds[i].file,snapshot);packet(dream,'dream',requestId);postMessage({type:'previewProgress',requestId,index:i,total:worlds.length,tasks:worlds[i].tasks});
+    let result;try{result=await rehearseRoute(dream,plan.path,{onFrame:()=>{if(key===token)frame(dream,'dream',requestId);},cancelled:()=>key!==token,yieldFrame});}finally{dream.destroy();}
+    if(key!==token||result.cancelled)return;results.push({...result,tasks:worlds[i].tasks});postMessage({type:'previewResult',requestId,index:i,result:results.at(-1)});
   }
-  preview={passed:results.every(r=>r.passed),selected:[...message.selected],policy:message.policy||'imagination',results,plan};phase='decision';postMessage({type:'previewDone',...preview});frame();
+  proof={passed:results.every(r=>r.passed),revision,selected:[...selected],policy,results,plan,anchor,requestId};postMessage({type:'previewDone',...proof,current:usableProof(proof,live.state(),revision)});frame();
 }
-async function previewGate(){
-  if(!scan?.valid||!dockState){postMessage({type:'commandRejected',reason:'当前相机没有看清门槛，请重新对齐机器人。'});frame();return;}invalidate();const key=token;phase='gate-preview';replace('truth.xml',dockState);world.course.barrier={near:scan.near,far:scan.far+.004,high:scan.high};
-  const result=await rehearseCrossing(world,{onFrame:frame,cancelled:()=>key!==token,yieldFrame});if(result.cancelled)return;
-  gatePreview=result;phase='gate';replace('truth.xml',dockState);world.course.barrier={near:scan.near,far:scan.far+.004,high:scan.high};postMessage({type:'gatePreviewDone',result});frame();
+async function previewGate(message){
+  const requestId=message.requestId;
+  if(!stable()||live.legControl){reject('停稳后，才能试跨门槛。');return;}scan=live.observeGate();
+  if(!scan.valid){reject('相机还没看清门槛；请靠近、对正，再按“观察”。');return;}
+  cancel();gateProof=null;follower=null;const key=token,anchor=live.state(),dream=new MissionWorld(mj,mission,'truth.xml',live.physicalState());dream.course.barrier={near:scan.near,far:scan.far+.004,high:scan.high};packet(dream,'dream',requestId);postMessage({type:'gatePreviewStart',requestId});
+  let result;try{result=await rehearseCrossing(dream,{onFrame:()=>{if(key===token)frame(dream,'dream',requestId);},cancelled:()=>key!==token,yieldFrame});}finally{dream.destroy();}
+  if(key!==token||result.cancelled)return;gateProof={...result,revision,anchor,requestId};postMessage({type:'gatePreviewDone',requestId,result});frame();
 }
-async function tryWheels(){
-  if(!dockState||phase!=='gate')return;const key=++token;phase='wheel-trial';paused=true;replace('truth.xml',dockState);
-  let clear=false;
-  for(let block=0;block<50;block++){
-    for(let i=0;i<500;i++){if(key!==token)return;world.step(.18,0,false);}
-    frame();clear=world.anchors().every(p=>p[0]-.086>mission.gate.far);if(clear||world.state().tilt>30)break;await yieldFrame();
-  }
-  const final=world.state();phase='gate';replace('truth.xml',dockState);world.course.barrier={near:scan.near,far:scan.far+.004,high:scan.high};postMessage({type:'wheelTrialDone',clear,final});frame();
+function startCross(assisted){
+  if(live.legControl){reject('先把当前腿落稳、回到轮行，再开始门槛跨越。');return;}
+  if(!stable()){reject('轮子还在动。先刹车停稳，再抬腿。');return;}
+  scan=live.observeGate();if(!scan.valid){reject('门槛不在相机可见范围；靠近并对正再试。');return;}
+  if(assisted&&!usableProof(gateProof,live.state(),revision)){reject('当前位置还没有通过跨越预演。可以重新试路，或选择直接尝试。');return;}
+  live.course.barrier={near:scan.near,far:scan.far+.004,high:scan.high};
+  if(!live.legAction('cross')){live.legControl?.destroy();live.legControl=null;reject('请让车头朝向门槛，靠近中线，并停在门槛前至少 40 cm。');return;}
+  cancel();phase='crossing';follower=null;paused=false;input={v:0,w:0,brake:true};postMessage({type:'crossStart',assisted});frame();
 }
 function tick(){
-  if(!world||paused||!['execute','gate','crossing','finish-drive'].includes(phase))return;
-  for(let i=0;i<20;i++){
-    let command=input;if(follower)command=follower.command(world);if(phase==='finish-drive'&&!world.legControl&&world.state().goalDistance<.35)command={v:0,w:0,brake:true};world.step(command.v,command.w,command.brake);
-    if(world.steps%10===0){const s=world.state(),c=world.contacts();if(c.high||c.wall||c.gateBody||s.tilt>30||!s.finite||s.legs?.error){paused=true;follower=null;phase='failed';postMessage({type:'missionFailed',reason:s.legs?.error||'发生碰撞或失去平衡，请重新选择路线。'});break;}}
-    if(phase==='execute'&&(follower?.done||(!follower&&Math.hypot(world.state().x-mission.dock[0],world.state().y-mission.dock[1])<.07&&world.state().speed<.02&&Math.abs(world.state().yaw)<.12))){
-      follower=null;paused=true;input={v:0,w:0,brake:true};scan=world.observeGate();dockState=world.physicalState();phase='gate';postMessage({type:'gateObserved',scan:{...scan,points:scan.points.length}});break;
-    }
-    if(phase==='crossing'&&world.legControl.mode==='complete'){phase='finish-drive';postMessage({type:'crossed'});}
-    if(phase==='finish-drive'){
-      const s=world.state(),over=world.anchors().every(p=>p[0]-.086>mission.gate.far);held=s.goalDistance<.35&&s.speed<.035&&over&&!world.legControl?held+world.timestep:0;
-      if(held>.35){phase='complete';paused=true;postMessage({type:'missionComplete',state:s});break;}
-    }
+  if(!live||paused||['failed','complete'].includes(phase))return;
+  for(let i=0;i<10;i++){
+    let command=input;if(follower)command=follower.command(live);
+    const s=live.state();if(!live.legControl&&s.goalDistance<.35)command={v:0,w:0,brake:true};live.step(command.v,command.w,command.brake);
+    if(live.steps%10===0){const s=live.state(),c=live.contacts();if(c.high||c.wall||c.gateBody||s.tilt>30||!s.finite||s.legs?.error){paused=true;follower=null;phase='failed';cancel();postMessage({type:'missionFailed',reason:s.legs?.error||'碰到高石、车身触到门槛，或失去平衡。重试后可以换个走法。'});break;}}
+    if(follower?.done){follower=null;input={v:0,w:0,brake:true};phase='gate';scan=live.observeGate();postMessage({type:'gateObserved',scan:{...scan,points:scan.points.length}});}
+    if(phase==='explore'&&live.state().x>mission.dock[0]-.1)phase='gate';
+    if(phase==='crossing'&&live.legControl?.mode==='complete'){phase='finish-drive';postMessage({type:'crossed'});}
+    const now=live.state(),over=live.anchors().every(p=>p[0]-.086>mission.gate.far);
+    held=now.goalDistance<.35&&now.speed<.035&&over&&!live.legControl?held+live.timestep:0;
+    if(held>.35){phase='complete';paused=true;cancel();postMessage({type:'missionComplete',state:now,actions,modelWorlds:proof?.results.length||0});break;}
   }
-  frame();
+  if(live.elapsed-lastSensor>.35){lastSensor=live.elapsed;postMessage({type:'observation',...live.observeRocks()});}
+  if(paused||['complete','failed'].includes(phase)||live.elapsed-lastLiveFrame>=.05){lastLiveFrame=live.elapsed;frame();}
 }
-onmessage=async({data:message})=>{
+onmessage=async({data:m})=>{
   try{
-    if(message.type==='init'){
-      mission=message.mission;const [wasm,bundle]=await Promise.all([inflateGzip(message.wasm),inflateGzip(message.bundle)]);mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));replace('truth.xml');postMessage({type:'ready',engine:mj.mj_versionString()});setInterval(tick,20);
-    }else if(message.type==='reset'){invalidate();phase='observation';scan=dockState=null;held=0;replace('truth.xml');postMessage({type:'resetDone'});}
-    else if(message.type==='inspect'){invalidate();phase='candidates';const ids=message.selected.filter(id=>mission.candidates.some(c=>c.task_id===id&&accepted(c,mission.thresholds))),worlds=modelWorlds(mission,ids);if(worlds.length)replace(worlds[0].file);frame();}
-    else if(message.type==='preview')await previewRoute(message);
-    else if(message.type==='cancel'){invalidate();phase='candidates';frame();}
-    else if(message.type==='execute'){
-      if(!preview?.passed){postMessage({type:'commandRejected',reason:'先让所选模型中的完整预演通过。'});return;}
-      token++;phase='execute';replace('truth.xml');follower=message.manual?null:new RouteFollower(preview.plan.path);paused=false;input={v:0,w:0,brake:true};frame();
-    }else if(message.type==='input'){
-      if(!['execute','gate','finish-drive'].includes(phase)||world.legControl)return;
-      input={v:clamp(message.v,-.36,.36),w:clamp(message.w,-.8,.8),brake:!!message.brake};if(Math.abs(input.v)+Math.abs(input.w)>.005||input.brake)follower=null;frame();
-    }else if(message.type==='follow'&&phase==='execute'){plan=planRoute(mission,preview.selected,preview.policy,[world.state().x,world.state().y]);if(plan.path){follower=new RouteFollower(plan.path);paused=false;}frame();}
-    else if(message.type==='pause'){paused=message.value;input={v:0,w:0,brake:true};frame();}
-    else if(message.type==='gatePreview')await previewGate();
-    else if(message.type==='wheelTrial')await tryWheels();
-    else if(message.type==='cross'){
-      if(!gatePreview?.passed){postMessage({type:'commandRejected',reason:'先预演可见门槛的跨越动作。'});return;}
-      phase='crossing';paused=false;input={v:0,w:0,brake:true};world.legAction('cross');frame();
-    }else if(message.type==='legAction'&&phase==='crossing'&&!paused){const ok=world.legAction(message.action);postMessage({type:'legCommand',ok,action:message.action});frame();}
-    else if(message.type==='legSelect'&&phase==='crossing'){world.selectLeg(message.index);frame();}
-    else if(message.type==='wheelMode'&&phase==='finish-drive'){world.resumeWheels();input={v:0,w:0,brake:true};frame();}
-    else if(message.type==='pose'&&!world.legControl){world.setPose(message.value);frame();}
+    if(m.type==='init'){
+      mission=m.mission;sensorVerticalFov=clamp(m.sensorVerticalFov||45,15,120);const [wasm,bundle]=await Promise.all([inflateGzip(m.wasm),inflateGzip(m.bundle)]);mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));newLive();postMessage({type:'ready',engine:mj.mj_versionString()});postMessage({type:'observation',...live.observeRocks()});setInterval(tick,20);
+    }else if(m.type==='reset'){cancel();proof=gateProof=scan=null;routeSession=false;follower=null;held=actions=lastSensor=lastLiveFrame=0;phase='explore';paused=false;input={v:0,w:0,brake:true};newLive();postMessage({type:'resetDone'});postMessage({type:'observation',...live.observeRocks()});}
+    else if(m.type==='selection'){
+      cancel();revision++;selected=m.selected.filter(id=>mission.candidates.some(c=>c.task_id===id&&accepted(c,mission.thresholds)));policy=m.policy||'imagination';proof=gateProof=null;routeSession=false;follower=null;frame();
+    }else if(m.type==='preview')await previewRoute(m);
+    else if(m.type==='cancel'){cancel();proof=gateProof=null;routeSession=false;frame();}
+    else if(m.type==='execute'){
+      if(live.legControl||!usableProof(proof,live.state(),revision)){reject('这条路线尚未在当前位置和当前候选中预演通过；先停稳重新预演。');return;}
+      follower=new RouteFollower(proof.plan.path);routeSession=true;paused=false;input={v:0,w:0,brake:true};postMessage({type:'routeStarted'});frame();
+    }else if(m.type==='follow'){
+      if(live.legControl||!proof?.passed||proof.revision!==revision||!routeSession){reject('先执行一条在当前位置预演通过的路线。');return;}
+      const progress=progressOnPath(live.state(),proof.plan.path);
+      if(progress.distance>.09){reject('你已离开预演路线，旧结果无法验证新走法。停稳后重新试路。');return;}
+      const s=live.state(),a=proof.plan.path[progress.index-1],b=proof.plan.path[progress.index],atTurn=Math.min(Math.hypot(s.x-a[0],s.y-a[1]),Math.hypot(s.x-b[0],s.y-b[1]))<.065;
+      if(!stable()||!atTurn&&Math.abs(wrapAngle(s.yaw-Math.atan2(b[1]-a[1],b[0]-a[0])))>.08){reject('先停稳并沿原路线方向；偏离走向后，需要重新试路。');return;}
+      follower=new RouteFollower(proof.plan.path);follower.index=progress.index;if(!atTurn){follower.phase='drive';follower.origin=a;}paused=false;frame();
+    }else if(m.type==='input'){
+      if(live.legControl||['failed','complete'].includes(phase))return;
+      input={v:clamp(m.v,-.36,.36),w:clamp(m.w,-.8,.8),brake:!!m.brake};if(Math.abs(input.v)+Math.abs(input.w)>.005||input.brake)follower=null;frame();
+    }else if(m.type==='pause'){paused=!!m.value;input={v:0,w:0,brake:true};frame();}
+    else if(m.type==='sensorLens'){sensorVerticalFov=clamp(m.verticalFov,15,120);live.sensorVerticalFov=sensorVerticalFov;postMessage({type:'observation',...live.observeRocks()});}
+    else if(m.type==='observe'){scan=live.observeGate();postMessage({type:'observed',rocks:live.observeRocks(),scan:{...scan,points:scan.points.length}});frame();}
+    else if(m.type==='gatePreview')await previewGate(m);
+    else if(m.type==='cross')startCross(!!m.assisted);
+    else if(m.type==='legAction'&&!paused){
+      if((m.action==='lift'||!live.legControl)&&!stable()){reject('先刹车停稳，再抬腿。');return;}
+      if(phase!=='crossing'){follower=null;routeSession=false;input={v:0,w:0,brake:true};cancel();}const ok=live.legAction(m.action);if(ok)actions++;else reject('先完成当前腿的动作，落地后再继续。');postMessage({type:'legCommand',ok,action:m.action});frame();
+    }else if(m.type==='legSelect'){if(!live.legControl&&!stable()){reject('先停稳再选腿。');return;}if(phase!=='crossing'){follower=null;routeSession=false;input={v:0,w:0,brake:true};cancel();}live.selectLeg(m.index);frame();}
+    else if(m.type==='wheelMode'){if(!live.resumeWheels())reject('把抬起的腿放稳，再回轮行。');input={v:0,w:0,brake:true};frame();}
+    else if(m.type==='pose'&&!live.legControl){live.setPose(m.value);frame();}
   }catch(error){paused=true;postMessage({type:'error',message:error.message||String(error)});}
 };

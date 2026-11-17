@@ -1,7 +1,7 @@
 import './gallery-viewer.js?v=report-v3-1';
 import {MissionGameplay} from './mission-gameplay.js?v=playability-1';
 import {nextHypotheses} from './mission-run.js?v=playability-1';
-import {MissionScene} from './mission-scene.js?v=immersive-1';
+import {MissionScene} from './mission-scene.js?v=playability-1';
 import {inflateGzip} from './robot-physics.js?v=mission-1';
 import {accepted,admissionChecks,planRoute,modelWorlds} from './mission-planner.js?v=mission-1';
 const $=id=>document.getElementById(id),stage=$('main'),labels=['右前','左前','右后','左后'];

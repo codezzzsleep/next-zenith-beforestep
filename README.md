@@ -122,6 +122,7 @@ git lfs pull --include="" --exclude=""
 | 你想看什么 | 从这里进入 |
 | --- | --- |
 | 观测 → 生成 → 核对 → 预演 → 执行的代码 | [五分钟代码导览](docs/code-tour.md) · [src/beforestep](src/beforestep/) |
+| 完整参赛故事与事实来源 | [从照片到局部空间的完整故事](docs/submission-story-20261117.md) · [事实核查与原始来源](docs/submission-story-sources-20261117.md) |
 | 主宣传视频与主报告 | [B站主宣传片](https://b23.tv/4CAPaLu) · [主报告 V3](site/media/report.pdf) · [完整 Demo 存档](evidence/lux3d-demo-v2/README.md) |
 | 历史视频与 v3 报告一起下载 | [视频与 v3 报告 ZIP](https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/ab537d62c075c4d7be1e829cecb69a4708258221/evidence/lux3d-demo-v2/BeforeStep-Lux3D-v2-submission.zip) |
 | 视频怎样制作 | [原 Demo 合成代码](tools/lux3d_demo/README.md) · [配乐与过渡代码](tools/lux3d_demo_v2/README.md) |

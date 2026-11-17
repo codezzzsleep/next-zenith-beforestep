@@ -1,4 +1,5 @@
-import {MissionRun, MODE_NAMES, chapterFor, nextObjective, readRecords, saveRecord, bestRecord} from './mission-run.js?v=playability-1';
+import {MissionRun, MODE_NAMES, chapterFor, nextObjective, readRecords, saveRecord, bestRecord} from './mission-run.js?v=spatial-judgment-1';
+import {runRecap} from './mission-insight.js?v=spatial-judgment-1';
 import {accepted} from './mission-planner.js?v=mission-1';
 
 const $ = id => document.getElementById(id);
@@ -173,6 +174,7 @@ export class MissionGameplay {
     $('run-result-worlds').textContent = String(result.worlds);
     $('run-result-actions').textContent = `${result.actions} / 12`;
     $('run-result-tilt').textContent = `${result.maxTilt.toFixed(1)}°`;
+    $('run-recap').textContent = runRecap(result, this.mission);
     const badges = $('run-badges');
     badges.replaceChildren();
     for (const badge of result.badges) {

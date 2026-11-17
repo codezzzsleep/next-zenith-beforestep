@@ -24,13 +24,13 @@ export function nextObjective(state, mission) {
     if (state.showcase?.stage === 'braking') return {title: '第一站 · 停稳，看高石。', hint: '轮子正在制动；完整形状马上进入脑内。'};
     if (state.showcase?.active) return {
       title: '第一站 · 看见另一面。',
-      hint: state.showcase.viewedTask ? '选脑内试路，或带着 3D 参考亲自开。' : '拖动模型或点“转看另一面”，让假设在脑中转一转。',
+      hint: state.showcase.viewedTask ? '高石背面处于阴影盲区：对照通道占地，判断左右哪侧足够宽，再选走法。' : '前方高石背面处于阴影盲区，请判断左右哪侧通道足够宽；先转看模型。',
     };
     return {title: '第一站 · 驶向高石。', hint: 'WASD / 摇杆前进，到观察点看 Lux3D 的完整形状。'};
   }
   if (chapter === 1) return {
     title: '第二站 · 绕过两块高石。',
-    hint: state.automatic ? '正在沿已试过的路线行驶；方向键 / 摇杆随时接管。' : 'Q 展开模型与试路；开到前方门槛整备点。',
+    hint: state.automatic ? '正在沿所选假设预演通过的路线绕行高石；方向键 / 摇杆随时接管。' : state.proof?.routeSession ? '已预演路线继续保留，你正在亲自驾驶；Q 查看通道占地与走法。' : '手控绕行高石；Q 对照所选背面占地与两条路线，再开到门槛整备点。',
   };
   if (chapter === 2) {
     const waiting = state.legs?.waiting;
@@ -39,7 +39,7 @@ export function nextObjective(state, mission) {
       hint: `按 ${ACTION_KEYS[waiting.action]} 或下方高亮按钮 · ${Math.min(12, state.actionCount)} / 12 个主要动作`,
     };
     if (state.legs) return {title: '第三站 · 四腿接力。', hint: '支撑与重心调整中；下一动作就绪后由你触发。'};
-    return {title: '第三站 · 轮子不够，用腿。', hint: '停稳、对正。先试轮行，或点“直接尝试迈腿”。'};
+    return {title: '第三站 · 高石已绕过。', hint: state.scan?.valid ? '前方低门槛已看清，切换轮腿直接跨越；停稳、对正，再亲手抬、迈、落。' : '前方是低门槛；停稳观察、对正，再切换轮腿亲手跨越。'};
   }
   return {
     title: '最后一站 · 稳稳到达。',
@@ -66,6 +66,7 @@ export class MissionRun {
     this.viewedTasks = new Set();
     this.pendingProof = null;
     this.usedProof = null;
+    this.previewedWorlds = new Set();
     this.crossed = false;
     this.completed = false;
     this.ended = false;
@@ -100,6 +101,9 @@ export class MissionRun {
   }
 
   event(message) {
+    if (message.type === 'previewDone') for (const result of message.results) {
+      if (result.tasks?.length) this.previewedWorlds.add([...result.tasks].sort((a, b) => a - b).join(':'));
+    }
     if (message.type === 'previewDone') this.pendingProof = message.passed ? {
       requestId: message.requestId,
       revision: message.revision,
@@ -152,6 +156,9 @@ export class MissionRun {
       maxTilt: Math.round(this.maxTilt * 10) / 10,
       actions: this.actions, checkpointUses: this.checkpointUses,
       worlds: this.usedProof?.worlds || 0,
+      previewedWorlds: this.previewedWorlds.size,
+      routeSelected: [...(this.usedProof?.selected || [])].sort((a, b) => a - b),
+      viewedTargets: [...this.viewedTargets].sort(),
       selected: [...this.selected].sort((a, b) => a - b), badges,
     };
   }

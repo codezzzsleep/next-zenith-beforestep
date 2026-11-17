@@ -1,7 +1,7 @@
 import './gallery-viewer.js?v=report-v3-1';
 import {MissionGameplay} from './mission-gameplay.js?v=playability-1';
 import {nextHypotheses} from './mission-run.js?v=playability-1';
-import {MissionScene} from './mission-scene.js?v=playability-1';
+import {MissionScene} from './mission-scene.js?v=m20-visual-1';
 import {inflateGzip} from './robot-physics.js?v=mission-1';
 import {accepted,admissionChecks,planRoute,modelWorlds} from './mission-planner.js?v=mission-1';
 const $=id=>document.getElementById(id),stage=$('main'),labels=['右前','左前','右后','左后'];
@@ -106,11 +106,11 @@ function padMove(e){const b=$('joystick').getBoundingClientRect(),r=b.width*.35;
 $('joystick').addEventListener('pointerdown',e=>{e.preventDefault();stickPointer=e.pointerId;$('joystick').setPointerCapture(e.pointerId);padMove(e);});$('joystick').addEventListener('pointermove',e=>{if(e.pointerId===stickPointer)padMove(e);});for(const event of ['pointerup','pointercancel','lostpointercapture'])$('joystick').addEventListener(event,()=>{joystick=[0,0];stickPointer=null;$('stick').style.transform='';drive();});$('touch-brake').addEventListener('pointerdown',e=>{e.preventDefault();brake=true;$('touch-brake').setPointerCapture(e.pointerId);$('touch-brake').classList.add('active');drive();});for(const event of ['pointerup','pointercancel','lostpointercapture'])$('touch-brake').addEventListener(event,()=>{brake=false;$('touch-brake').classList.remove('active');drive();});
 function fail(error){$('loading').hidden=true;$('fallback').hidden=false;$('fallback-text').textContent=error.message||String(error);document.documentElement.dataset.missionError='true';}
 async function init(){try{
-  const get=async p=>{const r=await fetch(p);if(!r.ok)throw new Error('无法加载任务资源：'+p);return r.arrayBuffer();};const [data,meshes,wasm,bundle]=await Promise.all([get('media/mission/mission.json.gz?v=mission-1').then(inflateGzip),get('media/mission/display.json.gz?v=mission-1').then(inflateGzip),get('vendor/mujoco/mujoco.wasm.gz'),get('media/mission/worlds.tar.gz?v=mission-1')]);mission=JSON.parse(new TextDecoder().decode(data));const display=JSON.parse(new TextDecoder().decode(meshes));
+  const get=async p=>{const r=await fetch(p);if(!r.ok)throw new Error('无法加载任务资源：'+p);return r.arrayBuffer();};const [data,meshes,wasm,bundle,skinData]=await Promise.all([get('media/mission/mission.json.gz?v=mission-1').then(inflateGzip),get('media/mission/display.json.gz?v=mission-1').then(inflateGzip),get('vendor/mujoco/mujoco.wasm.gz'),get('media/mission/worlds.tar.gz?v=mission-1'),get('media/mission/m20-skin.json.gz?v=1').then(inflateGzip)]);mission=JSON.parse(new TextDecoder().decode(data));const display=JSON.parse(new TextDecoder().decode(meshes)),robotSkin=JSON.parse(new TextDecoder().decode(skinData));
   selected=[...mission.candidates.filter(c=>c.target==='T1'&&accepted(c,mission.thresholds)).slice(0,1),...mission.candidates.filter(c=>c.target==='T2'&&accepted(c,mission.thresholds)).slice(0,2)].map(c=>c.task_id);
   gameplay.setMission(mission,selected);
-  mainScene=new MissionScene($('world'),{mission,display,onAnchor:p=>anchor=p});dreamScene=new MissionScene($('dream'),{mission,display,dream:true});dreamScene.view=0;dreamScene.pip=false;
-  worker=new Worker('./mission-worker.js?v=playability-1',{type:'module'});worker.onerror=e=>fail(new Error(e.message));worker.onmessage=({data:m})=>{
+  mainScene=new MissionScene($('world'),{mission,display,robotSkin,onAnchor:p=>anchor=p});dreamScene=new MissionScene($('dream'),{mission,display,robotSkin,dream:true});dreamScene.view=0;dreamScene.pip=false;
+  worker=new Worker('./mission-worker.js?v=m20-visual-1',{type:'module'});worker.onerror=e=>fail(new Error(e.message));worker.onmessage=({data:m})=>{
     if((m.channel==='dream'||['plan','previewProgress','previewResult','previewDone','gatePreviewStart','gatePreviewDone'].includes(m.type))&&m.requestId!==currentJob)return;
     if(m.type!=='state'&&m.type!=='world')gameplay.onEvent(m);
     if(m.type==='world'){(m.channel==='live'?mainScene:dreamScene).setModel(m.model);if(m.channel==='live')mainScene.setView(view);}

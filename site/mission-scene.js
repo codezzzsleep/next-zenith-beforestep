@@ -2,8 +2,8 @@ import * as THREE from './vendor/three/three.module.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 /** Drawing consumes worker snapshots only. First / third / inset share one snapshot. */
 export class MissionScene{
-  constructor(canvas,{dream=false,display,mission,onAnchor=()=>{}}={}){
-    this.canvas=canvas;this.dream=dream;this.display=display;this.mission=mission;this.onAnchor=onAnchor;this.objects=[];this.seen=new Map();this.view=1;this.pip=true;
+  constructor(canvas,{dream=false,display,mission,robotSkin,onAnchor=()=>{}}={}){
+    this.canvas=canvas;this.dream=dream;this.display=display;this.mission=mission;this.robotSkin=robotSkin;this.onAnchor=onAnchor;this.objects=[];this.skinObjects=[];this.seen=new Map();this.view=1;this.pip=true;
     this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));const debug=this.renderer.getContext().getExtension('WEBGL_debug_renderer_info');this.frameInterval=debug&&/SwiftShader/i.test(this.renderer.getContext().getParameter(debug.UNMASKED_RENDERER_WEBGL))?125:33;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.25;
     this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#0b1320');this.scene.fog=new THREE.Fog('#0b1320',22,65);
     this.camera=new THREE.PerspectiveCamera(49,1,.03,100);this.camera.up.set(0,0,1);this.camera.position.set(1,-2,2);
@@ -27,9 +27,10 @@ export class MissionScene{
     this.unknown=plane;
   }
   setModel(model){
-    this.model=model;for(const {mesh}of this.objects){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.objects=[];this.dirty=true;const m=model,cache=new Map();
+    this.model=model;for(const {mesh}of [...this.objects,...this.skinObjects]){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.objects=[];this.skinObjects=[];this.dirty=true;const m=model,cache=new Map();
+    const skinReady=this.makeRobotSkin(m);
     for(let g=0;g<m.ngeom;g++){
-      if(m.geom_group[g]===3)continue;const type=m.geom_type[g],s=m.geom_size.slice(g*3,g*3+3);let geometry;
+      if(m.geom_group[g]===3||skinReady&&m.geom_roles[g]==='robot')continue;const type=m.geom_type[g],s=m.geom_size.slice(g*3,g*3+3);let geometry;
       if(type===7){
         const id=m.geom_dataid[g];if(!cache.has(id)){
           const geom=new THREE.BufferGeometry(),lod=this.display[m.mesh_names[id]];
@@ -56,9 +57,24 @@ export class MissionScene{
     }
     cache.forEach(g=>g.dispose());this.canvas.dataset.totalRockVertices=String(this.objects.filter(o=>o.high&&!this.dream).reduce((n,o)=>n+o.mesh.geometry.attributes.position.count,0));
   }
+  makeRobotSkin(model){
+    if(!this.robotSkin?.parts||!model.body_names)return false;
+    const map=[['base_link','base_link',-1]];
+    for(const [source,target,leg] of [['fr','FR',0],['fl','FL',1],['hr','RR',2],['hl','RL',3]]){
+      for(const [part,body] of [['hipx','hip'],['hipy','thigh'],['knee','calf'],['wheel','wheel_link']])map.push([`${source}_${part}`,`${target}_${body}`,part==='wheel'?leg:-1]);
+    }
+    if(map.some(([part,body])=>!this.robotSkin.parts[part]||model.body_names.indexOf(body)<0))return false;
+    for(const [part,body,leg] of map){
+      const data=this.robotSkin.parts[part],geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(data.positions,3));geometry.setIndex(data.indices);geometry.computeVertexNormals();
+      const wheel=part.endsWith('_wheel'),color=wheel?'#242a31':part==='base_link'?'#dce3e6':part.endsWith('_hipx')?'#6d7a80':'#b7c4c9';
+      const material=new THREE.MeshStandardMaterial({color,roughness:wheel?.9:.48,metalness:wheel?.05:.27});const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;this.scene.add(mesh);this.skinObjects.push({mesh,body:model.body_names.indexOf(body),leg});
+    }
+    this.canvas.dataset.robotParts=String(this.skinObjects.length);return true;
+  }
   update(data,state){
     this.dirty=true;this.data=data;this.state=state;
     for(const object of this.objects){const {g,mesh,leg}=object,p=g*3,r=g*9,rot=data.geom_xmat,pos=data.geom_xpos;mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);mesh.matrixWorldNeedsUpdate=true;mesh.material.emissive.set(leg>=0&&state.legs?.selected===leg?'#b86a0c':'#000000');}
+    for(const {body,mesh,leg} of this.skinObjects){const p=body*3,r=body*9,rot=data.body_xmat,pos=data.body_xpos;mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);mesh.matrixWorldNeedsUpdate=true;mesh.material.emissive.set(leg>=0&&state.legs?.selected===leg?'#b86a0c':'#000000');}
     const q=data.qpos,quaternion=new THREE.Quaternion(q[4],q[5],q[6],q[3]),origin=new THREE.Vector3(q[0],q[1],q[2]);
     this.car.position.copy(new THREE.Vector3(.42,0,-.00125).applyQuaternion(quaternion).add(origin));this.car.up.copy(new THREE.Vector3(0,0,1).applyQuaternion(quaternion));this.car.lookAt(new THREE.Vector3(Math.cos(-6*Math.PI/180)*3,0,Math.sin(-6*Math.PI/180)*3).applyQuaternion(quaternion).add(this.car.position));
     const target=new THREE.Vector3(state.x,state.y,state.z+.03),delta=target.clone().sub(this.controls.target);this.controls.target.add(delta);this.camera.position.add(delta);this.controls.update();

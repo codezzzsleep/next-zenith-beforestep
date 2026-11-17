@@ -79,10 +79,10 @@ export class MissionWorld{
     return {camera,hits,targets:[...targets],source:'Live MuJoCo visible-surface rays'};
   }
   packet(){
-    const m=this.model,model={ngeom:m.ngeom,nmesh:m.nmesh,file:this.file,geom_roles:Array.from({length:m.ngeom},(_,g)=>{const b=m.geom_bodyid[g];return this.highBodies.has(b)?(b===this.mj.mj_name2id(m,1,'obstacle0')?'T1':'T2'):this.robotBodies.has(b)?'robot':'environment';}),leg_geoms:Array.from({length:m.ngeom},(_,g)=>this.wheelBodies.indexOf(m.geom_bodyid[g])),mesh_names:Array.from({length:m.nmesh},(_,i)=>this.mj.mj_id2name(m,10,i))};
+    const m=this.model,model={ngeom:m.ngeom,nmesh:m.nmesh,file:this.file,body_names:Array.from({length:m.nbody},(_,i)=>this.mj.mj_id2name(m,1,i)),geom_roles:Array.from({length:m.ngeom},(_,g)=>{const b=m.geom_bodyid[g];return this.highBodies.has(b)?(b===this.mj.mj_name2id(m,1,'obstacle0')?'T1':'T2'):this.robotBodies.has(b)?'robot':'environment';}),leg_geoms:Array.from({length:m.ngeom},(_,g)=>this.wheelBodies.indexOf(m.geom_bodyid[g])),mesh_names:Array.from({length:m.nmesh},(_,i)=>this.mj.mj_id2name(m,10,i))};
     for(const key of ['geom_group','geom_type','geom_size','geom_dataid','mesh_vertadr','mesh_vertnum','mesh_faceadr','mesh_facenum','mesh_vert','mesh_face','geom_rgba','geom_matid','mat_rgba','mesh_pos','mesh_quat','hfield_adr','hfield_nrow','hfield_ncol','hfield_size','hfield_data'])model[key]=m[key].slice();return model;
   }
-  renderData(){return {qpos:this.data.qpos.slice(),geom_xpos:this.data.geom_xpos.slice(),geom_xmat:this.data.geom_xmat.slice()};}
+  renderData(){return {qpos:this.data.qpos.slice(),geom_xpos:this.data.geom_xpos.slice(),geom_xmat:this.data.geom_xmat.slice(),body_xpos:this.data.xpos.slice(),body_xmat:this.data.xmat.slice()};}
   destroy(){this.legControl?.destroy();this.rayGeom.delete();this.rayNormal.delete();this.data.delete();this.model.delete();}
 }
 /** Piecewise straight route with observed-position and heading feedback. */

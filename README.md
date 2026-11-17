@@ -10,15 +10,15 @@
   <p>
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html">亲自驾驶机器人</a> ·
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">作品首页</a> ·
-    <a href="evidence/lux3d-demo-v2/README.md">中文 Demo · 2:37</a> ·
-    <a href="reports/v4/report.pdf">项目报告 v4</a> ·
+    <a href="https://b23.tv/4CAPaLu">B站主宣传片</a> ·
+    <a href="site/media/report.pdf">主报告 V3</a> ·
     <a href="#快速开始">快速开始</a> ·
     <a href="docs/code-tour.md">代码导览</a>
   </p>
-  <a href="https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/ab537d62c075c4d7be1e829cecb69a4708258221/evidence/lux3d-demo-v2/BeforeStep-Lux3D-Demo-v2.mp4">
+  <a href="https://b23.tv/4CAPaLu">
     <img src="docs/readme/photo-to-model.gif" width="900" alt="机器人拍下石头照片，随后展示同一 Lux3D 任务返回的整块石头 3D 模型">
   </a>
-  <p><sub>原始照片 → 对应 Lux3D 模型 · 点击观看带中文配音、字幕与配乐的完整 Demo</sub></p>
+  <p><sub>原始照片 → 对应 Lux3D 模型 · 点击观看作者已发布的 B站主宣传片</sub></p>
 </div>
 
 BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作很直接：**把机器人拍到的一张石头照片交给 Lux3D，拿回一整块石头的 3D 模型。** 后续的观测核对、路线预演和行动选择，都建立在这些模型上。
@@ -30,6 +30,8 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作�
 [打开月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，用 **WASD / 方向键** 或 **手机摇杆** 驾驶轮腿机器人。到高石观察点先停稳，用官方 Aholo Viewer 转看已有 Lux3D 模型，再选择脑内试路或带着 3D 参考自己开。行驶期间模型持续显示；用 **1–4** 选腿，**J 抬起 / K 前移 / L 落地**，亲手完成 12 个主要动作跨过门槛，驶入终点。
 
 浏览器使用 **MuJoCo 3.17 实时计算物理状态**，轮腿电机推动原 Go2W 机器人模型；无需安装 Python、配置密钥或调用新的生成任务。辅助路线须从当前停稳状态通过所选模型世界的实际预演，手控可随时接管；重心与支撑由控制器辅助。游玩成绩与原研究结果分别记录。[实现、来源与本地运行](docs/mission.md) · [新版完整实录](evidence/showcase-guided-20261116/README.md)。
+
+探索练习提供高石观察点、门槛前和跨越后的实际停稳检查点。全程挑战从起点一次完成，争取勘察印记与个人纪录；还可以换一组已有真实模型再试。局内成绩只保存在本机，与原研究结果及赛事评分分别计数。宣传以作者已发布的 [B站视频](https://b23.tv/4CAPaLu) 为主，报告以 [V3 原稿](site/media/report.pdf) 为主；[V4 补充报告与构建源](reports/v4/README.md)继续保留。
 
 ## 从照片到行动
 
@@ -120,7 +122,7 @@ git lfs pull --include="" --exclude=""
 | 你想看什么 | 从这里进入 |
 | --- | --- |
 | 观测 → 生成 → 核对 → 预演 → 执行的代码 | [五分钟代码导览](docs/code-tour.md) · [src/beforestep](src/beforestep/) |
-| 最新完整视频与正式报告 | [Lux3D Demo · 配乐与动画版](evidence/lux3d-demo-v2/README.md) · [项目报告 v4](reports/v4/report.pdf) · [报告来源与重建](reports/v4/README.md) |
+| 主宣传视频与主报告 | [B站主宣传片](https://b23.tv/4CAPaLu) · [主报告 V3](site/media/report.pdf) · [完整 Demo 存档](evidence/lux3d-demo-v2/README.md) |
 | 历史视频与 v3 报告一起下载 | [视频与 v3 报告 ZIP](https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/ab537d62c075c4d7be1e829cecb69a4708258221/evidence/lux3d-demo-v2/BeforeStep-Lux3D-v2-submission.zip) |
 | 视频怎样制作 | [原 Demo 合成代码](tools/lux3d_demo/README.md) · [配乐与过渡代码](tools/lux3d_demo_v2/README.md) |
 | 原始输入、生成模型与实验数据 | [assets](assets/) · [evidence](evidence/) · [R1](docs/reviews/RESULT_BEFORESTEP_R1.md) · [R2](docs/reviews/RESULT_BEFORESTEP_R2.md) · [R3](docs/reviews/RESULT_BEFORESTEP_R3.md) |

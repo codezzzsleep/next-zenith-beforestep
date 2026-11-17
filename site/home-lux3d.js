@@ -58,7 +58,7 @@ function activeChapter(){
 for(const button of chapterButtons)button.addEventListener('click',async()=>{
   const time=Number(button.dataset.videoTime);
   const seek=()=>{video.currentTime=time;video.play().catch(()=>{});};
-  if(video.readyState>=1)seek();else video.addEventListener('loadedmetadata',seek,{once:true});
+  if(video.readyState>=1)seek();else {video.addEventListener('loadedmetadata',seek,{once:true});video.load();}
   video.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth',block:'center'});
 });
 video.addEventListener('timeupdate',activeChapter);
@@ -67,3 +67,5 @@ video.addEventListener('playing',()=>error.hidden=true);
 video.addEventListener('loadeddata',()=>error.hidden=true);
 activeChapter();
 document.documentElement.dataset.homeReady='true';
+
+document.querySelector('#archive-demo')?.addEventListener('toggle',e=>{if(e.target.open&&video.readyState<1){video.preload='metadata';video.load();}if(!e.target.open)video.pause();});

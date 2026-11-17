@@ -1,0 +1,102 @@
+{
+  "schema": "beforestep-spatial-judgment-verification/v1",
+  "passed": true,
+  "desktop_viewports": [
+    [
+      1920,
+      1080
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "page_errors": [],
+  "physics_state_injected": false,
+  "new_generation_requests": 0,
+  "checks": [
+    "same observed grid and admitted footprint provenance",
+    "two actual planner routes from identical live pose",
+    "rejected original candidate cannot enter worlds",
+    "cancelled preview cannot display green or execute",
+    "optimistic policy completed two selected worlds",
+    "imagination policy completed two selected worlds",
+    "worker certificate changes immediately update validation and execution",
+    "assisted route actually reaches visible threshold",
+    "visible threshold crossing rehearsal",
+    "12 deliberate player leg commands and actual arrival",
+    "recap uses the executed candidate IDs and distinct completed worlds",
+    "original six score/checkpoint/storage/replay checks",
+    "three base V3 font files unchanged"
+  ],
+  "final_game": {
+    "version": "playability-1",
+    "mode": "challenge",
+    "completed": true,
+    "score": 90,
+    "actionSeconds": 169.3,
+    "manualMeters": 1.59,
+    "maxTilt": 8.2,
+    "actions": 12,
+    "checkpointUses": 0,
+    "worlds": 2,
+    "previewedWorlds": 2,
+    "routeSelected": [
+      5958654,
+      5958685,
+      5958934
+    ],
+    "viewedTargets": [
+      "T1",
+      "T2"
+    ],
+    "selected": [
+      5958654,
+      5958685,
+      5958934
+    ],
+    "badges": [
+      {
+        "id": "beforestep",
+        "name": "先见一步",
+        "earned": true,
+        "note": "实际试路后沿认证路线出发"
+      },
+      {
+        "id": "relay",
+        "name": "四腿接力",
+        "earned": true,
+        "note": "亲手完成四腿的 12 个主要动作"
+      },
+      {
+        "id": "observer",
+        "name": "两面勘察",
+        "earned": true,
+        "note": "转看高石 A 和 B 的已有原模型"
+      },
+      {
+        "id": "steady",
+        "name": "稳稳到达",
+        "earned": false,
+        "note": "抵达，且本轮最大车身倾角不超过 8°"
+      },
+      {
+        "id": "pilot",
+        "name": "亲手领航",
+        "earned": true,
+        "note": "实际手控行驶至少 1 m 并抵达"
+      },
+      {
+        "id": "challenge",
+        "name": "一气呵成",
+        "earned": true,
+        "note": "从头完成全程挑战"
+      }
+    ],
+    "chapter": 4,
+    "recordCount": 1
+  },
+  "recap": "从原观测出发，转看高石 A、B 的模型，选 A·5958685 / B·5958654、5958934，2 个世界完成预演；沿预演通过的路线绕行，亲手触发 12 次轮腿动作后抵达。",
+  "tested_renderer_sha256": "b74ce04dcf59d1df4f0a318a1579afdb815415faaf2b0a8a9101451769d79c55",
+  "scope": "Interactive game results, separate from frozen R1/R2/R3; no phone hardware performance claim"
+}

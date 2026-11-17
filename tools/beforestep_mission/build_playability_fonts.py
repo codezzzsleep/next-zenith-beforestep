@@ -16,7 +16,7 @@ FACES = [
     ('sans-bold', 'BeforeStep Sans', 700, 'NotoSansCJKsc-Bold.otf'),
     ('serif-bold', 'BeforeStep Serif', 700, 'NotoSerifCJKsc-Bold.otf'),
 ]
-TEXT_FILES = ['play.html', 'index.html', 'mission.js', 'mission-run.js', 'mission-gameplay.js']
+TEXT_FILES = ['play.html', 'index.html', 'mission.js', 'mission-run.js', 'mission-gameplay.js', 'mission-insight.js', 'mission-scene.js']
 
 
 def sha(path):
@@ -58,7 +58,7 @@ def main():
                 font.save(target)
             row.update(file=target.name, sha256=sha(target), bytes=target.stat().st_size)
             ranges = ','.join(f'U+{cp:X}' for cp in missing)
-            css.append(f'@font-face{{font-family:"{family}";src:url("{target.name}") format("woff2");font-style:normal;font-weight:{weight};font-display:swap;unicode-range:{ranges}}}')
+            css.append(f'@font-face{{font-family:"{family}";src:url("{target.name}?v={row["sha256"][:12]}") format("woff2");font-style:normal;font-weight:{weight};font-display:swap;unicode-range:{ranges}}}')
         rows.append(row)
     (output / 'gameplay.css').write_text('\n'.join(css) + '\n')
     result = {'schema': 'beforestep-gameplay-fonts/v1', 'license': 'OFL.txt',

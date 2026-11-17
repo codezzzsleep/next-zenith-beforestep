@@ -40,7 +40,7 @@ Lux3D返回的是目标物体的三维模型。我们的系统负责下一步：
 | 12–22秒 | 先并排展示乐观碰撞、保守停车的原R1回放；暂不出现Lux3D结果栏。 | 只按看见的部分走，可能撞上隐藏的石头；把未知全当障碍，又可能寸步难行。 | M2：r1-synchronised-optimistic.mp4、r1-synchronised-conservative.mp4各取末段并排。 |
 | 22–35秒 | 同任务普通照片与原GLB并排，旋转到另一面；再切另一份真实候选。 | 我们让Lux3D出场：把普通照片生成多份三维形状，用世界模型路线中的三维生成能力，补充局部空间假设。 | M3：r02-glb-A.mp4 0–8秒；r1-candidate-records.mp4择取5秒；照片和模型身份保留。 |
 | 35–50秒 | 先展示原观测一致性图；切到配准候选组成的局部世界，看到模型、机器人和通道的空间关系。 | 系统结合观测，核对位置、尺度和姿态，再把合格模型放回通道。它们占据哪里，直接影响路线能不能通过。 | M4：r1-self-check.png静帧约4秒；world-00.mp4择取11秒。以候选世界呈现假设，不使用真值诊断图冒充观测。 |
-| 50–63秒 | 候选世界中的机器人开始预演；接V3第3页十二组合图。后期可将已有world-00至world-11十二路回放并排，明确是原研究节选。 | R1里，六份A和两份B组成十二个世界。Lux3D提供几何，MuJoCo计算运动和碰撞，让机器人先走一遍。 | M5：world-00至world-11.mp4为十二个R1原候选世界；现成静图见V3第3页。不要把旧九格节选叫十二格。 |
+| 50–63秒 | 候选世界中的机器人开始预演；接V3第3页十二组合图。后期可将已有world-00至world-11十二路回放并排，明确是原研究节选。 | R1里，六份A和两份B组成十二个世界。Lux3D提供几何，MuJoCo计算运动和碰撞，让机器人先走一遍。 | M5：world-00至world-11.mp4为十二个R1原候选世界；现成静图见V3第3页。十二世界标注以对应轨迹及组合身份为依据；九格节选不能标成十二世界。 |
 | 63–77秒 | 回到原场景独立执行的R1回放，揭示到达结果；配一次观察、112.84秒仿真时间及三策略结果文字。 | 全部预演通过后，机器人独立执行：一次观察，一百十二点八四秒仿真时间到达。生成的空间信息，真正参与了行动。 | M2：r1-synchronised-imagination.mp4末14秒；数字依据原summary与R1记录。 |
 | 77–89秒 | 切网页试玩。第一视角观察点打开思想气泡，玩家旋转真实模型；切到第三视角与脑内试路窗口。 | 现在换你来判断。试玩载入已有的真实Lux3D模型。转到背面，选一种假设，让机器人先试路。 | M6：BeforeStep-guided-mission.mp4约18–25秒模型段、约56–61秒试路段；当前默认两个世界，不沿用R1的十二世界计数。 |
 | 89–103秒 | 第一视角/画中画看路，第三视角看绕行；接选腿与实际抬、迈、落的按钮反馈和轮腿特写。 | 第一视角看路，第三视角看行动。你可以自己驾驶，或沿预演通过的路线前进；到门槛前，亲手控制四条腿抬、迈、落。 | M6：约85–100秒驾驶段与220–305秒腿操作段中取实际动作；M7第一/第三视角实景截图可补转场。 |
@@ -52,7 +52,7 @@ Lux3D返回的是目标物体的三维模型。我们的系统负责下一步：
 - M2：`site/media/real-footage/r1-synchronised-optimistic.mp4`、`r1-synchronised-conservative.mp4`、`r1-synchronised-imagination.mp4`，每段42秒，原R1对应运行回放。
 - M3：`evidence/production-v6/shots/r02-glb-A.mp4`（8秒）与`site/media/real-footage/r1-candidate-records.mp4`（22秒）。前者任务5958685的原GLB；素材已按原LFS SHA核验。后者前半是同一A照片/模型，后半为B原照片与候选。
 - M4：`site/media/r1-self-check.png`；`site/media/footage/world-00.mp4`。`site/data/footage.json`明确world-00来自R1 pane0的原轨迹和候选网格，是原保存状态回放。
-- M5：`site/media/report.pdf`第3页有真实十二组合图；`site/media/footage/world-00.mp4`至`world-11.mp4`分别对应R1 pane0至pane11，每段12秒，均已有素材与来源记录。旧`s05-world-grid.mp4`实际是九格节选，本分镜不将其用作十二格完整画面。
+- M5：`site/media/report.pdf`第3页有真实十二组合图；`site/media/footage/world-00.mp4`至`world-11.mp4`分别对应R1 pane0至pane11，每段12秒，均已有素材与来源记录。本分镜优先使用这十二路独立回放及V3静图。仓库`evidence/production-v6/shots/s05-world-grid.mp4`经抽帧与LFS SHA核对为4×3十二格、6秒，来源记录含pane0至pane11；不能与九格节选混用。
 - M6：`evidence/showcase-guided-20261116/BeforeStep-guided-mission.mp4`，332.96秒、1280×800、25fps，实际连续网页运行，含模型转面、默认两世界试路、辅助与接管、四腿12次主要动作及抵达。
 - M7：`evidence/game-experience-20261116/desktop-first.jpg`、`desktop-third.jpg`；最新可玩性实景`evidence/playability-20261117/challenge-complete.jpg`、`desktop-manual.jpg`。最新四站/印记界面用这些实景补充，不把旧连续录屏说成新完整录像。
 

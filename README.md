@@ -1,7 +1,7 @@
 <div align="center">
   <img src="site/favicon.svg" width="80" alt="BeforeStep 图标">
   <h1>先见一步 · BeforeStep</h1>
-  <p><b>一张石头照片，变成迈步前可以预演的 3D 模型。</b></p>
+  <p><b>把有限相机观测转成局部空间假设，先预演，再决定下一步。</b></p>
   <p>
     <img src="docs/readme/badges/lux3d.svg" alt="Aholo Lux3D：照片转 3D">
     <img src="docs/readme/badges/viewer.svg" alt="官方 Aholo Viewer：查看生成模型">
@@ -21,7 +21,7 @@
   <p><sub>原始照片 → 对应 Lux3D 模型 · 点击观看作者已发布的 B站主宣传片</sub></p>
 </div>
 
-BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作很直接：**把机器人拍到的一张石头照片交给 Lux3D，拿回一整块石头的 3D 模型。** 后续的观测核对、路线预演和行动选择，都建立在这些模型上。
+BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。它利用 **Lux3D 将有限相机观测转成可检验的局部三维空间假设**，结合观测核对与 MuJoCo 预演，再决定如何前进。石头是已验证的局部实例：候选几何放回通道后，实际参与占地、路线和碰撞计算。
 
 作品中**真实调用 Lux3D 四百多次**。生成模型进入实际判断，也通过**官方 Aholo Viewer** 展示在网页中：你可以查看原照片、旋转模型，再看机器人怎样走。
 
@@ -29,9 +29,11 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。核心动作�
 
 [打开月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，用 **WASD / 方向键** 或 **手机摇杆** 驾驶轮腿机器人。到高石观察点先停稳，用官方 Aholo Viewer 转看已有 Lux3D 模型，再选择脑内试路或带着 3D 参考自己开。行驶期间模型持续显示；用 **1–4** 选腿，**J 抬起 / K 前移 / L 落地**，亲手完成 12 个主要动作跨过门槛，驶入终点。
 
-浏览器使用 **MuJoCo 3.17 实时计算物理状态**，轮腿电机推动原 Go2W 机器人模型；无需安装 Python、配置密钥或调用新的生成任务。辅助路线须从当前停稳状态通过所选模型世界的实际预演，手控可随时接管；重心与支撑由控制器辅助。游玩成绩与原研究结果分别记录。[实现、来源与本地运行](docs/mission.md) · [新版完整实录](evidence/showcase-guided-20261116/README.md)。
+浏览器使用 **MuJoCo 3.17 实时计算物理状态**，轮腿电机驱动机器人；无需安装 Python、配置密钥或调用新的生成任务。辅助路线须从当前停稳状态通过所选模型世界的实际预演，手控可随时接管；重心与支撑由控制器辅助。游玩成绩与原研究结果分别记录。[实现、来源与本地运行](docs/mission.md) · [新版完整实录](evidence/showcase-guided-20261116/README.md)。
 
 探索练习提供高石观察点、门槛前和跨越后的实际停稳检查点。全程挑战从起点一次完成，争取勘察印记与个人纪录；还可以换一组已有真实模型再试。局内成绩只保存在本机，与原研究结果及赛事评分分别计数。宣传以作者已发布的 [B站视频](https://b23.tv/4CAPaLu) 为主，报告以 [V3 原稿](site/media/report.pdf) 为主；[V4 补充报告与构建源](reports/v4/README.md)继续保留。
+
+脑内窗口并排展示原照片与候选，俯视图呈现可见占地、背面假设和两条规划路线；完成卡回顾本局选择、预演与执行。[空间判断体验与验证](docs/spatial-judgment.md)。
 
 ## 从照片到行动
 

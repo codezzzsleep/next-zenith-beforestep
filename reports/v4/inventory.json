@@ -1,0 +1,1594 @@
+{
+  "version": 1,
+  "source": {
+    "filename": "先见一步_项目报告书_v3.pdf",
+    "sha256": "67c15f4af8c02c79c4254e55774207acf51796784583e58543c5d482c0199cc6",
+    "pages": 10
+  },
+  "inventory_reviewed": true,
+  "review_note": "逐页阅读V3与新版正文并核对图、表、流程、分母、否定条件与仿真边界。293个原始抽取片段手工组合成语义单元；所有原始片段均有去向，原图独立保留。此台账证明出处与去向，改写语义另须人工审阅。",
+  "units": [
+    {
+      "id": "v3-p01-identity",
+      "kind": "text",
+      "text": "A H O L O 全球 3 D A I 黑客松 · 项目报告书 · 队伍 N E X T Z E N I T H\n先见一步\nB E F O R E S T E P\n让机器人在迈步之前，先用 Lux3D 看一眼\n“看不见的那一面”",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "required": true,
+      "extracted_ids": [
+        "p001-t001",
+        "p001-t002",
+        "p001-t003",
+        "p001-t004"
+      ]
+    },
+    {
+      "id": "v3-p01-simulation",
+      "kind": "text",
+      "text": "我们怎么验证：在 MuJoCo 物理仿真搭起来的月球南极环境里，真实扫描的月面石头，太阳只高出地平\n线几度，每块石头拖着长长的黑影，一台带腿的轮式机器人。让机器人把\nAholo Lux3D 生成的 3D 模型\n当作石头背面的“想象”，用它判断、走路，看结果。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "required": true,
+      "extracted_ids": [
+        "p001-t005",
+        "p001-t006",
+        "p001-t007",
+        "p001-t008"
+      ]
+    },
+    {
+      "id": "v3-p01-photo",
+      "kind": "text",
+      "text": "1 张照片\n交给 Lux3D\n拿回一整块石头的 3D 模型",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "required": true,
+      "extracted_ids": [
+        "p001-t009",
+        "p001-t012"
+      ]
+    },
+    {
+      "id": "v3-p01-worlds",
+      "kind": "text",
+      "text": "12 个世界\n每份想象各走一遍\n全部安全才出发",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "required": true,
+      "extracted_ids": [
+        "p001-t010",
+        "p001-t013"
+      ]
+    },
+    {
+      "id": "v3-p01-calls",
+      "kind": "text",
+      "text": "400+ 次\n真实调用 Lux3D\n每次都有任务号",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "required": true,
+      "extracted_ids": [
+        "p001-t011",
+        "p001-t014"
+      ]
+    },
+    {
+      "id": "v3-p01-date-scope",
+      "kind": "text",
+      "text": "所有画面均为 MuJoCo 仿真实录\n2026 年 11 月",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "required": true,
+      "extracted_ids": [
+        "p001-t015"
+      ]
+    },
+    {
+      "id": "v3-p02-heading",
+      "kind": "text",
+      "text": "0 1 · 问题\n①机器人为什么会“进退两难”？",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t001"
+      ]
+    },
+    {
+      "id": "v3-p02-lead",
+      "kind": "text",
+      "text": "因为它只看得见石头朝向自己的一面。同一条路、同一个机器人，我们让它用三种办法对\n待“看不见的那部分”。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t002",
+        "p002-t003"
+      ]
+    },
+    {
+      "id": "v3-p02-crash",
+      "kind": "text",
+      "text": "撞上了\n办法一：当它不存在\n看不见就当没有，直接走。80 秒后\n撞上石头。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t004",
+        "p002-t008",
+        "p002-t010"
+      ]
+    },
+    {
+      "id": "v3-p02-stop",
+      "kind": "text",
+      "text": "不敢走\n办法二：当它很危险\n看不见的都当障碍，看了 5 次也找不\n到路，停下。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t005",
+        "p002-t009",
+        "p002-t011"
+      ]
+    },
+    {
+      "id": "v3-p02-arrive",
+      "kind": "text",
+      "text": "到达\n办法三：让 Lux3D 想\n象\n只看一眼，先想象背面再走，113 秒\n到达终点。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t006",
+        "p002-t007",
+        "p002-t012",
+        "p002-t013"
+      ]
+    },
+    {
+      "id": "v3-p02-claim",
+      "kind": "text",
+      "text": "光靠“敢不敢”解决不了问题，机器人需要一个有依据的猜测。Lux3D 提供的就是这个猜测：一整块石\n头的 3D 形状。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t014",
+        "p002-t015"
+      ]
+    },
+    {
+      "id": "v3-p02-moon",
+      "kind": "text",
+      "text": "为什么月球上尤其难",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t016"
+      ]
+    },
+    {
+      "id": "v3-p02-dark",
+      "kind": "text",
+      "text": "黑影里没有深度\n月球南极太阳贴着地平线，每块石头拖着长长的\n黑影，相机在黑影里测不到有用的距离。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t017",
+        "p002-t019",
+        "p002-t021"
+      ]
+    },
+    {
+      "id": "v3-p02-occlusion",
+      "kind": "text",
+      "text": "石头自己会挡人\n前面的石头挡住身后的区域，机器人走近之前，\n根本不知道后面有什么。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t018",
+        "p002-t020",
+        "p002-t022"
+      ]
+    },
+    {
+      "id": "v3-p02-first-look",
+      "kind": "text",
+      "text": "机器人的“第一眼”\n它能看见石头朝向自己的这一面，背面一片空白。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t023",
+        "p002-t024"
+      ]
+    },
+    {
+      "id": "v3-p03-heading",
+      "kind": "text",
+      "text": "0 2 · 办法\n②让想象先过四关，再迈步",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t001"
+      ]
+    },
+    {
+      "id": "v3-p03-lead",
+      "kind": "text",
+      "text": "拿到 Lux3D 的 3D 模型之后，机器人不会直接相信它。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t002"
+      ]
+    },
+    {
+      "id": "v3-p03-four-checks",
+      "kind": "text",
+      "text": "1\n2\n3\n4\n拍照，想象\n对一遍\n各走一遍\n全安全才迈步\n›\n›\n›\n照片交给 Lux3D，同\n和相机看到的那一面\n每份想象放进一个虚\n有一份会撞车就不出\n一块石头生成 5 到 6\n对照，对不上的丢掉\n拟世界，把整条路走\n发，宁可停下\n份不同的模型\n完",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t003",
+        "p003-t004",
+        "p003-t005",
+        "p003-t006",
+        "p003-t007",
+        "p003-t008",
+        "p003-t009",
+        "p003-t010",
+        "p003-t011",
+        "p003-t012",
+        "p003-t013",
+        "p003-t014",
+        "p003-t015",
+        "p003-t016",
+        "p003-t017",
+        "p003-t018",
+        "p003-t019",
+        "p003-t020",
+        "p003-t021",
+        "p003-t022",
+        "p003-t023"
+      ]
+    },
+    {
+      "id": "v3-p03-input-model",
+      "kind": "text",
+      "text": "第 1 步：左，机器人拍的照片；右，Lux3D 交回的整块石\n头，可以转到背面看。（石头 A，任务号 5958685）",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t024",
+        "p003-t026"
+      ]
+    },
+    {
+      "id": "v3-p03-worlds",
+      "kind": "text",
+      "text": "第 3 步：十二个“想象世界”同时让机器人把同一条路走\n一遍，每一格是一份想象的组合。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t025",
+        "p003-t027"
+      ]
+    },
+    {
+      "id": "v3-p03-stance",
+      "kind": "text",
+      "text": "设计立场\nLux3D 的输出在这里是“假设”，不是“答案”：它给了机器人一个可以检验的东西，也可能出错，所\n以必须被检验。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t028",
+        "p003-t029",
+        "p003-t030"
+      ]
+    },
+    {
+      "id": "v3-p03-lux-role",
+      "kind": "text",
+      "text": "这个办法里，Lux3D 做了什么\n3D 模型\n多份候选\n可旋转查看\n一张照片换回一整块石头，背面也\n同一块石头生成多份，背面各不相\n用 Aholo Viewer 在网页里转到背面\n有形状\n同，不押一份",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t031",
+        "p003-t032",
+        "p003-t033",
+        "p003-t034",
+        "p003-t035",
+        "p003-t036",
+        "p003-t037",
+        "p003-t038",
+        "p003-t039"
+      ]
+    },
+    {
+      "id": "v3-p04-heading",
+      "kind": "text",
+      "text": "0 3 · 可信度\n③想象出来的背面，靠谱吗？",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t001"
+      ]
+    },
+    {
+      "id": "v3-p04-lead",
+      "kind": "text",
+      "text": "我们把 Lux3D 想象的石头，和模拟器里石头真正的样子逐份对比。结论：能用，但不能全\n信。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t002",
+        "p004-t003"
+      ]
+    },
+    {
+      "id": "v3-p04-check",
+      "kind": "text",
+      "text": "检查，真的拦住了不靠谱的",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t004"
+      ]
+    },
+    {
+      "id": "v3-p04-forced",
+      "kind": "text",
+      "text": "17 / 102\n把被拦下的想象强行“相信”一遍再走：在\n12 个预先固定的月面场景里试了 102 次，17\n次让车撞上石头，大约每 6 次 1 次。\n说明这道检查确实拦下了会出事的想象。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t005",
+        "p004-t006",
+        "p004-t007",
+        "p004-t008",
+        "p004-t009"
+      ]
+    },
+    {
+      "id": "v3-p04-iou",
+      "kind": "text",
+      "text": "石头 B 的 5 份想象，和相机看到的那一面的吻合度。5 份里 3\n份被拦下。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t010",
+        "p004-t011"
+      ]
+    },
+    {
+      "id": "v3-p04-back-gap",
+      "kind": "text",
+      "text": "23 / 64\n但检查不是万能的：通过检查的 64 份想象\n里，23 份背面比真实石头短了 5 厘米以上，\n超过三分之一。\n到达终点的那次运行，车和石头最近只差约 4.8 厘米。路是\n险险走过去的。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t012",
+        "p004-t013",
+        "p004-t014",
+        "p004-t015",
+        "p004-t016"
+      ]
+    },
+    {
+      "id": "v3-p04-admission-table",
+      "kind": "text",
+      "text": "R1 场景里，四关是怎么一步步筛的\n步骤\n石头 A\n石头 B\nLux3D 生成\n6 份\n6 份，1 份服务端失败，剩 5 份\n和相机看到的那一面对一遍\n6 份全部通过\n5 份里通过 2 份\n12 个想象世界里把路走一遍\n全部没有撞车，机器人才出发，最后到达终点",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t017",
+        "p004-t018",
+        "p004-t019",
+        "p004-t020",
+        "p004-t021"
+      ]
+    },
+    {
+      "id": "v3-p04-conclusion",
+      "kind": "text",
+      "text": "所以：Lux3D 的想象足够有用，能让机器人走通原本走不通的路；但它会出错，每一份都必须被检验、\n被预演。这就是“先见一步”：先在想象里走一步，再迈真正的一步。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t022",
+        "p004-t023"
+      ]
+    },
+    {
+      "id": "v3-p05-heading",
+      "kind": "text",
+      "text": "0 4 · 场景\n④换很多场景，这套办法还有用吗？",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t001"
+      ]
+    },
+    {
+      "id": "v3-p05-lead",
+      "kind": "text",
+      "text": "只在一个场景成功说明不了问题，所以我们在看到任何结果之前，先固定了 12 个月面场景，\n之后不换、不挑。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t002",
+        "p005-t003"
+      ]
+    },
+    {
+      "id": "v3-p05-selection",
+      "kind": "text",
+      "text": "怎么挑出“最难的”场景\n先让别的办法跑一遍：只要直接走会撞、保守走不通、而把石头真实形状告诉机器人就能到达，这个场\n景就说明路是通的，难点正是看不见的背面。这样的场景一共 8 个，我们专门拿它们检验想象有没有\n用。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t004",
+        "p005-t005",
+        "p005-t006",
+        "p005-t007"
+      ]
+    },
+    {
+      "id": "v3-p05-comparisons",
+      "kind": "text",
+      "text": "这 8 个场景里，三种办法的结果\n前两行是对照组，0 次到达由挑场景的方式决定；要看第三行：想象让 8 个场景里的 3 个变得可以走通，另有 2 次撞车。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t008",
+        "p005-t009"
+      ]
+    },
+    {
+      "id": "v3-p05-arrivals",
+      "kind": "text",
+      "text": "3 / 8\n别的办法一个都到不了的场景里，想象带机器人\n走通了 3 个。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t011",
+        "p005-t013",
+        "p005-t015"
+      ]
+    },
+    {
+      "id": "v3-p05-ideal",
+      "kind": "text",
+      "text": "另一条参考\n假设相机在黑影里也能测深度（月面上做不\n到），这个办法在 8 个场景里能到 5 个，只作\n为“理想情况能到哪”的上限。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t010",
+        "p005-t012",
+        "p005-t014",
+        "p005-t016"
+      ]
+    },
+    {
+      "id": "v3-p05-failures",
+      "kind": "text",
+      "text": "想象撞车的那两次\n另一次\n有一块石头藏在大石头后面，机器人从没见过\n它，自然没有为它生成想象，也就没有检验。\n想象能弥补“看不见”，前提是机器人至少知\n道那里有东西。\n这是接下来要改进的地方。\n撞车\n背面想短了\n这份想象的正面和相机看到的完全吻合，通过了检查，但背面\n比真石头短，机器人以为那里没有石头。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t017",
+        "p005-t018",
+        "p005-t019",
+        "p005-t020",
+        "p005-t021",
+        "p005-t022",
+        "p005-t023",
+        "p005-t024",
+        "p005-t025"
+      ]
+    },
+    {
+      "id": "v3-p06-heading",
+      "kind": "text",
+      "text": "0 5 · 另一种石头\n⑤有些石头不需要想象，需要的是腿",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t001"
+      ]
+    },
+    {
+      "id": "v3-p06-lead",
+      "kind": "text",
+      "text": "路上除了高大的石头，还有十几厘米高的门槛石。相机站得高，看得清清楚楚，但轮子滚不上\n去。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t002",
+        "p006-t003"
+      ]
+    },
+    {
+      "id": "v3-p06-wheel",
+      "kind": "text",
+      "text": "0 / 90\n只靠轮子\n顶在门槛石前过不去。在 10 到 15 厘米高的门槛石上试了\n90 次，一次都没成功。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t004",
+        "p006-t006",
+        "p006-t008",
+        "p006-t010"
+      ]
+    },
+    {
+      "id": "v3-p06-gait",
+      "kind": "text",
+      "text": "24 / 24\n把轮子逐个抬起来\n轮子装在腿上，可以一个一个迈过去。试了 24 次，全部干\n净通过。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t005",
+        "p006-t007",
+        "p006-t009",
+        "p006-t011"
+      ]
+    },
+    {
+      "id": "v3-p06-correction",
+      "kind": "text",
+      "text": "我们修正了自己最初的想法\n一开始我们以为，腿跨石头也需要 Lux3D 补出完整形状。实测后发现不是：矮石头相机看得全，只用看\n到的形状，机器人就能抬腿跨过去。在这种石头上前后用 Lux3D 生成了 53 次，只有 7 份通过检查；在\n一个开发场景里，通过检查的想象把石头想成约 19 厘米深（真实 11 到 13 厘米），超出腿能跨的 15 厘\n米，用想象的车停在了门前，而只信看得见形状的车 191 秒干净跨过。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t012",
+        "p006-t013",
+        "p006-t014",
+        "p006-t015",
+        "p006-t016"
+      ]
+    },
+    {
+      "id": "v3-p06-claim",
+      "kind": "text",
+      "text": "结论：想象解决“看不见背面的高石头”，腿解决“看得见但轮子过不去的矮石头”，各解决一种。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t017"
+      ]
+    },
+    {
+      "id": "v3-p06-truth-route",
+      "kind": "text",
+      "text": "两种石头放在同一条路上\n先用真实形状检查：这条路走得通\n先绕过高石头，再抬腿跨过门槛石，到达终点。（这是用真实形状做的路线检查，不是想象的结果）",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t018",
+        "p006-t019",
+        "p006-t020"
+      ]
+    },
+    {
+      "id": "v3-p07-heading",
+      "kind": "text",
+      "text": "0 6 · 边界\n⑥它的边界在哪里？",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t001"
+      ]
+    },
+    {
+      "id": "v3-p07-lead",
+      "kind": "text",
+      "text": "把两种石头放在同一条路上，换成 Lux3D 的想象来决定怎么走，一共 5 个场景。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t002"
+      ]
+    },
+    {
+      "id": "v3-p07-easy-scenes",
+      "kind": "text",
+      "text": "场景 1、2：高石头不难\n有腿：到达\n绕过高石头，抬腿跨过门槛石。\n没有腿：卡住\n到门槛石前过不去。\n说明腿是必须的。只信看得见形状的那辆车也到\n了，所以这两条路上看不出想象的作用。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t003",
+        "p007-t005",
+        "p007-t007",
+        "p007-t009",
+        "p007-t011"
+      ]
+    },
+    {
+      "id": "v3-p07-blocked-scenes",
+      "kind": "text",
+      "text": "场景 3、4、5：后面还有一块被挡住的石头\n四辆车全部停下\n车身没有碰到石头。\n有的场景里想象没有一份通过检查，机器人宁可\n停下；有的场景里通过检查的那份把背面想短\n了，轮子碰到石头，被安全监视器拦停。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t004",
+        "p007-t006",
+        "p007-t008",
+        "p007-t010",
+        "p007-t012"
+      ]
+    },
+    {
+      "id": "v3-p07-scene-five",
+      "kind": "text",
+      "text": "场景 5：停在高石头前\n它看了两眼，Lux3D 为后面那块石头生成的 17 份想象，没有一份通过检查，所以没有往前走。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t013",
+        "p007-t014"
+      ]
+    },
+    {
+      "id": "v3-p07-scale",
+      "kind": "text",
+      "text": "这 17 份想象，尺寸为什么不对\n每个点是一份想象，纵轴是想象的石头除以真实石头的大小。多数只有真实的六成多到八成多，个别又偏大，都落在绿色可信\n范围之外。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t015",
+        "p007-t016",
+        "p007-t017"
+      ]
+    },
+    {
+      "id": "v3-p07-limit",
+      "kind": "text",
+      "text": "边界：那块石头在第一眼照片里只有二百多像素高，能看到的信息很少。单张照片让 Lux3D 想象不出可\n信的形状，机器人选择停下而不是冒险。下一步：从多个角度拍照再生成。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t018",
+        "p007-t019"
+      ]
+    },
+    {
+      "id": "v3-p08-heading",
+      "kind": "text",
+      "text": "0 7 · 过程\n⑦从一个想法，到一遍遍被推翻",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t001"
+      ]
+    },
+    {
+      "id": "v3-p08-lead",
+      "kind": "text",
+      "text": "作品经历了几个节点，其中有两次是我们自己推翻了自己。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t002"
+      ]
+    },
+    {
+      "id": "v3-p08-fusion",
+      "kind": "text",
+      "text": "最初的想法\n把真实观测和 Lux3D 的生成结果融合起来。发现融合时会把没看见的地方误填成实心，修掉了这个缺\n陷。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t003",
+        "p008-t004",
+        "p008-t005"
+      ]
+    },
+    {
+      "id": "v3-p08-narrow",
+      "kind": "text",
+      "text": "窄道实验\n一条窄道上，直接走、保守、想象三种办法同场对比：想象一次到达，另外两种一撞一停。这是后面所\n有工作的起点。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t006",
+        "p008-t007",
+        "p008-t008"
+      ]
+    },
+    {
+      "id": "v3-p08-suite",
+      "kind": "text",
+      "text": "12 个场景\n提前固定 12 个场景、不换不挑。12 个场景里想象撞了 2 次，后来补充的 5 个留出场景里又撞了 2 次，\n共 4 次，每一次都查清了原因。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t009",
+        "p008-t010",
+        "p008-t011"
+      ]
+    },
+    {
+      "id": "v3-p08-revision",
+      "kind": "text",
+      "text": "收紧规则\n看过结果后加了一条规则：想象只解释“太阳黑影”，被挡住的部分仍当作危险。再跑 17 个场景，没有\n撞车，但机器人更常停下。这是看过结果后改的规则，结果只作参考。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t012",
+        "p008-t013",
+        "p008-t014"
+      ]
+    },
+    {
+      "id": "v3-p08-leg-correction",
+      "kind": "text",
+      "text": "推翻自己 ①\n原以为腿跨石头也需要完整 3D，实测推翻：矮石头相机看得全，Lux3D 反而添乱。于是把“想\n象”和“腿”分成两种石头来讲。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t015",
+        "p008-t016",
+        "p008-t017"
+      ]
+    },
+    {
+      "id": "v3-p08-necessity-correction",
+      "kind": "text",
+      "text": "推翻自己 ②\n同一条路上放两种石头，原以为想象和腿缺一不可。5 个场景跑完，没有一个场景同时支持这个说法，\n于是我们把结论收窄成各解决一种石头。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t018",
+        "p008-t019",
+        "p008-t020"
+      ]
+    },
+    {
+      "id": "v3-p08-input-rounds",
+      "kind": "text",
+      "text": "同一块门槛石，换 6 种输入图\n0 / 29\n7 / 24\n前 5 种输入图，29 份\n第 6 种输入图，24 份\n全部被拦\n里通过 7 份\n前 5 种结果多数高度是真实石头的 1.6 倍左右；第 6 种\n换成带月面地面和阴影的真实场景截图。喂给 Lux3D 的\n图什么样，会明显影响生成结果。\n第 5 轮（上，被拒）和第 6 轮（下，通过）。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t021",
+        "p008-t022",
+        "p008-t023",
+        "p008-t024",
+        "p008-t025",
+        "p008-t026",
+        "p008-t027",
+        "p008-t028",
+        "p008-t029",
+        "p008-t030",
+        "p008-t031"
+      ]
+    },
+    {
+      "id": "v3-p09-heading",
+      "kind": "text",
+      "text": "0 8 · 关键资产\n⑧真实的 3D 模型长什么样",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "required": true,
+      "extracted_ids": [
+        "p009-t001"
+      ]
+    },
+    {
+      "id": "v3-p09-lead",
+      "kind": "text",
+      "text": "项目不同阶段留下的真实模型与输入图，都是浏览器里真实渲染的截图。每个版本的源码、输\n入图和生成结果都保存在仓库里。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "required": true,
+      "extracted_ids": [
+        "p009-t002",
+        "p009-t003"
+      ]
+    },
+    {
+      "id": "v3-p09-versions",
+      "kind": "text",
+      "text": "V6、V7、V8 是早期版本；v0.1 到 v0.3 是后期三次实验，其中 v0.1 和 v0.3 展示的候选被检查拒绝，v0.2 展示的候选通过。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "required": true,
+      "extracted_ids": [
+        "p009-t004"
+      ]
+    },
+    {
+      "id": "v3-p09-relook-heading",
+      "kind": "text",
+      "text": "石头 B：第一眼被挡，机器人走了一步再补看",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "required": true,
+      "extracted_ids": [
+        "p009-t005"
+      ]
+    },
+    {
+      "id": "v3-p09-relook",
+      "kind": "text",
+      "text": "怎么补看\n同一块石头的两次输入和 Lux3D 生成的模\n型。第一眼被前面的石头挡住大半，机器人\n往前走到新位置再拍一次。这个例子里两次\n生成都没有通过检查，所以机器人没有硬\n走。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "required": true,
+      "extracted_ids": [
+        "p009-t006",
+        "p009-t007",
+        "p009-t008",
+        "p009-t009",
+        "p009-t010",
+        "p009-t011"
+      ]
+    },
+    {
+      "id": "v3-p10-heading",
+      "kind": "text",
+      "text": "0 9 · 复现\n⑨你可以自己去看、自己去跑",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t001"
+      ]
+    },
+    {
+      "id": "v3-p10-online",
+      "kind": "text",
+      "text": "在线作品\ncodezzzsleep.github.io/next-zenith-\nbeforestep/\n180 秒实录、分章回看、十二个场景的对照录\n像、原始模型陈列室",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t002",
+        "p010-t004",
+        "p010-t006",
+        "p010-t008",
+        "p010-t009"
+      ]
+    },
+    {
+      "id": "v3-p10-repository",
+      "kind": "text",
+      "text": "源代码\ngithub.com/codezzzsleep/next-zenith-\nbeforestep",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t003",
+        "p010-t005",
+        "p010-t007"
+      ]
+    },
+    {
+      "id": "v3-p10-call-index",
+      "kind": "text",
+      "text": "Lux3D 调用记录\n仓库内 evidence/crossing/route/lux-\nusage.json ，逐个任务记录任务号和输入文件",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t010",
+        "p010-t012",
+        "p010-t014"
+      ]
+    },
+    {
+      "id": "v3-p10-quickstart",
+      "kind": "text",
+      "text": "一条命令复现\n克隆仓库后运行 ./setup.sh 和 ops/\nquickstart.py --reuse-lux --serve ，不需要\n密钥，不产生新的费用",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t011",
+        "p010-t013",
+        "p010-t015",
+        "p010-t016"
+      ]
+    },
+    {
+      "id": "v3-p10-stack",
+      "kind": "text",
+      "text": "本作品用到的技术\nAholo Lux3D\nAholo Viewer\nMuJoCo\n核心。把照片生成成 3D 模\n在网页里旋转查看 Lux3D 返\n物理仿真，机器人的所有运动\n型，真实调用四百多次。\n回的原始模型。\n都由它计算。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t017",
+        "p010-t018",
+        "p010-t019",
+        "p010-t020",
+        "p010-t021",
+        "p010-t022",
+        "p010-t023",
+        "p010-t024",
+        "p010-t025",
+        "p010-t026"
+      ]
+    },
+    {
+      "id": "v3-p10-definitions-heading",
+      "kind": "text",
+      "text": "几个术语的白话解释",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t027"
+      ]
+    },
+    {
+      "id": "v3-p10-imagination",
+      "kind": "text",
+      "text": "想象\nLux3D 根据照片生成的\n整块石头的 3D 模型，被\n当作对“背面”的假\n设。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t028",
+        "p010-t032",
+        "p010-t036",
+        "p010-t040",
+        "p010-t044"
+      ]
+    },
+    {
+      "id": "v3-p10-admission",
+      "kind": "text",
+      "text": "通过检查\n想象的模型和相机看到\n的那一面足够吻合，才\n有资格被机器人使用。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t029",
+        "p010-t033",
+        "p010-t037",
+        "p010-t041"
+      ]
+    },
+    {
+      "id": "v3-p10-rehearsal",
+      "kind": "text",
+      "text": "预演\n在虚拟世界里让机器人\n把整条路走一遍，但并\n不真的出发。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t030",
+        "p010-t034",
+        "p010-t038",
+        "p010-t042"
+      ]
+    },
+    {
+      "id": "v3-p10-decisive",
+      "kind": "text",
+      "text": "难场景\n直接走会撞、保守走不\n通、但真实形状能走通\n的场景，一共 8 个。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t031",
+        "p010-t035",
+        "p010-t039",
+        "p010-t043"
+      ]
+    },
+    {
+      "id": "v3-p10-sill",
+      "kind": "text",
+      "text": "门槛石\n十几厘米高的矮石头，\n机器人看得清楚，轮子\n滚不上去。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t045",
+        "p010-t049",
+        "p010-t053",
+        "p010-t055"
+      ]
+    },
+    {
+      "id": "v3-p10-results",
+      "kind": "text",
+      "text": "到达\n停车\n撞车\n走到终点。\n因为不安全或找不到路\n车身碰到了石头。\n而停下。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t046",
+        "p010-t047",
+        "p010-t048",
+        "p010-t050",
+        "p010-t051",
+        "p010-t052",
+        "p010-t054"
+      ]
+    },
+    {
+      "id": "v3-p10-scope",
+      "kind": "text",
+      "text": "本报告所有结果均来自 MuJoCo 物理仿真。",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t056"
+      ]
+    },
+    {
+      "id": "v3-p02-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n2 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "required": true,
+      "extracted_ids": [
+        "p002-t025"
+      ]
+    },
+    {
+      "id": "v3-p03-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n3 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "required": true,
+      "extracted_ids": [
+        "p003-t040"
+      ]
+    },
+    {
+      "id": "v3-p04-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n4 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "required": true,
+      "extracted_ids": [
+        "p004-t024"
+      ]
+    },
+    {
+      "id": "v3-p05-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n5 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "required": true,
+      "extracted_ids": [
+        "p005-t026"
+      ]
+    },
+    {
+      "id": "v3-p06-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n6 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "required": true,
+      "extracted_ids": [
+        "p006-t021"
+      ]
+    },
+    {
+      "id": "v3-p07-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n7 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "required": true,
+      "extracted_ids": [
+        "p007-t020"
+      ]
+    },
+    {
+      "id": "v3-p08-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n8 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "required": true,
+      "extracted_ids": [
+        "p008-t032"
+      ]
+    },
+    {
+      "id": "v3-p09-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n9 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "required": true,
+      "extracted_ids": [
+        "p009-t012"
+      ]
+    },
+    {
+      "id": "v3-p10-footer",
+      "kind": "text",
+      "text": "先见一步 · BeforeStep · 项目报告书\n10 / 10",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 10,
+      "required": true,
+      "extracted_ids": [
+        "p010-t057"
+      ]
+    },
+    {
+      "id": "v3-p001-i001",
+      "kind": "image",
+      "asset": "source-assets/p001-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 1 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "bbox": [
+        0.0,
+        0.0,
+        595.2755737304688,
+        425.19683837890625
+      ],
+      "xref": 0,
+      "required": true,
+      "extracted_ids": [
+        "p001-i001"
+      ],
+      "sha256": "cf37a6ddb4ce28db7b32855cf276d0dc3cbb2b4be438412c76f4e154538cd6c3"
+    },
+    {
+      "id": "v3-p001-i002",
+      "kind": "image",
+      "asset": "source-assets/p001-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 1 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "bbox": [
+        0.0,
+        226.0,
+        595.2755737304688,
+        426.0
+      ],
+      "xref": 0,
+      "required": true,
+      "extracted_ids": [
+        "p001-i002"
+      ],
+      "sha256": "0ea3c72deccb03b105ef6caee65cb26d1000b2a99485c52a712dbd266c425a69"
+    },
+    {
+      "id": "v3-p001-i003",
+      "kind": "image",
+      "asset": "source-assets/p001-image003.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 1 页，图 3",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 1,
+      "bbox": [
+        0.0,
+        226.0,
+        595.2755737304688,
+        426.0
+      ],
+      "xref": 0,
+      "required": true,
+      "extracted_ids": [
+        "p001-i003"
+      ],
+      "sha256": "0ea3c72deccb03b105ef6caee65cb26d1000b2a99485c52a712dbd266c425a69"
+    },
+    {
+      "id": "v3-p002-i001",
+      "kind": "image",
+      "asset": "source-assets/p002-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 2 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "bbox": [
+        43.269683837890625,
+        148.37220764160156,
+        205.04527282714844,
+        239.4287567138672
+      ],
+      "xref": 76,
+      "required": true,
+      "extracted_ids": [
+        "p002-i001"
+      ],
+      "sha256": "4573b55cc5e77783d97bfd1f44eb10df04eaed6ce9038fbd393b7d1225031002"
+    },
+    {
+      "id": "v3-p002-i002",
+      "kind": "image",
+      "asset": "source-assets/p002-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 2 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "bbox": [
+        216.75,
+        148.37220764160156,
+        378.52557373046875,
+        239.4287567138672
+      ],
+      "xref": 77,
+      "required": true,
+      "extracted_ids": [
+        "p002-i002"
+      ],
+      "sha256": "84543a7571522c25caf6832b40935b7262b0be21f518ec223147d0f9114bf418"
+    },
+    {
+      "id": "v3-p002-i003",
+      "kind": "image",
+      "asset": "source-assets/p002-image003.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 2 页，图 3",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "bbox": [
+        390.23028564453125,
+        148.37220764160156,
+        552.005859375,
+        239.4287567138672
+      ],
+      "xref": 78,
+      "required": true,
+      "extracted_ids": [
+        "p002-i003"
+      ],
+      "sha256": "edbf85a225d13120f51d48fec77ffa2c4d614f3cea2ad4b0010c25a215022851"
+    },
+    {
+      "id": "v3-p002-i004",
+      "kind": "image",
+      "asset": "source-assets/p002-image004.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 2 页，图 4",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 2,
+      "bbox": [
+        43.269683837890625,
+        432.0090026855469,
+        552.005859375,
+        813.5611572265625
+      ],
+      "xref": 79,
+      "required": true,
+      "extracted_ids": [
+        "p002-i004"
+      ],
+      "sha256": "0c7bc7fad5f80d0124165babd7f34c093e2eb3b3cbaf2c9df589b2fda1f9d11b"
+    },
+    {
+      "id": "v3-p003-i001",
+      "kind": "image",
+      "asset": "source-assets/p003-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 3 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "bbox": [
+        55.175201416015625,
+        265.419921875,
+        279.31298828125,
+        391.4974365234375
+      ],
+      "xref": 80,
+      "required": true,
+      "extracted_ids": [
+        "p003-i001"
+      ],
+      "sha256": "d686e44512f6a2e31f187f9f73eb6519b2c409999ca8a1ff0b3d708e59692cc0"
+    },
+    {
+      "id": "v3-p003-i002",
+      "kind": "image",
+      "asset": "source-assets/p003-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 3 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 3,
+      "bbox": [
+        315.9626159667969,
+        265.419921875,
+        540.1004028320312,
+        391.4974365234375
+      ],
+      "xref": 81,
+      "required": true,
+      "extracted_ids": [
+        "p003-i002"
+      ],
+      "sha256": "dad93b36bdcc93a9d9a2170a3ef4b9182d7c867a218be9f4407f5a3825c1c8f5"
+    },
+    {
+      "id": "v3-p004-i001",
+      "kind": "image",
+      "asset": "source-assets/p004-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 4 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "bbox": [
+        55.175201416015625,
+        181.84222412109375,
+        291.1915283203125,
+        312.4941101074219
+      ],
+      "xref": 82,
+      "required": true,
+      "extracted_ids": [
+        "p004-i001"
+      ],
+      "sha256": "68af6e1040b778aa81197ff03682feeddfe1a042cc30a04cce02a457a1cf05f4"
+    },
+    {
+      "id": "v3-p004-i002",
+      "kind": "image",
+      "asset": "source-assets/p004-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 4 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 4,
+      "bbox": [
+        304.0840759277344,
+        373.2760009765625,
+        540.1004028320312,
+        451.9481201171875
+      ],
+      "xref": 84,
+      "required": true,
+      "extracted_ids": [
+        "p004-i002"
+      ],
+      "sha256": "1314f8697349342101cb4854b77a47621336dc03fb04ea9e97f4dcf06f2bf9cc"
+    },
+    {
+      "id": "v3-p005-i001",
+      "kind": "image",
+      "asset": "source-assets/p005-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 5 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "bbox": [
+        53.47440719604492,
+        285.8139953613281,
+        541.8012084960938,
+        426.3929138183594
+      ],
+      "xref": 86,
+      "required": true,
+      "extracted_ids": [
+        "p005-i001"
+      ],
+      "sha256": "4d6679ff4b998523b8da57a426d7d02a0795003c2ca27ce97c1710ee9bc42abd"
+    },
+    {
+      "id": "v3-p005-i002",
+      "kind": "image",
+      "asset": "source-assets/p005-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 5 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 5,
+      "bbox": [
+        43.269683837890625,
+        582.572021484375,
+        303.0970153808594,
+        728.8176879882812
+      ],
+      "xref": 88,
+      "required": true,
+      "extracted_ids": [
+        "p005-i002"
+      ],
+      "sha256": "db030415e5f3d7054c8abee3caa9cdbd5e2bf0f8204440694939ea670eba3b49"
+    },
+    {
+      "id": "v3-p006-i001",
+      "kind": "image",
+      "asset": "source-assets/p006-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 6 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "bbox": [
+        43.269683837890625,
+        148.3721923828125,
+        291.218505859375,
+        287.93194580078125
+      ],
+      "xref": 89,
+      "required": true,
+      "extracted_ids": [
+        "p006-i001"
+      ],
+      "sha256": "c20325a02b848e5a5a1cbcb185e7ebc7f5ffd67853447c6279d45b04f811f2da"
+    },
+    {
+      "id": "v3-p006-i002",
+      "kind": "image",
+      "asset": "source-assets/p006-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 6 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "bbox": [
+        304.0570983886719,
+        148.3721923828125,
+        552.0059204101562,
+        287.93194580078125
+      ],
+      "xref": 90,
+      "required": true,
+      "extracted_ids": [
+        "p006-i002"
+      ],
+      "sha256": "960f8315b7a0af6b897f63fca0cd07475e521c78d87848e246e900676bc85b58"
+    },
+    {
+      "id": "v3-p006-i003",
+      "kind": "image",
+      "asset": "source-assets/p006-image003.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 6 页，图 3",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 6,
+      "bbox": [
+        43.269683837890625,
+        509.59332275390625,
+        552.005859375,
+        795.9391479492188
+      ],
+      "xref": 91,
+      "required": true,
+      "extracted_ids": [
+        "p006-i003"
+      ],
+      "sha256": "e619e1437fdd7dde47fdeffbfc7c35895adc711d1057c0562b37265c40a24991"
+    },
+    {
+      "id": "v3-p007-i001",
+      "kind": "image",
+      "asset": "source-assets/p007-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 7 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "bbox": [
+        43.269683837890625,
+        179.73672485351562,
+        552.005859375,
+        466.0825500488281
+      ],
+      "xref": 92,
+      "required": true,
+      "extracted_ids": [
+        "p007-i001"
+      ],
+      "sha256": "f3918fa49855f912fb5b3615f9c16eadc007a4ca3b5952287a20f6fb78017c00"
+    },
+    {
+      "id": "v3-p007-i002",
+      "kind": "image",
+      "asset": "source-assets/p007-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 7 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 7,
+      "bbox": [
+        84.27070617675781,
+        494.5519714355469,
+        511.0048828125,
+        667.9127197265625
+      ],
+      "xref": 93,
+      "required": true,
+      "extracted_ids": [
+        "p007-i002"
+      ],
+      "sha256": "9824dfcecd3bd792df865148e5cb2007f4e8d623d32f0f4ee08f24403f47389e"
+    },
+    {
+      "id": "v3-p008-i001",
+      "kind": "image",
+      "asset": "source-assets/p008-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 8 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 8,
+      "bbox": [
+        304.0840759277344,
+        540.937744140625,
+        540.1004028320312,
+        674.6802978515625
+      ],
+      "xref": 95,
+      "required": true,
+      "extracted_ids": [
+        "p008-i001"
+      ],
+      "sha256": "59295e93ce6cd08d9b77df3fdfd2902e4915a1e284810d753154dbdb741d9b59"
+    },
+    {
+      "id": "v3-p009-i001",
+      "kind": "image",
+      "asset": "source-assets/p009-image001.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 9 页，图 1",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "bbox": [
+        55.175201416015625,
+        158.57696533203125,
+        540.1004638671875,
+        545.8436279296875
+      ],
+      "xref": 97,
+      "required": true,
+      "extracted_ids": [
+        "p009-i001"
+      ],
+      "sha256": "19aca5d3dcb6e1773414ce6fe426bd46760585b1f7ed1ae590daf7b94e14d05f"
+    },
+    {
+      "id": "v3-p009-i002",
+      "kind": "image",
+      "asset": "source-assets/p009-image002.png",
+      "text": "原始图像 · 先见一步_项目报告书_v3.pdf 第 9 页，图 2",
+      "source": "先见一步_项目报告书_v3.pdf",
+      "page": 9,
+      "bbox": [
+        55.175201416015625,
+        627.13818359375,
+        301.99017333984375,
+        767.0
+      ],
+      "xref": 98,
+      "required": true,
+      "extracted_ids": [
+        "p009-i002"
+      ],
+      "sha256": "dfa8063f96d20dd22bffcb9c44feb436430e5b030b420bd3ea32227eee69227d"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "_doc": "每个调色板只写 14 个基础色，其余（accent_ink / *_soft / dark2 / 封面衍生色…）由 scripts/core.py 的 resolve_palette() 自动推导并保证对比度。想加新调色板：复制一项，改这些基础色即可。cover.mode = dark | light。",
+  "palettes": {
+    "midnight": {
+      "name": "午夜蓝 · 琥珀", "mood": "科技 硬件 AI 数据 严谨 可信",
+      "fits": ["算法与模型验证", "机器人/硬件", "数据平台", "开发者工具"],
+      "paper": "#ffffff", "ink": "#172033", "mut": "#667085", "line": "#e3e0d6", "tint": "#f5f2ea",
+      "accent": "#f0a93b", "accent2": "#3a9fb5", "good": "#1f9d8a", "bad": "#d9483b", "mid": "#d99a1a",
+      "dark": "#13213a",
+      "cover": {"mode": "dark", "bg": ["#0a1220", "#18294a"], "accent": "#f0a93b"},
+      "series": ["#f0a93b", "#3a9fb5", "#1f9d8a", "#d9483b", "#8091b0", "#9a73c4"],
+      "art": ["#f0a93b", "#3a9fb5", "#3a4f78"]
+    },
+    "forest": {
+      "name": "墨绿 · 鎏金", "mood": "文旅 生活 生态 人文 温润",
+      "fits": ["文旅与城市", "生态与可持续", "生活方式产品", "公益"],
+      "paper": "#fdfcf8", "ink": "#1a2b26", "mut": "#667a72", "line": "#dfe3d9", "tint": "#f1f3ec",
+      "accent": "#1f6b5a", "accent2": "#c8963e", "good": "#2f8f5f", "bad": "#c2410c", "mid": "#b9842a",
+      "dark": "#14463b",
+      "cover": {"mode": "dark", "bg": ["#0a211b", "#1d4d41"], "accent": "#6fe3b0"},
+      "series": ["#1f6b5a", "#c8963e", "#4a9a7e", "#c2410c", "#8aa89d", "#6b7f3a"],
+      "art": ["#6fe3b0", "#1f6b5a", "#c8963e"]
+    },
+    "vermilion": {
+      "name": "宣纸 · 朱砂", "mood": "人文 教育 传统 文化 雅致",
+      "fits": ["文化遗产", "教育与课程", "出版与品牌", "非遗与手作"],
+      "paper": "#fbf7ef", "ink": "#26211d", "mut": "#7b7368", "line": "#e4dccd", "tint": "#f3ecdf",
+      "accent": "#b23a2e", "accent2": "#2f5d62", "good": "#3d7a55", "bad": "#8f2d1f", "mid": "#b8892a",
+      "dark": "#2b2622",
+      "cover": {"mode": "light", "bg": ["#f7f1e5", "#eee3cf"], "accent": "#b23a2e"},
+      "series": ["#b23a2e", "#2f5d62", "#c19a4a", "#6b6359", "#3d7a55", "#8a5a44"],
+      "art": ["#b23a2e", "#2f5d62", "#c19a4a"]
+    },
+    "graphite": {
+      "name": "石墨 · 信号橙", "mood": "工程 工业 工具 克制 硬核",
+      "fits": ["工程与工业设计", "开发者基础设施", "制造与供应链", "极简技术文档"],
+      "paper": "#fafaf9", "ink": "#111111", "mut": "#6b6b6b", "line": "#e2e2df", "tint": "#f0f0ed",
+      "accent": "#ff5a1f", "accent2": "#8a8a85", "good": "#1b9a6c", "bad": "#e0322b", "mid": "#e0a100",
+      "dark": "#161616",
+      "cover": {"mode": "dark", "bg": ["#0d0d0d", "#262626"], "accent": "#ff5a1f"},
+      "series": ["#ff5a1f", "#161616", "#8a8a85", "#1b9a6c", "#2d6cdf", "#e0a100"],
+      "art": ["#ff5a1f", "#8a8a85", "#2a2a2a"]
+    },
+    "ocean": {
+      "name": "深海青 · 珊瑚", "mood": "健康 环境 海洋 公益 清新",
+      "fits": ["医疗健康", "环境与气候", "公共服务", "教育科普"],
+      "paper": "#fbfdfd", "ink": "#0f2a33", "mut": "#5f7a83", "line": "#dbe7ea", "tint": "#eef6f7",
+      "accent": "#0e7c86", "accent2": "#ff6f59", "good": "#1f9d6e", "bad": "#d9483b", "mid": "#e0a030",
+      "dark": "#0b3a45",
+      "cover": {"mode": "dark", "bg": ["#06212a", "#0e5560"], "accent": "#ff8a73"},
+      "series": ["#0e7c86", "#ff6f59", "#46b3a9", "#e0a030", "#5b7f95", "#8a6fbf"],
+      "art": ["#46d3d0", "#0e7c86", "#ff8a73"]
+    },
+    "plum": {
+      "name": "李紫 · 玫金", "mood": "设计 创意 时尚 消费 品牌",
+      "fits": ["品牌与消费品", "创意工具", "内容与社区", "美妆时尚"],
+      "paper": "#fdfbfa", "ink": "#2a1830", "mut": "#7a6b80", "line": "#eadfe6", "tint": "#f6eff3",
+      "accent": "#a0306b", "accent2": "#d9a441", "good": "#2f9a77", "bad": "#d93f4a", "mid": "#d9a441",
+      "dark": "#2a1233",
+      "cover": {"mode": "dark", "bg": ["#1b0a24", "#4b1a57"], "accent": "#ff8fc4"},
+      "series": ["#a0306b", "#d9a441", "#6c4bb5", "#2f9a77", "#d93f4a", "#7a6b80"],
+      "art": ["#ff8fc4", "#a0306b", "#d9a441"]
+    },
+    "terracotta": {
+      "name": "陶土 · 橄榄", "mood": "手作 农业 乡村 食物 温暖 社会创新",
+      "fits": ["乡村与农业", "餐饮与食品", "社区与社会创新", "手工艺"],
+      "paper": "#fdf9f3", "ink": "#2c231d", "mut": "#7d6f63", "line": "#e8dccd", "tint": "#f5ece0",
+      "accent": "#c4582d", "accent2": "#5f7a3b", "good": "#5f7a3b", "bad": "#b3382a", "mid": "#d19a2a",
+      "dark": "#3a2a20",
+      "cover": {"mode": "light", "bg": ["#f5e8d4", "#ead5b8"], "accent": "#c4582d"},
+      "series": ["#c4582d", "#5f7a3b", "#d19a2a", "#8a6a50", "#3f7f86", "#b3382a"],
+      "art": ["#c4582d", "#d19a2a", "#5f7a3b"]
+    },
+    "cobalt": {
+      "name": "钴蓝 · 明黄", "mood": "金融 政务 企业 申报 正式 明快",
+      "fits": ["基金与项目申报", "企业级软件", "金融科技", "政府与公共部门"],
+      "paper": "#ffffff", "ink": "#14213d", "mut": "#5c6b85", "line": "#dfe4ee", "tint": "#f1f4fa",
+      "accent": "#1f4fd8", "accent2": "#f2b705", "good": "#1a9a6a", "bad": "#d6403a", "mid": "#e0a800",
+      "dark": "#0f2a6b",
+      "cover": {"mode": "dark", "bg": ["#0a1f5c", "#2556e0"], "accent": "#ffd23f"},
+      "series": ["#1f4fd8", "#f2b705", "#1a9a6a", "#d6403a", "#6b7fb0", "#8a5cd6"],
+      "art": ["#ffd23f", "#7ea0ff", "#1f4fd8"]
+    },
+    "mono": {
+      "name": "黑白 · 编辑红", "mood": "学术 研究 杂志 极简 冷静",
+      "fits": ["研究报告", "学术与政策白皮书", "编辑出版", "极简风格"],
+      "paper": "#ffffff", "ink": "#151515", "mut": "#6e6e6e", "line": "#e3e3e3", "tint": "#f4f4f4",
+      "accent": "#d1281c", "accent2": "#6e6e6e", "good": "#2a8a5a", "bad": "#d1281c", "mid": "#c98a00",
+      "dark": "#151515",
+      "cover": {"mode": "light", "bg": ["#ffffff", "#f0f0f0"], "accent": "#d1281c"},
+      "series": ["#151515", "#d1281c", "#8d8d8d", "#c98a00", "#2a8a5a", "#4a6fa5"],
+      "art": ["#151515", "#d1281c", "#bdbdbd"]
+    },
+    "aurora": {
+      "name": "极光紫 · 薄荷", "mood": "AI 产品 未来感 年轻 开放",
+      "fits": ["AI 应用与智能体", "游戏与互动", "年轻化消费产品", "创新实验室"],
+      "paper": "#fcfcff", "ink": "#1b1740", "mut": "#6a678f", "line": "#e4e3f2", "tint": "#f2f1fb",
+      "accent": "#6a4cff", "accent2": "#14c8a8", "good": "#14a88a", "bad": "#e0405f", "mid": "#f0a030",
+      "dark": "#1b1450",
+      "cover": {"mode": "dark", "bg": ["#0e0930", "#3a1d8c"], "accent": "#5ff0cf"},
+      "series": ["#6a4cff", "#14c8a8", "#ff6fa8", "#f0a030", "#7f8cd8", "#e0405f"],
+      "art": ["#5ff0cf", "#8f7bff", "#ff6fa8"]
+    }
+  }
+}

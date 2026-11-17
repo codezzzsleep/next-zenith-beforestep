@@ -1,0 +1,1535 @@
+{
+  "source_policy": "Snapshot of already published records; no experiments rerun for this report.",
+  "files": {
+    "evidence/production-v6/facts.json": "93af685ed2eb30e5a94243fd49d1a8fa40d6f10d17eb29205536df5df23713bc",
+    "site/data/gallery.json": "57ccdd2330b113ec937fc5fc71477fa5f0090f49ba3c95d77abc5a031bc2e27c",
+    "docs/mission-verification.json": "7ca2ffd6dc905ec31b1c9044839f0aa4386b1d7b65b1a7c5bfa144fae547c73d",
+    "evidence/suite/summary.json": "f3170ee046a3efa43fe212f001300b52a2d2698236d6fac108991904bf8cca31"
+  },
+  "values": {
+    "lux_live_counts": {
+      "created": 491,
+      "statuses": {
+        "ok": 460,
+        "failed": 31
+      }
+    },
+    "gallery": {
+      "real_tasks": 330,
+      "returned_models": 306,
+      "admitted": 110,
+      "rejected": 196,
+      "rejected_would_collide": 30,
+      "counterfactual_interventions": 231,
+      "counterfactual_collision_interventions": 30,
+      "decision_contexts": 597
+    },
+    "r1": {
+      "optimistic": {
+        "result": {
+          "value": "collision",
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json",
+          "source_sha256": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+          "json_pointer": "/result",
+          "status": "verified"
+        },
+        "sim_time_s": {
+          "value": 80.87,
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json",
+          "source_sha256": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+          "json_pointer": "/sim_time_s",
+          "status": "verified",
+          "story_expected": 80.87
+        },
+        "execution_elapsed_s": {
+          "value": 79.67,
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json",
+          "source_sha256": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+          "json_pointer": "/execution_elapsed_s",
+          "status": "verified"
+        },
+        "looks": {
+          "value": 1,
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/optimistic/summary.json",
+          "source_sha256": "6d3a2157f51db4cc2a0cb5345c859888b98368a7d74be89570c84d1aefd5239a",
+          "json_pointer": "/looks",
+          "status": "verified"
+        }
+      },
+      "conservative": {
+        "result": {
+          "value": "stuck",
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+          "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+          "json_pointer": "/result",
+          "status": "verified"
+        },
+        "sim_time_s": {
+          "value": 142.2,
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+          "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+          "json_pointer": "/sim_time_s",
+          "status": "verified",
+          "story_expected": 142.2
+        },
+        "execution_elapsed_s": {
+          "value": 141.0,
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+          "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+          "json_pointer": "/execution_elapsed_s",
+          "status": "verified"
+        },
+        "looks": {
+          "value": 5,
+          "source": "evidence/reviews/beforestep_r1/section25_final_base/conservative/summary.json",
+          "source_sha256": "5276e21a1980ee4a4ae4023b977dcb0a6a9fcd6cd974a8eda33bbadeb23700ac",
+          "json_pointer": "/looks",
+          "status": "verified"
+        }
+      },
+      "imagination": {
+        "result": {
+          "value": "arrived",
+          "source": "evidence/reviews/beforestep_r1/lux/original_b/summary.json",
+          "source_sha256": "dd5f8921b9cfc03fe32d105ae5104ed0a7641bd25aab73d20be08f728c8e9cd6",
+          "json_pointer": "/result",
+          "status": "verified"
+        },
+        "sim_time_s": {
+          "value": 112.84,
+          "source": "evidence/reviews/beforestep_r1/lux/original_b/summary.json",
+          "source_sha256": "dd5f8921b9cfc03fe32d105ae5104ed0a7641bd25aab73d20be08f728c8e9cd6",
+          "json_pointer": "/sim_time_s",
+          "status": "verified",
+          "story_expected": 112.84
+        },
+        "execution_elapsed_s": {
+          "value": 111.64,
+          "source": "evidence/reviews/beforestep_r1/lux/original_b/summary.json",
+          "source_sha256": "dd5f8921b9cfc03fe32d105ae5104ed0a7641bd25aab73d20be08f728c8e9cd6",
+          "json_pointer": "/execution_elapsed_s",
+          "status": "verified"
+        },
+        "looks": {
+          "value": 1,
+          "source": "evidence/reviews/beforestep_r1/lux/original_b/summary.json",
+          "source_sha256": "dd5f8921b9cfc03fe32d105ae5104ed0a7641bd25aab73d20be08f728c8e9cd6",
+          "json_pointer": "/looks",
+          "status": "verified"
+        }
+      }
+    },
+    "legs": {
+      "wheel_trials_at_band_heights": {
+        "value": 90,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/wheel_trials_at_band_heights",
+        "status": "verified",
+        "story_expected": 90
+      },
+      "wheel_passes_at_band_heights": {
+        "value": 0,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/wheel_passes_at_band_heights",
+        "status": "verified",
+        "story_expected": 0
+      },
+      "band_gait_trials": {
+        "value": 24,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/band_gait_trials",
+        "status": "verified",
+        "story_expected": 24
+      },
+      "band_gait_clean_trials": {
+        "value": 24,
+        "source": "evidence/crossing/calibration/gate.json",
+        "source_sha256": "9652c5e0d71012691b85d24263a55cf3f5e29fa5b3bc45e8b008d558d59915c5",
+        "json_pointer": "/band_gait_clean_trials",
+        "status": "verified",
+        "story_expected": 24
+      },
+      "true_rocks": {
+        "value": 3,
+        "source": "evidence/crossing/calibration/capability-v72.json",
+        "source_sha256": "d461bd1bc482e9528abf1629ff91eec8bcb12ce22410178c727fe71f6f8f519d",
+        "json_pointer": "/clean_support_compliant_rocks length",
+        "status": "verified",
+        "story_expected": 3
+      }
+    },
+    "back_error": {
+      "candidate_count": {
+        "value": 64,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/candidate_count",
+        "status": "verified",
+        "story_expected": 64
+      },
+      "shorter_than_five_cm": {
+        "value": 23,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/shorter_than_five_cm",
+        "status": "verified",
+        "story_expected": 23
+      },
+      "threshold_m": {
+        "value": -0.05,
+        "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+        "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+        "json_pointer": "/threshold_m",
+        "status": "verified",
+        "story_expected": -0.05
+      },
+      "r1_reveal_examples": [
+        {
+          "task_id": {
+            "value": 5958654,
+            "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+            "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+            "json_pointer": "/rows/6/task_id",
+            "status": "verified"
+          },
+          "back_error_m": {
+            "value": -0.699856413070945,
+            "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+            "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+            "json_pointer": "/rows/6/back_error_m",
+            "status": "verified"
+          }
+        },
+        {
+          "task_id": {
+            "value": 5958934,
+            "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+            "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+            "json_pointer": "/rows/7/task_id",
+            "status": "verified"
+          },
+          "back_error_m": {
+            "value": -0.5999999011962327,
+            "source": "evidence/reviews/beforestep_r3/back-error/stats.json",
+            "source_sha256": "0507d3282a078d0e44b68eaafe21a7e48ee5bbf7d9b861bf472fed8c0a0ab80c",
+            "json_pointer": "/rows/7/back_error_m",
+            "status": "verified"
+          }
+        }
+      ]
+    },
+    "post_result_v3": {
+      "completed": {
+        "value": 17,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/completed",
+        "status": "verified",
+        "story_expected": 17
+      },
+      "arrived": {
+        "value": 3,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/arrived",
+        "status": "verified",
+        "story_expected": 3
+      },
+      "safe_stop": {
+        "value": 14,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/safe_stop",
+        "status": "verified",
+        "story_expected": 14
+      },
+      "collisions": {
+        "value": 0,
+        "source": "evidence/reviews/beforestep_r3/summary.json",
+        "source_sha256": "93db98b998accac797c18af5f8cb2f0b1692f183805f5b8828197121c15424ee",
+        "json_pointer": "/all_run_stats/collisions",
+        "status": "verified",
+        "story_expected": 0
+      },
+      "scope": "赛后修订：已知12场+留出5场；不能当成独立样本外证据"
+    },
+    "same_route": {
+      "stress_v8_gate": {
+        "rows": [
+          {
+            "vehicle": "A",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 53.68,
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "imagined_blocked",
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/stress_v8_gate/A/result.json",
+              "source_sha256": "6d13fa19dc7d43a2a67fdc8172c9dd9fa346bfc615eecd31d689af71105d481b",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "B",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 80.34,
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": {
+                "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+                "original_pipeline_result": "collision",
+                "contact": {
+                  "body": "obstacle1",
+                  "robot_geom": null,
+                  "pos": [
+                    6.91,
+                    -0.264,
+                    0.106
+                  ],
+                  "t": 81.542
+                },
+                "body_stone_contacts": 0,
+                "wheel_stone_steps": 1,
+                "maximum_tilt_deg": 0.7602970110720764
+              },
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/stress_v8_gate/B/result.json",
+              "source_sha256": "1bd5682a1f724679dfb6831030344603bba88f7e49911dfb3982ca8a93dace78",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "C",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 140.18,
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 5,
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "no_path",
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/stress_v8_gate/C/result.json",
+              "source_sha256": "fe4146971416681f75adbd857dff20f8b35826c5e295d66d6d803cc513873d36",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "D",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 53.68,
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "imagined_blocked",
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/stress_v8_gate/D/result.json",
+              "source_sha256": "536c77cccdf3a234d80b6d20d351751af1bc666204d09040fd570594d77628ed",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          }
+        ],
+        "complete": true,
+        "scope": "单场演示，不是统计证据；F3_002是在前四场之后追加"
+      },
+      "suite_r2_v4_F1_003_gate": {
+        "rows": [
+          {
+            "vehicle": "A",
+            "first_segment_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "stuck",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stuck",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 576.2199999997671,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "wheel_only_both_stuck",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+              "source_sha256": "c40cf10d6d8fff5e6e940b0f599072fecdd02f7336080e95abf4ad9f185b7bfe",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "B",
+            "first_segment_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "clean_pass",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 299.6000000000201,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": null,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": true,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+              "source_sha256": "dd6ac1ceac48566c48a07b71074f82af802028caf7b31e671bde7aa6c6b84bc3",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "C",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 138.6,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 5,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "no_path",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+              "source_sha256": "476cd2c08fdd60b6855978391aab69467c4018fa4073c817398fc32e5bc236eb",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "D",
+            "first_segment_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "clean_pass",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 292.76000000002483,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": null,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": true,
+              "source": "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+              "source_sha256": "a01539368c963809b8fcabbc9385d84ddb43ba3559ce152d90fb5248dc0789b7",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          }
+        ],
+        "complete": true,
+        "scope": "单场演示，不是统计证据；F3_002是在前四场之后追加"
+      },
+      "suite_r2_v4_F2_001_gate": {
+        "rows": [
+          {
+            "vehicle": "A",
+            "first_segment_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "stuck",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stuck",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 569.3999999997719,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "wheel_only_both_stuck",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+              "source_sha256": "a7819dd7b2e2f661ca5d7bacf0dfb46250b6df79d9bcac1e378c0244d50f09f2",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "B",
+            "first_segment_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "clean_pass",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 282.88000000003245,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": null,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": true,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+              "source_sha256": "02d565e7fb26a36e475f5264463074319aedc58179676e41501db2b7eb7c0701",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "C",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 82.17,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 5,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "no_path",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+              "source_sha256": "32d9c657548d6969ccb98a28307100f88de077bd4c063b2aa3ea8e4be58276c6",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "D",
+            "first_segment_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "clean_pass",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "arrived",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 277.7600000000371,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": null,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": true,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+              "source_sha256": "79f1a24e15f345d6ee8fe942d2c928a06095088706937066f935f8de6ad686fc",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          }
+        ],
+        "complete": true,
+        "scope": "单场演示，不是统计证据；F3_002是在前四场之后追加"
+      },
+      "suite_r2_v4_F2_007_gate": {
+        "rows": [
+          {
+            "vehicle": "A",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 83.97,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": {
+                "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+                "original_pipeline_result": "collision",
+                "contact": {
+                  "body": "obstacle1",
+                  "robot_geom": null,
+                  "pos": [
+                    7.294,
+                    -0.365,
+                    0.143
+                  ],
+                  "t": 85.172
+                },
+                "body_stone_contacts": 0,
+                "wheel_stone_steps": 1,
+                "maximum_tilt_deg": 0.7630239737792086
+              },
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+              "source_sha256": "baf7e62862f8586c2f42412c1b15697cd02a419b78d8571bb59f6f8e9e986c54",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "B",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 82.46,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": {
+                "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+                "original_pipeline_result": "collision",
+                "contact": {
+                  "body": "obstacle1",
+                  "robot_geom": null,
+                  "pos": [
+                    7.266,
+                    -0.367,
+                    0.145
+                  ],
+                  "t": 83.664
+                },
+                "body_stone_contacts": 0,
+                "wheel_stone_steps": 1,
+                "maximum_tilt_deg": 0.7630239737792086
+              },
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+              "source_sha256": "5f26445adfade628fdcd43c3e1eb8a10a538a3fbca9ad94e7031c7fd8b1ccd9b",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "C",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 82.13,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 5,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "no_path",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+              "source_sha256": "d8b992330b00519be556ec245a30186ed865a5746a4925ea283bb973342b75a9",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "D",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 83.97,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": {
+                "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+                "original_pipeline_result": "collision",
+                "contact": {
+                  "body": "obstacle1",
+                  "robot_geom": null,
+                  "pos": [
+                    7.294,
+                    -0.365,
+                    0.143
+                  ],
+                  "t": 85.172
+                },
+                "body_stone_contacts": 0,
+                "wheel_stone_steps": 1,
+                "maximum_tilt_deg": 0.7630239737792086
+              },
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+              "source_sha256": "0c7a4ba3f6ef56246c7966a138214a7d871d7dfcdd750fb7a6738bf8cb657751",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          }
+        ],
+        "complete": true,
+        "scope": "单场演示，不是统计证据；F3_002是在前四场之后追加"
+      },
+      "suite_r2_v4_F3_002_gate": {
+        "rows": [
+          {
+            "vehicle": "A",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 57.7,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "imagined_blocked",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+              "source_sha256": "385b232993fab7bd365039d0e3df41be778c1c3ff6fe663888b71609f9bdac10",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "B",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 79.82,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 1,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": {
+                "reason": "frozen_contact_watch_stopped_on_wheel_contact_to_high_rock",
+                "original_pipeline_result": "collision",
+                "contact": {
+                  "body": "obstacle1",
+                  "robot_geom": null,
+                  "pos": [
+                    6.768,
+                    -0.289,
+                    0.103
+                  ],
+                  "t": 81.022
+                },
+                "body_stone_contacts": 0,
+                "wheel_stone_steps": 1,
+                "maximum_tilt_deg": 0.7664592456035915
+              },
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+              "source_sha256": "55806a489fe7932d98a5f5db42a1cb020b11ead440b1adb1b26e2225dead3d17",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "C",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 165.55,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 5,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "no_path",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+              "source_sha256": "d4dc9e3cbf271fbc6573a528bb97486397d7df0b9e19f2da70ee214c429fc52f",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          },
+          {
+            "vehicle": "D",
+            "first_segment_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/first_segment_result",
+              "status": "verified"
+            },
+            "second_segment_result": {
+              "value": "not_run",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/second_segment_result",
+              "status": "verified"
+            },
+            "total_result": {
+              "value": "stopped",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/total_result",
+              "status": "verified"
+            },
+            "sim_seconds": {
+              "value": 57.7,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/sim_seconds",
+              "status": "verified"
+            },
+            "looks": {
+              "value": 2,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/looks",
+              "status": "verified"
+            },
+            "reason": {
+              "value": "imagined_blocked",
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/reason",
+              "status": "verified"
+            },
+            "legs_used": {
+              "value": false,
+              "source": "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json",
+              "source_sha256": "6983cb76cad81a27100d3858b6879918ee5fd4dd9ed533313d66bc5dd97ea247",
+              "json_pointer": "/legs_used",
+              "status": "verified"
+            }
+          }
+        ],
+        "complete": true,
+        "scope": "单场演示，不是统计证据；F3_002是在前四场之后追加"
+      },
+      "D_arrived_completed_scenes": {
+        "value": 2,
+        "source_paths": [
+          "outputs/crossing/route/stress_v8_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json"
+        ],
+        "calculation": "Count D total_result=arrived, retain pending scene separately"
+      },
+      "completed_scenes": {
+        "value": 5,
+        "source_paths": [
+          "outputs/crossing/route/stress_v8_gate/A/result.json",
+          "outputs/crossing/route/stress_v8_gate/B/result.json",
+          "outputs/crossing/route/stress_v8_gate/C/result.json",
+          "outputs/crossing/route/stress_v8_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F1_003_gate/A/result.json",
+          "outputs/crossing/route/suite_r2_v4_F1_003_gate/B/result.json",
+          "outputs/crossing/route/suite_r2_v4_F1_003_gate/C/result.json",
+          "outputs/crossing/route/suite_r2_v4_F1_003_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_001_gate/A/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_001_gate/B/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_001_gate/C/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_001_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_007_gate/A/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_007_gate/B/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_007_gate/C/result.json",
+          "outputs/crossing/route/suite_r2_v4_F2_007_gate/D/result.json",
+          "outputs/crossing/route/suite_r2_v4_F3_002_gate/A/result.json",
+          "outputs/crossing/route/suite_r2_v4_F3_002_gate/B/result.json",
+          "outputs/crossing/route/suite_r2_v4_F3_002_gate/C/result.json",
+          "outputs/crossing/route/suite_r2_v4_F3_002_gate/D/result.json"
+        ],
+        "calculation": "All four vehicles have terminal result files"
+      }
+    },
+    "counterfactuals": {
+      "collisions": 17,
+      "executed": 102,
+      "outcomes": {
+        "arrived": 44,
+        "stuck": 41,
+        "stopped_short": 0,
+        "collision": 17
+      },
+      "unexecutable": 0,
+      "collision_ratio": 0.16666666666666666
+    },
+    "mission": {
+      "world_count": 12,
+      "worlds_passed": 12,
+      "finish": {
+        "x": 10.507024705606794,
+        "y": -0.041039893074201764,
+        "z": 0.46755089092613544,
+        "yaw": -0.10176162674824164,
+        "tilt": 0.0436495106510714,
+        "speed": 0.00036239451810732596,
+        "elapsed": 174.25800000010395,
+        "steps": 87129,
+        "finite": true,
+        "goalDistance": 0.10163010474778232,
+        "legs": null
+      },
+      "wheelOnly": {
+        "final": {
+          "x": 9.202079181988635,
+          "y": -0.007928978702884103,
+          "z": 0.3838881832273418,
+          "yaw": 0.0003050630831742457,
+          "tilt": 0.14002898261054098,
+          "speed": 0.00023359312048229765,
+          "elapsed": 60.00000000002736,
+          "steps": 30000,
+          "finite": true,
+          "goalDistance": 1.397943304334204,
+          "legs": null
+        },
+        "allWheelsOver": false
+      },
+      "optimistic": {
+        "passed": false,
+        "maxTilt": 0.5079505350017676,
+        "contact": {
+          "high": true,
+          "wall": false,
+          "gateBody": false,
+          "groundBody": false,
+          "tilt": 0.05747788840745453
+        },
+        "elapsed": 56.34000000002289,
+        "final": {
+          "x": 7.083590771183186,
+          "y": -0.6325508752179284,
+          "z": 0.38463886691297616,
+          "yaw": 0.424665523851574,
+          "tilt": 0.05747788840745453,
+          "speed": 0.170101270906202,
+          "elapsed": 56.34000000002289,
+          "steps": 28170,
+          "finite": true,
+          "goalDistance": 3.572849629392066,
+          "legs": null
+        },
+        "reason": "contact"
+      },
+      "scan": {
+        "valid": true,
+        "near": 9.1,
+        "far": 9.197335265520126,
+        "high": 0.12,
+        "heightAboveGround": 0.1191176456213,
+        "depth": 0.09733526552012606,
+        "camera": [
+          8.845134626130646,
+          -0.004087620811094872,
+          0.38448213913546436
+        ],
+        "points": 468,
+        "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+      }
+    }
+  }
+}

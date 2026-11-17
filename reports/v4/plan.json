@@ -1,0 +1,36 @@
+{
+  "purpose": "Aholo赛事项目报告，说明轮腿机器人通过真实Lux3D完整形状假设改善月面通行的条件与边界。",
+  "audience": "比赛评审",
+  "mode": "compose，授权更新为下一版；V3完整信息建立逐项去向，不以摘要替代。",
+  "page_constraint": "没有硬性页数；保留14页阅读结构，若实际容量不足允许续页并修正页码。",
+  "design": {
+    "palette": "沿用V3纸白/暖灰、深蓝、金色，成功青绿、失败红、停车金色",
+    "fonts": "宋体标题与无衬线正文；固定来源的Noto CJK子集随源包保留",
+    "grid": "A4，通栏与双栏相结合，正常字号不为页数缩小。",
+    "cover_candidates": [
+      "照片主导：仿真场景占上半页，下面给一张照片/491调用/12世界",
+      "纯文字主导：核心动作与简洁流程作封面"
+    ],
+    "cover_choice": "保留已有照片与数字带封面，符合V3视觉优先且开篇直接建立核心动作。",
+    "relations": [
+      "三种行驶选择按结果顺序比较；示意距离不按比例，局部试验时长与累计时钟明确区分",
+      "四关按顺序展示；12世界图显示每个候选组合",
+      "可信度与多场景采用带分母的指标和条形图；不制造总体成功保证",
+      "版本与输入图直接并列，失败与拒绝保留",
+      "过程以阶段序列展示，节点等距明确不表示真实时间间隔"
+    ]
+  },
+  "retention": {
+    "inventory": "inventory.json",
+    "mapping": "content-map.json",
+    "source_pdf": "../../site/media/report.pdf",
+    "source_sha256": "67c15f4af8c02c79c4254e55774207acf51796784583e58543c5d482c0199cc6",
+    "raw_extraction_fragments": 293,
+    "semantic_units": 110,
+    "source_images": 21,
+    "source_image_files": "source-assets/",
+    "semantic_review_required": true
+  },
+  "authorization": "用户原指令：做完下一版提交到GitHub。做到满意为止。",
+  "scope_limit": "复用冻结实验与已有录屏；报告结果是仿真，浏览器复用原模型，门槛几何来自可见面。"
+}

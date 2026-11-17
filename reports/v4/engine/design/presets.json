@@ -1,0 +1,15 @@
+{
+  "_doc": "预设 = 一组风格旋钮的组合，是快速起点而不是限制；spec.style 里写 preset 后，任何单项都可以再覆盖。旋钮取值见 references/design-language.md。",
+  "presets": {
+    "tech-lab":       {"palette": "midnight",   "cover": "numbers", "header": "split",   "art": "network",  "radius": "soft",  "card": "tint",    "fontpair": "serif-sans",  "density": "regular", "footer": "rule",    "why": "技术验证、算法/硬件/机器人：数据封面 + 答案式页头"},
+    "culture-guide":  {"palette": "forest",     "cover": "horizon", "header": "kicker",  "art": "ridges",   "radius": "soft",  "card": "tint",    "fontpair": "serif-sans",  "density": "airy",    "footer": "rule",    "why": "文旅、生活、生态：风景型封面 + 舒展排版"},
+    "heritage":       {"palette": "vermilion",  "cover": "frame",   "header": "rail",    "art": "contours", "radius": "sharp", "card": "outline", "fontpair": "serif-serif", "density": "airy",    "footer": "minimal", "why": "人文、教育、非遗：宣纸色 + 边框封面 + 竖线页头"},
+    "engineering":    {"palette": "graphite",   "cover": "type",    "header": "numeral", "art": "blocks",   "radius": "sharp", "card": "flat",    "fontpair": "mono-accent", "density": "compact", "footer": "index",   "why": "工程、工具、基础设施：纯字体封面 + 大序号页头"},
+    "public-good":    {"palette": "ocean",      "cover": "mosaic",  "header": "band",    "art": "waves",    "radius": "round", "card": "tint",    "fontpair": "sans-sans",   "density": "regular", "footer": "rule",    "why": "公益、健康、环境：拼图封面 + 色带页头"},
+    "brand-creative": {"palette": "plum",       "cover": "split",   "header": "band",    "art": "blocks",   "radius": "round", "card": "flat",    "fontpair": "serif-sans",  "density": "regular", "footer": "minimal", "why": "品牌、创意、消费：分栏封面 + 几何插画"},
+    "craft-social":   {"palette": "terracotta", "cover": "poster",  "header": "numeral", "art": "halftone", "radius": "round", "card": "edge",    "fontpair": "serif-sans",  "density": "airy",    "footer": "rule",    "why": "乡村、食物、社会创新：整幅海报封面 + 暖色"},
+    "funding":        {"palette": "cobalt",     "cover": "type",    "header": "rail",    "art": "orbits",   "radius": "soft",  "card": "outline", "fontpair": "sans-sans",   "density": "compact", "footer": "index",   "why": "基金、申报、企业：信息密度高、层级清楚、可信"},
+    "research":       {"palette": "mono",       "cover": "type",    "header": "minimal", "art": "contours", "radius": "sharp", "card": "flat",    "fontpair": "serif-serif", "density": "regular", "footer": "minimal", "why": "研究报告、白皮书：克制，靠排版取胜"},
+    "ai-product":     {"palette": "aurora",     "cover": "poster",  "header": "numeral", "art": "waves",    "radius": "round", "card": "tint",    "fontpair": "sans-sans",   "density": "regular", "footer": "rule",    "why": "AI 产品、智能体：深色海报封面 + 流动线条"}
+  }
+}

@@ -1,0 +1,13 @@
+interface:
+  display_name: 项目书设计系统
+  short_description: 保留完整内容，按信息关系自动选择封面、版式、图表与结构的 PDF 项目书设计系统
+  default_prompt: 用 $project-report-pdf 将这些材料制作成内容完整、版式因项目而异的 PDF 项目报告书。
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

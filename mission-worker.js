@@ -6,18 +6,45 @@ import {planRoute,modelWorlds,accepted} from './mission-planner.js?v=mission-1';
 import {rehearseRoute,rehearseCrossing} from './mission-rehearsal.js?v=immersive-1';
 import {usableProof,progressOnPath,wrapAngle} from './mission-session.js?v=immersive-1';
 let showcase=new MissionShowcase(),showcaseStill=0;
+let gameMode='explore',checkpointRestarts=0;
+const checkpoints=new Map();
 let mj,mission,live,phase='explore',paused=false,input={v:0,w:0,brake:true},follower=null;
 let token=0,revision=0,selected=[],policy='imagination',proof=null,gateProof=null,scan=null,held=0,actions=0,lastSensor=0,routeSession=false,lastLiveFrame=0,sensorVerticalFov=45;
 const yieldFrame=()=>new Promise(r=>setTimeout(r,8));
 const stable=()=>live.state().speed<.025&&Math.abs(live.data.qvel[5])<.08;
 function reject(reason){postMessage({type:'commandRejected',reason});}
 function packet(w,channel,requestId){postMessage({type:'world',channel,requestId,model:w.packet()});}
+function checkpointSummary(){
+  const saved=[...checkpoints.values()].at(-1);
+  return saved?{id:saved.id,label:saved.label}:null;
+}
+function saveCheckpoint(id,label){
+  if(gameMode!=='explore'||!showcase.enabled||checkpoints.has(id)||!stable()||live.legControl)return;
+  const state=live.state();
+  if(state.tilt>8||live.bodyContact())return;
+  checkpoints.set(id,{id,label,physical:live.physicalState(),elapsed:live.elapsed,steps:live.steps,
+    phase,actions,showcase:{...showcase.state()},selected:[...selected]});
+  postMessage({type:'checkpointSaved',checkpoint:checkpointSummary()});
+}
 function frame(w=live,channel='live',requestId){
   if(!w)return;const data=w.renderData(),s=w.state();
-  postMessage({type:'state',channel,requestId,state:{...s,phase,paused,automatic:!!follower,revision,actionCount:actions,stable:stable(),showcase:showcase.state(),scan:scan?{...scan,points:undefined}:null,proof:proof?{passed:proof.passed,requestId:proof.requestId,usable:!live.legControl&&usableProof(proof,live.state(),revision),routeSession,revision:proof.revision,worlds:proof.results.length,path:proof.plan.path,length:proof.plan.length,anchor:proof.anchor}:null,gateProof:gateProof?{passed:gateProof.passed,requestId:gateProof.requestId,usable:!live.legControl&&usableProof(gateProof,live.state(),revision)}:null},data},Object.values(data).map(x=>x.buffer));
+  postMessage({type:'state',channel,requestId,state:{...s,phase,paused,automatic:!!follower,revision,actionCount:actions,stable:stable(),gameMode,checkpoint:checkpointSummary(),checkpointRestarts,showcase:showcase.state(),scan:scan?{...scan,points:undefined}:null,proof:proof?{passed:proof.passed,requestId:proof.requestId,usable:!live.legControl&&usableProof(proof,live.state(),revision),routeSession,revision:proof.revision,worlds:proof.results.length,path:proof.plan.path,length:proof.plan.length,anchor:proof.anchor}:null,gateProof:gateProof?{passed:gateProof.passed,requestId:gateProof.requestId,usable:!live.legControl&&usableProof(gateProof,live.state(),revision)}:null},data},Object.values(data).map(x=>x.buffer));
 }
 function cancel(){token++;postMessage({type:'dreamClosed'});}
-function newLive(){live?.destroy();live=new MissionWorld(mj,mission);live.sensorVerticalFov=sensorVerticalFov;packet(live,'live');frame();}
+function newLive(initial=null,clock=null){live?.destroy();live=new MissionWorld(mj,mission,'truth.xml',initial);if(clock){live.elapsed=clock.elapsed;live.steps=clock.steps;}live.sensorVerticalFov=sensorVerticalFov;packet(live,'live');frame();}
+function restoreCheckpoint(id){
+  if(gameMode!=='explore'){reject('全程挑战需要从头完成。切换探索练习后，可使用检查点。');return;}
+  const saved=id?checkpoints.get(id):[...checkpoints.values()].at(-1);
+  if(!saved){reject('还没有保存的检查点，先驶到高石观察点。');return;}
+  cancel();revision++;proof=gateProof=scan=null;follower=null;routeSession=false;held=0;lastSensor=0;lastLiveFrame=0;
+  actions=saved.actions;phase=saved.phase;paused=false;input={v:0,w:0,brake:true};showcaseStill=0;checkpointRestarts++;
+  showcase=new MissionShowcase(true,mission.start[0]+.55);Object.assign(showcase,saved.showcase);
+  // Only this explicit reset uses a worker-owned saved physical state. No
+  // client-supplied pose is accepted, and every old rehearsal is invalidated.
+  newLive(saved.physical,saved);postMessage({type:'checkpointRestored',checkpoint:{id:saved.id,label:saved.label},gameMode,checkpointRestarts});
+  postMessage({type:'observation',...live.observeRocks()});
+  if(showcase.active)postMessage({type:'showcasePrompt'});
+}
 async function previewRoute(message){
   const requestId=message.requestId;
   if(!showcase.canContinue(selected)){reject('先转动已有的完整3D模型，看看另一面，再在脑中试路。');return;}
@@ -67,15 +94,18 @@ function tick(){
     held=now.goalDistance<.35&&now.speed<.035&&over&&!live.legControl?held+live.timestep:0;
     if(held>.35){phase='complete';paused=true;cancel();postMessage({type:'missionComplete',state:now,actions,modelWorlds:proof?.results.length||0});break;}
   }
-  if(showcase.locked&&showcase.stage==='braking'&&showcaseStill>.45&&showcase.stopped())postMessage({type:'showcasePrompt'});
+  if(showcase.locked&&showcase.stage==='braking'&&showcaseStill>.45&&showcase.stopped()){saveCheckpoint('observation','高石观察点');postMessage({type:'showcasePrompt'});}
+  if(gameMode==='explore'&&!checkpoints.has('threshold')&&phase==='gate'&&!follower&&!live.legControl&&live.state().x<mission.gate.near-.4&&Math.abs(live.state().y)<.12&&Math.abs(live.state().yaw)<.08&&live.observeGate().valid)saveCheckpoint('threshold','门槛整备点');
+  if(gameMode==='explore'&&!checkpoints.has('finish')&&phase==='finish-drive'&&!live.legControl&&live.anchors().every(p=>p[0]-.086>mission.gate.far))saveCheckpoint('finish','门槛后');
   if(live.elapsed-lastSensor>.35){lastSensor=live.elapsed;postMessage({type:'observation',...live.observeRocks()});}
   if(showcase.locked||paused||['complete','failed'].includes(phase)||live.elapsed-lastLiveFrame>=.05){lastLiveFrame=live.elapsed;frame();}
 }
 onmessage=async({data:m})=>{
   try{
     if(m.type==='init'){
-      mission=m.mission;showcase=new MissionShowcase(m.showcase===true,mission.start[0]+.55);sensorVerticalFov=clamp(m.sensorVerticalFov||45,15,120);const [wasm,bundle]=await Promise.all([inflateGzip(m.wasm),inflateGzip(m.bundle)]);mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));newLive();postMessage({type:'ready',engine:mj.mj_versionString()});postMessage({type:'observation',...live.observeRocks()});setInterval(tick,20);
-    }else if(m.type==='reset'){showcase=new MissionShowcase(showcase.enabled,mission.start[0]+.55);showcaseStill=0;cancel();proof=gateProof=scan=null;routeSession=false;follower=null;held=actions=lastSensor=lastLiveFrame=0;phase='explore';paused=false;input={v:0,w:0,brake:true};newLive();postMessage({type:'resetDone'});postMessage({type:'observation',...live.observeRocks()});}
+      mission=m.mission;gameMode=m.gameMode==='challenge'?'challenge':'explore';checkpoints.clear();checkpointRestarts=0;showcase=new MissionShowcase(m.showcase===true,mission.start[0]+.55);sensorVerticalFov=clamp(m.sensorVerticalFov||45,15,120);const [wasm,bundle]=await Promise.all([inflateGzip(m.wasm),inflateGzip(m.bundle)]);mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));newLive();postMessage({type:'ready',engine:mj.mj_versionString()});postMessage({type:'observation',...live.observeRocks()});setInterval(tick,20);
+    }else if(m.type==='reset'){gameMode=m.gameMode===undefined?gameMode:m.gameMode==='challenge'?'challenge':'explore';checkpoints.clear();checkpointRestarts=0;revision++;showcase=new MissionShowcase(showcase.enabled,mission.start[0]+.55);showcaseStill=0;cancel();proof=gateProof=scan=null;routeSession=false;follower=null;held=actions=lastSensor=lastLiveFrame=0;phase='explore';paused=false;input={v:0,w:0,brake:true};newLive();postMessage({type:'resetDone',gameMode});postMessage({type:'observation',...live.observeRocks()});}
+    else if(m.type==='retryCheckpoint')restoreCheckpoint(m.checkpointId);
     else if(m.type==='selection'){
       cancel();revision++;selected=m.selected.filter(id=>mission.candidates.some(c=>c.task_id===id&&accepted(c,mission.thresholds)));policy=m.policy||'imagination';showcase.selectionChanged(selected);proof=gateProof=null;routeSession=false;follower=null;frame();
     }else if(m.type==='preview')await previewRoute(m);
@@ -85,7 +115,7 @@ onmessage=async({data:m})=>{
     else if(m.type==='execute'){
       if(!showcase.canContinue(selected)){reject('先看看完整模型的另一面，再决定走法。');return;}
       if(live.legControl||!usableProof(proof,live.state(),revision)){reject('这条路线尚未在当前位置和当前候选中预演通过；先停稳重新预演。');return;}
-      showcase.release('assisted',selected);follower=new RouteFollower(proof.plan.path);routeSession=true;paused=false;input={v:0,w:0,brake:true};postMessage({type:'routeStarted'});frame();
+      showcase.release('assisted',selected);follower=new RouteFollower(proof.plan.path);routeSession=true;paused=false;input={v:0,w:0,brake:true};postMessage({type:'routeStarted',requestId:proof.requestId,revision:proof.revision,worlds:proof.results.length});frame();
     }else if(m.type==='follow'){
       if(live.legControl||!proof?.passed||proof.revision!==revision||!routeSession){reject('先执行一条在当前位置预演通过的路线。');return;}
       const progress=progressOnPath(live.state(),proof.plan.path);

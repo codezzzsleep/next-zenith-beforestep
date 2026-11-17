@@ -82,6 +82,12 @@ export class MissionScene{
     if(this.line){this.scene.remove(this.line);this.line.geometry.dispose();this.line.material.dispose();}this.line=null;if(!plan?.path)return;
     this.line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(p[0],p[1],.04))),new THREE.LineDashedMaterial({color:passed?'#53cdb9':'#f0a93b',dashSize:.12,gapSize:passed?0:.09,depthTest:false}));this.line.computeLineDistances();this.line.renderOrder=4;this.scene.add(this.line);
   }
+  setObjective(point){
+    if(!this.objectiveMarker){this.objectiveMarker=new THREE.Mesh(new THREE.TorusGeometry(.18,.018,8,40),new THREE.MeshBasicMaterial({color:'#e4b45e'}));this.scene.add(this.objectiveMarker);}
+    this.objectiveMarker.visible=!!point;
+    if(point)this.objectiveMarker.position.set(point[0],point[1],.035);
+    this.dirty=true;
+  }
   setView(view){
     this.dirty=true;this.view=view;this.controls.enabled=view!==1;if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
     if(view===0||view===1)this.camera.position.set(s.x-1.5*Math.cos(s.yaw)+1.4*Math.sin(s.yaw),s.y-1.5*Math.sin(s.yaw)-1.4*Math.cos(s.yaw),s.z+1.2);

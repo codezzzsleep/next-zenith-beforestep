@@ -16,7 +16,7 @@
 | 相机、原材质与 M20 外观 | `site/mission-scene.js`、`site/mission-appearance.js`、`site/mission-camera.js` |
 | 练习、挑战和事件复盘 | `site/mission-gameplay.js`、`site/mission-run.js` |
 
-预演世界独立于真实世界，运动来自原电机力矩。当前默认两世界与原 R1 十二世界分别保存；[当前原片与测试](judges-demo.md)。
+预演世界独立于真实世界，运动来自原电机力矩。当前初始一世界、评审对比两世界与原 R1 十二世界分别保存；[当前原片与测试](judges-demo.md)。
 
 ## 冻结 R1 Python 研究
 

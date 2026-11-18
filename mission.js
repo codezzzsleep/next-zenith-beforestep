@@ -3,7 +3,7 @@ import {StartupLoader} from './startup-loader.js?v=cdn-startup-1';
 import {MissionGameplay} from './mission-gameplay.js?v=spatial-judgment-1';
 import {nextHypotheses} from './mission-run.js?v=spatial-judgment-1';
 import {compareRoutes,routeInsight,physicalCollision} from './mission-insight.js?v=spatial-judgment-1';
-import {MissionScene} from './mission-scene.js?v=spatial-judgment-1';
+import {MissionScene} from './mission-scene.js?v=known-surface-20261118-1';
 import {inflateGzip} from './robot-physics.js?v=mission-1';
 import {accepted,admissionChecks,planRoute,modelWorlds} from './mission-planner.js?v=mission-1';
 const $=id=>document.getElementById(id),stage=$('main'),labels=['右前','左前','右后','左后'];

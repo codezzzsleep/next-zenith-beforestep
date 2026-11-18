@@ -1,0 +1,78 @@
+{
+  "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+  "passed": true,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "source": "Current real UI supplement: original photo, same-input real candidates and registered local map. Independent observation checkpoint; no replay or pose injection.",
+  "pose_injected": false,
+  "page_errors": [],
+  "final": {
+    "x": 2.8529380049717337,
+    "y": -0.502826181784174,
+    "z": 0.38508383696257326,
+    "poseName": "normal",
+    "yaw": -5.610556637287398e-05,
+    "tilt": 0.31117098417123173,
+    "speed": 0.00044771795615255886,
+    "elapsed": 4.519999999999724,
+    "steps": 2260,
+    "finite": true,
+    "goalDistance": 7.763362913319136,
+    "legs": null,
+    "phase": "explore",
+    "paused": true,
+    "automatic": false,
+    "revision": 5,
+    "selected": [
+      5958934,
+      5958948
+    ],
+    "policy": "imagination",
+    "observationVersion": 0,
+    "measuredCells": 0,
+    "sensor": {
+      "yaw": 0.11116473892157605,
+      "verticalFov": 41.554596568496
+    },
+    "initialJudgment": "unsure",
+    "judgmentReady": true,
+    "actionCount": 0,
+    "stable": true,
+    "gameMode": "explore",
+    "checkpoint": {
+      "id": "observation",
+      "label": "高石观察点"
+    },
+    "checkpointRestarts": 0,
+    "showcase": {
+      "enabled": true,
+      "checkpointX": 2.8499999999999996,
+      "stage": "decision",
+      "active": true,
+      "completed": false,
+      "viewedTask": null,
+      "releaseMode": null,
+      "triggers": 1,
+      "initialJudgment": "unsure"
+    },
+    "scan": null,
+    "proof": null,
+    "gateProof": null
+  },
+  "capture_method": "Chromium CDP screencast of native GPU page; actual cadence is measured separately",
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4090/PCIe/SSE2, OpenGL ES 3.2)",
+  "encoding": "CPU libx264 CRF17; NVENC OpenEncodeSessionEx reports unsupported device on this instance",
+  "audio": "silent stereo track",
+  "cadence": {
+    "captured_frames": 1942,
+    "capture_seconds": 66.3714953623712,
+    "mean_capture_frames_per_second": 29.259548687236624,
+    "median_interval_seconds": 0.02613856364041567,
+    "p95_interval_seconds": 0.04786034859716892,
+    "max_interval_seconds": 6.433161349967122,
+    "active_intervals": [],
+    "note": "MP4 is CFR 30 fps. CDP emits fewer frames during unchanged screens; actual capture cadence is reported, not inferred from the encoded rate."
+  }
+}

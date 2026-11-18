@@ -1,6 +1,6 @@
 {
-  "schema": "beforestep-judges-demo/v1",
-  "status": "gameplay_verified_recording_pending",
+  "schema": "beforestep-judges-demo/v2",
+  "status": "raw_material_recorded_and_decoded",
   "source_baseline": "a60571980abeefa479cd34976dd18509f9cda883",
   "review_baseline": "1d2298527afd87e569bc6775ebc9ea3eec87fae8",
   "position": "利用 Lux3D 的三维生成能力构建局部空间假设，支持导航与探索",
@@ -69,6 +69,1552 @@
     }
   },
   "study_index": "study-index.json",
-  "recordings": [],
-  "note": "New 1080p raw recording is still pending. Frozen study replays are identified separately; this manifest does not claim a completed new film."
+  "recordings": [
+    {
+      "file": "00-full-run.mp4",
+      "source_type": "continuous current UI mother",
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "download": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/download/judges-demo-20261118/00-full-run.mp4",
+      "bytes": 90198700,
+      "sha256": "59df5e64488cac17bab916c8b928cf2e0b258721bc4586ef5f104e67067e900f",
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "299.666667"
+        }
+      }
+    },
+    {
+      "file": "04b-hold.mp4",
+      "source_type": "current UI expired permission, real supplement, voluntary hold",
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "download": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/download/judges-demo-20261118/04b-hold.mp4",
+      "bytes": 6788497,
+      "sha256": "4721134d7ede8cf879703a8d9888c019455a8680ace02474574cd6ce5b5c59d6",
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "63.333333"
+        }
+      }
+    },
+    {
+      "file": "02-03-space-comparison.mp4",
+      "source_type": "independent current UI model/map supplement",
+      "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+      "download": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/download/judges-demo-20261118/02-03-space-comparison.mp4",
+      "bytes": 4476800,
+      "sha256": "d8fa30e985fc0f30bd30b78be76e46efadbf56ae63019fab13be7de2a8f7007b",
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "66.366667"
+        }
+      }
+    },
+    {
+      "file": "01-first-look.mp4",
+      "source": "00-full-run.mp4",
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "source_video_in": 7.4806685810908675,
+      "source_video_out": 26.151895230636,
+      "description": "M20 approaches, first-person limited view and recorded initial judgment",
+      "speed": 1,
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "18.700000"
+        }
+      },
+      "bytes": 3099561,
+      "sha256": "4fa0c0c0fadf2b896cc9163a034c50e00a5b9a5fb2c3efd1946476c6a101329f",
+      "source_type": "native current UI excerpt, real speed",
+      "download_in_archive": "01-first-look.mp4"
+    },
+    {
+      "file": "02-one-photo-two-backs.mp4",
+      "source": "02-03-space-comparison.mp4",
+      "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+      "source_video_in": 16.79173092544079,
+      "source_video_out": 48.13459741324186,
+      "description": "Same original photo, two real candidate backs, original rejected contour check",
+      "speed": 1,
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "31.366667"
+        }
+      },
+      "bytes": 2098515,
+      "sha256": "c1e04b884ea56af986d77d25124c6d94f06ea0718d68674e010a201d52e32286",
+      "source_type": "native current UI excerpt, real speed",
+      "download_in_archive": "02-one-photo-two-backs.mp4"
+    },
+    {
+      "file": "03-gap-and-route.mp4",
+      "source": "02-03-space-comparison.mp4",
+      "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+      "source_video_in": 47.13459741324186,
+      "source_video_out": 65.95343974605203,
+      "description": "Fixed registered local map, actual candidate footprint and route selection",
+      "speed": 1,
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "18.833333"
+        }
+      },
+      "bytes": 651395,
+      "sha256": "9c1c2d060184324fac00111904eadcf66300fb4b8dcba3e1cefbc3bcd0d6e083",
+      "source_type": "native current UI excerpt, real speed",
+      "download_in_archive": "03-gap-and-route.mp4"
+    },
+    {
+      "file": "04a-release.mp4",
+      "source": "00-full-run.mp4",
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "source_video_in": 64.983129943721,
+      "source_video_out": 87.21614016126841,
+      "description": "Actual two-world completion and enabled assisted departure",
+      "speed": 1,
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "22.233333"
+        }
+      },
+      "bytes": 2628481,
+      "sha256": "de123b5cb417b91c589e13105afe59137c805cb68a729dc7424094fef41f5802",
+      "source_type": "native current UI excerpt, real speed",
+      "download_in_archive": "04a-release.mp4"
+    },
+    {
+      "file": "05-drive-reveal.mp4",
+      "source": "00-full-run.mp4",
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "source_video_in": 86.21614016126841,
+      "source_video_out": 144.22120255045593,
+      "description": "Actual drive through gap and later side view revealing the back",
+      "speed": 1,
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "58.033333"
+        }
+      },
+      "bytes": 27325456,
+      "sha256": "ef03097e3a8cacf2546e81c1c962e4eeb95c6c87a1952dd616a84e5661444ba0",
+      "source_type": "native current UI excerpt, real speed",
+      "download_in_archive": "05-drive-reveal.mp4"
+    },
+    {
+      "file": "06-legs-and-goal.mp4",
+      "source": "00-full-run.mp4",
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "source_video_in": 181.22706218250096,
+      "source_video_out": 296.2502459930256,
+      "description": "Twelve player-triggered leg commands, wheel mode and actual beacon arrival",
+      "speed": 1,
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "115.033333"
+        }
+      },
+      "bytes": 35793444,
+      "sha256": "019e3e7a2971e5e691c403c104a592aef40b53e0778926fa343b519b2e68a458",
+      "source_type": "native current UI excerpt, real speed",
+      "download_in_archive": "06-legs-and-goal.mp4"
+    }
+  ],
+  "note": "Current native recordings and frozen historical study footage are identified individually. This delivers editor material; the director produces the 112-second final film. Public download checks are recorded separately in verification/public-downloads.json.",
+  "source_capture_commits": {
+    "mother": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+    "hold": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+    "comparison": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f"
+  },
+  "release_tag": "judges-demo-20261118",
+  "download_base": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/download/judges-demo-20261118/",
+  "archive": {
+    "file": "BeforeStep-judges-raw-20261118.zip",
+    "bytes": 193588699,
+    "sha256": "ae91c2ef3a0b2543336653d197e1339019483288eb46ecb09f4efc7844008f59",
+    "download": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/download/judges-demo-20261118/BeforeStep-judges-raw-20261118.zip"
+  },
+  "new_generation_requests": 0,
+  "editor_material": {
+    "schema": "beforestep-editor-material/v1",
+    "passed": true,
+    "created_utc": "2026-11-18T18:31:25.969788+00:00",
+    "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+    "mother": {
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "file": "00-full-run.mp4",
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "299.666667"
+        }
+      },
+      "cadence": {
+        "captured_frames": 8407,
+        "capture_seconds": 299.6212270380929,
+        "mean_capture_frames_per_second": 28.058759665019195,
+        "median_interval_seconds": 0.03300483664497733,
+        "p95_interval_seconds": 0.04986392706632614,
+        "max_interval_seconds": 6.457992279902101,
+        "active_intervals": [
+          {
+            "chapter": "first_person_actual_drive",
+            "seconds": 95.01092202123255,
+            "captured_frames": 2824,
+            "captured_frames_per_second": 29.72289858811082
+          },
+          {
+            "chapter": "twelve_player_leg_commands_begin",
+            "seconds": 103.69870817288756,
+            "captured_frames": 3082,
+            "captured_frames_per_second": 29.72071739661074
+          },
+          {
+            "chapter": "all_four_legs_over_threshold",
+            "seconds": 5.260228258557618,
+            "captured_frames": 158,
+            "captured_frames_per_second": 30.03671936535401
+          }
+        ],
+        "note": "MP4 is CFR 30 fps. CDP emits fewer frames during unchanged screens; actual capture cadence is reported, not inferred from the encoded rate."
+      },
+      "final": {
+        "x": 10.26192838167092,
+        "y": -0.02059047415772709,
+        "z": 0.46778888447694217,
+        "poseName": "high",
+        "yaw": -0.1250294882149292,
+        "tilt": 0.12297484726733039,
+        "speed": 0.00410882277895548,
+        "elapsed": 184.8060000001543,
+        "steps": 92403,
+        "finite": true,
+        "goalDistance": 0.3386980760879562,
+        "legs": null,
+        "phase": "complete",
+        "paused": true,
+        "automatic": false,
+        "revision": 6,
+        "selected": [
+          5958934,
+          5958948,
+          5959025
+        ],
+        "policy": "imagination",
+        "observationVersion": 0,
+        "measuredCells": 0,
+        "sensor": {
+          "yaw": 0,
+          "verticalFov": 41.554596568496
+        },
+        "initialJudgment": "pass",
+        "judgmentReady": true,
+        "actionCount": 12,
+        "stable": true,
+        "gameMode": "explore",
+        "checkpoint": {
+          "id": "finish",
+          "label": "门槛后"
+        },
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "high-rocks",
+          "active": false,
+          "completed": true,
+          "viewedTask": null,
+          "releaseMode": "assisted",
+          "triggers": 1,
+          "initialJudgment": "pass"
+        },
+        "scan": {
+          "valid": true,
+          "near": 9.1,
+          "far": 9.198447321064835,
+          "high": 0.12,
+          "heightAboveGround": 0.11911764562129978,
+          "depth": 0.09844732106483534,
+          "camera": [
+            8.84630684211148,
+            -0.004919983348505649,
+            0.38433744576330137
+          ],
+          "points": null,
+          "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+        },
+        "proof": {
+          "passed": true,
+          "requestId": 1,
+          "usable": false,
+          "routeSession": true,
+          "revision": 6,
+          "observationVersion": 0,
+          "worlds": 2,
+          "path": [
+            [
+              2.8531196272108423,
+              -0.5022710398526029
+            ],
+            [
+              4.6,
+              0.5000000000000004
+            ],
+            [
+              5.4999999999999964,
+              4.163336342344337e-16
+            ],
+            [
+              5.799999999999995,
+              -0.5999999999999995
+            ],
+            [
+              7.19999999999999,
+              -0.6999999999999995
+            ],
+            [
+              8.45,
+              0
+            ]
+          ],
+          "length": 6.550590839107697,
+          "anchor": {
+            "x": 2.8531196272108423,
+            "y": -0.5022710398526029,
+            "z": 0.385081438360114,
+            "poseName": "normal",
+            "yaw": -0.0010885672624860513,
+            "tilt": 0.2980185583776858,
+            "speed": 0.00027861973362048616,
+            "elapsed": 6.159999999999544,
+            "steps": 3080,
+            "finite": true,
+            "goalDistance": 7.763145735317641,
+            "legs": null
+          }
+        },
+        "gateProof": null
+      }
+    },
+    "hold": {
+      "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+      "file": "04b-hold.mp4",
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "63.333333"
+        }
+      },
+      "cadence": {
+        "captured_frames": 1149,
+        "capture_seconds": 63.363457704894245,
+        "mean_capture_frames_per_second": 18.133480110117954,
+        "median_interval_seconds": 0.03073655115440488,
+        "p95_interval_seconds": 0.15300698392093182,
+        "max_interval_seconds": 7.012517756782472,
+        "active_intervals": [],
+        "note": "MP4 is CFR 30 fps. CDP emits fewer frames during unchanged screens; actual capture cadence is reported, not inferred from the encoded rate."
+      },
+      "final": {
+        "x": 3.210455755921534,
+        "y": -0.2968564485570671,
+        "z": 0.38513991813295384,
+        "poseName": "normal",
+        "yaw": 0.5076487257549638,
+        "tilt": 0.2881802228120258,
+        "speed": 0.00028050729837067576,
+        "elapsed": 9.10399999999971,
+        "steps": 4552,
+        "finite": true,
+        "goalDistance": 7.395504572795767,
+        "legs": null,
+        "phase": "stopped",
+        "paused": true,
+        "automatic": false,
+        "revision": 6,
+        "selected": [
+          5958934,
+          5959025
+        ],
+        "policy": "imagination",
+        "observationVersion": 1,
+        "measuredCells": 9,
+        "sensor": {
+          "yaw": 0,
+          "verticalFov": 41.554596568496
+        },
+        "initialJudgment": "unsure",
+        "judgmentReady": true,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "explore",
+        "checkpoint": {
+          "id": "observation",
+          "label": "高石观察点"
+        },
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "high-rocks",
+          "active": false,
+          "completed": true,
+          "viewedTask": null,
+          "releaseMode": "hold",
+          "triggers": 1,
+          "initialJudgment": "unsure"
+        },
+        "scan": {
+          "valid": false,
+          "reason": "threshold_not_visible_from_current_pose",
+          "camera": [
+            3.6048710629871135,
+            -0.07705100654057165,
+            0.39576097144739775
+          ],
+          "points": null
+        },
+        "proof": null,
+        "gateProof": null
+      },
+      "description": "Current playable branch: changed selection and real supplemental observation invalidate old permission; player chooses to stop. This is not the frozen R3 automatic insufficient-evidence stop."
+    },
+    "comparison": {
+      "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+      "file": "02-03-space-comparison.mp4",
+      "specification": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 1920,
+            "height": 1080,
+            "pix_fmt": "yuv420p",
+            "avg_frame_rate": "30/1"
+          },
+          {
+            "codec_name": "aac",
+            "avg_frame_rate": "0/0"
+          }
+        ],
+        "format": {
+          "duration": "66.366667"
+        }
+      },
+      "map_visibility": {
+        "canvas": {
+          "x": 73.609375,
+          "y": 354.140625,
+          "width": 1772.796875,
+          "height": 512.359375
+        },
+        "body": {
+          "x": 59.609375,
+          "y": 174,
+          "width": 1800.796875,
+          "height": 704.5
+        },
+        "visible_ratio": 1.0
+      },
+      "pair_label_bounds": {
+        "x": 1163.015625,
+        "y": 837.734375,
+        "width": 673.390625,
+        "height": 26
+      }
+    },
+    "clips": [
+      {
+        "file": "01-first-look.mp4",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "source_video_in": 7.4806685810908675,
+        "source_video_out": 26.151895230636,
+        "description": "M20 approaches, first-person limited view and recorded initial judgment",
+        "speed": 1,
+        "specification": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "pix_fmt": "yuv420p",
+              "avg_frame_rate": "30/1"
+            },
+            {
+              "codec_name": "aac",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "18.700000"
+          }
+        }
+      },
+      {
+        "file": "02-one-photo-two-backs.mp4",
+        "source": "02-03-space-comparison.mp4",
+        "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+        "source_video_in": 16.79173092544079,
+        "source_video_out": 48.13459741324186,
+        "description": "Same original photo, two real candidate backs, original rejected contour check",
+        "speed": 1,
+        "specification": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "pix_fmt": "yuv420p",
+              "avg_frame_rate": "30/1"
+            },
+            {
+              "codec_name": "aac",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "31.366667"
+          }
+        }
+      },
+      {
+        "file": "03-gap-and-route.mp4",
+        "source": "02-03-space-comparison.mp4",
+        "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+        "source_video_in": 47.13459741324186,
+        "source_video_out": 65.95343974605203,
+        "description": "Fixed registered local map, actual candidate footprint and route selection",
+        "speed": 1,
+        "specification": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "pix_fmt": "yuv420p",
+              "avg_frame_rate": "30/1"
+            },
+            {
+              "codec_name": "aac",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "18.833333"
+          }
+        }
+      },
+      {
+        "file": "04a-release.mp4",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "source_video_in": 64.983129943721,
+        "source_video_out": 87.21614016126841,
+        "description": "Actual two-world completion and enabled assisted departure",
+        "speed": 1,
+        "specification": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "pix_fmt": "yuv420p",
+              "avg_frame_rate": "30/1"
+            },
+            {
+              "codec_name": "aac",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "22.233333"
+          }
+        }
+      },
+      {
+        "file": "05-drive-reveal.mp4",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "source_video_in": 86.21614016126841,
+        "source_video_out": 144.22120255045593,
+        "description": "Actual drive through gap and later side view revealing the back",
+        "speed": 1,
+        "specification": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "pix_fmt": "yuv420p",
+              "avg_frame_rate": "30/1"
+            },
+            {
+              "codec_name": "aac",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "58.033333"
+          }
+        }
+      },
+      {
+        "file": "06-legs-and-goal.mp4",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "source_video_in": 181.22706218250096,
+        "source_video_out": 296.2502459930256,
+        "description": "Twelve player-triggered leg commands, wheel mode and actual beacon arrival",
+        "speed": 1,
+        "specification": {
+          "programs": [],
+          "streams": [
+            {
+              "codec_name": "h264",
+              "width": 1920,
+              "height": 1080,
+              "pix_fmt": "yuv420p",
+              "avg_frame_rate": "30/1"
+            },
+            {
+              "codec_name": "aac",
+              "avg_frame_rate": "0/0"
+            }
+          ],
+          "format": {
+            "duration": "115.033333"
+          }
+        }
+      }
+    ],
+    "stills": [
+      {
+        "file": "01-limited-first-look.png",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "video_seconds": 21.975276830606163,
+        "state": {
+          "x": 2.8531196272108423,
+          "y": -0.5022710398526029,
+          "z": 0.385081438360114,
+          "poseName": "normal",
+          "yaw": -0.0010885672624860513,
+          "tilt": 0.2980185583776858,
+          "speed": 0.00027861973362048616,
+          "elapsed": 6.159999999999544,
+          "steps": 3080,
+          "finite": true,
+          "goalDistance": 7.763145735317641,
+          "legs": null,
+          "phase": "explore",
+          "paused": true,
+          "automatic": false,
+          "revision": 1,
+          "selected": [
+            5959025,
+            5958934
+          ],
+          "policy": "optimistic",
+          "observationVersion": 0,
+          "measuredCells": 0,
+          "sensor": {
+            "yaw": 0.1121822692645248,
+            "verticalFov": 41.554596568496
+          },
+          "initialJudgment": null,
+          "judgmentReady": true,
+          "actionCount": 0,
+          "stable": true,
+          "gameMode": "explore",
+          "checkpoint": {
+            "id": "observation",
+            "label": "高石观察点"
+          },
+          "checkpointRestarts": 0,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "observe",
+            "active": true,
+            "completed": false,
+            "viewedTask": null,
+            "releaseMode": null,
+            "triggers": 1,
+            "initialJudgment": null
+          },
+          "scan": null,
+          "proof": null,
+          "gateProof": null
+        },
+        "selected": [
+          5959025,
+          5958934
+        ],
+        "map": {
+          "selected": [
+            5958934,
+            5959025
+          ],
+          "visibleCells": 1289,
+          "hypothesisCells": 189,
+          "visibleRoute": true,
+          "hypothesisRoute": true,
+          "clearanceMargin": -0.020000000000000018,
+          "passed": false
+        },
+        "canvas": [
+          1920,
+          1080
+        ],
+        "photo_source": null
+      },
+      {
+        "file": "02-one-photo-two-backs-and-checks.png",
+        "source": "02-03-space-comparison.mp4",
+        "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+        "video_seconds": 32.49551988765597,
+        "state": {
+          "x": 2.8529380049717337,
+          "y": -0.502826181784174,
+          "z": 0.38508383696257326,
+          "poseName": "normal",
+          "yaw": -5.610556637287398e-05,
+          "tilt": 0.31117098417123173,
+          "speed": 0.00044771795615255886,
+          "elapsed": 4.519999999999724,
+          "steps": 2260,
+          "finite": true,
+          "goalDistance": 7.763362913319136,
+          "legs": null,
+          "phase": "explore",
+          "paused": true,
+          "automatic": false,
+          "revision": 2,
+          "selected": [
+            5958934,
+            5958948
+          ],
+          "policy": "optimistic",
+          "observationVersion": 0,
+          "measuredCells": 0,
+          "sensor": {
+            "yaw": 0.11116473892157605,
+            "verticalFov": 41.554596568496
+          },
+          "initialJudgment": "unsure",
+          "judgmentReady": true,
+          "actionCount": 0,
+          "stable": true,
+          "gameMode": "explore",
+          "checkpoint": {
+            "id": "observation",
+            "label": "高石观察点"
+          },
+          "checkpointRestarts": 0,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "decision",
+            "active": true,
+            "completed": false,
+            "viewedTask": null,
+            "releaseMode": null,
+            "triggers": 1,
+            "initialJudgment": "unsure"
+          },
+          "scan": null,
+          "proof": null,
+          "gateProof": null
+        },
+        "selected": [
+          5958934,
+          5958948
+        ],
+        "map": {
+          "selected": [
+            5958934,
+            5958948
+          ],
+          "visibleCells": 1289,
+          "hypothesisCells": 189,
+          "visibleRoute": true,
+          "hypothesisRoute": true,
+          "clearanceMargin": -0.022786404500042046,
+          "passed": false
+        },
+        "canvas": [
+          1920,
+          1080
+        ],
+        "photo_source": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg"
+      },
+      {
+        "file": "03-footprint-and-route.png",
+        "source": "02-03-space-comparison.mp4",
+        "code_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+        "video_seconds": 62.97087686508894,
+        "state": {
+          "x": 2.8529380049717337,
+          "y": -0.502826181784174,
+          "z": 0.38508383696257326,
+          "poseName": "normal",
+          "yaw": -5.610556637287398e-05,
+          "tilt": 0.31117098417123173,
+          "speed": 0.00044771795615255886,
+          "elapsed": 4.519999999999724,
+          "steps": 2260,
+          "finite": true,
+          "goalDistance": 7.763362913319136,
+          "legs": null,
+          "phase": "explore",
+          "paused": true,
+          "automatic": false,
+          "revision": 5,
+          "selected": [
+            5958934,
+            5958948
+          ],
+          "policy": "imagination",
+          "observationVersion": 0,
+          "measuredCells": 0,
+          "sensor": {
+            "yaw": 0.11116473892157605,
+            "verticalFov": 41.554596568496
+          },
+          "initialJudgment": "unsure",
+          "judgmentReady": true,
+          "actionCount": 0,
+          "stable": true,
+          "gameMode": "explore",
+          "checkpoint": {
+            "id": "observation",
+            "label": "高石观察点"
+          },
+          "checkpointRestarts": 0,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "decision",
+            "active": true,
+            "completed": false,
+            "viewedTask": null,
+            "releaseMode": null,
+            "triggers": 1,
+            "initialJudgment": "unsure"
+          },
+          "scan": null,
+          "proof": null,
+          "gateProof": null
+        },
+        "selected": [
+          5958934,
+          5958948
+        ],
+        "map": {
+          "selected": [
+            5958934,
+            5958948
+          ],
+          "visibleCells": 1289,
+          "hypothesisCells": 189,
+          "visibleRoute": true,
+          "hypothesisRoute": true,
+          "clearanceMargin": -0.022786404500042046,
+          "passed": false
+        },
+        "canvas": [
+          1920,
+          1080
+        ],
+        "photo_source": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg"
+      },
+      {
+        "file": "04-rehearsal-decision.png",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "video_seconds": 86.84586763754487,
+        "state": {
+          "x": 2.8531196272108423,
+          "y": -0.5022710398526029,
+          "z": 0.385081438360114,
+          "poseName": "normal",
+          "yaw": -0.0010885672624860513,
+          "tilt": 0.2980185583776858,
+          "speed": 0.00027861973362048616,
+          "elapsed": 6.159999999999544,
+          "steps": 3080,
+          "finite": true,
+          "goalDistance": 7.763145735317641,
+          "legs": null,
+          "phase": "explore",
+          "paused": true,
+          "automatic": false,
+          "revision": 6,
+          "selected": [
+            5958934,
+            5958948,
+            5959025
+          ],
+          "policy": "imagination",
+          "observationVersion": 0,
+          "measuredCells": 0,
+          "sensor": {
+            "yaw": 0.1121822692645248,
+            "verticalFov": 41.554596568496
+          },
+          "initialJudgment": "pass",
+          "judgmentReady": true,
+          "actionCount": 0,
+          "stable": true,
+          "gameMode": "explore",
+          "checkpoint": {
+            "id": "observation",
+            "label": "高石观察点"
+          },
+          "checkpointRestarts": 0,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "decision",
+            "active": true,
+            "completed": false,
+            "viewedTask": null,
+            "releaseMode": null,
+            "triggers": 1,
+            "initialJudgment": "pass"
+          },
+          "scan": null,
+          "proof": {
+            "passed": true,
+            "requestId": 1,
+            "usable": true,
+            "routeSession": false,
+            "revision": 6,
+            "observationVersion": 0,
+            "worlds": 2,
+            "path": [
+              [
+                2.8531196272108423,
+                -0.5022710398526029
+              ],
+              [
+                4.6,
+                0.5000000000000004
+              ],
+              [
+                5.4999999999999964,
+                4.163336342344337e-16
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ],
+            "length": 6.550590839107697,
+            "anchor": {
+              "x": 2.8531196272108423,
+              "y": -0.5022710398526029,
+              "z": 0.385081438360114,
+              "poseName": "normal",
+              "yaw": -0.0010885672624860513,
+              "tilt": 0.2980185583776858,
+              "speed": 0.00027861973362048616,
+              "elapsed": 6.159999999999544,
+              "steps": 3080,
+              "finite": true,
+              "goalDistance": 7.763145735317641,
+              "legs": null
+            }
+          },
+          "gateProof": null
+        },
+        "selected": [
+          5958934,
+          5958948,
+          5959025
+        ],
+        "map": {
+          "selected": [
+            5958934,
+            5958948,
+            5959025
+          ],
+          "visibleCells": 1289,
+          "hypothesisCells": 192,
+          "visibleRoute": true,
+          "hypothesisRoute": true,
+          "clearanceMargin": -0.022786404500042046,
+          "passed": true
+        },
+        "canvas": [
+          1920,
+          1080
+        ],
+        "photo_source": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg"
+      },
+      {
+        "file": "05-M20-leg-action.png",
+        "source": "00-full-run.mp4",
+        "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+        "video_seconds": 216.36848230939358,
+        "state": {
+          "x": 8.970554404082035,
+          "y": 0.02672017717535659,
+          "z": 0.3833836612617372,
+          "poseName": "normal",
+          "yaw": 0.01860666963477751,
+          "tilt": 2.6554126142064733,
+          "speed": 0.013553667843606235,
+          "elapsed": 115.6799999999118,
+          "steps": 57840,
+          "finite": true,
+          "goalDistance": 1.6296646642560344,
+          "legs": {
+            "selected": 0,
+            "mode": "crossing",
+            "phase": "advance",
+            "busy": true,
+            "waiting": null,
+            "lifted": true,
+            "swing": 0,
+            "positions": [
+              [
+                9.187740374071016,
+                -0.09998386887642435,
+                0.2475620812406686
+              ],
+              [
+                8.99949453731948,
+                -0.007541616851130625,
+                0.10793277475911453
+              ],
+              [
+                8.767429238201457,
+                -0.147035385272401,
+                0.08301633929148744
+              ],
+              [
+                8.769199939972038,
+                0.139787215654462,
+                0.09173232011440427
+              ]
+            ],
+            "loads": [
+              0,
+              26.290453386136313,
+              3.190915830611308,
+              3.3508818783226504
+            ],
+            "crossed": [],
+            "error": null
+          },
+          "phase": "crossing",
+          "paused": false,
+          "automatic": false,
+          "revision": 6,
+          "selected": [
+            5958934,
+            5958948,
+            5959025
+          ],
+          "policy": "imagination",
+          "observationVersion": 0,
+          "measuredCells": 0,
+          "sensor": {
+            "yaw": 0,
+            "verticalFov": 41.554596568496
+          },
+          "initialJudgment": "pass",
+          "judgmentReady": true,
+          "actionCount": 2,
+          "stable": true,
+          "gameMode": "explore",
+          "checkpoint": {
+            "id": "threshold",
+            "label": "门槛整备点"
+          },
+          "checkpointRestarts": 0,
+          "showcase": {
+            "enabled": true,
+            "checkpointX": 2.8499999999999996,
+            "stage": "high-rocks",
+            "active": false,
+            "completed": true,
+            "viewedTask": null,
+            "releaseMode": "assisted",
+            "triggers": 1,
+            "initialJudgment": "pass"
+          },
+          "scan": {
+            "valid": true,
+            "near": 9.1,
+            "far": 9.198447321064835,
+            "high": 0.12,
+            "heightAboveGround": 0.11911764562129978,
+            "depth": 0.09844732106483534,
+            "camera": [
+              8.84630684211148,
+              -0.004919983348505649,
+              0.38433744576330137
+            ],
+            "points": null,
+            "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+          },
+          "proof": {
+            "passed": true,
+            "requestId": 1,
+            "usable": false,
+            "routeSession": true,
+            "revision": 6,
+            "observationVersion": 0,
+            "worlds": 2,
+            "path": [
+              [
+                2.8531196272108423,
+                -0.5022710398526029
+              ],
+              [
+                4.6,
+                0.5000000000000004
+              ],
+              [
+                5.4999999999999964,
+                4.163336342344337e-16
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ],
+            "length": 6.550590839107697,
+            "anchor": {
+              "x": 2.8531196272108423,
+              "y": -0.5022710398526029,
+              "z": 0.385081438360114,
+              "poseName": "normal",
+              "yaw": -0.0010885672624860513,
+              "tilt": 0.2980185583776858,
+              "speed": 0.00027861973362048616,
+              "elapsed": 6.159999999999544,
+              "steps": 3080,
+              "finite": true,
+              "goalDistance": 7.763145735317641,
+              "legs": null
+            }
+          },
+          "gateProof": null
+        },
+        "selected": [
+          5958934,
+          5958948,
+          5959025
+        ],
+        "map": {
+          "selected": [
+            5958934,
+            5958948,
+            5959025
+          ],
+          "visibleCells": 1289,
+          "hypothesisCells": 192,
+          "visibleRoute": true,
+          "hypothesisRoute": true,
+          "clearanceMargin": -0.022786404500042046,
+          "passed": true
+        },
+        "canvas": [
+          1920,
+          1080
+        ],
+        "photo_source": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/3e4acf64d18e638d0c1342793fc367ed92955135/evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg"
+      }
+    ],
+    "study_index": "study-index.json",
+    "video_timecodes_are_separate_from_sim_seconds": true,
+    "new_generation_requests": 0,
+    "hardware_robot_claimed": false,
+    "files": [
+      {
+        "file": "00-full-run.mp4",
+        "bytes": 90198700,
+        "sha256": "59df5e64488cac17bab916c8b928cf2e0b258721bc4586ef5f104e67067e900f"
+      },
+      {
+        "file": "01-first-look.mp4",
+        "bytes": 3099561,
+        "sha256": "4fa0c0c0fadf2b896cc9163a034c50e00a5b9a5fb2c3efd1946476c6a101329f"
+      },
+      {
+        "file": "01-limited-first-look.jpg",
+        "bytes": 180155,
+        "sha256": "f7c649f85440a983c096a31afa146cf13433384acd0e0d6139b4f71dc919ba6d"
+      },
+      {
+        "file": "01-limited-first-look.png",
+        "bytes": 1291861,
+        "sha256": "3bbb143c1329042896080288a40ce77d57003aecc42cb549c7346f22ec7cdc62"
+      },
+      {
+        "file": "02-03-space-comparison.mp4",
+        "bytes": 4476800,
+        "sha256": "d8fa30e985fc0f30bd30b78be76e46efadbf56ae63019fab13be7de2a8f7007b"
+      },
+      {
+        "file": "02-one-photo-two-backs-and-checks.jpg",
+        "bytes": 186729,
+        "sha256": "8ae8eaebb5f335e38552684806b6f378e083e37974b4f7ccd9b8abd66c18353c"
+      },
+      {
+        "file": "02-one-photo-two-backs-and-checks.png",
+        "bytes": 730636,
+        "sha256": "35d61bf58c00dae94f30557e61f965f4d308fe693d132f092a1c7f57bcf609aa"
+      },
+      {
+        "file": "02-one-photo-two-backs.mp4",
+        "bytes": 2098515,
+        "sha256": "c1e04b884ea56af986d77d25124c6d94f06ea0718d68674e010a201d52e32286"
+      },
+      {
+        "file": "03-footprint-and-route.jpg",
+        "bytes": 219299,
+        "sha256": "9fe9fd8d936e3ac9a86cbe6e46d203f2c4a59e01780fb180957504d3aaa4f75c"
+      },
+      {
+        "file": "03-footprint-and-route.png",
+        "bytes": 695016,
+        "sha256": "9c20fe518ba768b4db93811012a21371aeab57eda7de3b3547c782d1ecd55bb3"
+      },
+      {
+        "file": "03-gap-and-route.mp4",
+        "bytes": 651395,
+        "sha256": "9c1c2d060184324fac00111904eadcf66300fb4b8dcba3e1cefbc3bcd0d6e083"
+      },
+      {
+        "file": "04-rehearsal-decision.jpg",
+        "bytes": 241105,
+        "sha256": "174beb1fcbe2a79e33b729eb9a2be191ab2706563fda4a2e8b3b1dcfcd98cb0c"
+      },
+      {
+        "file": "04-rehearsal-decision.png",
+        "bytes": 1228246,
+        "sha256": "f10712dd49e247c72648e784fc52732a8bd17da37c5aeab9f0cf7786d37fcabc"
+      },
+      {
+        "file": "04a-release.mp4",
+        "bytes": 2628481,
+        "sha256": "de123b5cb417b91c589e13105afe59137c805cb68a729dc7424094fef41f5802"
+      },
+      {
+        "file": "04b-hold.mp4",
+        "bytes": 6788497,
+        "sha256": "4721134d7ede8cf879703a8d9888c019455a8680ace02474574cd6ce5b5c59d6"
+      },
+      {
+        "file": "05-M20-leg-action.jpg",
+        "bytes": 154308,
+        "sha256": "7d7854223e1e3a8575c89587b6191d9129614b77ba3a1a2b4051c8b555d55f62"
+      },
+      {
+        "file": "05-M20-leg-action.png",
+        "bytes": 901760,
+        "sha256": "121323faa7196f2ff96e37b37930e117096220c962af4e0acfd72535e73e2f85"
+      },
+      {
+        "file": "05-drive-reveal.mp4",
+        "bytes": 27325456,
+        "sha256": "ef03097e3a8cacf2546e81c1c962e4eeb95c6c87a1952dd616a84e5661444ba0"
+      },
+      {
+        "file": "06-legs-and-goal.mp4",
+        "bytes": 35793444,
+        "sha256": "019e3e7a2971e5e691c403c104a592aef40b53e0778926fa343b519b2e68a458"
+      },
+      {
+        "file": "comparison-capture.json",
+        "bytes": 2425,
+        "sha256": "b4564f3fecc9fcdc89f1d3a56862b9510abce2b98e2a95fec893f54f75830f42"
+      },
+      {
+        "file": "comparison-chapters.json",
+        "bytes": 12501,
+        "sha256": "53377d95441bd9f6f0707df896cc9123eecf391b6f80fd1350207679837b6e04"
+      },
+      {
+        "file": "comparison-session.json",
+        "bytes": 22760,
+        "sha256": "da777b3f101c71dd183a82f864d57aa3ab8b31cf785801655275803a6f62983e"
+      },
+      {
+        "file": "decode-first.jpg",
+        "bytes": 15585,
+        "sha256": "f047f12c2bdc03f89343cc56d6a7bca171f35de229cfa05a950fc8d8e6f14d19"
+      },
+      {
+        "file": "decode-last.jpg",
+        "bytes": 38922,
+        "sha256": "2ff6ac0fba8b5610188c23e5c2ec405ce8a478a1aa9beb4e9a05c80e5be5b146"
+      },
+      {
+        "file": "decode-middle.jpg",
+        "bytes": 39920,
+        "sha256": "1ffc11889eca062b34a033dd511cc876ce7656b74ee0aa32715a087824dab9a7"
+      },
+      {
+        "file": "hold-capture.json",
+        "bytes": 2655,
+        "sha256": "be16c32235623a8bd1cb793436d7eb2599c7302b8ab6700072afd0fcfddfac97"
+      },
+      {
+        "file": "hold-chapters.json",
+        "bytes": 12520,
+        "sha256": "1076714038b0a9a1f28917ff1b56da3484f130a7861c896ee7b8374da712f038"
+      },
+      {
+        "file": "hold-session.json",
+        "bytes": 76113,
+        "sha256": "10d5a0b51895904130502f03ddfdc43904dd4fcc82fee9318edf7627d56b0b7f"
+      },
+      {
+        "file": "mother-capture.json",
+        "bytes": 4439,
+        "sha256": "868a0e7309609daba5961d893c83cd4332935248a38b315d7b1cd868f14cd838"
+      },
+      {
+        "file": "mother-chapters.json",
+        "bytes": 83350,
+        "sha256": "aa8d35e04347531d0945910f0492dfd52af6ebbf3e1c5ca3624bb0ac044925cd"
+      },
+      {
+        "file": "mother-session.json",
+        "bytes": 50576,
+        "sha256": "03e644b4af52f992c9401925e2b92d2ebed14356120f985e8d7e9b30bbe3660e"
+      },
+      {
+        "file": "research/r1-synchronised-conservative.mp4",
+        "bytes": 3414887,
+        "sha256": "305ff97135cd51dfa9b27a90891461996082bd319c556270cafe6d5e1574f5dc"
+      },
+      {
+        "file": "research/r1-synchronised-imagination.mp4",
+        "bytes": 3194296,
+        "sha256": "dfd8814b22cb13bf7e6afc928de5fdc9415aa31aa34fd5aca6ca0f09a572dcdb"
+      },
+      {
+        "file": "research/r1-synchronised-optimistic.mp4",
+        "bytes": 2329580,
+        "sha256": "edae6ef14c2c211c471cc3be36c0787c6dafb198a05e2295a40286837f578de0"
+      },
+      {
+        "file": "research/s05-world-grid.mp4",
+        "bytes": 4440080,
+        "sha256": "b10a0005b52962f8d9b8069b75f55d0c3ec1ab5e18c5557c30f00fed7aa5e762"
+      },
+      {
+        "file": "research/suite_r2_v4_F2_011-imagination.mp4",
+        "bytes": 781650,
+        "sha256": "fb2d7bacc1ece9f36cf7fc0c79c936e20f5fd60d1bd8e93d0fcc817ee66c778e"
+      },
+      {
+        "file": "study-index.json",
+        "bytes": 7160,
+        "sha256": "a09400c0ec59f472c03dea070c11a1fb7e9ebf848c070bbfabf1f4e2b1aebd21"
+      },
+      {
+        "file": "verification/public-desktop-v2.json",
+        "bytes": 73964,
+        "sha256": "13b276403c862f8c840392f3ce0d1e284440f4d4ddd87446adafdfe2aa789d22"
+      },
+      {
+        "file": "verification/public-touch-v2.json",
+        "bytes": 51449,
+        "sha256": "9c99d288a4f3361a90f9a75841737456e55dbefe39c191feaecfc51380b1efcb"
+      }
+    ]
+  },
+  "strongest_edit_ranges": [
+    {
+      "file": "02-03-space-comparison.mp4",
+      "video_in": 47.135,
+      "video_out": 65.953,
+      "event": "Switch actual same-input candidates in a fixed registered map, then select the imagination route."
+    },
+    {
+      "file": "04b-hold.mp4",
+      "video_in": 40.403,
+      "video_out": 61.3,
+      "event": "Prior combination passed; changed selection revokes permission; actual sensor supplement and voluntary stop. Distinct from frozen R3 automatic evidence-insufficient stop."
+    }
+  ]
 }

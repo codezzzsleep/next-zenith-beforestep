@@ -1,0 +1,87 @@
+{
+  "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+  "passed": true,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "source": "Current playable branch: changed selection and real supplemental observation invalidate old permission; player chooses to stop. This is not the frozen R3 automatic insufficient-evidence stop.",
+  "pose_injected": false,
+  "page_errors": [],
+  "final": {
+    "x": 3.210455755921534,
+    "y": -0.2968564485570671,
+    "z": 0.38513991813295384,
+    "poseName": "normal",
+    "yaw": 0.5076487257549638,
+    "tilt": 0.2881802228120258,
+    "speed": 0.00028050729837067576,
+    "elapsed": 9.10399999999971,
+    "steps": 4552,
+    "finite": true,
+    "goalDistance": 7.395504572795767,
+    "legs": null,
+    "phase": "stopped",
+    "paused": true,
+    "automatic": false,
+    "revision": 6,
+    "selected": [
+      5958934,
+      5959025
+    ],
+    "policy": "imagination",
+    "observationVersion": 1,
+    "measuredCells": 9,
+    "sensor": {
+      "yaw": 0,
+      "verticalFov": 41.554596568496
+    },
+    "initialJudgment": "unsure",
+    "judgmentReady": true,
+    "actionCount": 0,
+    "stable": true,
+    "gameMode": "explore",
+    "checkpoint": {
+      "id": "observation",
+      "label": "高石观察点"
+    },
+    "checkpointRestarts": 0,
+    "showcase": {
+      "enabled": true,
+      "checkpointX": 2.8499999999999996,
+      "stage": "high-rocks",
+      "active": false,
+      "completed": true,
+      "viewedTask": null,
+      "releaseMode": "hold",
+      "triggers": 1,
+      "initialJudgment": "unsure"
+    },
+    "scan": {
+      "valid": false,
+      "reason": "threshold_not_visible_from_current_pose",
+      "camera": [
+        3.6048710629871135,
+        -0.07705100654057165,
+        0.39576097144739775
+      ],
+      "points": null
+    },
+    "proof": null,
+    "gateProof": null
+  },
+  "capture_method": "Chromium CDP screencast of native GPU page; actual cadence is measured separately",
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4090/PCIe/SSE2, OpenGL ES 3.2)",
+  "encoding": "CPU libx264 CRF17; NVENC OpenEncodeSessionEx reports unsupported device on this instance",
+  "audio": "silent stereo track",
+  "cadence": {
+    "captured_frames": 1149,
+    "capture_seconds": 63.363457704894245,
+    "mean_capture_frames_per_second": 18.133480110117954,
+    "median_interval_seconds": 0.03073655115440488,
+    "p95_interval_seconds": 0.15300698392093182,
+    "max_interval_seconds": 7.012517756782472,
+    "active_intervals": [],
+    "note": "MP4 is CFR 30 fps. CDP emits fewer frames during unchanged screens; actual capture cadence is reported, not inferred from the encoded rate."
+  }
+}

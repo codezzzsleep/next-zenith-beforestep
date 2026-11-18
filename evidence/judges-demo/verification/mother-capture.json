@@ -1,0 +1,161 @@
+{
+  "code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+  "passed": true,
+  "resolution": [
+    1920,
+    1080
+  ],
+  "source": "Current playable UI with real keyboard/button input and independent MuJoCo states",
+  "pose_injected": false,
+  "page_errors": [],
+  "final": {
+    "x": 10.26192838167092,
+    "y": -0.02059047415772709,
+    "z": 0.46778888447694217,
+    "poseName": "high",
+    "yaw": -0.1250294882149292,
+    "tilt": 0.12297484726733039,
+    "speed": 0.00410882277895548,
+    "elapsed": 184.8060000001543,
+    "steps": 92403,
+    "finite": true,
+    "goalDistance": 0.3386980760879562,
+    "legs": null,
+    "phase": "complete",
+    "paused": true,
+    "automatic": false,
+    "revision": 6,
+    "selected": [
+      5958934,
+      5958948,
+      5959025
+    ],
+    "policy": "imagination",
+    "observationVersion": 0,
+    "measuredCells": 0,
+    "sensor": {
+      "yaw": 0,
+      "verticalFov": 41.554596568496
+    },
+    "initialJudgment": "pass",
+    "judgmentReady": true,
+    "actionCount": 12,
+    "stable": true,
+    "gameMode": "explore",
+    "checkpoint": {
+      "id": "finish",
+      "label": "门槛后"
+    },
+    "checkpointRestarts": 0,
+    "showcase": {
+      "enabled": true,
+      "checkpointX": 2.8499999999999996,
+      "stage": "high-rocks",
+      "active": false,
+      "completed": true,
+      "viewedTask": null,
+      "releaseMode": "assisted",
+      "triggers": 1,
+      "initialJudgment": "pass"
+    },
+    "scan": {
+      "valid": true,
+      "near": 9.1,
+      "far": 9.198447321064835,
+      "high": 0.12,
+      "heightAboveGround": 0.11911764562129978,
+      "depth": 0.09844732106483534,
+      "camera": [
+        8.84630684211148,
+        -0.004919983348505649,
+        0.38433744576330137
+      ],
+      "points": null,
+      "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+    },
+    "proof": {
+      "passed": true,
+      "requestId": 1,
+      "usable": false,
+      "routeSession": true,
+      "revision": 6,
+      "observationVersion": 0,
+      "worlds": 2,
+      "path": [
+        [
+          2.8531196272108423,
+          -0.5022710398526029
+        ],
+        [
+          4.6,
+          0.5000000000000004
+        ],
+        [
+          5.4999999999999964,
+          4.163336342344337e-16
+        ],
+        [
+          5.799999999999995,
+          -0.5999999999999995
+        ],
+        [
+          7.19999999999999,
+          -0.6999999999999995
+        ],
+        [
+          8.45,
+          0
+        ]
+      ],
+      "length": 6.550590839107697,
+      "anchor": {
+        "x": 2.8531196272108423,
+        "y": -0.5022710398526029,
+        "z": 0.385081438360114,
+        "poseName": "normal",
+        "yaw": -0.0010885672624860513,
+        "tilt": 0.2980185583776858,
+        "speed": 0.00027861973362048616,
+        "elapsed": 6.159999999999544,
+        "steps": 3080,
+        "finite": true,
+        "goalDistance": 7.763145735317641,
+        "legs": null
+      }
+    },
+    "gateProof": null
+  },
+  "capture_method": "Chromium CDP screencast of native GPU page; actual cadence is measured separately",
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4090/PCIe/SSE2, OpenGL ES 3.2)",
+  "encoding": "CPU libx264 CRF17; NVENC OpenEncodeSessionEx reports unsupported device on this instance",
+  "audio": "In-game sound disabled; separate silent stereo AAC track",
+  "cadence": {
+    "captured_frames": 8407,
+    "capture_seconds": 299.6212270380929,
+    "mean_capture_frames_per_second": 28.058759665019195,
+    "median_interval_seconds": 0.03300483664497733,
+    "p95_interval_seconds": 0.04986392706632614,
+    "max_interval_seconds": 6.457992279902101,
+    "active_intervals": [
+      {
+        "chapter": "first_person_actual_drive",
+        "seconds": 95.01092202123255,
+        "captured_frames": 2824,
+        "captured_frames_per_second": 29.72289858811082
+      },
+      {
+        "chapter": "twelve_player_leg_commands_begin",
+        "seconds": 103.69870817288756,
+        "captured_frames": 3082,
+        "captured_frames_per_second": 29.72071739661074
+      },
+      {
+        "chapter": "all_four_legs_over_threshold",
+        "seconds": 5.260228258557618,
+        "captured_frames": 158,
+        "captured_frames_per_second": 30.03671936535401
+      }
+    ],
+    "note": "MP4 is CFR 30 fps. CDP emits fewer frames during unchanged screens; actual capture cadence is reported, not inferred from the encoded rate."
+  }
+}

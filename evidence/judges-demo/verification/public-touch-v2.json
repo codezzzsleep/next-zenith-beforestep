@@ -1,0 +1,1881 @@
+{
+  "passed": true,
+  "checks": [
+    "initial_judgment_and_manual_without_Lux",
+    "effective_surface_observation_and_two_exact_checkpoint_restores",
+    "same_input_real_pair_and_rejected_inspection",
+    "cancel_and_changed_combinations_cannot_release_stale_results",
+    "assisted_route_manual_takeover_and_valid_rehearsed_departure",
+    "real_two_world_release_twelve_player_actions_and_arrival"
+  ],
+  "page_errors": [],
+  "pose_injected": false,
+  "viewport": [
+    390,
+    844
+  ],
+  "touch_simulation": true,
+  "physical_phone_test": false,
+  "asset_mirror": false,
+  "url": "https://codezzzsleep.github.io/next-zenith-beforestep/play.html?v=d6397c52",
+  "scope": "Current interactive mission; separate from frozen R1/R2/R3",
+  "startup_seconds": 16.887803255580366,
+  "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4090/PCIe/SSE2, OpenGL ES 3.2)",
+  "supplemental_observation": {
+    "before_version": 0,
+    "after_version": 1,
+    "measured_cells": 6
+  },
+  "repeat_observation": {
+    "sequence": 10,
+    "type": "observationUnchanged",
+    "simSeconds": 9.399999999999809,
+    "pose": {
+      "x": 3.214938266296489,
+      "y": -0.30901482422081855,
+      "yaw": 0.47213759671776684
+    },
+    "detail": {
+      "changed": false,
+      "added": 0,
+      "raised": 0,
+      "valid": 26,
+      "version": 1,
+      "cells": 6,
+      "reason": "no_new_surface_cells",
+      "source": "Current MuJoCo camera ray hits"
+    }
+  },
+  "original_resume_blocked_reason": "先停稳并沿原路线方向；偏离走向后，需要重新试路。",
+  "final": {
+    "x": 10.257169474117866,
+    "y": -0.011436123179955076,
+    "z": 0.46775293401791423,
+    "poseName": "high",
+    "yaw": -0.09999604828161603,
+    "tilt": 0.14699383014364825,
+    "speed": 0.00330522318494188,
+    "elapsed": 175.4020000001094,
+    "steps": 87701,
+    "finite": true,
+    "goalDistance": 0.3430212156558357,
+    "legs": null,
+    "phase": "complete",
+    "paused": true,
+    "automatic": false,
+    "revision": 10,
+    "selected": [
+      5958934,
+      5958948,
+      5959025
+    ],
+    "policy": "imagination",
+    "observationVersion": 0,
+    "measuredCells": 0,
+    "sensor": {
+      "yaw": 0,
+      "verticalFov": 111.1722817230914
+    },
+    "initialJudgment": "pass",
+    "judgmentReady": true,
+    "actionCount": 12,
+    "stable": true,
+    "gameMode": "explore",
+    "checkpoint": {
+      "id": "finish",
+      "label": "门槛后"
+    },
+    "checkpointRestarts": 2,
+    "showcase": {
+      "enabled": true,
+      "checkpointX": 2.8499999999999996,
+      "stage": "high-rocks",
+      "active": false,
+      "completed": true,
+      "viewedTask": null,
+      "releaseMode": "assisted",
+      "triggers": 1,
+      "initialJudgment": "pass"
+    },
+    "scan": {
+      "valid": true,
+      "near": 9.1,
+      "far": 9.199864263007319,
+      "high": 0.12,
+      "heightAboveGround": 0.11911764562129978,
+      "depth": 0.09986426300731921,
+      "camera": [
+        8.844950852448225,
+        -0.004895122275314851,
+        0.38438953990473274
+      ],
+      "points": null,
+      "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+    },
+    "proof": {
+      "passed": true,
+      "requestId": 4,
+      "usable": false,
+      "routeSession": true,
+      "revision": 10,
+      "observationVersion": 0,
+      "worlds": 2,
+      "path": [
+        [
+          3.821558545522216,
+          0.05289155955660562
+        ],
+        [
+          4.6,
+          0.5000000000000004
+        ],
+        [
+          5.4999999999999964,
+          4.163336342344337e-16
+        ],
+        [
+          5.799999999999995,
+          -0.5999999999999995
+        ],
+        [
+          7.19999999999999,
+          -0.6999999999999995
+        ],
+        [
+          8.45,
+          0
+        ]
+      ],
+      "length": 5.434311723448091,
+      "anchor": {
+        "x": 3.821558545522216,
+        "y": 0.05289155955660562,
+        "z": 0.3849524937984378,
+        "poseName": "normal",
+        "yaw": 0.5214308681171328,
+        "tilt": 0.05695583832517477,
+        "speed": 3.9203957581059034e-05,
+        "elapsed": 15.360000000001799,
+        "steps": 7680,
+        "finite": true,
+        "goalDistance": 6.778647805341064,
+        "legs": null
+      }
+    },
+    "gateProof": null
+  },
+  "run": {
+    "version": "judges-demo-1",
+    "mode": "explore",
+    "completed": true,
+    "score": 90,
+    "decisions": {
+      "initial": {
+        "sequence": 5,
+        "type": "initialJudgment",
+        "simSeconds": 4.819999999999691,
+        "pose": {
+          "x": 2.8544812481235042,
+          "y": -0.5018708831893992,
+          "yaw": -0.002936681367023692
+        },
+        "detail": {
+          "choice": "pass",
+          "label": "我觉得能过"
+        }
+      },
+      "events": [
+        {
+          "sequence": 1,
+          "type": "permissionInvalidated",
+          "simSeconds": 0.7000000000000005,
+          "pose": {
+            "x": 2.2964919103981165,
+            "y": -0.4999546174716331,
+            "yaw": 0.00016517192148069655
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 2,
+          "type": "selectionChanged",
+          "simSeconds": 0.7000000000000005,
+          "pose": {
+            "x": 2.2964919103981165,
+            "y": -0.4999546174716331,
+            "yaw": 0.00016517192148069655
+          },
+          "detail": {
+            "selected": [
+              5959025,
+              5958934
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 3,
+          "type": "checkpointRestored",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "id": "observation",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 4,
+          "type": "cameraLens",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "yaw": 0.11434556633332432,
+            "verticalFov": 111.1722817230914,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 5,
+          "type": "initialJudgment",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "choice": "pass",
+            "label": "我觉得能过"
+          }
+        },
+        {
+          "sequence": 6,
+          "type": "imaginationOpened",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5959025,
+              5958934
+            ]
+          }
+        },
+        {
+          "sequence": 7,
+          "type": "cameraLens",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "yaw": 0.11434556633332432,
+            "verticalFov": 59.43008815281534,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5959025,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 9,
+          "type": "modelViewed",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5959025,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 10,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 11,
+          "type": "selectionChanged",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 12,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 13,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5958642,
+            "target": "T2",
+            "input": "evidence/web-assets/objects/8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf.jpg",
+            "admitted": false
+          }
+        },
+        {
+          "sequence": 14,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 15,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 16,
+          "type": "selectionChanged",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 17,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 18,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 19,
+          "type": "selectionChanged",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination"
+          }
+        },
+        {
+          "sequence": 20,
+          "type": "imaginationOpened",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ]
+          }
+        },
+        {
+          "sequence": 21,
+          "type": "previewStarted",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 1,
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination",
+            "observationVersion": 0,
+            "worlds": 2,
+            "path": [
+              [
+                2.8544812481235042,
+                -0.5018708831893992
+              ],
+              [
+                4.6,
+                0.5000000000000004
+              ],
+              [
+                5.4999999999999964,
+                4.163336342344337e-16
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ]
+          }
+        },
+        {
+          "sequence": 22,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "reason": "cancelled",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 23,
+          "type": "imaginationOpened",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ]
+          }
+        },
+        {
+          "sequence": 24,
+          "type": "previewStarted",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 2,
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination",
+            "observationVersion": 0,
+            "worlds": 2,
+            "path": [
+              [
+                2.8544812481235042,
+                -0.5018708831893992
+              ],
+              [
+                4.6,
+                0.5000000000000004
+              ],
+              [
+                5.4999999999999964,
+                4.163336342344337e-16
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ]
+          }
+        },
+        {
+          "sequence": 25,
+          "type": "previewWorldFinished",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 2,
+            "index": 0,
+            "total": 2,
+            "result": {
+              "passed": true,
+              "maxTilt": 0.5232684681539067,
+              "contact": null,
+              "elapsed": 78.92799999999745,
+              "final": {
+                "x": 8.425318000448433,
+                "y": -0.016496914650065732,
+                "z": 0.3858388709973178,
+                "poseName": "normal",
+                "yaw": 0.029858605081516002,
+                "tilt": 0.43261569569315167,
+                "speed": 0.0016142434806495933,
+                "elapsed": 78.92799999999745,
+                "steps": 39464,
+                "finite": true,
+                "goalDistance": 2.1747445706028494,
+                "legs": null
+              },
+              "reason": "completed",
+              "tasks": [
+                5958948,
+                5958934
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 26,
+          "type": "previewWorldFinished",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 2,
+            "index": 1,
+            "total": 2,
+            "result": {
+              "passed": true,
+              "maxTilt": 0.5232684681539067,
+              "contact": null,
+              "elapsed": 78.92799999999745,
+              "final": {
+                "x": 8.425318000448433,
+                "y": -0.016496914650065732,
+                "z": 0.3858388709973178,
+                "poseName": "normal",
+                "yaw": 0.029858605081516002,
+                "tilt": 0.43261569569315167,
+                "speed": 0.0016142434806495933,
+                "elapsed": 78.92799999999745,
+                "steps": 39464,
+                "finite": true,
+                "goalDistance": 2.1747445706028494,
+                "legs": null
+              },
+              "reason": "completed",
+              "tasks": [
+                5959025,
+                5958934
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 27,
+          "type": "previewFinished",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 2,
+            "passed": true,
+            "completed": 2,
+            "worlds": 2,
+            "results": [
+              {
+                "passed": true,
+                "maxTilt": 0.5232684681539067,
+                "contact": null,
+                "elapsed": 78.92799999999745,
+                "final": {
+                  "x": 8.425318000448433,
+                  "y": -0.016496914650065732,
+                  "z": 0.3858388709973178,
+                  "poseName": "normal",
+                  "yaw": 0.029858605081516002,
+                  "tilt": 0.43261569569315167,
+                  "speed": 0.0016142434806495933,
+                  "elapsed": 78.92799999999745,
+                  "steps": 39464,
+                  "finite": true,
+                  "goalDistance": 2.1747445706028494,
+                  "legs": null
+                },
+                "reason": "completed",
+                "tasks": [
+                  5958948,
+                  5958934
+                ]
+              },
+              {
+                "passed": true,
+                "maxTilt": 0.5232684681539067,
+                "contact": null,
+                "elapsed": 78.92799999999745,
+                "final": {
+                  "x": 8.425318000448433,
+                  "y": -0.016496914650065732,
+                  "z": 0.3858388709973178,
+                  "poseName": "normal",
+                  "yaw": 0.029858605081516002,
+                  "tilt": 0.43261569569315167,
+                  "speed": 0.0016142434806495933,
+                  "elapsed": 78.92799999999745,
+                  "steps": 39464,
+                  "finite": true,
+                  "goalDistance": 2.1747445706028494,
+                  "legs": null
+                },
+                "reason": "completed",
+                "tasks": [
+                  5959025,
+                  5958934
+                ]
+              }
+            ],
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 28,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 29,
+          "type": "selectionChanged",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948
+            ],
+            "policy": "imagination"
+          }
+        },
+        {
+          "sequence": 30,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 31,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 32,
+          "type": "selectionChanged",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination"
+          }
+        },
+        {
+          "sequence": 33,
+          "type": "inspectCandidate",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 34,
+          "type": "imaginationOpened",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ]
+          }
+        },
+        {
+          "sequence": 35,
+          "type": "previewStarted",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 3,
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination",
+            "observationVersion": 0,
+            "worlds": 2,
+            "path": [
+              [
+                2.8544812481235042,
+                -0.5018708831893992
+              ],
+              [
+                4.6,
+                0.5000000000000004
+              ],
+              [
+                5.4999999999999964,
+                4.163336342344337e-16
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ]
+          }
+        },
+        {
+          "sequence": 36,
+          "type": "previewWorldFinished",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 3,
+            "index": 0,
+            "total": 2,
+            "result": {
+              "passed": true,
+              "maxTilt": 0.5232684681539067,
+              "contact": null,
+              "elapsed": 78.92799999999745,
+              "final": {
+                "x": 8.425318000448433,
+                "y": -0.016496914650065732,
+                "z": 0.3858388709973178,
+                "poseName": "normal",
+                "yaw": 0.029858605081516002,
+                "tilt": 0.43261569569315167,
+                "speed": 0.0016142434806495933,
+                "elapsed": 78.92799999999745,
+                "steps": 39464,
+                "finite": true,
+                "goalDistance": 2.1747445706028494,
+                "legs": null
+              },
+              "reason": "completed",
+              "tasks": [
+                5958948,
+                5958934
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 37,
+          "type": "previewWorldFinished",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 3,
+            "index": 1,
+            "total": 2,
+            "result": {
+              "passed": true,
+              "maxTilt": 0.5232684681539067,
+              "contact": null,
+              "elapsed": 78.92799999999745,
+              "final": {
+                "x": 8.425318000448433,
+                "y": -0.016496914650065732,
+                "z": 0.3858388709973178,
+                "poseName": "normal",
+                "yaw": 0.029858605081516002,
+                "tilt": 0.43261569569315167,
+                "speed": 0.0016142434806495933,
+                "elapsed": 78.92799999999745,
+                "steps": 39464,
+                "finite": true,
+                "goalDistance": 2.1747445706028494,
+                "legs": null
+              },
+              "reason": "completed",
+              "tasks": [
+                5959025,
+                5958934
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 38,
+          "type": "previewFinished",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "requestId": 3,
+            "passed": true,
+            "completed": 2,
+            "worlds": 2,
+            "results": [
+              {
+                "passed": true,
+                "maxTilt": 0.5232684681539067,
+                "contact": null,
+                "elapsed": 78.92799999999745,
+                "final": {
+                  "x": 8.425318000448433,
+                  "y": -0.016496914650065732,
+                  "z": 0.3858388709973178,
+                  "poseName": "normal",
+                  "yaw": 0.029858605081516002,
+                  "tilt": 0.43261569569315167,
+                  "speed": 0.0016142434806495933,
+                  "elapsed": 78.92799999999745,
+                  "steps": 39464,
+                  "finite": true,
+                  "goalDistance": 2.1747445706028494,
+                  "legs": null
+                },
+                "reason": "completed",
+                "tasks": [
+                  5958948,
+                  5958934
+                ]
+              },
+              {
+                "passed": true,
+                "maxTilt": 0.5232684681539067,
+                "contact": null,
+                "elapsed": 78.92799999999745,
+                "final": {
+                  "x": 8.425318000448433,
+                  "y": -0.016496914650065732,
+                  "z": 0.3858388709973178,
+                  "poseName": "normal",
+                  "yaw": 0.029858605081516002,
+                  "tilt": 0.43261569569315167,
+                  "speed": 0.0016142434806495933,
+                  "elapsed": 78.92799999999745,
+                  "steps": 39464,
+                  "finite": true,
+                  "goalDistance": 2.1747445706028494,
+                  "legs": null
+                },
+                "reason": "completed",
+                "tasks": [
+                  5959025,
+                  5958934
+                ]
+              }
+            ],
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 39,
+          "type": "executionMode",
+          "simSeconds": 4.819999999999691,
+          "pose": {
+            "x": 2.8544812481235042,
+            "y": -0.5018708831893992,
+            "yaw": -0.002936681367023692
+          },
+          "detail": {
+            "mode": "assisted",
+            "requestId": 3,
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 40,
+          "type": "cameraLens",
+          "simSeconds": 4.839999999999689,
+          "pose": {
+            "x": 2.8544783601994417,
+            "y": -0.5018753250947092,
+            "yaw": -0.0029285346684222273
+          },
+          "detail": {
+            "yaw": 0,
+            "verticalFov": 59.43008815281534,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 41,
+          "type": "cameraLens",
+          "simSeconds": 4.839999999999689,
+          "pose": {
+            "x": 2.8544783601994417,
+            "y": -0.5018753250947092,
+            "yaw": -0.0029285346684222273
+          },
+          "detail": {
+            "yaw": 0,
+            "verticalFov": 111.1722817230914,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 42,
+          "type": "executionMode",
+          "simSeconds": 13.820000000001285,
+          "pose": {
+            "x": 3.8122473152074967,
+            "y": 0.04778906379453156,
+            "yaw": 0.5204755705510692
+          },
+          "detail": {
+            "mode": "manual",
+            "takeover": true
+          }
+        },
+        {
+          "sequence": 43,
+          "type": "commandRejected",
+          "simSeconds": 14.140000000001391,
+          "pose": {
+            "x": 3.8232691202106306,
+            "y": 0.05381506165878103,
+            "yaw": 0.5215035164239917
+          },
+          "detail": {
+            "reason": "先停稳并沿原路线方向；偏离走向后，需要重新试路。"
+          }
+        },
+        {
+          "sequence": 44,
+          "type": "imaginationOpened",
+          "simSeconds": 15.100000000001712,
+          "pose": {
+            "x": 3.821552218189239,
+            "y": 0.05288656737992157,
+            "yaw": 0.5214375061719202
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ]
+          }
+        },
+        {
+          "sequence": 45,
+          "type": "cameraLens",
+          "simSeconds": 15.100000000001712,
+          "pose": {
+            "x": 3.821552218189239,
+            "y": 0.05288656737992157,
+            "yaw": 0.5214375061719202
+          },
+          "detail": {
+            "yaw": 0,
+            "verticalFov": 59.43008815281534,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 46,
+          "type": "imaginationOpened",
+          "simSeconds": 15.280000000001772,
+          "pose": {
+            "x": 3.821556296672563,
+            "y": 0.052889605626089894,
+            "yaw": 0.5214330862219954
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ]
+          }
+        },
+        {
+          "sequence": 47,
+          "type": "previewStarted",
+          "simSeconds": 15.360000000001799,
+          "pose": {
+            "x": 3.821558545522216,
+            "y": 0.05289155955660562,
+            "yaw": 0.5214308681171328
+          },
+          "detail": {
+            "requestId": 4,
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination",
+            "observationVersion": 0,
+            "worlds": 2,
+            "path": [
+              [
+                3.821558545522216,
+                0.05289155955660562
+              ],
+              [
+                4.6,
+                0.5000000000000004
+              ],
+              [
+                5.4999999999999964,
+                4.163336342344337e-16
+              ],
+              [
+                5.799999999999995,
+                -0.5999999999999995
+              ],
+              [
+                7.19999999999999,
+                -0.6999999999999995
+              ],
+              [
+                8.45,
+                0
+              ]
+            ]
+          }
+        },
+        {
+          "sequence": 48,
+          "type": "previewWorldFinished",
+          "simSeconds": 15.360000000001799,
+          "pose": {
+            "x": 3.821558545522216,
+            "y": 0.05289155955660562,
+            "yaw": 0.5214308681171328
+          },
+          "detail": {
+            "requestId": 4,
+            "index": 0,
+            "total": 2,
+            "result": {
+              "passed": true,
+              "maxTilt": 0.5170875168697566,
+              "contact": null,
+              "elapsed": 70.17800000001785,
+              "final": {
+                "x": 8.425056240836613,
+                "y": -0.01665155801151072,
+                "z": 0.38573342958368834,
+                "poseName": "normal",
+                "yaw": 0.02983766811018202,
+                "tilt": 0.4469859614753335,
+                "speed": 0.005842999211948961,
+                "elapsed": 70.17800000001785,
+                "steps": 35089,
+                "finite": true,
+                "goalDistance": 2.1750075011153354,
+                "legs": null
+              },
+              "reason": "completed",
+              "tasks": [
+                5958948,
+                5958934
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 49,
+          "type": "previewWorldFinished",
+          "simSeconds": 15.360000000001799,
+          "pose": {
+            "x": 3.821558545522216,
+            "y": 0.05289155955660562,
+            "yaw": 0.5214308681171328
+          },
+          "detail": {
+            "requestId": 4,
+            "index": 1,
+            "total": 2,
+            "result": {
+              "passed": true,
+              "maxTilt": 0.5170875168697566,
+              "contact": null,
+              "elapsed": 70.17800000001785,
+              "final": {
+                "x": 8.425056240836613,
+                "y": -0.01665155801151072,
+                "z": 0.38573342958368834,
+                "poseName": "normal",
+                "yaw": 0.02983766811018202,
+                "tilt": 0.4469859614753335,
+                "speed": 0.005842999211948961,
+                "elapsed": 70.17800000001785,
+                "steps": 35089,
+                "finite": true,
+                "goalDistance": 2.1750075011153354,
+                "legs": null
+              },
+              "reason": "completed",
+              "tasks": [
+                5959025,
+                5958934
+              ]
+            }
+          }
+        },
+        {
+          "sequence": 50,
+          "type": "previewFinished",
+          "simSeconds": 15.360000000001799,
+          "pose": {
+            "x": 3.821558545522216,
+            "y": 0.05289155955660562,
+            "yaw": 0.5214308681171328
+          },
+          "detail": {
+            "requestId": 4,
+            "passed": true,
+            "completed": 2,
+            "worlds": 2,
+            "results": [
+              {
+                "passed": true,
+                "maxTilt": 0.5170875168697566,
+                "contact": null,
+                "elapsed": 70.17800000001785,
+                "final": {
+                  "x": 8.425056240836613,
+                  "y": -0.01665155801151072,
+                  "z": 0.38573342958368834,
+                  "poseName": "normal",
+                  "yaw": 0.02983766811018202,
+                  "tilt": 0.4469859614753335,
+                  "speed": 0.005842999211948961,
+                  "elapsed": 70.17800000001785,
+                  "steps": 35089,
+                  "finite": true,
+                  "goalDistance": 2.1750075011153354,
+                  "legs": null
+                },
+                "reason": "completed",
+                "tasks": [
+                  5958948,
+                  5958934
+                ]
+              },
+              {
+                "passed": true,
+                "maxTilt": 0.5170875168697566,
+                "contact": null,
+                "elapsed": 70.17800000001785,
+                "final": {
+                  "x": 8.425056240836613,
+                  "y": -0.01665155801151072,
+                  "z": 0.38573342958368834,
+                  "poseName": "normal",
+                  "yaw": 0.02983766811018202,
+                  "tilt": 0.4469859614753335,
+                  "speed": 0.005842999211948961,
+                  "elapsed": 70.17800000001785,
+                  "steps": 35089,
+                  "finite": true,
+                  "goalDistance": 2.1750075011153354,
+                  "legs": null
+                },
+                "reason": "completed",
+                "tasks": [
+                  5959025,
+                  5958934
+                ]
+              }
+            ],
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 51,
+          "type": "executionMode",
+          "simSeconds": 15.560000000001866,
+          "pose": {
+            "x": 3.8215650036357416,
+            "y": 0.052896881380316084,
+            "yaw": 0.5214253082271234
+          },
+          "detail": {
+            "mode": "assisted",
+            "requestId": 4,
+            "selected": [
+              5958934,
+              5958948,
+              5959025
+            ],
+            "policy": "imagination",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 52,
+          "type": "cameraLens",
+          "simSeconds": 15.560000000001866,
+          "pose": {
+            "x": 3.8215650036357416,
+            "y": 0.052896881380316084,
+            "yaw": 0.5214253082271234
+          },
+          "detail": {
+            "yaw": 0,
+            "verticalFov": 111.1722817230914,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 53,
+          "type": "crossStarted",
+          "simSeconds": 85.79999999998144,
+          "pose": {
+            "x": 8.425124341107315,
+            "y": -0.016965763323781063,
+            "yaw": 0.02874357933950155
+          },
+          "detail": {
+            "assisted": false
+          }
+        },
+        {
+          "sequence": 54,
+          "type": "legAction",
+          "simSeconds": 107.79999999993017,
+          "pose": {
+            "x": 8.989572773754189,
+            "y": 0.029207436082994413,
+            "yaw": 0.010375401946089637
+          },
+          "detail": {
+            "action": "lift",
+            "count": 1,
+            "leg": 0
+          }
+        },
+        {
+          "sequence": 55,
+          "type": "legAction",
+          "simSeconds": 113.13999999991772,
+          "pose": {
+            "x": 8.9824947172754,
+            "y": 0.025747236293309446,
+            "yaw": 0.017894393084765092
+          },
+          "detail": {
+            "action": "advance",
+            "count": 2,
+            "leg": 0
+          }
+        },
+        {
+          "sequence": 56,
+          "type": "legAction",
+          "simSeconds": 115.47999999991227,
+          "pose": {
+            "x": 8.95954655455344,
+            "y": 0.025380865696291208,
+            "yaw": 0.019484558004568688
+          },
+          "detail": {
+            "action": "land",
+            "count": 3,
+            "leg": 0
+          }
+        },
+        {
+          "sequence": 57,
+          "type": "legAction",
+          "simSeconds": 120.33999999990094,
+          "pose": {
+            "x": 9.04310053411609,
+            "y": -0.09591100969390505,
+            "yaw": 0.004098310738326454
+          },
+          "detail": {
+            "action": "lift",
+            "count": 4,
+            "leg": 1
+          }
+        },
+        {
+          "sequence": 58,
+          "type": "legAction",
+          "simSeconds": 123.13999999989441,
+          "pose": {
+            "x": 9.041457259344746,
+            "y": -0.09650205787731927,
+            "yaw": 0.009466359039598554
+          },
+          "detail": {
+            "action": "advance",
+            "count": 5,
+            "leg": 1
+          }
+        },
+        {
+          "sequence": 59,
+          "type": "legAction",
+          "simSeconds": 125.3799999998892,
+          "pose": {
+            "x": 9.040697801245514,
+            "y": -0.0978314925195607,
+            "yaw": 0.009740213527869036
+          },
+          "detail": {
+            "action": "land",
+            "count": 6,
+            "leg": 1
+          }
+        },
+        {
+          "sequence": 60,
+          "type": "legAction",
+          "simSeconds": 146.19999999996998,
+          "pose": {
+            "x": 9.302882392493933,
+            "y": 0.030487307975467195,
+            "yaw": 0.034117531039471204
+          },
+          "detail": {
+            "action": "lift",
+            "count": 7,
+            "leg": 2
+          }
+        },
+        {
+          "sequence": 61,
+          "type": "legAction",
+          "simSeconds": 149.01999999998344,
+          "pose": {
+            "x": 9.301508089745617,
+            "y": 0.030351051618636993,
+            "yaw": 0.034806058097660575
+          },
+          "detail": {
+            "action": "advance",
+            "count": 8,
+            "leg": 2
+          }
+        },
+        {
+          "sequence": 62,
+          "type": "legAction",
+          "simSeconds": 151.439999999995,
+          "pose": {
+            "x": 9.30121353310619,
+            "y": 0.03044222431922952,
+            "yaw": 0.03447696355176898
+          },
+          "detail": {
+            "action": "land",
+            "count": 9,
+            "leg": 2
+          }
+        },
+        {
+          "sequence": 63,
+          "type": "legAction",
+          "simSeconds": 157.30000000002298,
+          "pose": {
+            "x": 9.372051425933506,
+            "y": 0.0004277769754822653,
+            "yaw": 0.03212029000737408
+          },
+          "detail": {
+            "action": "lift",
+            "count": 10,
+            "leg": 3
+          }
+        },
+        {
+          "sequence": 64,
+          "type": "legAction",
+          "simSeconds": 160.90000000004017,
+          "pose": {
+            "x": 9.419697500686949,
+            "y": 0.0002270726166334263,
+            "yaw": 0.031358512723238065
+          },
+          "detail": {
+            "action": "advance",
+            "count": 11,
+            "leg": 3
+          }
+        },
+        {
+          "sequence": 65,
+          "type": "legAction",
+          "simSeconds": 163.0000000000502,
+          "pose": {
+            "x": 9.418939503106307,
+            "y": -1.964157675613197e-05,
+            "yaw": 0.03521802186932572
+          },
+          "detail": {
+            "action": "land",
+            "count": 12,
+            "leg": 3
+          }
+        },
+        {
+          "sequence": 66,
+          "type": "missionComplete",
+          "simSeconds": 175.4020000001094,
+          "pose": {
+            "x": 10.257169474117866,
+            "y": -0.011436123179955076,
+            "yaw": -0.09999604828161603
+          },
+          "detail": {
+            "actions": 12,
+            "goalDistance": 0.3430212156558357
+          }
+        }
+      ],
+      "sequence": 66
+    },
+    "outcome": "arrived",
+    "stopReason": null,
+    "observationVersion": 0,
+    "assistedMeters": 6.29,
+    "actionSeconds": 170.5,
+    "manualMeters": 1.44,
+    "maxTilt": 6.2,
+    "actions": 12,
+    "checkpointUses": 2,
+    "worlds": 2,
+    "previewedWorlds": 2,
+    "routeSelected": [
+      5958934,
+      5958948,
+      5959025
+    ],
+    "viewedTargets": [
+      "T1"
+    ],
+    "viewedTasks": [
+      5959025
+    ],
+    "selected": [
+      5958654,
+      5958934,
+      5959025
+    ],
+    "badges": [
+      {
+        "id": "beforestep",
+        "name": "先见一步",
+        "earned": true,
+        "note": "实际试路后沿认证路线出发"
+      },
+      {
+        "id": "relay",
+        "name": "四腿接力",
+        "earned": true,
+        "note": "亲手完成四腿的 12 个主要动作"
+      },
+      {
+        "id": "observer",
+        "name": "两面勘察",
+        "earned": false,
+        "note": "转看高石 A 和 B 的已有原模型"
+      },
+      {
+        "id": "steady",
+        "name": "稳稳到达",
+        "earned": true,
+        "note": "抵达，且本轮最大车身倾角不超过 8°"
+      },
+      {
+        "id": "pilot",
+        "name": "亲手领航",
+        "earned": true,
+        "note": "实际手控行驶至少 1 m 并抵达"
+      },
+      {
+        "id": "challenge",
+        "name": "一气呵成",
+        "earned": false,
+        "note": "从头完成全程挑战"
+      }
+    ],
+    "chapter": 4,
+    "recordCount": 1
+  },
+  "journal": {
+    "schema": "beforestep-session/v2",
+    "version": "judges-demo-20261118-1",
+    "events": [],
+    "uiEvents": [],
+    "selected": [
+      5959025,
+      5958654,
+      5958934
+    ],
+    "policy": "imagination",
+    "knowledge": {
+      "version": 0,
+      "cells": [],
+      "hits": [],
+      "source": "Current measured ray hits; frozen R1 layer retained separately"
+    },
+    "state": {
+      "x": 10.257169474117866,
+      "y": -0.011436123179955076,
+      "z": 0.46775293401791423,
+      "poseName": "high",
+      "yaw": -0.09999604828161603,
+      "tilt": 0.14699383014364825,
+      "speed": 0.00330522318494188,
+      "elapsed": 175.4020000001094,
+      "steps": 87701,
+      "finite": true,
+      "goalDistance": 0.3430212156558357,
+      "legs": null,
+      "phase": "complete",
+      "paused": true,
+      "automatic": false,
+      "revision": 10,
+      "selected": [
+        5958934,
+        5958948,
+        5959025
+      ],
+      "policy": "imagination",
+      "observationVersion": 0,
+      "measuredCells": 0,
+      "sensor": {
+        "yaw": 0,
+        "verticalFov": 111.1722817230914
+      },
+      "initialJudgment": "pass",
+      "judgmentReady": true,
+      "actionCount": 12,
+      "stable": true,
+      "gameMode": "explore",
+      "checkpoint": {
+        "id": "finish",
+        "label": "门槛后"
+      },
+      "checkpointRestarts": 2,
+      "showcase": {
+        "enabled": true,
+        "checkpointX": 2.8499999999999996,
+        "stage": "high-rocks",
+        "active": false,
+        "completed": true,
+        "viewedTask": null,
+        "releaseMode": "assisted",
+        "triggers": 1,
+        "initialJudgment": "pass"
+      },
+      "scan": {
+        "valid": true,
+        "near": 9.1,
+        "far": 9.199864263007319,
+        "high": 0.12,
+        "heightAboveGround": 0.11911764562129978,
+        "depth": 0.09986426300731921,
+        "camera": [
+          8.844950852448225,
+          -0.004895122275314851,
+          0.38438953990473274
+        ],
+        "points": null,
+        "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+      },
+      "proof": {
+        "passed": true,
+        "requestId": 4,
+        "usable": false,
+        "routeSession": true,
+        "revision": 10,
+        "observationVersion": 0,
+        "worlds": 2,
+        "path": [
+          [
+            3.821558545522216,
+            0.05289155955660562
+          ],
+          [
+            4.6,
+            0.5000000000000004
+          ],
+          [
+            5.4999999999999964,
+            4.163336342344337e-16
+          ],
+          [
+            5.799999999999995,
+            -0.5999999999999995
+          ],
+          [
+            7.19999999999999,
+            -0.6999999999999995
+          ],
+          [
+            8.45,
+            0
+          ]
+        ],
+        "length": 5.434311723448091,
+        "anchor": {
+          "x": 3.821558545522216,
+          "y": 0.05289155955660562,
+          "z": 0.3849524937984378,
+          "poseName": "normal",
+          "yaw": 0.5214308681171328,
+          "tilt": 0.05695583832517477,
+          "speed": 3.9203957581059034e-05,
+          "elapsed": 15.360000000001799,
+          "steps": 7680,
+          "finite": true,
+          "goalDistance": 6.778647805341064,
+          "legs": null
+        }
+      },
+      "gateProof": null
+    }
+  },
+  "tested_code_commit": "d6397c5273aa050a4987e4f42c0a5e54dfff40a3",
+  "subsequent_changes": "Comparison layout and caption only; separate native screenshot and viewport checks identify the later source."
+}

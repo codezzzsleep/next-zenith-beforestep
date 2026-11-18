@@ -1,0 +1,856 @@
+{
+  "schema": "beforestep-session/v2",
+  "version": "judges-demo-20261118-1",
+  "events": [
+    {
+      "sequence": 1,
+      "type": "permissionInvalidated",
+      "simSeconds": 0.6400000000000005,
+      "pose": {
+        "x": 2.2964855785641554,
+        "y": -0.49995478584400627,
+        "yaw": 0.00016511146078965788
+      },
+      "detail": {
+        "reason": "selection_or_route_changed",
+        "observationVersion": 0
+      }
+    },
+    {
+      "sequence": 2,
+      "type": "selectionChanged",
+      "simSeconds": 0.6400000000000005,
+      "pose": {
+        "x": 2.2964855785641554,
+        "y": -0.49995478584400627,
+        "yaw": 0.00016511146078965788
+      },
+      "detail": {
+        "selected": [
+          5959025,
+          5958934
+        ],
+        "policy": "optimistic"
+      }
+    },
+    {
+      "sequence": 3,
+      "type": "firstLook",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "camera": "current",
+        "observationVersion": 0
+      }
+    },
+    {
+      "sequence": 4,
+      "type": "cameraLens",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "yaw": 0.11116473892157605,
+        "verticalFov": 41.554596568496,
+        "offset": [
+          0.46,
+          0.27,
+          0.15
+        ]
+      }
+    },
+    {
+      "sequence": 5,
+      "type": "initialJudgment",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "choice": "unsure",
+        "label": "我拿不准"
+      }
+    },
+    {
+      "sequence": 6,
+      "type": "imaginationOpened",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "selected": [
+          5959025,
+          5958934
+        ]
+      }
+    },
+    {
+      "sequence": 7,
+      "type": "inspectCandidate",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5959025,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 8,
+      "type": "modelViewed",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5959025,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 9,
+      "type": "permissionInvalidated",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "reason": "selection_or_route_changed",
+        "observationVersion": 0
+      }
+    },
+    {
+      "sequence": 10,
+      "type": "selectionChanged",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "selected": [
+          5958934,
+          5958948
+        ],
+        "policy": "optimistic"
+      }
+    },
+    {
+      "sequence": 11,
+      "type": "inspectCandidate",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5958948,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 12,
+      "type": "modelViewed",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5958948,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 13,
+      "type": "inspectCandidate",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5958642,
+        "target": "T2",
+        "input": "evidence/web-assets/objects/8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf.jpg",
+        "admitted": false
+      }
+    },
+    {
+      "sequence": 14,
+      "type": "inspectCandidate",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5958948,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 15,
+      "type": "permissionInvalidated",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "reason": "selection_or_route_changed",
+        "observationVersion": 0
+      }
+    },
+    {
+      "sequence": 16,
+      "type": "selectionChanged",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "selected": [
+          5958934,
+          5959025
+        ],
+        "policy": "optimistic"
+      }
+    },
+    {
+      "sequence": 17,
+      "type": "inspectCandidate",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5959025,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 18,
+      "type": "permissionInvalidated",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "reason": "selection_or_route_changed",
+        "observationVersion": 0
+      }
+    },
+    {
+      "sequence": 19,
+      "type": "selectionChanged",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "selected": [
+          5958934,
+          5958948
+        ],
+        "policy": "optimistic"
+      }
+    },
+    {
+      "sequence": 20,
+      "type": "inspectCandidate",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "taskId": 5958948,
+        "target": "T1",
+        "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+        "admitted": true
+      }
+    },
+    {
+      "sequence": 21,
+      "type": "permissionInvalidated",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "reason": "selection_or_route_changed",
+        "observationVersion": 0
+      }
+    },
+    {
+      "sequence": 22,
+      "type": "selectionChanged",
+      "simSeconds": 4.519999999999724,
+      "pose": {
+        "x": 2.8529380049717337,
+        "y": -0.502826181784174,
+        "yaw": -0.00005610556637287398
+      },
+      "detail": {
+        "selected": [
+          5958934,
+          5958948
+        ],
+        "policy": "imagination"
+      }
+    }
+  ],
+  "uiEvents": [
+    {
+      "type": "imaginationOpened",
+      "at": 18528.60000038147,
+      "selected": [
+        5959025,
+        5958934
+      ]
+    },
+    {
+      "type": "inspectCandidate",
+      "taskId": 5959025,
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "at": 18819.900000572205
+    },
+    {
+      "type": "inspectCandidate",
+      "taskId": 5958948,
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "at": 27375.300000190735
+    },
+    {
+      "type": "inspectCandidate",
+      "taskId": 5958642,
+      "input": "evidence/web-assets/objects/8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf.jpg",
+      "at": 42412.800000190735
+    },
+    {
+      "type": "inspectCandidate",
+      "taskId": 5958948,
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "at": 46827.10000038147
+    },
+    {
+      "type": "inspectCandidate",
+      "taskId": 5959025,
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "at": 53959.300000190735
+    },
+    {
+      "type": "inspectCandidate",
+      "taskId": 5958948,
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "at": 59918
+    }
+  ],
+  "selected": [
+    5958934,
+    5958948
+  ],
+  "policy": "imagination",
+  "knowledge": {
+    "version": 0,
+    "cells": [],
+    "hits": [],
+    "source": "Current measured ray hits; frozen R1 layer retained separately"
+  },
+  "state": {
+    "x": 2.8529380049717337,
+    "y": -0.502826181784174,
+    "z": 0.38508383696257326,
+    "poseName": "normal",
+    "yaw": -0.00005610556637287398,
+    "tilt": 0.31117098417123173,
+    "speed": 0.00044771795615255886,
+    "elapsed": 4.519999999999724,
+    "steps": 2260,
+    "finite": true,
+    "goalDistance": 7.763362913319136,
+    "legs": null,
+    "phase": "explore",
+    "paused": true,
+    "automatic": false,
+    "revision": 5,
+    "selected": [
+      5958934,
+      5958948
+    ],
+    "policy": "imagination",
+    "observationVersion": 0,
+    "measuredCells": 0,
+    "sensor": {
+      "yaw": 0.11116473892157605,
+      "verticalFov": 41.554596568496
+    },
+    "initialJudgment": "unsure",
+    "judgmentReady": true,
+    "actionCount": 0,
+    "stable": true,
+    "gameMode": "explore",
+    "checkpoint": {
+      "id": "observation",
+      "label": "高石观察点"
+    },
+    "checkpointRestarts": 0,
+    "showcase": {
+      "enabled": true,
+      "checkpointX": 2.8499999999999996,
+      "stage": "decision",
+      "active": true,
+      "completed": false,
+      "viewedTask": null,
+      "releaseMode": null,
+      "triggers": 1,
+      "initialJudgment": "unsure"
+    },
+    "scan": null,
+    "proof": null,
+    "gateProof": null
+  },
+  "worker": {
+    "type": "runJournal",
+    "journal": {
+      "initial": {
+        "sequence": 5,
+        "type": "initialJudgment",
+        "simSeconds": 4.519999999999724,
+        "pose": {
+          "x": 2.8529380049717337,
+          "y": -0.502826181784174,
+          "yaw": -0.00005610556637287398
+        },
+        "detail": {
+          "choice": "unsure",
+          "label": "我拿不准"
+        }
+      },
+      "events": [
+        {
+          "sequence": 1,
+          "type": "permissionInvalidated",
+          "simSeconds": 0.6400000000000005,
+          "pose": {
+            "x": 2.2964855785641554,
+            "y": -0.49995478584400627,
+            "yaw": 0.00016511146078965788
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 2,
+          "type": "selectionChanged",
+          "simSeconds": 0.6400000000000005,
+          "pose": {
+            "x": 2.2964855785641554,
+            "y": -0.49995478584400627,
+            "yaw": 0.00016511146078965788
+          },
+          "detail": {
+            "selected": [
+              5959025,
+              5958934
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 3,
+          "type": "firstLook",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "camera": "current",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 4,
+          "type": "cameraLens",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "yaw": 0.11116473892157605,
+            "verticalFov": 41.554596568496,
+            "offset": [
+              0.46,
+              0.27,
+              0.15
+            ]
+          }
+        },
+        {
+          "sequence": 5,
+          "type": "initialJudgment",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "choice": "unsure",
+            "label": "我拿不准"
+          }
+        },
+        {
+          "sequence": 6,
+          "type": "imaginationOpened",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "selected": [
+              5959025,
+              5958934
+            ]
+          }
+        },
+        {
+          "sequence": 7,
+          "type": "inspectCandidate",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5959025,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 8,
+          "type": "modelViewed",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5959025,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 9,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 10,
+          "type": "selectionChanged",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 11,
+          "type": "inspectCandidate",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 12,
+          "type": "modelViewed",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 13,
+          "type": "inspectCandidate",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5958642,
+            "target": "T2",
+            "input": "evidence/web-assets/objects/8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf.jpg",
+            "admitted": false
+          }
+        },
+        {
+          "sequence": 14,
+          "type": "inspectCandidate",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 15,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 16,
+          "type": "selectionChanged",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5959025
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 17,
+          "type": "inspectCandidate",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5959025,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 18,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 19,
+          "type": "selectionChanged",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948
+            ],
+            "policy": "optimistic"
+          }
+        },
+        {
+          "sequence": 20,
+          "type": "inspectCandidate",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "taskId": 5958948,
+            "target": "T1",
+            "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+            "admitted": true
+          }
+        },
+        {
+          "sequence": 21,
+          "type": "permissionInvalidated",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "reason": "selection_or_route_changed",
+            "observationVersion": 0
+          }
+        },
+        {
+          "sequence": 22,
+          "type": "selectionChanged",
+          "simSeconds": 4.519999999999724,
+          "pose": {
+            "x": 2.8529380049717337,
+            "y": -0.502826181784174,
+            "yaw": -0.00005610556637287398
+          },
+          "detail": {
+            "selected": [
+              5958934,
+              5958948
+            ],
+            "policy": "imagination"
+          }
+        }
+      ],
+      "sequence": 22
+    },
+    "knowledge": {
+      "version": 0,
+      "cells": [],
+      "hits": [],
+      "source": "Current measured ray hits; frozen R1 layer retained separately"
+    },
+    "selected": [
+      5958934,
+      5958948
+    ],
+    "policy": "imagination",
+    "state": {
+      "x": 2.8529380049717337,
+      "y": -0.502826181784174,
+      "z": 0.38508383696257326,
+      "poseName": "normal",
+      "yaw": -0.00005610556637287398,
+      "tilt": 0.31117098417123173,
+      "speed": 0.00044771795615255886,
+      "elapsed": 4.519999999999724,
+      "steps": 2260,
+      "finite": true,
+      "goalDistance": 7.763362913319136,
+      "legs": null
+    },
+    "phase": "explore"
+  }
+}

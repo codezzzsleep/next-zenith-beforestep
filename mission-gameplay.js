@@ -136,19 +136,19 @@ export class MissionGameplay {
     const state = this.state;
     const chapter = state.phase === 'failed' ? this.run.chapter : chapterFor(state, this.mission);
     const objective = nextObjective(state, this.mission);
-    $('objective').textContent = objective.title;
-    $('hint').textContent = state.phase === 'failed' && state.gameMode === 'challenge' ? '全程挑战从头再来；也可以切换探索练习。' : objective.hint;
+    if(!this.storyMode){$('objective').textContent = objective.title;
+      $('hint').textContent = state.phase === 'failed' && state.gameMode === 'challenge' ? '全程挑战从头再来；也可以切换探索练习。' : objective.hint;}
     $('game-mode-label').textContent = MODE_NAMES[this.run.mode];
     $('game-action-time').textContent = formatTime(this.run.actionSeconds);
-    $('mission-route').querySelectorAll('li').forEach((node, index) => {
+    if(!this.storyMode)$('mission-route').querySelectorAll('li').forEach((node, index) => {
       node.classList.toggle('done', index < chapter);
       node.classList.toggle('current', index === chapter);
       node.setAttribute('aria-current', index === chapter ? 'step' : 'false');
     });
     for (const button of document.querySelectorAll('[data-game-mode]')) button.setAttribute('aria-pressed', String(button.dataset.gameMode === this.run.mode));
     const progress = chapter === 2 ? 2 + Math.min(this.state.actionCount / 12, .98) : chapter;
-    $('mission-route').setAttribute('aria-label', `任务进度：已完成 ${Math.min(chapter, 4)} / 4 站`);
-    $('mission-route').style.setProperty('--journey-progress', `${Math.min(100, progress * 25)}%`);
+    if(!this.storyMode){$('mission-route').setAttribute('aria-label', `任务进度：已完成 ${Math.min(chapter, 4)} / 4 站`);
+      $('mission-route').style.setProperty('--journey-progress', `${Math.min(100, progress * 25)}%`);}
     $('gameplay-open').disabled = state.showcase?.stage === 'braking';
     const target = chapter === 0 ? [this.mission.start[0] + .55, this.mission.start[1]] : chapter === 1 || chapter === 2 ? this.mission.dock : null;
     this.setObjective?.(state.legs || state.phase === 'failed' ? null : target);

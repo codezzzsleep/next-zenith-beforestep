@@ -1,52 +1,58 @@
 {
   "schema": "beforestep-playability-pages/v1",
-  "source_main": "1d2298527afd87e569bc6775ebc9ea3eec87fae8",
-  "base_pages": "8a3f59942b51e8b5854840098ce9814ac859c0de",
+  "source_main": "a60571980abeefa479cd34976dd18509f9cda883",
+  "base_pages": "fb0e1f0cb9606930df7cc853c751ecd6de4dfce3",
   "projection": [
     {
       "source": "site/fonts/beforestep-gameplay-sans-bold.woff2",
       "path": "fonts/beforestep-gameplay-sans-bold.woff2",
-      "bytes": 5144,
-      "source_sha256": "686c50cfdeccd2deba5d4ab71d0874072e424f2632314f30995f0fcb0c3c1374",
-      "delivery_sha256": "686c50cfdeccd2deba5d4ab71d0874072e424f2632314f30995f0fcb0c3c1374",
+      "bytes": 6532,
+      "source_bytes": 6532,
+      "source_sha256": "bcfd3633b5a6217a0aaa5a3335e6f31201b4ccf17ca90fbadf3c379563fd33f1",
+      "delivery_sha256": "bcfd3633b5a6217a0aaa5a3335e6f31201b4ccf17ca90fbadf3c379563fd33f1",
       "transforms": []
     },
     {
       "source": "site/fonts/beforestep-gameplay-sans-regular.woff2",
       "path": "fonts/beforestep-gameplay-sans-regular.woff2",
-      "bytes": 5068,
-      "source_sha256": "30596d55b37d5d9b6b8d20263b4403f070221186d2790c7c2c2627e611266497",
-      "delivery_sha256": "30596d55b37d5d9b6b8d20263b4403f070221186d2790c7c2c2627e611266497",
+      "bytes": 6456,
+      "source_bytes": 6456,
+      "source_sha256": "12755fee9260a12fb643625ec5113b8ed523d6c7cb4837b25ddaeffde6cb51c0",
+      "delivery_sha256": "12755fee9260a12fb643625ec5113b8ed523d6c7cb4837b25ddaeffde6cb51c0",
       "transforms": []
     },
     {
       "source": "site/fonts/beforestep-gameplay-serif-bold.woff2",
       "path": "fonts/beforestep-gameplay-serif-bold.woff2",
-      "bytes": 6936,
-      "source_sha256": "624e20f369c7d4213a19255278f3f9e323afd4a3a5508683849026b91e598e86",
-      "delivery_sha256": "624e20f369c7d4213a19255278f3f9e323afd4a3a5508683849026b91e598e86",
+      "bytes": 9228,
+      "source_bytes": 9228,
+      "source_sha256": "dcf5d823762ccdfdd76df8274855ddd40ed6a8940329c19f0fa68e055562e1ee",
+      "delivery_sha256": "dcf5d823762ccdfdd76df8274855ddd40ed6a8940329c19f0fa68e055562e1ee",
       "transforms": []
     },
     {
       "source": "site/fonts/gameplay-provenance.json",
       "path": "fonts/gameplay-provenance.json",
-      "bytes": 2470,
-      "source_sha256": "2846b5441a51003aa821ae13c2a518c33e569450e3ffb1bb0cd768062bb829ef",
-      "delivery_sha256": "2846b5441a51003aa821ae13c2a518c33e569450e3ffb1bb0cd768062bb829ef",
+      "bytes": 2674,
+      "source_bytes": 2674,
+      "source_sha256": "9b0ff629161986eb702d1df58c6669b17fd82156642a3948a021e099da114c56",
+      "delivery_sha256": "9b0ff629161986eb702d1df58c6669b17fd82156642a3948a021e099da114c56",
       "transforms": []
     },
     {
       "source": "site/fonts/gameplay.css",
       "path": "fonts/gameplay.css",
-      "bytes": 851,
-      "source_sha256": "8bb15bb019f2edc342799efac90ab90d27a48c300e9973d147b1bbe680401c2a",
-      "delivery_sha256": "8bb15bb019f2edc342799efac90ab90d27a48c300e9973d147b1bbe680401c2a",
+      "bytes": 935,
+      "source_bytes": 935,
+      "source_sha256": "0f9796b439bd5ea07083db3d96a5e657d79a37796e6e6573de04644971d70838",
+      "delivery_sha256": "0f9796b439bd5ea07083db3d96a5e657d79a37796e6e6573de04644971d70838",
       "transforms": []
     },
     {
       "source": "site/home-lux3d.js",
       "path": "home-lux3d.js",
       "bytes": 3567,
+      "source_bytes": 3567,
       "source_sha256": "efce03664f90fb04f20a85e0b24628fa705729d07ef7bf632c45f309c5e1e064",
       "delivery_sha256": "efce03664f90fb04f20a85e0b24628fa705729d07ef7bf632c45f309c5e1e064",
       "transforms": []
@@ -55,6 +61,7 @@
       "source": "site/home-playability.css",
       "path": "home-playability.css",
       "bytes": 1345,
+      "source_bytes": 1345,
       "source_sha256": "30a47a89b5cd3f4f9ca6a4642922b7b99c4b30bf78457563d7f1f20b60ecf638",
       "delivery_sha256": "30a47a89b5cd3f4f9ca6a4642922b7b99c4b30bf78457563d7f1f20b60ecf638",
       "transforms": []
@@ -62,157 +69,23 @@
     {
       "source": "site/index.html",
       "path": "index.html",
-      "bytes": 12260,
-      "source_sha256": "4f006706c7d50d932d9629df1e3e2b33781202bd16b8f396a4977b119f28e37d",
-      "delivery_sha256": "618cc668e424252b440aeb8bb1fe01a81d081dcb0bb7b176cbccc0afe5b12847",
-      "transforms": [
-        "original fixed-alias static URL resolution",
-        "insert existing asset-links adapter before other head resources"
-      ]
-    },
-    {
-      "source": "site/media/mission/m20-skin.json.gz",
-      "path": "media/mission/m20-skin.json.gz",
-      "bytes": 1593225,
-      "source_sha256": "e8f1f0b2e21f681f87dcb5bd68f345af7951db5ce853e63678052b3a36051fc3",
-      "delivery_sha256": "e8f1f0b2e21f681f87dcb5bd68f345af7951db5ce853e63678052b3a36051fc3",
-      "transforms": []
-    },
-    {
-      "source": "site/media/mission/m20/LICENSE.txt",
-      "path": "media/mission/m20/LICENSE.txt",
-      "bytes": 1502,
-      "source_sha256": "6bc5967b1cfbdb83b0798942a5f11d4e0555ad8de17697bd4d7eaab6e22f9be5",
-      "delivery_sha256": "6bc5967b1cfbdb83b0798942a5f11d4e0555ad8de17697bd4d7eaab6e22f9be5",
-      "transforms": []
-    },
-    {
-      "source": "site/media/mission/m20/README.txt",
-      "path": "media/mission/m20/README.txt",
-      "bytes": 309,
-      "source_sha256": "cce72f49e0814ab78babfde6c10fb577ebb364555c385d6d525280318d000477",
-      "delivery_sha256": "cce72f49e0814ab78babfde6c10fb577ebb364555c385d6d525280318d000477",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-gameplay.css",
-      "path": "mission-gameplay.css",
-      "bytes": 6193,
-      "source_sha256": "c365caf9a3102e73be3863d4ca714862bb03c0f21ebf0cf1846b71c0b9bbd667",
-      "delivery_sha256": "c365caf9a3102e73be3863d4ca714862bb03c0f21ebf0cf1846b71c0b9bbd667",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-gameplay.js",
-      "path": "mission-gameplay.js",
-      "bytes": 11132,
-      "source_sha256": "51e85b6b40b2c944af8111795bb03c9a5f7b76f7fc197f1a4b5e6fe6c6ed3fd9",
-      "delivery_sha256": "51e85b6b40b2c944af8111795bb03c9a5f7b76f7fc197f1a4b5e6fe6c6ed3fd9",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-insight.css",
-      "path": "mission-insight.css",
-      "bytes": 3893,
-      "source_sha256": "36f819c26b537915285dd925226f1b428597ed797d5d6da0fb02381035406b9a",
-      "delivery_sha256": "36f819c26b537915285dd925226f1b428597ed797d5d6da0fb02381035406b9a",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-insight.js",
-      "path": "mission-insight.js",
-      "bytes": 4794,
-      "source_sha256": "416e71ab20df713c512b3aa3cc93272fd1addd3ffe78ebdf1c58cc64a2db8d8e",
-      "delivery_sha256": "416e71ab20df713c512b3aa3cc93272fd1addd3ffe78ebdf1c58cc64a2db8d8e",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-run.js",
-      "path": "mission-run.js",
-      "bytes": 10558,
-      "source_sha256": "dace0e7fe44d8b12678ec7419cbace150d42178ba5a8e0abeaa4103bcc7d208b",
-      "delivery_sha256": "dace0e7fe44d8b12678ec7419cbace150d42178ba5a8e0abeaa4103bcc7d208b",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-worker.js",
-      "path": "mission-worker.js",
-      "bytes": 16247,
-      "source_sha256": "72d15c6de29f313750515f1ca959a6969cc0d147d2c1bb8e63298fcd2d0943c1",
-      "delivery_sha256": "72d15c6de29f313750515f1ca959a6969cc0d147d2c1bb8e63298fcd2d0943c1",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-world.js",
-      "path": "mission-world.js",
-      "bytes": 11311,
-      "source_sha256": "a2b3bf49639bce506a30d200f7b64ef3d1295e3a783839bcb74505711aae7736",
-      "delivery_sha256": "a2b3bf49639bce506a30d200f7b64ef3d1295e3a783839bcb74505711aae7736",
-      "transforms": []
-    },
-    {
-      "source": "site/startup-assets.json",
-      "path": "startup-assets.json",
-      "bytes": 1611,
-      "source_sha256": "b5a8291804fe7d5f1409191db775ff2ad0388f735d417512db4b5f8ab91c7007",
-      "delivery_sha256": "b5a8291804fe7d5f1409191db775ff2ad0388f735d417512db4b5f8ab91c7007",
-      "transforms": []
-    },
-    {
-      "source": "site/startup-loader.js",
-      "path": "startup-loader.js",
-      "bytes": 6632,
-      "source_sha256": "cbca6ca7a174504190a823b2ea197139914b2eff48d61f6f8148625fdf1d9ca6",
-      "delivery_sha256": "cbca6ca7a174504190a823b2ea197139914b2eff48d61f6f8148625fdf1d9ca6",
-      "transforms": []
-    },
-    {
-      "source": "site/mission.js",
-      "path": "mission.js",
-      "bytes": 39195,
-      "source_bytes": 39195,
-      "source_sha256": "25f3f2039664bfaa2e7e59559f15266176ecc2f568468d33071584015850f487",
-      "delivery_sha256": "25f3f2039664bfaa2e7e59559f15266176ecc2f568468d33071584015850f487",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-scene.js",
-      "path": "mission-scene.js",
-      "bytes": 21779,
-      "source_bytes": 21779,
-      "source_sha256": "9ff621ead21742de8604002fef97b38a7f987a56c8d7db9ff4c542602fe5e883",
-      "delivery_sha256": "9ff621ead21742de8604002fef97b38a7f987a56c8d7db9ff4c542602fe5e883",
-      "transforms": []
-    },
-    {
-      "source": "site/mission-appearance.js",
-      "path": "mission-appearance.js",
-      "bytes": 1548,
-      "source_bytes": 1548,
-      "source_sha256": "82bd095e0f8933288858efd21ea96e349cafcc97ba646dad5a0f23ad5fe7dace",
-      "delivery_sha256": "82bd095e0f8933288858efd21ea96e349cafcc97ba646dad5a0f23ad5fe7dace",
-      "transforms": []
-    },
-    {
-      "source": "site/rock-surface.js",
-      "path": "rock-surface.js",
-      "bytes": 2297,
-      "source_bytes": 2297,
-      "source_sha256": "2cc453875300720fe8aab4a8de76dabdec436ded7b03f6ad75a9f8b2687c9983",
-      "delivery_sha256": "2cc453875300720fe8aab4a8de76dabdec436ded7b03f6ad75a9f8b2687c9983",
-      "transforms": []
-    },
-    {
-      "source": "site/play.html",
-      "path": "play.html",
-      "bytes": 15187,
-      "source_bytes": 15138,
-      "source_sha256": "682677fc6ba864e60b42c3a26f7690e457df0445bb3b6179235f41b98fd93859",
-      "delivery_sha256": "694f03b10ecc19138886b6e512d220844d9ca7c525734421f773dccdc3210923",
+      "bytes": 12480,
+      "source_bytes": 12431,
+      "source_sha256": "a148df9ecf497fe7896d8c6645518952c0f101ee32d7561b9a2d0ebdcddb6bbd",
+      "delivery_sha256": "13c7d112342fdc94382c1be756e9072fe4b73a38825c591eedc1fe5e4171ca04",
       "transforms": [
         "existing fixed-asset static URL resolution",
         "insert existing asset-links adapter before head resources"
       ]
+    },
+    {
+      "source": "site/media/game-spatial-imagination-preview-20261118.jpg",
+      "path": "media/game-spatial-imagination-preview-20261118.jpg",
+      "bytes": 149918,
+      "source_bytes": 149918,
+      "source_sha256": "7f77196405f339d6b5afd1672c780a767749d592f44d50383e20261fc13049d2",
+      "delivery_sha256": "7f77196405f339d6b5afd1672c780a767749d592f44d50383e20261fc13049d2",
+      "transforms": []
     },
     {
       "source": "site/media/mission/appearance/manifest.json",
@@ -294,6 +167,180 @@
       "source_sha256": "5dc6eef58ba54eabd37353c78f55040fa84640c4b03402a03e2cd65cda6f7e34",
       "delivery_sha256": "5dc6eef58ba54eabd37353c78f55040fa84640c4b03402a03e2cd65cda6f7e34",
       "transforms": []
+    },
+    {
+      "source": "site/media/mission/m20-skin.json.gz",
+      "path": "media/mission/m20-skin.json.gz",
+      "bytes": 1593225,
+      "source_bytes": 1593225,
+      "source_sha256": "e8f1f0b2e21f681f87dcb5bd68f345af7951db5ce853e63678052b3a36051fc3",
+      "delivery_sha256": "e8f1f0b2e21f681f87dcb5bd68f345af7951db5ce853e63678052b3a36051fc3",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/m20/LICENSE.txt",
+      "path": "media/mission/m20/LICENSE.txt",
+      "bytes": 1502,
+      "source_bytes": 1502,
+      "source_sha256": "6bc5967b1cfbdb83b0798942a5f11d4e0555ad8de17697bd4d7eaab6e22f9be5",
+      "delivery_sha256": "6bc5967b1cfbdb83b0798942a5f11d4e0555ad8de17697bd4d7eaab6e22f9be5",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/m20/README.txt",
+      "path": "media/mission/m20/README.txt",
+      "bytes": 309,
+      "source_bytes": 309,
+      "source_sha256": "cce72f49e0814ab78babfde6c10fb577ebb364555c385d6d525280318d000477",
+      "delivery_sha256": "cce72f49e0814ab78babfde6c10fb577ebb364555c385d6d525280318d000477",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-appearance.js",
+      "path": "mission-appearance.js",
+      "bytes": 1548,
+      "source_bytes": 1548,
+      "source_sha256": "82bd095e0f8933288858efd21ea96e349cafcc97ba646dad5a0f23ad5fe7dace",
+      "delivery_sha256": "82bd095e0f8933288858efd21ea96e349cafcc97ba646dad5a0f23ad5fe7dace",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-gameplay.css",
+      "path": "mission-gameplay.css",
+      "bytes": 6193,
+      "source_bytes": 6193,
+      "source_sha256": "c365caf9a3102e73be3863d4ca714862bb03c0f21ebf0cf1846b71c0b9bbd667",
+      "delivery_sha256": "c365caf9a3102e73be3863d4ca714862bb03c0f21ebf0cf1846b71c0b9bbd667",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-gameplay.js",
+      "path": "mission-gameplay.js",
+      "bytes": 11197,
+      "source_bytes": 11197,
+      "source_sha256": "20bf943bf237b754e751cd54f55b499b72ca87af77fce82159237ff58a04a5f0",
+      "delivery_sha256": "20bf943bf237b754e751cd54f55b499b72ca87af77fce82159237ff58a04a5f0",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-insight.css",
+      "path": "mission-insight.css",
+      "bytes": 3893,
+      "source_bytes": 3893,
+      "source_sha256": "36f819c26b537915285dd925226f1b428597ed797d5d6da0fb02381035406b9a",
+      "delivery_sha256": "36f819c26b537915285dd925226f1b428597ed797d5d6da0fb02381035406b9a",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-insight.js",
+      "path": "mission-insight.js",
+      "bytes": 4794,
+      "source_bytes": 4794,
+      "source_sha256": "416e71ab20df713c512b3aa3cc93272fd1addd3ffe78ebdf1c58cc64a2db8d8e",
+      "delivery_sha256": "416e71ab20df713c512b3aa3cc93272fd1addd3ffe78ebdf1c58cc64a2db8d8e",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-run.js",
+      "path": "mission-run.js",
+      "bytes": 10558,
+      "source_bytes": 10558,
+      "source_sha256": "dace0e7fe44d8b12678ec7419cbace150d42178ba5a8e0abeaa4103bcc7d208b",
+      "delivery_sha256": "dace0e7fe44d8b12678ec7419cbace150d42178ba5a8e0abeaa4103bcc7d208b",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-scene.js",
+      "path": "mission-scene.js",
+      "bytes": 24621,
+      "source_bytes": 24621,
+      "source_sha256": "bbf97db85099882bf081747323aa107bba7b1dade2fac2a197380019b8a3d494",
+      "delivery_sha256": "bbf97db85099882bf081747323aa107bba7b1dade2fac2a197380019b8a3d494",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-story.css",
+      "path": "mission-story.css",
+      "bytes": 5604,
+      "source_bytes": 5604,
+      "source_sha256": "b6687eafece019d86b3c06aebefeb7be7c309e1d12a34f46ff9cca0afeff7b6a",
+      "delivery_sha256": "b6687eafece019d86b3c06aebefeb7be7c309e1d12a34f46ff9cca0afeff7b6a",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-story.js",
+      "path": "mission-story.js",
+      "bytes": 9168,
+      "source_bytes": 9168,
+      "source_sha256": "482f731a62b1f7b877b0a50984bb479ce19f26178eb4f6488716e11ba86cefe8",
+      "delivery_sha256": "482f731a62b1f7b877b0a50984bb479ce19f26178eb4f6488716e11ba86cefe8",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-worker.js",
+      "path": "mission-worker.js",
+      "bytes": 16247,
+      "source_bytes": 16247,
+      "source_sha256": "72d15c6de29f313750515f1ca959a6969cc0d147d2c1bb8e63298fcd2d0943c1",
+      "delivery_sha256": "72d15c6de29f313750515f1ca959a6969cc0d147d2c1bb8e63298fcd2d0943c1",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-world.js",
+      "path": "mission-world.js",
+      "bytes": 11311,
+      "source_bytes": 11311,
+      "source_sha256": "a2b3bf49639bce506a30d200f7b64ef3d1295e3a783839bcb74505711aae7736",
+      "delivery_sha256": "a2b3bf49639bce506a30d200f7b64ef3d1295e3a783839bcb74505711aae7736",
+      "transforms": []
+    },
+    {
+      "source": "site/mission.js",
+      "path": "mission.js",
+      "bytes": 40854,
+      "source_bytes": 40854,
+      "source_sha256": "6997ceff3a0f2b252974246e0b1762dca77a3516a1cec9d24370daa7a38092a8",
+      "delivery_sha256": "6997ceff3a0f2b252974246e0b1762dca77a3516a1cec9d24370daa7a38092a8",
+      "transforms": []
+    },
+    {
+      "source": "site/play.html",
+      "path": "play.html",
+      "bytes": 17301,
+      "source_bytes": 17252,
+      "source_sha256": "e7a867eca24b56201b5c22f04cab6f4d8e5d404246e1daf83cc62ab4b70f5bf2",
+      "delivery_sha256": "f3144f0f9554e1674fd5c10e513a5628b53ab5de3b9a05aa84f4b459d9aeaec7",
+      "transforms": [
+        "existing fixed-asset static URL resolution",
+        "insert existing asset-links adapter before head resources"
+      ]
+    },
+    {
+      "source": "site/rock-surface.js",
+      "path": "rock-surface.js",
+      "bytes": 2297,
+      "source_bytes": 2297,
+      "source_sha256": "2cc453875300720fe8aab4a8de76dabdec436ded7b03f6ad75a9f8b2687c9983",
+      "delivery_sha256": "2cc453875300720fe8aab4a8de76dabdec436ded7b03f6ad75a9f8b2687c9983",
+      "transforms": []
+    },
+    {
+      "source": "site/startup-assets.json",
+      "path": "startup-assets.json",
+      "bytes": 1611,
+      "source_bytes": 1611,
+      "source_sha256": "b5a8291804fe7d5f1409191db775ff2ad0388f735d417512db4b5f8ab91c7007",
+      "delivery_sha256": "b5a8291804fe7d5f1409191db775ff2ad0388f735d417512db4b5f8ab91c7007",
+      "transforms": []
+    },
+    {
+      "source": "site/startup-loader.js",
+      "path": "startup-loader.js",
+      "bytes": 6632,
+      "source_bytes": 6632,
+      "source_sha256": "cbca6ca7a174504190a823b2ea197139914b2eff48d61f6f8148625fdf1d9ca6",
+      "delivery_sha256": "cbca6ca7a174504190a823b2ea197139914b2eff48d61f6f8148625fdf1d9ca6",
+      "transforms": []
     }
   ],
   "original_asset_alias_count": 6448,
@@ -359,21 +406,22 @@
   "base_pages_total_git_bytes": 732804668,
   "source_only_docs_and_evidence": "Main retains playability and spatial-judgment documentation, screenshots, verification and build sources; runtime projection only",
   "changed_files": [
-    "mission.js",
+    "fonts/beforestep-gameplay-sans-bold.woff2",
+    "fonts/beforestep-gameplay-sans-regular.woff2",
+    "fonts/beforestep-gameplay-serif-bold.woff2",
+    "fonts/gameplay-provenance.json",
+    "fonts/gameplay.css",
+    "index.html",
+    "media/game-spatial-imagination-preview-20261118.jpg",
+    "mission-gameplay.js",
     "mission-scene.js",
-    "mission-appearance.js",
-    "rock-surface.js",
+    "mission-story.css",
+    "mission-story.js",
+    "mission.js",
     "play.html",
-    "media/mission/appearance/manifest.json",
-    "media/mission/appearance/moon_rock_03-20261118.jpg",
-    "media/mission/appearance/moon_rock_04-20261118.jpg",
-    "media/mission/appearance/moon_rock_06-20261118.jpg",
-    "media/mission/appearance/moon_rock_07-20261118.jpg",
-    "media/mission/appearance/regolith-20261118.jpg",
-    "media/mission/appearance/rock_07-20261118.jpg",
-    "media/mission/appearance/rock_09-20261118.jpg",
-    "media/mission/appearance/scan-uv.json.gz",
     "playability-delivery.json"
   ],
-  "source_evidence": "evidence/solid-rocks-20261118/"
+  "source_evidence": "evidence/spatial-imagination-20261118/",
+  "experience": "spatial-imagination-20261118",
+  "local_desktop_complete": true
 }

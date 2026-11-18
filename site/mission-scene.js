@@ -17,9 +17,12 @@ export class MissionScene{
     this.goal=new THREE.Mesh(new THREE.TorusGeometry(.35,.022,10,64),new THREE.MeshBasicMaterial({color:'#53cdb9'}));this.goal.position.set(...mission.goal,.04);this.scene.add(this.goal);
     this.marker=new THREE.Mesh(new THREE.TorusGeometry(.105,.012,8,40),new THREE.MeshBasicMaterial({color:'#f0a93b',depthTest:false}));this.marker.renderOrder=5;this.marker.visible=false;this.scene.add(this.marker);
     this.soil=appearance?.textures.regolith??null;
+    this.perception=false;this.perceptionPalette=[new THREE.MeshBasicMaterial({color:'#e0e7eb'}),new THREE.MeshBasicMaterial({color:'#617b90'}),new THREE.MeshBasicMaterial({color:'#a0b1bd'}),new THREE.MeshBasicMaterial({color:'#607485'})];
     new ResizeObserver(()=>this.resize()).observe(canvas.parentElement);
   }
   setModel(model){
+    for(const mesh of this.planningMeshes||[])mesh.visible=false;
+    this.canvas.dataset.planningHypotheses='0';
     this.model=model;for(const {mesh}of [...this.objects,...this.skinObjects]){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.objects=[];this.skinObjects=[];this.dirty=true;const m=model,cache=new Map();
     const skinReady=this.makeRobotSkin(m);
     for(let g=0;g<m.ngeom;g++){
@@ -78,6 +81,20 @@ export class MissionScene{
     // Observation is evidence for the robot, not a mask that cuts holes in matter.
     this.canvas.dataset.observedHits=String(this.seen.size);
   }
+  setPerception(value){if(this.dream||this.perception===value)return;this.perception=value;this.dirty=true;}
+  renderView(camera){
+    if(!this.perception){this.renderer.render(this.scene,camera);return;}
+    const originals=[],background=this.scene.background,fog=this.scene.fog,shadows=this.renderer.shadowMap.enabled;
+    for(const object of this.objects){const type=this.model.geom_type[object.g];originals.push([object.mesh,object.mesh.material]);object.mesh.material=this.perceptionPalette[type<=1?0:object.high?1:object.role==='robot'?3:2];}
+    for(const object of this.skinObjects){originals.push([object.mesh,object.mesh.material]);object.mesh.material=this.perceptionPalette[3];}
+    this.scene.background=new THREE.Color('#d3dee5');this.scene.fog=null;this.renderer.shadowMap.enabled=false;
+    try{this.renderer.render(this.scene,camera);}finally{for(const [mesh,material]of originals)mesh.material=material;this.scene.background=background;this.scene.fog=fog;this.renderer.shadowMap.enabled=shadows;}
+  }
+  clearPreview(){
+    if(!this.dream||!this.data&&!this.model)return;
+    for(const {mesh}of [...this.objects,...this.skinObjects]){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}
+    this.objects=[];this.skinObjects=[];this.model=null;this.data=null;this.state=null;this.started=false;this.dirty=true;
+  }
   route(plan,passed=false){
     if(this.line){this.scene.remove(this.line);this.line.geometry.dispose();this.line.material.dispose();}this.line=null;if(!plan?.path)return;
     this.line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(p[0],p[1],.04))),new THREE.LineDashedMaterial({color:passed?'#53cdb9':'#f0a93b',dashSize:.12,gapSize:passed?0:.09,depthTest:true,depthWrite:false}));this.line.computeLineDistances();this.line.renderOrder=4;this.scene.add(this.line);
@@ -85,9 +102,15 @@ export class MissionScene{
   compare(comparison, policy='imagination', passed=false){
     if(!this.dream)return;
     for(const object of this.comparisonObjects||[]){this.scene.remove(object);object.geometry?.dispose();object.material.map?.dispose();object.material.dispose();}
-    this.comparisonObjects=[];this.comparison=comparison;this.dirty=true;
+    this.comparisonObjects=[];this.planningMeshes=[];this.comparison=comparison;this.dirty=true;
     if(!comparison){delete this.canvas.dataset.comparison;return;}
     const add=object=>{this.scene.add(object);this.comparisonObjects.push(object);return object;};
+    if(!this.data)for(const id of comparison.selected){
+      const candidate=this.mission.candidates.find(c=>c.task_id===id),surface=this.display[candidate?.world_mesh];if(!surface)continue;
+      const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(surface.positions,3));geometry.setIndex(surface.indices);geometry.computeVertexNormals();
+      const mesh=add(new THREE.Mesh(geometry,new THREE.MeshStandardMaterial({color:'#d5ad67',roughness:.98,transparent:true,opacity:.78,side:THREE.DoubleSide})));mesh.userData.taskId=id;this.planningMeshes.push(mesh);
+    }
+    this.canvas.dataset.planningHypotheses=String(this.planningMeshes.length);
     const g=this.mission.grid,c=document.createElement('canvas');c.width=g.nx;c.height=g.ny;
     const ctx=c.getContext('2d'),pixels=ctx.createImageData(g.nx,g.ny);
     for(let x=0;x<g.nx;x++)for(let y=0;y<g.ny;y++){
@@ -145,7 +168,10 @@ export class MissionScene{
       warning.position.set(...comparison.exposure.point,.1);warning.renderOrder=7;
     }
     this.canvas.dataset.comparison=JSON.stringify({selected:comparison.selected,visibleCells:comparison.visible.reduce((n,v)=>n+v,0),hypothesisCells:comparison.added.reduce((n,v)=>n+v,0),visibleRoute:!!comparison.visiblePlan.path,hypothesisRoute:!!comparison.hypothesisPlan.path,clearanceMargin:comparison.exposure?.margin,passed:passed&&policy==='imagination'});
-    if(this.view===2)this.fitComparison();
+    if(this.view===2)this.fitComparison();else this.fitSpatialComparison();
+  }
+  fitSpatialComparison(){
+    if(!this.comparison)return;const middle=(this.comparison.start[0]+this.mission.dock[0])/2;this.controls.target.set(middle,0,.15);this.camera.position.set(middle-1.7,-4.5,3.3);this.controls.update();
   }
   fitComparison(){
     const g=this.mission.grid,x0=this.comparison.start[0]-.55,x1=this.mission.dock[0]+.6,y0=g.y0+.1,y1=g.y0+g.ny*g.res-.1;
@@ -159,20 +185,20 @@ export class MissionScene{
     this.dirty=true;
   }
   setView(view){
-    this.dirty=true;this.view=view;this.followCamera=true;this.controls.enabled=view!==1;if(this.dream&&this.comparison&&view===2){this.fitComparison();return;}if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
+    this.dirty=true;this.view=view;this.followCamera=true;this.controls.enabled=view!==1;if(this.dream&&this.comparison){if(view===2){this.fitComparison();return;}this.fitSpatialComparison();return;}if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
     if(view===0||view===1)this.camera.position.set(s.x-1.5*Math.cos(s.yaw)+1.4*Math.sin(s.yaw),s.y-1.5*Math.sin(s.yaw)-1.4*Math.cos(s.yaw),s.z+.85);
     if(view===2)this.camera.position.set(s.x-.3,s.y-.001,s.z+5);this.controls.update();
   }
   resize(){const b=this.canvas.getBoundingClientRect();if(!b.width||!b.height||this.sizeW===b.width&&this.sizeH===b.height)return;this.sizeW=b.width;this.sizeH=b.height;this.renderer.setSize(b.width,b.height,false);this.camera.aspect=b.width/b.height;this.camera.updateProjectionMatrix();}
   draw(){
     if(!this.data&&!(this.dream&&this.comparison)||this.state?.paused&&!this.dirty&&!this.dream)return;this.dirty=false;this.resize();if(this.dream&&this.comparison&&this.view===2)this.fitComparison();const b=this.canvas.getBoundingClientRect(),w=b.width,h=b.height,r=this.renderer;
-    const visibleHeight=this.compactBrain?Math.max(180,Math.min(h-445,330)):h;r.setScissorTest(false);r.setViewport(0,h-visibleHeight,w,visibleHeight);this.camera.aspect=w/visibleHeight;this.camera.updateProjectionMatrix();this.car.aspect=w/visibleHeight;this.car.fov=2*Math.atan(Math.tan(34*Math.PI/180)/this.car.aspect)*180/Math.PI;this.car.updateProjectionMatrix();r.render(this.scene,this.view===1?this.car:this.camera);
+    const visibleHeight=this.compactBrain?Math.max(180,Math.min(h-445,330)):h;r.setScissorTest(false);r.setViewport(0,h-visibleHeight,w,visibleHeight);this.camera.aspect=w/visibleHeight;this.camera.updateProjectionMatrix();this.car.aspect=w/visibleHeight;this.car.fov=2*Math.atan(Math.tan(34*Math.PI/180)/this.car.aspect)*180/Math.PI;this.car.updateProjectionMatrix();this.renderView(this.view===1?this.car:this.camera);
     if(this.pip&&!this.dream){
-      const bw=Math.min(w*(this.compactBrain?.28:.3),this.compactBrain?118:240),bh=bw*9/16,x=w-bw-(this.insetOffset||18),y=this.compactBrain?h-visibleHeight+12:h>600?158:130;r.setScissorTest(true);r.setScissor(x,y,bw,bh);r.setViewport(x,y,bw,bh);r.clear(true,true,true);this.car.aspect=16/9;this.car.fov=2*Math.atan(Math.tan(34*Math.PI/180)/(16/9))*180/Math.PI;this.car.updateProjectionMatrix();const old=this.camera.aspect;this.camera.aspect=16/9;this.camera.updateProjectionMatrix();r.render(this.scene,this.view===1?this.camera:this.car);this.camera.aspect=old;this.camera.updateProjectionMatrix();r.setScissorTest(false);
+      const bw=Math.min(w*(this.compactBrain?.28:.3),this.compactBrain?118:240),bh=bw*9/16,x=w-bw-(this.insetOffset||18),y=this.compactBrain?h-visibleHeight+12:h>600?158:130;r.setScissorTest(true);r.setScissor(x,y,bw,bh);r.setViewport(x,y,bw,bh);r.clear(true,true,true);this.car.aspect=16/9;this.car.fov=2*Math.atan(Math.tan(34*Math.PI/180)/(16/9))*180/Math.PI;this.car.updateProjectionMatrix();const old=this.camera.aspect;this.camera.aspect=16/9;this.camera.updateProjectionMatrix();this.renderView(this.view===1?this.camera:this.car);this.camera.aspect=old;this.camera.updateProjectionMatrix();r.setScissorTest(false);
       this.canvas.dataset.pip=JSON.stringify({x,y,w:bw,h:bh,stateTime:this.state.elapsed});
     }
     if(!this.dream){const p=new THREE.Vector3(this.state.x,this.state.y,this.state.z+.28).project(this.view===1?this.car:this.camera);this.onAnchor({x:(p.x*.5+.5)*w,y:(-.5*p.y+.5)*visibleHeight,visible:p.z<1&&this.view!==1});}
-    this.canvas.dataset.viewportHeight=String(visibleHeight);this.canvas.dataset.simulationTime=String(this.state?.elapsed??0);this.canvas.dataset.view=String(this.view);
+    this.canvas.dataset.viewportHeight=String(visibleHeight);this.canvas.dataset.simulationTime=String(this.state?.elapsed??0);this.canvas.dataset.view=String(this.view);this.canvas.dataset.displayMode=this.perception?'2d-observation':this.dream?'local-space-model':'physical-execution';
   }
   resetSeen(){this.seen.clear();this.canvas.dataset.observedHits='0';}
 }

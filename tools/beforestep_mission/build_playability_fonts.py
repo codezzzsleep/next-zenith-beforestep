@@ -16,7 +16,7 @@ FACES = [
     ('sans-bold', 'BeforeStep Sans', 700, 'NotoSansCJKsc-Bold.otf'),
     ('serif-bold', 'BeforeStep Serif', 700, 'NotoSerifCJKsc-Bold.otf'),
 ]
-TEXT_FILES = ['play.html', 'index.html', 'mission.js', 'mission-run.js', 'mission-gameplay.js', 'mission-insight.js', 'mission-scene.js']
+TEXT_FILES = ['play.html', 'index.html', 'mission.js', 'mission-story.js', 'mission-run.js', 'mission-gameplay.js', 'mission-insight.js', 'mission-scene.js']
 
 
 def sha(path):

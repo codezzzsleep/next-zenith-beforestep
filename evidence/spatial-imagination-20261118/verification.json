@@ -1,0 +1,1470 @@
+{
+  "passed": true,
+  "viewport": [
+    1600,
+    900
+  ],
+  "checks": [
+    "clear_goal_controls_and_start_input_lock",
+    "real_keyboard_drive_brake_observe_then_first_person_2d",
+    "Q_local_3d_hypotheses_keep_physical_state_and_show_route_comparison",
+    "cancelled_forecast_has_no_execution_or_manual_release",
+    "two_real_candidate_world_forecasts_required_before_first_departure",
+    "execution_restores_textured_full_rocks_moon_soil_and_views",
+    "complete_challenge_12_player_actions_goal_and_spatial_story_recap",
+    "exploration_checkpoint_restores_observation_first_and_clears_forecast",
+    "changed_route_policy_invalidates_forecast_and_departure",
+    "new_hypotheses_restart_with_goal_teaching_without_generation",
+    "mode_change_starts_new_paused_challenge_with_goal"
+  ],
+  "challenge_final": {
+    "state": {
+      "x": 10.259282693738426,
+      "y": 0.00018438368570460097,
+      "z": 0.4677642887303079,
+      "poseName": "high",
+      "yaw": -0.06829485716942542,
+      "tilt": 0.14390826502531195,
+      "speed": 0.0038389822681033706,
+      "elapsed": 195.04000000020318,
+      "steps": 97520,
+      "finite": true,
+      "goalDistance": 0.34071735615240795,
+      "legs": null,
+      "phase": "complete",
+      "paused": true,
+      "automatic": false,
+      "revision": 1,
+      "actionCount": 12,
+      "stable": true,
+      "gameMode": "challenge",
+      "checkpoint": null,
+      "checkpointRestarts": 0,
+      "showcase": {
+        "enabled": true,
+        "checkpointX": 2.8499999999999996,
+        "stage": "high-rocks",
+        "active": false,
+        "completed": true,
+        "viewedTask": 5958685,
+        "releaseMode": "assisted",
+        "triggers": 1
+      },
+      "scan": {
+        "valid": true,
+        "near": 9.1,
+        "far": 9.198080077262732,
+        "high": 0.12,
+        "heightAboveGround": 0.11911764562129978,
+        "depth": 0.0980800772627326,
+        "camera": [
+          8.845960263604526,
+          -0.0035556393327301553,
+          0.384287768270826
+        ],
+        "points": null,
+        "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+      },
+      "proof": {
+        "passed": true,
+        "requestId": 2,
+        "usable": false,
+        "routeSession": true,
+        "revision": 1,
+        "worlds": 2,
+        "path": [
+          [
+            2.85136805062679,
+            -0.5014738624540767
+          ],
+          [
+            3.900000000000002,
+            0.20000000000000043
+          ],
+          [
+            4.799999999999999,
+            0.5000000000000004
+          ],
+          [
+            5.799999999999995,
+            -0.5999999999999995
+          ],
+          [
+            7.19999999999999,
+            -0.6999999999999995
+          ],
+          [
+            8.45,
+            0
+          ]
+        ],
+        "length": 6.533135708873818,
+        "anchor": {
+          "x": 2.85136805062679,
+          "y": -0.5014738624540767,
+          "z": 0.38508827580255967,
+          "poseName": "normal",
+          "yaw": -0.0021906841641364935,
+          "tilt": 0.26307609797281073,
+          "speed": 0.0006711143992147412,
+          "elapsed": 5.5799999999996075,
+          "steps": 2790,
+          "finite": true,
+          "goalDistance": 7.764842118264343,
+          "legs": null
+        }
+      },
+      "gateProof": {
+        "passed": true,
+        "requestId": 3,
+        "usable": false
+      }
+    },
+    "game": {
+      "version": "playability-1",
+      "mode": "challenge",
+      "completed": true,
+      "score": 90,
+      "actionSeconds": 168.6,
+      "manualMeters": 1.52,
+      "maxTilt": 9.3,
+      "actions": 12,
+      "checkpointUses": 0,
+      "worlds": 2,
+      "previewedWorlds": 2,
+      "routeSelected": [
+        5958654,
+        5958685,
+        5958934
+      ],
+      "viewedTargets": [
+        "T1",
+        "T2"
+      ],
+      "selected": [
+        5958654,
+        5958685,
+        5958934
+      ],
+      "badges": [
+        {
+          "id": "beforestep",
+          "name": "先见一步",
+          "earned": true,
+          "note": "实际试路后沿认证路线出发"
+        },
+        {
+          "id": "relay",
+          "name": "四腿接力",
+          "earned": true,
+          "note": "亲手完成四腿的 12 个主要动作"
+        },
+        {
+          "id": "observer",
+          "name": "两面勘察",
+          "earned": true,
+          "note": "转看高石 A 和 B 的已有原模型"
+        },
+        {
+          "id": "steady",
+          "name": "稳稳到达",
+          "earned": false,
+          "note": "抵达，且本轮最大车身倾角不超过 8°"
+        },
+        {
+          "id": "pilot",
+          "name": "亲手领航",
+          "earned": true,
+          "note": "实际手控行驶至少 1 m 并抵达"
+        },
+        {
+          "id": "challenge",
+          "name": "一气呵成",
+          "earned": true,
+          "note": "从头完成全程挑战"
+        }
+      ],
+      "chapter": 4,
+      "recordCount": 1
+    },
+    "story": {
+      "intro": false,
+      "started": true,
+      "imagination": true,
+      "fullWorld": true,
+      "usedDrive": true,
+      "usedBrake": true,
+      "phase": "goal-reached"
+    },
+    "selected": [
+      5958685,
+      5958654,
+      5958934
+    ]
+  },
+  "recap": "从原观测出发，转看高石 A、B 的模型，选 A·5958685 / B·5958654、5958934，2 个世界完成预演；沿预演通过的路线绕行，亲手触发 12 次轮腿动作后抵达。",
+  "screenshots": [
+    {
+      "path": "01-goal-and-controls.jpg",
+      "sha256": "ffb51169cf3b401efe0ec54b856f9de464103584a06206300d7ed9b1bf0eb072",
+      "state": {
+        "x": 2.2964580268447694,
+        "y": -0.49995551569397445,
+        "z": 0.3850400613664372,
+        "poseName": "normal",
+        "yaw": 0.00016478962644411865,
+        "tilt": 0.06550328701614166,
+        "speed": 0.00014454365924185472,
+        "elapsed": 0.4200000000000003,
+        "steps": 210,
+        "finite": true,
+        "goalDistance": 8.318579495179659,
+        "legs": null,
+        "phase": "explore",
+        "paused": true,
+        "automatic": false,
+        "revision": 1,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "approach",
+          "active": false,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 0
+        },
+        "scan": null,
+        "proof": null,
+        "gateProof": null
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": false,
+        "score": 0,
+        "actionSeconds": 0,
+        "manualMeters": 0,
+        "maxTilt": 0.1,
+        "actions": 0,
+        "checkpointUses": 0,
+        "worlds": 0,
+        "previewedWorlds": 0,
+        "routeSelected": [],
+        "viewedTargets": [],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": false,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 0,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": true,
+        "started": false,
+        "imagination": false,
+        "fullWorld": false,
+        "usedDrive": false,
+        "usedBrake": false,
+        "phase": "mission-goal"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "02-observation-only.jpg",
+      "sha256": "ce5b19c2d08d12c8301bdf83803d04a9dde6f9373ac20df1b8e7c0ad4c8e22fc",
+      "state": {
+        "x": 2.85136805062679,
+        "y": -0.5014738624540767,
+        "z": 0.38508827580255967,
+        "poseName": "normal",
+        "yaw": -0.0021906841641364935,
+        "tilt": 0.26307609797281073,
+        "speed": 0.0006711143992147412,
+        "elapsed": 5.5799999999996075,
+        "steps": 2790,
+        "finite": true,
+        "goalDistance": 7.764842118264343,
+        "legs": null,
+        "phase": "explore",
+        "paused": true,
+        "automatic": false,
+        "revision": 1,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "scan": {
+          "valid": false,
+          "reason": "threshold_not_visible_from_current_pose",
+          "camera": [
+            2.9270022697567075,
+            -0.5012593180620115,
+            0.39478337960861015
+          ],
+          "points": null
+        },
+        "proof": null,
+        "gateProof": null
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": false,
+        "score": 0,
+        "actionSeconds": 3.6,
+        "manualMeters": 0.66,
+        "maxTilt": 4.3,
+        "actions": 0,
+        "checkpointUses": 0,
+        "worlds": 0,
+        "previewedWorlds": 0,
+        "routeSelected": [],
+        "viewedTargets": [],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": false,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 0,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": false,
+        "started": true,
+        "imagination": false,
+        "fullWorld": false,
+        "usedDrive": true,
+        "usedBrake": true,
+        "phase": "observation-only"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "03-local-world-imagination.jpg",
+      "sha256": "82067a84f1eb92b3268997a5cd458022a80f28b4bb7fab751ee5bf4502167879",
+      "state": {
+        "x": 2.85136805062679,
+        "y": -0.5014738624540767,
+        "z": 0.38508827580255967,
+        "poseName": "normal",
+        "yaw": -0.0021906841641364935,
+        "tilt": 0.26307609797281073,
+        "speed": 0.0006711143992147412,
+        "elapsed": 5.5799999999996075,
+        "steps": 2790,
+        "finite": true,
+        "goalDistance": 7.764842118264343,
+        "legs": null,
+        "phase": "explore",
+        "paused": true,
+        "automatic": false,
+        "revision": 1,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "observe",
+          "active": true,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "scan": {
+          "valid": false,
+          "reason": "threshold_not_visible_from_current_pose",
+          "camera": [
+            2.9270022697567075,
+            -0.5012593180620115,
+            0.39478337960861015
+          ],
+          "points": null
+        },
+        "proof": null,
+        "gateProof": null
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": false,
+        "score": 0,
+        "actionSeconds": 3.6,
+        "manualMeters": 0.66,
+        "maxTilt": 4.3,
+        "actions": 0,
+        "checkpointUses": 0,
+        "worlds": 0,
+        "previewedWorlds": 0,
+        "routeSelected": [],
+        "viewedTargets": [],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": false,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 0,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": false,
+        "started": true,
+        "imagination": true,
+        "fullWorld": false,
+        "usedDrive": true,
+        "usedBrake": true,
+        "phase": "spatial-imagination"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "04-prediction-ready.jpg",
+      "sha256": "51237e2764826e3743977c33de40a3b830a9f70717806e55b2ee533707751fd8",
+      "state": {
+        "x": 2.85136805062679,
+        "y": -0.5014738624540767,
+        "z": 0.38508827580255967,
+        "poseName": "normal",
+        "yaw": -0.0021906841641364935,
+        "tilt": 0.26307609797281073,
+        "speed": 0.0006711143992147412,
+        "elapsed": 5.5799999999996075,
+        "steps": 2790,
+        "finite": true,
+        "goalDistance": 7.764842118264343,
+        "legs": null,
+        "phase": "explore",
+        "paused": true,
+        "automatic": false,
+        "revision": 1,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "model-seen",
+          "active": true,
+          "completed": false,
+          "viewedTask": 5958685,
+          "releaseMode": null,
+          "triggers": 1
+        },
+        "scan": {
+          "valid": false,
+          "reason": "threshold_not_visible_from_current_pose",
+          "camera": [
+            2.9270022697567075,
+            -0.5012593180620115,
+            0.39478337960861015
+          ],
+          "points": null
+        },
+        "proof": {
+          "passed": true,
+          "requestId": 2,
+          "usable": true,
+          "routeSession": false,
+          "revision": 1,
+          "worlds": 2,
+          "path": [
+            [
+              2.85136805062679,
+              -0.5014738624540767
+            ],
+            [
+              3.900000000000002,
+              0.20000000000000043
+            ],
+            [
+              4.799999999999999,
+              0.5000000000000004
+            ],
+            [
+              5.799999999999995,
+              -0.5999999999999995
+            ],
+            [
+              7.19999999999999,
+              -0.6999999999999995
+            ],
+            [
+              8.45,
+              0
+            ]
+          ],
+          "length": 6.533135708873818,
+          "anchor": {
+            "x": 2.85136805062679,
+            "y": -0.5014738624540767,
+            "z": 0.38508827580255967,
+            "poseName": "normal",
+            "yaw": -0.0021906841641364935,
+            "tilt": 0.26307609797281073,
+            "speed": 0.0006711143992147412,
+            "elapsed": 5.5799999999996075,
+            "steps": 2790,
+            "finite": true,
+            "goalDistance": 7.764842118264343,
+            "legs": null
+          }
+        },
+        "gateProof": null
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": false,
+        "score": 0,
+        "actionSeconds": 3.6,
+        "manualMeters": 0.66,
+        "maxTilt": 4.3,
+        "actions": 0,
+        "checkpointUses": 0,
+        "worlds": 0,
+        "previewedWorlds": 2,
+        "routeSelected": [],
+        "viewedTargets": [
+          "T1"
+        ],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": false,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 0,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": false,
+        "started": true,
+        "imagination": true,
+        "fullWorld": false,
+        "usedDrive": true,
+        "usedBrake": true,
+        "phase": "prediction-ready"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "05-prediction-supports-exploration.jpg",
+      "sha256": "7f77196405f339d6b5afd1672c780a767749d592f44d50383e20261fc13049d2",
+      "state": {
+        "x": 4.750570653752946,
+        "y": 0.48002782069699546,
+        "z": 0.38527615378414837,
+        "poseName": "normal",
+        "yaw": 0.3333801741108352,
+        "tilt": 0.42645221439005937,
+        "speed": 0.015431645996569612,
+        "elapsed": 29.939999999994285,
+        "steps": 14970,
+        "finite": true,
+        "goalDistance": 5.869092807698593,
+        "legs": null,
+        "phase": "explore",
+        "paused": false,
+        "automatic": true,
+        "revision": 1,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "high-rocks",
+          "active": false,
+          "completed": true,
+          "viewedTask": 5958685,
+          "releaseMode": "assisted",
+          "triggers": 1
+        },
+        "scan": {
+          "valid": false,
+          "reason": "threshold_not_visible_from_current_pose",
+          "camera": [
+            2.9270022697567075,
+            -0.5012593180620115,
+            0.39478337960861015
+          ],
+          "points": null
+        },
+        "proof": {
+          "passed": true,
+          "requestId": 2,
+          "usable": false,
+          "routeSession": true,
+          "revision": 1,
+          "worlds": 2,
+          "path": [
+            [
+              2.85136805062679,
+              -0.5014738624540767
+            ],
+            [
+              3.900000000000002,
+              0.20000000000000043
+            ],
+            [
+              4.799999999999999,
+              0.5000000000000004
+            ],
+            [
+              5.799999999999995,
+              -0.5999999999999995
+            ],
+            [
+              7.19999999999999,
+              -0.6999999999999995
+            ],
+            [
+              8.45,
+              0
+            ]
+          ],
+          "length": 6.533135708873818,
+          "anchor": {
+            "x": 2.85136805062679,
+            "y": -0.5014738624540767,
+            "z": 0.38508827580255967,
+            "poseName": "normal",
+            "yaw": -0.0021906841641364935,
+            "tilt": 0.26307609797281073,
+            "speed": 0.0006711143992147412,
+            "elapsed": 5.5799999999996075,
+            "steps": 2790,
+            "finite": true,
+            "goalDistance": 7.764842118264343,
+            "legs": null
+          }
+        },
+        "gateProof": null
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": false,
+        "score": 30,
+        "actionSeconds": 28,
+        "manualMeters": 0.66,
+        "maxTilt": 4.3,
+        "actions": 0,
+        "checkpointUses": 0,
+        "worlds": 2,
+        "previewedWorlds": 2,
+        "routeSelected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "viewedTargets": [
+          "T1",
+          "T2"
+        ],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": true,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 1,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": false,
+        "started": true,
+        "imagination": true,
+        "fullWorld": true,
+        "usedDrive": true,
+        "usedBrake": true,
+        "phase": "exploring"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "06-physical-leg-execution.jpg",
+      "sha256": "864036172490890510d3ab56e737534b2a7c0d8c8766412c84484b3b712f5a65",
+      "state": {
+        "x": 8.980225453016038,
+        "y": 0.023175061683968105,
+        "z": 0.3855372625145496,
+        "poseName": "normal",
+        "yaw": 0.027255525145430583,
+        "tilt": 2.0632107568651854,
+        "speed": 0.00023503294492252278,
+        "elapsed": 131.21999999989845,
+        "steps": 65610,
+        "finite": true,
+        "goalDistance": 1.6199403280803752,
+        "legs": {
+          "selected": 0,
+          "mode": "crossing",
+          "phase": "lift",
+          "busy": false,
+          "waiting": {
+            "action": "advance",
+            "leg": 0
+          },
+          "lifted": true,
+          "swing": 0,
+          "positions": [
+            [
+              8.983175440650225,
+              -0.10002361150362363,
+              0.2511263714971327
+            ],
+            [
+              9.000146653114792,
+              -0.008811776948800393,
+              0.10776129490234682
+            ],
+            [
+              8.769119482062065,
+              -0.14732509570677854,
+              0.08391037436859974
+            ],
+            [
+              8.770429012877003,
+              0.13942392039102264,
+              0.09100551089468878
+            ]
+          ],
+          "loads": [
+            0,
+            25.113980752135074,
+            2.286669980908015,
+            3.5806233316429177
+          ],
+          "crossed": [],
+          "error": null
+        },
+        "phase": "crossing",
+        "paused": false,
+        "automatic": false,
+        "revision": 1,
+        "actionCount": 1,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "high-rocks",
+          "active": false,
+          "completed": true,
+          "viewedTask": 5958685,
+          "releaseMode": "assisted",
+          "triggers": 1
+        },
+        "scan": {
+          "valid": true,
+          "near": 9.1,
+          "far": 9.198080077262732,
+          "high": 0.12,
+          "heightAboveGround": 0.11911764562129978,
+          "depth": 0.0980800772627326,
+          "camera": [
+            8.845960263604526,
+            -0.0035556393327301553,
+            0.384287768270826
+          ],
+          "points": null,
+          "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+        },
+        "proof": {
+          "passed": true,
+          "requestId": 2,
+          "usable": false,
+          "routeSession": true,
+          "revision": 1,
+          "worlds": 2,
+          "path": [
+            [
+              2.85136805062679,
+              -0.5014738624540767
+            ],
+            [
+              3.900000000000002,
+              0.20000000000000043
+            ],
+            [
+              4.799999999999999,
+              0.5000000000000004
+            ],
+            [
+              5.799999999999995,
+              -0.5999999999999995
+            ],
+            [
+              7.19999999999999,
+              -0.6999999999999995
+            ],
+            [
+              8.45,
+              0
+            ]
+          ],
+          "length": 6.533135708873818,
+          "anchor": {
+            "x": 2.85136805062679,
+            "y": -0.5014738624540767,
+            "z": 0.38508827580255967,
+            "poseName": "normal",
+            "yaw": -0.0021906841641364935,
+            "tilt": 0.26307609797281073,
+            "speed": 0.0006711143992147412,
+            "elapsed": 5.5799999999996075,
+            "steps": 2790,
+            "finite": true,
+            "goalDistance": 7.764842118264343,
+            "legs": null
+          }
+        },
+        "gateProof": {
+          "passed": true,
+          "requestId": 3,
+          "usable": false
+        }
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": false,
+        "score": 30,
+        "actionSeconds": 108.2,
+        "manualMeters": 0.66,
+        "maxTilt": 4.3,
+        "actions": 1,
+        "checkpointUses": 0,
+        "worlds": 2,
+        "previewedWorlds": 2,
+        "routeSelected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "viewedTargets": [
+          "T1",
+          "T2"
+        ],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": true,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 2,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": false,
+        "started": true,
+        "imagination": true,
+        "fullWorld": true,
+        "usedDrive": true,
+        "usedBrake": true,
+        "phase": "exploring"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "07-goal-and-story-recap.jpg",
+      "sha256": "18ee825898a3bc46d811f09141df01bdd6d1152341e1d377ba4d82319fa46b6b",
+      "state": {
+        "x": 10.259282693738426,
+        "y": 0.00018438368570460097,
+        "z": 0.4677642887303079,
+        "poseName": "high",
+        "yaw": -0.06829485716942542,
+        "tilt": 0.14390826502531195,
+        "speed": 0.0038389822681033706,
+        "elapsed": 195.04000000020318,
+        "steps": 97520,
+        "finite": true,
+        "goalDistance": 0.34071735615240795,
+        "legs": null,
+        "phase": "complete",
+        "paused": true,
+        "automatic": false,
+        "revision": 1,
+        "actionCount": 12,
+        "stable": true,
+        "gameMode": "challenge",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "high-rocks",
+          "active": false,
+          "completed": true,
+          "viewedTask": 5958685,
+          "releaseMode": "assisted",
+          "triggers": 1
+        },
+        "scan": {
+          "valid": true,
+          "near": 9.1,
+          "far": 9.198080077262732,
+          "high": 0.12,
+          "heightAboveGround": 0.11911764562129978,
+          "depth": 0.0980800772627326,
+          "camera": [
+            8.845960263604526,
+            -0.0035556393327301553,
+            0.384287768270826
+          ],
+          "points": null,
+          "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+        },
+        "proof": {
+          "passed": true,
+          "requestId": 2,
+          "usable": false,
+          "routeSession": true,
+          "revision": 1,
+          "worlds": 2,
+          "path": [
+            [
+              2.85136805062679,
+              -0.5014738624540767
+            ],
+            [
+              3.900000000000002,
+              0.20000000000000043
+            ],
+            [
+              4.799999999999999,
+              0.5000000000000004
+            ],
+            [
+              5.799999999999995,
+              -0.5999999999999995
+            ],
+            [
+              7.19999999999999,
+              -0.6999999999999995
+            ],
+            [
+              8.45,
+              0
+            ]
+          ],
+          "length": 6.533135708873818,
+          "anchor": {
+            "x": 2.85136805062679,
+            "y": -0.5014738624540767,
+            "z": 0.38508827580255967,
+            "poseName": "normal",
+            "yaw": -0.0021906841641364935,
+            "tilt": 0.26307609797281073,
+            "speed": 0.0006711143992147412,
+            "elapsed": 5.5799999999996075,
+            "steps": 2790,
+            "finite": true,
+            "goalDistance": 7.764842118264343,
+            "legs": null
+          }
+        },
+        "gateProof": {
+          "passed": true,
+          "requestId": 3,
+          "usable": false
+        }
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "challenge",
+        "completed": true,
+        "score": 90,
+        "actionSeconds": 168.6,
+        "manualMeters": 1.52,
+        "maxTilt": 9.3,
+        "actions": 12,
+        "checkpointUses": 0,
+        "worlds": 2,
+        "previewedWorlds": 2,
+        "routeSelected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "viewedTargets": [
+          "T1",
+          "T2"
+        ],
+        "selected": [
+          5958654,
+          5958685,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": true,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": true,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": true,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": true,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": true,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 4,
+        "recordCount": 1
+      },
+      "story": {
+        "intro": false,
+        "started": true,
+        "imagination": true,
+        "fullWorld": true,
+        "usedDrive": true,
+        "usedBrake": true,
+        "phase": "goal-reached"
+      },
+      "selected": [
+        5958685,
+        5958654,
+        5958934
+      ]
+    },
+    {
+      "path": "08-new-mission-retains-goal-teaching.jpg",
+      "sha256": "bea850d3db35c7edffb9c6462979f51bf188e4f58725ed507efffbd44b5f6ad0",
+      "state": {
+        "x": 2.2964764306911123,
+        "y": -0.49995502878726056,
+        "z": 0.3850401000820725,
+        "poseName": "normal",
+        "yaw": 0.00016501361830803998,
+        "tilt": 0.06385702016765235,
+        "speed": 0.00012011452579619449,
+        "elapsed": 0.5600000000000004,
+        "steps": 280,
+        "finite": true,
+        "goalDistance": 8.318561095338415,
+        "legs": null,
+        "phase": "explore",
+        "paused": true,
+        "automatic": false,
+        "revision": 5,
+        "actionCount": 0,
+        "stable": true,
+        "gameMode": "explore",
+        "checkpoint": null,
+        "checkpointRestarts": 0,
+        "showcase": {
+          "enabled": true,
+          "checkpointX": 2.8499999999999996,
+          "stage": "approach",
+          "active": false,
+          "completed": false,
+          "viewedTask": null,
+          "releaseMode": null,
+          "triggers": 0
+        },
+        "scan": null,
+        "proof": null,
+        "gateProof": null
+      },
+      "game": {
+        "version": "playability-1",
+        "mode": "explore",
+        "completed": false,
+        "score": 0,
+        "actionSeconds": 0,
+        "manualMeters": 0,
+        "maxTilt": 0.1,
+        "actions": 0,
+        "checkpointUses": 0,
+        "worlds": 0,
+        "previewedWorlds": 0,
+        "routeSelected": [],
+        "viewedTargets": [],
+        "selected": [
+          5958654,
+          5958690,
+          5958934
+        ],
+        "badges": [
+          {
+            "id": "beforestep",
+            "name": "先见一步",
+            "earned": false,
+            "note": "实际试路后沿认证路线出发"
+          },
+          {
+            "id": "relay",
+            "name": "四腿接力",
+            "earned": false,
+            "note": "亲手完成四腿的 12 个主要动作"
+          },
+          {
+            "id": "observer",
+            "name": "两面勘察",
+            "earned": false,
+            "note": "转看高石 A 和 B 的已有原模型"
+          },
+          {
+            "id": "steady",
+            "name": "稳稳到达",
+            "earned": false,
+            "note": "抵达，且本轮最大车身倾角不超过 8°"
+          },
+          {
+            "id": "pilot",
+            "name": "亲手领航",
+            "earned": false,
+            "note": "实际手控行驶至少 1 m 并抵达"
+          },
+          {
+            "id": "challenge",
+            "name": "一气呵成",
+            "earned": false,
+            "note": "从头完成全程挑战"
+          }
+        ],
+        "chapter": 0,
+        "recordCount": 0
+      },
+      "story": {
+        "intro": true,
+        "started": false,
+        "imagination": false,
+        "fullWorld": false,
+        "usedDrive": false,
+        "usedBrake": false,
+        "phase": "mission-goal"
+      },
+      "selected": [
+        5958690,
+        5958654,
+        5958934
+      ]
+    }
+  ],
+  "page_errors": [],
+  "physics_state_injected": false,
+  "new_generation_requests": 0,
+  "schema": "beforestep-spatial-imagination-browser/v1",
+  "scope": "Actual keyboard and button operations in a local Chrome preview, final guided game; simulation results independent of original research",
+  "browser": "Chromium, software WebGL",
+  "completed_at_utc": "2026-11-18T11:09:54.756573+00:00",
+  "source_baseline": "1d2298527afd87e569bc6775ebc9ea3eec87fae8",
+  "runtime_sha256": {
+    "site/mission-story.js": "482f731a62b1f7b877b0a50984bb479ce19f26178eb4f6488716e11ba86cefe8",
+    "site/mission-story.css": "b6687eafece019d86b3c06aebefeb7be7c309e1d12a34f46ff9cca0afeff7b6a",
+    "site/mission.js": "6997ceff3a0f2b252974246e0b1762dca77a3516a1cec9d24370daa7a38092a8",
+    "site/mission-scene.js": "bbf97db85099882bf081747323aa107bba7b1dade2fac2a197380019b8a3d494",
+    "site/mission-gameplay.js": "20bf943bf237b754e751cd54f55b499b72ca87af77fce82159237ff58a04a5f0",
+    "site/play.html": "e7a867eca24b56201b5c22f04cab6f4d8e5d404246e1daf83cc62ab4b70f5bf2",
+    "site/fonts/gameplay.css": "0f9796b439bd5ea07083db3d96a5e657d79a37796e6e6573de04644971d70838"
+  },
+  "comparison_route_results": "Grey route is a reference; no forced collision claim. Green indicates actual complete candidate-world forecast.",
+  "checkpoint_and_mode_viewport": [
+    1280,
+    720
+  ]
+}

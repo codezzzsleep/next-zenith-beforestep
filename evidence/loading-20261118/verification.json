@@ -1,0 +1,31 @@
+{
+  "schema": "beforestep-startup-loading-verification/v1",
+  "passed": true,
+  "local_candidate_cold_seconds": 5.585375425987877,
+  "local_candidate_cache_seconds": 6.386109121027403,
+  "timing_scope": "Local candidate HTML/JS against the actual Cloudflare asset URL; public deployment timing is recorded separately.",
+  "checks": [
+    "real-CDN-cold-start",
+    "persistent-cache-warm-start",
+    "cached-original-geometry-real-two-worlds-passed",
+    "actual-certified-route-and-keyboard-takeover",
+    "browser-CDN-unavailable-falls-back-to-original-assets",
+    "browser-verification-complete"
+  ],
+  "page_errors": [],
+  "physical_assets_unchanged": true,
+  "control_and_research_unchanged": true,
+  "new_generation_requests": 0,
+  "initial_asset_bytes": 29043171,
+  "browser_viewport": [
+    1280,
+    720
+  ],
+  "original_https_assets": [
+    "media/mission/worlds.tar.gz",
+    "media/mission/display.json.gz",
+    "media/mission/m20-skin.json.gz",
+    "media/mission/mission.json.gz",
+    "vendor/mujoco/mujoco.wasm.gz"
+  ]
+}

@@ -35,6 +35,8 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。它利用 **Lu
 
 脑内窗口并排展示原照片与候选，俯视图呈现可见占地、背面假设和两条规划路线；完成卡回顾本局选择、预演与执行。[空间判断体验与验证](docs/spatial-judgment.md)。
 
+启动使用 Cloudflare 分段读取、已核对资源缓存及真实下载进度，线路故障可回退原资源。[加载说明与验证](docs/startup-loading.md)。
+
 ## 从照片到行动
 
 <p align="center">

@@ -12,7 +12,7 @@ let showcase=new MissionShowcase(),showcaseStill=0;
 let gameMode='explore',checkpointRestarts=0;
 const checkpoints=new Map();
 let mj,mission,live,phase='explore',paused=false,input={v:0,w:0,brake:true},follower=null;
-let token=0,revision=0,selected=[],policy='imagination',proof=null,gateProof=null,scan=null,held=0,actions=0,lastSensor=0,routeSession=false,lastLiveFrame=0,sensorVerticalFov=45,sensorYaw=0;
+let token=0,revision=0,selected=[],policy='imagination',proof=null,gateProof=null,scan=null,held=0,actions=0,lastSensor=0,routeSession=false,lastLiveFrame=0,sensorVerticalFov=45,sensorYaw=0,renderPeriod=.05;
 let knowledge=null,journal=new DecisionJournal(),rehearsing=false,lastBlock=null,stopReason=null,holdSeconds=0,judgmentReadyAt=0;
 const yieldFrame=()=>new Promise(r=>setTimeout(r,8));
 const stable=()=>live.state().speed<.025&&Math.abs(live.data.qvel[5])<.08;
@@ -114,12 +114,12 @@ function tick(){
   if(gameMode==='explore'&&!checkpoints.has('threshold')&&phase==='gate'&&!follower&&!live.legControl&&live.state().x<mission.gate.near-.4&&Math.abs(live.state().y)<.12&&Math.abs(live.state().yaw)<.08&&live.observeGate().valid)saveCheckpoint('threshold','门槛整备点');
   if(gameMode==='explore'&&!checkpoints.has('finish')&&phase==='finish-drive'&&!live.legControl&&live.anchors().every(p=>p[0]-.086>mission.gate.far))saveCheckpoint('finish','门槛后');
   if(live.elapsed-lastSensor>.35){lastSensor=live.elapsed;postMessage({type:'observation',...live.observeRocks()});}
-  if(showcase.locked||paused||['complete','failed','stopped'].includes(phase)||live.elapsed-lastLiveFrame>=.05){lastLiveFrame=live.elapsed;frame();}
+  if(showcase.locked||paused||['complete','failed','stopped'].includes(phase)||live.elapsed-lastLiveFrame>=renderPeriod){lastLiveFrame=live.elapsed;frame();}
 }
 onmessage=async({data:m})=>{
   try{
     if(m.type==='init'){
-      mission=m.mission;knowledge=new SessionObservation(mission);journal=new DecisionJournal();gameMode=m.gameMode==='challenge'?'challenge':'explore';checkpoints.clear();checkpointRestarts=0;showcase=new MissionShowcase(m.showcase===true,mission.start[0]+.55);sensorVerticalFov=clamp(m.sensorVerticalFov||45,15,120);const [wasm,bundle]=await Promise.all([inflateGzip(m.wasm),inflateGzip(m.bundle)]);mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));newLive();postMessage({type:'ready',engine:mj.mj_versionString()});postMessage({type:'observationLayer',knowledge:knowledge.snapshot()});postMessage({type:'observation',...live.observeRocks()});setInterval(tick,20);
+      mission=m.mission;renderPeriod=m.capture===true?.02:.05;knowledge=new SessionObservation(mission);journal=new DecisionJournal();gameMode=m.gameMode==='challenge'?'challenge':'explore';checkpoints.clear();checkpointRestarts=0;showcase=new MissionShowcase(m.showcase===true,mission.start[0]+.55);sensorVerticalFov=clamp(m.sensorVerticalFov||45,15,120);const [wasm,bundle]=await Promise.all([inflateGzip(m.wasm),inflateGzip(m.bundle)]);mj=await loadMujoco({wasmBinary:wasm});installAssets(mj,unpackTar(bundle));newLive();postMessage({type:'ready',engine:mj.mj_versionString()});postMessage({type:'observationLayer',knowledge:knowledge.snapshot()});postMessage({type:'observation',...live.observeRocks()});setInterval(tick,20);
     }else if(m.type==='reset'){gameMode=m.gameMode===undefined?gameMode:m.gameMode==='challenge'?'challenge':'explore';checkpoints.clear();checkpointRestarts=0;revision++;knowledge=new SessionObservation(mission);journal=new DecisionJournal();lastBlock=stopReason=null;holdSeconds=judgmentReadyAt=0;showcase=new MissionShowcase(showcase.enabled,mission.start[0]+.55);showcaseStill=0;sensorYaw=0;cancel();proof=gateProof=scan=null;routeSession=false;follower=null;held=actions=lastSensor=lastLiveFrame=0;phase='explore';paused=false;input={v:0,w:0,brake:true};newLive();postMessage({type:'resetDone',gameMode});postMessage({type:'observationLayer',knowledge:knowledge.snapshot()});postMessage({type:'observation',...live.observeRocks()});}
     else if(m.type==='retryCheckpoint')restoreCheckpoint(m.checkpointId);
     else if(m.type==='selection'){

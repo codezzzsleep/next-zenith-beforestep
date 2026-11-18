@@ -44,7 +44,9 @@ async def main():
    assert photo==await page.locator('#input-photo').get_attribute('src')
    await chapter('same_input_second_original_back');await page.wait_for_timeout(2500)
    await controls.click('[data-expand="models"]');await page.wait_for_function('document.querySelector("#raw-model-pair").loaded',timeout=180000)
-   await page.wait_for_timeout(2200);await still('02-one-photo-two-backs-and-checks')
+   await page.wait_for_timeout(2200)
+   report['pair_label_bounds']=await page.locator('#pair-model-label').bounding_box();assert report['pair_label_bounds']['height']<40
+   await still('02-one-photo-two-backs-and-checks')
    await controls.click('#model-back');await page.wait_for_timeout(3200)
    await controls.click('#model-back');await page.wait_for_timeout(3200)
    await controls.click('#brain-restore');await controls.click('#rejected-example')

@@ -1,0 +1,163 @@
+{
+  "schema": "beforestep-judges-study-index/v1",
+  "video_timecodes_are_not_sim_seconds": true,
+  "items": [
+    {
+      "id": "r1-optimistic",
+      "file": "site/media/real-footage/r1-synchronised-optimistic.mp4",
+      "source_type": "Frozen R1 experiment replay, original Go2W",
+      "asset_snapshot_commit": "a60571980abeefa479cd34976dd18509f9cda883",
+      "run_id": "58874b315bee427d8a7fbb7e5b78203d",
+      "video_in": "00:28.000",
+      "video_out": "00:42.000",
+      "total_video_seconds": 42,
+      "terminal_sim_seconds": 80.87,
+      "outcome": "collision",
+      "source_report": "docs/reviews/RESULT_BEFORESTEP_R1.md",
+      "download": "https://raw.githubusercontent.com/codezzzsleep/next-zenith-beforestep/a60571980abeefa479cd34976dd18509f9cda883/site/media/real-footage/r1-synchronised-optimistic.mp4",
+      "bytes": 2329580,
+      "sha256": "edae6ef14c2c211c471cc3be36c0787c6dafb198a05e2295a40286837f578de0",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 416,
+            "height": 702,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1"
+          }
+        ],
+        "format": {
+          "duration": "42.000000"
+        }
+      }
+    },
+    {
+      "id": "r1-conservative",
+      "file": "site/media/real-footage/r1-synchronised-conservative.mp4",
+      "source_type": "Frozen R1 experiment replay, original Go2W",
+      "asset_snapshot_commit": "a60571980abeefa479cd34976dd18509f9cda883",
+      "run_id": "b164261dd17a4d7aa50b5dd33132b209",
+      "video_in": "00:28.000",
+      "video_out": "00:42.000",
+      "total_video_seconds": 42,
+      "terminal_sim_seconds": 142.2,
+      "outcome": "stopped",
+      "source_report": "docs/reviews/RESULT_BEFORESTEP_R1.md",
+      "download": "https://raw.githubusercontent.com/codezzzsleep/next-zenith-beforestep/a60571980abeefa479cd34976dd18509f9cda883/site/media/real-footage/r1-synchronised-conservative.mp4",
+      "bytes": 3414887,
+      "sha256": "305ff97135cd51dfa9b27a90891461996082bd319c556270cafe6d5e1574f5dc",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 416,
+            "height": 702,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1"
+          }
+        ],
+        "format": {
+          "duration": "42.000000"
+        }
+      }
+    },
+    {
+      "id": "r1-imagination",
+      "file": "site/media/real-footage/r1-synchronised-imagination.mp4",
+      "source_type": "Frozen R1 experiment replay, original Go2W",
+      "asset_snapshot_commit": "a60571980abeefa479cd34976dd18509f9cda883",
+      "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+      "video_in": "00:28.000",
+      "video_out": "00:42.000",
+      "total_video_seconds": 42,
+      "terminal_sim_seconds": 112.84,
+      "outcome": "arrived",
+      "source_report": "docs/reviews/RESULT_BEFORESTEP_R1.md",
+      "download": "https://raw.githubusercontent.com/codezzzsleep/next-zenith-beforestep/a60571980abeefa479cd34976dd18509f9cda883/site/media/real-footage/r1-synchronised-imagination.mp4",
+      "bytes": 3194296,
+      "sha256": "dfd8814b22cb13bf7e6afc928de5fdc9415aa31aa34fd5aca6ca0f09a572dcdb",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 416,
+            "height": 702,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1"
+          }
+        ],
+        "format": {
+          "duration": "42.000000"
+        }
+      }
+    },
+    {
+      "id": "r3-evidence-insufficient-stop",
+      "file": "site/media/footage/suite_r2_v4_F2_011-imagination.mp4",
+      "source_type": "R3 E2 same-scene original imagination method replay, Go2W",
+      "asset_snapshot_commit": "a60571980abeefa479cd34976dd18509f9cda883",
+      "run_id": "46f77bc2aa054daf8773b3694f3fef44",
+      "video_in": "00:08.000",
+      "video_out": "00:14.000",
+      "total_video_seconds": 14,
+      "terminal_sim_seconds": 56.06,
+      "outcome": "stopped after two observations; second look: 12 tasks, 10 successful model returns, zero admitted candidates",
+      "source_report": "docs/reviews/RESULT_BEFORESTEP_R3.md",
+      "download": "https://raw.githubusercontent.com/codezzzsleep/next-zenith-beforestep/a60571980abeefa479cd34976dd18509f9cda883/site/media/footage/suite_r2_v4_F2_011-imagination.mp4",
+      "bytes": 781650,
+      "sha256": "fb2d7bacc1ece9f36cf7fc0c79c936e20f5fd60d1bd8e93d0fcc817ee66c778e",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "h264",
+            "width": 864,
+            "height": 486,
+            "pix_fmt": "yuv420p",
+            "r_frame_rate": "30/1"
+          }
+        ],
+        "format": {
+          "duration": "14.000000"
+        }
+      }
+    },
+    {
+      "id": "r1-twelve-world-grid",
+      "file": "evidence/production-v6/shots/s05-world-grid.mp4",
+      "source_type": "Frozen R1 twelve-world 4x3 replay, Go2W; not current live rehearsal",
+      "asset_snapshot_commit": "a60571980abeefa479cd34976dd18509f9cda883",
+      "run_id": "282e8d841b7a470bb80284dcd3a053dd",
+      "video_in": "00:00.000",
+      "video_out": "00:06.000",
+      "layout": "4 columns x 3 rows = 12",
+      "pane_sources": [
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane0/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane1/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane2/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane3/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane4/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane5/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane6/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane7/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane8/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane9/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane10/traj.npz",
+        "evidence/reviews/beforestep_r1/lux/original_b/rehearsal/look1/pane11/traj.npz"
+      ],
+      "source_manifest": "evidence/production-v6/shots/s05-world-grid.json",
+      "download": "https://media.githubusercontent.com/media/codezzzsleep/next-zenith-beforestep/a60571980abeefa479cd34976dd18509f9cda883/evidence/production-v6/shots/s05-world-grid.mp4",
+      "bytes": 4440080,
+      "sha256": "b10a0005b52962f8d9b8069b75f55d0c3ec1ab5e18c5557c30f00fed7aa5e762",
+      "resolution": [
+        1920,
+        1080
+      ],
+      "fps": 30
+    }
+  ]
+}

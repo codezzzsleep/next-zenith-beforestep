@@ -1,0 +1,112 @@
+{
+  "schema": "beforestep-judges-negative-case/v1",
+  "scope": "New game verification; original R1/R3 unchanged",
+  "snapshot": "pre-gate-fix current worktree; controller and world assets unchanged",
+  "selection": [
+    5958934,
+    5958948,
+    5959025
+  ],
+  "policy": "optimistic",
+  "candidate_forecast": {
+    "passed": true,
+    "requestId": 1,
+    "usable": false,
+    "routeSession": true,
+    "revision": 2,
+    "observationVersion": 0,
+    "worlds": 2,
+    "path": [
+      [
+        2.8538307222591115,
+        -0.5022318619474097
+      ],
+      [
+        4.6,
+        0.5000000000000004
+      ],
+      [
+        5.399999999999997,
+        4.163336342344337e-16
+      ],
+      [
+        5.899999999999995,
+        -0.49999999999999956
+      ],
+      [
+        6.999999999999991,
+        -0.6999999999999995
+      ],
+      [
+        8.45,
+        0
+      ]
+    ],
+    "length": 6.392012513164813,
+    "anchor": {
+      "x": 2.8538307222591115,
+      "y": -0.5022318619474097,
+      "z": 0.3850746842939713,
+      "poseName": "normal",
+      "yaw": -0.0020202879224381597,
+      "tilt": 0.29505074619456456,
+      "speed": 0.00036538676741454813,
+      "elapsed": 4.519999999999724,
+      "steps": 2260,
+      "finite": true,
+      "goalDistance": 7.762433595372777,
+      "legs": null
+    }
+  },
+  "actual_failure": {
+    "phase": "failed",
+    "x": 7.082627309419203,
+    "y": -0.6331506897445999,
+    "elapsed": 65.50000000002875,
+    "actionCount": 0
+  },
+  "events": [
+    {
+      "direction": "UI to worker",
+      "type": "pause",
+      "value": true
+    },
+    {
+      "direction": "UI to worker",
+      "type": "pause",
+      "value": false
+    },
+    {
+      "type": "missionFailed",
+      "state": {
+        "x": 7.082627309419203,
+        "y": -0.6331506897445999,
+        "z": 0.384661242467883,
+        "poseName": "normal",
+        "yaw": 0.4242686757957741,
+        "tilt": 0.051273599991618506,
+        "speed": 0.18071365109102996,
+        "elapsed": 65.50000000002875,
+        "steps": 32750,
+        "finite": true,
+        "goalDistance": 3.573904089419252,
+        "legs": null
+      },
+      "reasonCode": "high_rock_contact",
+      "contact": {
+        "high": true,
+        "wall": false,
+        "gateBody": false,
+        "groundBody": false,
+        "measured": false,
+        "point": [
+          7.223536056219405,
+          -0.3322569696509937,
+          0.14324652522468123
+        ]
+      },
+      "reason": "实际执行接触高石。"
+    }
+  ],
+  "code_revision_note": "This preserves the actual visible-information attempt; do not claim that all gray routes always collide."
+}

@@ -1,6 +1,6 @@
-import {accepted} from './mission-planner.js?v=mission-1';
+import {accepted} from './mission-planner.js?v=judges-demo-20261118-1';
 
-export const GAME_VERSION = 'playability-1';
+export const GAME_VERSION = 'judges-demo-1';
 export const RECORD_KEY = 'beforestep.playability.records.v1';
 export const MODE_NAMES = Object.freeze({explore: '探索练习', challenge: '全程挑战'});
 export const CHAPTERS = Object.freeze(['看见另一面', '绕过高石', '四腿接力', '稳稳到达']);
@@ -58,6 +58,7 @@ export class MissionRun {
     this.last = null;
     this.actionSeconds = 0;
     this.manualMeters = 0;
+    this.assistedMeters = 0;this.decisions={initial:null,events:[]};this.outcome=null;this.stopReason=null;this.observationVersion=0;
     this.maxTilt = 0;
     this.chapter = 0;
     this.actions = 0;
@@ -73,6 +74,7 @@ export class MissionRun {
     this.saved = false;
     this.selected = [];
     this.result = null;
+    this.checkpoints = new Map();
   }
 
   selectionChanged(selected) {
@@ -92,17 +94,26 @@ export class MissionRun {
       const dt = state.elapsed - this.last.elapsed;
       if (!state.paused && (state.speed > .018 || state.automatic || state.legs?.busy)) this.actionSeconds += dt;
       const distance = Math.hypot(state.x - this.last.x, state.y - this.last.y);
-      if (!state.paused && !state.automatic && !state.legs && state.speed > .018 && distance < .5) this.manualMeters += distance;
+      if (!state.paused && !state.legs && state.speed > .018 && distance < .5){if(state.automatic)this.assistedMeters+=distance;else this.manualMeters += distance;}
     }
     if (!this.ended) this.maxTilt = Math.max(this.maxTilt, state.tilt || 0);
-    this.actions = state.actionCount || 0;
+    this.actions = state.actionCount || 0;this.observationVersion=state.observationVersion||0;
     if (state.phase !== 'failed') this.chapter = Math.max(this.chapter, chapterFor(state, mission));
     this.last = {x: state.x, y: state.y, elapsed: state.elapsed};
   }
 
   event(message) {
+    if(message.type==='checkpointSaved'&&message.checkpoint)this.checkpoints.set(message.checkpoint.id,{
+      actionSeconds:this.actionSeconds,manualMeters:this.manualMeters,assistedMeters:this.assistedMeters,
+      maxTilt:this.maxTilt,chapter:this.chapter,actions:this.actions,crossed:this.crossed,
+      viewedTargets:[...this.viewedTargets],viewedTasks:[...this.viewedTasks],previewedWorlds:[...this.previewedWorlds],
+      usedProof:structuredClone(this.usedProof),
+    });
+    if(message.type==='initialJudgmentRecorded')this.decisions=structuredClone(message.journal);
+    if(message.type==='checkpointRestored'&&message.journal)this.decisions=structuredClone(message.journal);
+    if(message.type==='decisionEvent'){this.decisions.events.push(structuredClone(message.event));if(message.event.type==='initialJudgment')this.decisions.initial=structuredClone(message.event);}
     if (message.type === 'previewDone') for (const result of message.results) {
-      if (result.tasks?.length) this.previewedWorlds.add([...result.tasks].sort((a, b) => a - b).join(':'));
+      if (result.tasks?.length && result.passed && result.reason==='completed') this.previewedWorlds.add([...result.tasks].sort((a, b) => a - b).join(':'));
     }
     if (message.type === 'previewDone') this.pendingProof = message.passed ? {
       requestId: message.requestId,
@@ -117,6 +128,9 @@ export class MissionRun {
     }
     if (message.type === 'crossed') this.crossed = true;
     if (message.type === 'checkpointRestored') {
+      const saved=this.checkpoints.get(message.checkpoint?.id);
+      if(saved){for(const key of ['actionSeconds','manualMeters','assistedMeters','maxTilt','chapter','actions','crossed','usedProof'])this[key]=structuredClone(saved[key]);
+        for(const key of ['viewedTargets','viewedTasks','previewedWorlds'])this[key]=new Set(saved[key]);}
       this.checkpointUses++;
       this.last = null;
       this.pendingProof = null;
@@ -124,9 +138,14 @@ export class MissionRun {
       this.completed = false;
       this.result = null;
       this.saved = false;
+      this.outcome = null;
+      this.stopReason = null;
     }
     if (message.type === 'resetDone') this.reset(message.gameMode || this.mode);
-    if (message.type === 'missionComplete' || message.type === 'missionFailed') {
+    if (['missionComplete','missionFailed','missionStopped'].includes(message.type)) {
+      if(message.journal)this.decisions=structuredClone(message.journal);
+      if(message.type==='missionStopped')this.stopReason=message.reason;
+      this.outcome=message.type==='missionComplete'?'arrived':message.type==='missionStopped'?'stopped':message.reasonCode||'failed';
       this.completed = message.type === 'missionComplete' && message.state?.goalDistance < .35;
       this.ended = true;
       if (this.completed) { this.actions = message.actions; this.chapter = 4; }
@@ -150,7 +169,7 @@ export class MissionRun {
       {id: 'challenge', name: '一气呵成', earned: this.completed && this.mode === 'challenge' && !this.checkpointUses, note: '从头完成全程挑战'},
     ];
     return {
-      version: GAME_VERSION, mode: this.mode, completed: this.completed, score,
+      version: GAME_VERSION, mode: this.mode, completed: this.completed, score,decisions:structuredClone(this.decisions),outcome:this.outcome,stopReason:this.stopReason,observationVersion:this.observationVersion,assistedMeters:Math.round(this.assistedMeters*100)/100,
       actionSeconds: Math.round(this.actionSeconds * 10) / 10,
       manualMeters: Math.round(this.manualMeters * 100) / 100,
       maxTilt: Math.round(this.maxTilt * 10) / 10,
@@ -159,6 +178,7 @@ export class MissionRun {
       previewedWorlds: this.previewedWorlds.size,
       routeSelected: [...(this.usedProof?.selected || [])].sort((a, b) => a - b),
       viewedTargets: [...this.viewedTargets].sort(),
+      viewedTasks: [...this.viewedTasks].sort((a,b)=>a-b),
       selected: [...this.selected].sort((a, b) => a - b), badges,
     };
   }
@@ -171,7 +191,7 @@ export class MissionRun {
 }
 
 function validRecord(record) {
-  return record && record.version === GAME_VERSION && record.completed === true &&
+  return record && [GAME_VERSION,'playability-1'].includes(record.version) && record.completed === true &&
     Object.hasOwn(MODE_NAMES, record.mode) && finite(record.score) && record.score <= 100 &&
     finite(record.actionSeconds) && finite(record.checkpointUses) &&
     (record.mode !== 'challenge' || record.checkpointUses === 0) &&

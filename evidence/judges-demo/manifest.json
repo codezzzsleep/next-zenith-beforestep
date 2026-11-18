@@ -1,0 +1,74 @@
+{
+  "schema": "beforestep-judges-demo/v1",
+  "status": "gameplay_verified_recording_pending",
+  "source_baseline": "a60571980abeefa479cd34976dd18509f9cda883",
+  "review_baseline": "1d2298527afd87e569bc6775ebc9ea3eec87fae8",
+  "position": "利用 Lux3D 的三维生成能力构建局部空间假设，支持导航与探索",
+  "current_candidate_pair": [
+    5958948,
+    5959025
+  ],
+  "fixed_other_task": 5958934,
+  "rejected_task": 5958642,
+  "current_rehearsal_worlds": 2,
+  "current_real_player_leg_actions": 12,
+  "local_gpu_verification": {
+    "desktop": {
+      "passed": true,
+      "checks": [
+        "initial_judgment_and_manual_without_Lux",
+        "effective_surface_observation_and_two_exact_checkpoint_restores",
+        "same_input_real_pair_and_rejected_inspection",
+        "cancel_and_changed_combinations_cannot_release_stale_results",
+        "assisted_route_manual_takeover_and_valid_rehearsed_departure",
+        "real_two_world_release_twelve_player_actions_and_arrival"
+      ],
+      "viewport": [
+        1920,
+        1080
+      ],
+      "touch_simulation": false,
+      "physical_phone_test": false,
+      "asset_mirror": true,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4090/PCIe/SSE2, OpenGL ES 3.2)",
+      "pose_injected": false,
+      "final": {
+        "phase": "complete",
+        "actionCount": 12,
+        "goalDistance": 0.3415429253119361,
+        "elapsed": 173.9780000001026,
+        "checkpointRestarts": 2
+      }
+    },
+    "touch": {
+      "passed": true,
+      "checks": [
+        "initial_judgment_and_manual_without_Lux",
+        "effective_surface_observation_and_two_exact_checkpoint_restores",
+        "same_input_real_pair_and_rejected_inspection",
+        "cancel_and_changed_combinations_cannot_release_stale_results",
+        "assisted_route_manual_takeover_and_valid_rehearsed_departure",
+        "real_two_world_release_twelve_player_actions_and_arrival"
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "touch_simulation": true,
+      "physical_phone_test": false,
+      "asset_mirror": true,
+      "renderer": "ANGLE (NVIDIA Corporation, NVIDIA GeForce RTX 4090/PCIe/SSE2, OpenGL ES 3.2)",
+      "pose_injected": false,
+      "final": {
+        "phase": "complete",
+        "actionCount": 12,
+        "goalDistance": 0.3433027920489838,
+        "elapsed": 177.92600000012146,
+        "checkpointRestarts": 2
+      }
+    }
+  },
+  "study_index": "study-index.json",
+  "recordings": [],
+  "note": "New 1080p raw recording is still pending. Frozen study replays are identified separately; this manifest does not claim a completed new film."
+}

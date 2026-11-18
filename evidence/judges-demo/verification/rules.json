@@ -1,0 +1,152 @@
+{
+  "schema": "beforestep-judges-cli-verification/v1",
+  "scope": "Current interactive runtime; frozen R1 experiments not rerun",
+  "source_tests": [
+    "judges",
+    "insight",
+    "showcase",
+    "experience",
+    "m20_skin",
+    "rock_surfaces"
+  ],
+  "results": {
+    "judges": {
+      "passed": true,
+      "checks": [
+        "real_sensor_cells_only",
+        "frozen_baseline_unchanged",
+        "duplicate_and_invalid_observation_no_revision",
+        "optical_view_does_not_move_robot",
+        "checkpoint_knowledge_and_initial_judgment_exact",
+        "all_worlds_required_no_cancel_timeout_duplicate_or_stale_permission"
+      ],
+      "sensorHits": 347,
+      "firstObservation": {
+        "changed": true,
+        "added": 6,
+        "raised": 0,
+        "valid": 347,
+        "version": 1,
+        "cells": 6,
+        "reason": "new_measured_surface_cells",
+        "source": "Current MuJoCo camera ray hits"
+      },
+      "secondAngleObservation": {
+        "changed": true,
+        "added": 1,
+        "raised": 0,
+        "valid": 163,
+        "version": 2,
+        "cells": 7,
+        "reason": "new_measured_surface_cells",
+        "source": "Current MuJoCo camera ray hits"
+      },
+      "supplementalObservation": {
+        "changed": true,
+        "added": 10,
+        "raised": 0,
+        "valid": 66,
+        "version": 3,
+        "cells": 17,
+        "reason": "new_measured_surface_cells",
+        "source": "Current MuJoCo camera ray hits"
+      },
+      "supplementalPose": {
+        "x": 3.2041215971742982,
+        "y": -0.0866458971154554,
+        "yaw": 0.42345509236816836
+      },
+      "worlds": 2,
+      "scope": "Current interactive session; frozen research results not rerun"
+    },
+    "insight": {
+      "passed": true,
+      "checks": [
+        "same start, different actual planner routes",
+        "observed cells and admitted footprint provenance",
+        "projected warning separate from contact and timeout",
+        "recap tracks unique completed worlds and the executed selection",
+        "manual/assisted narrative follows actual control state"
+      ],
+      "visibleCells": 1289,
+      "hypothesisCells": 168
+    },
+    "showcase": {
+      "passed": true,
+      "checks": [
+        "motor_stops_at_checkpoint",
+        "three_second_first_look",
+        "initial_judgment_required",
+        "manual_without_model_or_forecast",
+        "checkpoint_restores_choice_and_observation",
+        "cancel_cannot_certify",
+        "complete_world_forecast_for_assistance",
+        "selection_invalidates_permission",
+        "actual_takeover"
+      ]
+    },
+    "experience": {
+      "passed": true,
+      "certificateChecks": 9,
+      "allWorlds": 12,
+      "singleWorld": 1,
+      "routeChanged": true,
+      "liveVisibleHits": 347,
+      "liveTargets": [
+        "T1",
+        "T2"
+      ],
+      "dreamDoesNotMutateLive": true,
+      "turningCameraChangesVisibleSurfaces": true,
+      "controllerPosePreservedInDream": true,
+      "scope": "New interactive experience; separate from research results"
+    },
+    "m20_skin": {
+      "passed": true,
+      "parts": 17,
+      "drivenDistance": 0.14717965789176388,
+      "physics": "unchanged Go2W world"
+    },
+    "rock_surfaces": {
+      "passed": true,
+      "originalPackageUsed": true,
+      "physicsUnchanged": true,
+      "rocks": [
+        {
+          "role": "T1",
+          "sourceMesh": "m_f05b923c509662631e1ca7f2",
+          "inputVertices": 7914,
+          "inputFaces": 29688,
+          "displayVertices": 7424,
+          "displayFaces": 14844,
+          "boundaryEdges": 0,
+          "nonManifoldEdges": 0,
+          "inconsistentWinding": 0,
+          "enclosedVolume": 0.22466935322462248,
+          "eulerCharacteristic": 2,
+          "smoothNormals": true,
+          "originalUVsRetained": true,
+          "texturedSurfaceClosed": true,
+          "texturedVertices": 7914
+        },
+        {
+          "role": "T2",
+          "sourceMesh": "m_e23eb0df721b7cec8319fd65",
+          "inputVertices": 4067,
+          "inputFaces": 15272,
+          "displayVertices": 3820,
+          "displayFaces": 7636,
+          "boundaryEdges": 0,
+          "nonManifoldEdges": 0,
+          "inconsistentWinding": 0,
+          "enclosedVolume": 0.19579875993913773,
+          "eulerCharacteristic": 2,
+          "smoothNormals": true,
+          "originalUVsRetained": true,
+          "texturedSurfaceClosed": true,
+          "texturedVertices": 4067
+        }
+      ]
+    }
+  }
+}

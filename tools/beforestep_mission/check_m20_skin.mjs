@@ -23,8 +23,9 @@ const model=world.packet();
 
 // Exercise the same methods as the renderer without requiring a browser GPU.
 const scene=Object.create(MissionScene.prototype);
-Object.assign(scene,{robotSkin,scene:new THREE.Scene(),skinObjects:[],objects:[],canvas:{dataset:{}},
-  display:JSON.parse(unpack('media/mission/display.json.gz')),dream:true,soil:null,
+Object.assign(scene,{robotSkin,scene:new THREE.Scene(),skinObjects:[],objects:[],seen:new Map(),canvas:{dataset:{}},
+  display:JSON.parse(unpack('media/mission/display.json.gz')),dream:true,soil:null,sensorYaw:0,
+  renderer:{shadowMap:{needsUpdate:false}},
   car:new THREE.PerspectiveCamera(),camera:new THREE.PerspectiveCamera(),
   controls:{target:new THREE.Vector3(),update(){}},marker:new THREE.Object3D()});
 scene.setModel(model);

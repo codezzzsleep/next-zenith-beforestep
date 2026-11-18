@@ -27,8 +27,11 @@ assert(!routeInsight(comparison, 'optimistic', {policy: 'optimistic', passed: fa
 
 const run = new MissionRun('challenge');
 run.selectionChanged(selected);
+run.event({type:'decisionEvent',event:{sequence:1,type:'initialJudgment',detail:{choice:'pass',label:'我觉得能过'}}});
 run.modelViewed(mission.candidates.find(c => c.task_id === 5958685));
-const results = [{passed: true, tasks: [5958685, 5958654]}, {passed: true, tasks: [5958685, 5958934]}];
+run.event({type:'decisionEvent',event:{sequence:2,type:'modelViewed',detail:{taskId:5958685,target:'T1'}}});
+run.event({type:'decisionEvent',event:{sequence:3,type:'selectionChanged',detail:{selected,policy:'imagination'}}});
+const results = [{passed: true, reason:'completed', tasks: [5958685, 5958654]}, {passed: true, reason:'completed', tasks: [5958685, 5958934]}];
 run.event({type: 'previewDone', policy: 'imagination', selected, requestId: 1, revision: 1, passed: true, results});
 run.event({type: 'routeStarted', requestId: 1, revision: 1});
 run.selectionChanged([5958690, 5958654, 5958934]);
@@ -39,7 +42,15 @@ const summary = run.summary(), recap = runRecap(summary, mission);
 assert.equal(summary.previewedWorlds, 2); // The same worlds tried twice remain two distinct worlds.
 assert.deepEqual(summary.routeSelected, [...selected].sort((a, b) => a - b));
 assert(recap.includes('5958685') && !recap.includes('5958690'));
-assert(recap.includes('2 个世界') && recap.includes('12 次轮腿动作后抵达'));
+assert(recap.includes('2 个候选世界') && recap.includes('12 次轮腿动作') && recap.includes('抵达并停稳'));
+assert(recap.includes('我觉得能过') && recap.includes('计入背面假设'));
+const legacy=runRecap({...summary,decisions:undefined,viewedTasks:undefined,assistedMeters:undefined},mission);
+assert(legacy.includes('初判：未记录') && legacy.includes('执行方式：未记录'));
+const branch=new MissionRun();branch.selectionChanged(selected);branch.event({type:'checkpointSaved',checkpoint:{id:'observation'}});
+branch.event({type:'previewDone',selected,passed:true,results});branch.modelViewed(mission.candidates.find(c=>c.task_id===5958685));
+branch.manualMeters=3;branch.event({type:'checkpointRestored',checkpoint:{id:'observation'},journal:{initial:null,events:[]}});
+assert.equal(branch.previewedWorlds.size,0);assert.equal(branch.viewedTasks.size,0);assert.equal(branch.manualMeters,0);
+assert.equal(branch.summary().checkpointUses,1);
 assert(!runRecap(new MissionRun().summary(), mission).includes('预演通过'));
 const manual = nextObjective({phase: 'explore', x: 4, showcase: {completed: true}, automatic: false}, mission);
 assert(!manual.hint.includes('预演通过'));

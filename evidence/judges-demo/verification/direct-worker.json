@@ -1,0 +1,179 @@
+{
+  "passed": true,
+  "selected": [
+    5958948,
+    5959025,
+    5958934
+  ],
+  "commands": [
+    {
+      "action": "lift",
+      "leg": 0
+    },
+    {
+      "action": "advance",
+      "leg": 0
+    },
+    {
+      "action": "land",
+      "leg": 0
+    },
+    {
+      "action": "lift",
+      "leg": 1
+    },
+    {
+      "action": "advance",
+      "leg": 1
+    },
+    {
+      "action": "land",
+      "leg": 1
+    },
+    {
+      "action": "lift",
+      "leg": 2
+    },
+    {
+      "action": "advance",
+      "leg": 2
+    },
+    {
+      "action": "land",
+      "leg": 2
+    },
+    {
+      "action": "lift",
+      "leg": 3
+    },
+    {
+      "action": "advance",
+      "leg": 3
+    },
+    {
+      "action": "land",
+      "leg": 3
+    }
+  ],
+  "terminal": {
+    "x": 10.265653487813562,
+    "y": -0.003913025812809015,
+    "z": 0.46778784489884184,
+    "poseName": "high",
+    "yaw": -0.08947595904512491,
+    "tilt": 0.08279296578272077,
+    "speed": 0.004300180048079066,
+    "elapsed": 172.30400000009462,
+    "steps": 86152,
+    "finite": true,
+    "goalDistance": 0.3343694094594288,
+    "legs": null,
+    "phase": "complete",
+    "paused": true,
+    "automatic": false,
+    "revision": 1,
+    "selected": [
+      5958948,
+      5959025,
+      5958934
+    ],
+    "policy": "imagination",
+    "observationVersion": 0,
+    "measuredCells": 0,
+    "sensor": {
+      "yaw": 0,
+      "verticalFov": 45
+    },
+    "initialJudgment": "unsure",
+    "judgmentReady": true,
+    "actionCount": 12,
+    "stable": true,
+    "gameMode": "explore",
+    "checkpoint": {
+      "id": "finish",
+      "label": "门槛后"
+    },
+    "checkpointRestarts": 0,
+    "showcase": {
+      "enabled": true,
+      "checkpointX": 2.8499999999999996,
+      "stage": "high-rocks",
+      "active": false,
+      "completed": true,
+      "viewedTask": 5958948,
+      "releaseMode": "assisted",
+      "triggers": 1,
+      "initialJudgment": "unsure"
+    },
+    "scan": {
+      "valid": true,
+      "near": 9.1,
+      "far": 9.19966202434059,
+      "high": 0.12,
+      "heightAboveGround": 0.11911764562129978,
+      "depth": 0.09966202434059035,
+      "camera": [
+        8.844782202307217,
+        -0.004568038792616327,
+        0.38430940668919555
+      ],
+      "source": "Current MuJoCo camera rays; visible geometry, no Lux3D request"
+    },
+    "proof": {
+      "passed": true,
+      "requestId": "route",
+      "usable": false,
+      "routeSession": true,
+      "revision": 1,
+      "observationVersion": 0,
+      "worlds": 2,
+      "path": [
+        [
+          2.852574203570624,
+          -0.5029432784470904
+        ],
+        [
+          4.6,
+          0.5000000000000004
+        ],
+        [
+          5.4999999999999964,
+          4.163336342344337e-16
+        ],
+        [
+          5.799999999999995,
+          -0.5999999999999995
+        ],
+        [
+          7.19999999999999,
+          -0.6999999999999995
+        ],
+        [
+          8.45,
+          0
+        ]
+      ],
+      "length": 6.551398493151904,
+      "anchor": {
+        "x": 2.852574203570624,
+        "y": -0.5029432784470904,
+        "z": 0.38507818961983953,
+        "poseName": "normal",
+        "yaw": 0.0015891676217104007,
+        "tilt": 0.3011314364640864,
+        "speed": 0.00027794913419161414,
+        "elapsed": 3.8599999999997965,
+        "steps": 1930,
+        "finite": true,
+        "goalDistance": 7.763733535646006,
+        "legs": null
+      }
+    },
+    "gateProof": null
+  },
+  "terminalSnapshotDelivered": true,
+  "realMotorPhysics": true,
+  "scope": "New game protocol; independent of frozen research experiments",
+  "cross_start": "direct after the assisted route has completed alignment",
+  "early_cross_guard": "cross request during assisted driving rejected without changing phase or creating leg controller"
+}

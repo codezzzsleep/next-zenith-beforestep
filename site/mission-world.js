@@ -1,16 +1,25 @@
 import {WheelLegControl} from './wheelleg-control.js?v=mission-1';
+import {CURRENT_CAMERA} from './mission-camera.js?v=judges-demo-20261118-1';
 export const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
 const legs=['FR','FL','RR','RL'],parts=['hip','thigh','calf'];
 /** Independent truth or Lux-derived physical world. Only reset assigns state. */
 export class MissionWorld{
-  constructor(mj,mission,file='truth.xml',initial=null){
-    this.mj=mj;this.manifest=mission;this.file=file;this.model=mj.MjModel.from_xml_path('/play/'+file);this.data=new mj.MjData(this.model);this.timestep=this.model.opt.timestep;
+  constructor(mj,mission,file='truth.xml',initial=null,observedSurfaces=[]){
+    this.mj=mj;this.manifest=mission;this.file=file;
+    let modelPath='/play/'+file;
+    if(observedSurfaces.length){
+      const size=mission.grid.res/2,xml=new TextDecoder().decode(mj.FS.readFile(modelPath));
+      const bodies=['T1','T2'].map(target=>'<body name="measured_'+target+'">'+observedSurfaces.filter(c=>c.target===target).map(c=>'<geom name="measured_'+c.index+'" type="box" size="'+size+' '+size+' '+Math.max(.001,c.top/2)+'" pos="'+c.x+' '+c.y+' '+Math.max(.001,c.top/2)+'" rgba="0.55 0.88 0.91 0.8"/>').join('')+'</body>').join('');
+      modelPath='/play/session-'+file;mj.FS.writeFile(modelPath,xml.replace('</worldbody>',bodies+'</worldbody>'));
+    }
+    try{this.model=mj.MjModel.from_xml_path(modelPath);}finally{if(observedSurfaces.length)mj.FS.unlink(modelPath);}
+    this.data=new mj.MjData(this.model);this.timestep=this.model.opt.timestep;
     const m=this.model,id=(type,name)=>mj.mj_name2id(m,type,name);this.base=id(1,'base_link');this.gate=id(5,'mission_gate');this.terrain=id(5,'terrain');
     this.joints={};for(const leg of legs)for(const part of [...parts,'wheel']){const j=id(3,leg+'_'+part+'_joint');this.joints[leg+'_'+part]={q:m.jnt_qposadr[j],v:m.jnt_dofadr[j],id:j,act:id(19,leg+'_'+part)};}
-    this.wheelBodies=legs.map(l=>id(1,l+'_wheel_link'));this.robotBodies=new Set();this.highBodies=new Set([id(1,'obstacle0'),id(1,'obstacle1')]);this.obstacleBodies=new Set();
+    this.wheelBodies=legs.map(l=>id(1,l+'_wheel_link'));this.robotBodies=new Set();this.highBodies=new Set([id(1,'obstacle0'),id(1,'obstacle1')]);this.obstacleBodies=new Set();this.measuredBodies=new Map(['T1','T2'].map(t=>[id(1,'measured_'+t),t]).filter(([id])=>id>=0));
     for(let b=1;b<m.nbody;b++){let parent=b;while(parent&&parent!==this.base)parent=m.body_parentid[parent];if(parent===this.base)this.robotBodies.add(b);else if(mj.mj_id2name(m,1,b)?.startsWith('obstacle'))this.obstacleBodies.add(b);}
     this.course={start:mission.start,goal:mission.goal,barrier:{...mission.gate}};
-    this.rayGeom=new mj.IntBuffer(1);this.rayNormal=new mj.DoubleBuffer(3);this.reset(initial);
+    this.sensorYaw=0;this.rayGeom=new mj.IntBuffer(1);this.rayNormal=new mj.DoubleBuffer(3);this.reset(initial);
   }
   ground(x,y){
     const m=this.model,id=m.geom_dataid[this.terrain],adr=m.hfield_adr[id],nr=m.hfield_nrow[id],nc=m.hfield_ncol[id],s=m.hfield_size.slice(id*4,id*4+4),p=m.geom_pos.slice(this.terrain*3,this.terrain*3+3);
@@ -39,13 +48,14 @@ export class MissionWorld{
   }
   anchors(){return this.wheelBodies.map(b=>Array.from(this.data.xpos.slice(b*3,b*3+3)));}
   contacts(){
-    const contacts=this.data.contact;let high=false,wall=false,gateBody=false,groundBody=false;
+    const contacts=this.data.contact;let high=false,wall=false,gateBody=false,groundBody=false,measured=false,point=null;
     try{for(let i=0;i<contacts.size();i++){const c=contacts.get(i);try{
       const ba=this.model.geom_bodyid[c.geom1],bb=this.model.geom_bodyid[c.geom2];if(!this.robotBodies.has(ba)&&!this.robotBodies.has(bb))continue;
       const robot=this.robotBodies.has(ba)?ba:bb,other=this.robotBodies.has(ba)?bb:ba,g=this.robotBodies.has(ba)?c.geom2:c.geom1,wheel=this.wheelBodies.includes(robot);
-      if(this.highBodies.has(other))high=true;else if(this.obstacleBodies.has(other))wall=true;
+      if(this.highBodies.has(other))high=true;else if(this.measuredBodies.has(other)){high=true;measured=true;}else if(this.obstacleBodies.has(other))wall=true;
+      if(this.highBodies.has(other)||this.measuredBodies.has(other)||this.obstacleBodies.has(other)||g===this.gate&&!wheel)point=Array.from(c.pos);
       if(g===this.gate&&!wheel)gateBody=true;if(g===this.terrain&&!wheel)groundBody=true;
-    }finally{c.delete();}}}finally{contacts.delete();}return {high,wall,gateBody,groundBody};
+    }finally{c.delete();}}}finally{contacts.delete();}return {high,wall,gateBody,groundBody,measured,point};
   }
   bodyContact(){const c=this.contacts();return c.gateBody||c.high||c.wall;}
   physicalState(){return {qpos:Array.from(this.data.qpos),qvel:Array.from(this.data.qvel),poseName:this.poseName,pose:[...this.pose],driveV:this.driveV,driveW:this.driveW};}
@@ -66,9 +76,9 @@ export class MissionWorld{
   }
   /** Live sensor rays; only hit surfaces are exposed in every player camera. */
   observeRocks(){
-    const s=this.state(),r=this.data.xmat.slice(this.base*9,this.base*9+9),rotate=v=>[0,1,2].map(i=>r[i*3]*v[0]+r[i*3+1]*v[1]+r[i*3+2]*v[2]),offset=rotate([.42,0,-.00125]),camera=[s.x+offset[0],s.y+offset[1],s.z+offset[2]],hits=[],targets=new Set();
+    const s=this.state(),r=this.data.xmat.slice(this.base*9,this.base*9+9),rotate=v=>[0,1,2].map(i=>r[i*3]*v[0]+r[i*3+1]*v[1]+r[i*3+2]*v[2]),offset=rotate(CURRENT_CAMERA.offset),camera=[s.x+offset[0],s.y+offset[1],s.z+offset[2]],hits=[],targets=new Set();
     for(let col=0;col<60;col++)for(let row=0;row<34;row++){
-      const az=(col/59-.5)*68*Math.PI/180,pitch=(-6+(row/33-.5)*(this.sensorVerticalFov||45))*Math.PI/180;
+      const az=(col/59-.5)*68*Math.PI/180+(this.sensorYaw||0),pitch=(-6+(row/33-.5)*(this.sensorVerticalFov||45))*Math.PI/180;
       const ray=rotate([Math.cos(pitch)*Math.cos(az),Math.cos(pitch)*Math.sin(az),Math.sin(pitch)]);
       const distance=this.mj.mj_ray(this.model,this.data,camera,ray,[1,0,0,0,0,0],true,this.base,this.rayGeom,this.rayNormal);
       const g=this.rayGeom.GetView()[0],b=g>=0?this.model.geom_bodyid[g]:-1;
@@ -76,10 +86,10 @@ export class MissionWorld{
         const target=b===this.mj.mj_name2id(this.model,1,'obstacle0')?'T1':'T2';targets.add(target);hits.push({target,point:ray.map((v,k)=>camera[k]+distance*v),normal:Array.from(this.rayNormal.GetView())});
       }
     }
-    return {camera,hits,targets:[...targets],source:'Live MuJoCo visible-surface rays'};
+    return {camera,hits,targets:[...targets],mount:CURRENT_CAMERA.offset,opticalYaw:this.sensorYaw||0,source:'Live MuJoCo visible-surface rays'};
   }
   packet(){
-    const m=this.model,model={ngeom:m.ngeom,nmesh:m.nmesh,file:this.file,body_names:Array.from({length:m.nbody},(_,i)=>this.mj.mj_id2name(m,1,i)),geom_roles:Array.from({length:m.ngeom},(_,g)=>{const b=m.geom_bodyid[g];return this.highBodies.has(b)?(b===this.mj.mj_name2id(m,1,'obstacle0')?'T1':'T2'):this.robotBodies.has(b)?'robot':'environment';}),leg_geoms:Array.from({length:m.ngeom},(_,g)=>this.wheelBodies.indexOf(m.geom_bodyid[g])),mesh_names:Array.from({length:m.nmesh},(_,i)=>this.mj.mj_id2name(m,10,i))};
+    const m=this.model,model={ngeom:m.ngeom,nmesh:m.nmesh,file:this.file,body_names:Array.from({length:m.nbody},(_,i)=>this.mj.mj_id2name(m,1,i)),geom_roles:Array.from({length:m.ngeom},(_,g)=>{const b=m.geom_bodyid[g];return this.measuredBodies.has(b)?'measured:'+this.measuredBodies.get(b):this.highBodies.has(b)?(b===this.mj.mj_name2id(m,1,'obstacle0')?'T1':'T2'):this.robotBodies.has(b)?'robot':'environment';}),leg_geoms:Array.from({length:m.ngeom},(_,g)=>this.wheelBodies.indexOf(m.geom_bodyid[g])),mesh_names:Array.from({length:m.nmesh},(_,i)=>this.mj.mj_id2name(m,10,i))};
     for(const key of ['geom_group','geom_type','geom_size','geom_dataid','mesh_vertadr','mesh_vertnum','mesh_faceadr','mesh_facenum','mesh_vert','mesh_face','geom_rgba','geom_matid','mat_rgba','mesh_pos','mesh_quat','hfield_adr','hfield_nrow','hfield_ncol','hfield_size','hfield_data'])model[key]=m[key].slice();return model;
   }
   renderData(){return {qpos:this.data.qpos.slice(),geom_xpos:this.data.geom_xpos.slice(),geom_xmat:this.data.geom_xmat.slice(),body_xpos:this.data.xpos.slice(),body_xmat:this.data.xmat.slice()};}

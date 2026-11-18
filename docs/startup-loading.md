@@ -28,4 +28,4 @@ node tools/beforestep_mission/check_playability.mjs
 
 加载检查使用仓库原5资源构建有效ZIP，覆盖分段/完整ZIP、缓存零网络、损坏缓存丢弃与损坏CDN/CORS失败回退。真实浏览器另验证Cloudflare加载、持久缓存、M20显示、原模型转看、两世界完整预演、认证驾驶和键盘接管。
 
-公网耗时与验证范围见[加载验证记录](../evidence/loading-20261118/verification.json)。网络条件、设备和物理初始化均影响等待时间；缓存命中表示不再下载启动资源，仍需准备真实物理模型。
+本地接入验证见[加载验证记录](../evidence/loading-20261118/verification.json)，正式试玩地址的耗时与验证范围见[公网加载验证](../evidence/loading-20261118/public-verification.json)。公网测试环境首次加载约6.8秒，缓存加载约6.3秒；固定4Mbps、120ms延迟下，首次约67.2秒，缓存后约8.4秒，五个启动资源均不再发起网络请求。首次仍需下载29MB，固定限速下耗时基本不变；缓存命中后仍需准备真实物理模型。这些是测试环境单次测量，尚未验证国内实际网络。

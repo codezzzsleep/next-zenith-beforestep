@@ -1,0 +1,94 @@
+{
+  "schema": "beforestep-public-startup-verification/v1",
+  "verified_at_utc": "2026-11-18T04:17:56.887510+00:00",
+  "passed": true,
+  "url": "https://codezzzsleep.github.io/next-zenith-beforestep/play.html?v=cdn-startup-1",
+  "runtime_source_main": "741459e1b3c18a845e18e32a0df8caee163aaeda",
+  "pages_commit": "5fd62b2c70620f392a0da92edab5a0017492750b",
+  "pages_build_id": 1379847127,
+  "browser": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "engine": "Chromium headless",
+    "webgl": "SwiftShader software rendering",
+    "http_cache_disabled": true,
+    "cache_storage_enabled": true,
+    "domestic_network_verified": false
+  },
+  "timings_seconds": {
+    "normal_network_cold": 6.764,
+    "normal_network_cache": 6.31,
+    "4mbps_120ms_cold": 67.186,
+    "4mbps_120ms_cache": 8.406,
+    "original_4mbps_120ms_cold_baseline": 67.651
+  },
+  "timing_scope": "Navigation until real physics state and first rendered frame, including download, gzip/JSON parsing, M20 rendering and MuJoCo initialization. Single samples from the test environment; these are not measurements of domestic visitors.",
+  "timing_interpretation": "The original 29 MB must still be downloaded on a cold visit. At a fixed 4 Mbps the cold time is essentially unchanged. Persistent cache removes the five startup resource downloads; local physics initialization still takes time.",
+  "startup_bytes": 29043171,
+  "cache_startup_network_requests": 0,
+  "files_verified_before_physics": [
+    {
+      "path": "media/mission/worlds.tar.gz",
+      "bytes": 20167135,
+      "sha256": "b605ca063e0a1490c7cfa2d4d426c61be52cca22ad5bd0a527a7ffa6c2a76e4a"
+    },
+    {
+      "path": "media/mission/display.json.gz",
+      "bytes": 4583211,
+      "sha256": "81e580376862a99c813bca50a12aec03b868063f4feb32e50bb110e26673f5fe"
+    },
+    {
+      "path": "media/mission/m20-skin.json.gz",
+      "bytes": 1593225,
+      "sha256": "e8f1f0b2e21f681f87dcb5bd68f345af7951db5ce853e63678052b3a36051fc3"
+    },
+    {
+      "path": "media/mission/mission.json.gz",
+      "bytes": 11819,
+      "sha256": "4edb15eb441e470ca904623eb3a00c6df1ab87207cdebee5992299194654690e"
+    },
+    {
+      "path": "vendor/mujoco/mujoco.wasm.gz",
+      "bytes": 2687781,
+      "sha256": "26865456f73de5877537cace074ae7b6f89e78c28746b4c7667b9a259811da58"
+    }
+  ],
+  "checks": [
+    "public-Cloudflare-cold-start",
+    "public-cache-start-zero-startup-downloads",
+    "public-original-model-and-real-two-worlds-passed",
+    "public-certified-driving-and-keyboard-takeover",
+    "public-CDN-failure-original-asset-fallback",
+    "public-4mbps-120ms-cold-start",
+    "public-4mbps-120ms-cache-start-zero-startup-downloads",
+    "public-verification-complete"
+  ],
+  "candidate_worlds": {
+    "tasks": [
+      [
+        5958685,
+        5958654
+      ],
+      [
+        5958685,
+        5958934
+      ]
+    ],
+    "passed": true
+  },
+  "download_progress_verified": true,
+  "page_errors": [],
+  "anonymous_public_files": {
+    "count": 37,
+    "bytes": 5792679,
+    "all_sha256_match": true,
+    "canonical_play_html_matches": true
+  },
+  "cloudflare_enabled": true,
+  "gitee_enabled": false,
+  "gitee_reason": "The canonical release attachment failed browser CORS verification; it remains a manual download backup. Domestic routing is not enabled.",
+  "original_physical_assets_and_controls_unchanged": true,
+  "new_generation_requests": 0
+}

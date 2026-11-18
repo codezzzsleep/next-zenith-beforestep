@@ -76,3 +76,6 @@ evidence/game-experience-20261116/*.mp4 filter=lfs diff=lfs merge=lfs -text
 
 # Guided observation and persistent Lux3D gameplay evidence
 evidence/showcase-guided-20261116/*.mp4 filter=lfs diff=lfs merge=lfs -text
+
+# Keep the owner-uploaded V5 original as its existing ordinary Git blob.
+"reports/v4/先见一步_项目报告书_v5.pdf" -filter -diff -merge

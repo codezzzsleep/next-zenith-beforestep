@@ -1,5 +1,7 @@
 # BeforeStep — rehearse the side you cannot see
 
+> This page preserves the archived R1 technical account. The current project report is V5; see [report versions](../reports/README.md) and [current delivery](current-status.md). Historical experiment values and protocols remain unchanged.
+
 **What.** Aholo Lux3D turns a robot's actual flat photograph into a complete 3D rock, including the unseen side. A wheel-leg robot checks and rehearses these geometry hypotheses before acting in an independent simulation.
 
 **Why.** Solar darkness removes reliable depth; rocks also hide space from view. Changing viewpoint changes visibility, not sunlight. A plausible backside can still be wrong.

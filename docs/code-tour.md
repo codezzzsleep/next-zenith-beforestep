@@ -1,6 +1,24 @@
 # 五分钟代码导览
 
-一张真实照片经 Lux3D 变成完整石头候选；原始几何直接进入检查、占据与物理预演。月面太阳与遮挡提供实验背景，真实模型生成承担核心作用。源码冻结在 `4d53214`，下列只读审计和运行入口在 `ops/`，没有改动实验方法。
+一张真实照片经 Lux3D 变成完整石头候选；原始几何直接进入检查、占据与物理预演。月面太阳与遮挡提供实验背景，真实模型生成承担核心作用。原 R1 研究代码与方法冻结；当前可玩层在 `site/` 持续完成初判、真实局部观测、候选预演和轮腿交互。下面分别列出当前游戏和冻结研究入口，报告版本与最新交付见[当前状态](current-status.md)。
+
+## 当前浏览器游戏
+
+浏览器入口是 `site/play.html`，无需 Python 仿真或生成密钥。[操作与本地启动](mission.md)。
+
+| 核心环节 | 当前代码 |
+| --- | --- |
+| 原输入、原模型与同图比较 | `site/judges-candidates.json`、`site/gallery-viewer.js`、`site/mission.js` |
+| 初判、四种选择、手控开放 | `site/mission-showcase.js`、`site/mission-story.js`、`site/mission-worker.js` |
+| 本局真实观测与许可身份 | `site/mission-observation.js`、`site/mission-session.js` |
+| 候选占地、路线与解释 | `site/mission-planner.js`、`site/mission-insight.js` |
+| 独立物理预演与真实执行 | `site/mission-world.js`、`site/mission-worker.js`、`site/wheelleg-control.js` |
+| 相机、原材质与 M20 外观 | `site/mission-scene.js`、`site/mission-appearance.js`、`site/mission-camera.js` |
+| 练习、挑战和事件复盘 | `site/mission-gameplay.js`、`site/mission-run.js` |
+
+预演世界独立于真实世界，运动来自原电机力矩。当前默认两世界与原 R1 十二世界分别保存；[当前原片与测试](judges-demo.md)。
+
+## 冻结 R1 Python 研究
 
 先按 README 安装依赖。所有路径相对仓库根；以下默认复用资产且零新增付费。`outputs/` 中的运行记录不会覆盖原证据。
 

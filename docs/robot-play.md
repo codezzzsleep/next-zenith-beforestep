@@ -1,6 +1,6 @@
 # 亲手操作轮腿机器人
 
-[在线驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)让观众实际驾驶和逐腿操作原 Go2W 机器人。三个任务分别练习轮行与抬腿、跨过门槛、查看完整模型后绕行。
+本文保留早期三关驾驶练习，入口为[历史驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play-practice.html)。当前 M20 显示外观、初判/想象/补看/停车的月面任务见[最新操作说明](mission.md)，主报告为 [V5](../reports/README.md)。早期练习让观众实际驾驶和逐腿操作原 Go2W 机器人。三个任务分别练习轮行与抬腿、跨过门槛、查看完整模型后绕行。
 
 ## 怎么操作
 
@@ -28,7 +28,7 @@ WASD / 方向键驾驶，空格刹车。1 / 2 / 3 / 4 选择右前、左前、�
 
 ```bash
 python3 -m http.server 8000 --directory site
-# 浏览器打开 http://localhost:8000/play.html
+# 浏览器打开 http://localhost:8000/play-practice.html
 ```
 
 需要支持 WebGL、WebAssembly、ES模块Web Worker和gzip DecompressionStream的现代浏览器；不支持时会提供视频入口。

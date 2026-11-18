@@ -1,0 +1,103 @@
+{
+  "schema": "beforestep-home-evidence/v1",
+  "purpose": "Three equal-size, uncropped evidence panels for homepage and README",
+  "new_generation_tasks": 0,
+  "new_physics_runs": 0,
+  "files": [
+    {
+      "path": "site/media/home-evidence-20261118/01-observation-and-candidates.jpg",
+      "sha256": "2269430809a30d98797ba7556017ea1b4c6092ffcb634e01abd231454ec6063f",
+      "bytes": 221076,
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "path": "site/media/home-evidence-20261118/02-twelve-world-rehearsals.jpg",
+      "sha256": "9e38dd6111d9015804e15a1d2bb7387cd7ccf106761a188eba1a46bc052a9667",
+      "bytes": 205716,
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "path": "site/media/home-evidence-20261118/03-three-real-outcomes.jpg",
+      "sha256": "d1d103b490f14349d8a711db958695020d20e81834adf0295e20203be3173266",
+      "bytes": 236993,
+      "width": 1600,
+      "height": 900
+    }
+  ],
+  "observation_check": {
+    "input": {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/gen/variants/A1_upload.jpg",
+      "sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf"
+    },
+    "tasks": [
+      {
+        "task_id": 5958654,
+        "input_sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf",
+        "glb_sha256": "f717d8ae187c424f06b5f798b7a9b81328cde19982845c6526713415806ab890"
+      },
+      {
+        "task_id": 5958642,
+        "input_sha256": "8148409450fb87c90211a3caa300024c847c89075327a0b1869cdbf4c1785caf",
+        "glb_sha256": "99992bdf6983f309aef947e0c8761609773c746589137d1dd2467b6958048f48"
+      }
+    ],
+    "decision": {
+      "path": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T2/decide/target_decision.json",
+      "sha256": "181407fdeee7ed2547f6c618de0d608bbeb99b326d27aa81e4af0a88bf4a30ab"
+    },
+    "model_images": [
+      {
+        "path": "site/home-assets/img/poster/B-A2.jpg",
+        "sha256": "4f046b161d467c6fda7503491e94f168158ad833959c94f166e15a573d42ba61"
+      },
+      {
+        "path": "site/home-assets/img/poster/B-A1.jpg",
+        "sha256": "45b2227f4ac9fdd358af8e65cd4ef787a6debffe4f7e6aca0aebc22aa76aeefb"
+      }
+    ],
+    "note": "Retained model display images. The admission labels and contour IoU come from the original frozen R1 decision, not an image-only re-evaluation."
+  },
+  "twelve_worlds": {
+    "source": "evidence/production-v6/shots/s05-world-grid.mp4",
+    "source_sha256": "b10a0005b52962f8d9b8069b75f55d0c3ec1ab5e18c5557c30f00fed7aa5e762",
+    "video_time_s": 3,
+    "layout": {
+      "columns": 4,
+      "rows": 3,
+      "worlds": 12
+    },
+    "note": "Whole original frame fitted with preserved aspect ratio; no pane omitted."
+  },
+  "outcomes": [
+    {
+      "policy": "optimistic",
+      "source": "site/media/real-footage/r1-synchronised-optimistic.mp4",
+      "source_sha256": "edae6ef14c2c211c471cc3be36c0787c6dafb198a05e2295a40286837f578de0",
+      "video_time_s": 40.5,
+      "simulation_time_s": 80.87,
+      "looks": 1,
+      "result": "collision"
+    },
+    {
+      "policy": "conservative",
+      "source": "site/media/real-footage/r1-synchronised-conservative.mp4",
+      "source_sha256": "305ff97135cd51dfa9b27a90891461996082bd319c556270cafe6d5e1574f5dc",
+      "video_time_s": 40.5,
+      "simulation_time_s": 142.2,
+      "looks": 5,
+      "result": "stop"
+    },
+    {
+      "policy": "imagination",
+      "source": "site/media/real-footage/r1-synchronised-imagination.mp4",
+      "source_sha256": "dfd8814b22cb13bf7e6afc928de5fdc9415aa31aa34fd5aca6ca0f09a572dcdb",
+      "video_time_s": 40.5,
+      "simulation_time_s": 112.84,
+      "looks": 1,
+      "result": "arrival"
+    }
+  ],
+  "display": "All original image rectangles are fitted with contain; no stretching or object bounding-box rescaling."
+}

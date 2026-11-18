@@ -1,0 +1,39 @@
+name: Verify current public delivery
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - README.md
+      - docs/**
+      - reports/**
+      - site/*.html
+      - site/home-evidence.css
+      - site/media/home-evidence-20261118/**
+      - site/media/report-v5/**
+      - evidence/current-delivery-20261118/**
+      - ops/verify_public_delivery.py
+      - .github/**
+  pull_request:
+    paths:
+      - README.md
+      - docs/**
+      - reports/**
+      - site/**
+      - evidence/current-delivery-20261118/**
+      - ops/verify_public_delivery.py
+      - .github/**
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          lfs: false
+      - name: Check report identity, links, image sizes and retained evidence
+        run: python3 ops/verify_public_delivery.py

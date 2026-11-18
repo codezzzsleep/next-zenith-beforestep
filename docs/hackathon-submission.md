@@ -1,17 +1,28 @@
-# 黑客松提交核对表
+# 当前参赛材料核对
 
-按补充说明 3 执行：11/15 18:00（北京时间）前完成视频定版、PDF 与全部发布，11/16 留给看片、改字和填写提交表。官方必交为项目报告（PDF/PPT）加可运行 Demo 或含真实运行画面的视频；本项目同时交 Demo 与视频。不安排现场答辩。
+核对日期：2026-11-18。当前主报告为 **V5**，主宣传入口使用作者已发布的 B站视频，试玩与原片使用下面固定入口。历史赛程和旧阶段要求保留在原规格中，不作为新的待办时间表。
 
-| 项目 | 链接或明确状态 | 完成者 |
-| --- | --- | --- |
-| 项目报告 | [在线报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [PDF](https://codezzzsleep.github.io/next-zenith-beforestep/media/report.pdf)；正式 v3 已更新（10 页，用户提供原 PDF），上一版 23 页及技术报告留档 | Agent 准备与核验；负责人提交 |
-| 可运行 Demo | [作品首页](https://codezzzsleep.github.io/next-zenith-beforestep/) · [真实关卡回放](https://codezzzsleep.github.io/next-zenith-beforestep/levels.html) · [轻量沙盒](https://codezzzsleep.github.io/next-zenith-beforestep/sandbox.html) · [轮腿实测](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html) | Agent 已集成并核验首页第二版 |
-| 新视频 | [demo-v2.mp4](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo-v2.mp4) 定版已合成并核验；成片由 Agent 合成，待负责人看片。1080p/30fps/H.264，烧录字幕，无人声、无配乐；[分镜](video.md) | Agent 合成；负责人看片与提交 |
-| 视频来源边界 | 门槛轮行、腿跨越与两段接通使用已终态的真实物理预检查；石头是真实扫描几何，画面照实标注，不当作四车正式结果。[旧视频](https://codezzzsleep.github.io/next-zenith-beforestep/media/demo.mp4)原处保留，明确为旧版 | Agent 留出处 |
-| 源代码与任务号 | [公开仓库](https://github.com/codezzzsleep/next-zenith-beforestep) · [真实任务逐项账本](../evidence/crossing/route/lux-usage.json) · [核心版本与资产比较](../evidence/award/asset-iterations/manifest.json) | Agent 维护与核验 |
-| 小红书及其他社区发布 | [已备文案与真实配图](award-promotion.md)；负责人自行发布并填写链接 | 负责人 |
-| 最终比赛网站提交 | 负责人看片与核对后填写提交表；当前未声称已提交 | 负责人 |
+| 材料 | 当前入口与身份 |
+| --- | --- |
+| 主报告 V5 | [在线逐页报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [原文件与版本索引](../reports/README.md) |
+| 可运行 Demo | [月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html) · [作品首页](https://codezzzsleep.github.io/next-zenith-beforestep/) |
+| 主宣传视频 | [B站](https://b23.tv/4CAPaLu)，BV1aYsw6REh7，作者已上传 |
+| 连续 1080p 原片与补拍 | [judges-demo-20261118](https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118)，约五分钟母片、模型/地图补拍和停车分支 |
+| 五张图、研究素材和剪辑时间码 | [原片与图像索引](../evidence/judges-demo/README.md) · [导演素材说明](demo-edit-guide.md) |
+| 源码、输入、原 GLB 和真实任务 | [公开仓库](https://github.com/codezzzsleep/next-zenith-beforestep) · [代码导览](code-tour.md) · [核心版本资产比较](../evidence/award/asset-iterations/manifest.json) |
+| 研究对照与失败边界 | [R1](reviews/RESULT_BEFORESTEP_R1.md) · [R2](reviews/RESULT_BEFORESTEP_R2.md) · [R3](reviews/RESULT_BEFORESTEP_R3.md) · [轮腿最终结论](reviews/RESULT_WHEELLEG_CROSSING_FINAL.md) |
+| 其他社区与比赛表 | [可复用介绍](award-promotion.md)；负责人自行发布和提交，当前不声称已代交 |
 
-首页已原样集成，桌面 1440 与手机 390 无横向溢出、11 份原模型可加载，控制台无报错。新六份叠合资产也保留为原字节。正式首场及追加场景的结果，以 [四车结果表](../evidence/crossing/route/summary.json) 为准；未终态不会填成已完成。
+## 已验证的实际范围
 
-[补充说明 3](reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md) · [过程记录](reviews/RESULT_WHEELLEG_CROSSING.md) · [旧核对表原文](history/hackathon-submission-before-addendum3.md)。
+当前试玩公开入口的桌面与 390×844 触屏模拟各完成六阶段、两世界、12 次玩家动作与真实到达，零页内错误、无姿态注入。模型和占地补拍经原片抽帧检查，地图完整可见，候选标签未遮暗模型。手机真机性能未测。
+
+原视频完成全解码，素材包通过成员 SHA 与 ZIP CRC，六个 Release 附件的 GitHub digest 已核对。四个小附件匿名下载已通过；两个大文件的匿名整文件 GET 校验未完成。固定下载已经存在，实际核验记录在[原片目录](../evidence/judges-demo/README.md)。
+
+原研究使用 Go2W，当前试玩是 M20 显示外观，动力学和控制沿用冻结条件。影片中的研究、候选假设、实时预演与独立执行分别标注。当前默认两世界与原 R1 十二世界分别识别。
+
+导演最终 112 秒片的配音、音乐、字幕与剪辑尚由导演制作，不能将已交付的连续母片称为最终成片。主要宣传继续使用作者 B站片。
+
+## 保留的历史要求
+
+[补充说明 3](reviews/SPEC_WHEELLEG_CROSSING_ADDENDUM3.md) · [旧核对表](history/hackathon-submission-before-addendum3.md) · [原研究规格](reviews/REVIEW_BEFORESTEP_R1.md)。原规格、输入、阈值、任务和报告原件不因文档更新而改写。当前入口与版本见[交付状态](current-status.md)。

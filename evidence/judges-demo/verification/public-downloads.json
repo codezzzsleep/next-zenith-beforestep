@@ -1,0 +1,53 @@
+{
+  "schema": "beforestep-public-download-verification/v1",
+  "status": "partial",
+  "reported_at": "2026-11-18T20:47:17.180894+00:00",
+  "release_tag": "judges-demo-20261118",
+  "anonymous_complete_files": [
+    {
+      "file": "04b-hold.mp4",
+      "status": 200,
+      "bytes": 6788497,
+      "sha256": "4721134d7ede8cf879703a8d9888c019455a8680ace02474574cd6ce5b5c59d6",
+      "passed": true
+    },
+    {
+      "file": "02-03-space-comparison.mp4",
+      "status": 200,
+      "bytes": 4476800,
+      "sha256": "d8fa30e985fc0f30bd30b78be76e46efadbf56ae63019fab13be7de2a8f7007b",
+      "passed": true
+    },
+    {
+      "file": "editor-manifest.json",
+      "status": 200,
+      "bytes": 35185,
+      "sha256": "2417daf751f1d6d38bab8c8ee19dc2322a2cbe9dc6e9b5ccd1848459e4a378ee",
+      "passed": true
+    },
+    {
+      "file": "SHA256SUMS",
+      "status": 200,
+      "bytes": 3640,
+      "sha256": "5f15f5e4a1f425e41220fd574a2d8c2d17963886b5926e8767a2b72a2f83b1b0",
+      "passed": true
+    }
+  ],
+  "incomplete_large_files": [
+    {
+      "file": "BeforeStep-judges-raw-20261118.zip",
+      "downloaded": 70254592,
+      "status": "anonymous_ranges",
+      "complete_sha_verified": false,
+      "state": "stopped_incomplete"
+    },
+    {
+      "file": "00-full-run.mp4",
+      "downloaded": 69206016,
+      "status": "anonymous_ranges",
+      "complete_sha_verified": false,
+      "state": "stopped_incomplete"
+    }
+  ],
+  "note": "This republishes the recorded anonymous checks from the completed footage handover. Large GET checks were stopped at the owner request; API digests and local full decode/ZIP verification are separate checks. No new download job was started for this documentation update."
+}

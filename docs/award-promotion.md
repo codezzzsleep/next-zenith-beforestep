@@ -1,57 +1,35 @@
-# 传播材料（由负责人发布）
+# 公开介绍与宣传入口
 
-## 小红书：技术版
+作者已发布的主宣传片是[B站视频](https://b23.tv/4CAPaLu)，BV1aYsw6REh7。当前主报告为 V5，互动入口为[月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)。以下文案可供负责人自行使用；本项目没有代发其他社区或代交比赛表。
 
-机器人拍到的只是一张平面照片。Aholo Lux3D 把它变成一整块三维石头，包括相机没有看见的那一面。我们让轮腿机器人在多份真实生成的石头旁完整预演，再到独立仿真执行：实际 RGB-D → 多候选 → 冻结自检 → 逐世界预演 → 执行 → 反事实。
+## 可直接使用的简介
 
-原批真实生成任务 180 个、GLB 166 份。原窄道 Lux 到达，但预注册场景组也发生两次想象碰撞：一块石头完全藏在视线后，一份背面假设偏短却通过正面自检。原拒绝候选反事实 17/102 碰撞。
+先见一步给机械狗增加空间想象。相机看清石头的一面，Lux3D 生成多份可能的完整形状；BeforeStep 用已有观测核对这些候选，把它们放回局部通道，在候选世界里规划和预演，再决定前进、补看或停车。
 
-已知决定性 8 场，原想象 3 到达、3 停车、2 碰撞。样本外 5 场，原想象 1 到达、2 停车、2 碰撞；最终 v3 修订 0 到达、5 停车、0 碰撞。Lux3D 让车走到没有想象就走不到的地方，错误的背面也会让车撞上；修订消掉碰撞，同时消掉留出中的到达收益。有效，但不绝对。锚点三维间隙 47.541 mm，二维包络间隙 0 mm，成功不稳健。 oldv2 F1_003 碰撞保留。
+你可以亲自驾驶 M20 外观的轮腿机器人：在石缝前留下初判，自选手控、让 Lux3D 想一想、再看一眼或停下。脑内窗口并排展示同图候选、占地和路线，生成模型实际参与碰撞预演。绕过高石后，亲手完成四腿的 12 个主要动作，再驶入信标。
 
-可体验： https://codezzzsleep.github.io/next-zenith-beforestep/
-全部真实生成： https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html
-源码： https://github.com/codezzzsleep/next-zenith-beforestep
-报告： https://codezzzsleep.github.io/next-zenith-beforestep/report.html
+项目真实创建了 400 多次 Lux3D 任务，输入、模型、被拒结果与失败都可复查。原 R1 窄道中，直接走一眼碰撞，补看五眼后停车，Lux3D 与十二世界预演支持一眼、112.84 秒仿真时间到达。其他场景也有碰撞和停车，生成候选与预演不能保证未知背面一定正确。
 
-#Aholo黑客松
-发布后至结果公布前保持公开。
+当前演示与研究均为 MuJoCo 仿真。Lux3D 接收普通 RGB 图片，本地 RGB-D、位姿和地形帮助配准与核对；网页复用已有真实模型，不实时提交当前游戏相机帧。M20 是试玩显示外观，原研究使用 Go2W。跨越低门槛使用已测几何，不能把腿的作用都归于 Lux3D。
 
-## 小红书：大众版
+## 分享时使用的入口
 
-一张照片，能不能想出整块石头？
+| 内容 | 链接 |
+| --- | --- |
+| 作品与试玩 | https://codezzzsleep.github.io/next-zenith-beforestep/ · https://codezzzsleep.github.io/next-zenith-beforestep/play.html |
+| 主报告 V5 | https://codezzzsleep.github.io/next-zenith-beforestep/report.html |
+| 主宣传视频 | https://b23.tv/4CAPaLu |
+| 1080p 原片、五图和剪辑索引 | https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118 |
+| 原模型、源码与失败证据 | https://github.com/codezzzsleep/next-zenith-beforestep |
 
-月面机器人只能拍到石头的一面，却要从背面旁边通过。低角度太阳让背光面全黑，换位置也照不亮。Aholo Lux3D 把实际照片变成可以转动的完整石头；转到背面，那一面是它想出来的。
+## 可用真实配图
 
-先转转真实生成的石头，再看机器人怎样核对照片、在每个想象世界里走完整条路。它确实到过，也真的撞过。收紧规则后，样本外的碰撞消失，到达也消失。有效，但不绝对。网页把这些失败与原轨迹一起保留，也有可以玩的关卡。
+[受限第一眼](../evidence/judges-demo/figures/01-limited-first-look.jpg)、[同图两候选](../evidence/judges-demo/figures/02-one-photo-two-backs-and-checks.jpg)、[占地与路线](../evidence/judges-demo/figures/03-footprint-and-route.jpg)、[预演决策](../evidence/judges-demo/figures/04-rehearsal-decision.jpg)、[M20 轮腿行动](../evidence/judges-demo/figures/05-M20-leg-action.jpg)。它们是原录制的实际抽帧，身份和时间码见[完整清单](../evidence/judges-demo/manifest.json)。
 
-体验： https://codezzzsleep.github.io/next-zenith-beforestep/
-这是实际仿真实验，不是实机演示；赛后修订与补充演示都有单独标注。
+首页的[三张证据图](../site/media/home-evidence-20261118/sources.json)对应原 R1 观测核对、十二世界和三策略结局。发布时应保留研究与当前试玩的来源标识。
 
-#Aholo黑客松
-发布后至结果公布前保持公开。
+## 社区与 Notebook 文本
 
-## 配图（真实观测或实际网页截图）
+模型页可介绍已有学习控制权重和研究附录，当前试玩主线采用冻结规则控制与 MuJoCo WASM。Notebook 复现按 [README](../README.md#本地运行)拉取已有资产并运行 `ops/quickstart.py --reuse-lux`，默认不创建生成任务。
 
-1. [first.png](../evidence/video/award/first.png)
-2. [second.png](../evidence/video/award/second.png)
-3. [asset-iterations.png](../evidence/video/award/asset-iterations.png)
-4. [award-local-desktop-1440.png](../evidence/video/award/award-local-desktop-1440.png)
-5. [award-local-two-shadows.png](../evidence/video/award/award-local-two-shadows.png)
-6. [award-final-local-choices.png](../evidence/video/award/award-final-local-choices.png)
-7. [award-final-local-failures.png](../evidence/video/award/award-final-local-failures.png)
-8. [award-final-local-revision.png](../evidence/video/award/award-final-local-revision.png)
-
-## 魔搭社区模型页与 Notebook 文本
-
-项目名：BeforeStep / 先见一步。一张真实照片变成包含未知背面的完整三维石头。核心是 Aholo Lux3D 真实几何候选、观测自检、全部采纳世界完整预演与独立执行。模型页同时列出规则导航主实验、历史学习控制权重以及失败证据，历史权重不冒充 R3 的控制器。
-
-Notebook 从公开源码安装，按 README 执行 `git lfs install --local`、LFS拉取和依赖安装，再运行 `.venv/bin/python ops/quickstart.py --reuse-lux`，使用已有观测与 Lux 结果复现，不要求读者提供生成密钥。入口依次为环境检查、数据 SHA 核验、已记录场景复用、真实轨迹回放和原失败说明。云端新生成是单独可选流程，需要读者自己的额度；默认复现不创建任务。
-
-仓库：https://github.com/codezzzsleep/next-zenith-beforestep
-Demo：https://codezzzsleep.github.io/next-zenith-beforestep/
-报告：https://codezzzsleep.github.io/next-zenith-beforestep/report.html
-模型权重：仓库 `assets/models/`；任务输入与真实候选：`assets/`；视频素材：`evidence/video/award/`。
-
-活动说明：魔搭社区发布经核验后可获 20 小时 Notebook GPU 额度；这里提供说明文本，未声称已领取。负责人发布后填入模型页链接与 Notebook 链接。
-
-模型页链接：负责人待发布；Notebook链接：负责人待发布。小红书链接：负责人待发布。
+ModelScope、Notebook、小红书与比赛表的实际链接由负责人发布后补入，不从历史草稿推断已发布或已领取额度。最新材料状态见[提交核对](hackathon-submission.md)。

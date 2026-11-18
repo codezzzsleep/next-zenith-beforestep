@@ -1,0 +1,166 @@
+{
+  "schema": "beforestep-r1-post-run-eval/v1",
+  "scope": "Post-run frozen scan geometry; 5 mm route sampling; rectangle is an XY envelope, not a 3D contact test.",
+  "not_real_lux": false,
+  "run_id": "83977a14febd4f20a1cf8c1a3bd0e5e5",
+  "summary_sha256": "c9739474ae686c1bb11221b459ae78b77c2f7a08dda43bc5b1e6b06528dd3e57",
+  "scene": {
+    "id": "suite_r2_v4_F0_006",
+    "purpose": "R2 preregistered candidate pool; classification pending",
+    "rocks": {
+      "A": {
+        "rock": "rock_07",
+        "height": 0.549973,
+        "x": 4.571952,
+        "y": -0.717035,
+        "yaw": 92.5231
+      },
+      "B": {
+        "rock": "moon_rock_04",
+        "height": 0.409062,
+        "x": 6.895452,
+        "y": 0.244163,
+        "yaw": -29.088591
+      }
+    },
+    "start": [
+      0.0,
+      -0.5
+    ],
+    "first_stop": [
+      2.3,
+      -0.5
+    ],
+    "goal": [
+      10.336125,
+      -0.02905
+    ],
+    "terrain": {
+      "type": "corridor",
+      "right_wall": true,
+      "craters": []
+    },
+    "sun": {
+      "elevation_deg": 9.638331,
+      "azimuth_deg": 32.651266
+    },
+    "rehearse_reference": false,
+    "asset_cache_precision": "exact",
+    "suite": {
+      "family": "F0",
+      "seed": 6,
+      "revision": "r2_v4",
+      "generator_rng": "numpy PCG64 / SeedSequence(version,family,seed)",
+      "layout": "broad",
+      "target_rocks": [
+        "A",
+        "B"
+      ],
+      "note": "Target labels describe layout intent; production capture uses only observed connected components."
+    }
+  },
+  "robot_envelope": {
+    "half_len": 0.38,
+    "half_wid": 0.33,
+    "turn_radius": 0.5
+  },
+  "result": "arrived",
+  "actual_clearance_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.4682011191653798,
+      "min_center_minus_half_width_m": 0.1382011191653798,
+      "min_xy_rectangle_envelope_gap_m": 0.13804162734712996
+    },
+    "B": {
+      "min_center_distance_m": 0.42754429175254216,
+      "min_center_minus_half_width_m": 0.09754429175254214,
+      "min_xy_rectangle_envelope_gap_m": 0.09724292179157129
+    }
+  },
+  "first_departure_plan": {
+    "kind": "plan",
+    "policy": "imagination",
+    "look": 1,
+    "path": [
+      [
+        4.6,
+        0.5
+      ],
+      [
+        6.6,
+        -0.8
+      ],
+      [
+        7.9,
+        -0.7
+      ],
+      [
+        10.336,
+        -0.029
+      ]
+    ],
+    "reason": null,
+    "margin_vs_truth": {
+      "drive_margin_m": 0.12,
+      "turn_margin_m": 0.1
+    }
+  },
+  "first_departure_plan_by_rock": {
+    "A": {
+      "min_center_distance_m": 0.46530218310568033,
+      "center_minus_half_width_m": 0.13530218310568032,
+      "planned_envelope_intrusion_proxy_m": 0
+    },
+    "B": {
+      "min_center_distance_m": 0.4274646706595478,
+      "center_minus_half_width_m": 0.09746467065954778,
+      "planned_envelope_intrusion_proxy_m": 0
+    }
+  },
+  "optimistic_intrusion_at_least_10cm": false,
+  "physical_collision": null,
+  "execution_rehearsals": [
+    {
+      "kind": "rehearsal",
+      "look": 1,
+      "role": "execution",
+      "path": [
+        [
+          4.599999999999999,
+          0.500000000000002
+        ],
+        [
+          6.599999999999999,
+          -0.7999999999999992
+        ],
+        [
+          7.899999999999999,
+          -0.6999999999999991
+        ],
+        [
+          10.336125,
+          -0.02905
+        ]
+      ],
+      "panes": [
+        {
+          "pane": 0,
+          "objects": [
+            "/root/3d/next-zenith-beforestep/outputs/award/demo/suite_r2_v4_F0_006/baselines/truth/truth_standin/A.obj",
+            "/root/3d/next-zenith-beforestep/outputs/award/demo/suite_r2_v4_F0_006/baselines/truth/truth_standin/B.obj"
+          ],
+          "collided": false,
+          "completed": true,
+          "reason": "completed",
+          "waypoint_errors_m": [
+            0.008429662438385787,
+            0.010008575485743982,
+            0.007623364897018575,
+            0.007989180110516077
+          ],
+          "contact": null
+        }
+      ]
+    }
+  ]
+}

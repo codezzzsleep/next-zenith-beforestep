@@ -1,0 +1,107 @@
+{
+  "schema": "beforestep-current-delivery/v1",
+  "updated_at": "2026-11-18T21:10:04.924698+00:00",
+  "position": "用 Lux3D 构建可检验的局部空间假设，先判断，再探索。",
+  "source_baseline": "4cf7ebd14cfc4d560972ab042b38a929287cd01e",
+  "game_capture_commit": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+  "report": {
+    "version": "V5",
+    "pages": 11,
+    "sha256": "fd4327db258db4874be97dc96668362bb540db2a3978d3f82717864bbcaab9f9",
+    "bytes": 6730562,
+    "repository_pdf": "reports/v5/report.pdf",
+    "website_pdf": "site/media/report-v5/report.pdf",
+    "owner_original": "reports/v4/先见一步_项目报告书_v5.pdf",
+    "owner_upload_commit": "4cf7ebd14cfc4d560972ab042b38a929287cd01e"
+  },
+  "entrypoints": {
+    "homepage": "https://codezzzsleep.github.io/next-zenith-beforestep/",
+    "play": "https://codezzzsleep.github.io/next-zenith-beforestep/play.html",
+    "report": "https://codezzzsleep.github.io/next-zenith-beforestep/report.html",
+    "primary_video": "https://b23.tv/4CAPaLu",
+    "raw_footage": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118",
+    "current_release": "https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/delivery-v5-20261118"
+  },
+  "current_documents": [
+    ".github/PULL_REQUEST_TEMPLATE.md",
+    ".github/README.md",
+    "README.md",
+    "docs/README.md",
+    "docs/award-promotion.md",
+    "docs/code-tour.md",
+    "docs/credits.md",
+    "docs/current-status.md",
+    "docs/decisions.md",
+    "docs/demo-edit-guide.md",
+    "docs/game-experience-verification.md",
+    "docs/hackathon-submission.md",
+    "docs/judges-demo.md",
+    "docs/mission.md",
+    "docs/playability.md",
+    "docs/project.md",
+    "docs/readme/README.md",
+    "docs/report-en.md",
+    "docs/report-v3-design.md",
+    "docs/report.md",
+    "docs/robot-play.md",
+    "docs/spatial-imagination-game-20261118.md",
+    "docs/story.md",
+    "docs/submission-intro-demo-20261117.md",
+    "docs/submission-story-20261117.md",
+    "evidence/current-delivery-20261118/README.md",
+    "evidence/judges-demo/README.md",
+    "reports/README.md",
+    "reports/v4/README.md",
+    "reports/v5/README.md",
+    "site/en.html",
+    "site/gallery.html",
+    "site/index.html",
+    "site/levels.html",
+    "site/play-practice.html",
+    "site/play.html",
+    "site/project-report.html",
+    "site/report-before-v3.html",
+    "site/report.html",
+    "site/sandbox.html"
+  ],
+  "preserved_files": [
+    {
+      "path": "site/media/report.pdf",
+      "sha256": "67c15f4af8c02c79c4254e55774207acf51796784583e58543c5d482c0199cc6"
+    },
+    {
+      "path": "reports/v4/report.pdf",
+      "sha256": "a61133a5176f5034a1950cbd947a5c98b1c74da19ce681cf58719587763ec545"
+    },
+    {
+      "path": "site/asset-links.js",
+      "sha256": "8b89bc96d9eeead96ea78e9e0bf80f711f3756a6dd61b93f28d5bbb5f82443da"
+    },
+    {
+      "path": "config/admission.json",
+      "sha256": "c632c5878dc7af417047d8e3e46608161b22b09f959725657d6caa2fe45b98a0"
+    },
+    {
+      "path": "assets/manifest.json",
+      "sha256": "cd21b18c0056e736078df48c406d694bb1d694c68239c9d8ad0f5d35c5da7d96"
+    },
+    {
+      "path": "reports/v4/先见一步_项目报告书_v5.pdf",
+      "sha256": "fd4327db258db4874be97dc96668362bb540db2a3978d3f82717864bbcaab9f9"
+    }
+  ],
+  "pages_asset_mapping_count": 6448,
+  "new_generation_tasks": 0,
+  "new_physics_runs": 0,
+  "report_pages_manifest": "reports/v5/manifest.json",
+  "homepage_evidence_sources": "site/media/home-evidence-20261118/sources.json",
+  "raw_footage_manifest": "evidence/judges-demo/manifest.json",
+  "archived_metadata_index": "evidence/current-delivery-20261118/restored-links.json",
+  "scope": "Original V5 PDF unchanged. Current runtime documents identify the later manual-choice and observation-version flow. Research, game outcomes and footage remain separate.",
+  "automation": {
+    "verification_command": "python3 ops/verify_public_delivery.py",
+    "workflow_template": ".github/workflow-templates/verify-delivery.yml",
+    "new_workflow_active": false,
+    "pages_deployment": "Existing GitHub Pages deployment retained; local verification completed."
+  }
+}

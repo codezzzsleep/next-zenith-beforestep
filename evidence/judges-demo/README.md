@@ -48,7 +48,7 @@ M20是试玩外观，MuJoCo控制和原研究保留Go2W条件；原照片进入L
 [公开入口桌面验收](verification/public-desktop-v2.json)与[触屏模拟验收](verification/public-touch-v2.json)
 各完成6阶段、2世界、12动作与到达，零页面错误、无姿态注入、无本地资产镜像。手机真机性能未测。
 后续比较布局经两端实际按钮与地图可见性检查，最终原片验证地图完整可见、候选标签仅26px高，原模型材质未改。
-公开下载的匿名SHA与解码验证以 verification/public-downloads.json 为准。
+原视频全解码、成员 SHA 与 ZIP CRC 已通过，六个 Release 附件 API digest 已核对。四个小附件的匿名完整下载通过；母片与完整 ZIP 的匿名整文件 GET 校验未完成，旧下载任务已停止。[实际下载校验范围](verification/public-downloads.json)单独记录，不能将 API digest 写成全部匿名下载完成。
 
 ## 复现录制
 

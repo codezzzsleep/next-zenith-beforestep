@@ -1,6 +1,6 @@
 {
   "schema": "beforestep-judges-pages/v1",
-  "source_main": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+  "source_main": "e8070ee8fd6421fd747cb80f8929d3f21e14f059",
   "gameplay_verified_commit": "ae5b50a71a24b37dbd5340e9f6c609e6dd393d2c",
   "base_pages": "5ea1d8d6e0228aacf0f45b637152dd12f55f3f85",
   "projection": [
@@ -79,13 +79,12 @@
     {
       "source": "site/index.html",
       "path": "index.html",
-      "bytes": 12534,
-      "source_bytes": 12485,
-      "source_sha256": "0088d7eda1801d4dfbdf567ad97ff04c614499a29d449ba60f2728cf39bbdad7",
-      "delivery_sha256": "f33b57c6cfba64258d1010092488c7468d955e1bfb9472d1146ebd897c8da301",
+      "source_sha256": "f15ce6d378085108b9d7670ba0525104cf36194af0d74f07587f53e54aa542f0",
+      "source_bytes": 14255,
+      "delivery_sha256": "877b251b6d982e730945ca8b0604d65ddd516c432eb7f8bbe037cbfaf9147caf",
+      "bytes": 14304,
       "transforms": [
-        "resolve existing fixed asset references",
-        "insert existing asset-links adapter"
+        "existing_asset_adapter"
       ]
     },
     {
@@ -379,13 +378,12 @@
     {
       "source": "site/play.html",
       "path": "play.html",
-      "bytes": 19134,
+      "source_sha256": "a92d7fcaaa5c0b80a0ff9f1cd179ab5e25b0bfd09af8969cd3fb0d4de20c4889",
       "source_bytes": 19085,
-      "source_sha256": "51da0ecc42dfa355db997f85a1e5a3c4318865dcf5c51e2212cbb21b2d527881",
-      "delivery_sha256": "6eff5b716c35dfd060eda8bc905a2f9015632fe4e0f23e01fe4e266adcbb8027",
+      "delivery_sha256": "7586d891a5211267b8507ee9c730f9151f707a3d572cd8aefe60ba35db5dba9b",
+      "bytes": 19134,
       "transforms": [
-        "resolve existing fixed asset references",
-        "insert existing asset-links adapter"
+        "existing_asset_adapter"
       ]
     },
     {
@@ -426,7 +424,7 @@
   "original_asset_alias_count": 6448,
   "asset_links_sha256": "8b89bc96d9eeead96ea78e9e0bf80f711f3756a6dd61b93f28d5bbb5f82443da",
   "asset_links_byte_identical": true,
-  "primary_report": "V3, original bytes retained",
+  "primary_report": "V5, 11 pages, owner original bytes retained",
   "primary_promotion": "https://b23.tv/4CAPaLu",
   "current_default_candidate_worlds": 1,
   "verification_selected_worlds": 2,
@@ -489,5 +487,15 @@
   },
   "new_generation_requests": 0,
   "source_evidence": "evidence/judges-demo/",
-  "new_raw_recording_status": "pending"
+  "new_raw_recording_status": "recorded_decoded_and_released",
+  "report_at_original_capture": "V3, original bytes retained",
+  "previous_status_snapshot": {
+    "source_main": "601d86b5ab7b21901d11cfd91a06739e9ac02d6f",
+    "raw_recording_status": "pending"
+  },
+  "raw_release": "judges-demo-20261118",
+  "current_default_tasks": [
+    5959025,
+    5958934
+  ]
 }

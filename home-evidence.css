@@ -1,0 +1,29 @@
+.story-section .evidence-image {
+  display: block;
+  border-radius: 4px;
+  background: #f6f3ec;
+}
+
+.story-section .evidence-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+.story-section .evidence-image:focus-visible {
+  outline: 2px solid #b68d42;
+  outline-offset: 5px;
+}
+
+.delivery-links {
+  margin-top: 20px;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+.delivery-links a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

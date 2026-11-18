@@ -1,51 +1,51 @@
 {
   "schema": "beforestep-spatial-imagination-pages/v1",
-  "source_main": "a60571980abeefa479cd34976dd18509f9cda883",
-  "base_pages": "fb0e1f0cb9606930df7cc853c751ecd6de4dfce3",
+  "source_main": "e69440fb08d2563f0876cd3d0ea46ea53983212f",
+  "base_pages": "513b49a0e8c2dc4cc326a8aa20a7871c4999502d",
   "projection": [
     {
       "source": "site/fonts/beforestep-gameplay-sans-bold.woff2",
       "path": "fonts/beforestep-gameplay-sans-bold.woff2",
-      "bytes": 6532,
-      "source_bytes": 6532,
-      "source_sha256": "bcfd3633b5a6217a0aaa5a3335e6f31201b4ccf17ca90fbadf3c379563fd33f1",
-      "delivery_sha256": "bcfd3633b5a6217a0aaa5a3335e6f31201b4ccf17ca90fbadf3c379563fd33f1",
+      "bytes": 9632,
+      "source_bytes": 9632,
+      "source_sha256": "5b724e05f5ed1a21fb14c182c851cd8a550922c8c5a52cdea149ec21824be85e",
+      "delivery_sha256": "5b724e05f5ed1a21fb14c182c851cd8a550922c8c5a52cdea149ec21824be85e",
       "transforms": []
     },
     {
       "source": "site/fonts/beforestep-gameplay-sans-regular.woff2",
       "path": "fonts/beforestep-gameplay-sans-regular.woff2",
-      "bytes": 6456,
-      "source_bytes": 6456,
-      "source_sha256": "12755fee9260a12fb643625ec5113b8ed523d6c7cb4837b25ddaeffde6cb51c0",
-      "delivery_sha256": "12755fee9260a12fb643625ec5113b8ed523d6c7cb4837b25ddaeffde6cb51c0",
+      "bytes": 9580,
+      "source_bytes": 9580,
+      "source_sha256": "700bd8d360cbbe34985c4b0d7427bb09b06b501453212ec727507c7a87a98bbb",
+      "delivery_sha256": "700bd8d360cbbe34985c4b0d7427bb09b06b501453212ec727507c7a87a98bbb",
       "transforms": []
     },
     {
       "source": "site/fonts/beforestep-gameplay-serif-bold.woff2",
       "path": "fonts/beforestep-gameplay-serif-bold.woff2",
-      "bytes": 9228,
-      "source_bytes": 9228,
-      "source_sha256": "dcf5d823762ccdfdd76df8274855ddd40ed6a8940329c19f0fa68e055562e1ee",
-      "delivery_sha256": "dcf5d823762ccdfdd76df8274855ddd40ed6a8940329c19f0fa68e055562e1ee",
+      "bytes": 12696,
+      "source_bytes": 12696,
+      "source_sha256": "7c6022838426b2500c963cc1bce24edc8fd7606112f667695edafd7f0fcc512a",
+      "delivery_sha256": "7c6022838426b2500c963cc1bce24edc8fd7606112f667695edafd7f0fcc512a",
       "transforms": []
     },
     {
       "source": "site/fonts/gameplay-provenance.json",
       "path": "fonts/gameplay-provenance.json",
-      "bytes": 2674,
-      "source_bytes": 2674,
-      "source_sha256": "9b0ff629161986eb702d1df58c6669b17fd82156642a3948a021e099da114c56",
-      "delivery_sha256": "9b0ff629161986eb702d1df58c6669b17fd82156642a3948a021e099da114c56",
+      "bytes": 3000,
+      "source_bytes": 3000,
+      "source_sha256": "9103cb0d7b86a312c906800603b2ad05cfa8c6efdd86f4b9e59732c7ceb6d8f7",
+      "delivery_sha256": "9103cb0d7b86a312c906800603b2ad05cfa8c6efdd86f4b9e59732c7ceb6d8f7",
       "transforms": []
     },
     {
       "source": "site/fonts/gameplay.css",
       "path": "fonts/gameplay.css",
-      "bytes": 935,
-      "source_bytes": 935,
-      "source_sha256": "0f9796b439bd5ea07083db3d96a5e657d79a37796e6e6573de04644971d70838",
-      "delivery_sha256": "0f9796b439bd5ea07083db3d96a5e657d79a37796e6e6573de04644971d70838",
+      "bytes": 1061,
+      "source_bytes": 1061,
+      "source_sha256": "063633264ef449af1105616b52d2bdd968f754cdeea99eeac65d213380572581",
+      "delivery_sha256": "063633264ef449af1105616b52d2bdd968f754cdeea99eeac65d213380572581",
       "transforms": []
     },
     {
@@ -69,14 +69,23 @@
     {
       "source": "site/index.html",
       "path": "index.html",
-      "bytes": 12480,
-      "source_bytes": 12431,
-      "source_sha256": "a148df9ecf497fe7896d8c6645518952c0f101ee32d7561b9a2d0ebdcddb6bbd",
-      "delivery_sha256": "13c7d112342fdc94382c1be756e9072fe4b73a38825c591eedc1fe5e4171ca04",
+      "bytes": 12534,
+      "source_bytes": 12485,
+      "source_sha256": "0088d7eda1801d4dfbdf567ad97ff04c614499a29d449ba60f2728cf39bbdad7",
+      "delivery_sha256": "f33b57c6cfba64258d1010092488c7468d955e1bfb9472d1146ebd897c8da301",
       "transforms": [
-        "existing fixed-asset static URL resolution",
-        "insert existing asset-links adapter before head resources"
+        "resolve existing fixed asset references",
+        "insert existing asset-links adapter"
       ]
+    },
+    {
+      "source": "site/judges-candidates.json",
+      "path": "judges-candidates.json",
+      "bytes": 3147,
+      "source_bytes": 3147,
+      "source_sha256": "f486fcd2bdfc41d5c88c48fcca362ecb326042e7932aecbab8b412fa6d6625a0",
+      "delivery_sha256": "f486fcd2bdfc41d5c88c48fcca362ecb326042e7932aecbab8b412fa6d6625a0",
+      "transforms": []
     },
     {
       "source": "site/media/game-spatial-imagination-preview-20261118.jpg",
@@ -205,6 +214,15 @@
       "transforms": []
     },
     {
+      "source": "site/mission-camera.js",
+      "path": "mission-camera.js",
+      "bytes": 193,
+      "source_bytes": 193,
+      "source_sha256": "1e612d7694e1e4426dfc496e8cf54439f046140e7c0d5d59973d86c2a13d22c3",
+      "delivery_sha256": "1e612d7694e1e4426dfc496e8cf54439f046140e7c0d5d59973d86c2a13d22c3",
+      "transforms": []
+    },
+    {
       "source": "site/mission-gameplay.css",
       "path": "mission-gameplay.css",
       "bytes": 6193,
@@ -216,10 +234,10 @@
     {
       "source": "site/mission-gameplay.js",
       "path": "mission-gameplay.js",
-      "bytes": 11197,
-      "source_bytes": 11197,
-      "source_sha256": "20bf943bf237b754e751cd54f55b499b72ca87af77fce82159237ff58a04a5f0",
-      "delivery_sha256": "20bf943bf237b754e751cd54f55b499b72ca87af77fce82159237ff58a04a5f0",
+      "bytes": 11220,
+      "source_bytes": 11220,
+      "source_sha256": "5077209e42a5ad6c190e9f8d4c4883b0c4f14528f41f5a4d4a14e76552077904",
+      "delivery_sha256": "5077209e42a5ad6c190e9f8d4c4883b0c4f14528f41f5a4d4a14e76552077904",
       "transforms": []
     },
     {
@@ -234,28 +252,73 @@
     {
       "source": "site/mission-insight.js",
       "path": "mission-insight.js",
-      "bytes": 4794,
-      "source_bytes": 4794,
-      "source_sha256": "416e71ab20df713c512b3aa3cc93272fd1addd3ffe78ebdf1c58cc64a2db8d8e",
-      "delivery_sha256": "416e71ab20df713c512b3aa3cc93272fd1addd3ffe78ebdf1c58cc64a2db8d8e",
+      "bytes": 7447,
+      "source_bytes": 7447,
+      "source_sha256": "995e7f28fccebcaed1b332219899101b41e82cf2a43f051a5dd4b6876c3f33c6",
+      "delivery_sha256": "995e7f28fccebcaed1b332219899101b41e82cf2a43f051a5dd4b6876c3f33c6",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-judges.css",
+      "path": "mission-judges.css",
+      "bytes": 11363,
+      "source_bytes": 11363,
+      "source_sha256": "495943421c61833673893b71398a5c6dfd89e8ec475a9a67237af49f55d839d8",
+      "delivery_sha256": "495943421c61833673893b71398a5c6dfd89e8ec475a9a67237af49f55d839d8",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-observation.js",
+      "path": "mission-observation.js",
+      "bytes": 3349,
+      "source_bytes": 3349,
+      "source_sha256": "cc2d4fc45082129caa9492228af980befe7de6e968915e71571b5d65907bb9bc",
+      "delivery_sha256": "cc2d4fc45082129caa9492228af980befe7de6e968915e71571b5d65907bb9bc",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-rehearsal.js",
+      "path": "mission-rehearsal.js",
+      "bytes": 2236,
+      "source_bytes": 2236,
+      "source_sha256": "15be9707fbbb415e5b3ecb5a7f001fa237797718f457815a3362acbd08e2fc2a",
+      "delivery_sha256": "15be9707fbbb415e5b3ecb5a7f001fa237797718f457815a3362acbd08e2fc2a",
       "transforms": []
     },
     {
       "source": "site/mission-run.js",
       "path": "mission-run.js",
-      "bytes": 10558,
-      "source_bytes": 10558,
-      "source_sha256": "dace0e7fe44d8b12678ec7419cbace150d42178ba5a8e0abeaa4103bcc7d208b",
-      "delivery_sha256": "dace0e7fe44d8b12678ec7419cbace150d42178ba5a8e0abeaa4103bcc7d208b",
+      "bytes": 12715,
+      "source_bytes": 12715,
+      "source_sha256": "02f3347ed67048e9becbabca4ca34c301a456570df3f5c629883dc3bba901588",
+      "delivery_sha256": "02f3347ed67048e9becbabca4ca34c301a456570df3f5c629883dc3bba901588",
       "transforms": []
     },
     {
       "source": "site/mission-scene.js",
       "path": "mission-scene.js",
-      "bytes": 24621,
-      "source_bytes": 24621,
-      "source_sha256": "bbf97db85099882bf081747323aa107bba7b1dade2fac2a197380019b8a3d494",
-      "delivery_sha256": "bbf97db85099882bf081747323aa107bba7b1dade2fac2a197380019b8a3d494",
+      "bytes": 29222,
+      "source_bytes": 29222,
+      "source_sha256": "871fcc485f8253a1932eef6b1b1812bfde3afe5ebc216c17fedbf04b06773e24",
+      "delivery_sha256": "871fcc485f8253a1932eef6b1b1812bfde3afe5ebc216c17fedbf04b06773e24",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-session.js",
+      "path": "mission-session.js",
+      "bytes": 2098,
+      "source_bytes": 2098,
+      "source_sha256": "c0de15a6fe6d00e32f898f95b1a1be996693b985b5049ffa1d7164f1f1581389",
+      "delivery_sha256": "c0de15a6fe6d00e32f898f95b1a1be996693b985b5049ffa1d7164f1f1581389",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-showcase.js",
+      "path": "mission-showcase.js",
+      "bytes": 1677,
+      "source_bytes": 1677,
+      "source_sha256": "25a6da0c14a17cbfaaca675d2ad2a21b0b661b601a352c53e3b40b2d881cc370",
+      "delivery_sha256": "25a6da0c14a17cbfaaca675d2ad2a21b0b661b601a352c53e3b40b2d881cc370",
       "transforms": []
     },
     {
@@ -270,49 +333,49 @@
     {
       "source": "site/mission-story.js",
       "path": "mission-story.js",
-      "bytes": 9168,
-      "source_bytes": 9168,
-      "source_sha256": "482f731a62b1f7b877b0a50984bb479ce19f26178eb4f6488716e11ba86cefe8",
-      "delivery_sha256": "482f731a62b1f7b877b0a50984bb479ce19f26178eb4f6488716e11ba86cefe8",
+      "bytes": 6625,
+      "source_bytes": 6625,
+      "source_sha256": "3994aa02c5d9cd73fc7888f781367ad2e6d0f873b09051294ddeae6b7e48c2fc",
+      "delivery_sha256": "3994aa02c5d9cd73fc7888f781367ad2e6d0f873b09051294ddeae6b7e48c2fc",
       "transforms": []
     },
     {
       "source": "site/mission-worker.js",
       "path": "mission-worker.js",
-      "bytes": 16247,
-      "source_bytes": 16247,
-      "source_sha256": "72d15c6de29f313750515f1ca959a6969cc0d147d2c1bb8e63298fcd2d0943c1",
-      "delivery_sha256": "72d15c6de29f313750515f1ca959a6969cc0d147d2c1bb8e63298fcd2d0943c1",
+      "bytes": 23892,
+      "source_bytes": 23892,
+      "source_sha256": "4c11d1acdb8c6ccf54c64f365aa61d974bf0307a9fea90573632aa2dc2ca6e7e",
+      "delivery_sha256": "4c11d1acdb8c6ccf54c64f365aa61d974bf0307a9fea90573632aa2dc2ca6e7e",
       "transforms": []
     },
     {
       "source": "site/mission-world.js",
       "path": "mission-world.js",
-      "bytes": 11311,
-      "source_bytes": 11311,
-      "source_sha256": "a2b3bf49639bce506a30d200f7b64ef3d1295e3a783839bcb74505711aae7736",
-      "delivery_sha256": "a2b3bf49639bce506a30d200f7b64ef3d1295e3a783839bcb74505711aae7736",
+      "bytes": 12614,
+      "source_bytes": 12614,
+      "source_sha256": "bdd54038862c49fe608c6e0dca58805007a9357971248ec0e461d9d2cea980fc",
+      "delivery_sha256": "bdd54038862c49fe608c6e0dca58805007a9357971248ec0e461d9d2cea980fc",
       "transforms": []
     },
     {
       "source": "site/mission.js",
       "path": "mission.js",
-      "bytes": 40854,
-      "source_bytes": 40854,
-      "source_sha256": "6997ceff3a0f2b252974246e0b1762dca77a3516a1cec9d24370daa7a38092a8",
-      "delivery_sha256": "6997ceff3a0f2b252974246e0b1762dca77a3516a1cec9d24370daa7a38092a8",
+      "bytes": 50594,
+      "source_bytes": 50594,
+      "source_sha256": "943d93aa93b220bac8dab40fc9fdc2c3c880cb537330868b6cad7a5c327e7611",
+      "delivery_sha256": "943d93aa93b220bac8dab40fc9fdc2c3c880cb537330868b6cad7a5c327e7611",
       "transforms": []
     },
     {
       "source": "site/play.html",
       "path": "play.html",
-      "bytes": 17301,
-      "source_bytes": 17252,
-      "source_sha256": "e7a867eca24b56201b5c22f04cab6f4d8e5d404246e1daf83cc62ab4b70f5bf2",
-      "delivery_sha256": "f3144f0f9554e1674fd5c10e513a5628b53ab5de3b9a05aa84f4b459d9aeaec7",
+      "bytes": 19078,
+      "source_bytes": 19029,
+      "source_sha256": "722c45e5404e151ed0791bb3e2bd135686676925bc59c98368549ca0f204d2a7",
+      "delivery_sha256": "f646dd53ae98e93e8f7844cc74b0214731e8871f6b5e2d9a698f183ecaeae429",
       "transforms": [
-        "existing fixed-asset static URL resolution",
-        "insert existing asset-links adapter before head resources"
+        "resolve existing fixed asset references",
+        "insert existing asset-links adapter"
       ]
     },
     {
@@ -350,11 +413,20 @@
     "fonts/gameplay-provenance.json",
     "fonts/gameplay.css",
     "index.html",
-    "media/game-spatial-imagination-preview-20261118.jpg",
+    "judges-candidates.json",
+    "mission-camera.js",
     "mission-gameplay.js",
+    "mission-insight.js",
+    "mission-judges.css",
+    "mission-observation.js",
+    "mission-rehearsal.js",
+    "mission-run.js",
     "mission-scene.js",
-    "mission-story.css",
+    "mission-session.js",
+    "mission-showcase.js",
     "mission-story.js",
+    "mission-worker.js",
+    "mission-world.js",
     "mission.js",
     "play.html",
     "playability-delivery.json",
@@ -366,10 +438,13 @@
   "asset_links_byte_identical": true,
   "primary_report": "V3, original bytes retained",
   "primary_promotion": "https://b23.tv/4CAPaLu",
-  "local_desktop_checks": 11,
+  "local_desktop_checks": 6,
   "complete_actions": 12,
   "complete_worlds": 2,
   "goal_distance_m": 0.34071735615240795,
   "new_generation_requests": 0,
-  "source_evidence": "evidence/spatial-imagination-20261118/"
+  "source_evidence": "evidence/judges-demo/",
+  "experience": "judges-demo-20261118",
+  "local_desktop_complete": true,
+  "local_touch_simulation_complete": true
 }

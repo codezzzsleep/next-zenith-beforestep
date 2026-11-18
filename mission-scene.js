@@ -1,12 +1,14 @@
 import * as THREE from './vendor/three/three.module.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
 import {rockSurface} from './rock-surface.js?v=original-materials-20261118-1';
+import {CURRENT_CAMERA} from './mission-camera.js?v=judges-demo-20261118-1';
 /** Drawing consumes worker snapshots only. First / third / inset share one snapshot. */
 export class MissionScene{
-  constructor(canvas,{dream=false,display,mission,robotSkin,appearance,onAnchor=()=>{}}={}){
-    this.canvas=canvas;this.dream=dream;this.display=display;this.mission=mission;this.robotSkin=robotSkin;this.appearance=appearance;this.onAnchor=onAnchor;this.objects=[];this.skinObjects=[];this.seen=new Map();this.view=1;this.pip=true;this.followCamera=true;
-    this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));const debug=this.renderer.getContext().getExtension('WEBGL_debug_renderer_info');this.frameInterval=debug&&/SwiftShader/i.test(this.renderer.getContext().getParameter(debug.UNMASKED_RENDERER_WEBGL))?125:33;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.0;
+  constructor(canvas,{dream=false,display,mission,robotSkin,appearance,onAnchor=()=>{},onSurfaceTargets=()=>{}}={}){
+    this.canvas=canvas;this.dream=dream;this.display=display;this.mission=mission;this.robotSkin=robotSkin;this.appearance=appearance;this.onAnchor=onAnchor;this.objects=[];this.skinObjects=[];this.seen=new Map();this.view=1;this.pip=true;this.followCamera=true;this.revealAll=false;this.drawCount=0;this.sensorYaw=0;
+    this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));const debug=this.renderer.getContext().getExtension('WEBGL_debug_renderer_info');this.frameInterval=debug&&/SwiftShader/i.test(this.renderer.getContext().getParameter(debug.UNMASKED_RENDERER_WEBGL))?new URL(location.href).searchParams.has('capture')?33:125:33;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.0;
     this.renderer.shadowMap.enabled=!dream;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.shadowMap.autoUpdate=false;
+    this.onSurfaceTargets=onSurfaceTargets;this.currentHits=[];
     this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#0b1320');this.scene.fog=new THREE.Fog('#0b1320',22,65);
     this.camera=new THREE.PerspectiveCamera(49,1,.03,100);this.camera.up.set(0,0,1);this.camera.position.set(1,-2,2);
     this.car=new THREE.PerspectiveCamera(50,1,.04,80);this.car.up.set(0,0,1);
@@ -21,6 +23,7 @@ export class MissionScene{
     new ResizeObserver(()=>this.resize()).observe(canvas.parentElement);
   }
   setModel(model){
+    if(!this.dream)this.revealAll=false;
     for(const mesh of this.planningMeshes||[])mesh.visible=false;
     this.canvas.dataset.planningHypotheses='0';
     this.model=model;for(const {mesh}of [...this.objects,...this.skinObjects]){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.objects=[];this.skinObjects=[];this.dirty=true;const m=model,cache=new Map();
@@ -67,16 +70,18 @@ export class MissionScene{
     this.canvas.dataset.robotParts=String(this.skinObjects.length);return true;
   }
   update(data,state){
+    if(!this.dream){this.revealAll=state.x>this.mission.dock[0]-.9||state.phase==='complete';this.controls.enabled=this.revealAll&&this.view!==1;}
     const previous=this.state;if(!this.dream&&!state.paused&&(!previous||Math.hypot(state.x-previous.x,state.y-previous.y)>.001||Math.abs(state.yaw-previous.yaw)>.005||state.legs?.busy))this.renderer.shadowMap.needsUpdate=true;
     this.dirty=true;this.data=data;this.state=state;
     for(const object of this.objects){const {g,mesh,leg}=object,p=g*3,r=g*9,rot=data.geom_xmat,pos=data.geom_xpos;mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);mesh.matrixWorldNeedsUpdate=true;mesh.material.emissive.set(leg>=0&&state.legs?.selected===leg?'#b86a0c':'#000000');}
     for(const {body,mesh,leg} of this.skinObjects){const p=body*3,r=body*9,rot=data.body_xmat,pos=data.body_xpos;mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);mesh.matrixWorldNeedsUpdate=true;mesh.material.emissive.set(leg>=0&&state.legs?.selected===leg?'#b86a0c':'#000000');}
     const q=data.qpos,quaternion=new THREE.Quaternion(q[4],q[5],q[6],q[3]),origin=new THREE.Vector3(q[0],q[1],q[2]);
-    this.car.position.copy(new THREE.Vector3(.42,0,-.00125).applyQuaternion(quaternion).add(origin));this.car.up.copy(new THREE.Vector3(0,0,1).applyQuaternion(quaternion));this.car.lookAt(new THREE.Vector3(Math.cos(-6*Math.PI/180)*3,0,Math.sin(-6*Math.PI/180)*3).applyQuaternion(quaternion).add(this.car.position));
-    if(!(this.dream&&this.comparison&&this.view===2)){const target=new THREE.Vector3(state.x,state.y,state.z+.03),delta=target.clone().sub(this.controls.target);this.controls.target.add(delta);if(!this.dream&&this.view!==2&&this.followCamera)this.camera.position.lerp(new THREE.Vector3(state.x-1.5*Math.cos(state.yaw)+1.4*Math.sin(state.yaw),state.y-1.5*Math.sin(state.yaw)-1.4*Math.cos(state.yaw),state.z+.85),.12);else this.camera.position.add(delta);this.controls.update();}
+    this.car.position.copy(new THREE.Vector3(...CURRENT_CAMERA.offset).applyQuaternion(quaternion).add(origin));this.car.up.copy(new THREE.Vector3(0,0,1).applyQuaternion(quaternion));this.car.lookAt(new THREE.Vector3(Math.cos(-6*Math.PI/180)*Math.cos(this.sensorYaw)*3,Math.cos(-6*Math.PI/180)*Math.sin(this.sensorYaw)*3,Math.sin(-6*Math.PI/180)*3).applyQuaternion(quaternion).add(this.car.position));
+    if(!(this.dream&&this.comparison&&this.view===2)&&!(this.view===2&&!this.dream&&!this.revealAll&&this.knowledgeScene)){const target=new THREE.Vector3(state.x,state.y,state.z+.03),delta=target.clone().sub(this.controls.target);this.controls.target.add(delta);if(!this.dream&&this.view!==2&&this.followCamera){const leg=state.phase==='crossing',point=leg?new THREE.Vector3(state.x+1.65,state.y-1.45,state.z+.55):new THREE.Vector3(state.x-1.7*Math.cos(state.yaw)+1.3*Math.sin(state.yaw),state.y-1.7*Math.sin(state.yaw)-1.3*Math.cos(state.yaw),state.z+.65);if(!this.revealAll)point.x=Math.min(point.x,state.x-.25);this.camera.position.lerp(point,.18);}else this.camera.position.add(delta);this.controls.update();}
     const foot=state.legs?.positions[state.legs.selected];this.marker.visible=!!foot;if(foot)this.marker.position.set(foot[0],foot[1],foot[2]-.065);
   }
   observe(observation){
+    this.currentHits=observation.hits;
     if(this.dream)return;let changed=false;for(const hit of observation.hits){const k=hit.target+':'+hit.point.map(v=>Math.floor(v/.1)).join(',');if(!this.seen.has(k)){this.seen.set(k,hit);changed=true;}}if(!changed)return;
     // Observation is evidence for the robot, not a mask that cuts holes in matter.
     this.canvas.dataset.observedHits=String(this.seen.size);
@@ -185,20 +190,46 @@ export class MissionScene{
     this.dirty=true;
   }
   setView(view){
-    this.dirty=true;this.view=view;this.followCamera=true;this.controls.enabled=view!==1;if(this.dream&&this.comparison){if(view===2){this.fitComparison();return;}this.fitSpatialComparison();return;}if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
-    if(view===0||view===1)this.camera.position.set(s.x-1.5*Math.cos(s.yaw)+1.4*Math.sin(s.yaw),s.y-1.5*Math.sin(s.yaw)-1.4*Math.cos(s.yaw),s.z+.85);
+    this.dirty=true;this.view=view;this.followCamera=true;this.controls.enabled=(this.dream||this.revealAll)&&view!==1;if(this.dream&&this.comparison){if(view===2){this.fitComparison();return;}this.fitSpatialComparison();return;}if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
+    if(view===0||view===1)this.camera.position.set(s.x-1.5*Math.cos(s.yaw)+1.4*Math.sin(s.yaw),s.y-1.5*Math.sin(s.yaw)-1.4*Math.cos(s.yaw),s.z+.65);
     if(view===2)this.camera.position.set(s.x-.3,s.y-.001,s.z+5);this.controls.update();
   }
   resize(){const b=this.canvas.getBoundingClientRect();if(!b.width||!b.height||this.sizeW===b.width&&this.sizeH===b.height)return;this.sizeW=b.width;this.sizeH=b.height;this.renderer.setSize(b.width,b.height,false);this.camera.aspect=b.width/b.height;this.camera.updateProjectionMatrix();}
   draw(){
-    if(!this.data&&!(this.dream&&this.comparison)||this.state?.paused&&!this.dirty&&!this.dream)return;this.dirty=false;this.resize();if(this.dream&&this.comparison&&this.view===2)this.fitComparison();const b=this.canvas.getBoundingClientRect(),w=b.width,h=b.height,r=this.renderer;
+    if(!this.data&&!(this.dream&&this.comparison)||this.state?.paused&&!this.dirty&&!this.dream)return;if(!this.dream&&this.view===2&&!this.revealAll&&this.knowledgeScene){this.resize();this.drawKnowledge();this.dirty=false;return;}this.dirty=false;this.resize();if(this.dream&&this.comparison&&this.view===2)this.fitComparison();const b=this.canvas.getBoundingClientRect(),w=b.width,h=b.height,r=this.renderer;
     const visibleHeight=this.compactBrain?Math.max(180,Math.min(h-445,330)):h;r.setScissorTest(false);r.setViewport(0,h-visibleHeight,w,visibleHeight);this.camera.aspect=w/visibleHeight;this.camera.updateProjectionMatrix();this.car.aspect=w/visibleHeight;this.car.fov=2*Math.atan(Math.tan(34*Math.PI/180)/this.car.aspect)*180/Math.PI;this.car.updateProjectionMatrix();this.renderView(this.view===1?this.car:this.camera);
     if(this.pip&&!this.dream){
       const bw=Math.min(w*(this.compactBrain?.28:.3),this.compactBrain?118:240),bh=bw*9/16,x=w-bw-(this.insetOffset||18),y=this.compactBrain?h-visibleHeight+12:h>600?158:130;r.setScissorTest(true);r.setScissor(x,y,bw,bh);r.setViewport(x,y,bw,bh);r.clear(true,true,true);this.car.aspect=16/9;this.car.fov=2*Math.atan(Math.tan(34*Math.PI/180)/(16/9))*180/Math.PI;this.car.updateProjectionMatrix();const old=this.camera.aspect;this.camera.aspect=16/9;this.camera.updateProjectionMatrix();this.renderView(this.view===1?this.camera:this.car);this.camera.aspect=old;this.camera.updateProjectionMatrix();r.setScissorTest(false);
       this.canvas.dataset.pip=JSON.stringify({x,y,w:bw,h:bh,stateTime:this.state.elapsed});
     }
     if(!this.dream){const p=new THREE.Vector3(this.state.x,this.state.y,this.state.z+.28).project(this.view===1?this.car:this.camera);this.onAnchor({x:(p.x*.5+.5)*w,y:(-.5*p.y+.5)*visibleHeight,visible:p.z<1&&this.view!==1});}
-    this.canvas.dataset.viewportHeight=String(visibleHeight);this.canvas.dataset.simulationTime=String(this.state?.elapsed??0);this.canvas.dataset.view=String(this.view);this.canvas.dataset.displayMode=this.perception?'2d-observation':this.dream?'local-space-model':'physical-execution';
+    this.drawCount++;this.canvas.dataset.drawCount=String(this.drawCount);this.canvas.dataset.cameraKnowledge=this.dream?'hypothesis':this.revealAll?'new-angle':'coming-side';this.canvas.dataset.viewportHeight=String(visibleHeight);this.canvas.dataset.simulationTime=String(this.state?.elapsed??0);this.canvas.dataset.view=String(this.view);this.canvas.dataset.displayMode=this.perception?'2d-observation':this.dream?'local-space-model':'physical-execution';
+    if(!this.dream&&this.view===1)this.onSurfaceTargets?.(['T1','T2'].map(target=>{const hits=(this.currentHits||[]).filter(h=>h.target===target);if(!hits.length)return {target,visible:false};const center=[0,1,2].map(k=>hits.reduce((n,h)=>n+h.point[k],0)/hits.length),p=new THREE.Vector3(...center).project(this.car);return {target,x:(p.x*.5+.5)*w,y:(-.5*p.y+.5)*visibleHeight,visible:p.z<1&&Math.abs(p.x)<.98&&Math.abs(p.y)<.98};}));
   }
   resetSeen(){this.seen.clear();this.canvas.dataset.observedHits='0';}
+  setSensorYaw(yaw){this.sensorYaw=yaw;this.dirty=true;if(this.data&&this.state)this.update(this.data,this.state);}
+  setKnowledge(comparison){
+    if(this.dream)return;
+    this.knowledgeScene?.traverse(o=>{o.geometry?.dispose();o.material?.map?.dispose();o.material?.dispose();});
+    this.knowledgeScene=new THREE.Scene();this.knowledgeScene.background=new THREE.Color('#0b1320');this.knowledgeComparison=comparison;
+    const g=this.mission.grid,c=document.createElement('canvas');c.width=g.nx;c.height=g.ny;const ctx=c.getContext('2d'),p=ctx.createImageData(c.width,c.height);
+    for(let x=0;x<g.nx;x++)for(let y=0;y<g.ny;y++){
+      const i=x*g.ny+y,at=((g.ny-1-y)*g.nx+x)*4,unknown=[2,3,4].includes(this.mission.observation_state[i]);
+      p.data.set(comparison.visible[i]?[141,224,232,255]:comparison.added[i]?[240,169,59,200]:this.mission.known_nogo[i]?[66,82,98,255]:unknown?[74,91,108,(x+y)%5<2?255:160]:[30,43,58,255],at);
+    }
+    ctx.putImageData(p,0,0);const texture=new THREE.CanvasTexture(c);texture.magFilter=THREE.NearestFilter;texture.colorSpace=THREE.SRGBColorSpace;
+    const plane=new THREE.Mesh(new THREE.PlaneGeometry(g.nx*g.res,g.ny*g.res),new THREE.MeshBasicMaterial({map:texture,side:THREE.DoubleSide,toneMapped:false}));plane.position.set(g.x0+g.nx*g.res/2,g.y0+g.ny*g.res/2,0);this.knowledgeScene.add(plane);
+    for(const [plan,color,dashed]of [[comparison.visiblePlan,'#abb6c4',true],[comparison.hypothesisPlan,'#f0a93b',false]]){
+      if(!plan.path||!comparison.selected.length&&!dashed)continue;
+      const line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(...p,.02))),dashed?new THREE.LineDashedMaterial({color,dashSize:.12,gapSize:.07}):new THREE.LineBasicMaterial({color}));if(dashed)line.computeLineDistances();this.knowledgeScene.add(line);
+    }
+    this.knowledgeMarker=new THREE.Mesh(new THREE.TorusGeometry(.12,.018,8,36),new THREE.MeshBasicMaterial({color:'#f5f2ea',depthTest:false}));this.knowledgeScene.add(this.knowledgeMarker);this.dirty=true;
+  }
+  drawKnowledge(){
+    const g=this.mission.grid,b=this.canvas.getBoundingClientRect(),x0=this.mission.start[0]-.5,x1=this.mission.dock[0]+.7,aspect=b.width/b.height;
+    const height=Math.max((g.ny*g.res-.2)/2,(x1-x0)/2/aspect)/Math.tan(THREE.MathUtils.degToRad(this.camera.fov/2))*1.12;
+    this.controls.target.set((x0+x1)/2,0,0);this.camera.position.set((x0+x1)/2,-.001,height);this.controls.update();this.knowledgeMarker.position.set(this.state.x,this.state.y,.03);
+    this.renderer.setScissorTest(false);this.renderer.setViewport(0,0,b.width,b.height);this.camera.aspect=aspect;this.camera.updateProjectionMatrix();this.renderer.render(this.knowledgeScene,this.camera);
+    this.canvas.dataset.displayMode='known-local-map';this.canvas.dataset.cameraKnowledge='sensor-and-selected-hypotheses';this.canvas.dataset.view='2';this.canvas.dataset.simulationTime=String(this.state.elapsed);this.drawCount++;this.canvas.dataset.drawCount=String(this.drawCount);
+  }
 }

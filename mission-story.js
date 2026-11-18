@@ -1,118 +1,58 @@
 const $ = id => document.getElementById(id);
+const judgments={pass:'我觉得能过',detour:'我想绕开',unsure:'我拿不准'};
 
-/** Teaches the observation -> local world -> prediction -> action sequence.
- * It controls presentation and existing pause commands, never robot poses.
- */
+/** Guides choices; physics, knowledge and permissions remain worker-owned. */
 export class MissionStory {
-  constructor({post, stopInput, activate, refresh, setPerception}) {
-    Object.assign(this, {post, stopInput, activate, refresh, setPerception});
-    this.ready = false;
-    this.reset(true);
-    $('begin-mission').onclick = () => this.begin();
-    $('story-activate').onclick = () => this.activate();
+  constructor({post,stopInput,activate,refresh,setPerception}) {
+    Object.assign(this,{post,stopInput,activate,refresh,setPerception});this.ready=false;this.reset(true);
+    $('begin-mission').onclick=()=>this.begin();
+    for(const b of document.querySelectorAll('[data-judgment]'))b.onclick=()=>{this.stopInput();this.post({type:'initialJudgment',choice:b.dataset.judgment});};
+    $('decision-imagine').onclick=()=>this.activate();
+    $('decision-manual').onclick=()=>{this.stopInput();this.post({type:'manualContinue'});};
+    $('decision-observe').onclick=()=>$('observe').click();
+    $('decision-hold').onclick=$('brain-hold').onclick=()=>{this.stopInput();this.post({type:'hold'});};
   }
-  reset(intro = false) {
-    this.intro = intro; this.started = !intro; this.imagination = false;
-    this.usedDrive = false; this.usedBrake = false; this.context = null;
-    this.setPerception(true);
-    $('mission-intro').hidden = !intro;
-    $('story-coach').hidden = intro;
+  reset(intro=false){this.intro=intro;this.started=!intro;this.imagination=false;this.usedDrive=false;this.usedBrake=false;this.context=null;this.setPerception(false);$('mission-intro').hidden=!intro;$('story-coach').hidden=true;}
+  becomeReady(){this.ready=true;if(this.intro)this.post({type:'pause',value:true});this.render();}
+  begin(){if(!this.ready||!this.intro)return;this.stopInput();this.intro=false;this.started=true;$('mission-intro').hidden=true;this.post({type:'pause',value:false});$('world').focus();this.refresh();}
+  input(key){if(['w','ArrowUp'].includes(key))this.usedDrive=true;if(key===' ')this.usedBrake=true;}
+  openImagination(){this.imagination=true;}
+  restore(){this.intro=false;this.started=true;this.imagination=false;$('mission-intro').hidden=true;}
+  update(context){this.context=context;this.render();}
+  render(){
+    const c=this.context,s=c?.state,judging=!!s?.showcase.active&&!s.initialJudgment&&s.showcase.stage!=='braking';
+    this.fullWorld=true;this.setPerception(false);document.body.classList.remove('perception-mode');
+    $('begin-mission').disabled=!this.ready;$('begin-mission').textContent=this.ready?'开始探索':'准备机器人…';$('mission-intro').hidden=!this.intro;$('story-coach').hidden=true;
+    $('judgment-panel').hidden=this.intro||!judging;$('judgment-actions').hidden=!s?.judgmentReady;$('gap-reticle').hidden=this.intro||!judging;
+    $('first-visible').hidden=this.intro||!judging;
+    $('decision-tools').hidden=this.intro||!s?.initialJudgment||c.brainOpen||s.showcase.completed||['complete','failed','stopped'].includes(s.phase);
+    $('pause').disabled=this.intro||!this.ready||s?.showcase.stage==='braking'||!!c?.busy||judging;
+    $('gameplay-open').disabled=this.intro||!this.ready||s?.showcase.stage==='braking';$('help').disabled=this.intro;
+    for(const b of document.querySelectorAll('button[data-view]'))b.disabled=this.intro||!this.ready;
+    $('pip').disabled=this.intro||!this.ready;$('inset-label').hidden=this.intro||$('pip').getAttribute('aria-pressed')!=='true';
+    $('perception-label').hidden=this.intro||!judging;$('perception-label').textContent='当前相机 · 石缝往里仍未知';$('unknown-key').hidden=true;
+    if(!s)return;
+    $('think').disabled=this.intro||!s.initialJudgment||['complete','failed','stopped'].includes(s.phase);
+    $('observe').disabled=this.intro||judging||!!c.busy;
+    $('manual-continue').disabled=this.intro||!s.initialJudgment||['complete','failed','stopped'].includes(s.phase);$('manual-continue').hidden=false;
+    let title='穿过石缝，跨过矮坎，在青色信标里停稳。',hint='WASD / 方向键驾驶 · 空格刹车',phase='approach';
+    if(this.intro)phase='mission-goal';
+    else if(s.phase==='complete'){title='已在信标里停稳。';hint='回顾初判、空间假设、试路与实际结局。';phase='goal-reached';}
+    else if(s.phase==='failed'){title='这次执行没有完成。';hint='查看实际原因；可回检查点换一种判断。';phase='failed';}
+    else if(s.phase==='stopped'){title='我决定停在这里。';hint='主动停车也保留本局判断；可以回检查点再试。';phase='stopped';}
+    else if(s.showcase.stage==='braking'){title='高石观察点 · 轮子正在刹停';hint='先用这一眼判断石缝。';phase='braking';}
+    else if(judging){title='这里够我过去吗？';hint=s.judgmentReady?'留下你的初判，再选择下一步。':'先静静看三秒。';phase='first-look';}
+    else if(c.busy){title=c.busy==='gate'?'先在脑内试跨矮坎。':'先在候选空间里试路。';hint=c.busy==='route'?`${c.results.length} / ${c.worlds} 个世界完成 · 现场 M20 停在原处`:'现场机器人停稳，独立预演跨越。';phase='rehearsing';}
+    else if(c.brainOpen){title='让空间想象参与这次判断。';hint=c.cert?.passed&&s.proof?.usable?'本局组合全部通过，可以按这条路出发。':'切换假设，看看它占到哪里，再选路线试路。';phase=c.cert?.passed&&s.proof?.usable?'permission-ready':'imagination';}
+    else if(s.phase==='crossing'){title='矮坎已看清 · 轮腿接力';hint=$('leg-hint').textContent;phase='leg-execution';}
+    else if(s.phase==='finish-drive'){title='最后一步 · 在青色信标里停稳';hint=s.legs?'回到轮行，再向信标开。':'前进到信标内，刹车停稳。';phase='finish-drive';}
+    else if(s.phase==='gate'){title='矮坎已看清 · 选腿、抬、迈、落';hint='停稳后可直接迈腿，也可以先试跨。';phase='visible-gate';}
+    else if(s.showcase.completed){title=s.automatic?'按通过预演的路线穿过石缝。':'你正在自己驾驶。';hint=s.automatic?'方向键随时接管 · V 切视角':'V 切视角 · E 补看 · Q 空间想象';phase='driving';}
+    else if(s.initialJudgment){title='你的初判：'+judgments[s.initialJudgment];hint='可以自己开、让 Lux3D 想一想、补看或停车。';phase='choice-made';}
+    $('objective').textContent=title;$('hint').textContent=hint;document.documentElement.dataset.storyPhase=phase;
+    const step=s.phase==='complete'?4:s.showcase.completed?3:c.busy||c.cert?2:this.imagination?1:0;
+    $('mission-route').querySelectorAll('li').forEach((node,i)=>{node.classList.toggle('done',i<step);node.classList.toggle('current',i===step);});$('mission-route').style.setProperty('--journey-progress',Math.min(100,step*25)+'%');
   }
-  becomeReady() {
-    this.ready = true;
-    if (this.intro) this.post({type: 'pause', value: true});
-    this.render();
-  }
-  begin() {
-    if (!this.ready || !this.intro) return;
-    this.stopInput(); this.intro = false; this.started = true;
-    $('mission-intro').hidden = true;
-    this.post({type: 'pause', value: false});
-    $('world').focus(); this.refresh();
-  }
-  input(key) {
-    if (['w', 'ArrowUp'].includes(key)) this.usedDrive = true;
-    if (key === ' ') this.usedBrake = true;
-  }
-  openImagination() { this.imagination = true; }
-  restore(state) {
-    this.intro = false; this.started = true;
-    this.imagination = !!state?.showcase?.completed;
-    $('mission-intro').hidden = true;
-  }
-  update(context) { this.context = context; this.render(); }
-  render() {
-    const context = this.context, s = context?.state;
-    const execute = !this.intro && !!s?.showcase.completed;
-    this.fullWorld = execute;
-    this.setPerception(!execute);
-    document.body.classList.toggle('perception-mode', !execute);
-    document.documentElement.dataset.storyPhase = this.intro ? 'mission-goal' : !s ? 'preparing' : s.phase==='complete'?'goal-reached':s.phase==='failed'?'failed':execute ? 'exploring' : context.busy?'forecasting':context.cert?.passed?'prediction-ready':this.imagination ? 'spatial-imagination' : 'observation-only';
-    $('begin-mission').disabled = !this.ready;
-    $('begin-mission').textContent = this.ready ? '进入机器人视野 · 开始探索' : '准备机器人…';
-    $('mission-intro').hidden = !this.intro;
-    $('story-coach').hidden = this.intro || !s || ['complete','failed'].includes(s.phase);
-    $('pause').disabled = this.intro || !this.ready || s?.showcase.stage === 'braking';
-    $('gameplay-open').disabled = this.intro || !this.ready || s?.showcase.stage === 'braking';
-    $('help').disabled = this.intro;
-    for (const b of document.querySelectorAll('button[data-view]')) b.disabled = this.intro || !execute && b.dataset.view !== '1';
-    $('pip').disabled = this.intro || !execute;
-    $('inset-label').hidden = !execute || !$('pip').getAttribute('aria-pressed')?.includes('true');
-    $('perception-label').hidden = execute;
-    $('perception-label').textContent = this.imagination ? '二维观测仍在眼前 · 三维空间假设在脑内' : '二维轮廓观测 · 尚未启用空间想象';
-    $('unknown-key').lastChild.textContent = execute ? '空间假设留在脑中 · 当前月面实际执行' : ' 轮廓可见，后方占地未知 · 感知展示示意';
-    for (const b of document.querySelectorAll('.guide-target')) b.classList.remove('guide-target');
-    if (!s || this.intro) return;
-    const modelSeen = !!s.showcase.viewedTask && context.selected.includes(s.showcase.viewedTask);
-    const passed = !!context.cert?.passed && s.proof?.usable;
-    const step = ['complete','failed'].includes(s.phase) ? s.phase==='complete'?4:execute?3:this.imagination?2:0 : execute?3:context.busy||modelSeen?2:this.imagination?1:0;
-    const route=$('mission-route');
-    route.querySelectorAll('li').forEach((node,index)=>{node.classList.toggle('done',index<step);node.classList.toggle('current',index===step);node.setAttribute('aria-current',index===step?'step':'false');});
-    route.style.setProperty('--journey-progress',`${Math.min(100,step*25)}%`);
-    route.setAttribute('aria-label','观测 → 局部空间想象 → 预测 → 探索');
-    if(['complete','failed'].includes(s.phase)){
-      $('objective').textContent=s.phase==='complete'?'空间预测支持探索，目标已抵达。':'行动未完成，回到局部世界再判断。';
-      $('hint').textContent=s.phase==='complete'?'二维观测 → 空间想象 → 预测 → 实际探索。':'查看实际失败位置，换走法或假设，再预测一次。';
-      return;
-    }
-    let title, copy, key, target;
-    $('story-activate').hidden = true;
-    $('story-controls').textContent = `${this.usedDrive ? '✓' : '①'} W / ↑ 前进 · ${this.usedBrake ? '✓' : '②'} 空格刹车 · E 观察 · Q 空间想象`;
-    if (!execute) {
-      if (s.showcase.stage === 'braking') {
-        title = '到达观测点，先停稳'; copy = '眼前只有表面轮廓。背后占多少地、哪侧能通过，还没有足够信息判断。'; key = '等待轮子停稳';
-      } else if (!s.showcase.active) {
-        title = '你的目标：带 M20 抵达信标'; copy = '先按 W 前进，试一次空格刹车，再继续靠近高石。现在还没有补足未见空间的模型。'; key = !this.usedDrive ? '先按 W 或 ↑ 前进' : !this.usedBrake ? '松开前进键，按空格刹车停稳' : '操作已学会，继续前进到观测点'; target = 'world';
-      } else if (!this.imagination) {
-        title = '只见轮廓，还不能判断通道'; copy = '这是缺少空间想象模块时的感知示意：你看见了石头，却不知道背面如何延伸。让 Lux3D 预测局部空间，再决定下一步。'; key = '按 Q · 启用前额叶空间想象'; target = 'think'; $('story-activate').hidden = false;
-      } else if (context.busy === 'route') {
-        title = '在局部世界里，预测行动后果'; copy = `所选形状进入真实碰撞预演，已完成 ${context.results.length} / ${context.worlds} 个候选世界。机器人先在脑中走，当前月面机器人保持停稳。`; key = '观察路线是否能通过';
-      } else if (passed) {
-        title = '预测完成，可以开始探索'; copy = `${context.cert.results.length} 个候选世界都走通了。沿所选假设验证的路线出发，实际环境再检验这次判断。`; key = '按预测路线出发 · 随时用 WASD 接管'; target = 'execute';
-      } else if (modelSeen) {
-        title = '空间想象要用来做判断'; copy = '完整候选已经放进通道。对照它的占地和两条走法，再预测这条路线是否能通过。'; key = '点「预测这条路线」'; target = 'preview';
-      } else {
-        title = '前额叶 · 预测未见的局部空间'; copy = 'Lux3D 提出了可能的完整形状。转到背面，并看它放进通道后占了多少空间；这就是机器人新增的空间想象。'; key = '拖动模型，或点「看背面预测」'; target = 'model-back';
-      }
-      $('objective').textContent = title;
-      $('hint').textContent = !s.showcase.active ? '仅观测 → 空间想象 → 预测路线 → 探索抵达' : key;
-      $('think').disabled = this.intro || !s.showcase.active;
-      $('manual-continue').disabled = !modelSeen || !passed || !!context.busy || !s.stable;
-    } else if (s.phase === 'crossing') {
-      title = '空间判断之后，轮腿执行'; copy = '高石已绕过，门槛是可见地形。跟随高亮动作，亲手完成抬、迈、落；身体执行前面做出的行动判断。'; key = $('leg-hint').textContent; target = 'leg-actions';
-    } else if (s.x >= context.mission.dock[0] - .18 && s.phase !== 'finish-drive') {
-      title = '通行预测已完成，准备跨越'; copy = '停稳、对正门槛。可先做跨越预演，再按高亮按钮让四条腿依次抬、迈、落。'; key = '停稳 · 观察门槛 · 亲手迈腿'; target = 'gate-preview';
-    } else if (s.phase === 'finish-drive') {
-      title = '最后一步：抵达青绿色信标'; copy = '空间想象形成假设，预演支持判断，机器人执行探索。回到轮行，向前驶入目标圈并停稳。'; key = '回到轮行 → W 前进 → 空格停稳'; target = 'wheel-mode';
-    } else {
-      title = '沿空间预测，探索高石后方'; copy = '局部模型已经支持了路线判断。脑内假设继续随行，按方向键随时接管；新走法需要停稳后重新预测。'; key = 'WASD 驾驶 · Q 回到局部世界 · V 切视角';
-    }
-    $('story-title').textContent = title;
-    $('story-copy').textContent = copy;
-    $('story-key').textContent = key;
-    if(execute){$('objective').textContent=title;$('hint').textContent=key;}
-    if (target) $(target)?.classList.add('guide-target');
-  }
-  fail() { $('mission-intro').hidden = true; $('story-coach').hidden = true; }
-  snapshot() { return {intro: this.intro, started: this.started, imagination: this.imagination, fullWorld: !!this.fullWorld, usedDrive: this.usedDrive, usedBrake: this.usedBrake, phase: document.documentElement.dataset.storyPhase}; }
+  fail(){$('mission-intro').hidden=true;$('story-coach').hidden=true;}
+  snapshot(){return {intro:this.intro,started:this.started,imagination:this.imagination,fullWorld:true,usedDrive:this.usedDrive,usedBrake:this.usedBrake,phase:document.documentElement.dataset.storyPhase};}
 }

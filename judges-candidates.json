@@ -1,0 +1,99 @@
+{
+  "schema": "beforestep-judge-candidates/v1",
+  "target": "T1",
+  "pair": [
+    5958948,
+    5959025
+  ],
+  "default_task": 5959025,
+  "fixed_other_task": 5958934,
+  "rejected_task": 5958642,
+  "candidates": [
+    {
+      "task_id": 5958948,
+      "sample": "C1",
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "input_sha256": "b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35",
+      "original_model": "assets/candidates/5958948/tex_mesh.glb",
+      "original_sha256": "2e2cb4ca88a9fdcf9949790603a5bf1718c2f018cbbae624c5ded0f77ffaf2a3",
+      "source_decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "registration": [
+        [
+          -0.017104112169385843,
+          0.025598465855446697,
+          -0.305300849619832,
+          4.576921968595628
+        ],
+        [
+          -0.306360816581922,
+          -0.004058375848084638,
+          0.016823214157254435,
+          -0.7579145309762578
+        ],
+        [
+          -0.0026344441543178854,
+          0.30575265986932953,
+          0.025783940208481966,
+          0.25329501529604004
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "metrics": {
+        "scale_ratio": 0.9663,
+        "hidden_frac": 0.8987,
+        "shell_contact": 0.7822,
+        "free_intrusion_frac": 0.06368,
+        "contour_iou": 0.8362
+      }
+    },
+    {
+      "task_id": 5959025,
+      "sample": "C2",
+      "input": "evidence/web-assets/objects/b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35.jpg",
+      "input_sha256": "b6293a6e7e7afd9f9a6d46f73abca18e3c0c9dceadc99ee081d201d22be95d35",
+      "original_model": "assets/candidates/5959025/tex_mesh.glb",
+      "original_sha256": "129202136afe2c75ea95aba7c0c02b5b58f0b8374eef98c89a9e8bfe0e678bc1",
+      "source_decision": "evidence/reviews/beforestep_r1/lux/original_b/looks/look1/T1/decide/target_decision.json",
+      "registration": [
+        [
+          -0.016675242360496983,
+          0.04208414455222531,
+          -0.42760576253752874,
+          4.576638999263327
+        ],
+        [
+          -0.42960410970006396,
+          -0.009222585049673972,
+          0.015845502188113782,
+          -0.7767751497968209
+        ],
+        [
+          -0.007620518801936646,
+          0.42783138710020424,
+          0.04240352568926804,
+          0.24796300526545428
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "metrics": {
+        "scale_ratio": 0.9663,
+        "hidden_frac": 0.9066,
+        "shell_contact": 0.7662,
+        "free_intrusion_frac": 0.05647,
+        "contour_iou": 0.8227
+      }
+    }
+  ],
+  "comparison_note": "Both use the identical input file. Differences between this pair are modest; do not describe them as a large invented extension. Compare the measured footprint edges and actual replanned route.",
+  "fixed_other_note": "B C1 remains fixed while comparing the same-input T1 pair; the B A2 game verification contact is retained separately."
+}

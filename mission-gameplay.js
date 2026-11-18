@@ -1,6 +1,6 @@
-import {MissionRun, MODE_NAMES, chapterFor, nextObjective, readRecords, saveRecord, bestRecord} from './mission-run.js?v=spatial-judgment-1';
-import {runRecap} from './mission-insight.js?v=spatial-judgment-1';
-import {accepted} from './mission-planner.js?v=mission-1';
+import {MissionRun, MODE_NAMES, chapterFor, nextObjective, readRecords, saveRecord, bestRecord} from './mission-run.js?v=judges-demo-20261118-1';
+import {runRecap} from './mission-insight.js?v=judges-demo-20261118-1';
+import {accepted} from './mission-planner.js?v=judges-demo-20261118-1';
 
 const $ = id => document.getElementById(id);
 const BILIBILI = 'https://b23.tv/4CAPaLu';
@@ -119,7 +119,7 @@ export class MissionGameplay {
       this.toast(`回到${message.checkpoint.label} · 换个走法继续`);
     }
     if (message.type === 'crossed') this.toast('四腿接力完成 · 最后一小段！');
-    if (message.type === 'missionComplete' || message.type === 'missionFailed') {
+    if (['missionComplete','missionFailed','missionStopped'].includes(message.type)) {
       const record = this.run.record();
       if (record) {
         const result = saveRecord(this.storage, record);
@@ -171,7 +171,7 @@ export class MissionGameplay {
     $('run-score-label').textContent = result.completed ? '局内成绩 / 100' : '本次已获得的积分';
     $('run-result-mode').textContent = MODE_NAMES[result.mode] + (result.checkpointUses ? ` · 检查点继续 ${result.checkpointUses} 次` : '');
     $('run-result-time').textContent = formatTime(result.actionSeconds);
-    $('run-result-worlds').textContent = String(result.worlds);
+    $('run-result-worlds').textContent = String(result.previewedWorlds);
     $('run-result-actions').textContent = `${result.actions} / 12`;
     $('run-result-tilt').textContent = `${result.maxTilt.toFixed(1)}°`;
     $('run-recap').textContent = runRecap(result, this.mission);
@@ -185,7 +185,7 @@ export class MissionGameplay {
       node.setAttribute('aria-label', `${badge.name}：${badge.earned ? '已获得' : '未获得'}，${badge.note}`);
       badges.append(node);
     }
-    $('game-record-status').textContent = this.run.completed ? this.recordStatus : '失败不会写入完成纪录；保留已学会的操作，再试一次。';
+    $('game-record-status').textContent = this.run.completed ? this.recordStatus : '这次实际结局已保留；停下与接触不计为抵达。';
     $('result-challenge').hidden = this.run.mode === 'challenge';
     $('copy-game-result').hidden = !result.completed;
     this.renderCheckpoint();

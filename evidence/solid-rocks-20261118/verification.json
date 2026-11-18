@@ -1,0 +1,150 @@
+{
+  "schema": "beforestep-solid-rock-surface-verification/v1",
+  "passed": true,
+  "baseline_main": "d2882fe4d76b1ff759523d20f67d22e093fa439b",
+  "complete_existing_world_surfaces": [
+    {
+      "role": "T1",
+      "sourceMesh": "m_f05b923c509662631e1ca7f2",
+      "inputVertices": 7914,
+      "inputFaces": 29688,
+      "displayVertices": 7424,
+      "displayFaces": 14844,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "inconsistentWinding": 0,
+      "enclosedVolume": 0.22466935322462248,
+      "eulerCharacteristic": 2,
+      "smoothNormals": true,
+      "originalUVsRetained": true,
+      "texturedSurfaceClosed": true,
+      "texturedVertices": 7914
+    },
+    {
+      "role": "T2",
+      "sourceMesh": "m_e23eb0df721b7cec8319fd65",
+      "inputVertices": 4067,
+      "inputFaces": 15272,
+      "displayVertices": 3820,
+      "displayFaces": 7636,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "inconsistentWinding": 0,
+      "enclosedVolume": 0.19579875993913773,
+      "eulerCharacteristic": 2,
+      "smoothNormals": true,
+      "originalUVsRetained": true,
+      "texturedSurfaceClosed": true,
+      "texturedVertices": 4067
+    }
+  ],
+  "display_and_input_buffers_independent": true,
+  "ray_observation_remains_independent": true,
+  "local_original_two_worlds_passed": true,
+  "certified_driving_and_keyboard_takeover_passed": true,
+  "physical_state_injected": false,
+  "final_same_paused_state": {
+    "x": 2.856018000742453,
+    "y": -0.50219503686028,
+    "z": 0.3850836321208995,
+    "yaw": -0.0010460686914983755,
+    "elapsed": 45.00000000000903,
+    "actionCount": 0
+  },
+  "camera_checks": [
+    {
+      "name": "same_paused_state_view_1",
+      "render": {
+        "engine": "three.js r170",
+        "robotParts": "17",
+        "totalRockVertices": "11981",
+        "rockSurfaceMode": "complete-textured",
+        "observedHits": "174",
+        "texturedScanMeshes": "34",
+        "appearanceTextures": "7",
+        "pip": "{\"x\":1022,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":45.00000000000903}",
+        "viewportHeight": "656",
+        "simulationTime": "45.00000000000903",
+        "view": "1"
+      }
+    },
+    {
+      "name": "same_paused_state_view_0",
+      "render": {
+        "engine": "three.js r170",
+        "robotParts": "17",
+        "totalRockVertices": "11981",
+        "rockSurfaceMode": "complete-textured",
+        "observedHits": "174",
+        "texturedScanMeshes": "34",
+        "appearanceTextures": "7",
+        "pip": "{\"x\":1022,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":45.00000000000903}",
+        "viewportHeight": "656",
+        "simulationTime": "45.00000000000903",
+        "view": "0"
+      }
+    },
+    {
+      "name": "same_paused_state_view_2",
+      "render": {
+        "engine": "three.js r170",
+        "robotParts": "17",
+        "totalRockVertices": "11981",
+        "rockSurfaceMode": "complete-textured",
+        "observedHits": "174",
+        "texturedScanMeshes": "34",
+        "appearanceTextures": "7",
+        "pip": "{\"x\":1022,\"y\":158,\"w\":240,\"h\":135,\"stateTime\":45.00000000000903}",
+        "viewportHeight": "656",
+        "simulationTime": "45.00000000000903",
+        "view": "2"
+      }
+    }
+  ],
+  "local_page_errors": [],
+  "original_sha_checks_passed": 17,
+  "original_worlds_wasm_models_controls_report_unchanged": true,
+  "original_cdn_upload_unchanged": true,
+  "new_generation_requests": 0,
+  "test_browser": "Chromium, SwiftShader, 1280 x 720; not a hardware GPU performance benchmark",
+  "material": "Retained original lunar-desaturated Poly Haven scan textures, original fixed-seed regolith recipe, 10 degree sun; web JPEG derivatives",
+  "screenshots_from_two_independent_actual_runs": true,
+  "images": {
+    "before-first.jpg": {
+      "bytes": 100434,
+      "sha256": "f45794d84014724a2cfe79192a5193d67b7e9e48c12b51141efd8fa12edf2142",
+      "width": 1280,
+      "height": 720
+    },
+    "after-first.jpg": {
+      "bytes": 107170,
+      "sha256": "903ed8dce1a03b9302e2dedf6bff8fdfe41def9bf56b54f7bc039ce482f8e975",
+      "width": 1280,
+      "height": 720
+    },
+    "after-third.jpg": {
+      "bytes": 98938,
+      "sha256": "fa417f9f6800e1fbfa235bc6e5b3466c4170f865d15b7f4216cf6733070ef1ef",
+      "width": 1280,
+      "height": 720
+    },
+    "after-overhead.jpg": {
+      "bytes": 102075,
+      "sha256": "38234a60e1f8bbc60f71fe5d304895021a5db3e853099bcee288f62daa8a7846",
+      "width": 1280,
+      "height": 720
+    },
+    "before-after.jpg": {
+      "bytes": 92072,
+      "sha256": "99b50bbf16acbf5012855a843981e0f3535896e5c7b100dcf4e3b9b59e639ace",
+      "width": 1280,
+      "height": 410
+    }
+  },
+  "original_scan_uv_meshes_verified": 34,
+  "display_extra_bytes": 1563581,
+  "sun": {
+    "elevation_deg": 10,
+    "azimuth_deg": 35
+  }
+}

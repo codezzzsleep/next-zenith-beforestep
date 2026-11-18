@@ -3,7 +3,8 @@ import {StartupLoader} from './startup-loader.js?v=cdn-startup-1';
 import {MissionGameplay} from './mission-gameplay.js?v=spatial-judgment-1';
 import {nextHypotheses} from './mission-run.js?v=spatial-judgment-1';
 import {compareRoutes,routeInsight,physicalCollision} from './mission-insight.js?v=spatial-judgment-1';
-import {MissionScene} from './mission-scene.js?v=known-surface-20261118-1';
+import {MissionScene} from './mission-scene.js?v=original-materials-20261118-1';
+import {loadAppearance} from './mission-appearance.js?v=original-materials-20261118-1';
 import {inflateGzip} from './robot-physics.js?v=mission-1';
 import {accepted,admissionChecks,planRoute,modelWorlds} from './mission-planner.js?v=mission-1';
 const $=id=>document.getElementById(id),stage=$('main'),labels=['右前','左前','右后','左后'];
@@ -127,10 +128,10 @@ async function init(){try{
     const percent=Math.floor(p.loaded/p.total*100);$('loading-text').textContent=percent<100?`正在下载月面资源 ${percent}% · ${(p.loaded/1e6).toFixed(1)} / ${(p.total/1e6).toFixed(1)} MB`:'资源已就绪，正在准备机器人…';
     const bar=$('loading-progress');if(bar){bar.hidden=false;bar.value=p.loaded;bar.max=p.total;}
   }});
-  const get=p=>startupLoader.get(p);const [data,meshes,wasm,bundle,skinData]=await Promise.all([get('media/mission/mission.json.gz').then(inflateGzip),get('media/mission/display.json.gz').then(inflateGzip),get('vendor/mujoco/mujoco.wasm.gz'),get('media/mission/worlds.tar.gz'),get('media/mission/m20-skin.json.gz').then(inflateGzip)]);$('loading-text').textContent='资源已就绪，正在准备机器人…';mission=JSON.parse(new TextDecoder().decode(data));const display=JSON.parse(new TextDecoder().decode(meshes)),robotSkin=JSON.parse(new TextDecoder().decode(skinData));
+  const get=p=>startupLoader.get(p);const [data,meshes,wasm,bundle,skinData,appearance]=await Promise.all([get('media/mission/mission.json.gz').then(inflateGzip),get('media/mission/display.json.gz').then(inflateGzip),get('vendor/mujoco/mujoco.wasm.gz'),get('media/mission/worlds.tar.gz'),get('media/mission/m20-skin.json.gz').then(inflateGzip),loadAppearance()]);$('loading-text').textContent='资源已就绪，正在准备机器人…';mission=JSON.parse(new TextDecoder().decode(data));const display=JSON.parse(new TextDecoder().decode(meshes)),robotSkin=JSON.parse(new TextDecoder().decode(skinData));
   selected=[...mission.candidates.filter(c=>c.target==='T1'&&accepted(c,mission.thresholds)).slice(0,1),...mission.candidates.filter(c=>c.target==='T2'&&accepted(c,mission.thresholds)).slice(0,2)].map(c=>c.task_id);
   gameplay.setMission(mission,selected);
-  mainScene=new MissionScene($('world'),{mission,display,robotSkin,onAnchor:p=>anchor=p});dreamScene=new MissionScene($('dream'),{mission,display,robotSkin,dream:true});dreamScene.view=2;dreamScene.pip=false;
+  mainScene=new MissionScene($('world'),{mission,display,robotSkin,appearance,onAnchor:p=>anchor=p});dreamScene=new MissionScene($('dream'),{mission,display,robotSkin,appearance,dream:true});dreamScene.view=2;dreamScene.pip=false;
   worker=new Worker('./mission-worker.js?v=m20-visual-1',{type:'module'});worker.onerror=e=>fail(new Error(e.message));worker.onmessage=({data:m})=>{
     if((m.channel==='dream'||['plan','previewProgress','previewResult','previewDone','gatePreviewStart','gatePreviewDone'].includes(m.type))&&m.requestId!==currentJob)return;
     if(m.type!=='state'&&m.type!=='world')gameplay.onEvent(m);

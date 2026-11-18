@@ -1,5 +1,25 @@
 import * as THREE from './vendor/three/three.module.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
+function faceNeighbors(indices){
+  if(!indices)return null;const neighbors=new Int32Array(indices.length).fill(-1),edges=new Map();
+  for(let i=0;i<indices.length;i+=3)for(let edge=0;edge<3;edge++){
+    const a=indices[i+edge],b=indices[i+(edge+1)%3],key=a<b?a+':'+b:b+':'+a,slots=edges.get(key)||[];slots.push(i+edge);edges.set(key,slots);
+  }
+  for(const slots of edges.values())if(slots.length===2){neighbors[slots[0]]=Math.floor(slots[1]/3);neighbors[slots[1]]=Math.floor(slots[0]/3);}return neighbors;
+}
+function closeVisibleGaps(observed,neighbors){
+  if(!neighbors)return;const checked=new Uint8Array(neighbors.length/3),flags=observed.array;
+  for(let first=0;first<checked.length;first++){
+    if(checked[first]||flags[first*3])continue;const pending=[first],component=[];let enclosed=true,count=0;
+    while(pending.length){
+      const face=pending.pop();if(checked[face])continue;checked[face]=1;count++;if(count<=6)component.push(face);
+      for(let edge=0;edge<3;edge++){const other=neighbors[face*3+edge];if(other<0)enclosed=false;else if(!checked[other]&&!flags[other*3])pending.push(other);}
+    }
+    // Only tiny gaps completely surrounded by measured faces are continuous.
+    // Mesh boundaries and the large unseen back remain hidden.
+    if(enclosed&&count<=6)for(const face of component)for(let vertex=0;vertex<3;vertex++)observed.setX(face*3+vertex,1);
+  }
+}
 /** Drawing consumes worker snapshots only. First / third / inset share one snapshot. */
 export class MissionScene{
   constructor(canvas,{dream=false,display,mission,robotSkin,onAnchor=()=>{}}={}){
@@ -13,18 +33,8 @@ export class MissionScene{
     const starGeometry=new THREE.BufferGeometry(),points=[];let seed=42;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};for(let i=0;i<230;i++)points.push((random()-.5)*160,(random()-.5)*160,14+random()*65);starGeometry.setAttribute('position',new THREE.Float32BufferAttribute(points,3));this.scene.add(new THREE.Points(starGeometry,new THREE.PointsMaterial({size:.045,color:'#c2d1e6'})));
     this.goal=new THREE.Mesh(new THREE.TorusGeometry(.35,.022,10,64),new THREE.MeshBasicMaterial({color:'#53cdb9'}));this.goal.position.set(...mission.goal,.04);this.scene.add(this.goal);
     this.marker=new THREE.Mesh(new THREE.TorusGeometry(.105,.012,8,40),new THREE.MeshBasicMaterial({color:'#f0a93b',depthTest:false}));this.marker.renderOrder=5;this.marker.visible=false;this.scene.add(this.marker);
-    if(!dream)this.addUnknownMap();
     const soil=document.createElement('canvas');soil.width=soil.height=128;const ctx=soil.getContext('2d'),image=ctx.createImageData(128,128);for(let i=0;i<image.data.length;i+=4){const n=100+Math.floor(random()*65);image.data.set([n,n,n,255],i);}ctx.putImageData(image,0,0);this.soil=new THREE.CanvasTexture(soil);this.soil.wrapS=this.soil.wrapT=THREE.RepeatWrapping;this.soil.repeat.set(32,20);this.soil.colorSpace=THREE.SRGBColorSpace;
     new ResizeObserver(()=>this.resize()).observe(canvas.parentElement);
-  }
-  addUnknownMap(){
-    const g=this.mission.grid,c=document.createElement('canvas');c.width=g.nx;c.height=g.ny;const ctx=c.getContext('2d'),pixels=ctx.createImageData(g.nx,g.ny);
-    for(let x=0;x<g.nx;x++)for(let y=0;y<g.ny;y++){
-      const unknown=[2,3,4].includes(this.mission.observation_state[x*g.ny+y]),i=((g.ny-1-y)*g.nx+x)*4;
-      pixels.data.set(unknown?[132,153,178,(x+y)%5<2?120:55]:[0,0,0,0],i);
-    }ctx.putImageData(pixels,0,0);const texture=new THREE.CanvasTexture(c);texture.magFilter=THREE.NearestFilter;
-    const plane=new THREE.Mesh(new THREE.PlaneGeometry(g.nx*g.res,g.ny*g.res),new THREE.MeshBasicMaterial({map:texture,transparent:true,depthWrite:false}));plane.position.set(g.x0+g.nx*g.res/2,g.y0+g.ny*g.res/2,.025);this.scene.add(plane);
-    this.unknown=plane;
   }
   setModel(model){
     this.model=model;for(const {mesh}of [...this.objects,...this.skinObjects]){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.objects=[];this.skinObjects=[];this.dirty=true;const m=model,cache=new Map();
@@ -50,11 +60,12 @@ export class MissionScene{
       if(type>1&&color.r>color.b*1.3&&color.r>color.g)color.set('#92949c');
       const material=new THREE.MeshStandardMaterial({color,roughness:role==='robot'?.5:.97,metalness:role==='robot'?.2:0,map:type<=1?this.soil:null});
       if(high&&this.dream&&this.comparison){material.color.set('#f0a93b');material.transparent=true;material.opacity=.38;material.depthWrite=false;}
-      if(high&&!this.dream){
+      let neighbors=null;if(high&&!this.dream){
+        neighbors=faceNeighbors(geometry.index?.array);
         geometry=geometry.toNonIndexed();geometry.computeVertexNormals();geometry.setAttribute('observed',new THREE.Float32BufferAttribute(new Float32Array(geometry.attributes.position.count),1));
         material.side=THREE.DoubleSide;material.onBeforeCompile=shader=>{shader.vertexShader='attribute float observed; varying float vObserved;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvObserved = observed;');shader.fragmentShader='varying float vObserved;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif(vObserved < 0.95) discard;');};
       }
-      const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.visible=!hiddenModel;this.scene.add(mesh);this.objects.push({g,mesh,role,high,hiddenModel,leg:m.leg_geoms[g]});
+      const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.visible=!hiddenModel;this.scene.add(mesh);this.objects.push({g,mesh,role,high,hiddenModel,neighbors,leg:m.leg_geoms[g]});
     }
     cache.forEach(g=>g.dispose());this.canvas.dataset.totalRockVertices=String(this.objects.filter(o=>o.high&&!this.dream).reduce((n,o)=>n+o.mesh.geometry.attributes.position.count,0));
   }
@@ -83,17 +94,22 @@ export class MissionScene{
   }
   observe(observation){
     if(this.dream)return;let changed=false;for(const hit of observation.hits){const k=hit.target+':'+hit.point.map(v=>Math.floor(v/.1)).join(',');if(!this.seen.has(k)){this.seen.set(k,hit);changed=true;}}if(!changed)return;
-    const p=new THREE.Vector3(),normal=new THREE.Vector3(),mat=new THREE.Matrix3();
-    for(const {mesh,high,role}of this.objects){if(!high)continue;const positions=mesh.geometry.attributes.position,normals=mesh.geometry.attributes.normal,observed=mesh.geometry.attributes.observed;mat.getNormalMatrix(mesh.matrix);
-      for(let i=0;i<positions.count;i++){
-        if(observed.getX(i))continue;p.fromBufferAttribute(positions,i).applyMatrix4(mesh.matrix);normal.fromBufferAttribute(normals,i).applyMatrix3(mat).normalize();const base=[p.x,p.y,p.z].map(v=>Math.floor(v/.1));let found=false;
-        for(let x=-1;x<=1&&!found;x++)for(let y=-1;y<=1&&!found;y++)for(let z=-1;z<=1&&!found;z++){
-          const hit=this.seen.get(role+':'+[base[0]+x,base[1]+y,base[2]+z].join(','));if(!hit)continue;
-          if(p.distanceTo(new THREE.Vector3(...hit.point))<.155&&(!hit.normal||normal.dot(new THREE.Vector3(...hit.normal))>.25))found=true;
-        }if(found)observed.setX(i,1);
-      }observed.needsUpdate=true;
+    const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3(),normal=new THREE.Vector3(),point=new THREE.Vector3(),closest=new THREE.Vector3(),hitNormal=new THREE.Vector3(),mat=new THREE.Matrix3(),triangle=new THREE.Triangle(a,b,c),tolerance=.155;
+    for(const {mesh,high,role,neighbors}of this.objects){if(!high)continue;const positions=mesh.geometry.attributes.position,normals=mesh.geometry.attributes.normal,observed=mesh.geometry.attributes.observed;mat.getNormalMatrix(mesh.matrix);
+      // A measured surface reveals a whole local face. Interpolating independent
+      // vertex flags used to cut nearly all of a triangle with one unseen vertex.
+      for(let i=0;i<positions.count;i+=3){
+        if(observed.getX(i))continue;
+        a.fromBufferAttribute(positions,i).applyMatrix4(mesh.matrix);b.fromBufferAttribute(positions,i+1).applyMatrix4(mesh.matrix);c.fromBufferAttribute(positions,i+2).applyMatrix4(mesh.matrix);normal.fromBufferAttribute(normals,i).applyMatrix3(mat).normalize();
+        const low=[Math.min(a.x,b.x,c.x),Math.min(a.y,b.y,c.y),Math.min(a.z,b.z,c.z)].map(v=>Math.floor((v-tolerance)/.1)),high=[Math.max(a.x,b.x,c.x),Math.max(a.y,b.y,c.y),Math.max(a.z,b.z,c.z)].map(v=>Math.floor((v+tolerance)/.1));let found=false;
+        for(let x=low[0];x<=high[0]&&!found;x++)for(let y=low[1];y<=high[1]&&!found;y++)for(let z=low[2];z<=high[2]&&!found;z++){
+          const hit=this.seen.get(role+':'+[x,y,z].join(','));if(!hit||hit.normal&&normal.dot(hitNormal.fromArray(hit.normal))<=.25)continue;
+          point.fromArray(hit.point);triangle.closestPointToPoint(point,closest);if(point.distanceToSquared(closest)<tolerance*tolerance)found=true;
+        }if(found){observed.setX(i,1);observed.setX(i+1,1);observed.setX(i+2,1);}
+      }closeVisibleGaps(observed,neighbors);observed.needsUpdate=true;
     }
     this.canvas.dataset.observedVertices=String(this.objects.filter(o=>o.high).reduce((n,o)=>n+Array.from(o.mesh.geometry.attributes.observed.array).filter(Boolean).length,0));
+    this.canvas.dataset.observedTriangles=String(Number(this.canvas.dataset.observedVertices)/3);
   }
   route(plan,passed=false){
     if(this.line){this.scene.remove(this.line);this.line.geometry.dispose();this.line.material.dispose();}this.line=null;if(!plan?.path)return;

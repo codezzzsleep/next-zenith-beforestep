@@ -1,0 +1,270 @@
+{
+  "schema": "beforestep-cdn-full-scene-comparison/v1",
+  "verified_at_utc": "2026-11-18T06:08:51.713782+00:00",
+  "passed": true,
+  "tested_main": "a2046e1b339aa35819ea60b5dd25fe19889ba719",
+  "tested_pages": "5fd62b2c70620f392a0da92edab5a0017492750b",
+  "url": "https://codezzzsleep.github.io/next-zenith-beforestep/play.html",
+  "browser": {
+    "viewport": [
+      1280,
+      720
+    ],
+    "engine": "Chromium headless",
+    "gpu": "SwiftShader software WebGL",
+    "test_location": "Japan, NRT edge",
+    "china_real_network_tested": false
+  },
+  "method": "Same deployed page and data; only startup manifest mirror enable flags changed. Fresh browser context for each cold visit, followed by normal reload in that same context. Alternating order in each pair. HTTP cache left enabled. Browser CacheStorage verified separately. 4 Mbps uses 120 ms CDP network emulation.",
+  "startup_samples": 52,
+  "startup_asset_bytes": 29043171,
+  "startup_results": [
+    {
+      "mbps": 0,
+      "persistent_cache": true,
+      "condition": "cold",
+      "source": "cloudflare",
+      "samples": 7,
+      "median_seconds": 5.466900640982203,
+      "min_seconds": 5.099380389903672,
+      "max_seconds": 6.878924157936126,
+      "median_physics_prepare_seconds": 3.887100000023842,
+      "median_startup_wire_bytes": 29077586
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": true,
+      "condition": "warm",
+      "source": "cloudflare",
+      "samples": 7,
+      "median_seconds": 6.560769684961997,
+      "min_seconds": 6.41514375503175,
+      "max_seconds": 7.842759513994679,
+      "median_physics_prepare_seconds": 3.72,
+      "median_startup_wire_bytes": 0
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": true,
+      "condition": "cold",
+      "source": "github",
+      "samples": 7,
+      "median_seconds": 5.57347042101901,
+      "min_seconds": 4.7627833239967,
+      "max_seconds": 6.460706316051073,
+      "median_physics_prepare_seconds": 3.8872000000476836,
+      "median_startup_wire_bytes": 29061000
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": true,
+      "condition": "warm",
+      "source": "github",
+      "samples": 7,
+      "median_seconds": 6.743845995049924,
+      "min_seconds": 5.933757700957358,
+      "max_seconds": 8.248858620063402,
+      "median_physics_prepare_seconds": 3.683,
+      "median_startup_wire_bytes": 0
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": false,
+      "condition": "cold",
+      "source": "cloudflare",
+      "samples": 3,
+      "median_seconds": 5.669916664948687,
+      "min_seconds": 5.375544807058759,
+      "max_seconds": 5.676255852915347,
+      "median_physics_prepare_seconds": 4.069799999952316,
+      "median_startup_wire_bytes": 29077606
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": false,
+      "condition": "warm",
+      "source": "cloudflare",
+      "samples": 3,
+      "median_seconds": 6.471653380081989,
+      "min_seconds": 6.26972849201411,
+      "max_seconds": 7.057471479056403,
+      "median_physics_prepare_seconds": 3.7388000000715254,
+      "median_startup_wire_bytes": 29077387
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": false,
+      "condition": "cold",
+      "source": "github",
+      "samples": 3,
+      "median_seconds": 4.985451119951904,
+      "min_seconds": 4.670433674938977,
+      "max_seconds": 5.185291041037999,
+      "median_physics_prepare_seconds": 3.709600000023842,
+      "median_startup_wire_bytes": 29060939
+    },
+    {
+      "mbps": 0,
+      "persistent_cache": false,
+      "condition": "warm",
+      "source": "github",
+      "samples": 3,
+      "median_seconds": 6.935027577914298,
+      "min_seconds": 6.02145680389367,
+      "max_seconds": 7.22979806701187,
+      "median_physics_prepare_seconds": 3.742,
+      "median_startup_wire_bytes": 20178537
+    },
+    {
+      "mbps": 4,
+      "persistent_cache": true,
+      "condition": "cold",
+      "source": "cloudflare",
+      "samples": 3,
+      "median_seconds": 67.54117089998908,
+      "min_seconds": 67.50536614190787,
+      "max_seconds": 67.93687344295904,
+      "median_physics_prepare_seconds": 4.123199999928475,
+      "median_startup_wire_bytes": 29077494
+    },
+    {
+      "mbps": 4,
+      "persistent_cache": true,
+      "condition": "warm",
+      "source": "cloudflare",
+      "samples": 3,
+      "median_seconds": 7.526326920953579,
+      "min_seconds": 7.524205230991356,
+      "max_seconds": 7.560271356021985,
+      "median_physics_prepare_seconds": 3.722100000023842,
+      "median_startup_wire_bytes": 0
+    },
+    {
+      "mbps": 4,
+      "persistent_cache": true,
+      "condition": "cold",
+      "source": "github",
+      "samples": 3,
+      "median_seconds": 67.5230658389628,
+      "min_seconds": 67.18325142597314,
+      "max_seconds": 68.85095640097279,
+      "median_physics_prepare_seconds": 4.189199999928475,
+      "median_startup_wire_bytes": 29061100
+    },
+    {
+      "mbps": 4,
+      "persistent_cache": true,
+      "condition": "warm",
+      "source": "github",
+      "samples": 3,
+      "median_seconds": 7.262199928984046,
+      "min_seconds": 6.778144050971605,
+      "max_seconds": 9.19434845703654,
+      "median_physics_prepare_seconds": 3.6953000000715255,
+      "median_startup_wire_bytes": 0
+    }
+  ],
+  "paired_normal_cold_delta_seconds": {
+    "meaning": "Cloudflare minus GitHub; negative favors Cloudflare",
+    "median": -0.013939279015175998,
+    "bootstrap_median_95_percent_interval": [
+      -0.42753287800587714,
+      0.4182178418850526
+    ],
+    "samples": 7,
+    "individual_deltas": [
+      0.4182178418850526,
+      -1.194938890170306,
+      -0.42753287800587714,
+      -0.013939279015175998,
+      1.0878600899595767,
+      0.3742187679745257,
+      -0.12787911191117018
+    ]
+  },
+  "full_live_games": [
+    {
+      "source": "cloudflare",
+      "live_worlds": 12,
+      "all_worlds_passed": true,
+      "first_12_worlds_seconds": 131.63838371203747,
+      "player_leg_actions": 12,
+      "goal_distance_m": 0.3386828451582831,
+      "passed": true
+    },
+    {
+      "source": "github",
+      "live_worlds": 12,
+      "all_worlds_passed": true,
+      "first_12_worlds_seconds": 130.75223771797027,
+      "player_leg_actions": 12,
+      "goal_distance_m": 0.33906522065513345,
+      "passed": true
+    }
+  ],
+  "shared_website_checks": {
+    "original_glb_candidates_opened": 11,
+    "report_pages_opened": 8,
+    "report_pdf_sha256": "67c15f4af8c02c79c4254e55774207acf51796784583e58543c5d482c0199cc6",
+    "gallery_catalog_entries": 306,
+    "legacy_analysis_scenes_opened": 12,
+    "overlay_models_opened": 27,
+    "main_video_first_frame_and_seek_verified": true,
+    "main_video_duration_seconds": 185,
+    "shared_assets_still_use_github": true,
+    "current_recorded_replay_scenes_opened": 12,
+    "current_recorded_replays_cloudflare_requests": 0
+  },
+  "range_split_results": [
+    {
+      "chunk_bytes": 0,
+      "requests": 5,
+      "samples": 5,
+      "median_download_and_sha_seconds": 0.38189999997615814
+    },
+    {
+      "chunk_bytes": 2097152,
+      "requests": 17,
+      "samples": 5,
+      "median_download_and_sha_seconds": 0.5957999999523163
+    }
+  ],
+  "range_split_scope": "Same uploaded Cloudflare ZIP, same bytes/SHA, five alternating pairs of current five ranges vs up to 2 MiB each. Transfer/SHA only, not full boot. Independent uploaded objects were not measured.",
+  "range_split_adopted": false,
+  "edge_cache_check": {
+    "fresh_query_first_request": "MISS",
+    "fresh_query_other_four_requests": "HIT",
+    "repeat_ranges_before_full_get": "all HIT",
+    "range_cache_warms_successfully": true
+  },
+  "render_fix": {
+    "passed": true,
+    "same_paused_state_in_all_three_views": true,
+    "observed_vertices": 23373,
+    "total_rock_vertices": 54540,
+    "unknown_back_still_hidden": true,
+    "two_original_worlds_rehearsed_after_fix": true,
+    "terrain_checker_overlay_removed": true,
+    "whole_visible_triangles_and_enclosed_small_gaps": true,
+    "startup_regression_scope": "Renderer regression only: identical locally served original physics/assets, old vs repaired renderer, fresh browser contexts, alternating three pairs. Separate from public CDN measurements.",
+    "startup_regression_medians_seconds": {
+      "old": 5.184239682974294,
+      "fixed": 5.265312992036343
+    }
+  },
+  "environment_provenance": {
+    "physics": "MuJoCo",
+    "gravity_m_s2": 1.62,
+    "scene": "Programmatic polar-corridor terrain, rille and an independent visible threshold; not an imported complete lunar surveying simulation.",
+    "rock_assets": [
+      "https://polyhaven.com/a/rock_07",
+      "https://polyhaven.com/a/moon_rock_04"
+    ],
+    "rock_license": "CC0-1.0",
+    "original_scan_assets_watertight": false,
+    "lux3d_role": "Actual existing candidate rock geometry used in physical model-world rehearsals; Lux3D did not generate the whole lunar scene."
+  },
+  "original_physics_control_assets_report_unchanged": true,
+  "new_generation_requests": 0,
+  "interpretation": "No clear Cloudflare advantage in the paired Japan measurements. Both warm starts benefit from the same persistent cache. Most normal boot waiting is local WASM/model preparation. Current Cloudflare ZIP covers the five startup resources, not the original GLBs/photos/videos/reports. Larger counts of smaller ranges were slower in this environment."
+}

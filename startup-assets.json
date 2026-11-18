@@ -1,0 +1,50 @@
+{
+  "schema": "beforestep-cdn-startup-zip/v1",
+  "archive_bytes": 29046738,
+  "archive_sha256": "0a649d9da45dd4737e47ba7e60275dace0c7b49844e810e85b74cd5a3c68c230",
+  "files": [
+    {
+      "path": "media/mission/worlds.tar.gz",
+      "offset": 57,
+      "bytes": 20167135,
+      "sha256": "b605ca063e0a1490c7cfa2d4d426c61be52cca22ad5bd0a527a7ffa6c2a76e4a"
+    },
+    {
+      "path": "media/mission/display.json.gz",
+      "offset": 20167251,
+      "bytes": 4583211,
+      "sha256": "81e580376862a99c813bca50a12aec03b868063f4feb32e50bb110e26673f5fe"
+    },
+    {
+      "path": "media/mission/m20-skin.json.gz",
+      "offset": 24750522,
+      "bytes": 1593225,
+      "sha256": "e8f1f0b2e21f681f87dcb5bd68f345af7951db5ce853e63678052b3a36051fc3"
+    },
+    {
+      "path": "media/mission/mission.json.gz",
+      "offset": 26343806,
+      "bytes": 11819,
+      "sha256": "4edb15eb441e470ca904623eb3a00c6df1ab87207cdebee5992299194654690e"
+    },
+    {
+      "path": "vendor/mujoco/mujoco.wasm.gz",
+      "offset": 26355683,
+      "bytes": 2687781,
+      "sha256": "26865456f73de5877537cace074ae7b6f89e78c28746b4c7667b9a259811da58"
+    }
+  ],
+  "mirrors": [
+    {
+      "id": "cloudflare",
+      "url": "https://nxzcdn.ycoroy.com/BeforeStep-startup-cdn-assets-20261118.zip",
+      "enabled": true
+    },
+    {
+      "id": "gitee",
+      "url": "https://gitee.com/codezzzsleep/WebDCC/releases/download/V0.1/BeforeStep-startup-cdn-assets-20261118.zip",
+      "enabled": false,
+      "note": "Canonical Gitee release fails browser CORS; keep as manual download backup until a readable endpoint is supplied."
+    }
+  ]
+}

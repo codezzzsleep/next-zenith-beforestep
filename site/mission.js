@@ -1,4 +1,4 @@
-import './gallery-viewer.js?v=report-v3-1';
+import './gallery-viewer.js?v=judges-comparison-20261118-2';
 import {StartupLoader} from './startup-loader.js?v=cdn-startup-1';
 import {MissionGameplay} from './mission-gameplay.js?v=judges-demo-20261118-1';
 import {nextHypotheses} from './mission-run.js?v=judges-demo-20261118-1';
@@ -45,10 +45,15 @@ function chooseHypothesis(c){
  if(!c||!accepted(c,mission.thresholds)){focusCandidate(c);return;}
  const pair=pairFor(c),previous=[...selected].sort((a,b)=>a-b).join(':');selected=selected.filter(id=>mission.candidates.find(x=>x.task_id===id)?.target!==c.target);selected.push(...(bothHypotheses?pair:[c]).map(x=>x.task_id));if([...selected].sort((a,b)=>a-b).join(':')!==previous)invalidateSelection();renderCandidates();focusCandidate(c);updatePair();
 }
+function fitExpandedMap(){
+ if(!$('brain').classList.contains('map-expanded'))return;
+ const body=$('brain').querySelector('.brain-body'),map=$('dream-view');body.scrollTop=0;
+ requestAnimationFrame(()=>{const available=body.getBoundingClientRect().bottom-map.getBoundingClientRect().top-12;map.style.setProperty('height',Math.max(160,available)+'px','important');dreamScene.resize();dreamScene.dirty=true;});
+}
 function expandBrain(kind){
  $('brain').classList.remove('expanded','photo-expanded','models-expanded','map-expanded');
  if(kind){$('brain').classList.add('expanded',kind+'-expanded');$('brain-restore').hidden=false;}else $('brain-restore').hidden=true;
- updatePair();layoutBrain();dreamScene.resize();dreamScene.dirty=true;
+ updatePair();layoutBrain();dreamScene.resize();dreamScene.dirty=true;$('brain').querySelector('.brain-body').scrollTop=0;if(kind==='map')fitExpandedMap();else $('dream-view').style.removeProperty('height');
 }
 function downloadJournal(packet){
  const data={...window.BeforeStepGame.journal,worker:packet};const url=URL.createObjectURL(new Blob([JSON.stringify(data,null,2)],{type:'application/json'})),link=document.createElement('a');link.href=url;link.download='BeforeStep-session-'+Date.now()+'.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
@@ -71,7 +76,7 @@ function visibleHeight(){return mainScene?.compactBrain?Math.max(180,Math.min(st
 function sensorLens(){const b=stage.getBoundingClientRect();post({type:'sensorLens',yaw:mainScene?.sensorYaw||0,verticalFov:2*Math.atan(Math.tan(34*Math.PI/180)/(b.width/visibleHeight()))*180/Math.PI});}
 function carryingModel(){return story.imagination&&!!state?.showcase.completed&&!brainOpen&&!legsOpen&&state.x<7.95&&!['failed','complete','crossing'].includes(state.phase);}
 function layoutBrain(){if(!mainScene)return;mainScene.compactBrain=brainOpen&&innerWidth<601;mainScene.pip=pip&&!!state?.showcase.completed&&(innerWidth>=900||!brainOpen||mainScene.compactBrain);mainScene.insetOffset=brainOpen&&innerWidth>=900?$('brain').offsetWidth+35:18;mainScene.dirty=true;stage.style.setProperty('--upper-view',visibleHeight()+'px');stage.style.setProperty('--brain-top',(visibleHeight()+15)+'px');sensorLens();}
-window.addEventListener('resize',()=>{if(ready)layoutBrain();});
+window.addEventListener('resize',()=>{if(ready){layoutBrain();fitExpandedMap();}});
 function setSensorYaw(yaw){mainScene.setSensorYaw(Math.max(-.8,Math.min(.8,yaw)));sensorLens();}
 function setView(next){view=next;mainScene?.setView(view);document.querySelectorAll('button[data-view]').forEach(b=>b.setAttribute('aria-pressed',String(Number(b.dataset.view)===view)));$('inset-label').textContent=view===1?'同一时刻 · M20 执行':'同一时刻 · 机器人相机';}
 function setDreamKind(kind){dreamKind=kind;$('brain').classList.toggle('gate-mode',kind==='gate');$('brain-title').innerHTML=kind==='gate'?'在脑中预测跨越 <small>可见门槛 · 动作执行</small>':'Lux3D <small>局部空间世界 · 先预测再探索</small>';}

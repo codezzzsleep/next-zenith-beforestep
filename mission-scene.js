@@ -1,73 +1,53 @@
 import * as THREE from './vendor/three/three.module.js';
 import {OrbitControls} from './vendor/three/OrbitControls.js';
-function faceNeighbors(indices){
-  if(!indices)return null;const neighbors=new Int32Array(indices.length).fill(-1),edges=new Map();
-  for(let i=0;i<indices.length;i+=3)for(let edge=0;edge<3;edge++){
-    const a=indices[i+edge],b=indices[i+(edge+1)%3],key=a<b?a+':'+b:b+':'+a,slots=edges.get(key)||[];slots.push(i+edge);edges.set(key,slots);
-  }
-  for(const slots of edges.values())if(slots.length===2){neighbors[slots[0]]=Math.floor(slots[1]/3);neighbors[slots[1]]=Math.floor(slots[0]/3);}return neighbors;
-}
-function closeVisibleGaps(observed,neighbors){
-  if(!neighbors)return;const checked=new Uint8Array(neighbors.length/3),flags=observed.array;
-  for(let first=0;first<checked.length;first++){
-    if(checked[first]||flags[first*3])continue;const pending=[first],component=[];let enclosed=true,count=0;
-    while(pending.length){
-      const face=pending.pop();if(checked[face])continue;checked[face]=1;count++;if(count<=6)component.push(face);
-      for(let edge=0;edge<3;edge++){const other=neighbors[face*3+edge];if(other<0)enclosed=false;else if(!checked[other]&&!flags[other*3])pending.push(other);}
-    }
-    // Only tiny gaps completely surrounded by measured faces are continuous.
-    // Mesh boundaries and the large unseen back remain hidden.
-    if(enclosed&&count<=6)for(const face of component)for(let vertex=0;vertex<3;vertex++)observed.setX(face*3+vertex,1);
-  }
-}
+import {rockSurface} from './rock-surface.js?v=original-materials-20261118-1';
 /** Drawing consumes worker snapshots only. First / third / inset share one snapshot. */
 export class MissionScene{
-  constructor(canvas,{dream=false,display,mission,robotSkin,onAnchor=()=>{}}={}){
-    this.canvas=canvas;this.dream=dream;this.display=display;this.mission=mission;this.robotSkin=robotSkin;this.onAnchor=onAnchor;this.objects=[];this.skinObjects=[];this.seen=new Map();this.view=1;this.pip=true;
-    this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));const debug=this.renderer.getContext().getExtension('WEBGL_debug_renderer_info');this.frameInterval=debug&&/SwiftShader/i.test(this.renderer.getContext().getParameter(debug.UNMASKED_RENDERER_WEBGL))?125:33;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.25;
+  constructor(canvas,{dream=false,display,mission,robotSkin,appearance,onAnchor=()=>{}}={}){
+    this.canvas=canvas;this.dream=dream;this.display=display;this.mission=mission;this.robotSkin=robotSkin;this.appearance=appearance;this.onAnchor=onAnchor;this.objects=[];this.skinObjects=[];this.seen=new Map();this.view=1;this.pip=true;this.followCamera=true;
+    this.renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});this.renderer.setPixelRatio(Math.min(devicePixelRatio,1.75));const debug=this.renderer.getContext().getExtension('WEBGL_debug_renderer_info');this.frameInterval=debug&&/SwiftShader/i.test(this.renderer.getContext().getParameter(debug.UNMASKED_RENDERER_WEBGL))?125:33;this.renderer.outputColorSpace=THREE.SRGBColorSpace;this.renderer.toneMapping=THREE.ACESFilmicToneMapping;this.renderer.toneMappingExposure=1.0;
+    this.renderer.shadowMap.enabled=!dream;this.renderer.shadowMap.type=THREE.PCFSoftShadowMap;this.renderer.shadowMap.autoUpdate=false;
     this.scene=new THREE.Scene();this.scene.background=new THREE.Color('#0b1320');this.scene.fog=new THREE.Fog('#0b1320',22,65);
     this.camera=new THREE.PerspectiveCamera(49,1,.03,100);this.camera.up.set(0,0,1);this.camera.position.set(1,-2,2);
     this.car=new THREE.PerspectiveCamera(50,1,.04,80);this.car.up.set(0,0,1);
     this.controls=new OrbitControls(this.camera,canvas);this.controls.enableDamping=true;this.dirty=true;this.controls.addEventListener("change",()=>this.dirty=true);this.controls.enablePan=false;this.controls.minDistance=.8;this.controls.maxDistance=dream?10:5;this.controls.maxPolarAngle=Math.PI*.48;
-    this.scene.add(new THREE.HemisphereLight('#f5f2ea','#586175',1.7));const sun=new THREE.DirectionalLight('#ffffff',2.2);sun.position.set(-9,-7,8);this.scene.add(sun);
+    this.controls.addEventListener('start',()=>{this.followCamera=false;});
+    this.scene.add(new THREE.HemisphereLight('#dce3eb','#141820',.32));const sun=new THREE.DirectionalLight('#fff5e2',3.0),el=THREE.MathUtils.degToRad(appearance?.manifest.sun.elevation_deg??10),az=THREE.MathUtils.degToRad(appearance?.manifest.sun.azimuth_deg??35);sun.target.position.set(5,0,0);sun.position.set(5-Math.cos(el)*Math.cos(az)*28,Math.cos(el)*Math.sin(az)*28,Math.sin(el)*28);sun.castShadow=!dream;sun.shadow.mapSize.set(2048,2048);Object.assign(sun.shadow.camera,{left:-14,right:14,top:9,bottom:-9,near:.1,far:80});sun.shadow.bias=-.0002;sun.shadow.normalBias=.004;this.scene.add(sun,sun.target);
     const starGeometry=new THREE.BufferGeometry(),points=[];let seed=42;const random=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};for(let i=0;i<230;i++)points.push((random()-.5)*160,(random()-.5)*160,14+random()*65);starGeometry.setAttribute('position',new THREE.Float32BufferAttribute(points,3));this.scene.add(new THREE.Points(starGeometry,new THREE.PointsMaterial({size:.045,color:'#c2d1e6'})));
     this.goal=new THREE.Mesh(new THREE.TorusGeometry(.35,.022,10,64),new THREE.MeshBasicMaterial({color:'#53cdb9'}));this.goal.position.set(...mission.goal,.04);this.scene.add(this.goal);
     this.marker=new THREE.Mesh(new THREE.TorusGeometry(.105,.012,8,40),new THREE.MeshBasicMaterial({color:'#f0a93b',depthTest:false}));this.marker.renderOrder=5;this.marker.visible=false;this.scene.add(this.marker);
-    const soil=document.createElement('canvas');soil.width=soil.height=128;const ctx=soil.getContext('2d'),image=ctx.createImageData(128,128);for(let i=0;i<image.data.length;i+=4){const n=100+Math.floor(random()*65);image.data.set([n,n,n,255],i);}ctx.putImageData(image,0,0);this.soil=new THREE.CanvasTexture(soil);this.soil.wrapS=this.soil.wrapT=THREE.RepeatWrapping;this.soil.repeat.set(32,20);this.soil.colorSpace=THREE.SRGBColorSpace;
+    this.soil=appearance?.textures.regolith??null;
     new ResizeObserver(()=>this.resize()).observe(canvas.parentElement);
   }
   setModel(model){
     this.model=model;for(const {mesh}of [...this.objects,...this.skinObjects]){this.scene.remove(mesh);mesh.geometry.dispose();mesh.material.dispose();}this.objects=[];this.skinObjects=[];this.dirty=true;const m=model,cache=new Map();
     const skinReady=this.makeRobotSkin(m);
     for(let g=0;g<m.ngeom;g++){
-      if(m.geom_group[g]===3||skinReady&&m.geom_roles[g]==='robot')continue;const type=m.geom_type[g],s=m.geom_size.slice(g*3,g*3+3);let geometry;
+      if(m.geom_group[g]===3||skinReady&&m.geom_roles[g]==='robot')continue;const type=m.geom_type[g],s=m.geom_size.slice(g*3,g*3+3),role=m.geom_roles[g],high=role==='T1'||role==='T2',solid=high&&!this.dream;let geometry,texture=null;
       if(type===7){
-        const id=m.geom_dataid[g];if(!cache.has(id)){
+        const id=m.geom_dataid[g],family=this.appearance?.meshes[m.mesh_names[id]],uvs=this.appearance?.uvs[family];texture=this.appearance?.textures[family]??null;const originalSurface=solid||!!texture,key=(originalSurface?'original:':'lod:')+id;if(!cache.has(key)){
           const geom=new THREE.BufferGeometry(),lod=this.display[m.mesh_names[id]];
-          if(lod){geom.setAttribute('position',new THREE.Float32BufferAttribute(lod.positions,3));geom.setIndex(lod.indices);const p=m.mesh_pos.slice(id*3,id*3+3),q=m.mesh_quat.slice(id*4,id*4+4),inverse=new THREE.Matrix4().makeRotationFromQuaternion(new THREE.Quaternion(q[1],q[2],q[3],q[0])).invert();inverse.multiply(new THREE.Matrix4().makeTranslation(-p[0],-p[1],-p[2]));geom.applyMatrix4(inverse);}
-          else{const va=m.mesh_vertadr[id],vn=m.mesh_vertnum[id],fa=m.mesh_faceadr[id],fn=m.mesh_facenum[id];geom.setAttribute('position',new THREE.Float32BufferAttribute(m.mesh_vert.slice(va*3,(va+vn)*3),3));geom.setIndex(Array.from(m.mesh_face.slice(fa*3,(fa+fn)*3)));}
-          geom.computeVertexNormals();cache.set(id,geom);
-        }geometry=cache.get(id).clone();
+          if(lod&&!originalSurface){geom.setAttribute('position',new THREE.Float32BufferAttribute(lod.positions,3));geom.setIndex(lod.indices);const p=m.mesh_pos.slice(id*3,id*3+3),q=m.mesh_quat.slice(id*4,id*4+4),inverse=new THREE.Matrix4().makeRotationFromQuaternion(new THREE.Quaternion(q[1],q[2],q[3],q[0])).invert();inverse.multiply(new THREE.Matrix4().makeTranslation(-p[0],-p[1],-p[2]));geom.applyMatrix4(inverse);}
+          else{const va=m.mesh_vertadr[id],vn=m.mesh_vertnum[id],fa=m.mesh_faceadr[id],fn=m.mesh_facenum[id],original={positions:m.mesh_vert.slice(va*3,(va+vn)*3),indices:m.mesh_face.slice(fa*3,(fa+fn)*3)},surface=originalSurface?rockSurface(original.positions,original.indices,texture?uvs:null):original;geom.setAttribute('position',new THREE.Float32BufferAttribute(surface.positions,3));geom.setIndex(new THREE.BufferAttribute(new Uint32Array(surface.indices),1));if(surface.uvs)geom.setAttribute('uv',new THREE.BufferAttribute(surface.uvs,2));if(surface.normals)geom.setAttribute('normal',new THREE.BufferAttribute(surface.normals,3));}
+          if(!geom.attributes.normal)geom.computeVertexNormals();cache.set(key,geom);
+        }geometry=cache.get(key).clone();
       }else if(type===0)geometry=new THREE.PlaneGeometry(30,20);
       else if(type===1){const id=m.geom_dataid[g],nr=m.hfield_nrow[id],nc=m.hfield_ncol[id],adr=m.hfield_adr[id],sz=m.hfield_size.slice(id*4,id*4+4);geometry=new THREE.PlaneGeometry(sz[0]*2,sz[1]*2,nc-1,nr-1);const p=geometry.attributes.position;for(let k=0;k<p.count;k++){const col=k%nc,row=nr-1-Math.floor(k/nc);p.setZ(k,m.hfield_data[adr+row*nc+col]*sz[2]);}geometry.computeVertexNormals();}
       else if(type===6)geometry=new THREE.BoxGeometry(s[0]*2,s[1]*2,s[2]*2);
       else if(type===2)geometry=new THREE.SphereGeometry(s[0],16,12);
       else if(type===5){geometry=new THREE.CylinderGeometry(s[0],s[0],s[1]*2,16);geometry.rotateX(Math.PI/2);}
       else if(type===3){geometry=new THREE.CapsuleGeometry(s[0],s[1]*2,8,12);geometry.rotateX(Math.PI/2);}else continue;
-      const role=m.geom_roles[g],hiddenModel=m.geom_group[g]===4,high=role==='T1'||role==='T2';
+      const hiddenModel=m.geom_group[g]===4;
       let rgba=m.geom_rgba.slice(g*4,g*4+4),mat=m.geom_matid[g];if(mat>=0)rgba=m.mat_rgba.slice(mat*4,mat*4+4);
       const color=type<=1?new THREE.Color('#83858a'):new THREE.Color().setRGB(Math.max(.025,rgba[0]),Math.max(.025,rgba[1]),Math.max(.025,rgba[2]),THREE.SRGBColorSpace);
       if(type>1&&color.r>color.b*1.3&&color.r>color.g)color.set('#92949c');
-      const material=new THREE.MeshStandardMaterial({color,roughness:role==='robot'?.5:.97,metalness:role==='robot'?.2:0,map:type<=1?this.soil:null});
+      if(texture||type<=1)color.set('#ffffff');
+      const material=new THREE.MeshStandardMaterial({color,roughness:role==='robot'?.5:.97,metalness:role==='robot'?.2:0,map:type<=1?this.soil:texture});
+      if(type<=1){const p=geometry.attributes.position,uv=geometry.attributes.uv,tile=this.appearance?.manifest.soil_tile_m??.9;for(let v=0;v<p.count;v++)uv.setXY(v,p.getX(v)/tile,p.getY(v)/tile);uv.needsUpdate=true;material.bumpMap=this.soil;material.bumpScale=.008;}
       if(high&&this.dream&&this.comparison){material.color.set('#f0a93b');material.transparent=true;material.opacity=.38;material.depthWrite=false;}
-      let neighbors=null;if(high&&!this.dream){
-        neighbors=faceNeighbors(geometry.index?.array);
-        geometry=geometry.toNonIndexed();geometry.computeVertexNormals();geometry.setAttribute('observed',new THREE.Float32BufferAttribute(new Float32Array(geometry.attributes.position.count),1));
-        material.side=THREE.DoubleSide;material.onBeforeCompile=shader=>{shader.vertexShader='attribute float observed; varying float vObserved;\n'+shader.vertexShader;shader.vertexShader=shader.vertexShader.replace('#include <begin_vertex>','#include <begin_vertex>\nvObserved = observed;');shader.fragmentShader='varying float vObserved;\n'+shader.fragmentShader;shader.fragmentShader=shader.fragmentShader.replace('#include <clipping_planes_fragment>','#include <clipping_planes_fragment>\nif(vObserved < 0.95) discard;');};
-      }
-      const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.visible=!hiddenModel;this.scene.add(mesh);this.objects.push({g,mesh,role,high,hiddenModel,neighbors,leg:m.leg_geoms[g]});
+      const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.visible=!hiddenModel;mesh.castShadow=!this.dream&&(!!texture||high||type===6&&role==='environment');mesh.receiveShadow=!this.dream;this.scene.add(mesh);this.objects.push({g,mesh,role,high,hiddenModel,textured:!!texture,leg:m.leg_geoms[g]});
     }
-    cache.forEach(g=>g.dispose());this.canvas.dataset.totalRockVertices=String(this.objects.filter(o=>o.high&&!this.dream).reduce((n,o)=>n+o.mesh.geometry.attributes.position.count,0));
+    cache.forEach(g=>g.dispose());this.renderer.shadowMap.needsUpdate=true;this.canvas.dataset.totalRockVertices=String(this.objects.filter(o=>o.high&&!this.dream).reduce((n,o)=>n+o.mesh.geometry.attributes.position.count,0));this.canvas.dataset.rockSurfaceMode=this.dream?'candidate':'complete-textured';this.canvas.dataset.observedHits=String(this.seen.size);this.canvas.dataset.texturedScanMeshes=String(this.objects.filter(o=>o.textured).length);this.canvas.dataset.appearanceTextures=String(Object.keys(this.appearance?.textures??{}).length);
   }
   makeRobotSkin(model){
     if(!this.robotSkin?.parts||!model.body_names)return false;
@@ -79,41 +59,28 @@ export class MissionScene{
     for(const [part,body,leg] of map){
       const data=this.robotSkin.parts[part],geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(data.positions,3));geometry.setIndex(data.indices);geometry.computeVertexNormals();
       const wheel=part.endsWith('_wheel'),color=wheel?'#242a31':part==='base_link'?'#dce3e6':part.endsWith('_hipx')?'#6d7a80':'#b7c4c9';
-      const material=new THREE.MeshStandardMaterial({color,roughness:wheel?.9:.48,metalness:wheel?.05:.27});const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;this.scene.add(mesh);this.skinObjects.push({mesh,body:model.body_names.indexOf(body),leg});
+      const material=new THREE.MeshStandardMaterial({color,roughness:wheel?.9:.48,metalness:wheel?.05:.27});const mesh=new THREE.Mesh(geometry,material);mesh.matrixAutoUpdate=false;mesh.castShadow=!this.dream;mesh.receiveShadow=!this.dream;this.scene.add(mesh);this.skinObjects.push({mesh,body:model.body_names.indexOf(body),leg});
     }
     this.canvas.dataset.robotParts=String(this.skinObjects.length);return true;
   }
   update(data,state){
+    const previous=this.state;if(!this.dream&&!state.paused&&(!previous||Math.hypot(state.x-previous.x,state.y-previous.y)>.001||Math.abs(state.yaw-previous.yaw)>.005||state.legs?.busy))this.renderer.shadowMap.needsUpdate=true;
     this.dirty=true;this.data=data;this.state=state;
     for(const object of this.objects){const {g,mesh,leg}=object,p=g*3,r=g*9,rot=data.geom_xmat,pos=data.geom_xpos;mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);mesh.matrixWorldNeedsUpdate=true;mesh.material.emissive.set(leg>=0&&state.legs?.selected===leg?'#b86a0c':'#000000');}
     for(const {body,mesh,leg} of this.skinObjects){const p=body*3,r=body*9,rot=data.body_xmat,pos=data.body_xpos;mesh.matrix.set(rot[r],rot[r+1],rot[r+2],pos[p],rot[r+3],rot[r+4],rot[r+5],pos[p+1],rot[r+6],rot[r+7],rot[r+8],pos[p+2],0,0,0,1);mesh.matrixWorldNeedsUpdate=true;mesh.material.emissive.set(leg>=0&&state.legs?.selected===leg?'#b86a0c':'#000000');}
     const q=data.qpos,quaternion=new THREE.Quaternion(q[4],q[5],q[6],q[3]),origin=new THREE.Vector3(q[0],q[1],q[2]);
     this.car.position.copy(new THREE.Vector3(.42,0,-.00125).applyQuaternion(quaternion).add(origin));this.car.up.copy(new THREE.Vector3(0,0,1).applyQuaternion(quaternion));this.car.lookAt(new THREE.Vector3(Math.cos(-6*Math.PI/180)*3,0,Math.sin(-6*Math.PI/180)*3).applyQuaternion(quaternion).add(this.car.position));
-    if(!(this.dream&&this.comparison&&this.view===2)){const target=new THREE.Vector3(state.x,state.y,state.z+.03),delta=target.clone().sub(this.controls.target);this.controls.target.add(delta);this.camera.position.add(delta);this.controls.update();}
+    if(!(this.dream&&this.comparison&&this.view===2)){const target=new THREE.Vector3(state.x,state.y,state.z+.03),delta=target.clone().sub(this.controls.target);this.controls.target.add(delta);if(!this.dream&&this.view!==2&&this.followCamera)this.camera.position.lerp(new THREE.Vector3(state.x-1.5*Math.cos(state.yaw)+1.4*Math.sin(state.yaw),state.y-1.5*Math.sin(state.yaw)-1.4*Math.cos(state.yaw),state.z+.85),.12);else this.camera.position.add(delta);this.controls.update();}
     const foot=state.legs?.positions[state.legs.selected];this.marker.visible=!!foot;if(foot)this.marker.position.set(foot[0],foot[1],foot[2]-.065);
   }
   observe(observation){
     if(this.dream)return;let changed=false;for(const hit of observation.hits){const k=hit.target+':'+hit.point.map(v=>Math.floor(v/.1)).join(',');if(!this.seen.has(k)){this.seen.set(k,hit);changed=true;}}if(!changed)return;
-    const a=new THREE.Vector3(),b=new THREE.Vector3(),c=new THREE.Vector3(),normal=new THREE.Vector3(),point=new THREE.Vector3(),closest=new THREE.Vector3(),hitNormal=new THREE.Vector3(),mat=new THREE.Matrix3(),triangle=new THREE.Triangle(a,b,c),tolerance=.155;
-    for(const {mesh,high,role,neighbors}of this.objects){if(!high)continue;const positions=mesh.geometry.attributes.position,normals=mesh.geometry.attributes.normal,observed=mesh.geometry.attributes.observed;mat.getNormalMatrix(mesh.matrix);
-      // A measured surface reveals a whole local face. Interpolating independent
-      // vertex flags used to cut nearly all of a triangle with one unseen vertex.
-      for(let i=0;i<positions.count;i+=3){
-        if(observed.getX(i))continue;
-        a.fromBufferAttribute(positions,i).applyMatrix4(mesh.matrix);b.fromBufferAttribute(positions,i+1).applyMatrix4(mesh.matrix);c.fromBufferAttribute(positions,i+2).applyMatrix4(mesh.matrix);normal.fromBufferAttribute(normals,i).applyMatrix3(mat).normalize();
-        const low=[Math.min(a.x,b.x,c.x),Math.min(a.y,b.y,c.y),Math.min(a.z,b.z,c.z)].map(v=>Math.floor((v-tolerance)/.1)),high=[Math.max(a.x,b.x,c.x),Math.max(a.y,b.y,c.y),Math.max(a.z,b.z,c.z)].map(v=>Math.floor((v+tolerance)/.1));let found=false;
-        for(let x=low[0];x<=high[0]&&!found;x++)for(let y=low[1];y<=high[1]&&!found;y++)for(let z=low[2];z<=high[2]&&!found;z++){
-          const hit=this.seen.get(role+':'+[x,y,z].join(','));if(!hit||hit.normal&&normal.dot(hitNormal.fromArray(hit.normal))<=.25)continue;
-          point.fromArray(hit.point);triangle.closestPointToPoint(point,closest);if(point.distanceToSquared(closest)<tolerance*tolerance)found=true;
-        }if(found){observed.setX(i,1);observed.setX(i+1,1);observed.setX(i+2,1);}
-      }closeVisibleGaps(observed,neighbors);observed.needsUpdate=true;
-    }
-    this.canvas.dataset.observedVertices=String(this.objects.filter(o=>o.high).reduce((n,o)=>n+Array.from(o.mesh.geometry.attributes.observed.array).filter(Boolean).length,0));
-    this.canvas.dataset.observedTriangles=String(Number(this.canvas.dataset.observedVertices)/3);
+    // Observation is evidence for the robot, not a mask that cuts holes in matter.
+    this.canvas.dataset.observedHits=String(this.seen.size);
   }
   route(plan,passed=false){
     if(this.line){this.scene.remove(this.line);this.line.geometry.dispose();this.line.material.dispose();}this.line=null;if(!plan?.path)return;
-    this.line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(p[0],p[1],.04))),new THREE.LineDashedMaterial({color:passed?'#53cdb9':'#f0a93b',dashSize:.12,gapSize:passed?0:.09,depthTest:false}));this.line.computeLineDistances();this.line.renderOrder=4;this.scene.add(this.line);
+    this.line=new THREE.Line(new THREE.BufferGeometry().setFromPoints(plan.path.map(p=>new THREE.Vector3(p[0],p[1],.04))),new THREE.LineDashedMaterial({color:passed?'#53cdb9':'#f0a93b',dashSize:.12,gapSize:passed?0:.09,depthTest:true,depthWrite:false}));this.line.computeLineDistances();this.line.renderOrder=4;this.scene.add(this.line);
   }
   compare(comparison, policy='imagination', passed=false){
     if(!this.dream)return;
@@ -192,8 +159,8 @@ export class MissionScene{
     this.dirty=true;
   }
   setView(view){
-    this.dirty=true;this.view=view;this.controls.enabled=view!==1;if(this.dream&&this.comparison&&view===2){this.fitComparison();return;}if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
-    if(view===0||view===1)this.camera.position.set(s.x-1.5*Math.cos(s.yaw)+1.4*Math.sin(s.yaw),s.y-1.5*Math.sin(s.yaw)-1.4*Math.cos(s.yaw),s.z+1.2);
+    this.dirty=true;this.view=view;this.followCamera=true;this.controls.enabled=view!==1;if(this.dream&&this.comparison&&view===2){this.fitComparison();return;}if(!this.state)return;const s=this.state;this.controls.target.set(s.x,s.y,s.z);
+    if(view===0||view===1)this.camera.position.set(s.x-1.5*Math.cos(s.yaw)+1.4*Math.sin(s.yaw),s.y-1.5*Math.sin(s.yaw)-1.4*Math.cos(s.yaw),s.z+.85);
     if(view===2)this.camera.position.set(s.x-.3,s.y-.001,s.z+5);this.controls.update();
   }
   resize(){const b=this.canvas.getBoundingClientRect();if(!b.width||!b.height||this.sizeW===b.width&&this.sizeH===b.height)return;this.sizeW=b.width;this.sizeH=b.height;this.renderer.setSize(b.width,b.height,false);this.camera.aspect=b.width/b.height;this.camera.updateProjectionMatrix();}
@@ -207,5 +174,5 @@ export class MissionScene{
     if(!this.dream){const p=new THREE.Vector3(this.state.x,this.state.y,this.state.z+.28).project(this.view===1?this.car:this.camera);this.onAnchor({x:(p.x*.5+.5)*w,y:(-.5*p.y+.5)*visibleHeight,visible:p.z<1&&this.view!==1});}
     this.canvas.dataset.viewportHeight=String(visibleHeight);this.canvas.dataset.simulationTime=String(this.state?.elapsed??0);this.canvas.dataset.view=String(this.view);
   }
-  resetSeen(){this.seen.clear();}
+  resetSeen(){this.seen.clear();this.canvas.dataset.observedHits='0';}
 }

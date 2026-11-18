@@ -1,7 +1,7 @@
 {
   "schema": "beforestep-startup-cdn-pages/v1",
-  "source_main": "d2882fe4d76b1ff759523d20f67d22e093fa439b",
-  "base_pages": "5fd62b2c70620f392a0da92edab5a0017492750b",
+  "source_main": "1d2298527afd87e569bc6775ebc9ea3eec87fae8",
+  "base_pages": "8a3f59942b51e8b5854840098ce9814ac859c0de",
   "projection": [
     {
       "source": "site/fonts/beforestep-gameplay-sans-bold.woff2",
@@ -135,14 +135,6 @@
       "transforms": []
     },
     {
-      "source": "site/mission-scene.js",
-      "path": "mission-scene.js",
-      "bytes": 23511,
-      "source_sha256": "d3e96160d7327a2cda7242d29fc8588e820f4ab6a7a0cc85c9d8ee44da329f71",
-      "delivery_sha256": "d3e96160d7327a2cda7242d29fc8588e820f4ab6a7a0cc85c9d8ee44da329f71",
-      "transforms": []
-    },
-    {
       "source": "site/mission-worker.js",
       "path": "mission-worker.js",
       "bytes": 16247,
@@ -159,25 +151,6 @@
       "transforms": []
     },
     {
-      "source": "site/mission.js",
-      "path": "mission.js",
-      "bytes": 39052,
-      "source_sha256": "ab57650ee82fc7b17e89ad09aaa65a6aedaffe040fe6147256bdafb74f91f6df",
-      "delivery_sha256": "ab57650ee82fc7b17e89ad09aaa65a6aedaffe040fe6147256bdafb74f91f6df",
-      "transforms": []
-    },
-    {
-      "source": "site/play.html",
-      "path": "play.html",
-      "bytes": 15209,
-      "source_sha256": "0b56b63409f773a6d854b0aacf17ba1a88de29f650202d72af04203c66ce79ea",
-      "delivery_sha256": "1fb4be13bfdbc619469de69449168e392e077834c2065ba267ac64138115e3af",
-      "transforms": [
-        "original fixed-alias static URL resolution",
-        "insert existing asset-links adapter before other head resources"
-      ]
-    },
-    {
       "source": "site/startup-assets.json",
       "path": "startup-assets.json",
       "bytes": 1611,
@@ -192,12 +165,153 @@
       "source_sha256": "cbca6ca7a174504190a823b2ea197139914b2eff48d61f6f8148625fdf1d9ca6",
       "delivery_sha256": "cbca6ca7a174504190a823b2ea197139914b2eff48d61f6f8148625fdf1d9ca6",
       "transforms": []
+    },
+    {
+      "source": "site/mission.js",
+      "path": "mission.js",
+      "bytes": 39195,
+      "source_bytes": 39195,
+      "source_sha256": "25f3f2039664bfaa2e7e59559f15266176ecc2f568468d33071584015850f487",
+      "delivery_sha256": "25f3f2039664bfaa2e7e59559f15266176ecc2f568468d33071584015850f487",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-scene.js",
+      "path": "mission-scene.js",
+      "bytes": 21779,
+      "source_bytes": 21779,
+      "source_sha256": "9ff621ead21742de8604002fef97b38a7f987a56c8d7db9ff4c542602fe5e883",
+      "delivery_sha256": "9ff621ead21742de8604002fef97b38a7f987a56c8d7db9ff4c542602fe5e883",
+      "transforms": []
+    },
+    {
+      "source": "site/mission-appearance.js",
+      "path": "mission-appearance.js",
+      "bytes": 1548,
+      "source_bytes": 1548,
+      "source_sha256": "82bd095e0f8933288858efd21ea96e349cafcc97ba646dad5a0f23ad5fe7dace",
+      "delivery_sha256": "82bd095e0f8933288858efd21ea96e349cafcc97ba646dad5a0f23ad5fe7dace",
+      "transforms": []
+    },
+    {
+      "source": "site/rock-surface.js",
+      "path": "rock-surface.js",
+      "bytes": 2297,
+      "source_bytes": 2297,
+      "source_sha256": "2cc453875300720fe8aab4a8de76dabdec436ded7b03f6ad75a9f8b2687c9983",
+      "delivery_sha256": "2cc453875300720fe8aab4a8de76dabdec436ded7b03f6ad75a9f8b2687c9983",
+      "transforms": []
+    },
+    {
+      "source": "site/play.html",
+      "path": "play.html",
+      "bytes": 15187,
+      "source_bytes": 15138,
+      "source_sha256": "682677fc6ba864e60b42c3a26f7690e457df0445bb3b6179235f41b98fd93859",
+      "delivery_sha256": "694f03b10ecc19138886b6e512d220844d9ca7c525734421f773dccdc3210923",
+      "transforms": [
+        "existing fixed-asset static URL resolution",
+        "insert existing asset-links adapter before head resources"
+      ]
+    },
+    {
+      "source": "site/media/mission/appearance/manifest.json",
+      "path": "media/mission/appearance/manifest.json",
+      "bytes": 4810,
+      "source_bytes": 4810,
+      "source_sha256": "b6dc583f1301334637291f250abd9caff144a5bf088d8ca6c68f69a8a3cc3418",
+      "delivery_sha256": "b6dc583f1301334637291f250abd9caff144a5bf088d8ca6c68f69a8a3cc3418",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/moon_rock_03-20261118.jpg",
+      "path": "media/mission/appearance/moon_rock_03-20261118.jpg",
+      "bytes": 56151,
+      "source_bytes": 56151,
+      "source_sha256": "0727d9e675a740a5f307dd67ced7b94a92dd19bdcd973afe6976cee3809c6453",
+      "delivery_sha256": "0727d9e675a740a5f307dd67ced7b94a92dd19bdcd973afe6976cee3809c6453",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/moon_rock_04-20261118.jpg",
+      "path": "media/mission/appearance/moon_rock_04-20261118.jpg",
+      "bytes": 181551,
+      "source_bytes": 181551,
+      "source_sha256": "de148f96814630b220ac81fc8dc0a60218b8e352c707a12820aefaccd9be8e9d",
+      "delivery_sha256": "de148f96814630b220ac81fc8dc0a60218b8e352c707a12820aefaccd9be8e9d",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/moon_rock_06-20261118.jpg",
+      "path": "media/mission/appearance/moon_rock_06-20261118.jpg",
+      "bytes": 68090,
+      "source_bytes": 68090,
+      "source_sha256": "e2bf4c04b493fee525cded08520ba95ba9f4f2b64800fe14a8168cd9d37619f1",
+      "delivery_sha256": "e2bf4c04b493fee525cded08520ba95ba9f4f2b64800fe14a8168cd9d37619f1",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/moon_rock_07-20261118.jpg",
+      "path": "media/mission/appearance/moon_rock_07-20261118.jpg",
+      "bytes": 58183,
+      "source_bytes": 58183,
+      "source_sha256": "469c68c4138bcef415c722bf132e47df5ca7ac75ba5abf36b31247bc4739cf5d",
+      "delivery_sha256": "469c68c4138bcef415c722bf132e47df5ca7ac75ba5abf36b31247bc4739cf5d",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/regolith-20261118.jpg",
+      "path": "media/mission/appearance/regolith-20261118.jpg",
+      "bytes": 488154,
+      "source_bytes": 488154,
+      "source_sha256": "15a5efd6cc66525690350192a6dd8402054f3a5386e462f2c7b493a18f2f7e77",
+      "delivery_sha256": "15a5efd6cc66525690350192a6dd8402054f3a5386e462f2c7b493a18f2f7e77",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/rock_07-20261118.jpg",
+      "path": "media/mission/appearance/rock_07-20261118.jpg",
+      "bytes": 374607,
+      "source_bytes": 374607,
+      "source_sha256": "5cf466b3a2e289274b361c7502b6aa74d90b7ff54b16a122390d8626ddd32ff3",
+      "delivery_sha256": "5cf466b3a2e289274b361c7502b6aa74d90b7ff54b16a122390d8626ddd32ff3",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/rock_09-20261118.jpg",
+      "path": "media/mission/appearance/rock_09-20261118.jpg",
+      "bytes": 133627,
+      "source_bytes": 133627,
+      "source_sha256": "e6ba54a00a5b67b58b8f78b7f22fea398f7f859d541274c8361bf7039033ce43",
+      "delivery_sha256": "e6ba54a00a5b67b58b8f78b7f22fea398f7f859d541274c8361bf7039033ce43",
+      "transforms": []
+    },
+    {
+      "source": "site/media/mission/appearance/scan-uv.json.gz",
+      "path": "media/mission/appearance/scan-uv.json.gz",
+      "bytes": 203218,
+      "source_bytes": 203218,
+      "source_sha256": "5dc6eef58ba54eabd37353c78f55040fa84640c4b03402a03e2cd65cda6f7e34",
+      "delivery_sha256": "5dc6eef58ba54eabd37353c78f55040fa84640c4b03402a03e2cd65cda6f7e34",
+      "transforms": []
     }
   ],
   "changed_files": [
-    "mission-scene.js",
     "mission.js",
-    "play.html"
+    "mission-scene.js",
+    "mission-appearance.js",
+    "rock-surface.js",
+    "play.html",
+    "media/mission/appearance/manifest.json",
+    "media/mission/appearance/moon_rock_03-20261118.jpg",
+    "media/mission/appearance/moon_rock_04-20261118.jpg",
+    "media/mission/appearance/moon_rock_06-20261118.jpg",
+    "media/mission/appearance/moon_rock_07-20261118.jpg",
+    "media/mission/appearance/regolith-20261118.jpg",
+    "media/mission/appearance/rock_07-20261118.jpg",
+    "media/mission/appearance/rock_09-20261118.jpg",
+    "media/mission/appearance/scan-uv.json.gz",
+    "startup-delivery.json"
   ],
   "original_asset_alias_count": 6448,
   "asset_links_sha256": "8b89bc96d9eeead96ea78e9e0bf80f711f3756a6dd61b93f28d5bbb5f82443da",
@@ -206,5 +320,5 @@
   "primary_promotion": "https://b23.tv/4CAPaLu",
   "local_desktop_complete": true,
   "new_generation_requests": 0,
-  "source_evidence": "evidence/loading-20261118/"
+  "source_evidence": "evidence/solid-rocks-20261118/"
 }

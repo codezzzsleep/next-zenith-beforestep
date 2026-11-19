@@ -2,9 +2,9 @@
   <img src="site/favicon.svg" width="64" alt="BeforeStep 图标">
   <p><sub>NEXT ZENITH · AHOLO HACKATHON</sub></p>
   <h1>先见一步 · BeforeStep</h1>
-  <p><b>给机器人空间想象：从有限观测预测局部空间，先判断，再探索。</b></p>
+  <p><b>给轮腿机器人装上“空间前额叶”：以 Aholo Lux3D 三维先验构建局部世界模型，先预测、再探索。</b></p>
   <p>
-    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html"><b>开始月面探索</b></a> ·
+    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html"><b>在线四站试玩</b></a> ·
     <a href="https://b23.tv/4CAPaLu">B站主宣传片</a> ·
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/report.html">主报告 V5</a><br>
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">作品首页</a> ·
@@ -17,55 +17,60 @@
   <p><sub>原始照片 → 对应 Lux3D 模型 · R1 研究原片 / Go2W · 点击观看作者已发布的 B站主宣传片</sub></p>
 </div>
 
-BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。它**用 Lux3D 的图生三维能力构建可检验的局部空间假设**：从照片想象未见的形状，结合已有观测核对，将候选放回通道，再用物理预演判断怎样走。生成模型的形状与占地实际参与路线和碰撞计算。
+一面照片，多个可能的背面。BeforeStep 用真实 Lux3D 返回的三维形状构建可检验的局部世界，让轮腿机器人先判断、先试路，再决定前进、补看或停下。
 
-我们把这个先想后走的模块比喻成机器人的**前额叶**。岩石是已验证的局部实例；看见正面之后，机器人还需要判断：背面会占多大地方，这条路是否能过，下一步应该前进、补看还是停下。
+**高石靠空间想象支持绕行，可见矮坎靠轮腿跨越。** 生成模型的形状、占地实际参与路线与碰撞计算；原输入、被拒候选、执行结果与核心版本全部保留。[完整故事](docs/submission-story-20261117.md) · [本轮事实与来源核查](docs/narrative-evidence-20261119.md) · [当前交付](docs/current-status.md)。
 
-> **一张普通照片，多个可能的背面。** 在可能的世界里先走一遍，再回到原场景检验判断。
+## 一、从事实出发：只看到一面，怎样判断下一步？
 
-项目保留 **400 多次真实 Lux3D 生成任务**的输入、原 GLB、任务身份、被拒候选与运行结果。[完整故事与来源](docs/submission-story-20261117.md) · [当前交付状态](docs/current-status.md)。
+人能借助透视、遮挡和相对大小等线索，从二维图像推断空间；被挡住的背面仍可能有多种形状。[OpenStax Psychology 2e §5.3](https://openstax.org/books/psychology-2e/pages/5-3-vision)介绍这些单眼线索，[PSSNet 形状补全研究](https://proceedings.mlr.press/v155/saund21a.html)展示不完整观测下的多种合理几何假设。
 
-## 从照片到下一步行动
+当前月面仿真采用 **10° 低斜阳与部分深度缺失**设定。高石的背面占地影响通道能否通过：原 R1 乐观策略 **80.87 秒碰撞**，保守策略 **142.20 秒停车**，生成候选加完整预演的策略 **112.84 秒到达**。恢复黑影深度的对照也到达，这个结果说明本场景中空间假设的作用。
+
+另一类困难来自轮子的执行能力：在 **10、12、15 cm 三个离散高度**的校准测试中，常规与高姿态轮行 **0/90** 通过，逐轮跨越 **24/24** 干净通过。高石需要判断未知形状；已经看清的矮坎需要用腿迈过去。[R1 原结果](docs/reviews/RESULT_BEFORESTEP_R1.md) · [轮腿校准与边界](docs/reviews/RESULT_WHEELLEG_CROSSING_FINAL.md)。
+
+## 二、双线交汇：Lux3D 怎样成为“空间前额叶”？
+
+[群核科技发布稿（2026-08-27）](https://www.prnewswire.com/news-releases/manycore-tech-unveils-lux3d-and-an-explicit-3d-path-to-world-models-302861778.html)说明 Lux3D 混合使用生成数据与物理世界重建数据训练，以提升几何和视觉一致性，并介绍其显式三维世界模型路线。[World Labs](https://worldlabs.ai/blog/marble-world-model)也将重建、生成和仿真三维世界纳入世界模型语境。
+
+BeforeStep 把这份**三维先验**接入机器人局部建模：Lux3D 生成物体几何，已有 RGB-D、位姿与地形提供尺度和配准依据，系统核对可见部分并计算路线，MuJoCo 计算运动和接触。“空间前额叶”是这个内部想象与行动预测模块的比喻。
+
+```mermaid
+flowchart TB
+    A["二维观测<br/>只见局部表面"] --> B["Lux3D 三维候选<br/>想象可能的背面"]
+    B --> C["观测核对<br/>尺度 · 轮廓 · 可见面"]
+    C --> D["局部世界<br/>配准 · 占地 · 路线"]
+    D --> E["MuJoCo 预测<br/>完整预演所选全部世界"]
+    E -->|全部通过| F["探索<br/>绕高石 · 轮腿跨矮坎"]
+    E -->|风险或信息不足| G["补看 · 换假设 · 停下"]
+    G --> C
+```
+
+**Lux3D 接收普通 RGB 图片**，接口无需上传深度图；本项目的完整链路仍使用深度辅助配准与核对。当前试玩复用已有真实候选；原 R1 的六份 A × 两份 B 组成 **12 个世界**，当前试玩初始 **1 世界**、同图对比 **2 世界**，分别计数。[官方 OpenAPI](https://labs.aholo.ai/api-docs/specifications/services/lux3d/openapi.en.json) · [研究与当前游戏代码导览](docs/code-tour.md)。
+
+<details>
+<summary><b>看真实四步图：照片 → 模型 → 十二世界 → 原场景行动</b></summary>
 
 <picture>
   <source media="(max-width: 600px)" srcset="docs/readme/showcase/flow-mobile.png">
   <img src="docs/readme/showcase/flow-desktop.png" width="100%" alt="四步真实链路：原 RGB 照片 → Lux3D 三维形状假设 → 完整十二世界物理预演 → 原场景中的独立行动">
 </picture>
 
-**Lux3D 接收普通 RGB 图片**，返回物体级的三维形状假设。项目已有的 RGB-D、位姿与地形提供尺度和本地配准依据；BeforeStep 核对可见部分、计算占地与路线，MuJoCo 计算运动和接触。候选核对、完整预演与独立执行各有自己的记录。
+四步图复用原 R1 照片、同任务模型、完整十二世界帧与独立执行画面；[来源与 SHA](docs/readme/showcase/sources.json)可复查。
 
-原 R1 窄道中，六份石头 A 模型与两份石头 B 模型组成 **12 个世界**。同一条候选路线在所有组合里完整预演，再回到原场景执行。局部几何由 Lux3D 提供，行动后果由系统和物理引擎检验。[研究链路与源码](docs/code-tour.md) · [Lux3D 输入与事实核查](docs/submission-story-sources-20261117.md)。
+</details>
 
-## 这次，你来开机器人
+## 三、核心实证：保留成功，也保留自我推翻
 
-**穿过高石，跨过矮坎，在青色信标里停稳。** [打开月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，按 Enter 开始，使用 WASD / 方向键驾驶、空格刹车；手机使用摇杆与对应按钮。
-
-<a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html">
-  <img src="evidence/judges-demo/figures/05-M20-leg-action.jpg" width="100%" alt="2026-11-18 真实试玩原片：M20 外观机器人在高石后的矮坎前，由玩家逐腿触发跨越动作">
-</a>
-
-<p align="center"><sub>试玩原片中的轮腿操作 · M20 显示外观 · 点击进入浏览器任务</sub></p>
-
-1. **先留下自己的判断。** 靠近高石观察点，车体停稳并切到第一视角，在自然遮挡下选择“能过”“绕开”或“拿不准”。
-2. **选择怎样探索。** 你可以自己开、让 Lux3D 想一想、再看一眼或停车。按 Q 展开原照片、同图两份真实候选、配准占地和规划路线。
-3. **在假设里试路，再回现场。** 辅助出发需要从当前停稳位置完成所选世界的物理预演；途中可以手动接管。按 E 补看，将实际测到的新表面带回本局地图。
-4. **亲手完成轮腿跨越。** 高石后再观察矮坎，停稳、对正，用四腿的 12 个主要动作跨过门槛，然后回到轮行、驶入信标。
-
-| 操作 | 桌面按键 | 作用 |
+| 实验阶段 | 核心指标 | 结果怎样解读 |
 | --- | --- | --- |
-| 开始、驾驶与刹车 | Enter；WASD / 方向键；空格 | 在同一个物理世界中驾驶与制动 |
-| 空间想象 / 补看 | Q / E | 查看已有真实候选，或采集本局的新表面 |
-| 切换视角 | V | 第一、第三与俯视共用同一实时快照 |
-| 逐腿跨越 | 1–4；J / K / L | 选腿，再分别抬起、前移、落地 |
-| 探索练习继续 | R | 回到本局实际停稳检查点 |
+| **R1 窄道对比** | 乐观 80.87s 碰撞 · 保守 142.20s 停车 · **112.84s 到达**；12 世界完整预演 | 一次观察后的空间假设支持绕行；最小三维间隙 47.541 mm，二维矩形包络间隙为 0 mm，成功边界较窄。 |
+| **核对与背面偏差** | 被拒候选反事实 **17/102 碰撞**；准入候选 **23/64** 背面短超过 5 cm | 正面吻合不保证未知背面正确，核对和完整预演通过后仍可能发生实际碰撞。 |
+| **收紧未知区规则** | 已知 12 场 **3 到达 / 9 停车 / 0 碰撞**；留出 5 场 **0 到达 / 5 停车 / 0 碰撞** | 最终修订降低碰撞，同时牺牲通行；原方法和早期修订的碰撞继续保留。 |
+| **轮腿执行能力** | 轮行 **0/90** · 逐轮跨越 **24/24**；真石 3/3 | 只适用于 10、12、15 cm 三个离散高度及原 Go2W 仿真条件。 |
+| **推翻低石生成路线** | 六轮低门槛生成开发 **7/53 准入** | 已知可见矮坎由轮腿执行；原十二场正式门槛测试已取消，开发准入率与通行成功率分别记录。 |
 
-浏览器运行 **MuJoCo 3.17 实时物理与原轮腿电机控制**。完成初判后，手控独立开放；辅助路线必须通过预演，许可绑定所选模型、路线、停稳起点与本局观测版本。有效补看或改变选择会使旧许可失效。支撑与平衡由控制器辅助，主要跨越动作由玩家触发。
-
-启动默认一份 A 与固定 B，形成 **1 个世界**；加入另一份同图 A 后形成 **2 个世界**，这是当前评审原片与公开整局验收使用的选集。原 R1 的 **12 个世界**作为研究证据另行保留。M20 是试玩显示外观，原 Go2W 动力学与控制保持；游戏成绩和研究结果分别记录。
-
-探索练习支持检查点继续，全程挑战可以争取勘察印记与本机纪录，也可以换一组已有真实模型再试。桌面与 390px 触屏模拟已完成整局验收；手机真机性能尚未测量。
-
-[操作与实现](docs/mission.md) · [练习、挑战与成绩](docs/playability.md) · [当前试玩验收](docs/judges-demo.md) · [加载方式](docs/startup-loading.md)。
+表中秒数为原实验的**仿真时钟**。核对、预演与独立执行分别有记录；这些受控实验尚未证明普遍安全收益、任意环境探索或实机能力。[R1](docs/reviews/RESULT_BEFORESTEP_R1.md) · [R2](docs/reviews/RESULT_BEFORESTEP_R2.md) · [R3](docs/reviews/RESULT_BEFORESTEP_R3.md) · [每个数字的来源与范围](docs/narrative-evidence-20261119.md)。
 
 ## 看模型，也看机器人怎样走
 
@@ -75,18 +80,6 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。它**用 Lux3D
 </picture>
 
 [**模型陈列室**](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html)可以旋转真实返回的 GLB，查看任务和核对信息；[**原运行影片**](https://codezzzsleep.github.io/next-zenith-beforestep/#demo)展示机器人预演之后的独立行动。上图两侧取自保留的 R1 研究影片，使用 Go2W 条件。
-
-同一条 R1 窄道，三种选择留下三种真实结果：
-
-| 策略 | 观察次数 | 原运行结果 |
-| --- | --- | --- |
-| 直接走 · 乐观 | 1 眼 | 80.87 秒碰撞 |
-| 看清再走 · 保守 | 5 眼 | 142.20 秒停车 |
-| 想一想再走 · Lux3D + 完整预演 | 1 眼 | **112.84 秒到达** |
-
-时间是原运行的**仿真时钟**。模型核对通过、预演完成，仍可能猜错背面。R2/R3 的原碰撞与收紧规则后的停车公开保留；这些结论与新游戏成绩分别计数。
-
-[冻结 R1 记录](docs/reviews/RESULT_BEFORESTEP_R1.md) · [R2](docs/reviews/RESULT_BEFORESTEP_R2.md) · [R3](docs/reviews/RESULT_BEFORESTEP_R3.md) · [同路高石与低门槛](https://codezzzsleep.github.io/next-zenith-beforestep/crossing.html)。
 
 <details>
 <summary><b>展开原证据：可见面核对、完整十二世界与三策略终态</b></summary>
@@ -110,6 +103,35 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。它**用 Lux3D
 三种策略各自保留独立结果。视频时间码与终态仿真时间分别标识；[来源、任务与 SHA-256](site/media/home-evidence-20261118/sources.json)可逐项核对。
 
 </details>
+
+**统计口径：累计 491 创建 / 460 成功 GLB / 31 失败**，来自 [production-v6/facts.json](evidence/production-v6/facts.json) 的 `lux.live_ledger_counts`；**V5 归档节点 467 / 438 / 29** 来自 [route/lux-usage.json](evidence/crossing/route/lux-usage.json)。任务、预演世界和游戏局数分别计数。
+
+## 四、在线四站试玩：观测 → 局部想象 → 预测 → 探索
+
+**穿过高石，跨过矮坎，在青色信标里停稳。** [打开四站试玩](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，按 Enter 开始。四站是同一月面任务中的四个交互阶段。
+
+<a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html">
+  <img src="evidence/judges-demo/figures/05-M20-leg-action.jpg" width="100%" alt="真实试玩原片中的 M20 显示外观：玩家逐腿跨过矮坎，动力学与控制沿用 Go2W 条件">
+</a>
+
+1. **观测与初判。** 驾驶到高石观察点，停稳、切到第一视角，留下“能过”“绕开”或“拿不准”。
+2. **局部想象。** 初判后自主选择手控、Lux3D 想象、现场补看或停车；按 Q 对比原图、真实候选与配准占地。
+3. **预测与选择。** 从当前停稳位置完整预演所选全部世界，核对路线能否走完，再决定是否辅助出发；方向键随时接管。
+4. **探索与跨越。** 绕过高石，看清矮坎，亲手触发四腿的 12 个主要动作，再回到轮行驶入信标。
+
+| 操作 | 按键 | 作用 |
+| --- | --- | --- |
+| 开始、驾驶与刹车 | Enter；WASD / 方向键；空格 | 在同一个物理世界中驾驶与停稳 |
+| 空间想象 / 现场补看 | Q / E | 查看已有候选，或采集本局真实射线命中的新表面 |
+| 切换视角 | V | 第一、第三与俯视共用同一实时快照 |
+| 逐腿跨越 | 1–4；J / K / L | 选腿，再抬起、前移、落地 |
+| 探索练习继续 | R | 回到本局实际停稳检查点 |
+
+**手控独立开放**；辅助路线必须通过预演，许可绑定候选、路线、停稳姿态和本局观测版本。有效补看或改变选择会撤销旧许可。探索练习支持检查点继续，全程挑战另记成绩。
+
+试玩采用[云深处山猫 M20 公开模型](https://github.com/DeepRoboticsLab/deep_robotics_model/tree/main/M20)作为**显示外观**，浏览器 MuJoCo 3.17、原 Go2W 动力学、碰撞与 16 个执行器保持。支撑和平衡由控制器辅助，主要跨越动作由玩家触发。桌面与 390px 触屏模拟已完成整局，手机真机性能尚未测量。
+
+[操作与实现](docs/mission.md) · [练习、挑战与成绩](docs/playability.md) · [真实试玩验收](docs/judges-demo.md) · [加载方式](docs/startup-loading.md)。
 
 ## 六个版本，留下每一步的证据
 
@@ -149,7 +171,12 @@ BeforeStep 是 Next Zenith 的月面轮腿机器人仿真作品。它**用 Lux3D
 
 累计账本为 **491 创建 / 460 成功 GLB / 31 失败**；V5 原稿中的 **467 创建 / 438 成功 / 29 失败**属于较早的归档节点。两组身份与统计分别保留，公开介绍使用“400 多次”。[原统计](evidence/production-v6/facts.json) · [V5 原件与配套说明](reports/v5/README.md)。
 
-## 本地运行
+## 五、本地复现：复用已生成资产
+
+浏览器试玩不需要 API 密钥；冻结研究链路可通过 `--reuse-lux` 复用真实资产，无新增云端生成费用。两条启动方式与所需 Git LFS 资源分别列明：
+
+<details>
+<summary><b>展开浏览器试玩、冻结研究链路与依赖</b></summary>
 
 ### 浏览器试玩
 
@@ -189,6 +216,9 @@ git lfs pull --include="evidence/lux3d-demo-v2/**,evidence/production-v6/film/**
 当前 1080p 原片通过上表的固定 Release 下载。V5 原 PDF 随仓库保存；[报告索引](reports/README.md)解释各版文件的来源。
 
 全新克隆的历史验收记录在 [C5-fresh.json](evidence/award/acceptance/C5-fresh.json)，其设备与阶段不代表每台机器的当前耗时。控制、训练与 Arena 的研究作为独立附录保留。
+
+</details>
+
 
 </details>
 

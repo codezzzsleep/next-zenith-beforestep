@@ -73,7 +73,7 @@ git lfs pull --include="site/**,assets/runtime-*.tar.gz,assets/candidates/595*/t
 # 2. 初始化依赖环境（安装到 .venv）
 ./setup.sh
 
-# 3. 完整复现冻结 R1，再启动本地作品站
+# 3. 完整复现 R1 仿真，再启动本地作品站
 MUJOCO_GL=egl .venv/bin/python ops/quickstart.py --reuse-lux --serve
 ```
 

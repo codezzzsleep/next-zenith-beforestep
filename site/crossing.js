@@ -20,7 +20,7 @@ method.onchange=render;render();
 const $=s=>document.querySelector(s),get=async path=>{const r=await fetch(path);if(!r.ok)throw Error(`证据加载失败：${path}`);return r.json();};
 const [low,route,replay,references,story,arena]=await Promise.all([get('evidence/crossing/route/low-stone.json'),get('evidence/crossing/route/summary.json'),get('evidence/crossing/route/replay.json'),get('evidence/crossing/references.json'),fetch('docs/story.md').then(r=>r.text()),get('evidence/learning/arena_v2/closure.json')]);
 Object.assign(outcomes,{arrived:'到达',collision:'出事',stopped:'停下',not_run:'未运行'});
-$('#story-opening').textContent=story.match(/^> (机器人只拍到石头的一面。.*)$/m)[1];$('#route-checkpoint').textContent=route.state;
+$('#story-opening').textContent=story.match(/^> (机器人只拍到石头的一面。.*)$/m)?.[1] || '高石的未知背面需要空间想象，已经看清的矮坎需要轮腿跨越。原输入、核对与执行结果在这里逐项对照。';$('#route-checkpoint').textContent=route.state;
 $('#crossing-summary').textContent=`已完成 ${data.trial_count} 条标定记录。轮行最高曾通过 ${cm(Math.max(data.maximum.fixed.any_pass_height_m,data.maximum.high.any_pass_height_m))} 厘米。必要带内轮行 ${gate.wheel_passes_at_band_heights}/${gate.wheel_trials_at_band_heights}，逐轮跨越 ${gate.band_gait_clean_trials}/${gate.band_gait_trials} 干净通过，真石头 ${gate.conditions[2].count}/${data.rocks.length/3} 干净跨过。`;
 $('#crossing-gate').textContent=`采样端点 ${cm(band.low_m)}–${cm(band.high_m)} 厘米，跨度 ${cm(band.width_m)} 厘米。${gate.necessary_by_height.filter(r=>r.height_m>=band.low_m&&r.height_m<=band.high_m).map(r=>`高 ${cm(r.height_m)}、最大已验进深 ${cm(r.d_max_m)} 厘米`).join('；')}。只验证列出的采样点，闸门按补充说明 1 通过。`;
 $('#support-note').textContent=`动作按三轮支撑设计，单场两轮承重累计最长 ${gate.support_diagnostic.maximum_trial_total_two_loaded_wheels_s.toFixed(3)} 秒，最长连续片段 ${gate.support_diagnostic.longest_two_loaded_wheels_s.toFixed(3)} 秒；这项诊断不增加闸门条件。`;

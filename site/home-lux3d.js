@@ -39,7 +39,7 @@ viewer.addEventListener('load',()=>{
   fitHomeModel();
   poster.hidden=true;
   fallbackActions.hidden=true;
-  status.textContent='拖动旋转 · 滚轮或双指缩放';
+  status.textContent='旋转查看背面 ↻';
   turn.disabled=false;reset.disabled=false;
   document.documentElement.dataset.modelReady='true';
 });
@@ -78,3 +78,5 @@ activeChapter();
 document.documentElement.dataset.homeReady='true';
 
 document.querySelector('#archive-demo')?.addEventListener('toggle',e=>{if(e.target.open&&video.readyState<1){video.preload='metadata';video.load();}if(!e.target.open)video.pause();});
+
+status.addEventListener('click',()=>{if(viewer.loaded&&!viewer.hidden){viewer.yaw+=Math.PI;viewer.requestRender();}else{document.querySelector('#archive-demo').open=true;document.querySelector('#demo').scrollIntoView({behavior:'smooth'});}});

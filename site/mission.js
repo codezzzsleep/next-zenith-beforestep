@@ -1,9 +1,9 @@
 import './gallery-viewer.js?v=judges-comparison-20261118-2';
 import {StartupLoader} from './startup-loader.js?v=cdn-startup-1';
-import {MissionGameplay} from './mission-gameplay.js?v=judges-demo-20261118-1';
+import {MissionGameplay} from './mission-gameplay.js?v=m20-polish-20261119-1';
 import {nextHypotheses} from './mission-run.js?v=judges-demo-20261118-1';
 import {compareRoutes,routeInsight,physicalCollision,rehearsalReason,stopExplanation} from './mission-insight.js?v=judges-demo-20261118-1';
-import {MissionScene} from './mission-scene.js?v=judges-demo-20261118-1';
+import {MissionScene} from './mission-scene.js?v=m20-polish-20261119-1';
 import {MissionStory} from './mission-story.js?v=judges-demo-20261118-1';
 import {SessionObservation} from './mission-observation.js?v=judges-demo-20261118-1';
 import {CURRENT_CAMERA} from './mission-camera.js?v=judges-demo-20261118-1';
@@ -176,7 +176,13 @@ document.addEventListener('keydown',e=>{if(!ready||/INPUT|TEXTAREA|SELECT/.test(
 document.addEventListener('keyup',e=>{keys.delete(e.key.length===1?e.key.toLowerCase():e.key);drive();});$('world').addEventListener('pointerdown',()=>$('world').focus());window.addEventListener('blur',stopInput);document.addEventListener('visibilitychange',()=>{if(document.hidden){stopInput();post({type:'pause',value:true});}});
 function padMove(e){const b=$('joystick').getBoundingClientRect(),r=b.width*.35;let x=(e.clientX-b.left-b.width/2)/r,y=(e.clientY-b.top-b.height/2)/r;const length=Math.hypot(x,y);if(length>1){x/=length;y/=length;}joystick=[x,y];$('stick').style.transform=`translate(${x*r*.75}px,${y*r*.75}px)`;drive();}
 $('joystick').addEventListener('pointerdown',e=>{e.preventDefault();stickPointer=e.pointerId;$('joystick').setPointerCapture(e.pointerId);padMove(e);});$('joystick').addEventListener('pointermove',e=>{if(e.pointerId===stickPointer)padMove(e);});for(const event of ['pointerup','pointercancel','lostpointercapture'])$('joystick').addEventListener(event,()=>{joystick=[0,0];stickPointer=null;$('stick').style.transform='';drive();});$('touch-brake').addEventListener('pointerdown',e=>{e.preventDefault();brake=true;$('touch-brake').setPointerCapture(e.pointerId);$('touch-brake').classList.add('active');drive();});for(const event of ['pointerup','pointercancel','lostpointercapture'])$('touch-brake').addEventListener(event,()=>{brake=false;$('touch-brake').classList.remove('active');drive();});
-function fail(error){story.fail();$('loading').hidden=true;$('fallback').hidden=false;$('fallback-text').textContent=error.message||String(error);document.documentElement.dataset.missionError='true';}
+function fail(error){
+  keys.clear();joystick=[0,0];brake=true;ready=false;
+  worker?.terminate();worker=null;busy=null;
+  story.fail();$('loading').hidden=true;$('fallback').hidden=false;
+  $('fallback-text').textContent=error.message||String(error);
+  document.documentElement.dataset.missionError='true';
+}
 async function init(){try{
   const response=await fetch('startup-assets.json?v=cdn-startup-1');if(!response.ok)throw new Error('启动资源清单暂时无法读取');
   startupLoader=new StartupLoader(await response.json(),{onProgress:p=>{
@@ -227,3 +233,5 @@ async function init(){try{
   let lastDraw=0;function loop(t){if(ready){if(t-lastDraw>mainScene.frameInterval){mainScene.draw();if(brainOpen&&(dreamKind==='route'||busy))dreamScene.draw();lastDraw=t;}if(t-lastUI>150){updateUI();lastUI=t;}animateModel(t);const carry=carryingModel();if(carry){const b=$('brain');b.style.left=anchor.visible&&innerWidth>=900?Math.max(20,Math.min(stage.clientWidth-235,anchor.x+85))+'px':'';b.style.top=anchor.visible&&innerWidth>=900?Math.max(165,Math.min(stage.clientHeight-360,anchor.y-175))+'px':'';b.style.right='';}else{$('brain').style.left='';$('brain').style.top='';}const link=$('brain-link');link.hidden=!((brainOpen||carry)&&anchor.visible);if(!link.hidden){const b=$('brain').getBoundingClientRect(),r=stage.getBoundingClientRect();const tx=b.left-r.left+3,ty=b.top-r.top+(carry?85:150);[...link.children].forEach((dot,i)=>{const f=[.22,.5,.76][i],size=[9,15,23][i];dot.style.left=(anchor.x+(tx-anchor.x)*f)+'px';dot.style.top=(anchor.y+(ty-anchor.y)*f)+'px';dot.style.width=dot.style.height=size+'px';});$('brain').querySelector('.thought-tail').style.visibility='hidden';}else $('brain').querySelector('.thought-tail').style.visibility=carry?'hidden':'visible';const speech=$('speech');speech.hidden=t>speechUntil;if(!speech.hidden){const x=anchor.visible?Math.max(18,Math.min(stage.clientWidth-275,anchor.x-(carry?260:110))):20,y=anchor.visible?Math.max(gameplay.hudBottom+18,Math.min(stage.clientHeight-310,anchor.y-135)):gameplay.hudBottom+18;speech.style.left=x+'px';speech.style.top=y+'px';}}requestAnimationFrame(loop);}requestAnimationFrame(loop);
 }catch(error){fail(error);}}
 init();
+
+$('world').addEventListener('webglcontextlost',event=>{event.preventDefault();fail(new Error('三维画面暂时中断，请刷新页面重试。'));});

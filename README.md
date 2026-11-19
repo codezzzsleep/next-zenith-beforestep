@@ -2,19 +2,19 @@
   <img src="site/favicon.svg" width="64" alt="BeforeStep 图标">
   <p><sub>NEXT ZENITH · AHOLO HACKATHON</sub></p>
   <h1>先见一步 · BeforeStep</h1>
-  <p><b>给轮腿机器人装上“空间前额叶”：以 Aholo Lux3D 三维先验构建局部世界模型，先预测、再探索。</b></p>
+  <p><b>给山猫 M20 轮腿机器人装上“空间前额叶”：以 Aholo Lux3D 三维先验构建局部世界模型，先预测、再探索。</b></p>
   <p>
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html"><b>在线四站试玩</b></a> ·
-    <a href="https://b23.tv/4CAPaLu">B站主宣传片</a> ·
+    <a href="https://b23.tv/4CAPaLu">B 站主宣传片</a> ·
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/report.html">主报告 V5</a><br>
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">作品首页</a> ·
     <a href="https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118">下载原片</a> ·
     <a href="docs/code-tour.md">代码导览</a>
   </p>
   <a href="https://b23.tv/4CAPaLu">
-    <img src="docs/readme/photo-to-model.gif" width="900" alt="真实 R1 研究片段：Go2W 机器人观察岩石，原照片随后对应到 Lux3D 返回的三维模型">
+    <img src="docs/readme/m20-showcase/photo-to-model.gif" width="900" alt="M20 轮腿机器人观察岩石，原照片对应 Lux3D 三维模型">
   </a>
-  <p><sub>原始照片 → 对应 Lux3D 模型 · R1 研究原片 / Go2W · 点击观看作者已发布的 B站主宣传片</sub></p>
+  <p><sub>云深处山猫 M20 · 从二维观测到 Lux3D 空间想象 · 点击观看主宣传片</sub></p>
 </div>
 
 一面照片，多个可能的背面。BeforeStep 用真实 Lux3D 返回的三维形状构建可检验的局部世界，让轮腿机器人先判断、先试路，再决定前进、补看或停下。
@@ -23,7 +23,7 @@
 
 ## 一、从事实出发：只看到一面，怎样判断下一步？
 
-人能借助透视、遮挡和相对大小等线索，从二维图像推断空间；被挡住的背面仍可能有多种形状。[OpenStax Psychology 2e §5.3](https://openstax.org/books/psychology-2e/pages/5-3-vision)介绍这些单眼线索，[PSSNet 形状补全研究](https://proceedings.mlr.press/v155/saund21a.html)展示不完整观测下的多种合理几何假设。
+人能借助透视、遮挡和相对大小等线索，从二维图像推断空间；被挡住的背面仍可能有多种形状。[OpenStax Psychology 2e §5.3](https://openstax.org/books/psychology-2e/pages/5-3-vision) 介绍这些单眼线索，[PSSNet 形状补全研究](https://proceedings.mlr.press/v155/saund21a.html) 展示不完整观测下的多种合理几何假设。
 
 当前月面仿真采用 **10° 低斜阳与部分深度缺失**设定。高石的背面占地影响通道能否通过：原 R1 乐观策略 **80.87 秒碰撞**，保守策略 **142.20 秒停车**，生成候选加完整预演的策略 **112.84 秒到达**。恢复黑影深度的对照也到达，这个结果说明本场景中空间假设的作用。
 
@@ -31,34 +31,16 @@
 
 ## 二、双线交汇：Lux3D 怎样成为“空间前额叶”？
 
-[群核科技发布稿（2026-08-27）](https://www.prnewswire.com/news-releases/manycore-tech-unveils-lux3d-and-an-explicit-3d-path-to-world-models-302861778.html)说明 Lux3D 混合使用生成数据与物理世界重建数据训练，以提升几何和视觉一致性，并介绍其显式三维世界模型路线。[World Labs](https://worldlabs.ai/blog/marble-world-model)也将重建、生成和仿真三维世界纳入世界模型语境。
+[群核科技发布稿（2026-08-27）](https://www.prnewswire.com/news-releases/manycore-tech-unveils-lux3d-and-an-explicit-3d-path-to-world-models-302861778.html) 说明 Lux3D 混合使用生成数据与物理世界重建数据训练，以提升几何和视觉一致性，并介绍其显式三维世界模型路线。[World Labs](https://worldlabs.ai/blog/marble-world-model) 也将重建、生成和仿真三维世界纳入世界模型语境。
 
 BeforeStep 把这份**三维先验**接入机器人局部建模：Lux3D 生成物体几何，已有 RGB-D、位姿与地形提供尺度和配准依据，系统核对可见部分并计算路线，MuJoCo 计算运动和接触。“空间前额叶”是这个内部想象与行动预测模块的比喻。
 
-```mermaid
-flowchart TB
-    A["二维观测<br/>只见局部表面"] --> B["Lux3D 三维候选<br/>想象可能的背面"]
-    B --> C["观测核对<br/>尺度 · 轮廓 · 可见面"]
-    C --> D["局部世界<br/>配准 · 占地 · 路线"]
-    D --> E["MuJoCo 预测<br/>完整预演所选全部世界"]
-    E -->|全部通过| F["探索<br/>绕高石 · 轮腿跨矮坎"]
-    E -->|风险或信息不足| G["补看 · 换假设 · 停下"]
-    G --> C
-```
-
-**Lux3D 接收普通 RGB 图片**，接口无需上传深度图；本项目的完整链路仍使用深度辅助配准与核对。当前试玩复用已有真实候选；原 R1 的六份 A × 两份 B 组成 **12 个世界**，当前试玩初始 **1 世界**、同图对比 **2 世界**，分别计数。[官方 OpenAPI](https://labs.aholo.ai/api-docs/specifications/services/lux3d/openapi.en.json) · [研究与当前游戏代码导览](docs/code-tour.md)。
-
-<details>
-<summary><b>看真实四步图：照片 → 模型 → 十二世界 → 原场景行动</b></summary>
-
 <picture>
-  <source media="(max-width: 600px)" srcset="docs/readme/showcase/flow-mobile.png">
-  <img src="docs/readme/showcase/flow-desktop.png" width="100%" alt="四步真实链路：原 RGB 照片 → Lux3D 三维形状假设 → 完整十二世界物理预演 → 原场景中的独立行动">
+  <source media="(max-width: 600px)" srcset="docs/assets/forebrain-pipeline-mobile.svg">
+  <img src="docs/assets/forebrain-pipeline.svg" alt="BeforeStep 空间前额叶五步推理链路" width="100%" />
 </picture>
 
-四步图复用原 R1 照片、同任务模型、完整十二世界帧与独立执行画面；[来源与 SHA](docs/readme/showcase/sources.json)可复查。
-
-</details>
+**Lux3D 接收普通 RGB 图片**，接口无需上传深度图；本项目的完整链路仍使用深度辅助配准与核对。当前试玩复用已有真实候选；原 R1 的六份 A × 两份 B 组成 **12 个世界**，当前试玩初始 **1 世界**、同图对比 **2 世界**，分别计数。[官方 OpenAPI](https://labs.aholo.ai/api-docs/specifications/services/lux3d/openapi.en.json) · [研究与当前游戏代码导览](docs/code-tour.md)。
 
 ## 三、核心实证：保留成功，也保留自我推翻
 
@@ -67,40 +49,40 @@ flowchart TB
 | **R1 窄道对比** | 乐观 80.87s 碰撞 · 保守 142.20s 停车 · **112.84s 到达**；12 世界完整预演 | 一次观察后的空间假设支持绕行；最小三维间隙 47.541 mm，二维矩形包络间隙为 0 mm，成功边界较窄。 |
 | **核对与背面偏差** | 被拒候选反事实 **17/102 碰撞**；准入候选 **23/64** 背面短超过 5 cm | 正面吻合不保证未知背面正确，核对和完整预演通过后仍可能发生实际碰撞。 |
 | **收紧未知区规则** | 已知 12 场 **3 到达 / 9 停车 / 0 碰撞**；留出 5 场 **0 到达 / 5 停车 / 0 碰撞** | 最终修订降低碰撞，同时牺牲通行；原方法和早期修订的碰撞继续保留。 |
-| **轮腿执行能力** | 轮行 **0/90** · 逐轮跨越 **24/24**；真石 3/3 | 只适用于 10、12、15 cm 三个离散高度及原 Go2W 仿真条件。 |
+| **轮腿执行能力** | 轮行 **0/90** · 逐轮跨越 **24/24**；真石 3/3 | 只适用于 10、12、15 cm 三个离散高度及冻结轮腿仿真条件。 |
 | **推翻低石生成路线** | 六轮低门槛生成开发 **7/53 准入** | 已知可见矮坎由轮腿执行；原十二场正式门槛测试已取消，开发准入率与通行成功率分别记录。 |
 
 表中秒数为原实验的**仿真时钟**。核对、预演与独立执行分别有记录；这些受控实验尚未证明普遍安全收益、任意环境探索或实机能力。[R1](docs/reviews/RESULT_BEFORESTEP_R1.md) · [R2](docs/reviews/RESULT_BEFORESTEP_R2.md) · [R3](docs/reviews/RESULT_BEFORESTEP_R3.md) · [每个数字的来源与范围](docs/narrative-evidence-20261119.md)。
 
-## 看模型，也看机器人怎样走
+## 看模型，也看 M20 怎样走
 
 <picture>
-  <source media="(max-width: 600px)" srcset="docs/readme/showcase/model-action-mobile.jpg">
-  <img src="docs/readme/showcase/model-action-desktop.jpg" width="100%" alt="原模型与原行动对照：官方 Aholo Viewer 展示任务 5958685 的真实模型；Go2W 在原 R1 场景执行生成模型支持的绕行">
+  <source media="(max-width: 600px)" srcset="docs/readme/m20-showcase/model-action-mobile.jpg">
+  <img src="docs/readme/m20-showcase/model-action-desktop.jpg" width="100%" alt="Lux3D 原模型与 M20 探索行动对照">
 </picture>
 
-[**模型陈列室**](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html)可以旋转真实返回的 GLB，查看任务和核对信息；[**原运行影片**](https://codezzzsleep.github.io/next-zenith-beforestep/#demo)展示机器人预演之后的独立行动。上图两侧取自保留的 R1 研究影片，使用 Go2W 条件。
+[**模型陈列室**](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html) 可以旋转真实返回的 GLB，查看任务和核对信息；[**M20 探索演示**](https://codezzzsleep.github.io/next-zenith-beforestep/#demo) 展示机器人预演之后的独立行动。照片、生成模型与 M20 的探索，在同一条推理链路里相遇。
 
 <details>
-<summary><b>展开原证据：可见面核对、完整十二世界与三策略终态</b></summary>
+<summary><b>展开证据：可见面核对、完整十二世界与 M20 行动</b></summary>
 
 ### 01 / 核对看见的一面
 
-![同一眼 RGB 原图与通过、被拒的两份真实候选](site/media/home-evidence-20261118/01-observation-and-candidates.jpg)
+![同一眼 RGB 原图与通过、被拒的两份真实候选](site/media/m20-showcase/01-observation-and-candidates.jpg)
 
 同字节原图的任务 5958654 通过核对，5958642 被拒。冻结轮廓门槛为 0.7068，原测量与拒绝原因保持。
 
 ### 02 / 在可能的世界里完整试走
 
-![原 R1 完整四乘三十二个候选世界的预演](site/media/home-evidence-20261118/02-twelve-world-rehearsals.jpg)
+![M20 在原 R1 四乘三十二个候选世界中的预演](site/media/m20-showcase/02-twelve-world-rehearsals.jpg)
 
-六份 A × 两份 B；全图保留四乘三十二格，取自原预演影片的完整帧。
+六份 A × 两份 B；四乘三十二格使用现有 M20 外观，逐一展示完整预演中的候选世界。
 
-### 03 / 回到原场景检验判断
+### 03 / 让 M20 选择下一步行动
 
-![R1 乐观碰撞、保守停车与 Lux3D 到达的三策略原运行](site/media/home-evidence-20261118/03-three-real-outcomes.jpg)
+![M20 观测、空间想象与探索行动](site/media/m20-showcase/03-exploration-actions.jpg)
 
-三种策略各自保留独立结果。视频时间码与终态仿真时间分别标识；[来源、任务与 SHA-256](site/media/home-evidence-20261118/sources.json)可逐项核对。
+从观测、空间想象到探索，每一步都支持你的行动选择。[来源、任务与 SHA-256](site/media/m20-showcase/sources.json) 可逐项核对。
 
 </details>
 
@@ -111,7 +93,7 @@ flowchart TB
 **穿过高石，跨过矮坎，在青色信标里停稳。** [打开四站试玩](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，按 Enter 开始。四站是同一月面任务中的四个交互阶段。
 
 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html">
-  <img src="evidence/judges-demo/figures/05-M20-leg-action.jpg" width="100%" alt="真实试玩原片中的 M20 显示外观：玩家逐腿跨过矮坎，动力学与控制沿用 Go2W 条件">
+  <img src="docs/readme/m20-showcase/m20-legs.jpg" width="100%" alt="真实试玩原片中的 M20 轮腿机器人：玩家逐腿跨过矮坎">
 </a>
 
 1. **观测与初判。** 驾驶到高石观察点，停稳、切到第一视角，留下“能过”“绕开”或“拿不准”。
@@ -129,7 +111,7 @@ flowchart TB
 
 **手控独立开放**；辅助路线必须通过预演，许可绑定候选、路线、停稳姿态和本局观测版本。有效补看或改变选择会撤销旧许可。探索练习支持检查点继续，全程挑战另记成绩。
 
-试玩采用[云深处山猫 M20 公开模型](https://github.com/DeepRoboticsLab/deep_robotics_model/tree/main/M20)作为**显示外观**，浏览器 MuJoCo 3.17、原 Go2W 动力学、碰撞与 16 个执行器保持。支撑和平衡由控制器辅助，主要跨越动作由玩家触发。桌面与 390px 触屏模拟已完成整局，手机真机性能尚未测量。
+试玩使用[云深处山猫 M20 公开外观模型](https://github.com/DeepRoboticsLab/deep_robotics_model/tree/main/M20)，运动与接触由浏览器中的 MuJoCo 3.17 轮腿仿真计算，保留既有 16 个执行器与控制器。支撑和平衡由控制器辅助，主要跨越动作由玩家触发。桌面与 390px 触屏模拟已完成整局，手机真机性能尚未测量。
 
 [操作与实现](docs/mission.md) · [练习、挑战与成绩](docs/playability.md) · [真实试玩验收](docs/judges-demo.md) · [加载方式](docs/startup-loading.md)。
 
@@ -139,8 +121,8 @@ flowchart TB
 
 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/award-assets.html">
   <picture>
-    <source media="(max-width: 600px)" srcset="docs/readme/showcase/versions-mobile.png">
-    <img src="docs/readme/showcase/versions-desktop.png" width="100%" alt="六个核心技术版本的真实模型与输入：V6 观测融合、V7 双视角核对、V8 窄道候选、v0.1 模块化预演、v0.2 完整通行、v0.3 训练控制器">
+    <source media="(max-width: 600px)" srcset="docs/readme/m20-showcase/versions-mobile.png">
+    <img src="docs/readme/m20-showcase/versions-desktop.png" width="100%" alt="六个核心技术版本的真实模型与输入：V6 观测融合、V7 双视角核对、V8 窄道候选、v0.1 模块化预演、v0.2 完整通行、v0.3 训练控制器">
   </picture>
 </a>
 
@@ -162,14 +144,14 @@ flowchart TB
 | 材料 | 当前入口 |
 | --- | --- |
 | **主报告 V5 · 11 页** | [逐页阅读](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [原 PDF](reports/v5/report.pdf) · [报告版本与原文件](reports/README.md) |
-| **B站主宣传片** | [作者已发布的视频](https://b23.tv/4CAPaLu)（BV1aYsw6REh7） |
+| **B 站主宣传片** | [作者已发布的视频](https://b23.tv/4CAPaLu)（BV1aYsw6REh7） |
 | **连续 1080p 原片与补拍** | [固定 Release 下载](https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118) · [母片、五图、时间码与研究索引](evidence/judges-demo/README.md) |
 | 导演剪辑素材指南 | [112 秒成片的原素材与镜头顺序](docs/demo-edit-guide.md) |
 | 历史影片与报告 | [185 秒完整作品 Demo](evidence/production-v6/README.md) · [Lux3D 配乐版](evidence/lux3d-demo-v2/README.md) · [V3/V4 原报告](reports/README.md) |
 
-母片是约 5 分钟的连续原速仿真录制，另有清楚的模型/地图补拍、停车分支与五张图。最终 112 秒配音、音乐与字幕成片由导演制作；[原片目录](evidence/judges-demo/README.md)记录实际交付与下载核验范围。
+母片是约 5 分钟的连续原速仿真录制，另有清楚的模型/地图补拍、停车分支与五张图。最终 112 秒配音、音乐与字幕成片由导演制作；[原片目录](evidence/judges-demo/README.md) 记录实际交付与下载核验范围。
 
-累计账本为 **491 创建 / 460 成功 GLB / 31 失败**；V5 原稿中的 **467 创建 / 438 成功 / 29 失败**属于较早的归档节点。两组身份与统计分别保留，公开介绍使用“400 多次”。[原统计](evidence/production-v6/facts.json) · [V5 原件与配套说明](reports/v5/README.md)。
+累计账本为 **491 创建 / 460 成功 GLB / 31 失败**；V5 原稿中的 **467 创建 / 438 成功 / 29 失败**属于较早的归档节点。两组身份与统计分别保留，公开介绍统一为“累计 491 个真实任务（V5 归档 467 个）”。[原统计](evidence/production-v6/facts.json) · [V5 原件与配套说明](reports/v5/README.md)。
 
 ## 五、本地复现：复用已生成资产
 
@@ -202,7 +184,7 @@ git lfs pull --include="assets/runtime-*.tar.gz,assets/candidates/595*/tex_mesh.
 MUJOCO_GL=egl .venv/bin/python ops/quickstart.py --reuse-lux --serve
 ```
 
-命令完成冻结 R1 的观测、自检、十二世界完整预演与独立执行，随后在 <http://127.0.0.1:8080> 提供本地作品页。实际耗时随设备变化；[逐步命令、源码与输出位置](docs/code-tour.md)可用于复查。
+命令完成冻结 R1 的观测、自检、十二世界完整预演与独立执行，随后在 <http://127.0.0.1:8080> 提供本地作品页。实际耗时随设备变化；[逐步命令、源码与输出位置](docs/code-tour.md) 可用于复查。
 
 <details>
 <summary><b>依赖与更多历史素材</b></summary>
@@ -213,7 +195,7 @@ Ubuntu/Debian 缺少 `venv` 时，安装与 Python 3.12 对应的 `python3.12-ve
 git lfs pull --include="evidence/lux3d-demo-v2/**,evidence/production-v6/film/**" --exclude=""
 ```
 
-当前 1080p 原片通过上表的固定 Release 下载。V5 原 PDF 随仓库保存；[报告索引](reports/README.md)解释各版文件的来源。
+当前 1080p 原片通过上表的固定 Release 下载。V5 原 PDF 随仓库保存；[报告索引](reports/README.md) 解释各版文件的来源。
 
 全新克隆的历史验收记录在 [C5-fresh.json](evidence/award/acceptance/C5-fresh.json)，其设备与阶段不代表每台机器的当前耗时。控制、训练与 Arena 的研究作为独立附录保留。
 

@@ -98,7 +98,7 @@ def main() -> None:
             check("frozen SHA unchanged", identity(path)[0] == record["sha256"], record["path"])
 
     homepage = Page((root / "site/index.html").read_text())
-    evidence_images = [image for image in homepage.images if image.get("src", "").startswith("media/home-evidence-20261118/")]
+    evidence_images = [image for image in homepage.images if image.get("src", "").startswith("media/home-evidence-20261118/") or re.match(r"media/m20-showcase/(01|02|03)-", image.get("src", ""))]
     check("three homepage evidence images", len(evidence_images) == 3)
     check("same 1600 by 900 HTML image size", all(image.get("width") == "1600" and image.get("height") == "900" for image in evidence_images))
     sources = json.loads((root / "site/media/home-evidence-20261118/sources.json").read_text())
@@ -110,6 +110,23 @@ def main() -> None:
         if path.is_file():
             digest, size = identity(path)
             check("evidence output SHA", digest == record["sha256"] and size == record["bytes"], record["path"])
+
+    if manifest.get("presentation", {}).get("robot") == "M20":
+        display = json.loads((root / manifest["presentation"]["display_manifest"]).read_text())
+        check("M20 twelve-world grid", display["candidate_worlds"]["worlds"] == 12 and display["candidate_worlds"]["all_complete"])
+        for record in display["files"]:
+            path = root / record["path"]
+            check("current M20 visual retained", path.is_file(), record["path"])
+            if path.is_file():
+                check("current M20 visual SHA", identity(path) == (record["sha256"], record["bytes"]), record["path"])
+        readme_text = (root / "README.md").read_text()
+        check("custom forebrain SVG replaces Mermaid", 'src="docs/assets/forebrain-pipeline.svg"' in readme_text and "```mermaid" not in readme_text)
+        readme_media = json.loads((root / manifest["presentation"]["readme_media_manifest"]).read_text())
+        for record in readme_media["files"]:
+            path = root / record["path"]
+            check("M20 README source asset exists", path.is_file(), record["path"])
+            if path.is_file():
+                check("M20 README source asset SHA", identity(path) == (record["sha256"], record["bytes"]), record["path"])
 
     for filename in ["site/report.html", "site/project-report.html"]:
         text = (root / filename).read_text()

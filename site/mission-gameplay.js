@@ -217,7 +217,7 @@ export class MissionGameplay {
     const result = this.run.summary();
     if (!result.completed) return;
     const badges = result.badges.filter(b => b.earned).map(b => b.name).join(' / ');
-    const text = `先见一步 · ${MODE_NAMES[result.mode]}\n局内成绩 ${result.score}/100 · 行动仿真 ${formatTime(result.actionSeconds)}\n${badges}\nMuJoCo 仿真游玩成绩，与原研究实验分开。\n来开机器狗：https://codezzzsleep.github.io/next-zenith-beforestep/play.html\nB站主宣传片：${BILIBILI}`;
+    const text = `先见一步 · ${MODE_NAMES[result.mode]}\n局内成绩 ${result.score}/100 · 行动仿真 ${formatTime(result.actionSeconds)}\n${badges}\nMuJoCo 仿真游玩成绩，与原研究实验分开。\n来开轮腿机器人：https://codezzzsleep.github.io/next-zenith-beforestep/play.html\nB站主宣传片：${BILIBILI}`;
     try {
       await navigator.clipboard.writeText(text);
       $('copy-game-result').textContent = '成绩已复制';

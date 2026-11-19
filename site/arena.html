@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.svg"><title>随机月面竞技场 · BeforeStep</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="site-theme.css"><link rel="stylesheet" href="arena.css"></head>
-<body><header class="bar"><a class="brand" href="index.html">先见一步<span>BeforeStep</span></a><nav><a href="docs/arena.md">实验报告</a><a href="docs/arena-protocol.md">预注册</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码</a></nav></header>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="icon" href="favicon.svg"><title>随机月面竞技场 · BeforeStep</title><link rel="stylesheet" href="style.css"><link rel="stylesheet" href="site-theme.css"><link rel="stylesheet" href="arena.css"><link rel="stylesheet" href="m20-polish.css?v=20261119-1"><link rel="stylesheet" href="report-look.css?v=report-v3-1"></head>
+<body class="report-look"><header class="bar"><a class="brand" href="index.html">先见一步<span>BeforeStep</span></a><nav><a href="docs/arena.md">实验报告</a><a href="docs/arena-protocol.md">预注册</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码</a></nav></header>
 <main>
 <section class="hero"><div class="eyebrow">ARENA V2 / FINITE OBSERVATIONS</div><h1>换一个月面，<br><em>看不见的地方怎么走？</em></h1><p>只有停下看一眼，才有新观测。黑影里没有深度，途中没有自动避障。卷积模型结合真实 Lux3D 想象，预测未知格子的占据概率；数值代码负责规划和动作。</p><p class="arena-note">这里的 Lux3D 结果来自既有真实生成，连同原拍摄视角与太阳方向一起移植到新布局。没有为这些新照片重新生成模型。</p><p id="arena-headline" aria-live="polite">正在加载已完成的实验记录…</p></section>
 <section><div class="eyebrow">01 / SAME UNSEEN WORLDS</div><h2>同样的月面，逐场比较。</h2><p>结果包括不可达、碰撞和停车。LLM 的成对比较子集另列分母；能看见黑影内部的参照车用于检查上限。</p><div id="arena-results" class="arena-results"></div><p id="arena-verdict"></p><p id="arena-effects"></p></section>

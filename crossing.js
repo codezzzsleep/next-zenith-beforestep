@@ -1,3 +1,5 @@
+const overlayImage=document.querySelector('#low-overlay-image');
+if(overlayImage){overlayImage.addEventListener('load',()=>{overlayImage.hidden=false;overlayImage.style.removeProperty('display');});overlayImage.addEventListener('error',()=>{overlayImage.hidden=true;overlayImage.style.display='none';});}
 const data=await fetch('evidence/crossing/calibration/capability.json').then(r=>{if(!r.ok)throw Error('实测数据加载失败');return r.json()});
 const gate=await fetch('evidence/crossing/calibration/gate.json').then(r=>{if(!r.ok)throw Error('闸门判定加载失败');return r.json()});
 const names={fixed:'固定常规姿态',high:'固定高姿态',gait:'逐轮跨越'};

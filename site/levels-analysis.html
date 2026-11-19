@@ -15,7 +15,7 @@
 <p id="level-scope-note" class="caption" hidden></p>
 <ol class="level-steps" aria-label="关卡步骤"><li data-step="watch">看</li><li data-step="choose">选</li><li data-step="walk">走</li><li data-step="reveal">揭晓</li><li data-step="score">记分</li></ol>
 <div id="level-error" class="level-error" hidden>关卡数据尚未加载，请检查实验数据是否完整。</div>
-<div class="level-observation"><figure><img id="level-image" alt="机器人第一眼的实际画面"><figcaption>机器人第一眼</figcaption></figure><figure><canvas id="level-map" width="1000" height="420" aria-label="第一眼观测地图与实际轨迹"></canvas><figcaption id="level-map-caption">紫色是视线遮挡，棕色是太阳黑影，灰色是已知禁行区。</figcaption></figure></div>
+<div class="level-observation"><figure><img id="level-image" data-pending-image hidden style="display:none" alt="机器人第一眼的实际画面"><figcaption>机器人第一眼</figcaption></figure><figure><canvas id="level-map" width="1000" height="420" aria-label="第一眼观测地图与实际轨迹"></canvas><figcaption id="level-map-caption">紫色是视线遮挡，棕色是太阳黑影，灰色是已知禁行区。</figcaption></figure></div>
 <div id="level-watch-controls"><button class="button" id="level-choose">准备做选择</button></div>
 <div id="level-choice-controls" hidden><h2>你会怎么走？</h2><div class="level-choice-grid"><button data-level-choice="optimistic"><strong>直接走</strong><span>沿当前可通行的路线前进。</span></button><button data-level-choice="conservative"><strong>多看几眼再走</strong><span>保持未知，移动到安全位置补看。</span></button><button data-level-choice="imagination"><strong>想一想再走</strong><span>让几何候选接受自检与物理预演。</span></button></div></div>
 <div id="level-walk-controls" hidden><div class="playback"><button id="level-play">Ⅱ 暂停</button><input id="level-scrub" type="range" min="0" max="1000" value="0" aria-label="实际轨迹进度"><span id="level-time">0.0 s</span><button id="level-finish">查看这次结果</button></div><p id="level-run-status" aria-live="polite"></p><button class="button" id="level-reveal" hidden>揭晓这一关</button><p class="caption">回放来自同一场景、同一规则控制器的实际仿真轨迹。</p></div>
@@ -27,4 +27,4 @@
 </section></main><!-- HOME-FOOTER-START --><footer class="foot">
   <p>Next Zenith 的 Aholo Lux3D 黑客松作品。页面上的照片、模型、轨迹和数字，全部来自真实运行记录。</p>
   <p><a href="report.html">技术报告</a><a href="https://github.com/codezzzsleep/next-zenith-beforestep">源码与证据</a></p>
-</footer><!-- HOME-FOOTER-END --><script type="module" src="levels.js"></script><script type="module" src="vendor/model-viewer.min.js"></script></body></html>
+</footer><!-- HOME-FOOTER-END --><script type="module" src="levels.js"></script><script type="module" src="vendor/model-viewer.min.js"></script><script type="module" src="m20-image-ready.js?v=20261119-1"></script></body></html>

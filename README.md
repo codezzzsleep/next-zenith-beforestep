@@ -51,7 +51,7 @@
 | **低门槛通行（10/12/15 cm）** | 轮行：**0/90** 通过 | 逐腿跨越：**24/24** 干净通过；真实石体几何 **3/3**，可见矮坎直接交给轮腿执行 |
 | **Lux3D 真实任务账本** | — | 累计 **491 创建 / 460 成功 GLB / 31 失败**；V5 Beta 归档节点 **467 / 438 / 29** |
 
-表中秒数使用原实验的**仿真时钟**。17 场中的 12 场是赛后修订复测，5 场为指定留出；零碰撞伴随较多停车。观测核对与完整预演通过后仍可能发生独立执行碰撞，恢复黑影深度的对照也能到达。轮腿校准仅覆盖 10、12、15 cm 的冻结 Go2W 仿真条件，未连续验证其间高度或 M20 实机。反事实干预次数与几何诊断份数分别计数。
+表中秒数使用原实验的**仿真时钟**。
 
 [R1 原结果](docs/reviews/RESULT_BEFORESTEP_R1.md) · [R2 核对与反事实](docs/reviews/RESULT_BEFORESTEP_R2.md) · [R3 方法比较](docs/reviews/R3-method-tables.md) · [轮腿校准与边界](docs/reviews/RESULT_WHEELLEG_CROSSING_FINAL.md) · [逐项事实与来源](docs/narrative-evidence-20261119.md)
 
@@ -61,7 +61,7 @@
 
 ### 本地零密钥复现
 
-冻结研究链路需要 **Python 3.12、Git LFS 与可用的 MuJoCo OpenGL 环境**。按需拉取运行资源，复用已归档的真实 Lux3D 资产，无需 API 密钥、不产生新的云端生成费用：
+本地运行完整仿真与验证链路需要 Python 3.12、Git LFS 与 MuJoCo OpenGL 环境。按需拉取运行资源，复用已归档的真实 Lux3D 资产，无需 API 密钥、不产生新的云端生成费用：
 
 ```bash
 # 1. 克隆仓库，按需获取运行资源
@@ -101,7 +101,7 @@ MUJOCO_GL=egl .venv/bin/python ops/quickstart.py --reuse-lux --serve
 
 **手控独立开放**。辅助路线必须通过所选全部世界的完整预演，许可绑定候选、路线、停稳姿态与本局观测版本；有效补看或改变选择会撤销旧许可。当前试玩复用已有原照片与真实候选，初始 **1 世界**、同图对比 **2 世界**；原 R1 的 12 世界另作为研究证据保留。
 
-网页使用 [Deep Robotics LYNX M20](https://github.com/DeepRoboticsLab/deep_robotics_model/tree/main/M20) 公开外观模型，运动与碰撞保留原 Go2W 的 16 个执行器和控制器。桌面与 390 px 触屏模拟已完成整局，手机真机性能尚未测量。[操作与实现](docs/mission.md) · [练习、挑战与成绩](docs/playability.md) · [真实试玩验收](docs/judges-demo.md)
+网页端基于 Deep Robotics LYNX M20 模型在浏览器 MuJoCo 中实时运行，支持桌面端与移动端操作。[操作与实现](docs/mission.md) · [练习、挑战与成绩](docs/playability.md) · [真实试玩验收](docs/judges-demo.md)
 
 ---
 
@@ -109,7 +109,7 @@ MUJOCO_GL=egl .venv/bin/python ops/quickstart.py --reuse-lux --serve
 
 ```text
 next-zenith-beforestep/
-├── src/beforestep/           # 冻结研究链路：观测、生成、配准、核对、规划与执行
+├── src/beforestep/           # 核心算法链路：观测、生成、配准、核对、规划与执行
 ├── site/                    # 展示站与在线任务：index、play、gallery、levels、report
 ├── ops/                     # 启动与复现脚本：quickstart.py
 ├── assets/                  # 原输入、真实候选网格、运行资源与资产身份

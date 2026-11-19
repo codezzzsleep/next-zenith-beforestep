@@ -1,0 +1,30 @@
+/* Shared finishing layer for the M20 exploration site. */
+img,video,canvas{max-width:100%}
+body.report-look .gallery-view{height:auto;aspect-ratio:4/3;background:#0b1320}
+body.report-look .gallery-view>img{object-fit:contain;background:#0b1320}
+body.report-look .gallery-source-pair img{object-fit:contain;background:#0b1320}
+body.report-look .home-hero .model-status{pointer-events:auto;min-height:32px;padding:7px 11px;border:1px solid #e09f3e;border-radius:5px;font-size:11px;color:#f0cb8f;background:#172235}
+body.report-look .home-hero .model-status:hover{background:#33291d;color:#fff}
+body.report-look .replay-screen video{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:#0b1320}
+body.report-look .steps .evidence-image{display:block;overflow:visible;background:#f5f2ea}
+body.report-look .steps .evidence-image img{display:block;width:100%;height:auto;object-fit:contain}
+body.report-look :is(.section-head,.collection-head){gap:24px}
+body.report-look :is(.section-head h2,.collection-head h2){margin-bottom:14px}
+.m20-video-note{font-size:12px;line-height:1.8;color:#6f7888;margin:14px 0}
+.replay-context img{display:block;width:100%;height:auto;object-fit:contain;min-width:0}
+.m20-records{margin-top:38px;padding-top:28px;border-top:1px solid #e3dfd3}
+.m20-records table{border-collapse:collapse;width:100%;font-size:13px;line-height:1.8}
+.m20-records th,.m20-records td{text-align:left;padding:13px 16px;border-bottom:1px solid #e3dfd3}
+.m20-records th{background:#f5f2ea;font-weight:700}
+.m20-records .arrived{color:#1f6f5f;font-weight:700}
+.m20-chapters{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:15px 0}
+.m20-chapters button{padding:13px 15px;border:1px solid #e3dfd3;border-radius:6px;background:#f5f2ea;color:#1b2433;text-align:left;font:inherit;cursor:pointer}
+.m20-chapters button[aria-pressed="true"]{background:#fff1d7;border-color:#e09f3e}
+.m20-chapters span{display:block;margin-top:5px;font-size:11px;color:#6f7888}
+@media(max-width:700px){
+  .m20-chapters{grid-template-columns:1fr 1fr;gap:8px}
+  .m20-chapters button{font-size:13px;padding:12px}
+  .m20-records{overflow:auto}
+  .m20-records th,.m20-records td{padding:11px 10px;font-size:12px}
+  body.report-look .gallery-view{aspect-ratio:1.2}
+}

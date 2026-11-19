@@ -5,14 +5,14 @@
   <p><b>给山猫 M20 轮腿机器人装上“空间前额叶”：以 Aholo Lux3D 三维先验构建局部世界模型，先预测、再探索。</b></p>
   <p>
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html"><b>在线四站试玩</b></a> ·
-    <a href="https://b23.tv/4CAPaLu">B 站主宣传片</a> ·
-    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/report.html">主报告 V5</a><br>
+    <a href="https://www.bilibili.com/video/BV1YZst6eEZk/">B 站主宣传片</a> ·
+    <a href="https://codezzzsleep.github.io/next-zenith-beforestep/report.html">主报告 V5 Beta</a><br>
     <a href="https://codezzzsleep.github.io/next-zenith-beforestep/">作品首页</a> ·
     <a href="https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118">下载原片</a> ·
     <a href="docs/code-tour.md">代码导览</a>
   </p>
-  <a href="https://b23.tv/4CAPaLu">
-    <img src="docs/readme/m20-showcase/photo-to-model.gif" width="900" alt="M20 轮腿机器人观察岩石，原照片对应 Lux3D 三维模型">
+  <a href="https://www.bilibili.com/video/BV1YZst6eEZk/">
+    <img src="docs/readme/m20-bright-20261119/photo-to-model.gif" width="900" alt="M20 轮腿机器人观察岩石，原照片对应 Lux3D 三维模型">
   </a>
   <p><sub>云深处山猫 M20 · 从二维观测到 Lux3D 空间想象 · 点击观看主宣传片</sub></p>
 </div>
@@ -57,8 +57,8 @@ BeforeStep 把这份**三维先验**接入机器人局部建模：Lux3D 生成�
 ## 看模型，也看 M20 怎样走
 
 <picture>
-  <source media="(max-width: 600px)" srcset="docs/readme/m20-showcase/model-action-mobile.jpg">
-  <img src="docs/readme/m20-showcase/model-action-desktop.jpg" width="100%" alt="Lux3D 原模型与 M20 探索行动对照">
+  <source media="(max-width: 600px)" srcset="docs/readme/m20-bright-20261119/model-action-mobile.jpg">
+  <img src="docs/readme/m20-bright-20261119/model-action-desktop.jpg" width="100%" alt="Lux3D 原模型与 M20 探索行动对照">
 </picture>
 
 [**模型陈列室**](https://codezzzsleep.github.io/next-zenith-beforestep/gallery.html) 可以旋转真实返回的 GLB，查看任务和核对信息；[**M20 探索演示**](https://codezzzsleep.github.io/next-zenith-beforestep/#demo) 展示机器人预演之后的独立行动。照片、生成模型与 M20 的探索，在同一条推理链路里相遇。
@@ -74,26 +74,26 @@ BeforeStep 把这份**三维先验**接入机器人局部建模：Lux3D 生成�
 
 ### 02 / 在可能的世界里完整试走
 
-![M20 在原 R1 四乘三十二个候选世界中的预演](site/media/m20-showcase/02-twelve-world-rehearsals.jpg)
+![M20 在原 R1 四乘三十二个候选世界中的预演](site/media/v5beta-bright-20261119/02-twelve-world-rehearsals.jpg)
 
 六份 A × 两份 B；四乘三十二格使用现有 M20 外观，逐一展示完整预演中的候选世界。
 
 ### 03 / 让 M20 选择下一步行动
 
-![M20 观测、空间想象与探索行动](site/media/m20-showcase/03-exploration-actions.jpg)
+![M20 带着局部空间想象在月面探索](site/media/v5beta-bright-20261119/03-exploration-actions.jpg)
 
-从观测、空间想象到探索，每一步都支持你的行动选择。[来源、任务与 SHA-256](site/media/m20-showcase/sources.json) 可逐项核对。
+从观测、空间想象到探索，每一步都支持你的行动选择。[来源、任务与 SHA-256](docs/readme/m20-bright-20261119/sources.json) 可逐项核对。
 
 </details>
 
-**统计口径：累计 491 创建 / 460 成功 GLB / 31 失败**，来自 [production-v6/facts.json](evidence/production-v6/facts.json) 的 `lux.live_ledger_counts`；**V5 归档节点 467 / 438 / 29** 来自 [route/lux-usage.json](evidence/crossing/route/lux-usage.json)。任务、预演世界和游戏局数分别计数。
+**统计口径：累计 491 创建 / 460 成功 GLB / 31 失败**，来自 [production-v6/facts.json](evidence/production-v6/facts.json) 的 `lux.live_ledger_counts`；**V5 Beta 归档节点 467 / 438 / 29** 来自 [route/lux-usage.json](evidence/crossing/route/lux-usage.json)。任务、预演世界和游戏局数分别计数。
 
 ## 四、在线四站试玩：观测 → 局部想象 → 预测 → 探索
 
 **穿过高石，跨过矮坎，在青色信标里停稳。** [打开四站试玩](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)，按 Enter 开始。四站是同一月面任务中的四个交互阶段。
 
 <a href="https://codezzzsleep.github.io/next-zenith-beforestep/play.html">
-  <img src="docs/readme/m20-showcase/m20-legs.jpg" width="100%" alt="真实试玩原片中的 M20 轮腿机器人：玩家逐腿跨过矮坎">
+  <img src="docs/readme/m20-bright-20261119/m20-exploration.jpg" width="100%" alt="V5 Beta 封面原图中的 M20 月面探索，轮腿结构清晰可辨">
 </a>
 
 1. **观测与初判。** 驾驶到高石观察点，停稳、切到第一视角，留下“能过”“绕开”或“拿不准”。
@@ -135,7 +135,7 @@ BeforeStep 把这份**三维先验**接入机器人局部建模：Lux3D 生成�
 | v0.2 | 在有效关口完成整条链路 | 真实 Lux3D 分支到达；直接走对照也到达 |
 | v0.3 | 训练模型控制与生成几何改路 | 训练控制器完成独立执行；失败和消融保留 |
 
-**报告 V5 与这些技术版本分别编号。** v0.3.0 的历史发布、原附件与源提交继续保留；原 R1 研究采用冻结规则控制，试玩使用原动力学上的独立交互层。
+**报告 V5 Beta 与这些技术版本分别编号。** v0.3.0 的历史发布、原附件与源提交继续保留；原 R1 研究采用冻结规则控制，试玩使用原动力学上的独立交互层。
 
 [交互资产对比](https://codezzzsleep.github.io/next-zenith-beforestep/award-assets.html) · [技术里程碑](docs/milestones.md) · [核心资产与版本清单](evidence/award/asset-iterations/manifest.json) · [资产总索引](assets/manifest.json)。
 
@@ -143,15 +143,15 @@ BeforeStep 把这份**三维先验**接入机器人局部建模：Lux3D 生成�
 
 | 材料 | 当前入口 |
 | --- | --- |
-| **主报告 V5 · 11 页** | [逐页阅读](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [原 PDF](reports/v5/report.pdf) · [报告版本与原文件](reports/README.md) |
-| **B 站主宣传片** | [作者已发布的视频](https://b23.tv/4CAPaLu)（BV1aYsw6REh7） |
+| **主报告 V5 Beta · 11 页** | [逐页阅读](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [原 PDF](reports/v5-beta/report.pdf) · [报告版本与原文件](reports/README.md) |
+| **B 站主宣传片** | [作者已发布的视频](https://www.bilibili.com/video/BV1YZst6eEZk/)（BV1YZst6eEZk） |
 | **连续 1080p 原片与补拍** | [固定 Release 下载](https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118) · [母片、五图、时间码与研究索引](evidence/judges-demo/README.md) |
 | 导演剪辑素材指南 | [112 秒成片的原素材与镜头顺序](docs/demo-edit-guide.md) |
 | 历史影片与报告 | [185 秒完整作品 Demo](evidence/production-v6/README.md) · [Lux3D 配乐版](evidence/lux3d-demo-v2/README.md) · [V3/V4 原报告](reports/README.md) |
 
 母片是约 5 分钟的连续原速仿真录制，另有清楚的模型/地图补拍、停车分支与五张图。最终 112 秒配音、音乐与字幕成片由导演制作；[原片目录](evidence/judges-demo/README.md) 记录实际交付与下载核验范围。
 
-累计账本为 **491 创建 / 460 成功 GLB / 31 失败**；V5 原稿中的 **467 创建 / 438 成功 / 29 失败**属于较早的归档节点。两组身份与统计分别保留，公开介绍统一为“累计 491 个真实任务（V5 归档 467 个）”。[原统计](evidence/production-v6/facts.json) · [V5 原件与配套说明](reports/v5/README.md)。
+累计账本为 **491 创建 / 460 成功 GLB / 31 失败**；V5 Beta 原稿中的 **467 创建 / 438 成功 / 29 失败**属于较早的归档节点。两组身份与统计分别保留，公开介绍统一为“累计 491 个真实任务（V5 Beta 归档 467 个）”。[原统计](evidence/production-v6/facts.json) · [V5 Beta 原件与配套说明](reports/v5-beta/README.md)。
 
 ## 五、本地复现：复用已生成资产
 
@@ -195,7 +195,7 @@ Ubuntu/Debian 缺少 `venv` 时，安装与 Python 3.12 对应的 `python3.12-ve
 git lfs pull --include="evidence/lux3d-demo-v2/**,evidence/production-v6/film/**" --exclude=""
 ```
 
-当前 1080p 原片通过上表的固定 Release 下载。V5 原 PDF 随仓库保存；[报告索引](reports/README.md) 解释各版文件的来源。
+当前 1080p 原片通过上表的固定 Release 下载。V5 Beta 原 PDF 随仓库保存；[报告索引](reports/README.md) 解释各版文件的来源。
 
 全新克隆的历史验收记录在 [C5-fresh.json](evidence/award/acceptance/C5-fresh.json)，其设备与阶段不代表每台机器的当前耗时。控制、训练与 Arena 的研究作为独立附录保留。
 
@@ -217,7 +217,7 @@ git lfs pull --include="evidence/lux3d-demo-v2/**,evidence/production-v6/film/**
 | [site/](site/) | 当前浏览器游戏、物理 Worker、观测、规划与交互；[代码导览](docs/code-tour.md) |
 | [src/beforestep/](src/beforestep/) | 原研究的观测、生成、配准、自检、规划、预演与执行 |
 | [assets/](assets/) · [evidence/](evidence/) | 原输入、生成网格、资产身份、失败、独立运行与版本证据 |
-| [reports/](reports/) · [tools/](tools/) | V5 / V3 / V4 原报告、影片制作与可复现构建工具 |
+| [reports/](reports/) · [tools/](tools/) | V5 Beta / V3 / V4 原报告、影片制作与可复现构建工具 |
 | [完整参赛故事](docs/submission-story-20261117.md) | 项目为什么做、Lux3D 怎样参与，以及[事实来源](docs/submission-story-sources-20261117.md) |
 | [项目目标](docs/project.md) · [交付决策](docs/decisions.md) | 当前能力、版本选择、证据保留与[参赛材料核对](docs/hackathon-submission.md) |
 | [来源与致谢](docs/credits.md) | 模型、扫描岩石、物理引擎与字体；[相关研究](docs/related-work.md) · [参考文献](docs/references.bib) |

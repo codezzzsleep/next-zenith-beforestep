@@ -1,6 +1,6 @@
 # 公开介绍与宣传入口
 
-作者已发布的主宣传片是[B站视频](https://b23.tv/4CAPaLu)，BV1aYsw6REh7。当前主报告为 V5，互动入口为[月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)。以下文案可供负责人自行使用；本项目没有代发其他社区或代交比赛表。
+作者已发布的主宣传片是[B站视频](https://www.bilibili.com/video/BV1YZst6eEZk/)，BV1YZst6eEZk。当前主报告为 V5 Beta，互动入口为[月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)。以下文案可供负责人自行使用；本项目没有代发其他社区或代交比赛表。
 
 ## 可直接使用的简介
 
@@ -17,8 +17,8 @@
 | 内容 | 链接 |
 | --- | --- |
 | 作品与试玩 | https://codezzzsleep.github.io/next-zenith-beforestep/ · https://codezzzsleep.github.io/next-zenith-beforestep/play.html |
-| 主报告 V5 | https://codezzzsleep.github.io/next-zenith-beforestep/report.html |
-| 主宣传视频 | https://b23.tv/4CAPaLu |
+| 主报告 V5 Beta | https://codezzzsleep.github.io/next-zenith-beforestep/report.html |
+| 主宣传视频 | https://www.bilibili.com/video/BV1YZst6eEZk/ |
 | 1080p 原片、五图和剪辑索引 | https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118 |
 | 原模型、源码与失败证据 | https://github.com/codezzzsleep/next-zenith-beforestep |
 

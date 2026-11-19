@@ -1,7 +1,7 @@
 # 月面任务：边开边学，也能完整挑战
 
-当前主报告为 [V5](../reports/README.md)，主宣传视频是作者已经发布的 B站片
-`https://b23.tv/4CAPaLu`（BV1aYsw6REh7）。当前玩法与验收见[月面任务](mission.md)和[评审试玩](judges-demo.md)；V3/V4 原件和历史影片继续保存。
+当前主报告为 [V5 Beta](../reports/README.md)，主宣传视频是作者已经发布的 B站片
+`https://www.bilibili.com/video/BV1YZst6eEZk/`（BV1YZst6eEZk）。当前玩法与验收见[月面任务](mission.md)和[评审试玩](judges-demo.md)；V3/V4 原件和历史影片继续保存。
 
 打开 `play.html` 即可驾驶。任务现在有四个明确阶段：驶到高石观察点并转看完整模型，
 绕过两块高石，在门槛前亲手完成四腿的抬、迈、落，最后驶入目标圈停稳。

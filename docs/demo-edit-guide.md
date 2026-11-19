@@ -1,6 +1,6 @@
 # 当前 112 秒成片的原素材指南
 
-当前交付是 2026-11-18 连续 1080p 母片与实际补拍，最终 112 秒片由导演完成配音、音乐、字幕和剪辑。主宣传仍使用作者已经发布的[B站片](https://b23.tv/4CAPaLu)，主报告是 V5。
+当前交付是 2026-11-18 连续 1080p 母片与实际补拍，最终 112 秒片由导演完成配音、音乐、字幕和剪辑。主宣传仍使用作者已经发布的[B站片](https://www.bilibili.com/video/BV1YZst6eEZk/)，主报告是 V5 Beta。
 
 [固定下载](https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118)包含母片、同图模型/地图补拍、停车分支、完整素材包、`editor-manifest.json` 和 `SHA256SUMS`。成员清单、五图、研究片段与原始时间码见[原片索引](../evidence/judges-demo/README.md)。
 

@@ -1,12 +1,12 @@
 # 当前参赛材料核对
 
-核对日期：2026-11-18。当前主报告为 **V5**，主宣传入口使用作者已发布的 B站视频，试玩与原片使用下面固定入口。历史赛程和旧阶段要求保留在原规格中，不作为新的待办时间表。
+核对日期：2026-11-19。当前主报告为 **V5 Beta**，主宣传入口使用作者已发布的 B站视频，试玩与原片使用下面固定入口。历史赛程和旧阶段要求保留在原规格中，不作为新的待办时间表。
 
 | 材料 | 当前入口与身份 |
 | --- | --- |
-| 主报告 V5 | [在线逐页报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [原文件与版本索引](../reports/README.md) |
+| 主报告 V5 Beta | [在线逐页报告](https://codezzzsleep.github.io/next-zenith-beforestep/report.html) · [原文件与版本索引](../reports/README.md) |
 | 可运行 Demo | [月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html) · [作品首页](https://codezzzsleep.github.io/next-zenith-beforestep/) |
-| 主宣传视频 | [B站](https://b23.tv/4CAPaLu)，BV1aYsw6REh7，作者已上传 |
+| 主宣传视频 | [B站](https://www.bilibili.com/video/BV1YZst6eEZk/)，BV1YZst6eEZk，作者已上传 |
 | 连续 1080p 原片与补拍 | [judges-demo-20261118](https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118)，约五分钟母片、模型/地图补拍和停车分支 |
 | 五张图、研究素材和剪辑时间码 | [原片与图像索引](../evidence/judges-demo/README.md) · [导演素材说明](demo-edit-guide.md) |
 | 源码、输入、原 GLB 和真实任务 | [公开仓库](https://github.com/codezzzsleep/next-zenith-beforestep) · [代码导览](code-tour.md) · [核心版本资产比较](../evidence/award/asset-iterations/manifest.json) |

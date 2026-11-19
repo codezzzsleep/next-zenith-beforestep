@@ -1,6 +1,6 @@
 # 先见一步：一张照片，变成一整块石头
 
-> 本文保留冻结 R1 技术报告。当前主报告是 [V5](../reports/README.md)，当前初判后自主手控/想象/补看/停车规则与完整原材质显示见[月面任务](mission.md)，最新原片与验收见[评审试玩](judges-demo.md)。历史测试身份与结果保持原记录。 原归档中的 JSON 身份与评估记录已按原 SHA 提供可点开的副本，见[来源索引](../evidence/current-delivery-20261118/restored-links.json)。
+> 本文保留冻结 R1 技术报告。当前主报告是 [V5 Beta](../reports/README.md)，当前初判后自主手控/想象/补看/停车规则与完整原材质显示见[月面任务](mission.md)，最新原片与验收见[评审试玩](judges-demo.md)。历史测试身份与结果保持原记录。 原归档中的 JSON 身份与评估记录已按原 SHA 提供可点开的副本，见[来源索引](../evidence/current-delivery-20261118/restored-links.json)。
 
 <!-- ADDENDUM3-LUX-USAGE-START -->
 Lux3D 使用：本项目调用图像转三维任务创建接口（单图 `img` / 多图 `imgs`）、任务查询接口以及官方上传流程。客户端账本有 **467 个真实已创建任务**，其中 438 份返回 GLB、29 份服务端失败；逐项任务号与输入 SHA 见 [公开调用账本](../evidence/crossing/route/lux-usage.json)。这是生成任务数，上传与轮询 HTTP 请求不重复计数。本轮跨越独立预算 113/400。

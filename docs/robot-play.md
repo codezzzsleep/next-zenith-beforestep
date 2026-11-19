@@ -1,6 +1,6 @@
 # 亲手操作轮腿机器人
 
-本文保留早期三关驾驶练习，入口为[历史驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play-practice.html)。当前 M20 显示外观、初判/想象/补看/停车的月面任务见[最新操作说明](mission.md)，主报告为 [V5](../reports/README.md)。早期练习让观众实际驾驶和逐腿操作原 Go2W 机器人。三个任务分别练习轮行与抬腿、跨过门槛、查看完整模型后绕行。
+本文保留早期三关驾驶练习，入口为[历史驾驶舱](https://codezzzsleep.github.io/next-zenith-beforestep/play-practice.html)。当前 M20 显示外观、初判/想象/补看/停车的月面任务见[最新操作说明](mission.md)，主报告为 [V5 Beta](../reports/README.md)。早期练习让观众实际驾驶和逐腿操作原 Go2W 机器人。三个任务分别练习轮行与抬腿、跨过门槛、查看完整模型后绕行。
 
 ## 怎么操作
 

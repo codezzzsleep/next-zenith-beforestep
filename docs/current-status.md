@@ -1,14 +1,14 @@
 # 当前项目与交付状态
 
-核对日期：2026-11-18。这里说明当前入口与有效规则；带日期的设计记录、冻结研究报告和历史发布保留其当时的身份。项目报告已按负责人要求切换到 **V5**，报告版本与 v0.3.0 等技术发布版本分别编号。
+核对日期：2026-11-19。这里说明当前入口与有效规则；带日期的设计记录、冻结研究报告和历史发布保留其当时的身份。项目报告已按负责人要求切换到 **V5 Beta**，报告版本与 v0.3.0 等技术发布版本分别编号。
 
 ## 当前入口
 
 | 内容 | 当前来源 |
 | --- | --- |
 | 月面探索试玩 | [play.html](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)；[操作说明](mission.md) |
-| 主报告 V5 | [逐页阅读](https://codezzzsleep.github.io/next-zenith-beforestep/report.html)；[报告版本索引](../reports/README.md) |
-| 主宣传片 | [B站分享链接](https://b23.tv/4CAPaLu)，BV1aYsw6REh7，作者已发布 |
+| 主报告 V5 Beta | [逐页阅读](https://codezzzsleep.github.io/next-zenith-beforestep/report.html)；[报告版本索引](../reports/README.md) |
+| 主宣传片 | [B站分享链接](https://www.bilibili.com/video/BV1YZst6eEZk/)，BV1YZst6eEZk，作者已发布 |
 | 连续 1080p 母片、补拍、五图与时间码 | [固定原片 Release](https://github.com/codezzzsleep/next-zenith-beforestep/releases/tag/judges-demo-20261118)；[来源索引](../evidence/judges-demo/README.md) |
 | 核心源码与原资产 | 本仓库 `src/`、`site/`、`assets/`、`evidence/`；[代码导览](code-tour.md) |
 | 当前机器可读配置 | [交付清单](../evidence/current-delivery-20261118/manifest.json) |
@@ -23,7 +23,7 @@
 
 ## 报告、影片与统计的身份
 
-V5 是当前主报告，V3 与 V4 原件留档；旧材料中的“主报告 V3”是其当时状态。[报告索引](../reports/README.md)列出各自文件与 SHA。
+V5 Beta 是当前主报告，V3 与 V4 原件留档；旧材料中的“主报告 V3”是其当时状态。[报告索引](../reports/README.md)列出各自文件与 SHA。
 
 主宣传以作者 B站片为准。2026-11-18 原片交付包括 4:59.667 连续母片、清楚的模型/占地补拍、停车分支和五图，已经上传并核对 GitHub API digest，原视频已通过全解码与包校验。四个小附件的匿名下载已核对，母片和完整 ZIP 的匿名整文件 GET 校验未完成；不把上传 digest 验证写成已完成全部匿名下载。
 

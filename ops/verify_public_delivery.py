@@ -84,7 +84,8 @@ def main() -> None:
 
     check("current schema", manifest.get("schema") == "beforestep-current-delivery/v1")
     report = manifest["report"]
-    check("current report is V5", report["version"] == "V5")
+    report_manifest = json.loads((root / manifest["report_pages_manifest"]).read_text())
+    check("current report identity", report["version"] == report_manifest["version"] and report["sha256"] == report_manifest["owner_original"]["sha256"])
     for name in [report["repository_pdf"], report["website_pdf"]]:
         check("report file exists", (root / name).is_file(), name)
         if (root / name).is_file():
@@ -98,7 +99,8 @@ def main() -> None:
             check("frozen SHA unchanged", identity(path)[0] == record["sha256"], record["path"])
 
     homepage = Page((root / "site/index.html").read_text())
-    evidence_images = [image for image in homepage.images if image.get("src", "").startswith("media/home-evidence-20261118/") or re.match(r"media/m20-showcase/(01|02|03)-", image.get("src", ""))]
+    current_images = manifest.get("presentation", {}).get("homepage_images")
+    evidence_images = [image for image in homepage.images if image.get("src", "") in current_images] if current_images else [image for image in homepage.images if image.get("src", "").startswith("media/home-evidence-20261118/") or re.match(r"media/m20-showcase/(01|02|03)-", image.get("src", ""))]
     check("three homepage evidence images", len(evidence_images) == 3)
     check("same 1600 by 900 HTML image size", all(image.get("width") == "1600" and image.get("height") == "900" for image in evidence_images))
     sources = json.loads((root / "site/media/home-evidence-20261118/sources.json").read_text())
@@ -127,6 +129,14 @@ def main() -> None:
             check("M20 README source asset exists", path.is_file(), record["path"])
             if path.is_file():
                 check("M20 README source asset SHA", identity(path) == (record["sha256"], record["bytes"]), record["path"])
+        if manifest["presentation"].get("bright_visual_manifest"):
+            bright = json.loads((root / manifest["presentation"]["bright_visual_manifest"]).read_text())
+            check("bright cover matches current owner PDF", bright["owner_pdf"]["sha256"] == report["sha256"])
+            for record in bright["files"]:
+                path = root / record["path"]
+                check("bright presentation file exists", path.is_file(), record["path"])
+                if path.is_file():
+                    check("bright presentation SHA", identity(path) == (record["sha256"], record["bytes"]), record["path"])
 
     for filename in ["site/report.html", "site/project-report.html"]:
         text = (root / filename).read_text()
@@ -135,8 +145,9 @@ def main() -> None:
         check("report page title V5", bool(title and "V5" in title[1]), filename)
         ids = [item for item in page.ids if re.fullmatch(r"page-[0-9]+", item)]
         check("report reader has all pages", ids == [f"page-{n}" for n in range(1, report["pages"] + 1)], filename)
-        pictures = [image for image in page.images if image.get("src", "").startswith("media/report-v5/page-")]
-        check("report reader uses V5 images", len(pictures) == report["pages"] + 1, filename)
+        image_prefix = str(Path(report["website_pdf"]).parent.relative_to("site")) + "/page-"
+        pictures = [image for image in page.images if image.get("src", "").startswith(image_prefix)]
+        check("report reader uses current images", len(pictures) == report["pages"] + 1, filename)
 
     for document in manifest["current_documents"]:
         path = root / document

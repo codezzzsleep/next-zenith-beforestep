@@ -1,6 +1,6 @@
 # BeforeStep 月面探索任务
 
-[打开月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)。目标是绕过高石、跨过可见矮坎，在青色信标里停稳。当前玩法以[评审试玩](judges-demo.md)及其 2026-11-18 实际验收为准；项目主报告为 V5，主宣传片为作者已发布的[B站视频](https://b23.tv/4CAPaLu)。
+[打开月面探索](https://codezzzsleep.github.io/next-zenith-beforestep/play.html)。目标是绕过高石、跨过可见矮坎，在青色信标里停稳。当前玩法以[评审试玩](judges-demo.md)及其 2026-11-18 实际验收为准；项目主报告为 V5 Beta，主宣传片为作者已发布的[B站视频](https://www.bilibili.com/video/BV1YZst6eEZk/)。
 
 ## 从初判到行动
 

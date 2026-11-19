@@ -1,6 +1,6 @@
 # 先见一步：参赛介绍与评审Demo成稿
 
-> 本文是 2026-11-17 的简介与剪辑方案。当前主报告为 [V5](../reports/README.md)，2026-11-18 已完成连续母片及清晰补拍；现行 112 秒素材顺序见[导演素材指南](demo-edit-guide.md)，固定原片见[交付目录](../evidence/judges-demo/README.md)。下方保留旧方案，不表示新的待录制任务。
+> 本文是 2026-11-17 的简介与剪辑方案。当前主报告为 [V5 Beta](../reports/README.md)，2026-11-18 已完成连续母片及清晰补拍；现行 112 秒素材顺序见[导演素材指南](demo-edit-guide.md)，固定原片见[交付目录](../evidence/judges-demo/README.md)。下方保留旧方案，不表示新的待录制任务。
 
 本稿包含作品定位、完整故事、112秒分镜、两版表单简介及来源核查。连续配音纯文本见[112秒Demo配音稿](submission-demo-voiceover-20261117.txt)。
 

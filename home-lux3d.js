@@ -5,8 +5,15 @@ const poster=document.querySelector('#model-poster');
 const status=document.querySelector('#model-status');
 const turn=document.querySelector('#model-turn');
 const reset=document.querySelector('#model-reset');
+const fallbackActions=document.querySelector('#model-fallback-actions');
 let requested=false;
 let homeDistance;
+function showModelFallback(message){
+  viewer.hidden=true;poster.hidden=false;
+  status.textContent=message;
+  fallbackActions.hidden=false;
+  document.documentElement.dataset.modelFallback='true';
+}
 function fitHomeModel(preserveZoom=false){
   if(!viewer.loaded)return;
   const box=viewer.getBoundingClientRect();
@@ -22,7 +29,7 @@ function loadModel(){
   requested=true;
   const probe=document.createElement('canvas');
   const gl=probe.getContext('webgl2')||probe.getContext('webgl');
-  if(!gl){status.textContent='可查看模型录屏，或下载原模型。';document.documentElement.dataset.modelFallback='true';return;}
+  if(!gl){showModelFallback('此浏览器暂不能显示 3D，仍可查看原模型。');return;}
   gl.getExtension('WEBGL_lose_context')?.loseContext();
   status.textContent='正在加载 Lux3D 返回的原模型…';
   viewer.hidden=false;
@@ -31,14 +38,16 @@ function loadModel(){
 viewer.addEventListener('load',()=>{
   fitHomeModel();
   poster.hidden=true;
+  fallbackActions.hidden=true;
   status.textContent='拖动旋转 · 滚轮或双指缩放';
   turn.disabled=false;reset.disabled=false;
   document.documentElement.dataset.modelReady='true';
 });
 viewer.addEventListener('error',()=>{
-  viewer.hidden=true;poster.hidden=false;
-  status.textContent='3D 视图暂不可用，可查看录屏或下载原模型。';
-  document.documentElement.dataset.modelFallback='true';
+  showModelFallback('3D 视图暂不可用，可查看录屏或下载原模型。');
+});
+document.querySelector('#model-recording').addEventListener('click',()=>{
+  document.querySelector('#archive-demo').open=true;
 });
 turn.addEventListener('click',()=>{viewer.yaw+=Math.PI;viewer.requestRender();});
 reset.addEventListener('click',()=>{viewer.yaw=20*Math.PI/180;viewer.pitch=16*Math.PI/180;fitHomeModel();});
